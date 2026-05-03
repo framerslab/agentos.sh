@@ -541,11 +541,30 @@
     background: var(--brand-gradient);
   }
   .brand-gradient-text {
-    background: var(--brand-gradient);
+    background: linear-gradient(
+      90deg,
+      var(--accent-primary),
+      var(--accent-secondary),
+      var(--accent-tertiary),
+      var(--accent-primary),
+      var(--accent-secondary)
+    );
+    background-size: 220% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+    animation: brand-gradient-flow 9s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .brand-gradient-text {
+      animation: none;
+      background-size: 100% 100%;
+    }
+  }
+  @keyframes brand-gradient-flow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
   }
   .brand-gradient-border {
     border-image: var(--brand-gradient) 1;
