@@ -18,6 +18,11 @@ const ResponsiveNeuralConstellation = dynamic(() => import('../hero/neural-const
   loading: () => null
 });
 
+const ParticleMorphText = dynamic(() => import('../hero/particle-morph-text').then(m => ({ default: m.ParticleMorphText })), {
+  ssr: false,
+  loading: () => null
+});
+
 const HeroSectionInner = memo(function HeroSectionInner() {
   const t = useTranslations('hero');
   const locale = useLocale();
@@ -26,12 +31,29 @@ const HeroSectionInner = memo(function HeroSectionInner() {
   const [githubStars, setGithubStars] = useState<number | null>(null);
   const [githubForks, setGithubForks] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [morphFontSize, setMorphFontSize] = useState(40);
   const isDark = resolvedTheme === 'dark';
 
   // Mark as mounted after hydration
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Match ParticleMorphText font size to the CSS clamp breakpoints used
+  // on the H1 (text-[28px] sm:text-[36px] lg:text-[48px]). The canvas
+  // fills the invisible text box, so the canvas font size must track the
+  // CSS one or the morph clips/floats away from the surrounding inline
+  // copy ("intelligence", "agents").
+  useEffect(() => {
+    if (!mounted) return;
+    const update = () => {
+      const w = window.innerWidth;
+      setMorphFontSize(w >= 1024 ? 48 : w >= 640 ? 36 : 28);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [mounted]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -115,25 +137,21 @@ const HeroSectionInner = memo(function HeroSectionInner() {
             className="font-bold tracking-tight mb-3 text-[28px] sm:text-[36px] lg:text-[48px] leading-[1.2] min-h-[72px] sm:min-h-[92px] lg:min-h-[120px]"
             itemProp="name"
           >
-            {/* Two gradient slots dissolve between "Emergent" and "adaptive"
-                in opposite phases, so the H1 reads "Emergent intelligence
-                for adaptive agents" half the time and "adaptive intelligence
-                for Emergent agents" the other half. Cross-fade with blur
-                gives the morph feel; inline-grid stacks the two words in
-                the same cell so the slot width auto-sizes to the wider one
-                and the rest of the line never reflows. */}
-            <span className="relative inline-grid grid-cols-1 grid-rows-1 align-baseline">
-              <span className="row-start-1 col-start-1 brand-gradient-text motion-safe:animate-hero-word-front [will-change:opacity,filter,transform]">Emergent</span>
-              <span aria-hidden="true" className="row-start-1 col-start-1 brand-gradient-text motion-safe:animate-hero-word-back [will-change:opacity,filter,transform]">adaptive</span>
+            {/* Visually-hidden full-text H1 for crawlers and screen readers.
+                The aria-hidden canvas siblings render the visual particle
+                morph between "Emergent" and "Adaptive"; this sr-only span
+                guarantees the full string is in the DOM regardless of
+                canvas hydration state, and keeps the H1 text accessible
+                to screen readers (the morph is decorative). */}
+            <span className="sr-only">Emergent intelligence for adaptive agents</span>
+            <span aria-hidden="true">
+              <ParticleMorphText words={['Emergent', 'Adaptive']} interval={4000} fontSize={morphFontSize} gradientFrom={isDark ? '#7b66ff' : '#6024f3'} gradientTo={isDark ? '#d27bfc' : '#a538e5'} startIndex={0} />
+              <span className="text-[var(--color-text-primary)]">intelligence</span>
+              <br />
+              <span className="text-[var(--color-text-secondary)]">for </span>
+              <ParticleMorphText words={['Adaptive', 'Emergent']} interval={5200} fontSize={morphFontSize} gradientFrom={isDark ? '#d27bfc' : '#a538e5'} gradientTo={isDark ? '#f87bb8' : '#f25b8c'} startIndex={0} nudgeY={0.04} />
+              <span className="text-[var(--color-text-primary)]">agents</span>
             </span>
-            <span className="text-[var(--color-text-primary)]"> intelligence</span>
-            <br />
-            <span className="text-[var(--color-text-secondary)]">for </span>
-            <span className="relative inline-grid grid-cols-1 grid-rows-1 align-baseline">
-              <span className="row-start-1 col-start-1 brand-gradient-text motion-safe:animate-hero-word-front [will-change:opacity,filter,transform]">adaptive</span>
-              <span aria-hidden="true" className="row-start-1 col-start-1 brand-gradient-text motion-safe:animate-hero-word-back [will-change:opacity,filter,transform]">Emergent</span>
-            </span>
-            <span className="text-[var(--color-text-primary)]"> agents</span>
           </h1>
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-accent-primary)] mb-3">
             Open-source TypeScript AI agent framework

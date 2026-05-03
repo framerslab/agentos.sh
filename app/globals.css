@@ -447,26 +447,6 @@
   animation: gradient 3s ease infinite;
 }
 
-/* Hero word morph: cross-fade with blur+scale to dissolve between two
-   words. front + back animations run on the same loop in opposite
-   phases, so when one word fades out the other fades in. Two slots in
-   the hero use these in mirrored configurations to swap "Emergent" and
-   "adaptive" between the two gradient-text positions. */
-@keyframes hero-word-front {
-  0%, 6%   { opacity: 1; filter: blur(0); transform: scale(1); }
-  44%, 56% { opacity: 0; filter: blur(8px); transform: scale(0.94); }
-  94%, 100% { opacity: 1; filter: blur(0); transform: scale(1); }
-}
-@keyframes hero-word-back {
-  0%, 6%   { opacity: 0; filter: blur(8px); transform: scale(0.94); }
-  44%, 56% { opacity: 1; filter: blur(0); transform: scale(1); }
-  94%, 100% { opacity: 0; filter: blur(8px); transform: scale(0.94); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-word-front, .hero-word-back { animation: none !important; }
-  .hero-word-back { opacity: 0 !important; }
-}
-
 @keyframes float {
     0%, 100% { transform: translateY(0) translateZ(0); }
     50% { transform: translateY(-10px) translateZ(0); }
