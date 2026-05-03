@@ -103,28 +103,6 @@ async function run() {
     console.warn('[post-export] Failed to copy 404.html:', error.message);
   }
 
-  // Inject `<?xml-stylesheet?>` directive into the generated sitemap so
-  // browsers render it as a styled table (public/sitemap.xsl) instead
-  // of a wall of raw XML. Modern Chrome 100+ stopped auto-rendering
-  // XML as a tree view, so without an explicit stylesheet humans see
-  // monospaced text and report "the sitemap is plaintext, not XML".
-  // Google still parses the underlying XML — the directive only affects
-  // browser rendering. Sitemaps are required to start with the XML
-  // declaration, so we splice the stylesheet directive AFTER it.
-  try {
-    const sitemapPath = path.join(outDir, 'sitemap.xml');
-    let xml = await fs.readFile(sitemapPath, 'utf-8');
-    if (!xml.includes('<?xml-stylesheet')) {
-      xml = xml.replace(
-        /(\?>)/,
-        '$1\n<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
-      );
-      await fs.writeFile(sitemapPath, xml, 'utf-8');
-      console.log('[post-export] Injected <?xml-stylesheet?> directive into sitemap.xml');
-    }
-  } catch (error) {
-    console.warn('[post-export] Failed to patch sitemap.xml stylesheet directive:', error.message);
-  }
 }
 
 run().catch((error) => {
