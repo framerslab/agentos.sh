@@ -45,7 +45,7 @@ const LONGMEMEVAL_S_ROWS: BenchmarkRow[] = [
     p50Latency: '3,558 ms',
     source: {
       label: '85.6% Pareto-win post',
-      href: 'https://docs.agentos.sh/blog/2026/04/28/reader-router-pareto-win',
+      href: '/en/blog/agentos-memory-sota-longmemeval/',
     },
     isAgentos: true,
   },
@@ -119,7 +119,7 @@ const LONGMEMEVAL_M_ROWS: MRow[] = [
     license: 'Apache-2.0',
     source: {
       label: '70.2% post',
-      href: 'https://docs.agentos.sh/blog/2026/04/29/longmemeval-m-70-with-topk5',
+      href: '/en/blog/agentos-memory-sota-longmemeval/',
     },
     isAgentos: true,
   },
@@ -289,11 +289,6 @@ export function BenchmarksSection() {
                           row.isAgentos ? 'font-semibold text-[var(--color-text-primary)]' : 'text-[var(--color-text-secondary)]'
                         }`}
                       >
-                        {row.isAgentos && (
-                          <span aria-label="AgentOS row" className="mr-2">
-                            🚀
-                          </span>
-                        )}
                         {row.system}
                       </td>
                       <td
@@ -349,11 +344,6 @@ export function BenchmarksSection() {
                           row.isAgentos ? 'font-semibold text-[var(--color-text-primary)]' : 'text-[var(--color-text-secondary)]'
                         }`}
                       >
-                        {row.isAgentos && (
-                          <span aria-label="AgentOS row" className="mr-2">
-                            🚀
-                          </span>
-                        )}
                         {row.system}
                       </td>
                       <td

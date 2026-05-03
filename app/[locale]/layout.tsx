@@ -122,9 +122,9 @@ export async function resolveLocaleMetadata(locale: Locale) {
       'Vercel AI SDK alternative',
       'OpenAI Agents SDK alternative',
     ],
-    authors: [{ name: 'Framers', url: 'https://frame.dev' }],
-    creator: 'Framers',
-    publisher: 'Framers',
+    authors: [{ name: 'Frame.dev', url: 'https://frame.dev' }],
+    creator: 'Frame.dev',
+    publisher: 'Frame.dev',
     robots: {
       index: true,
       follow: true,

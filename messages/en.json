@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "title": "Open Source TypeScript AI Agent Framework | AgentOS",
-    "description": "Open-source TypeScript AI agent framework. Build autonomous agents with cognitive memory, runtime tool generation, multi-agent orchestration, and 21 LLM providers. 85.6% on LongMemEval-S. Apache 2.0.",
-    "ogTitle": "Open Source TypeScript AI Agent Framework | AgentOS",
-    "ogDescription": "Open-source TypeScript AI agent framework. Cognitive memory, runtime tool generation, multi-agent orchestration, voice pipelines, and 21 LLM providers. 85.6% on LongMemEval-S. Apache 2.0.",
-    "twitterTitle": "Open Source TypeScript AI Agent Framework | AgentOS",
-    "twitterDescription": "Open-source TypeScript AI agent framework. Cognitive memory, runtime tool generation, multi-agent orchestration, and 21 LLM providers. 85.6% LongMemEval-S. Apache 2.0."
+    "title": "AgentOS (agentos.sh): Open Source TypeScript AI Agent Framework",
+    "description": "AgentOS at agentos.sh is an open-source TypeScript AI agent framework. Build autonomous agents with cognitive memory, runtime tool generation, multi-agent orchestration, and 21 LLM providers. 85.6% on LongMemEval-S. Apache 2.0. By Frame.dev.",
+    "ogTitle": "AgentOS (agentos.sh): Open Source TypeScript AI Agent Framework",
+    "ogDescription": "AgentOS at agentos.sh: open-source TypeScript AI agent framework. Cognitive memory, runtime tool generation, multi-agent orchestration, voice pipelines, and 21 LLM providers. 85.6% on LongMemEval-S. Apache 2.0.",
+    "twitterTitle": "AgentOS (agentos.sh): Open Source TypeScript AI Agent Framework",
+    "twitterDescription": "AgentOS at agentos.sh: open-source TypeScript AI agent framework. Cognitive memory, runtime tool generation, multi-agent orchestration, and 21 LLM providers. 85.6% LongMemEval-S. Apache 2.0."
   },
   "nav": {
     "features": "Features",

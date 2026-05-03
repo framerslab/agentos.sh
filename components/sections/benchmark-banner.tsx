@@ -1,18 +1,19 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useLocale } from 'next-intl'
 
 /**
  * Top-of-page benchmark announcement banner.
  * Surfaces the latest LongMemEval-M result with a CTA to the canonical
- * blog post on docs.agentos.sh. Dismissible per visit; the localStorage
+ * blog post on agentos.sh. Dismissible per visit; the localStorage
  * key is dated so future banners ship independently.
  */
 const STORAGE_KEY = 'agentos-banner-2026-04-29'
-const BLOG_URL =
-  'https://docs.agentos.sh/blog/2026/04/29/longmemeval-m-70-with-topk5'
+const BLOG_SLUG = 'agentos-memory-sota-longmemeval'
 
 export function BenchmarkBanner() {
+  const locale = useLocale()
   // Default VISIBLE so the banner paints on first render. useEffect
   // below hides it if previously dismissed; brief render-then-hide
   // flicker beats the longer hidden-then-show flash every fresh
@@ -73,9 +74,7 @@ export function BenchmarkBanner() {
           &apos;s Observational Memory at gpt-4o (84.23%). 70.2% on M.
         </span>
         <a
-          href={BLOG_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={`/${locale}/blog/${BLOG_SLUG}/`}
           className="rounded-md bg-white/15 px-3 py-1 font-bold text-white underline-offset-4 ring-1 ring-white/30 transition-colors hover:bg-white/25"
         >
           Read the post →
