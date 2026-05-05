@@ -27,6 +27,39 @@ async function ensureDir(dirPath) {
   }
 }
 
+// Next.js 14.2.x + `output: 'export'` + `next/font/google` emits a stray
+// `<script src="/_next/static/css/<hash>.css" async></script>` next to the
+// legitimate `<link rel="stylesheet">` for the font CSS chunk. The browser
+// tries to parse the CSS as JS and throws "SyntaxError: Invalid or unexpected
+// token" on every page load. The page renders fine but the error sits in
+// every visitor's console and docks the Lighthouse Best Practices score.
+function stripCssAsScriptTags(html) {
+  return html.replace(
+    /<script\s+src="\/_next\/static\/css\/[^"]+\.css"[^>]*><\/script>/g,
+    ''
+  );
+}
+
+async function walkHtmlFiles(dir) {
+  const out = [];
+  let entries;
+  try {
+    entries = await fs.readdir(dir, { withFileTypes: true });
+  } catch (error) {
+    if (error.code === 'ENOENT') return out;
+    throw error;
+  }
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      out.push(...(await walkHtmlFiles(full)));
+    } else if (entry.isFile() && entry.name.endsWith('.html')) {
+      out.push(full);
+    }
+  }
+  return out;
+}
+
 async function createRedirectHTML(targetPath) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -103,6 +136,25 @@ async function run() {
     console.warn('[post-export] Failed to copy 404.html:', error.message);
   }
 
+  // Strip `<script src="...css">` tags emitted by Next.js 14.2 next/font.
+  // Run last so it covers the locale flat copies and the 404 page too.
+  try {
+    const htmlFiles = await walkHtmlFiles(outDir);
+    let stripped = 0;
+    for (const file of htmlFiles) {
+      const before = await fs.readFile(file, 'utf8');
+      const after = stripCssAsScriptTags(before);
+      if (before !== after) {
+        await fs.writeFile(file, after, 'utf8');
+        stripped++;
+      }
+    }
+    if (stripped > 0) {
+      console.log(`[post-export] Stripped bogus CSS-as-script tags from ${stripped} HTML file(s)`);
+    }
+  } catch (error) {
+    console.warn('[post-export] Failed to strip CSS-as-script tags:', error.message);
+  }
 }
 
 run().catch((error) => {
