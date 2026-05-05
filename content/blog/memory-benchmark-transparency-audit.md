@@ -2,12 +2,16 @@
 title: "Memory Benchmark Transparency: Why LongMemEval and LOCOMO Numbers Don't Compare"
 date: "2026-04-24"
 excerpt: "An audit of how Mem0, Mastra, Supermemory, Zep, EmergenceMem, and Letta publish their LongMemEval and LOCOMO numbers. LOCOMO has a 6.4% wrong answer key and a judge that accepts 63% of wrong answers. Dhravya posts 99% as a gaming demonstration. Mastra claims 95% at an unmatched reader. The transparency stack behind every honest comparison."
-author: "Johnny Dunn"
+author: "AgentOS Team"
 category: "Engineering"
 audience: "engineer"
 image: "/img/blog/og/memory-benchmark-transparency-audit.png"
 keywords: "memory benchmark transparency, longmemeval transparency, longmemeval gaming, locomo audit, dhravya 99, mastra 95 percent, agentos policy router, pareto-optimal routing, memory library benchmark reproducibility, mem0 vs zep, mastra observational memory, supermemory memorybench, benchmark reproducibility"
 ---
+
+> "If a measurement matters at all, it is because it must have some conceivable effect on decisions and behavior. If we can't identify a decision that could be affected by a proposed measurement and how it could change those decisions, then the measurement simply has no value."
+>
+> Douglas Hubbard, *How to Measure Anything*, 2014
 
 The benchmarks the AI memory industry uses as proof are broken in measurable ways. The gaming patterns are documented. The right response is not to stop publishing numbers but to publish honest ones, with the methodology stack disclosed at every step so anyone can re-run them and see for themselves. Below is the audit. Every number AgentOS ships runs against this same disclosure.
 
