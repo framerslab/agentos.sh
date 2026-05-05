@@ -85,9 +85,7 @@ The turn loop is the only piece of Paracosm that's interesting at the engineerin
 
 The clever parts (research grounding, tool forging, personality drift) exist because the simulation without them tells boring stories.
 
-<video autoplay loop muted playsinline controls preload="metadata" poster="/img/blog/paracosm/branches-poster.jpg" style="width:100%;border-radius:8px;margin:1.5rem 0;">
-  <source src="/img/blog/paracosm/branches.mp4" type="video/mp4">
-</video>
+<img src="/img/blog/paracosm/branches-poster.jpg" alt="Paracosm dashboard Branches view: every fork point in a multi-leader run, color-coded by leader, where the same scenario produced a different action." style="width:100%;border-radius:8px;margin:1.5rem 0;" />
 
 The video above is the dashboard's Branches view. Every fork point in a multi-leader run, color-coded by leader, where the same scenario produced a different action.
 
