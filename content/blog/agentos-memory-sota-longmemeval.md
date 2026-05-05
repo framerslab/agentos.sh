@@ -13,15 +13,11 @@ category: "Engineering"
 keywords: "longmemeval state of the art, longmemeval benchmark, longmemeval results, longmemeval s, longmemeval m, longmemeval 85 percent, ai memory benchmark, agentos memory, memory benchmark transparency, mastra mem0 hindsight comparison, memory library benchmark, open source memory library, locomo judge audit, retrieval augmented memory, cognitive memory ai, reader router, sem-embed, longmemeval paper Wu et al ICLR 2025, observational memory mastra, emergencemem"
 ---
 
-> "To think is to forget a difference, to generalize, to abstract."
->
-> Jorge Luis Borges, *Funes the Memorious*, 1942
+Memory benchmarks for AI agents reward retrieval over inference. The score goes up when the system dumps more context into the reader's window and lets the LLM sort the result out. That's not what most people mean by "memory" when they ask for it. It's a search engine on top of a smart enough reader to compensate for the noise.
 
-Funes the Memorious couldn't think because he couldn't forget. Every leaf of every tree, every angle of every cloud, perfectly preserved. He died at 21 of pulmonary congestion, but the memory was the cause. He had no abstraction left.
+The numbers people quote (LongMemEval, LOCOMO) inherit this. So when MemPalace publishes 100% on LongMemEval and Dhravya publishes 99% and Mastra publishes 95%, the right reaction is not "huh, our 85.6% looks bad" but "what reader, what retrieval, what judge, and can I rerun it." Most of the time, at least one of those answers is missing.
 
-The reason I bring up a 1942 short story in a benchmark post is that the entire AI memory industry has a Funes problem. The bench numbers everyone cites (LongMemEval, LOCOMO) reward perfect recall over perfect inference, and most of the vendors publishing big percentages have figured out how to retrieve everything and let the reader sort it out. That's not memory. That's a search engine with a flexible enough rubric to call itself memory. Funes had perfect retrieval and couldn't generalize. The same trade-off, just at machine scale.
-
-I built [AgentOS](https://github.com/framersai/agentos) to be the opposite: an open-source TypeScript runtime for AI agents where the memory system implements [nine cognitive mechanisms from published neuroscience](/blog/cognitive-memory-beyond-rag) (Ebbinghaus decay, retrieval-induced forgetting, reconsolidation, source-confidence decay, etc.), each independently configurable. The agents are designed to forget on purpose. So the question for me, when I sat down to run AgentOS against LongMemEval, was whether the cognitive grounding was actually paying off, or whether I was about to publish an ego-bruising number and a bunch of caveats.
+[AgentOS](https://github.com/framersai/agentos) is the open-source TypeScript runtime I work on. It implements [nine cognitive mechanisms from published neuroscience](/blog/cognitive-memory-beyond-rag) (Ebbinghaus decay, retrieval-induced forgetting, reconsolidation, source-confidence decay, more) so the agent forgets on purpose. The bench numbers below are how that design holds up against everyone else's, with the matched-reader breakdown that the headline percentages alone don't give you.
 
 Two results, both at the `gpt-4o` reader, both at full N=500.
 
@@ -202,7 +198,7 @@ The 70.2% configuration uses HyDE-augmented BM25 + dense retrieval over `text-em
 
 Top-K=5 matches the LongMemEval paper's strongest M configuration ([Wu et al., ICLR 2025, Table 3](https://arxiv.org/abs/2410.10813)). At higher K, chunks ranked 6 and below frequently share lexical surface with the query but do not contain the answer; including them lowers the reader's signal-to-noise ratio. [Liu et al. (2024), "Lost in the Middle"](https://arxiv.org/abs/2307.03172) reports the same shape of failure at the long-context-LLM level.
 
-The corollary, in line with the Borges epigraph: a memory system that retrieves more is not always one that remembers better. At M scale, a retriever that hands the reader fewer (and better-ranked) chunks scores higher than one that hands it more. Recall is necessary; what the reader does with what it got is the rest of the work.
+The takeaway: a memory system that retrieves more is not always one that remembers better. At M scale, a retriever that hands the reader fewer (and better-ranked) chunks scores higher than one that hands it more. Recall is necessary; what the reader does with what it got is the rest of the work.
 
 M cost at scale: at $0.0078 per correct over a 1.5M-token haystack, 1,000 RAG calls cost $7.80.
 
@@ -416,7 +412,7 @@ Reproducible memory benchmarks require a published seed, configuration, and per-
 
 Two numbers end up here. **85.6% on LongMemEval-S** at $0.0090 per correct, +1.4 points above the strongest matched-reader competitor. **70.2% on LongMemEval-M** at $0.0078 per correct, the only open-source library on the public record above 65% on the variant whose haystacks no production context window can absorb.
 
-The intent of the design behind both numbers is not perfect recall. Funes the Memorious had perfect recall and could not think; AgentOS has [Ebbinghaus decay](https://docs.agentos.sh/features/cognitive-memory), [retrieval-induced forgetting](https://docs.agentos.sh/features/cognitive-memory), [reconsolidation](https://docs.agentos.sh/features/cognitive-memory), and seven other mechanisms borrowed from the cognitive-science literature precisely so the agent can generalize from what it has seen rather than drown in it. The benchmark numbers are the part of that argument that can be measured. The rest of the [whitepaper](https://github.com/framersai/agentos-bench) covers the part that can't.
+The intent of the design behind both numbers is not perfect recall. AgentOS implements [Ebbinghaus decay](https://docs.agentos.sh/features/cognitive-memory), [retrieval-induced forgetting](https://docs.agentos.sh/features/cognitive-memory), [reconsolidation](https://docs.agentos.sh/features/cognitive-memory), and seven other cognitive-science mechanisms precisely so the agent generalizes from what it has seen rather than drowns in it. The benchmark numbers are the measurable part of that argument. The rest of the [whitepaper](https://github.com/framersai/agentos-bench) covers the part that can't be reduced to a percentage.
 
 The runtime is Apache-2.0 at [github.com/framersai/agentos](https://github.com/framersai/agentos). The bench is at [github.com/framersai/agentos-bench](https://github.com/framersai/agentos-bench). Reproducing the headlines is the two CLI commands above, on a dataset anyone can download from [the LongMemEval upstream](https://github.com/xiaowu0162/LongMemEval), against per-case run JSONs at seed 42.
 
@@ -489,8 +485,6 @@ Quarterly. Next refresh date: 2026-08. Each refresh re-runs the bench against th
 [^11]: Zep AI. *State-of-the-art agent memory.* getzep.com blog. <https://blog.getzep.com/state-of-the-art-agent-memory/>
 
 [^12]: Anonymous. (2025). *Independent reproduction of Zep / Graphiti memory architecture results.* arXiv preprint. <https://arxiv.org/abs/2512.13564>
-
-[^13]: Borges, J. L. (1942). *Funes the Memorious.* In *Ficciones* (English: 1962, Grove Press). The literary frame for the project: a man cursed with perfect memory is unable to think because every detail demands equal attention. AgentOS's decay + retrieval-induced forgetting + reconsolidation borrow from cognitive science precisely to avoid this failure mode.
 
 ### Vendor research pages cited in the comparison table
 
