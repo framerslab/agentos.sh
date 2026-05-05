@@ -11,7 +11,7 @@ keywords: "ai agent memory, cognitive memory ai, rag alternatives, ebbinghaus de
 
 > "Memory is the diary that we all carry about with us."
 >
-> — Oscar Wilde, *The Importance of Being Earnest*, 1895
+> Oscar Wilde, *The Importance of Being Earnest*, 1895
 
 The first time I built a RAG system that "remembered" something it hadn't been told, I went looking for the bug. There wasn't one. The system had retrieved a document chunk that had been re-embedded under a slightly different surrounding context after the user's earlier query, and the embedding-shift made the chunk match the new query in a way it wouldn't have matched the same query a week earlier. The retrieval was correct. The behavior felt like memory. It wasn't.
 
@@ -212,6 +212,28 @@ const assistant = agent({
 RAG gives agents access to information. Cognitive memory gives them the ability to selectively remember, naturally forget, and honestly report when they are unsure. For agents that run for days, weeks, or months, the difference between "retrieves everything equally" and "remembers what matters, forgets what does not" determines whether the agent remains useful or drowns in noise.
 
 The benchmark numbers backing this claim: **70.2% on [LongMemEval-M](/blog/longmemeval-m-70-with-topk5)** (first open-source library above 65% on the 1.5M-token variant) and **85.6% on [LongMemEval-S](/blog/longmemeval-s-85-pareto-win)**, 0.4 points behind Emergence.ai's published 86% closed-source SaaS SOTA and +1.4 points above Mastra OM gpt-4o (84.23%) at matched reader. Methodology, per-case run JSONs at fixed seed, judge-FPR probes, and a single-CLI reproduction recipe are open at [github.com/framersai/agentos-bench](https://github.com/framersai/agentos-bench).
+
+## FAQ
+
+### Is RAG dead?
+
+No. RAG is a retriever, not a memory. Cognitive memory uses RAG as one of several composable retrieval strategies alongside semantic decay-aware recall, episodic graph traversal, and reconsolidation rewrites. The argument in this post is "RAG alone is insufficient when you need actual memory behavior," not "stop using RAG."
+
+### Why is matched-reader the right honesty bar for memory benchmarks?
+
+Because the reader model is the dominant cost AND quality lever. Two systems claiming the same LongMemEval score with different reader models are reporting different things: one might be measuring memory architecture, the other might be measuring how good gpt-4o is at fielding chunks under any prompting strategy. Without naming the reader for both, the score is a pricing observation, not a quality claim. The transparency post linked in section 5 walks through 6+ competitor numbers under this rule.
+
+### Can I use AgentOS cognitive memory without the rest of the runtime?
+
+Yes. The memory primitives are exported from `@framers/agentos` and run independently. You can pair them with your own LLM-call layer or another framework's orchestration. Each of the 9 mechanisms is a separately exported module so you can compose only what you need.
+
+### Which mechanisms are required vs optional?
+
+The 4-tier hierarchy (working/episodic/semantic/observational) is the structural floor. Everything else (Ebbinghaus decay, reconsolidation, retrieval-induced forgetting, emotion regulation, fuzzy-trace, source-confidence decay, schema encoding, feeling-of-knowing) is independently configurable. The defaults turn the cognitively-grounded mechanisms on; you can disable any subset to match your evaluation setup or compute budget.
+
+### How does this compare to MemGPT or Generative Agents?
+
+MemGPT (Packer et al., 2023) and Generative Agents (Park et al., 2023) are referenced and cited above. They prefigured the cognitive-memory direction without grounding the implementation in the corresponding neuroscience literature. AgentOS lands the same architectural shape but each mechanism is traceable to a primary source (Anderson 1994, Nader 2000, Murre 2015, etc.). The benchmark gap on LongMemEval-M (70.2% vs the 30% MemGPT baseline reported by the LongMemEval authors) is the practical signal that the neuroscience grounding pays off.
 
 ## References
 
