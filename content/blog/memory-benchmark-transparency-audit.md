@@ -1,17 +1,17 @@
 ---
-title: "Why Memory-Library Benchmarks Don't Mean What You Think"
+title: "Memory Benchmark Transparency: Why LongMemEval and LOCOMO Numbers Don't Compare"
 date: "2026-04-24"
-excerpt: "An audit of how Mem0, Mastra, Supermemory, Zep, EmergenceMem, and MemPalace publish their LongMemEval and LOCOMO numbers. The benchmarks are broken, the gaming is documented, and AgentOS publishes its own honest numbers alongside the audit framework."
+excerpt: "An audit of how Mem0, Mastra, Supermemory, Zep, EmergenceMem, and MemPalace publish their LongMemEval and LOCOMO numbers. LOCOMO has a 6.4% wrong answer key and a judge that accepts 63% of wrong answers. MemPalace and Dhravya post 99-100% as gaming demonstrations. Mastra claims 95% at an unmatched reader. The transparency stack behind every honest comparison."
 author: "AgentOS Team"
 category: "Engineering"
 audience: "engineer"
 image: "/img/blog/og/memory-benchmark-transparency-audit.png"
-keywords: "memory benchmark transparency, longmemeval gaming, locomo audit, agentos policy router, pareto-optimal routing, memory library benchmark reproducibility, mem0 vs zep, mastra observational memory, supermemory memorybench, benchmark reproducibility"
+keywords: "memory benchmark transparency, longmemeval transparency, longmemeval gaming, locomo audit, mempalace 100 percent, dhravya 99, mastra 95 percent, agentos policy router, pareto-optimal routing, memory library benchmark reproducibility, mem0 vs zep, mastra observational memory, supermemory memorybench, benchmark reproducibility"
 ---
 
 > "If a measurement matters at all, it is because it must have some conceivable effect on decisions and behavior. If we can't identify a decision that could be affected by a proposed measurement and how it could change those decisions, then the measurement simply has no value."
 >
-> — Douglas Hubbard, *How to Measure Anything*, 2014
+> Douglas Hubbard, *How to Measure Anything*, 2014
 
 This post examines the benchmarks the entire memory-library industry uses as proof. The benchmarks are broken in measurable ways, the gaming patterns are documented, and the right response is not to refuse to publish numbers but to publish honest ones with a methodology stack disclosed at every step. Below is the audit; everything else AgentOS publishes runs against this disclosure.
 
@@ -111,7 +111,7 @@ In-distribution Phase B numbers are vulnerable to test-set optimization. Four va
 
 ### Hold-out calibration
 
-Stratified 80/20 split of the LongMemEval-S Phase B N=500 data (seed=42), derive routing tables from the 398-case calibration slice, evaluate on the 97 held-out cases. The shipping table is identical to the calibration-derived table across all six categories under `minimize-cost`; routing decisions are not a product of in-distribution table overfitting. Held-out N=97 aggregate drops 7 points relative to full N=500 — decomposed into 2.8 points of sampling variance and 4 points of classifier-on-smaller-subset noise, not architectural overfit.
+Stratified 80/20 split of the LongMemEval-S Phase B N=500 data (seed=42), derive routing tables from the 398-case calibration slice, evaluate on the 97 held-out cases. The shipping table is identical to the calibration-derived table across all six categories under `minimize-cost`; routing decisions are not a product of in-distribution table overfitting. Held-out N=97 aggregate drops 7 points relative to full N=500. Decomposed into 2.8 points of sampling variance and 4 points of classifier-on-smaller-subset noise, not architectural overfit.
 
 ### LOCOMO out-of-distribution
 
@@ -217,7 +217,7 @@ Three additions from building `agentos-bench`:
 
 7. **Bootstrap percentile confidence intervals on every headline.** Ten thousand resamples with a seeded PRNG. Report CI low and CI high alongside the point estimate. Score differences smaller than the CI gap are not signal.
 8. **Per-case run artifacts at a seed.** A run JSON with `caseId`, predicted category (when routing), chosen backend, estimated cost, actual cost, actual reader output, judge score, and per-stage retention data. Third parties should be able to rerun a specific case from a specific tier and get the same outcome deterministically.
-9. **Cache fingerprinting that invalidates on config change.** When a routing table or prompt template changes, the cache must invalidate. Hashing only the preset name (not the table content) lets stale cached results satisfy edited-table queries — a one-line edit to a routing entry returns $0 "re-run" output that's actually pre-edit data. Fix: hash the sorted table serialization. Publicly-shipping bench runners should make this class of cache-invalidation bug impossible, not just debuggable.
+9. **Cache fingerprinting that invalidates on config change.** When a routing table or prompt template changes, the cache must invalidate. Hashing only the preset name (not the table content) lets stale cached results satisfy edited-table queries: a one-line edit to a routing entry returns $0 "re-run" output that's actually pre-edit data. Fix: hash the sorted table serialization. Publicly-shipping bench runners should make this class of cache-invalidation bug impossible, not just debuggable.
 
 If a memory-library benchmark publication satisfies all nine, the number is trustworthy. If it satisfies fewer than five, treat the number as marketing.
 
@@ -237,12 +237,38 @@ AgentOS posts 85.6% on LongMemEval-S at gpt-4o reader, 0.4 points behind Emergen
 
 What AgentOS is: the only vendor in the surveyed set that publishes bootstrap CIs, judge false-positive probes on shipping numbers (measured, not hypothesized), per-stage retention metrics, full cost-per-correct accounting, latency distributions, per-case run JSONs, hold-out calibration against shipping tables, and cross-vendor comparison tables at a seeded reproducible configuration. For the reader trying to decide which memory library to use, those are the things that matter. The headline number is a lottery ticket. The methodology is the infrastructure.
 
+## FAQ
+
+### What's the matched-reader rule?
+
+For any cross-vendor benchmark claim ("System A scores X%, System B scores Y%"), name the reader model, retrieval config, and judge config used by both systems. If any differ, the comparison is a pricing observation, not an architecture or quality claim. Surface the difference in the same paragraph. Never bury it in a footnote.
+
+### Why does the LOCOMO 6.4% answer-key error rate matter?
+
+Because it puts a hard floor on any LOCOMO score comparison: scores above 93.6% are partly measuring benchmark errors. Combined with the judge's 63% acceptance rate of intentionally wrong answers, score gaps below ~6 points are inside judge noise. LOCOMO is still useful for relative ordering at a coarse resolution, but headline percentages from LOCOMO need to be read with both ceilings (Penfield Labs, April 2026) in mind.
+
+### MemPalace claims 100% on LongMemEval. Is that real?
+
+The 100% claim is on retrieval recall@5, not end-to-end QA. It's a measurement of whether the right document is in the top-5 returned chunks, not whether the agent answered the question correctly. Their LOCOMO claim used `top_k=50` over Claude Sonnet, which exceeds the corpus and reduces the test to context-window QA rather than memory architecture. Both are gaming demonstrations rather than reproducible architecture claims; documented in [HackerNoon's post-mortem](https://hackernoon.com/resident-evil-star-milla-jovovich-shipped-an-ai-memory-system-devs-shredded-its-benchmarks).
+
+### Mastra claims 95%. What's the matched-reader number?
+
+Mastra's 95% is at a non-`gpt-4o` reader configuration that the paper's evaluation protocol doesn't match. At the matched `gpt-4o` reader, Mastra Observational Memory (their Apache-2.0 release) posts 84.23%. AgentOS posts 85.6% at the same matched reader. Mastra's 95% is best read as a configuration-specific result, not a like-for-like comparison.
+
+### Is the AgentOS bench reproducible?
+
+Yes. [agentos-bench](https://github.com/framersai/agentos-bench) is Apache-2.0 with seeded runs, per-case JSONs, and a single CLI command per headline. Bootstrap 95% CIs at 10k resamples and judge false-positive rate 1% [0%, 3%] at n=100 are published alongside every shipping number.
+
+### Should I trust any memory library benchmark?
+
+Trust the methodology, not the percentage. A 70% number with a published seed, retriever config, judge config, and per-case run JSONs is more useful than a 95% number with a vague note about "our setup." The honest cost rule applies in both directions: AgentOS's own numbers are subject to the same standard, and we've designed the bench harness to expose any gaming we accidentally introduce.
+
 ## References
 
 1. Hubbard, D. W. (2014). *How to Measure Anything: Finding the Value of Intangibles in Business* (3rd ed.). Wiley.
 2. Wu, D., et al. (2025). LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory. *ICLR 2025*. [arXiv:2410.10813](https://arxiv.org/abs/2410.10813).
 3. Maharana, A., et al. (2024). Evaluating Very Long-Term Conversational Memory of LLM Agents (LOCOMO). *ACL 2024*. [aclanthology.org/2024.acl-long.747](https://aclanthology.org/2024.acl-long.747.pdf).
-4. Penfield Labs (April 2026). We audited LOCOMO — 6.4% of the answer key is wrong, and the judge accepts up to 63% of intentionally wrong answers. [dev.to/penfieldlabs](https://dev.to/penfieldlabs/we-audited-locomo-64-of-the-answer-key-is-wrong-and-the-judge-accepts-up-to-63-of-intentionally-33lg).
+4. Penfield Labs (April 2026). We audited LOCOMO. 6.4% of the answer key is wrong, and the judge accepts up to 63% of intentionally wrong answers. [dev.to/penfieldlabs](https://dev.to/penfieldlabs/we-audited-locomo-64-of-the-answer-key-is-wrong-and-the-judge-accepts-up-to-63-of-intentionally-33lg).
 5. Northcutt, C. G., Athalye, A., & Mueller, J. (2021). Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks. *NeurIPS 2021*. [arXiv:2103.14749](https://arxiv.org/abs/2103.14749).
 6. Sumers, T. R., et al. (2023). Cognitive Architectures for Language Agents (CoALA). [arXiv:2309.02427](https://arxiv.org/abs/2309.02427).
 7. Independent Zep LongMemEval reproduction. [arXiv:2512.13564](https://arxiv.org/abs/2512.13564).
@@ -253,10 +279,10 @@ What AgentOS is: the only vendor in the surveyed set that publishes bootstrap CI
 12. Zep blog (2025). State of the Art Agent Memory. [blog.getzep.com](https://blog.getzep.com/state-of-the-art-agent-memory/).
 13. Mem0 research page. [mem0.ai/research](https://mem0.ai/research) and [mem0.ai/research-2](https://mem0.ai/research-2).
 14. Mem0 issue #3944: Third-party reproduction failure. [github.com/mem0ai/mem0/issues/3944](https://github.com/mem0ai/mem0/issues/3944).
-15. Mastra (2025). Observational Memory — research page. [mastra.ai/research/observational-memory](https://mastra.ai/research/observational-memory).
+15. Mastra (2025). Observational Memory: research page. [mastra.ai/research/observational-memory](https://mastra.ai/research/observational-memory).
 16. EmergenceMem Simple Fast (open-source repo). [github.com/EmergenceAI/emergence_simple_fast](https://github.com/EmergenceAI/emergence_simple_fast).
 17. Emergence AI blog. SOTA on LongMemEval with RAG. [emergence.ai](https://www.emergence.ai/blog/sota-on-longmemeval-with-rag).
-18. Calvin Ku (2025). Emergence AI broke the agent memory benchmark — I tried to break their code. [Medium](https://medium.com/asymptotic-spaghetti-integration/emergence-ai-broke-the-agent-memory-benchmark-i-tried-to-break-their-code-23b9751ded97).
+18. Calvin Ku (2025). Emergence AI broke the agent memory benchmark: I tried to break their code. [Medium](https://medium.com/asymptotic-spaghetti-integration/emergence-ai-broke-the-agent-memory-benchmark-i-tried-to-break-their-code-23b9751ded97).
 19. Supermemory memorybench (open-source repo). [github.com/supermemoryai/memorybench](https://github.com/supermemoryai/memorybench).
 20. Mem0 memory-benchmarks (open-source repo). [github.com/mem0ai/memory-benchmarks](https://github.com/mem0ai/memory-benchmarks).
 21. Mastra workshop-longmemeval. [github.com/mastra-ai/workshop-longmemeval](https://github.com/mastra-ai/workshop-longmemeval).
