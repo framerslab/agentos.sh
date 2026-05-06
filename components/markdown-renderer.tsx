@@ -5,13 +5,80 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Copy, Check } from 'lucide-react';
-import { useCallback } from 'react';
+import { Copy, Check, X } from 'lucide-react';
+import { useCallback, useEffect, useState, type CSSProperties, type KeyboardEvent } from 'react';
 import { useTheme } from 'next-themes';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 
 interface MarkdownRendererProps {
   content: string;
+}
+
+/**
+ * Lightbox modal for clicked images. Click the backdrop or press Escape
+ * to close; clicking the image itself does nothing so the user can
+ * actually look at it. Body scroll is locked while the lightbox is
+ * open so the underlying article can't scroll out from under the
+ * preview on touch devices.
+ */
+function ImageLightbox({
+  src,
+  alt,
+  onClose,
+}: {
+  src: string;
+  alt: string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const onKey = (e: globalThis.KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={alt || 'Image preview'}
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-sm cursor-zoom-out p-4 sm:p-8 animate-in fade-in duration-150"
+    >
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          onClose();
+        }}
+        aria-label="Close image preview"
+        className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition"
+      >
+        <X className="w-5 h-5" />
+      </button>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        onClick={(e) => e.stopPropagation()}
+        className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl cursor-default"
+      />
+      {alt ? (
+        <p
+          onClick={(e) => e.stopPropagation()}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 max-w-[90vw] sm:max-w-[70vw] text-sm text-white/85 bg-black/60 px-4 py-2 rounded-lg backdrop-blur-sm"
+        >
+          {alt}
+        </p>
+      ) : null}
+    </div>
+  );
 }
 
 function CodeBlock({ language, children }: { language: string; children: string }) {
@@ -63,7 +130,18 @@ function CodeBlock({ language, children }: { language: string; children: string 
 }
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
+  const [zoomed, setZoomed] = useState<{ src: string; alt: string } | null>(null);
+
+  const openZoom = useCallback((src: string, alt: string) => {
+    setZoomed({ src, alt });
+  }, []);
+
+  const closeZoom = useCallback(() => {
+    setZoomed(null);
+  }, []);
+
   return (
+    <>
     <article className="agentos-prose prose prose-lg dark:prose-invert max-w-none
       prose-headings:text-[var(--color-text-primary)] prose-headings:font-bold
       prose-h1:text-3xl prose-h1:mb-6 prose-h1:mt-8
@@ -173,10 +251,49 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               </li>
             );
           },
+          // Click any image in the markdown body to pop it out into a
+          // full-screen lightbox. We keep the image rendering 1:1 so
+          // existing inline styles (width, border-radius, margin) flow
+          // through; the wrapping span only adds keyboard focus +
+          // cursor-zoom-in affordance.
+          img({ node: _node, src, alt, style, ...props }) {
+            if (!src) {
+              return <img src={src} alt={alt} style={style} {...props} />;
+            }
+            const handleOpen = () => openZoom(String(src), String(alt ?? ''));
+            const handleKey = (e: KeyboardEvent<HTMLSpanElement>) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleOpen();
+              }
+            };
+            const wrapStyle: CSSProperties = {
+              display: 'block',
+              cursor: 'zoom-in',
+            };
+            return (
+              <span
+                role="button"
+                tabIndex={0}
+                onClick={handleOpen}
+                onKeyDown={handleKey}
+                aria-label={`Open ${alt || 'image'} at full size`}
+                style={wrapStyle}
+                className="hover:opacity-95 transition-opacity"
+              >
+                {/* eslint-disable-next-line jsx-a11y/alt-text */}
+                <img src={src} alt={alt} style={style} {...props} />
+              </span>
+            );
+          },
         }}
       >
         {content}
       </ReactMarkdown>
     </article>
+    {zoomed ? (
+      <ImageLightbox src={zoomed.src} alt={zoomed.alt} onClose={closeZoom} />
+    ) : null}
+    </>
   );
 }

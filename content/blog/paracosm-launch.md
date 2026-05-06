@@ -121,9 +121,9 @@ The turn loop is the only piece of Paracosm interesting at the engineering level
 
 The clever parts (research grounding, tool forging, personality drift) exist because the simulation without them tells boring stories.
 
-<img src="/img/blog/paracosm/branches-poster.jpg" alt="Paracosm dashboard Branches view: every fork point in a multi-leader run, color-coded by leader, where the same scenario produced a different action." style="width:100%;border-radius:8px;margin:1.5rem 0;" />
+<img src="/img/blog/paracosm/compare-view.png" alt="Paracosm Compare bundle modal: 'crow-village · 2 actors' header, total cost $0.52, mean run time 3m 8s, a trajectory overlay charting both runs, and two side-by-side leader cards — Dietrich Voss (The Engineer, $0.23, 187s) on the left and Aria Chen (The Visionary, $0.29, 189s) on the right." style="width:100%;border-radius:8px;margin:1.5rem 0;" />
 
-The image above is the dashboard's Branches view. Every fork point in a multi-leader run, color-coded by leader, where the same scenario produced a different action.
+*Compare bundle modal. Same scenario, same kernel, two leaders. The trajectory overlay normalizes a representative metric (population → morale → first-available) across both runs so divergence is visible at a glance; the per-actor cards drill into the individual artifacts. The Library tab seeds this view from any saved bundle.*
 
 ## Why the events have citations
 
