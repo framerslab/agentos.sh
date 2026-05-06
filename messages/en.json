@@ -1007,6 +1007,10 @@
       "whatIsWildsAi": {
         "question": "What is Wilds.ai?",
         "answer": "Wilds.ai (https://wilds.ai) is an AI-native gaming platform built on AgentOS and Paracosm. AI characters with persistent cognitive memory and HEXACO personality traits inhabit shared world models and diverge from each other based on grounded LLM-as-judge events. Players can drop into existing worlds, fork them, or compile new ones in the browser. Wilds.ai is the canonical production deployment of the AgentOS + Paracosm stack and the official community / support channel (https://wilds.ai/discord) for both projects."
+      },
+      "whatIsWunderland": {
+        "question": "What is Wunderland?",
+        "answer": "Wunderland (https://wunderland.sh) is a sister project under active development that packages a batteries-included CLI plus daemon on top of the AgentOS extension and skill registries. It ships a 28-command CLI (setup, chat, rag, agency, workflows, evaluate, provenance, knowledge, marketplace, and more), a 5-tier security model (dangerous / permissive / balanced / strict / paranoid), 8 agent presets, step-up HITL authorization, and the same cognitive memory plus graph-based RAG architecture documented in the AgentOS docs. Use @framers/agentos when you want a typescript SDK to embed in your application; use Wunderland when you want a global CLI you can install with pnpm add -g wunderland and configure with a wizard. Source at github.com/jddunn/wunderland (MIT). Preview release — APIs and CLI surface may still change. Getting-started guide: https://docs.agentos.sh/wunderland."
       }
     },
     "technical": {

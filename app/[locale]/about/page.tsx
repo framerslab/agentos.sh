@@ -100,6 +100,7 @@ export default async function AboutPage({ params: { locale } }: Props) {
     { label: 'Manic Agency', href: 'https://manic.agency', icon: Globe },
     { label: 'Paracosm', href: 'https://paracosm.agentos.sh', icon: Globe },
     { label: 'Wilds.ai', href: 'https://wilds.ai', icon: Globe },
+    { label: 'Wunderland', href: 'https://wunderland.sh', icon: Globe },
     { label: t('connect.frameDev'), href: 'https://frame.dev', icon: Globe },
     { label: t('connect.linkedin'), href: 'https://www.linkedin.com/company/framersai', icon: Linkedin },
     { label: t('connect.twitter'), href: 'https://twitter.com/framersai', icon: Twitter },
