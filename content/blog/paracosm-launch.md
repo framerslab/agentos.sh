@@ -62,7 +62,9 @@ If you want an agent to imagine a future state and a human to learn from that im
 
 **Paracosm, in one card.**
 
-`paracosm` *(n.)* — an open-source TypeScript engine that compiles a natural-language scenario, document, or URL into a typed, deterministic, forkable world model and runs N AI actors through it from the same seed. Every run returns a Zod-validated `RunArtifact`: every event, every decision, every forged tool, every citation, every divergence. Apache-2.0. Built on AgentOS.
+**paracosm** *(n.)* — a detailed, persistent imaginary world invented and developed in private, often beginning in childhood, with its own geography, history, languages, and inhabitants. The Brontë siblings had Angria and Gondal; C.S. and Warren Lewis had Boxen; Hartley Coleridge had Ejuxria. The term was coined by British researcher Robert Silvey for the phenomenon.
+
+This engine builds one — but for AI agents to inhabit instead of children to develop in private. Hand it a brief, document, or URL; it compiles a typed, deterministic, forkable world; it runs N AI actors through that world from the same seed; every run returns a Zod-validated `RunArtifact`: every event, every decision, every forged tool, every citation, every divergence. Apache-2.0. Built on AgentOS.
 
 - **Input.** Plain English brief, document, URL, or hand-written `ScenarioPackage` JSON.
 - **World.** Five typed bags (`metrics`, `capacities`, `statuses`, `politics`, `environment`), a deterministic Mulberry32-seeded kernel, and seven LLM-generated runtime hooks per scenario.
