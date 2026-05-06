@@ -132,7 +132,7 @@ This is what an honest benchmark looks like. If something on this list is wrong,
 - [npm](https://www.npmjs.com/package/@framers/agentos)
 - [How to Build a TypeScript AI Agent in 5 Minutes](/blog/build-typescript-ai-agent-5-minutes)
 - [Adaptive vs. Emergent Intelligence](/blog/adaptive-vs-emergent)
-- [Paracosm 2026 Overview](/blog/paracosm-2026-overview), the simulation product built on AgentOS
+- [Paracosm launch](/blog/paracosm-launch), the simulation product built on AgentOS
 
 ## FAQ
 

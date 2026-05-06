@@ -13,7 +13,7 @@ Mars Genesis is a six-turn, thirty-colonist civilization simulation that runs on
 
 A representative moment from a recent run: turn three, year 2051. Dietrich Voss's chief medical officer faces a solar-storm radiation event that her existing toolbox doesn't cover. She doesn't pick an option from a menu. She writes a tool. The function is reviewed by an LLM judge, approved, executed in a sandbox, and returns a projected exposure number. Her commander reads that number three seconds later. By turn four every other department in the session can call the same tool for tens of tokens of dispatch. The runtime didn't script the path; it made the tool discoverable and the agents found it.
 
-This post is the case study companion to [the long-form Paracosm 2026 overview](/blog/paracosm-2026-overview). The overview is the structured-world-model framing; this is the autopsy.
+This post is the case study companion to [the long-form Paracosm launch post](/blog/paracosm-launch). The launch post is the structured-world-model framing and engine reference; this is the autopsy.
 
 <video autoplay loop muted playsinline controls preload="metadata" poster="/img/blog/paracosm/digital-twin-atlas-lab-poster.jpg" style="width:100%;border-radius:8px;margin:1.5rem 0;">
   <source src="/img/blog/paracosm/digital-twin-atlas-lab-hero.mp4" type="video/mp4">
@@ -373,7 +373,7 @@ What builders take from each: MiroFish's GraphRAG-as-ground-truth design is stro
 
 ## What to read next
 
-- [Paracosm 2026 Overview](/blog/paracosm-2026-overview). The long-form essay on counterfactual world simulation as a category.
+- [Paracosm launch post](/blog/paracosm-launch). The long-form essay on counterfactual world simulation as a category, plus the engine reference.
 - [Announcing AgentOS](/blog/announcing-agentos). The runtime underneath.
 
 Paracosm and AgentOS are open source. The Mars Genesis scenario ships as a default and runs on `npm install paracosm`, or hosted at [paracosm.agentos.sh](https://paracosm.agentos.sh) with a one-click demo. The engine doesn't care who leads the colony or which traits they carry. It cares how they decide, what they remember, what tools they forge, and how aggressively they reuse. Two leaders under the same seed produce different histories because those four questions resolve differently for each of them.
