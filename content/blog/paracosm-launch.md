@@ -7,6 +7,7 @@ author: "Johnny Dunn"
 category: "Engineering"
 audience: "general"
 image: "/img/blog/paracosm/paracosm-2026-overview-hero.png"
+heroBrand: "Paracosm"
 keywords: "paracosm, agent swarm simulation, structured world model, LLM world model, HEXACO simulation, deterministic kernel, runtime tool forging, digital twin, counterfactual simulation, game ai, MiroFish, Sora, Genie, JEPA, AMI Labs, Sapir-Whorf, agentos, TypeScript ai agents, hacker news paracosm, npm install paracosm"
 ---
 
