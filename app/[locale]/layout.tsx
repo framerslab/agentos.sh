@@ -377,6 +377,7 @@ export default async function LocaleLayout({
                   <li><a href="https://manic.agency" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent-primary transition-colors">Manic Agency</a></li>
                   <li><a href="https://frame.dev" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent-primary transition-colors">Frame.dev</a></li>
                   <li><a href="https://wilds.ai" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent-primary transition-colors">Wilds.ai</a></li>
+                  <li><a href="https://paracosm.agentos.sh" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent-primary transition-colors">Paracosm</a></li>
                   <li><a href={`/${locale}/about`} className="text-text-secondary hover:text-accent-primary transition-colors">{tNav('about')}</a></li>
                   <li><a href={`/${locale}/faq`} className="text-text-secondary hover:text-accent-primary transition-colors">{tNav('faq')}</a></li>
                   <li><a href={`/${locale}/contact`} className="text-text-secondary hover:text-accent-primary transition-colors">{tFooter('contact')}</a></li>
