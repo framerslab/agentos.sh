@@ -1,13 +1,13 @@
 ---
-title: "LongMemEval State of the Art (2026): AgentOS at 85.6% / 70.2% with Matched-Reader Transparency"
-ogTitle: "LongMemEval state of the art: AgentOS 85.6% / 70.2%"
+title: "AgentOS beats Mastra on LongMemEval-S at gpt-4o: 85.6% vs 84.23%"
+ogTitle: "AgentOS beats Mastra on LongMemEval at gpt-4o: 85.6% vs 84.23%"
 date: "2026-04-29"
 featured: true
 heroStat: "85.6% / 70.2%"
 heroLabel: "on LongMemEval-S and -M"
 benchmarkBadge: ""
 image: "/img/blog/og/agentos-memory-sota-longmemeval.png"
-excerpt: "AgentOS scores 85.6% on LongMemEval-S and 70.2% on LongMemEval-M, both at gpt-4o reader with matched retrieval and judge config. Why Dhravya's 99% and Mastra's 95% need careful reading: matched reader, matched retrieval, matched judge, or it's pricing not architecture."
+excerpt: "Plus 70.2% on the 1.5M-token M variant — the only open-source memory lib above 65% on M with reproducible methodology."
 author: "Johnny Dunn"
 category: "Engineering"
 keywords: "longmemeval state of the art, longmemeval benchmark, longmemeval results, longmemeval s, longmemeval m, longmemeval 85 percent, ai memory benchmark, agentos memory, memory benchmark transparency, mastra mem0 hindsight comparison, memory library benchmark, open source memory library, locomo judge audit, retrieval augmented memory, cognitive memory ai, reader router, sem-embed, longmemeval paper Wu et al ICLR 2025, observational memory mastra, emergencemem"
