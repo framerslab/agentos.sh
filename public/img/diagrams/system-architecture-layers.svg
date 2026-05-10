@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" role="img" aria-labelledby="sysarch-title sysarch-desc" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title id="sysarch-title">AgentOS Layered Architecture</title>
+  <desc id="sysarch-desc">A seven-layer architecture stack. From top to bottom: API surface (generateText, streamText, agent, agency); orchestration (workflow, mission, AgentGraph, HITL); GMI cognitive engine (conversation history, cognitive memory, sentiment, persona); safety guardrails alongside tools and extensions; memory and RAG (4-tier memory, 8 cognitive mechanisms, 7 vector backends, HyDE, GraphRAG); LLM providers (11 direct plus OpenRouter fan-out); and perception with channel adapters (vision, hearing, speech, telephony).</desc>
+
+  <defs>
+    <style>
+      .heading      { fill: #0f172a; font-size: 18px; font-weight: 700; }
+      .subtitle     { fill: #475569; font-size: 12px; }
+      .layer-card   { fill: #ffffff; stroke-width: 1.75; }
+      .layer-num    { font-size: 13px; font-weight: 800; }
+      .layer-title  { fill: #0f172a; font-size: 14px; font-weight: 700; }
+      .layer-text   { fill: #475569; font-size: 11px; }
+      .acc-1 { stroke: #ec4899; }
+      .acc-2 { stroke: #f59e0b; }
+      .acc-3 { stroke: #10b981; }
+      .acc-4 { stroke: #f43f5e; }
+      .acc-5 { stroke: #0891b2; }
+      .acc-6 { stroke: #6366f1; }
+      .acc-7 { stroke: #8b5cf6; }
+      .acc-8 { stroke: #14b8a6; }
+      .num-1 { fill: #ec4899; }
+      .num-2 { fill: #f59e0b; }
+      .num-3 { fill: #10b981; }
+      .num-4 { fill: #f43f5e; }
+      .num-5 { fill: #0891b2; }
+      .num-6 { fill: #6366f1; }
+      .num-7 { fill: #8b5cf6; }
+      .num-8 { fill: #14b8a6; }
+      @media (prefers-color-scheme: dark) {
+        .heading      { fill: #f1f5f9; }
+        .subtitle     { fill: #94a3b8; }
+        .layer-title  { fill: #f1f5f9; }
+        .layer-text   { fill: #94a3b8; }
+        .layer-card   { fill: #0f172a; }
+      }
+    </style>
+  </defs>
+
+  <text x="500" y="30" text-anchor="middle" class="heading">AgentOS layered architecture</text>
+  <text x="500" y="52" text-anchor="middle" class="subtitle">Top-down: caller-facing surface → cognition → external systems. Each layer is a focused subsystem.</text>
+
+  <!-- Layer 1: API Surface -->
+  <g>
+    <rect x="30" y="80" width="940" height="70" rx="10" class="layer-card acc-1"/>
+    <text x="50" y="108" class="layer-num num-1">1</text>
+    <text x="70" y="108" class="layer-title">API surface</text>
+    <text x="70" y="128" class="layer-text">generateText · streamText · agent · agency · generateImage · AgentOS lifecycle facade</text>
+    <text x="70" y="144" class="layer-text">High-level helpers, prompt assembly, sessions, hooks, personality shaping, usage-ledger forwarding</text>
+  </g>
+
+  <!-- Layer 2: Orchestration -->
+  <g>
+    <rect x="30" y="158" width="940" height="70" rx="10" class="layer-card acc-2"/>
+    <text x="50" y="186" class="layer-num num-2">2</text>
+    <text x="70" y="186" class="layer-title">Orchestration</text>
+    <text x="70" y="206" class="layer-text">workflow() · mission() · AgentGraph · HITL · checkpointing · turn-execution pipeline</text>
+    <text x="70" y="222" class="layer-text">DAG runtime, planning engine, IR/compiler, event bus, ReAct loops, scheduling</text>
+  </g>
+
+  <!-- Layer 3: GMI -->
+  <g>
+    <rect x="30" y="236" width="940" height="70" rx="10" class="layer-card acc-3"/>
+    <text x="50" y="264" class="layer-num num-3">3</text>
+    <text x="70" y="264" class="layer-title">GMI · Generalized Mind Instance</text>
+    <text x="70" y="284" class="layer-text">ConversationHistory · CognitiveMemoryBridge · SentimentTracker · MetapromptExecutor · Persona overlays</text>
+    <text x="70" y="300" class="layer-text">Per-mind state: working memory, mood, reasoning trace, prompt assembly</text>
+  </g>
+
+  <!-- Layer 4 split: Safety | Tools -->
+  <g>
+    <rect x="30" y="314" width="460" height="70" rx="10" class="layer-card acc-4"/>
+    <text x="50" y="342" class="layer-num num-4">4</text>
+    <text x="70" y="342" class="layer-title">Safety &amp; guardrails</text>
+    <text x="70" y="362" class="layer-text">5-tier security · PII · toxicity · grounding guard</text>
+    <text x="70" y="378" class="layer-text">CircuitBreaker · CostGuard · StuckDetector</text>
+
+    <rect x="510" y="314" width="460" height="70" rx="10" class="layer-card acc-5"/>
+    <text x="530" y="342" class="layer-num num-5">4</text>
+    <text x="550" y="342" class="layer-title">Tools &amp; extensions</text>
+    <text x="550" y="362" class="layer-text">110 extensions · 88 skills · CLI executor · web search</text>
+    <text x="550" y="378" class="layer-text">Capability discovery · runtime tool forging</text>
+  </g>
+
+  <!-- Layer 5: Memory & RAG -->
+  <g>
+    <rect x="30" y="392" width="940" height="70" rx="10" class="layer-card acc-6"/>
+    <text x="50" y="420" class="layer-num num-6">5</text>
+    <text x="70" y="420" class="layer-title">Memory &amp; RAG</text>
+    <text x="70" y="440" class="layer-text">4-tier cognitive memory · 8 mechanisms (Ebbinghaus decay, retrieval-induced forgetting, …)</text>
+    <text x="70" y="456" class="layer-text">7 vector backends · HyDE · GraphRAG · hybrid retrieval · CitationVerifier</text>
+  </g>
+
+  <!-- Layer 6: LLM Providers -->
+  <g>
+    <rect x="30" y="470" width="940" height="70" rx="10" class="layer-card acc-7"/>
+    <text x="50" y="498" class="layer-num num-7">6</text>
+    <text x="70" y="498" class="layer-title">LLM providers</text>
+    <text x="70" y="518" class="layer-text">11 direct providers + OpenRouter fan-out · automatic fallback chains</text>
+    <text x="70" y="534" class="layer-text">OpenAI · Anthropic · Gemini · Ollama · Groq · Mistral · xAI · Together · Claude Code CLI · Gemini CLI</text>
+  </g>
+
+  <!-- Layer 7: Perception -->
+  <g>
+    <rect x="30" y="548" width="940" height="70" rx="10" class="layer-card acc-8"/>
+    <text x="50" y="576" class="layer-num num-8">7</text>
+    <text x="70" y="576" class="layer-title">Perception &amp; channels</text>
+    <text x="70" y="596" class="layer-text">Vision (OCR, scene detection) · Hearing (STT, VAD) · Speech (TTS, voice pipeline)</text>
+    <text x="70" y="612" class="layer-text">12 messaging adapters · telephony (Twilio, Telnyx, Plivo)</text>
+  </g>
+</svg>
