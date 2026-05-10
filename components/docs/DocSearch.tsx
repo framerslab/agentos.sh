@@ -38,6 +38,13 @@ export function DocSearch({ triggerClassName, triggerLabel }: DocSearchProps) {
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.defaultPrevented) return;
+      if (e.key === "Escape" && open) {
+        e.preventDefault();
+        setOpen(false);
+        setQuery("");
+        return;
+      }
+      if (open) return;
       const tag = document.activeElement?.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA") return;
       if (e.key === "/" || ((e.metaKey || e.ctrlKey) && e.key === "k")) {
@@ -47,7 +54,17 @@ export function DocSearch({ triggerClassName, triggerLabel }: DocSearchProps) {
     };
     window.addEventListener("keydown", onKeyDown, { capture: true });
     return () => window.removeEventListener("keydown", onKeyDown, { capture: true });
-  }, []);
+  }, [open]);
+
+  // Lock background scroll while modal is open
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   // ── Fetch lightweight manifest on first open ───────────────────────
   useEffect(() => {
@@ -171,13 +188,17 @@ export function DocSearch({ triggerClassName, triggerLabel }: DocSearchProps) {
       } else if (e.key === "Enter") {
         e.preventDefault();
         if (results[selectedIndex]) navigate(results[selectedIndex]);
-      } else if (e.key === "Escape") {
-        setOpen(false);
-        setQuery("");
       }
+      // Escape is handled by the global listener so it works even when
+      // the input has lost focus.
     },
     [results, selectedIndex, navigate],
   );
+
+  const close = useCallback(() => {
+    setOpen(false);
+    setQuery("");
+  }, []);
 
   // ── Hint text ──────────────────────────────────────────────────────
   const hint = loading
@@ -205,113 +226,84 @@ export function DocSearch({ triggerClassName, triggerLabel }: DocSearchProps) {
 
       {open && (
         <div
-          className="fixed inset-0 z-[60] flex items-start justify-center px-4 pt-[12vh]"
-          style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)" }}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              setOpen(false);
-              setQuery("");
-            }
+          className="doc-search-backdrop fixed inset-0 z-[60] flex items-start justify-center px-4 pt-[14vh] sm:pt-[16vh]"
+          onMouseDown={(e) => {
+            // Close when the press starts on the backdrop, not on the panel
+            if (e.target === e.currentTarget) close();
           }}
           role="dialog"
           aria-modal="true"
+          aria-label="Search documentation"
         >
           <div
-            className="w-full max-w-md rounded-xl border shadow-2xl overflow-hidden"
-            style={{
-              backgroundColor: "var(--color-background-primary, #0f0a1a)",
-              borderColor: "var(--color-border-primary, rgba(99,102,241,0.2))",
-            }}
+            className="doc-search-panel w-full max-w-xl overflow-hidden"
+            onMouseDown={(e) => e.stopPropagation()}
           >
             {/* ── Input ──────────────────────────────────────────── */}
-            <div
-              className="flex items-center gap-3 px-4 py-3 border-b"
-              style={{ borderColor: "rgba(99,102,241,0.1)" }}
-            >
-              <Search className="w-4 h-4 shrink-0 opacity-40" />
+            <div className="doc-search-input-row">
+              <Search className="w-4 h-4 shrink-0 doc-search-icon" />
               <input
                 autoFocus
                 type="text"
-                placeholder="Search docs..."
+                placeholder="Search documentation…"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="flex-1 bg-transparent text-sm outline-none"
-                style={{ color: "var(--color-text-primary, #e0e7ff)" }}
+                className="doc-search-input"
+                aria-label="Search documentation"
               />
-              <kbd
-                className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-mono opacity-40 border"
-                style={{ borderColor: "rgba(99,102,241,0.15)" }}
+              <button
+                type="button"
+                onClick={close}
+                className="doc-search-esc"
+                aria-label="Close search"
+                title="Close (Esc)"
               >
                 ESC
-              </kbd>
+              </button>
             </div>
 
             {/* ── Results ────────────────────────────────────────── */}
-            <div className="max-h-[50vh] overflow-y-auto">
+            <div className="doc-search-results">
               {results.length > 0 ? (
-                <div className="px-2 py-1.5">
-                  <p className="px-2 py-1 text-[10px] font-medium uppercase tracking-widest opacity-40">
-                    {hint}
-                  </p>
+                <div className="doc-search-results-inner">
+                  <p className="doc-search-hint">{hint}</p>
                   {results.map((doc, i) => (
                     <button
                       key={doc.url}
                       onClick={() => navigate(doc)}
-                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-sm transition-colors"
-                      style={{
-                        color: "var(--color-text-primary, #e0e7ff)",
-                        backgroundColor:
-                          i === selectedIndex ? "rgba(99,102,241,0.1)" : "transparent",
-                      }}
                       onMouseEnter={() => setSelectedIndex(i)}
+                      className={`doc-search-result${i === selectedIndex ? " is-active" : ""}`}
                     >
-                      <FileText className="w-3.5 h-3.5 shrink-0 opacity-40" />
+                      <FileText className="w-3.5 h-3.5 shrink-0 doc-search-result-icon" />
                       <div className="flex-1 min-w-0">
                         <div className="truncate">{doc.title}</div>
                       </div>
-                      <ExternalLink className="w-3 h-3 shrink-0 opacity-20" />
+                      <ExternalLink className="w-3 h-3 shrink-0 doc-search-result-ext" />
                     </button>
                   ))}
                 </div>
               ) : query.trim().length >= 2 ? (
-                <div className="px-4 py-6 text-center text-sm opacity-40">
+                <div className="doc-search-empty">
                   No results for &ldquo;{query.trim()}&rdquo;
                 </div>
-              ) : null}
+              ) : (
+                <div className="doc-search-empty doc-search-empty-tip">
+                  Type to search across guides, features, and API reference.
+                </div>
+              )}
             </div>
 
             {/* ── Footer ─────────────────────────────────────────── */}
-            <div
-              className="px-4 py-2 border-t flex items-center gap-4 text-[10px] opacity-30"
-              style={{ borderColor: "rgba(99,102,241,0.1)" }}
-            >
+            <div className="doc-search-footer">
               <span>
-                <kbd
-                  className="px-1 py-0.5 rounded border"
-                  style={{ borderColor: "rgba(99,102,241,0.15)" }}
-                >
-                  ↑↓
-                </kbd>{" "}
-                navigate
+                <kbd>↑↓</kbd> navigate
               </span>
               <span>
-                <kbd
-                  className="px-1 py-0.5 rounded border"
-                  style={{ borderColor: "rgba(99,102,241,0.15)" }}
-                >
-                  ↵
-                </kbd>{" "}
-                open
+                <kbd>↵</kbd> open
               </span>
               <span>
-                <kbd
-                  className="px-1 py-0.5 rounded border"
-                  style={{ borderColor: "rgba(99,102,241,0.15)" }}
-                >
-                  esc
-                </kbd>{" "}
-                close
+                <kbd>esc</kbd> close
               </span>
             </div>
           </div>
