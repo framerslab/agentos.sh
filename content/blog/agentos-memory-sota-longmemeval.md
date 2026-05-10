@@ -117,6 +117,14 @@ Each of the following single-variable variants was tested against the 85.6% base
 
 Fifteen variants tested across Phase A and Phase B; fifteen regressions. The 85.6% configuration is a local optimum in the tested parameter space.
 
+#### A note on HyDE at S scale
+
+The [Gao et al. (2022) HyDE paper](https://arxiv.org/abs/2212.10496) introduced hypothetical document embedding as a recall-improver: ask the LLM to draft a plausible answer, embed *that* instead of the question, and let the answer-form embedding land closer to the answer-form documents in the index. It's a real effect at the right scale. The [Lei et al. (2025) Adaptive HyDE paper](https://arxiv.org/abs/2507.16754) shows the same on a 3M-post Stack Overflow corpus where the haystack is large and the question/answer registers are far apart.
+
+LongMemEval-S is not that setting. The haystack is 50 sessions, the canonical pipeline already saturates retrieval, and BM25 + dense + Cohere `rerank-v3.5` is precise enough that the right chunk is in the top-K most of the time. HyDE adds an extra LLM call to produce a hallucinated answer-shaped embedding, and at this scale that embedding is often *less* precise than the original question embedding for the categories that matter (single-session-user, knowledge-update, single-session-preference). The hypothetical chunks compete with the real ones in the rerank pool and displace correct hits. Net: -1.9 points and added latency. We turn it off.
+
+The lesson isn't "HyDE is bad" — it's "HyDE earns its keep when the haystack outgrows the precision of the surface retrieval, and pays cost the rest of the time." Save it for M.
+
 ---
 
 ## Part 2: LongMemEval-M at the `gpt-4o` reader
@@ -225,6 +233,10 @@ Each variant was tested as a single-variable change on top of the 70.2% configur
 | `--two-call-reader` (Chain-of-Note) | 58.6% | -11.6 points; ranges disjoint | refuted |
 
 Top-K=5 with HyDE on and rerank-multiplier 5 is the local optimum in the tested parameter space.
+
+The HyDE-off ablation sits within statistical noise of the headline (69.2% vs 70.2%, -1.0 within bootstrap range), so I'll call this one *marginal* rather than *decisive*. But the directionality matches the [Lei et al. (2025) result](https://arxiv.org/abs/2507.16754) for Stack Overflow: at 500-session, 1.5M-token haystack scale, BM25 + dense recall starts missing the right bridge sessions on multi-hop synthesis, and the hypothetical-answer embedding lands in the right neighborhood often enough to recover them. This is the regime where the HyDE paper's claim is load-bearing — recall-bound retrieval with a wide question-to-answer register gap. S didn't have that gap; M does.
+
+So the policy across both variants ends up clean: HyDE off on LongMemEval-S, HyDE on for LongMemEval-M. The retriever doesn't decide for you — you do, based on whether your haystack outruns surface-form retrieval. AgentOS ships HyDE as opt-in (`enabled: false` by default) for exactly this reason.
 
 ---
 
