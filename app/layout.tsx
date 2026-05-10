@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import '../styles/tokens.css';
 import './globals.css';
 import { defaultLocale } from '../i18n';
+import DiagramZoom from '../components/DiagramZoom';
 
 // `display: 'optional'` swaps fonts only on a fast first connection
 // (within ~100ms). Slower connections render the fallback for the
@@ -104,6 +105,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         suppressHydrationWarning
         className={`${inter.variable} grainy min-h-screen antialiased transition-theme bg-background-primary text-text-primary`}
       >
+        <DiagramZoom />
         {children}
       </body>
     </html>
