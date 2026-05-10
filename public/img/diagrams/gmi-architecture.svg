@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="gmi-title gmi-desc" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title id="gmi-title">GMI architecture · coordinator with delegated collaborators</title>
+  <desc id="gmi-desc">A three-tier diagram of a Generalized Mind Instance. The GMI core at the top owns the persona, working state (current mood, user context, task context, reasoning trace), and acts as a coordinator. Below it sit four close collaborators: ConversationHistoryManager, CognitiveMemoryBridge, SentimentTracker, and MetapromptExecutor. The bottom layer is the injected services the GMI delegates to: WorkingMemory, PromptEngine, ToolOrchestrator, LLMProviderManager, UtilityAI, CognitiveMemoryManager, and the optional RetrievalAugmentor.</desc>
+
+  <defs>
+    <style>
+      .heading      { fill: #0f172a; font-size: 18px; font-weight: 700; }
+      .subtitle     { fill: #475569; font-size: 12px; }
+      .lane-label   { fill: #64748b; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; }
+      .core-title   { fill: #0f172a; font-size: 17px; font-weight: 800; }
+      .stage-title  { fill: #0f172a; font-size: 13px; font-weight: 700; }
+      .stage-text   { fill: #475569; font-size: 11px; }
+      .stage-tag    { fill: #64748b; font-size: 10px; font-style: italic; }
+      .core-card    { fill: #ede9fe; stroke: #7c3aed; stroke-width: 2.5; }
+      .collab       { fill: #ffffff; stroke-width: 1.75; }
+      .service      { fill: #ffffff; stroke-width: 1.5; }
+      .arrow-line   { stroke: #94a3b8; stroke-width: 1.5; fill: none; }
+      .arrow-head   { fill: #94a3b8; }
+      .acc-collab-1 { stroke: #ec4899; }
+      .acc-collab-2 { stroke: #f59e0b; }
+      .acc-collab-3 { stroke: #10b981; }
+      .acc-collab-4 { stroke: #0891b2; }
+      .acc-svc-1    { stroke: #6366f1; }
+      .acc-svc-2    { stroke: #8b5cf6; }
+      .acc-svc-3    { stroke: #f43f5e; }
+      .acc-svc-4    { stroke: #14b8a6; }
+      .acc-svc-5    { stroke: #ec4899; }
+      .acc-svc-6    { stroke: #f59e0b; }
+      .acc-svc-7    { stroke: #10b981; }
+      .code         { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; fill: #475569; }
+      @media (prefers-color-scheme: dark) {
+        .heading      { fill: #f1f5f9; }
+        .subtitle     { fill: #94a3b8; }
+        .lane-label   { fill: #64748b; }
+        .core-title   { fill: #f1f5f9; }
+        .stage-title  { fill: #f1f5f9; }
+        .stage-text   { fill: #94a3b8; }
+        .stage-tag    { fill: #64748b; }
+        .core-card    { fill: #1e1b4b; stroke: #a78bfa; }
+        .collab       { fill: #0f172a; }
+        .service      { fill: #0f172a; }
+        .arrow-line   { stroke: #475569; }
+        .arrow-head   { fill: #475569; }
+        .code         { fill: #94a3b8; }
+      }
+    </style>
+    <marker id="gmi-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-head"/>
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="500" y="32" text-anchor="middle" class="heading">GMI · Generalized Mind Instance</text>
+  <text x="500" y="54" text-anchor="middle" class="subtitle">A coordinator class with a dozen specialized collaborators · the cognitive substrate behind <tspan class="code">agent()</tspan></text>
+
+  <!-- GMI core -->
+  <rect x="220" y="80" width="560" height="120" rx="14" class="core-card"/>
+  <text x="500" y="110" text-anchor="middle" class="core-title">GMI</text>
+  <text x="500" y="132" text-anchor="middle" class="stage-text">Persona · GMIPrimeState · current mood · user context · task context · reasoning trace</text>
+  <text x="500" y="152" text-anchor="middle" class="stage-tag">delegates per-turn work to its collaborators; never does retrieval, generation, or tool dispatch itself</text>
+  <text x="500" y="174" text-anchor="middle" class="stage-tag"><tspan class="code">processTurnStream(input) → AsyncIterable&lt;TurnEvent&gt;</tspan></text>
+
+  <!-- Lane label -->
+  <text x="40" y="226" class="lane-label">CLOSE COLLABORATORS · own per-turn flow</text>
+
+  <!-- Arrows from GMI to close collaborators -->
+  <line class="arrow-line" x1="280" y1="200" x2="160" y2="234" marker-end="url(#gmi-arrow)"/>
+  <line class="arrow-line" x1="420" y1="200" x2="380" y2="234" marker-end="url(#gmi-arrow)"/>
+  <line class="arrow-line" x1="580" y1="200" x2="600" y2="234" marker-end="url(#gmi-arrow)"/>
+  <line class="arrow-line" x1="720" y1="200" x2="820" y2="234" marker-end="url(#gmi-arrow)"/>
+
+  <!-- Close collaborators (4) -->
+  <rect x="40" y="234" width="220" height="78" rx="10" class="collab acc-collab-1"/>
+  <text x="150" y="258" text-anchor="middle" class="stage-title">ConversationHistoryManager</text>
+  <text x="150" y="276" text-anchor="middle" class="stage-text">trims, persists, and rehydrates</text>
+  <text x="150" y="292" text-anchor="middle" class="stage-text">the message log per session</text>
+
+  <rect x="270" y="234" width="220" height="78" rx="10" class="collab acc-collab-2"/>
+  <text x="380" y="258" text-anchor="middle" class="stage-title">CognitiveMemoryBridge</text>
+  <text x="380" y="276" text-anchor="middle" class="stage-text">connects the GMI to the</text>
+  <text x="380" y="292" text-anchor="middle" class="stage-text">cognitive memory system</text>
+
+  <rect x="500" y="234" width="220" height="78" rx="10" class="collab acc-collab-3"/>
+  <text x="610" y="258" text-anchor="middle" class="stage-title">SentimentTracker</text>
+  <text x="610" y="276" text-anchor="middle" class="stage-text">follows the user's mood</text>
+  <text x="610" y="292" text-anchor="middle" class="stage-text">across turns</text>
+
+  <rect x="730" y="234" width="220" height="78" rx="10" class="collab acc-collab-4"/>
+  <text x="840" y="258" text-anchor="middle" class="stage-title">MetapromptExecutor</text>
+  <text x="840" y="276" text-anchor="middle" class="stage-text">assembles the system prompt</text>
+  <text x="840" y="292" text-anchor="middle" class="stage-text">fresh from current state</text>
+
+  <!-- Lane label for services -->
+  <text x="40" y="346" class="lane-label">INJECTED SERVICES · constructor-supplied, swappable</text>
+
+  <!-- Arrows from collaborators down to services -->
+  <line class="arrow-line" x1="500" y1="320" x2="500" y2="356" marker-end="url(#gmi-arrow)"/>
+
+  <!-- Services row 1 (4 services) -->
+  <rect x="40" y="362" width="220" height="68" rx="10" class="service acc-svc-1"/>
+  <text x="150" y="384" text-anchor="middle" class="stage-title">WorkingMemory</text>
+  <text x="150" y="402" text-anchor="middle" class="stage-text">Baddeley slot model · 7±2</text>
+  <text x="150" y="418" text-anchor="middle" class="stage-tag">trait-modulated capacity</text>
+
+  <rect x="270" y="362" width="220" height="68" rx="10" class="service acc-svc-2"/>
+  <text x="380" y="384" text-anchor="middle" class="stage-title">PromptEngine</text>
+  <text x="380" y="402" text-anchor="middle" class="stage-text">composes per-turn prompt</text>
+  <text x="380" y="418" text-anchor="middle" class="stage-tag">token-budgeted sections</text>
+
+  <rect x="500" y="362" width="220" height="68" rx="10" class="service acc-svc-3"/>
+  <text x="610" y="384" text-anchor="middle" class="stage-title">ToolOrchestrator</text>
+  <text x="610" y="402" text-anchor="middle" class="stage-text">tool calling · forging · routing</text>
+  <text x="610" y="418" text-anchor="middle" class="stage-tag">sandboxed execution</text>
+
+  <rect x="730" y="362" width="220" height="68" rx="10" class="service acc-svc-4"/>
+  <text x="840" y="384" text-anchor="middle" class="stage-title">LLMProviderManager</text>
+  <text x="840" y="402" text-anchor="middle" class="stage-text">11 providers + OpenRouter</text>
+  <text x="840" y="418" text-anchor="middle" class="stage-tag">automatic fallback chains</text>
+
+  <!-- Services row 2 (3 services + 1 optional) -->
+  <rect x="40" y="438" width="220" height="68" rx="10" class="service acc-svc-5"/>
+  <text x="150" y="460" text-anchor="middle" class="stage-title">UtilityAI</text>
+  <text x="150" y="478" text-anchor="middle" class="stage-text">small/cheap LLM calls</text>
+  <text x="150" y="494" text-anchor="middle" class="stage-tag">classifier · summarizer · judge</text>
+
+  <rect x="270" y="438" width="220" height="68" rx="10" class="service acc-svc-6"/>
+  <text x="380" y="460" text-anchor="middle" class="stage-title">CognitiveMemoryManager</text>
+  <text x="380" y="478" text-anchor="middle" class="stage-text">Ebbinghaus decay · 8 mechanisms</text>
+  <text x="380" y="494" text-anchor="middle" class="stage-tag">HEXACO-modulated encoding</text>
+
+  <rect x="500" y="438" width="450" height="68" rx="10" class="service acc-svc-7"/>
+  <text x="725" y="460" text-anchor="middle" class="stage-title">RetrievalAugmentor (optional)</text>
+  <text x="725" y="478" text-anchor="middle" class="stage-text">RAG · vector search · GraphRAG · CitationVerifier</text>
+  <text x="725" y="494" text-anchor="middle" class="stage-tag">absent when the agent doesn't need retrieval</text>
+
+  <text x="500" y="540" text-anchor="middle" class="stage-tag">Each collaborator owns one concern. The GMI itself is a thin coordinator — it never does retrieval, generation, or tool dispatch directly.</text>
+</svg>
