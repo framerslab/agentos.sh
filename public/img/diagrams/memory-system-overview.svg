@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" aria-labelledby="memsys-title memsys-desc" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title id="memsys-title">AgentOS Memory System — classifier-driven dispatch pipeline</title>
+  <desc id="memsys-desc">A top-down pipeline. User query enters QueryClassifier (T0 short-circuits, T1+ proceeds with one shared classification). MemoryRouter picks a retrieval architecture. The canonical-hybrid retriever runs BM25 plus dense embeddings, fuses via RRF, then a Cohere rerank-v3.5 cross-encoder, then a six-signal cognitive composite scorer (optional HyDE). Reranked traces feed ReaderRouter (picks gpt-4o vs gpt-5-mini) then ReadRouter (picks reader strategy). A background consolidation loop runs Ebbinghaus decay, Hebbian merge, derive, compact, reindex on the same brain, plus eight cognitive mechanisms.</desc>
+
+  <defs>
+    <style>
+      .heading      { fill: #0f172a; font-size: 18px; font-weight: 700; }
+      .subtitle     { fill: #475569; font-size: 12px; }
+      .stage-title  { fill: #0f172a; font-size: 14px; font-weight: 700; }
+      .stage-text   { fill: #475569; font-size: 11px; }
+      .stage-tag    { fill: #64748b; font-size: 10px; font-style: italic; }
+      .lane-label   { fill: #64748b; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; }
+      .stage        { fill: #ffffff; stroke-width: 2; }
+      .pill         { fill: #f1f5f9; stroke: #94a3b8; stroke-width: 1.5; }
+      .pill-text    { fill: #0f172a; font-size: 12px; font-weight: 600; }
+      .substrate    { fill: #f1f5f9; stroke: #94a3b8; stroke-width: 1; stroke-dasharray: 4 4; }
+      .container    { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.25; }
+      .arrow-line   { stroke: #94a3b8; stroke-width: 1.5; fill: none; }
+      .arrow-head   { fill: #94a3b8; }
+      .acc-input    { stroke: #0891b2; }
+      .acc-classify { stroke: #ec4899; }
+      .acc-route    { stroke: #f59e0b; }
+      .acc-retrieve { stroke: #6366f1; }
+      .acc-rerank   { stroke: #8b5cf6; }
+      .acc-score    { stroke: #14b8a6; }
+      .acc-reader   { stroke: #10b981; }
+      .acc-strategy { stroke: #14b8a6; }
+      .acc-output   { stroke: #f43f5e; }
+      .code         { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; fill: #475569; }
+      @media (prefers-color-scheme: dark) {
+        .heading      { fill: #f1f5f9; }
+        .subtitle     { fill: #94a3b8; }
+        .stage-title  { fill: #f1f5f9; }
+        .stage-text   { fill: #94a3b8; }
+        .stage-tag    { fill: #64748b; }
+        .stage        { fill: #0f172a; }
+        .pill         { fill: #0b1220; stroke: #475569; }
+        .pill-text    { fill: #f1f5f9; }
+        .substrate    { fill: #0b1220; stroke: #475569; }
+        .container    { fill: #0b1220; stroke: #475569; }
+        .arrow-line   { stroke: #475569; }
+        .arrow-head   { fill: #475569; }
+        .code         { fill: #94a3b8; }
+      }
+    </style>
+    <marker id="memsys-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-head"/>
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="500" y="32" text-anchor="middle" class="heading">AgentOS memory pipeline</text>
+  <text x="500" y="54" text-anchor="middle" class="subtitle">Classifier-driven dispatch over a SQL-backed brain · 85.6% LongMemEval-S at $0.0090/correct</text>
+
+  <!-- 1. User query (input pill) -->
+  <rect x="420" y="80" width="160" height="34" rx="17" class="pill acc-input"/>
+  <text x="500" y="102" text-anchor="middle" class="pill-text">User query</text>
+  <line class="arrow-line" x1="500" y1="114" x2="500" y2="138" marker-end="url(#memsys-arrow)"/>
+
+  <!-- 2. QueryClassifier -->
+  <rect x="280" y="138" width="440" height="74" rx="10" class="stage acc-classify"/>
+  <text x="500" y="162" text-anchor="middle" class="stage-title">QueryClassifier</text>
+  <text x="500" y="180" text-anchor="middle" class="stage-text">"Does this query need memory at all?" · gpt-5-mini · one shared call reused below</text>
+  <text x="500" y="198" text-anchor="middle" class="stage-tag">T0 (greetings, small talk) → answer from context, skip everything else</text>
+  <line class="arrow-line" x1="500" y1="212" x2="500" y2="236" marker-end="url(#memsys-arrow)"/>
+  <text x="525" y="226" class="stage-tag">T1+</text>
+
+  <!-- 3. MemoryRouter -->
+  <rect x="280" y="236" width="440" height="74" rx="10" class="stage acc-route"/>
+  <text x="500" y="260" text-anchor="middle" class="stage-title">MemoryRouter</text>
+  <text x="500" y="278" text-anchor="middle" class="stage-text">Picks retrieval architecture · 6 categories → 3 backends · zero extra LLM calls</text>
+  <text x="500" y="296" text-anchor="middle" class="stage-tag">single-session-user · multi-session · temporal-reasoning → canonical-hybrid</text>
+  <line class="arrow-line" x1="500" y1="310" x2="500" y2="332" marker-end="url(#memsys-arrow)"/>
+
+  <!-- 4. canonical-hybrid retrieval container -->
+  <rect x="60" y="332" width="880" height="294" rx="12" class="container"/>
+  <text x="80" y="356" class="lane-label">CANONICAL-HYBRID RETRIEVAL</text>
+
+  <!-- BM25 + Dense side-by-side -->
+  <rect x="120" y="368" width="320" height="60" rx="8" class="stage acc-retrieve"/>
+  <text x="280" y="390" text-anchor="middle" class="stage-title">BM25 (FTS5)</text>
+  <text x="280" y="408" text-anchor="middle" class="stage-text">lexical · catches exact / rare terms</text>
+
+  <rect x="560" y="368" width="320" height="60" rx="8" class="stage acc-retrieve"/>
+  <text x="720" y="390" text-anchor="middle" class="stage-title">Dense (text-embedding-3-small)</text>
+  <text x="720" y="408" text-anchor="middle" class="stage-text">paraphrase · multi-hop · semantic</text>
+
+  <!-- RRF merge -->
+  <line class="arrow-line" x1="280" y1="428" x2="430" y2="450" marker-end="url(#memsys-arrow)"/>
+  <line class="arrow-line" x1="720" y1="428" x2="570" y2="450" marker-end="url(#memsys-arrow)"/>
+  <rect x="380" y="450" width="240" height="32" rx="6" class="pill acc-retrieve"/>
+  <text x="500" y="471" text-anchor="middle" class="pill-text">RRF rank fusion</text>
+  <line class="arrow-line" x1="500" y1="482" x2="500" y2="500" marker-end="url(#memsys-arrow)"/>
+
+  <!-- Cohere rerank -->
+  <rect x="200" y="500" width="600" height="50" rx="8" class="stage acc-rerank"/>
+  <text x="500" y="520" text-anchor="middle" class="stage-title">Cohere rerank-v3.5 · cross-encoder</text>
+  <text x="500" y="538" text-anchor="middle" class="stage-text">load-bearing — kills the topically-adjacent-but-irrelevant chunks BM25+dense leave in the pool</text>
+  <line class="arrow-line" x1="500" y1="550" x2="500" y2="566" marker-end="url(#memsys-arrow)"/>
+
+  <!-- 6-signal composite -->
+  <rect x="200" y="566" width="600" height="50" rx="8" class="stage acc-score"/>
+  <text x="500" y="586" text-anchor="middle" class="stage-title">6-signal cognitive composite</text>
+  <text x="500" y="604" text-anchor="middle" class="stage-text">similarity · strength · recency · mood congruence · graph activation · importance · [optional HyDE]</text>
+
+  <!-- Out of container -->
+  <line class="arrow-line" x1="500" y1="626" x2="500" y2="650" marker-end="url(#memsys-arrow)"/>
+
+  <!-- 5. ReaderRouter -->
+  <rect x="280" y="650" width="440" height="74" rx="10" class="stage acc-reader"/>
+  <text x="500" y="674" text-anchor="middle" class="stage-title">ReaderRouter</text>
+  <text x="500" y="692" text-anchor="middle" class="stage-text">Picks reader model · reuses the QueryClassifier category · zero extra LLM calls</text>
+  <text x="500" y="710" text-anchor="middle" class="stage-tag">temporal-reasoning + single-session-user → gpt-4o · everything else → gpt-5-mini (12× cheaper)</text>
+  <line class="arrow-line" x1="500" y1="724" x2="500" y2="746" marker-end="url(#memsys-arrow)"/>
+
+  <!-- 6. ReadRouter -->
+  <rect x="280" y="746" width="440" height="74" rx="10" class="stage acc-strategy"/>
+  <text x="500" y="770" text-anchor="middle" class="stage-title">ReadRouter</text>
+  <text x="500" y="788" text-anchor="middle" class="stage-text">Picks reader strategy · 5 intents → 5 strategies · zero extra LLM calls</text>
+  <text x="500" y="806" text-anchor="middle" class="stage-tag">precise-fact · synthesis · time-interval · abstain-y · …</text>
+  <line class="arrow-line" x1="500" y1="820" x2="500" y2="842" marker-end="url(#memsys-arrow)"/>
+
+  <!-- 7. Grounded answer -->
+  <rect x="380" y="842" width="240" height="34" rx="17" class="pill acc-output"/>
+  <text x="500" y="864" text-anchor="middle" class="pill-text">Grounded answer</text>
+
+  <!-- 8. Background consolidation -->
+  <text x="80" y="916" class="lane-label">BACKGROUND · ON THE SAME BRAIN</text>
+  <rect x="60" y="924" width="880" height="46" rx="10" class="substrate"/>
+  <text x="500" y="946" text-anchor="middle" class="stage-title">Consolidation loop · slow-wave-sleep analogue</text>
+  <text x="500" y="962" text-anchor="middle" class="stage-text">prune (Ebbinghaus) → merge → strengthen (Hebbian) → derive (LLM) → compact → reindex · plus 8 cognitive mechanisms</text>
+</svg>
