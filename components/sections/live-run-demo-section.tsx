@@ -31,7 +31,7 @@ interface DemoOutput {
   finalAnswerLabel?: string
   finalOverride?: string
   streamPreface?: string
-  claims?: { verdict: 'supported' | 'weak' | 'unverifiable'; confidence: number; text: string; source: string }[]
+  claims?: { verdict: 'supported' | 'weak' | 'unverifiable'; confidence: number; text: string; source?: string }[]
   dagTiers?: { tier: number; agents: { name: string; durationMs: number }[] }[]
   missionSteps?: { id: string; type: 'gmi' | 'tool'; executor: string }[]
   missionArtifacts?: Record<string, unknown>
@@ -742,9 +742,11 @@ function ClaimsBlock({ claims }: { claims: NonNullable<DemoOutput['claims']> }) 
               </span>
               <span className="flex-1 text-[var(--color-text-primary)]">{c.text}</span>
             </div>
-            <div className="mt-1 ml-5 font-mono text-[11px] text-[var(--color-text-muted)] italic line-clamp-2">
-              source: {c.source}
-            </div>
+            {c.source && (
+              <div className="mt-1 ml-5 font-mono text-[11px] text-[var(--color-text-muted)] italic line-clamp-2">
+                source: {c.source}
+              </div>
+            )}
           </div>
         ))}
       </div>
