@@ -10,6 +10,7 @@ import {
   Terminal,
   Users,
   Shield,
+  UserCheck,
   Zap,
   GitBranch,
   Search,
@@ -82,6 +83,43 @@ const safeAgent = agent({
   maxTokens: 4096,       // caps output length
 })
 const result = await safeAgent.generate('Summarize this document')`
+      }
+    },
+    {
+      icon: UserCheck,
+      title: 'Human-in-the-Loop',
+      body: 'Pause an agency run at five lifecycle events (before tool, agent, emergent, return, strategy-override). Route the pending action to a human, an LLM judge with fallback, a webhook, or Slack — all on one decision contract.',
+      pill: '5 triggers · 6 handlers',
+      gradient: 'from-cyan-500 to-blue-500',
+      bullets: [
+        'beforeTool · beforeAgent · beforeEmergent · beforeReturn · beforeStrategyOverride',
+        'hitl.cli() · hitl.llmJudge() · hitl.slack() · hitl.webhook() · auto-approve/reject',
+      ],
+      codeExample: {
+        title: 'HITL — LLM judge with CLI fallback',
+        language: 'typescript',
+        code: `import { agency, hitl } from '@framers/agentos'
+
+// Cheap judge handles most approvals; humans only see the uncertain calls.
+const guarded = agency({
+  agents: { worker: { instructions: 'Execute tasks.' } },
+  hitl: {
+    approvals: {
+      beforeTool: ['delete-file', 'send-email'],
+      beforeReturn: true,
+    },
+    handler: hitl.llmJudge({
+      model: 'gpt-4o-mini',
+      criteria: 'Approve unless the action deletes data, sends messages, or spends > $1.',
+      confidenceThreshold: 0.8,
+      fallback: hitl.cli(), // escalate uncertain calls
+    }),
+    timeoutMs: 60_000,
+    onTimeout: 'reject',
+  },
+})
+
+// Full HITL guide: https://docs.agentos.sh/features/human-in-the-loop`,
       }
     },
     {
