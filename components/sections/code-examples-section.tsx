@@ -151,6 +151,58 @@ const usage = await session.usage()
 console.log(\`Total tokens: \${usage.totalTokens}\`)`
   },
   {
+    id: 'hexaco-agent',
+    title: 'HEXACO agent with memory',
+    description: 'Configure an agent with personality + cognitive memory in one declaration. Six trait values shape voice and tone; memory persists across sessions automatically.',
+    language: 'typescript',
+    category: 'basic',
+    code: `import { agent } from '@framers/agentos'
+
+// Personality is six 0-1 trait values. The runtime appends a trait-derived
+// directive to the system prompt and modulates three cognitive-memory
+// mechanisms (involuntary recall, consolidation, schema encoding) based on
+// honesty / emotionality / openness. Default is neutral (0.5) on every axis.
+const tutor = agent({
+  provider: 'openai',
+  model: 'gpt-4o',
+  instructions: 'You are a patient programming tutor.',
+  personality: {
+    honesty:           0.85,  // direct, transparent, no flattery
+    emotionality:      0.65,  // tone-aware without being clinical
+    extraversion:      0.50,
+    agreeableness:     0.75,  // warm, encouraging
+    conscientiousness: 0.90,  // structured, thorough, follow-through
+    openness:          0.85,  // creative, exploratory framing
+  },
+  memory: {
+    enabled:    true,         // session history persists automatically
+    cognitive:  true,         // Ebbinghaus decay + reconsolidation + 6 more
+  },
+})
+
+// Sessions scope conversation history by ID. Same agent, multiple users,
+// no cross-talk — each session has its own memory bag.
+const session = tutor.session('user-42')
+
+// The agent remembers across turns. Context from the first message is
+// recalled automatically in the second.
+await session.send('My exam is on distributed systems next Thursday.')
+await session.send('I struggle with consensus algorithms.')
+const reply = await session.send('What should I focus on this week?')
+
+console.log(reply.text)
+// => "Given Thursday's exam and your block on consensus, lock in Paxos
+//     and Raft this week. Start with the leader-election proof…"
+
+// Inspect what the session actually carries — full message history +
+// token usage. Useful for debugging memory recall or cost.
+console.log(session.messages())
+const usage = await session.usage()
+console.log(\`Total tokens: \${usage.totalTokens}\`)
+
+// Full HEXACO guide: https://docs.agentos.sh/features/hexaco-personality`
+  },
+  {
     id: 'multimodal-rag',
     title: 'Multimodal RAG (image + audio + docs)',
     description: 'One brain across PDFs, images, and audio. Captions and transcripts are derived automatically and indexed alongside text — a single query searches every modality.',
