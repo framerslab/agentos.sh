@@ -65,6 +65,14 @@ const LiveRunDemoSectionLazy = dynamic(
   }
 )
 
+const RuntimeIntelligenceSectionLazy = dynamic(
+  () => import('../../components/sections/runtime-intelligence-section').then(m => m.RuntimeIntelligenceSection),
+  {
+    ssr: false,
+    loading: () => <SectionSkeleton minHeight={700} contentHeightClass="h-96" />,
+  }
+)
+
 const WhitepaperCTALazy = dynamic(
   () => import('../../components/sections/whitepaper-cta').then(m => m.WhitepaperCTA),
   {
@@ -120,6 +128,14 @@ export default function LandingPageRedesigned() {
         {/* Live run demo — real script + captured output side-by-side */}
         <div id="live-demo" style={{ scrollMarginTop: '80px' }}>
           <LiveRunDemoSectionLazy />
+        </div>
+
+        {/* Runtime intelligence pillars — emergent tools + adaptive prompt
+            intelligence side-by-side. The two adaptation surfaces the
+            framework leans on most are the only ones that get a dedicated
+            section on the homepage; everything else lives on /features. */}
+        <div id="runtime-intelligence-pillar" style={{ scrollMarginTop: '80px' }}>
+          <RuntimeIntelligenceSectionLazy />
         </div>
 
         {/* Code Examples — production-ready code patterns. Hoisted up the page next

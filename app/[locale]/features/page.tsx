@@ -24,6 +24,11 @@ const EmergentSectionLazy = dynamic(
   { ssr: false, loading: () => <SectionSkeleton minHeight={600} contentHeightClass="h-96" /> },
 );
 
+const AdaptiveSectionLazy = dynamic(
+  () => import('@/components/sections/adaptive-section').then((m) => m.AdaptiveSection),
+  { ssr: false, loading: () => <SectionSkeleton minHeight={600} contentHeightClass="h-96" /> },
+);
+
 const CognitiveSectionLazy = dynamic(
   () => import('@/components/sections/cognitive-section').then((m) => m.CognitiveSection),
   { ssr: false, loading: () => <SectionSkeleton minHeight={600} contentHeightClass="h-96" /> },
@@ -93,6 +98,11 @@ export default function FeaturesPage() {
       {/* Emergent capabilities — runtime tool generation, specialist spawning, judge gate */}
       <div className="lazy-section-lg">
         <EmergentSectionLazy />
+      </div>
+
+      {/* Adaptive prompt intelligence — per-turn metaprompts, sentiment events, state surfaces */}
+      <div className="lazy-section-lg">
+        <AdaptiveSectionLazy />
       </div>
 
       {/* Cognitive memory — Ebbinghaus decay, reconsolidation, retrieval-induced forgetting */}
