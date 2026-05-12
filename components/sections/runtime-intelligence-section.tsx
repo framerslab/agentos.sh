@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useLocale } from 'next-intl'
 import { ArrowRight, Sparkles, Brain } from 'lucide-react'
 
 /**
@@ -22,6 +23,7 @@ import { ArrowRight, Sparkles, Brain } from 'lucide-react'
 export function RuntimeIntelligenceSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.15 })
+  const locale = useLocale()
 
   const fadeUp = {
     hidden: { opacity: 0, y: 24 },
@@ -247,7 +249,7 @@ export function RuntimeIntelligenceSection() {
 
             {/* CTA */}
             <a
-              href="/features#emergent"
+              href={`/${locale}/features#emergent`}
               className="mt-auto inline-flex items-center gap-2 text-sm font-bold transition-opacity hover:opacity-80"
               style={{ color: 'var(--color-accent-primary)' }}
             >
@@ -428,7 +430,7 @@ export function RuntimeIntelligenceSection() {
             </ul>
 
             <a
-              href="/features#adaptive"
+              href={`/${locale}/features#adaptive`}
               className="mt-auto inline-flex items-center gap-2 text-sm font-bold transition-opacity hover:opacity-80"
               style={{ color: 'var(--color-accent-secondary)' }}
             >
