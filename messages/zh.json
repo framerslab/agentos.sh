@@ -697,7 +697,7 @@
       },
       "safety": {
         "traditional": "无安全机制",
-        "gmi": "built-in safety guardrails with streaming evaluation"
+        "gmi": "实时内容安全,带 PII 脱敏和注入防御"
       }
     }
   },
@@ -705,7 +705,7 @@
     "hero": {
       "weAreFramers": "我们是 framers",
       "title": "关于 AgentOS",
-      "description": "AgentOS is an open‑source TypeScript runtime for building adaptive, emergent AI agent systems. Built by <link>Frame.dev</link>, AgentOS powers intelligent applications with GMI orchestration, persistent memory, and enterprise‑grade guardrails."
+      "description": "AgentOS 是用于构建自适应、涌现式 AI 智能体系统的开源 TypeScript 运行时。由 <manicLink>Manic Agency LLC</manicLink> 与 <frameLink>Frame.dev</frameLink> 开发,AgentOS 通过 GMI 编排、持久化记忆与企业级护栏驱动智能应用。它还驱动着 <wildsLink>Wilds.ai</wildsLink> 背后的 AI 系统。"
     },
     "mission": {
       "title": "我们的使命",
@@ -773,6 +773,18 @@
       "comparison": {
         "question": "AgentOS 与 LangChain、CrewAI 或 AutoGen 有何不同?",
         "answer": "AgentOS 是 TypeScript 原生(而非 Python),内置具有 Ebbinghaus 遗忘曲线和 HEXACO 人格建模的认知记忆,提供 5 层安全等级而非简单的提示词过滤,提供 37 个内置通道适配器(Discord、Telegram、Slack、电子邮件等),支持 6 种编排策略,包括基于图的智能体 DAG。还附带 88 个精选技能和可将 token 使用量减少约 90% 的能力发现引擎。"
+      },
+      "whatIsParacosm": {
+        "question": "Paracosm 是什么?",
+        "answer": "Paracosm (https://paracosm.agentos.sh) 是构建在 AgentOS 之上的结构化世界模型仿真引擎。它将 JSON ScenarioPackage 加上 HEXACO 领导者画像编译为确定性的回合循环,其中 AgentOS 智能体提出事件,在加固的 node:vm 沙箱中运行时锻造新的 TypeScript 工具,并产生可以分叉与回放的反事实产物。三种模式共享一套 schema:回合循环式文明仿真 (Mars Genesis 是典型示例)、批量轨迹数字孪生,以及批量点蒙特卡洛预测。Apache 2.0 开源,npm install paracosm。在线 Demo: https://paracosm.agentos.sh/sim。源码: https://github.com/framersai/paracosm。长文发布博客 (我们为什么构建它、wilds.ai 金库故事、引擎参考): https://agentos.sh/blog/paracosm-launch。"
+      },
+      "whatIsWildsAi": {
+        "question": "Wilds.ai 是什么?",
+        "answer": "Wilds.ai (https://wilds.ai) 是基于 AgentOS 与 Paracosm 构建的 AI 原生游戏平台。拥有持久认知记忆与 HEXACO 人格特质的 AI 角色居住在共享世界模型中,并根据有据可循的 LLM-as-judge 事件相互分化。玩家可以进入现有世界、分叉它们或在浏览器中编译新世界。Wilds.ai 是 AgentOS + Paracosm 技术栈的正式生产部署,也是两个项目的官方社区和支持渠道 (https://wilds.ai/discord)。"
+      },
+      "whatIsWunderland": {
+        "question": "Wunderland 是什么?",
+        "answer": "Wunderland (https://wunderland.sh) 是一个积极开发中的姊妹项目,它在 AgentOS 扩展与技能注册表之上打包了开箱即用的 CLI 与守护进程。它提供 28 个命令的 CLI (setup、chat、rag、agency、workflows、evaluate、provenance、knowledge、marketplace 等)、5 级安全模型 (dangerous / permissive / balanced / strict / paranoid)、8 个智能体预设、步进式 HITL 授权,以及与 AgentOS 文档中记载的相同的认知记忆和基于图的 RAG 架构。当你需要嵌入应用的 TypeScript SDK 时使用 @framers/agentos;当你需要可以通过 pnpm add -g wunderland 安装并通过向导配置的全局 CLI 时使用 Wunderland。源码位于 github.com/jddunn/wunderland (从 0.71.0 起 Apache 2.0)。预览发布,API 和 CLI 表面仍可能变化。入门指南: https://docs.agentos.sh/wunderland。"
       }
     },
     "technical": {
@@ -1000,9 +1012,9 @@
           "SQLite到Neo4j后端"
         ],
         "capabilities": [
-          "HyDE Retrieval",
-          "GraphRAG Pipeline",
-          "Multi-Backend Storage"
+          "HyDE 检索",
+          "GraphRAG 流水线",
+          "多后端存储"
         ]
       },
       "orchestration": {
@@ -1016,8 +1028,8 @@
         ],
         "capabilities": [
           "Mission API",
-          "Workflow Engine",
-          "Agent Graphs"
+          "工作流引擎",
+          "智能体图"
         ]
       },
       "streaming": {
@@ -1030,9 +1042,9 @@
           "工具进度事件"
         ],
         "capabilities": [
-          "Event Streaming",
-          "Streaming Guards",
-          "Progress Tracking"
+          "事件流",
+          "流式守卫",
+          "进度追踪"
         ]
       },
       "hexaco": {
@@ -1090,9 +1102,9 @@
           "OpenRouter bridge"
         ],
         "capabilities": [
-          "Provider Registry",
-          "Fallback Chains",
-          "Model Resolution"
+          "提供商注册表",
+          "回退链",
+          "模型解析"
         ]
       }
     }
@@ -1379,7 +1391,8 @@
           "name": "HyDE",
           "description": "生成假设回答以提高抽象查询的召回率。",
           "badge": "可选",
-          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels"
+          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels",
+          "citationUrl": "https://arxiv.org/abs/2212.10496"
         },
         "graphrag": {
           "name": "GraphRAG",
@@ -1401,10 +1414,10 @@
     "title": "涌现能力",
     "subtitle": "在运行时铸造自己的工具并生成专家子智能体的智能体",
     "statPills": [
-      "Lifetime tiers: session / agent / shared",
-      "Judge approval required",
-      "Sandbox-executed",
-      "Auto-promotion on reliability"
+      "生命周期层级: 会话 / 智能体 / 共享",
+      "需要裁判批准",
+      "沙箱执行",
+      "可靠性自动晋升"
     ],
     "tabs": {
       "toolForging": "运行时工具铸造",
@@ -1419,11 +1432,11 @@
       "step5": "智能体使用",
       "description": "运行时工具铸造意味着代理可以在决策中途为自己编写一个新的TypeScript函数，由一个独立的法官LLM审核，并在一个强化的node:vm沙箱中执行（默认5秒挂钟，128 MB名义内存预算，fetch/fs/crypto的默认空白名单，静态禁止eval/require/import/process/child_process），所有这些都在下一回合之前完成。批准的工具会进入一个可发现的索引以供重用，因此在会话中的前几次锻造后成本会趋于平稳。",
       "details": [
-        "Composable mode: chains existing tools via pipeline steps — safe by construction",
-        "Sandbox mode: agent-written code runs in memory/time-bounded isolation",
-        "Three-tier lifecycle: session-scoped, agent-scoped, or promoted to shared registry",
-        "Dual-judge promotion panel: safety auditor + correctness reviewer must both approve",
-        "Usage tracking with automatic tier promotion when reliability thresholds are met"
+        "Composable 模式: 通过流水线步骤串联现有工具,构造上即安全",
+        "Sandbox 模式: 智能体编写的代码在受内存与时间约束的隔离环境中运行",
+        "三层生命周期: 会话级、智能体级,或晋升至共享注册表",
+        "双裁判晋升面板: 安全审计员与正确性审阅者必须同时通过",
+        "使用追踪;当达到可靠性阈值时自动晋升层级"
       ]
     },
     "synthesis": {

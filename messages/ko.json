@@ -240,11 +240,11 @@
     "description": "AgentOS로 차세대 지능형 시스템을 구축하는 개발자에 합류하세요.",
     "getStarted": "시작하기",
     "talkToUs": "문의하기",
-    "badge": "Join the AI Revolution",
-    "exploreLabel": "Or explore AgentOS today:",
-    "tryVoiceChat": "Try Voice Chat",
-    "browseCode": "Browse Code",
-    "marketplace": "Marketplace"
+    "badge": "AI 혁명에 동참하세요",
+    "exploreLabel": "지금 AgentOS를 살펴보세요:",
+    "tryVoiceChat": "음성 채팅 사용해보기",
+    "browseCode": "코드 둘러보기",
+    "marketplace": "마켓플레이스"
   },
   "LanguageSwitcher": {
     "switchLanguage": "언어 전환",
@@ -309,8 +309,8 @@
         ],
         "capabilities": [
           "HyDE Retrieval",
-          "GraphRAG Pipeline",
-          "Multi-Backend Storage"
+          "GraphRAG 파이프라인",
+          "멀티 백엔드 스토리지"
         ]
       },
       "orchestration": {
@@ -324,8 +324,8 @@
         ],
         "capabilities": [
           "Mission API",
-          "Workflow Engine",
-          "Agent Graphs"
+          "워크플로 엔진",
+          "에이전트 그래프"
         ]
       },
       "streaming": {
@@ -338,9 +338,9 @@
           "도구 진행 이벤트"
         ],
         "capabilities": [
-          "Event Streaming",
-          "Streaming Guards",
-          "Progress Tracking"
+          "이벤트 스트리밍",
+          "스트리밍 가드",
+          "진행률 추적"
         ]
       },
       "hexaco": {
@@ -398,9 +398,9 @@
           "OpenRouter bridge"
         ],
         "capabilities": [
-          "Provider Registry",
-          "Fallback Chains",
-          "Model Resolution"
+          "프로바이더 레지스트리",
+          "폴백 체인",
+          "모델 해석"
         ]
       }
     }
@@ -849,7 +849,7 @@
       },
       "safety": {
         "traditional": "안전 기능 없음",
-        "gmi": "built-in safety guardrails with streaming evaluation"
+        "gmi": "PII 마스킹과 인젝션 방어를 갖춘 실시간 콘텐츠 안전"
       }
     }
   },
@@ -857,7 +857,7 @@
     "hero": {
       "weAreFramers": "우리는 framers입니다",
       "title": "AgentOS 소개",
-      "description": "AgentOS is an open‑source TypeScript runtime for building adaptive, emergent AI agent systems. Built by <link>Frame.dev</link>, AgentOS powers intelligent applications with GMI orchestration, persistent memory, and enterprise‑grade guardrails."
+      "description": "AgentOS는 적응적이고 창발적인 AI 에이전트 시스템을 구축하기 위한 오픈소스 TypeScript 런타임입니다. <manicLink>Manic Agency LLC</manicLink>와 <frameLink>Frame.dev</frameLink>가 만들었으며, GMI 오케스트레이션, 영속 메모리, 엔터프라이즈급 가드레일로 지능형 애플리케이션을 구동합니다. <wildsLink>Wilds.ai</wildsLink> 뒤의 AI 시스템도 구동합니다."
     },
     "mission": {
       "title": "우리의 미션",
@@ -925,6 +925,18 @@
       "comparison": {
         "question": "AgentOS는 LangChain, CrewAI, AutoGen과 어떻게 다른가요?",
         "answer": "AgentOS는 TypeScript 네이티브이며(Python이 아닙니다), Ebbinghaus 감쇠 곡선과 HEXACO 성격 모델링을 갖춘 인지 메모리를 포함합니다. 기본적인 프롬프트 필터링 대신 5단계 보안 계층을 제공하고, 37개 내장 채널 어댑터(Discord, Telegram, Slack, 이메일 등)를 제공하며, 그래프 기반 에이전트 DAG를 포함한 6가지 오케스트레이션 전략을 지원합니다. 또한 88개의 큐레이션된 스킬과 토큰 사용량을 약 90% 줄이는 능력 발견 엔진을 함께 제공합니다."
+      },
+      "whatIsParacosm": {
+        "question": "Paracosm이란 무엇인가요?",
+        "answer": "Paracosm (https://paracosm.agentos.sh)은 AgentOS 위에 구축된 구조화된 월드 모델 시뮬레이션 엔진입니다. JSON ScenarioPackage와 HEXACO 리더 프로파일을 결정론적 턴 루프로 컴파일하며, AgentOS 에이전트들이 이벤트를 제안하고, 강화된 node:vm 샌드박스 안에서 런타임에 새로운 TypeScript 도구를 단조해내며, 분기하고 재생할 수 있는 반사실 산출물을 생성합니다. 세 가지 모드가 하나의 스키마를 공유합니다. 턴 루프 문명 시뮬레이션(Mars Genesis가 대표 예시), 배치 트라젝토리 디지털 트윈, 그리고 배치 포인트 몬테카를로 예측. Apache 2.0 라이선스로 오픈소스, npm install paracosm. 라이브 데모: https://paracosm.agentos.sh/sim. 소스: https://github.com/framersai/paracosm. 긴 런치 포스트(왜 만들었는지, wilds.ai 볼트 이야기, 엔진 참조): https://agentos.sh/blog/paracosm-launch."
+      },
+      "whatIsWildsAi": {
+        "question": "Wilds.ai란 무엇인가요?",
+        "answer": "Wilds.ai (https://wilds.ai)는 AgentOS와 Paracosm 위에 구축된 AI 네이티브 게임 플랫폼입니다. 영속적인 인지 메모리와 HEXACO 성격 특성을 가진 AI 캐릭터들이 공유된 월드 모델 안에 거주하며, 근거 있는 LLM-as-judge 이벤트를 통해 서로 분기됩니다. 플레이어는 기존 월드에 들어가거나, 분기하거나, 브라우저에서 새 월드를 컴파일할 수 있습니다. Wilds.ai는 AgentOS + Paracosm 스택의 정식 프로덕션 배포이며, 두 프로젝트 모두의 공식 커뮤니티 및 지원 채널(https://wilds.ai/discord)입니다."
+      },
+      "whatIsWunderland": {
+        "question": "Wunderland란 무엇인가요?",
+        "answer": "Wunderland (https://wunderland.sh)는 활발히 개발 중인 자매 프로젝트로, AgentOS 확장 및 스킬 레지스트리 위에 batteries-included CLI와 데몬을 패키징합니다. 28개 명령 CLI(setup, chat, rag, agency, workflows, evaluate, provenance, knowledge, marketplace 등), 5단계 보안 모델(dangerous / permissive / balanced / strict / paranoid), 8개 에이전트 프리셋, 단계적 HITL 권한 부여, 그리고 AgentOS 문서에 기재된 것과 동일한 인지 메모리 및 그래프 기반 RAG 아키텍처를 함께 제공합니다. 애플리케이션에 임베드할 TypeScript SDK가 필요하면 @framers/agentos를, pnpm add -g wunderland로 설치하고 마법사로 구성할 수 있는 글로벌 CLI를 원한다면 Wunderland를 사용하세요. 소스는 github.com/jddunn/wunderland(0.71.0부터 Apache 2.0). 프리뷰 릴리스이므로 API와 CLI 표면이 아직 변경될 수 있습니다. 시작 가이드: https://docs.agentos.sh/wunderland."
       }
     },
     "technical": {
@@ -1379,7 +1391,8 @@
           "name": "HyDE",
           "description": "가상 답변 생성으로 추상적 쿼리 리콜 향상.",
           "badge": "선택적",
-          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels"
+          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels",
+          "citationUrl": "https://arxiv.org/abs/2212.10496"
         },
         "graphrag": {
           "name": "GraphRAG",
@@ -1401,10 +1414,10 @@
     "title": "창발적 능력",
     "subtitle": "런타임에 스스로 도구를 만들고 전문 하위 에이전트를 생성하는 에이전트",
     "statPills": [
-      "Lifetime tiers: session / agent / shared",
-      "Judge approval required",
-      "Sandbox-executed",
-      "Auto-promotion on reliability"
+      "라이프사이클 단계: 세션 / 에이전트 / 공유",
+      "심사자 승인 필요",
+      "샌드박스 실행",
+      "신뢰성 기반 자동 승격"
     ],
     "tabs": {
       "toolForging": "런타임 도구 포지",
@@ -1419,11 +1432,11 @@
       "step5": "에이전트가 사용",
       "description": "Runtime Tool Forging은 에이전트가 결정 중간에 새로운 TypeScript 함수를 작성하고, 별도의 판사 LLM에 의해 검토를 받은 후, 강화된 node:vm 샌드박스 내에서 실행할 수 있음을 의미합니다 (기본 벽 시계 5초, 128 MB 명목 메모리 예산, fetch/fs/crypto에 대한 기본 빈 허용 목록, eval/require/import/process/child_process는 정적으로 금지됨), 모든 것이 다음 턴 전에 이루어집니다. 승인된 도구는 재사용을 위해 발견 가능한 인덱스에 등록되므로, 세션 내에서 처음 몇 번의 단조 후 비용이 평탄해집니다.",
       "details": [
-        "Composable mode: chains existing tools via pipeline steps — safe by construction",
-        "Sandbox mode: agent-written code runs in memory/time-bounded isolation",
-        "Three-tier lifecycle: session-scoped, agent-scoped, or promoted to shared registry",
-        "Dual-judge promotion panel: safety auditor + correctness reviewer must both approve",
-        "Usage tracking with automatic tier promotion when reliability thresholds are met"
+        "Composable 모드: 파이프라인 단계로 기존 도구를 연결, 구조적으로 안전",
+        "Sandbox 모드: 에이전트가 작성한 코드는 메모리와 시간이 제한된 격리 환경에서 실행",
+        "3단계 라이프사이클: 세션 범위, 에이전트 범위, 또는 공유 레지스트리로 승격",
+        "이중 심사 승격 패널: 안전 감사자와 정확성 검토자 모두 승인 필요",
+        "신뢰성 임계값 도달 시 자동 등급 승격 포함 사용량 추적"
       ]
     },
     "synthesis": {

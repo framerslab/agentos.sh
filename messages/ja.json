@@ -697,7 +697,7 @@
       },
       "safety": {
         "traditional": "安全機能なし",
-        "gmi": "built-in safety guardrails with streaming evaluation"
+        "gmi": "PII 編集とインジェクション防御を備えたリアルタイムコンテンツセーフティ"
       }
     }
   },
@@ -821,7 +821,7 @@
     "hero": {
       "weAreFramers": "私たちは framers です",
       "title": "AgentOS について",
-      "description": "AgentOS is an open‑source TypeScript runtime for building adaptive, emergent AI agent systems. Built by <link>Frame.dev</link>, AgentOS powers intelligent applications with GMI orchestration, persistent memory, and enterprise‑grade guardrails."
+      "description": "AgentOS は適応的で創発的な AI エージェントシステムを構築するためのオープンソースの TypeScript ランタイムです。<manicLink>Manic Agency LLC</manicLink> と <frameLink>Frame.dev</frameLink> が開発し、GMI オーケストレーション、永続的なメモリ、エンタープライズグレードのガードレールでインテリジェントなアプリケーションを支えます。<wildsLink>Wilds.ai</wildsLink> の背後にある AI システムも支えています。"
     },
     "mission": {
       "title": "私たちのミッション",
@@ -889,6 +889,18 @@
       "comparison": {
         "question": "AgentOS は LangChain、CrewAI、AutoGen とどう違うのですか?",
         "answer": "AgentOS は TypeScript ネイティブで(Python ではなく)、Ebbinghaus 減衰曲線と HEXACO パーソナリティモデリングを備えた認知メモリを含み、基本的なプロンプトフィルタリングではなく 5 段階のセキュリティ階層を提供し、37 種類の組み込みチャネルアダプタ(Discord、Telegram、Slack、メールなど)を備え、グラフベースのエージェント DAG を含む 6 つのオーケストレーション戦略をサポートします。また、88 種類の厳選スキルと、トークン使用量を約 90% 削減する能力ディスカバリーエンジンを同梱しています。"
+      },
+      "whatIsParacosm": {
+        "question": "Paracosm とは何ですか?",
+        "answer": "Paracosm (https://paracosm.agentos.sh) は AgentOS の上に構築された構造化ワールドモデル・シミュレーションエンジンです。JSON の ScenarioPackage と HEXACO のリーダープロファイルを決定論的なターンループにコンパイルし、AgentOS エージェントがイベントを提案し、強化された node:vm サンドボックス内で新しい TypeScript ツールを実行時にフォージし、フォークしてリプレイ可能な反実仮想のアーティファクトを生成します。3 つのモードが 1 つのスキーマを共有します。ターンループ型の文明シム (Mars Genesis が代表例)、バッチ軌道のデジタルツイン、バッチポイントのモンテカルロ予測です。Apache 2.0 のもとオープンソース、npm install paracosm。ライブデモ: https://paracosm.agentos.sh/sim。ソース: https://github.com/framersai/paracosm。長文のローンチ記事 (なぜ作ったか、wilds.ai のヴォルトの話、エンジンリファレンス): https://agentos.sh/blog/paracosm-launch。"
+      },
+      "whatIsWildsAi": {
+        "question": "Wilds.ai とは何ですか?",
+        "answer": "Wilds.ai (https://wilds.ai) は AgentOS と Paracosm の上に構築された AI ネイティブなゲーミングプラットフォームです。永続的な認知メモリと HEXACO のパーソナリティ特性を持つ AI キャラクターが共有のワールドモデルに住み、グラウンドされた LLM-as-judge イベントによって互いに分岐していきます。プレイヤーは既存のワールドに参加したり、フォークしたり、ブラウザで新しいワールドをコンパイルしたりできます。Wilds.ai は AgentOS + Paracosm スタックの正規の本番デプロイであり、両プロジェクトの公式コミュニティおよびサポートチャネル (https://wilds.ai/discord) です。"
+      },
+      "whatIsWunderland": {
+        "question": "Wunderland とは何ですか?",
+        "answer": "Wunderland (https://wunderland.sh) は活発に開発中の姉妹プロジェクトで、AgentOS の拡張機能とスキルレジストリの上にバッテリー付きの CLI とデーモンをパッケージ化したものです。28 コマンドの CLI (setup、chat、rag、agency、workflows、evaluate、provenance、knowledge、marketplace など)、5 段階のセキュリティモデル (dangerous / permissive / balanced / strict / paranoid)、8 つのエージェントプリセット、ステップアップ HITL 認可、そして AgentOS のドキュメントに記載されているのと同じ認知メモリとグラフベース RAG アーキテクチャを同梱しています。アプリケーションに埋め込むための TypeScript SDK が欲しいときは @framers/agentos を、pnpm add -g wunderland でインストールしてウィザードで設定できるグローバル CLI が欲しいときは Wunderland を使ってください。ソースは github.com/jddunn/wunderland (0.71.0 から Apache 2.0)。プレビューリリースのため、API と CLI のサーフェスはまだ変更される可能性があります。スタートガイド: https://docs.agentos.sh/wunderland。"
       }
     },
     "technical": {
@@ -1117,8 +1129,8 @@
         ],
         "capabilities": [
           "HyDE Retrieval",
-          "GraphRAG Pipeline",
-          "Multi-Backend Storage"
+          "GraphRAG パイプライン",
+          "マルチバックエンドストレージ"
         ]
       },
       "orchestration": {
@@ -1132,8 +1144,8 @@
         ],
         "capabilities": [
           "Mission API",
-          "Workflow Engine",
-          "Agent Graphs"
+          "ワークフローエンジン",
+          "エージェントグラフ"
         ]
       },
       "streaming": {
@@ -1146,9 +1158,9 @@
           "ツール進行イベント"
         ],
         "capabilities": [
-          "Event Streaming",
-          "Streaming Guards",
-          "Progress Tracking"
+          "イベントストリーミング",
+          "ストリーミングガード",
+          "進捗トラッキング"
         ]
       },
       "hexaco": {
@@ -1206,9 +1218,9 @@
           "OpenRouter bridge"
         ],
         "capabilities": [
-          "Provider Registry",
-          "Fallback Chains",
-          "Model Resolution"
+          "プロバイダーレジストリ",
+          "フォールバックチェーン",
+          "モデル解決"
         ]
       }
     }
@@ -1379,7 +1391,8 @@
           "name": "HyDE",
           "description": "仮想回答を生成して抽象クエリのリコールを向上。",
           "badge": "オプション",
-          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels"
+          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels",
+          "citationUrl": "https://arxiv.org/abs/2212.10496"
         },
         "graphrag": {
           "name": "GraphRAG",
@@ -1401,10 +1414,10 @@
     "title": "創発的能力",
     "subtitle": "実行時に自らのツールを鍛造し、専門サブエージェントを生成するエージェント",
     "statPills": [
-      "Lifetime tiers: session / agent / shared",
-      "Judge approval required",
-      "Sandbox-executed",
-      "Auto-promotion on reliability"
+      "ライフサイクル階層: セッション / エージェント / 共有",
+      "ジャッジ承認が必要",
+      "サンドボックス実行",
+      "信頼性による自動昇格"
     ],
     "tabs": {
       "toolForging": "ランタイム・ツール鍛造",
@@ -1419,11 +1432,11 @@
       "step5": "エージェントが使用",
       "description": "Runtime Tool Forgingとは、エージェントが意思決定の途中で新しいTypeScript関数を書き、それを別の判定LLMにレビューさせ、強化されたnode:vmサンドボックス内で実行することを意味します（デフォルトの壁時計5秒、名目メモリ予算128 MB、fetch/fs/cryptoのためのデフォルト空の許可リスト、eval/require/import/process/child_processは静的に禁止）、すべて次のターンの前に行います。承認されたツールは再利用のために発見可能なインデックスに登録されるため、セッション内の最初の数回の鍛造後にコストが平坦化します。",
       "details": [
-        "Composable mode: chains existing tools via pipeline steps — safe by construction",
-        "Sandbox mode: agent-written code runs in memory/time-bounded isolation",
-        "Three-tier lifecycle: session-scoped, agent-scoped, or promoted to shared registry",
-        "Dual-judge promotion panel: safety auditor + correctness reviewer must both approve",
-        "Usage tracking with automatic tier promotion when reliability thresholds are met"
+        "Composable モード: パイプラインステップで既存ツールを連鎖、構造的に安全",
+        "Sandbox モード: エージェントが書いたコードはメモリと時間で制限された分離環境で実行",
+        "3 階層ライフサイクル: セッションスコープ、エージェントスコープ、または共有レジストリに昇格",
+        "ダブルジャッジ昇格パネル: 安全監査人と正確性レビュアの両方が承認する必要あり",
+        "信頼性しきい値に達したときの自動階層昇格付きの利用トラッキング"
       ]
     },
     "synthesis": {

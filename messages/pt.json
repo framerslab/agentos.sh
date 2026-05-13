@@ -697,7 +697,7 @@
       },
       "safety": {
         "traditional": "Sem segurança",
-        "gmi": "built-in safety guardrails with streaming evaluation"
+        "gmi": "Segurança de conteúdo em tempo real com redação de PII e defesa contra injection"
       }
     }
   },
@@ -821,7 +821,7 @@
     "hero": {
       "weAreFramers": "somos os framers",
       "title": "Sobre AgentOS",
-      "description": "AgentOS is an open‑source TypeScript runtime for building adaptive, emergent AI agent systems. Built by <link>Frame.dev</link>, AgentOS powers intelligent applications with GMI orchestration, persistent memory, and enterprise‑grade guardrails."
+      "description": "AgentOS é um runtime TypeScript open-source para construir sistemas de agentes IA adaptativos e emergentes. Construído por <manicLink>Manic Agency LLC</manicLink> e <frameLink>Frame.dev</frameLink>, AgentOS impulsiona aplicações inteligentes com orquestração GMI, memória persistente e guardrails de nível empresarial. Também impulsiona os sistemas de IA por trás de <wildsLink>Wilds.ai</wildsLink>."
     },
     "mission": {
       "title": "Nossa Missão",
@@ -889,6 +889,18 @@
       "comparison": {
         "question": "Como AgentOS é diferente de LangChain, CrewAI ou AutoGen?",
         "answer": "AgentOS é nativo em TypeScript (não Python), inclui memória cognitiva com curvas de decaimento de Ebbinghaus e modelagem de personalidade HEXACO, oferece 5 níveis de segurança em vez de filtragem básica de prompts, fornece 37 adaptadores de canal integrados (Discord, Telegram, Slack, e-mail e mais) e suporta 6 estratégias de orquestração, incluindo DAGs de agentes baseados em grafo. Também inclui 88 skills curadas e um motor de descoberta de capacidades que reduz o uso de tokens em cerca de 90%."
+      },
+      "whatIsParacosm": {
+        "question": "O que é Paracosm?",
+        "answer": "Paracosm (https://paracosm.agentos.sh) é um motor de simulação de modelos de mundo estruturados construído sobre AgentOS. Ele compila um ScenarioPackage JSON mais um perfil de líder HEXACO em um loop de turnos determinístico onde agentes AgentOS propõem eventos, forjam novas ferramentas TypeScript em tempo de execução dentro de um sandbox node:vm endurecido, e produzem um artefato contrafactual que você pode bifurcar e reproduzir. Três modos compartilham um esquema: simulações de civilização por turnos (Mars Genesis é o exemplo canônico), gêmeos digitais por trajetória em lote, e previsões Monte-Carlo por ponto em lote. Open-source sob Apache 2.0, npm install paracosm. Demo ao vivo: https://paracosm.agentos.sh/sim. Código fonte: https://github.com/framersai/paracosm. Post de lançamento extenso (por que o construímos, a história do vault de wilds.ai, a referência do motor): https://agentos.sh/blog/paracosm-launch."
+      },
+      "whatIsWildsAi": {
+        "question": "O que é Wilds.ai?",
+        "answer": "Wilds.ai (https://wilds.ai) é uma plataforma de jogos AI-nativa construída sobre AgentOS e Paracosm. Personagens IA com memória cognitiva persistente e traços de personalidade HEXACO habitam modelos de mundo compartilhados e divergem entre si com base em eventos LLM-como-juiz fundamentados. Os jogadores podem entrar em mundos existentes, bifurcá-los ou compilar novos no navegador. Wilds.ai é o deployment canônico de produção do stack AgentOS + Paracosm e o canal oficial de comunidade e suporte (https://wilds.ai/discord) para ambos os projetos."
+      },
+      "whatIsWunderland": {
+        "question": "O que é Wunderland?",
+        "answer": "Wunderland (https://wunderland.sh) é um projeto irmão em desenvolvimento ativo que empacota uma CLI batteries-included mais um daemon sobre os registros de extensões e skills do AgentOS. Ele oferece uma CLI de 28 comandos (setup, chat, rag, agency, workflows, evaluate, provenance, knowledge, marketplace e mais), um modelo de segurança de 5 níveis (dangerous / permissive / balanced / strict / paranoid), 8 presets de agente, autorização HITL com escalonamento, e a mesma arquitetura de memória cognitiva mais RAG baseada em grafo documentada nos docs do AgentOS. Use @framers/agentos quando quiser um SDK TypeScript para incorporar em sua aplicação; use Wunderland quando quiser uma CLI global que possa instalar com pnpm add -g wunderland e configurar com um assistente. Código fonte em github.com/jddunn/wunderland (Apache 2.0 desde 0.71.0). Versão preview; APIs e superfície da CLI ainda podem mudar. Guia de início: https://docs.agentos.sh/wunderland."
       }
     },
     "technical": {
@@ -1118,7 +1130,7 @@
         "capabilities": [
           "HyDE Retrieval",
           "GraphRAG Pipeline",
-          "Multi-Backend Storage"
+          "Armazenamento multi-backend"
         ]
       },
       "orchestration": {
@@ -1132,8 +1144,8 @@
         ],
         "capabilities": [
           "Mission API",
-          "Workflow Engine",
-          "Agent Graphs"
+          "Motor de Workflow",
+          "Grafos de Agentes"
         ]
       },
       "streaming": {
@@ -1146,9 +1158,9 @@
           "Eventos de progresso de tools"
         ],
         "capabilities": [
-          "Event Streaming",
-          "Streaming Guards",
-          "Progress Tracking"
+          "Streaming de Eventos",
+          "Guardas de Streaming",
+          "Rastreamento de Progresso"
         ]
       },
       "hexaco": {
@@ -1206,9 +1218,9 @@
           "OpenRouter bridge"
         ],
         "capabilities": [
-          "Provider Registry",
-          "Fallback Chains",
-          "Model Resolution"
+          "Registro de Provedores",
+          "Cadeias de Fallback",
+          "Resolução de Modelos"
         ]
       }
     }
@@ -1379,7 +1391,8 @@
           "name": "HyDE",
           "description": "Gera respostas hipoteticas para melhorar o recall em consultas abstratas.",
           "badge": "opcional",
-          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels"
+          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels",
+          "citationUrl": "https://arxiv.org/abs/2212.10496"
         },
         "graphrag": {
           "name": "GraphRAG",
@@ -1401,10 +1414,10 @@
     "title": "Capacidades Emergentes",
     "subtitle": "Agentes que forjam suas próprias ferramentas e geram sub-agentes especialistas em tempo de execução",
     "statPills": [
-      "Lifetime tiers: session / agent / shared",
-      "Judge approval required",
-      "Sandbox-executed",
-      "Auto-promotion on reliability"
+      "Níveis de ciclo de vida: sessão / agente / compartilhado",
+      "Aprovação de juiz necessária",
+      "Execução em sandbox",
+      "Auto-promoção por confiabilidade"
     ],
     "tabs": {
       "toolForging": "Forja de Ferramentas em Runtime",
@@ -1419,11 +1432,11 @@
       "step5": "Agente Usa",
       "description": "Runtime Tool Forging significa que um agente pode escrever para si uma nova função TypeScript no meio da decisão, tê-la revisada por um juiz LLM separado e executá-la dentro de uma sandbox node:vm reforçada (5s de relógio de parede padrão, 128 MB de orçamento de memória nominal, lista de permissões vazia por padrão para fetch/fs/crypto, eval/require/import/process/child_process proibidos estaticamente), tudo antes da próxima jogada. As ferramentas aprovadas são colocadas em um índice pesquisável para reutilização, de modo que o custo se estabiliza após as primeiras forjas em uma sessão.",
       "details": [
-        "Composable mode: chains existing tools via pipeline steps — safe by construction",
-        "Sandbox mode: agent-written code runs in memory/time-bounded isolation",
-        "Three-tier lifecycle: session-scoped, agent-scoped, or promoted to shared registry",
-        "Dual-judge promotion panel: safety auditor + correctness reviewer must both approve",
-        "Usage tracking with automatic tier promotion when reliability thresholds are met"
+        "Modo composable: encadeia ferramentas existentes via etapas de pipeline, seguro por construção",
+        "Modo sandbox: código escrito pelo agente roda em isolamento limitado por memória e tempo",
+        "Ciclo de vida em três níveis: por sessão, por agente, ou promovido ao registro compartilhado",
+        "Painel de promoção com juiz duplo: auditor de segurança e revisor de correção devem ambos aprovar",
+        "Rastreamento de uso com promoção automática de nível quando os limiares de confiabilidade são atingidos"
       ]
     },
     "synthesis": {

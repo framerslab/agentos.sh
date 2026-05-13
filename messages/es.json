@@ -310,7 +310,7 @@
         "capabilities": [
           "HyDE Retrieval",
           "GraphRAG Pipeline",
-          "Multi-Backend Storage"
+          "Almacenamiento multi-backend"
         ]
       },
       "orchestration": {
@@ -324,8 +324,8 @@
         ],
         "capabilities": [
           "Mission API",
-          "Workflow Engine",
-          "Agent Graphs"
+          "Motor de Workflow",
+          "Grafos de Agentes"
         ]
       },
       "streaming": {
@@ -338,9 +338,9 @@
           "Eventos de progreso de tools"
         ],
         "capabilities": [
-          "Event Streaming",
-          "Streaming Guards",
-          "Progress Tracking"
+          "Streaming de Eventos",
+          "Guardas de Streaming",
+          "Seguimiento de Progreso"
         ]
       },
       "hexaco": {
@@ -398,9 +398,9 @@
           "OpenRouter bridge"
         ],
         "capabilities": [
-          "Provider Registry",
-          "Fallback Chains",
-          "Model Resolution"
+          "Registro de Proveedores",
+          "Cadenas de Fallback",
+          "Resolución de Modelos"
         ]
       }
     }
@@ -624,7 +624,7 @@
       },
       "safety": {
         "traditional": "Sin seguridad",
-        "gmi": "built-in safety guardrails with streaming evaluation"
+        "gmi": "Seguridad de contenido en tiempo real con redacción de PII y defensa contra inyección"
       }
     }
   },
@@ -953,16 +953,6 @@
       "contributeCode": "Contribuir Código"
     }
   },
-  "coordination": {
-    "title": "Patrones de Coordinación",
-    "subtitle": "Patrones de diseño para flujos de trabajo multiagente complejos",
-    "patterns": {
-      "fanOut": "Patrón Fan-out",
-      "pipeline": "Patrón Pipeline",
-      "mapReduce": "Patrón Map-Reduce",
-      "consensus": "Patrón Consenso"
-    }
-  },
   "socialProof": {
     "badge": "Prueba social",
     "title": "Despliegues de confianza (próxima revelación)",
@@ -1009,7 +999,7 @@
     "hero": {
       "weAreFramers": "somos los framers",
       "title": "Sobre AgentOS",
-      "description": "AgentOS is an open‑source TypeScript runtime for building adaptive, emergent AI agent systems. Built by <link>Frame.dev</link>, AgentOS powers intelligent applications with GMI orchestration, persistent memory, and enterprise‑grade guardrails."
+      "description": "AgentOS es un runtime TypeScript de código abierto para construir sistemas de agentes IA adaptativos y emergentes. Construido por <manicLink>Manic Agency LLC</manicLink> y <frameLink>Frame.dev</frameLink>, AgentOS impulsa aplicaciones inteligentes con orquestación GMI, memoria persistente y guardrails de nivel empresarial. También impulsa los sistemas de IA detrás de <wildsLink>Wilds.ai</wildsLink>."
     },
     "mission": {
       "title": "Nuestra Misión",
@@ -1077,6 +1067,18 @@
       "comparison": {
         "question": "¿En qué se diferencia AgentOS de LangChain, CrewAI o AutoGen?",
         "answer": "AgentOS es nativo de TypeScript (no Python), incluye memoria cognitiva con curvas de decaimiento de Ebbinghaus y modelado de personalidad HEXACO, ofrece 5 niveles de seguridad en lugar de un filtrado básico de prompts, proporciona 37 adaptadores de canal integrados (Discord, Telegram, Slack, correo electrónico y más) y soporta 6 estrategias de orquestación, incluidos DAGs de agentes basados en grafo. También incluye 88 skills curadas y un motor de descubrimiento de capacidades que reduce el uso de tokens en aproximadamente un 90%."
+      },
+      "whatIsParacosm": {
+        "question": "¿Qué es Paracosm?",
+        "answer": "Paracosm (https://paracosm.agentos.sh) es un motor de simulación de modelos de mundo estructurados construido sobre AgentOS. Compila un ScenarioPackage en JSON más un perfil de líder HEXACO en un bucle de turnos determinista donde los agentes de AgentOS proponen eventos, forjan nuevas herramientas TypeScript en tiempo de ejecución dentro de un sandbox node:vm reforzado, y producen un artefacto contrafáctico que puedes bifurcar y reproducir. Tres modos comparten un esquema: simulaciones de civilización por turnos (Mars Genesis es el ejemplo canónico), gemelos digitales por trayectoria en lote, y pronósticos Monte-Carlo por punto en lote. Open-source bajo Apache 2.0, npm install paracosm. Demo en vivo: https://paracosm.agentos.sh/sim. Código fuente: https://github.com/framersai/paracosm. Post de lanzamiento extenso (por qué lo construimos, la historia del vault de wilds.ai, la referencia del motor): https://agentos.sh/blog/paracosm-launch."
+      },
+      "whatIsWildsAi": {
+        "question": "¿Qué es Wilds.ai?",
+        "answer": "Wilds.ai (https://wilds.ai) es una plataforma de juegos AI-nativa construida sobre AgentOS y Paracosm. Personajes IA con memoria cognitiva persistente y rasgos de personalidad HEXACO habitan modelos de mundo compartidos y divergen entre sí en función de eventos LLM-como-juez fundamentados. Los jugadores pueden entrar en mundos existentes, bifurcarlos o compilar nuevos en el navegador. Wilds.ai es el despliegue canónico de producción del stack AgentOS + Paracosm y el canal oficial de comunidad y soporte (https://wilds.ai/discord) para ambos proyectos."
+      },
+      "whatIsWunderland": {
+        "question": "¿Qué es Wunderland?",
+        "answer": "Wunderland (https://wunderland.sh) es un proyecto hermano en desarrollo activo que empaqueta una CLI con baterías incluidas más un daemon sobre los registros de extensiones y skills de AgentOS. Ofrece una CLI de 28 comandos (setup, chat, rag, agency, workflows, evaluate, provenance, knowledge, marketplace y más), un modelo de seguridad de 5 niveles (dangerous / permissive / balanced / strict / paranoid), 8 presets de agente, autorización HITL con elevación de privilegios, y la misma arquitectura de memoria cognitiva más RAG basada en grafo documentada en los docs de AgentOS. Usa @framers/agentos cuando quieras un SDK TypeScript para incrustar en tu aplicación; usa Wunderland cuando quieras una CLI global que puedas instalar con pnpm add -g wunderland y configurar con un asistente. Código fuente en github.com/jddunn/wunderland (Apache 2.0 desde 0.71.0). Versión preview; las APIs y la superficie de la CLI aún pueden cambiar. Guía de inicio: https://docs.agentos.sh/wunderland."
       }
     },
     "technical": {
@@ -1389,7 +1391,8 @@
           "name": "HyDE",
           "description": "Genera respuestas hipoteticas para mejorar el recall en consultas abstractas.",
           "badge": "opcional",
-          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels"
+          "citation": "Precise Zero-Shot Dense Retrieval without Relevance Labels",
+          "citationUrl": "https://arxiv.org/abs/2212.10496"
         },
         "graphrag": {
           "name": "GraphRAG",
@@ -1411,10 +1414,10 @@
     "title": "Capacidades Emergentes",
     "subtitle": "Agentes que forjan sus propias herramientas y generan sub-agentes especialistas en tiempo de ejecución",
     "statPills": [
-      "Lifetime tiers: session / agent / shared",
-      "Judge approval required",
-      "Sandbox-executed",
-      "Auto-promotion on reliability"
+      "Niveles de ciclo de vida: sesión / agente / compartido",
+      "Aprobación de juez requerida",
+      "Ejecución en sandbox",
+      "Auto-promoción por confiabilidad"
     ],
     "tabs": {
       "toolForging": "Forja de Herramientas en Runtime",
@@ -1429,11 +1432,11 @@
       "step5": "El Agente la Usa",
       "description": "La Forja de Herramientas en Runtime significa que un agente puede escribirse una nueva función de TypeScript a mitad de decisión, hacer que un juez LLM separado la revise y ejecutarla dentro de un entorno seguro node:vm (5s de reloj de pared predeterminado, 128 MB de presupuesto de memoria nominal, lista de permitidos vacía por defecto para fetch/fs/crypto, eval/require/import/process/child_process prohibidos estáticamente), todo antes del siguiente turno. Las herramientas aprobadas se colocan en un índice consultable para su reutilización, por lo que el costo se aplana después de las primeras forjas en una sesión.",
       "details": [
-        "Composable mode: chains existing tools via pipeline steps — safe by construction",
-        "Sandbox mode: agent-written code runs in memory/time-bounded isolation",
-        "Three-tier lifecycle: session-scoped, agent-scoped, or promoted to shared registry",
-        "Dual-judge promotion panel: safety auditor + correctness reviewer must both approve",
-        "Usage tracking with automatic tier promotion when reliability thresholds are met"
+        "Modo composable: encadena herramientas existentes mediante pasos de pipeline, seguro por construcción",
+        "Modo sandbox: el código escrito por el agente se ejecuta en aislamiento con límites de memoria y tiempo",
+        "Ciclo de vida de tres niveles: por sesión, por agente, o promovido al registro compartido",
+        "Panel de promoción con doble juez: el auditor de seguridad y el revisor de corrección deben aprobar ambos",
+        "Seguimiento de uso con promoción automática de nivel cuando se alcanzan los umbrales de confiabilidad"
       ]
     },
     "synthesis": {

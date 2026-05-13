@@ -310,7 +310,7 @@
         "capabilities": [
           "HyDE Retrieval",
           "GraphRAG Pipeline",
-          "Multi-Backend Storage"
+          "Multi-Backend-Speicher"
         ]
       },
       "orchestration": {
@@ -324,8 +324,8 @@
         ],
         "capabilities": [
           "Mission API",
-          "Workflow Engine",
-          "Agent Graphs"
+          "Workflow-Engine",
+          "Agenten-Graphen"
         ]
       },
       "streaming": {
@@ -338,9 +338,9 @@
           "Tool-Fortschrittsereignisse"
         ],
         "capabilities": [
-          "Event Streaming",
-          "Streaming Guards",
-          "Progress Tracking"
+          "Event-Streaming",
+          "Streaming-Guards",
+          "Fortschritts-Tracking"
         ]
       },
       "hexaco": {
@@ -398,9 +398,9 @@
           "OpenRouter Bridge"
         ],
         "capabilities": [
-          "Provider Registry",
-          "Fallback Chains",
-          "Model Resolution"
+          "Provider-Registry",
+          "Fallback-Ketten",
+          "Modell-Auflösung"
         ]
       }
     }
@@ -437,7 +437,7 @@
         ]
       },
       "audit": {
-        "title": "Audit & Observability",
+        "title": "Audit & Beobachtbarkeit",
         "items": [
           "OpenTelemetry-kompatible Telemetrie (OTLP)",
           "Vollständige Audit-Protokollierung aller Agentenaktionen",
@@ -849,7 +849,7 @@
       },
       "safety": {
         "traditional": "Keine Sicherheit",
-        "gmi": "built-in safety guardrails with streaming evaluation"
+        "gmi": "Echtzeit-Inhaltssicherheit mit PII-Redaktion und Injection-Abwehr"
       }
     }
   },
@@ -857,7 +857,7 @@
     "hero": {
       "weAreFramers": "wir sind die framers",
       "title": "Über AgentOS",
-      "description": "AgentOS is an open‑source TypeScript runtime for building adaptive, emergent AI agent systems. Built by <link>Frame.dev</link>, AgentOS powers intelligent applications with GMI orchestration, persistent memory, and enterprise‑grade guardrails."
+      "description": "AgentOS ist eine Open-Source-TypeScript-Runtime zum Bauen adaptiver, emergenter KI-Agenten-Systeme. Entwickelt von <manicLink>Manic Agency LLC</manicLink> und <frameLink>Frame.dev</frameLink>, treibt AgentOS intelligente Anwendungen mit GMI-Orchestrierung, persistentem Gedächtnis und Enterprise-Grade-Guardrails an. Es betreibt auch die KI-Systeme hinter <wildsLink>Wilds.ai</wildsLink>."
     },
     "mission": {
       "title": "Unsere Mission",
@@ -925,6 +925,18 @@
       "comparison": {
         "question": "Wie unterscheidet sich AgentOS von LangChain, CrewAI oder AutoGen?",
         "answer": "AgentOS ist TypeScript-nativ (nicht Python), enthält kognitives Gedächtnis mit Ebbinghaus-Vergessenskurven und HEXACO-Persönlichkeitsmodellierung, bietet 5 Sicherheitsstufen statt nur einfacher Prompt-Filterung, stellt 37 integrierte Kanal-Adapter bereit (Discord, Telegram, Slack, E-Mail und mehr) und unterstützt 6 Orchestrierungsstrategien einschließlich graphbasierter Agenten-DAGs. Außerdem werden 88 kuratierte Skills und eine Capability-Discovery-Engine mitgeliefert, die den Token-Verbrauch um etwa 90% reduziert."
+      },
+      "whatIsParacosm": {
+        "question": "Was ist Paracosm?",
+        "answer": "Paracosm (https://paracosm.agentos.sh) ist eine strukturierte Welt-Modell-Simulations-Engine auf Basis von AgentOS. Sie kompiliert ein JSON-ScenarioPackage plus ein HEXACO-Leader-Profil zu einer deterministischen Zugschleife, in der AgentOS-Agenten Ereignisse vorschlagen, neue TypeScript-Tools zur Laufzeit in einer gehärteten node:vm-Sandbox schmieden und ein kontrafaktisches Artefakt erzeugen, das du forken und erneut abspielen kannst. Drei Modi teilen sich ein Schema: zugbasierte Zivilisationssimulationen (Mars Genesis ist das kanonische Beispiel), Batch-Trajektorie-Digital-Twins und Batch-Punkt-Monte-Carlo-Prognosen. Open-Source unter Apache 2.0, npm install paracosm. Live-Demo: https://paracosm.agentos.sh/sim. Quellcode: https://github.com/framersai/paracosm. Ausführlicher Launch-Post (warum wir es gebaut haben, die wilds.ai-Vault-Geschichte, die Engine-Referenz): https://agentos.sh/blog/paracosm-launch."
+      },
+      "whatIsWildsAi": {
+        "question": "Was ist Wilds.ai?",
+        "answer": "Wilds.ai (https://wilds.ai) ist eine AI-native Gaming-Plattform auf Basis von AgentOS und Paracosm. KI-Charaktere mit persistentem kognitivem Gedächtnis und HEXACO-Persönlichkeitsmerkmalen bewohnen gemeinsame Weltmodelle und divergieren voneinander basierend auf fundierten LLM-as-Judge-Ereignissen. Spieler können in bestehende Welten einsteigen, sie forken oder neue im Browser kompilieren. Wilds.ai ist der kanonische Produktions-Deployment des AgentOS + Paracosm-Stacks und der offizielle Community- und Support-Kanal (https://wilds.ai/discord) für beide Projekte."
+      },
+      "whatIsWunderland": {
+        "question": "Was ist Wunderland?",
+        "answer": "Wunderland (https://wunderland.sh) ist ein Schwesterprojekt in aktiver Entwicklung, das eine Batteries-included-CLI plus Daemon auf die AgentOS-Extension- und Skill-Registries packt. Es bringt eine 28-Befehle-CLI (setup, chat, rag, agency, workflows, evaluate, provenance, knowledge, marketplace und mehr), ein 5-stufiges Sicherheitsmodell (dangerous / permissive / balanced / strict / paranoid), 8 Agenten-Presets, Step-up-HITL-Autorisierung und dieselbe kognitive Gedächtnis- plus graphbasierte RAG-Architektur mit, die in den AgentOS-Dokumenten beschrieben ist. Verwende @framers/agentos, wenn du ein TypeScript-SDK in deine Anwendung einbetten möchtest; verwende Wunderland, wenn du eine globale CLI möchtest, die du mit pnpm add -g wunderland installieren und mit einem Assistenten konfigurieren kannst. Quellcode auf github.com/jddunn/wunderland (Apache 2.0 ab 0.71.0). Preview-Release; APIs und CLI-Oberfläche können sich noch ändern. Erste-Schritte-Anleitung: https://docs.agentos.sh/wunderland."
       }
     },
     "technical": {
@@ -1101,7 +1113,7 @@
     "title": "Das AgentOS-Ökosystem",
     "subtitle": "Erkunde das produktionsreife AgentOS-Ökosystem, das adaptive, emergente und persistente Intelligenz antreibt — SDKs, Agenten, RAG-Utilities und Deployment-Kits für Enterprise-KI-Teams.",
     "stats": {
-      "repositories": "Repositories",
+      "repositories": "Repositorys",
       "weeklyDownloads": "Wöchentliche Downloads",
       "githubStars": "GitHub-Sterne"
     },
@@ -1402,10 +1414,10 @@
     "title": "Emergente Fähigkeiten",
     "subtitle": "Agenten, die zur Laufzeit eigene Werkzeuge schmieden und Spezialisten-Sub-Agenten erzeugen",
     "statPills": [
-      "Lifetime tiers: session / agent / shared",
-      "Judge approval required",
-      "Sandbox-executed",
-      "Auto-promotion on reliability"
+      "Lebenszyklus-Tiers: Session / Agent / geteilt",
+      "Judge-Genehmigung erforderlich",
+      "Sandbox-Ausführung",
+      "Auto-Promotion bei Zuverlässigkeit"
     ],
     "tabs": {
       "toolForging": "Runtime-Tool-Forging",
@@ -1420,11 +1432,11 @@
       "step5": "Agent nutzt es",
       "description": "Runtime-Tool-Forging bedeutet, dass ein Agent sich während einer Entscheidung eine neue TypeScript-Funktion schreiben, sie von einem separaten Richter-LLM überprüfen lassen und sie in einer gehärteten node:vm-Sandbox ausführen kann (5s Standard-Wanduhr, 128 MB nominales Speicherbudget, standardmäßig leere Erlaubnisliste für fetch/fs/crypto, statisch verbotene eval/require/import/process/child_process), alles vor dem nächsten Zug. Genehmigte Werkzeuge landen in einem auffindbaren Index zur Wiederverwendung, sodass die Kosten nach den ersten wenigen Schmieden in einer Sitzung abflachen.",
       "details": [
-        "Composable mode: chains existing tools via pipeline steps — safe by construction",
-        "Sandbox mode: agent-written code runs in memory/time-bounded isolation",
-        "Three-tier lifecycle: session-scoped, agent-scoped, or promoted to shared registry",
-        "Dual-judge promotion panel: safety auditor + correctness reviewer must both approve",
-        "Usage tracking with automatic tier promotion when reliability thresholds are met"
+        "Composable-Modus: verkettet bestehende Tools über Pipeline-Schritte, sicher by construction",
+        "Sandbox-Modus: vom Agenten geschriebener Code läuft in speicher- und zeitbegrenzter Isolation",
+        "Drei-Tier-Lebenszyklus: sitzungsbezogen, agentenbezogen oder in die geteilte Registry hochgestuft",
+        "Doppel-Judge-Promotion-Panel: Sicherheitsauditor und Korrektheitsprüfer müssen beide zustimmen",
+        "Nutzungs-Tracking mit automatischer Tier-Promotion, wenn Zuverlässigkeitsschwellen erreicht werden"
       ]
     },
     "synthesis": {
