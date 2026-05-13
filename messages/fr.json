@@ -117,8 +117,8 @@
       "securityScore": "Score de sécurité"
     },
     "compliance": {
-      "gdpr": "Conforme GDPR et PII",
-      "soc2": "SOC 2 — Prévu",
+      "gdpr": "Guardrails prêts pour le RGPD",
+      "soc2": "Auto-hébergé sur votre infrastructure",
       "enterpriseSupport": "Support d'entreprise disponible"
     }
   },
@@ -428,9 +428,9 @@
         ]
       },
       "compliance": {
-        "title": "Conformité et Confidentialité",
+        "title": "Architecture de Confidentialité",
         "items": [
-          "Gestion des PII conforme au RGPD",
+          "Rédaction de PII alignée RGPD (18 types d'entités)",
           "Suivi de provenance et lignage des données",
           "Mémoire cognitive avec courbes de déclin d'Ebbinghaus",
           "Déclin de confiance des sources pour les connaissances anciennes"
@@ -446,10 +446,10 @@
         ]
       },
       "soc2": {
-        "title": "Préparation SOC 2",
+        "title": "Architecture adaptée à l'audit",
         "items": [
-          "Certification Type II planifiée",
-          "Surveillance continue de la conformité",
+          "Journaux d'audit structurés par événement",
+          "Chaînes de provenance cryptographiques",
           "Support de déploiement self-hosted"
         ]
       },
@@ -469,8 +469,8 @@
         "description": "Sécurité à 5 niveaux, 6 guardrails, rédaction PII, journalisation d'audit, mémoire cognitive et 115 extensions sont prêts pour la production aujourd'hui"
       },
       "inProgress": {
-        "title": "Planifié",
-        "description": "La certification SOC 2 Type II et les audits formels de conformité sont en cours"
+        "title": "Piste d'audit",
+        "description": "Journaux structurés par rédaction, chaînes de provenance et résidence de données self-hosted. Les attestations formelles SOC 2 et RGPD relèvent de la responsabilité organisationnelle de l'équipe qui déploie, pas d'une propriété de la bibliothèque."
       },
       "enterpriseSupport": {
         "title": "Support Entreprise",
@@ -1113,8 +1113,8 @@
         "answer": "Oui. AgentOS vous permet de contrôler exactement le degré de liberté de vos agents — du totalement ouvert au complètement verrouillé. Il bloque les attaques par prompt injection, rédige les données personnelles, modère le contenu en temps réel, exige une approbation pour les appels d’outils sensibles, applique des limites de budget et inclut des disjoncteurs et du rate limiting."
       },
       "compliance": {
-        "question": "Quelles normes de conformité AgentOS prend-il en charge ?",
-        "answer": "AgentOS est conçu en gardant à l’esprit la conformité GDPR — les guardrails de rédaction de PII peuvent supprimer les données personnelles avant qu’elles n’atteignent les fournisseurs LLM. Toutes les données restent sur votre infrastructure en auto-hébergement. La documentation de conformité SOC 2 est prévue. Le système de mémoire prend en charge la suppression et l’exportation de données pour les demandes de droit d’accès."
+        "question": "Comment AgentOS prend-il en charge les workflows RGPD et SOC 2 ?",
+        "answer": "AgentOS inclut des guardrails de rédaction de PII qui suppriment les données personnelles avant qu'elles n'atteignent les fournisseurs LLM, des journaux d'audit structurés pour chaque événement de rédaction et un déploiement auto-hébergé pour que les données restent sur votre infrastructure. Le système de mémoire prend en charge la suppression et l'exportation pour les demandes de droit d'accès. La conformité RGPD et SOC 2 relève de la responsabilité organisationnelle de l'équipe qui déploie, pas d'une propriété de la bibliothèque elle-même."
       },
       "support": {
         "question": "Le support entreprise est-il disponible ?",

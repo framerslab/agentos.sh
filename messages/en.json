@@ -98,8 +98,8 @@
       "securityScore": "Security Score"
     },
     "compliance": {
-      "gdpr": "GDPR & PII Compliant",
-      "soc2": "SOC 2 — Planned",
+      "gdpr": "GDPR-ready guardrails",
+      "soc2": "Self-hosted on your infra",
       "enterpriseSupport": "Enterprise Support Available"
     },
     "capabilities": {
@@ -428,9 +428,9 @@
         ]
       },
       "compliance": {
-        "title": "Compliance & Privacy",
+        "title": "Privacy Architecture",
         "items": [
-          "GDPR-compliant PII handling",
+          "GDPR-aligned PII redaction (18 entity types)",
           "Data provenance and lineage tracking",
           "Cognitive memory with Ebbinghaus decay curves",
           "Source confidence decay for aging knowledge"
@@ -446,10 +446,10 @@
         ]
       },
       "soc2": {
-        "title": "SOC 2 Readiness",
+        "title": "Audit-Friendly Architecture",
         "items": [
-          "Type II certification planned",
-          "Continuous compliance monitoring",
+          "Per-event structured audit logs",
+          "Cryptographic provenance chains",
           "Self-hosted deployment support"
         ]
       },
@@ -469,8 +469,8 @@
         "description": "PII redaction, prompt injection defense, content moderation, audit logging, cognitive memory, and 115 extensions are production-ready today"
       },
       "inProgress": {
-        "title": "Planned",
-        "description": "SOC 2 Type II certification and formal compliance audits are in progress"
+        "title": "Audit Trail",
+        "description": "Per-redaction structured logs, provenance chains, and self-hosted data residency. Formal SOC 2 and GDPR attestations are the deploying organization's responsibility, not a library property."
       },
       "enterpriseSupport": {
         "title": "Enterprise Support",
@@ -1083,8 +1083,8 @@
         "answer": "Yes. AgentOS lets you control exactly how much freedom your agents have — from wide open to fully locked down. It blocks prompt injection attacks, redacts personal data, moderates content in real time, requires approval for sensitive tool calls, enforces budget limits, and includes circuit breakers and rate limiting."
       },
       "compliance": {
-        "question": "What compliance standards does AgentOS address?",
-        "answer": "AgentOS is designed with GDPR readiness in mind — PII redaction guardrails can strip personal data before it reaches LLM providers. All data stays on your infrastructure when self-hosted. SOC 2 compliance documentation is planned. The memory system supports data deletion and export for right-to-access requests."
+        "question": "How does AgentOS support GDPR and SOC 2 workflows?",
+        "answer": "AgentOS ships PII redaction guardrails that strip personal data before it reaches LLM providers, structured audit logs for every redaction event, and self-hosted deployment so data stays on your infrastructure. The memory system supports deletion and export for data-subject access requests. GDPR and SOC 2 compliance are organizational responsibilities of the deploying team, not properties of the library itself."
       },
       "support": {
         "question": "Is there enterprise support available?",

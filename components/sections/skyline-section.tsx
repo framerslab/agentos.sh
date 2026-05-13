@@ -36,7 +36,12 @@ interface BuildingFeature {
 
 /**
  * Six enterprise pillars, each rendered as a building in the animated skyline.
- * Heights reflect implementation maturity; SOC 2 is the only WIP item.
+ * All six describe shipped capabilities; the "soc2" id is retained as a stable
+ * translation key but now surfaces audit-friendly architecture features
+ * (structured audit logs, provenance chains, self-hosted residency) rather
+ * than any certification claim. Library-level "SOC 2 / GDPR compliant"
+ * claims are deliberately avoided: those regimes apply to the deploying
+ * organization, not to an npm package.
  */
 const skylineFeatures: BuildingFeature[] = [
   {
@@ -76,7 +81,7 @@ const skylineFeatures: BuildingFeature[] = [
     height: 4,
     position: 70,
     icon: CertificateIcon,
-    status: 'building',
+    status: 'complete',
     glow: '#f97316'
   },
   {
@@ -93,10 +98,10 @@ const skylineFeatures: BuildingFeature[] = [
  * SkylineSection — consolidated enterprise section for the homepage.
  *
  * Renders an animated city-skyline visualization where each building represents
- * an enterprise capability pillar (security tiers, guardrails, compliance,
- * audit/observability, SOC 2 readiness, and production scale). Below the
- * skyline sit three legend cards (Fully Implemented / Planned / Enterprise
- * Support) and an enterprise contact CTA.
+ * an enterprise capability pillar (security tiers, guardrails, privacy
+ * architecture, audit/observability, audit-friendly architecture, and
+ * production scale). Below the skyline sit three legend cards (Fully
+ * Implemented / Audit Trail / Enterprise Support) and an enterprise contact CTA.
  */
 export function SkylineSection() {
   const t = useTranslations('enterprise')

@@ -117,8 +117,8 @@
       "securityScore": "Puntuación de seguridad"
     },
     "compliance": {
-      "gdpr": "Compatible con GDPR y PII",
-      "soc2": "SOC 2 — Planificado",
+      "gdpr": "Guardrails preparados para GDPR",
+      "soc2": "Auto-alojado en tu infraestructura",
       "enterpriseSupport": "Soporte Empresarial Disponible"
     }
   },
@@ -428,9 +428,9 @@
         ]
       },
       "compliance": {
-        "title": "Cumplimiento y Privacidad",
+        "title": "Arquitectura de Privacidad",
         "items": [
-          "Manejo de PII conforme a GDPR",
+          "Redacción de PII alineada con GDPR (18 tipos de entidades)",
           "Seguimiento de procedencia y linaje de datos",
           "Memoria cognitiva con curvas de decaimiento de Ebbinghaus",
           "Decaimiento de confianza de fuente para conocimiento antiguo"
@@ -446,10 +446,10 @@
         ]
       },
       "soc2": {
-        "title": "Preparación SOC 2",
+        "title": "Arquitectura preparada para auditoría",
         "items": [
-          "Certificación Tipo II planificada",
-          "Monitoreo continuo de cumplimiento",
+          "Registros de auditoría estructurados por evento",
+          "Cadenas de procedencia criptográficas",
           "Soporte para despliegue self-hosted"
         ]
       },
@@ -469,8 +469,8 @@
         "description": "Seguridad de 5 niveles, 6 guardrails, redacción PII, registro de auditoría, memoria cognitiva y 115 extensiones están listos para producción hoy"
       },
       "inProgress": {
-        "title": "Planificado",
-        "description": "La certificación SOC 2 Tipo II y las auditorías formales de cumplimiento están en progreso"
+        "title": "Registro de Auditoría",
+        "description": "Registros estructurados por redacción, cadenas de procedencia y residencia de datos self-hosted. Las atestaciones formales de SOC 2 y GDPR son responsabilidad organizacional del equipo que despliega, no una propiedad de la biblioteca."
       },
       "enterpriseSupport": {
         "title": "Soporte Empresarial",
@@ -1149,8 +1149,8 @@
         "answer": "Sí. AgentOS te permite controlar con precisión cuánta libertad tienen tus agentes — desde totalmente abiertos hasta completamente bloqueados. Bloquea ataques de prompt injection, redacta datos personales, modera contenido en tiempo real, requiere aprobación para llamadas a herramientas sensibles, aplica límites de presupuesto e incluye interruptores y rate limiting."
       },
       "compliance": {
-        "question": "¿Qué estándares de cumplimiento aborda AgentOS?",
-        "answer": "AgentOS está diseñado teniendo en cuenta la preparación para GDPR — los guardrails de redacción de PII pueden eliminar datos personales antes de que lleguen a los proveedores de LLM. Todos los datos permanecen en tu infraestructura cuando se aloja localmente. La documentación de cumplimiento SOC 2 está planificada. El sistema de memoria admite eliminación y exportación de datos para solicitudes de derecho de acceso."
+        "question": "¿Cómo soporta AgentOS los workflows de GDPR y SOC 2?",
+        "answer": "AgentOS incluye guardrails de redacción de PII que eliminan datos personales antes de que lleguen a los proveedores de LLM, registros de auditoría estructurados por cada evento de redacción y despliegue self-hosted para que los datos permanezcan en tu infraestructura. El sistema de memoria admite eliminación y exportación para solicitudes de derecho de acceso. El cumplimiento de GDPR y SOC 2 es una responsabilidad organizacional del equipo que despliega, no una propiedad de la biblioteca en sí."
       },
       "support": {
         "question": "¿Hay soporte empresarial disponible?",

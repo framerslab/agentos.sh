@@ -140,10 +140,10 @@ export function SchemaMarkup() {
       },
       {
         '@type': 'Question',
-        name: 'Is AgentOS GDPR compliant?',
+        name: 'How does AgentOS support GDPR workflows?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, AgentOS is fully GDPR compliant with PII redaction capabilities and data residency controls.'
+          text: 'AgentOS ships PII redaction guardrails that strip personal data before it reaches LLM providers, structured audit logs for every redaction event, and self-hosted deployment so data stays on your infrastructure. The memory system supports deletion and export for data-subject access requests. GDPR compliance itself is an organizational responsibility of the deploying team, not a property of the library.'
         }
       },
       {

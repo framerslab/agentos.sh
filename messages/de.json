@@ -98,8 +98,8 @@
       "securityScore": "Sicherheitsbewertung"
     },
     "compliance": {
-      "gdpr": "GDPR & PII-konform",
-      "soc2": "SOC 2 — Geplant",
+      "gdpr": "DSGVO-fähige Guardrails",
+      "soc2": "Self-hosted auf eigener Infrastruktur",
       "enterpriseSupport": "Enterprise-Support verfügbar"
     },
     "capabilities": {
@@ -428,9 +428,9 @@
         ]
       },
       "compliance": {
-        "title": "Compliance & Datenschutz",
+        "title": "Datenschutz-Architektur",
         "items": [
-          "DSGVO-konforme PII-Verarbeitung",
+          "DSGVO-orientierte PII-Redaktion (18 Entitätstypen)",
           "Datenherkunft und Lineage-Tracking",
           "Kognitives Gedächtnis mit Ebbinghaus-Vergessenskurven",
           "Quellenvertrauens-Zerfall für alterndes Wissen"
@@ -446,10 +446,10 @@
         ]
       },
       "soc2": {
-        "title": "SOC 2 Bereitschaft",
+        "title": "Audit-freundliche Architektur",
         "items": [
-          "Typ-II-Zertifizierung geplant",
-          "Kontinuierliches Compliance-Monitoring",
+          "Strukturierte Audit-Logs pro Ereignis",
+          "Kryptographische Herkunftsketten",
           "Self-Hosted-Deployment-Unterstützung"
         ]
       },
@@ -469,8 +469,8 @@
         "description": "5-Stufen-Sicherheit, 6 Guardrails, PII-Redaktion, Audit-Logging, kognitives Gedächtnis und 115 Erweiterungen sind heute produktionsreif"
       },
       "inProgress": {
-        "title": "Geplant",
-        "description": "SOC 2 Typ-II-Zertifizierung und formale Compliance-Audits sind in Arbeit"
+        "title": "Audit-Trail",
+        "description": "Strukturierte Logs pro Redaktion, Herkunftsketten und selbst gehostete Datenresidenz. Formale SOC-2- und DSGVO-Attestierungen liegen in der Verantwortung der einsetzenden Organisation, nicht als Bibliothekseigenschaft."
       },
       "enterpriseSupport": {
         "title": "Enterprise Support",
@@ -997,8 +997,8 @@
         "answer": "Ja. AgentOS lässt dich exakt steuern, wie viel Freiheit deine Agenten haben — von ganz offen bis vollständig gesperrt. Es blockiert Prompt-Injection-Angriffe, redigiert personenbezogene Daten, moderiert Inhalte in Echtzeit, verlangt Genehmigung für sensible Tool-Calls, erzwingt Budget-Limits und enthält Schutzschalter und Rate Limiting."
       },
       "compliance": {
-        "question": "Welche Compliance-Standards adressiert AgentOS?",
-        "answer": "AgentOS ist mit Blick auf DSGVO-Konformität konzipiert — PII-Redaktions-Guardrails können personenbezogene Daten entfernen, bevor sie LLM-Anbieter erreichen. Alle Daten bleiben bei Self-Hosting auf der eigenen Infrastruktur. SOC-2-Compliance-Dokumentation ist geplant. Das Memory-System unterstützt Datenlöschung und -export für Auskunftsersuchen."
+        "question": "Wie unterstützt AgentOS DSGVO- und SOC-2-Workflows?",
+        "answer": "AgentOS liefert PII-Redaktions-Guardrails, die personenbezogene Daten entfernen, bevor sie LLM-Anbieter erreichen, strukturierte Audit-Logs pro Redaktionsereignis und Self-Hosting, sodass Daten auf der eigenen Infrastruktur bleiben. Das Memory-System unterstützt Löschung und Export für Auskunftsersuchen. DSGVO- und SOC-2-Konformität sind organisatorische Verantwortungen des einsetzenden Teams, keine Eigenschaften der Bibliothek selbst."
       },
       "support": {
         "question": "Ist Enterprise-Support verfügbar?",
