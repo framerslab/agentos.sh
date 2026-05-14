@@ -1064,7 +1064,11 @@ function OutputPanel({ demo }: { demo: DemoData }) {
             $ node {exampleSlug}
           </span>
         </div>
-        <span className="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+        <span className="inline-flex items-center gap-1.5 rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+          <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          </span>
           Live run
         </span>
       </div>
@@ -1104,6 +1108,18 @@ export function LiveRunDemoSection() {
   return (
     <section className="relative mx-auto max-w-7xl px-6 py-24 md:py-32">
       <div className="mb-8 max-w-3xl">
+        {/* Verified-runs badge with pulsing indicator — signals the section is
+            live captures, not synthetic snippets. Sets the credibility tone
+            before the heading lands. */}
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1">
+          <span className="relative flex h-2 w-2" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+          </span>
+          <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+            Verified runs · Captured stdout
+          </span>
+        </div>
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[var(--color-text-primary)]">
           Real output from real scripts
         </h2>
@@ -1121,22 +1137,41 @@ export function LiveRunDemoSection() {
         </p>
       </div>
 
-      {/* Tab strip — horizontally scrollable on overflow */}
+      {/* Tab strip — horizontally scrollable on overflow with edge-fade
+          gradients so users perceive the overflow on narrow viewports. */}
       <div className="relative mb-6 -mx-4 sm:mx-0">
+        {/* Left edge fade — only visible on horizontal-scroll viewports */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[var(--color-background-primary)] via-[var(--color-background-primary)]/80 to-transparent sm:hidden"
+          aria-hidden="true"
+        />
+        {/* Right edge fade */}
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[var(--color-background-primary)] via-[var(--color-background-primary)]/80 to-transparent sm:hidden"
+          aria-hidden="true"
+        />
         <div className="overflow-x-auto px-4 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex gap-2 min-w-max sm:flex-wrap sm:min-w-0">
             {demos.map((d, i) => (
               <button
                 key={d.id}
                 onClick={() => setActiveId(d.id)}
+                aria-pressed={d.id === activeId}
                 className={
-                  'inline-flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors ' +
+                  'group inline-flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ' +
                   (d.id === activeId
-                    ? 'border border-[var(--color-border-interactive)] bg-[var(--color-background-elevated)] text-[var(--color-text-primary)] shadow-sm'
+                    ? 'border border-[var(--color-border-interactive)] bg-[var(--color-background-elevated)] text-[var(--color-text-primary)] shadow-sm ring-1 ring-[var(--color-accent-primary)]/25'
                     : 'border border-transparent bg-transparent text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-background-secondary)]')
                 }
               >
-                <span className="font-mono text-[11px] tabular-nums text-[var(--color-text-muted)]">
+                <span
+                  className={
+                    'font-mono text-[11px] tabular-nums transition-colors ' +
+                    (d.id === activeId
+                      ? 'text-[var(--color-accent-primary)] font-semibold'
+                      : 'text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)]')
+                  }
+                >
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span>{d.title}</span>
@@ -1188,18 +1223,26 @@ export function LiveRunDemoSection() {
         <OutputPanel demo={active} />
       </div>
 
-      {/* Caption */}
-      <p className="mt-6 max-w-3xl text-sm leading-relaxed text-[var(--color-text-secondary)]">
-        {active.caption}
-      </p>
+      {/* Caption — border-left callout treatment to set the explanation
+          apart from the surrounding panels. */}
+      <div className="mt-6 max-w-3xl border-l-2 border-[var(--color-accent-primary)]/40 pl-4">
+        <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+          {active.caption}
+        </p>
+      </div>
 
-      {/* CTAs - inverted button style, less neon */}
+      {/* CTAs — clear three-tier visual hierarchy:
+          1. Primary action  (solid, branded)
+          2. Install snippet (outlined, mono)
+          3. Tertiary links  (text-only, arrow-suffixed)
+          A subtle divider between secondary and tertiary so the eye reads
+          "act now / install / read more" without scanning every button. */}
       <div className="mt-8 flex flex-wrap items-center gap-3">
         <a
           href={`https://github.com/framersai/agentos/blob/master/${active.exampleSlug}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-text-primary)] px-5 py-2.5 text-sm font-semibold text-[var(--color-background-primary)] transition-opacity hover:opacity-90"
+          className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-text-primary)] px-5 py-2.5 text-sm font-semibold text-[var(--color-background-primary)] shadow-sm transition-all hover:opacity-90 hover:shadow-md"
         >
           <Github className="h-4 w-4" />
           Source on GitHub
@@ -1208,23 +1251,30 @@ export function LiveRunDemoSection() {
           href="https://www.npmjs.com/package/@framers/agentos"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-border-subtle)] bg-[var(--color-background-elevated)] px-5 py-2.5 font-mono text-xs font-medium text-[var(--color-text-primary)] transition-colors hover:border-[var(--color-border-interactive)]"
+          className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-border-subtle)] bg-[var(--color-background-elevated)] px-5 py-2.5 font-mono text-xs font-medium text-[var(--color-text-primary)] transition-colors hover:border-[var(--color-border-interactive)] hover:bg-[var(--color-background-secondary)]"
         >
           npm install @framers/agentos
         </a>
+        {/* Tier divider — visible on wide layouts only */}
+        <span
+          className="hidden h-6 w-px bg-[var(--color-border-subtle)] sm:block"
+          aria-hidden="true"
+        />
         <a
           href={`/${locale}/blog/agentos-memory-sota-longmemeval`}
-          className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
+          className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--color-text-secondary)] transition-all hover:text-[var(--color-text-primary)] hover:translate-x-0.5"
         >
-          85.6% on LongMemEval-S →
+          85.6% on LongMemEval-S
+          <span aria-hidden="true">→</span>
         </a>
         <a
           href="https://github.com/framersai/agentos/tree/master/examples"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
+          className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--color-text-secondary)] transition-all hover:text-[var(--color-text-primary)] hover:translate-x-0.5"
         >
-          Browse all 18 examples →
+          Browse all 18 examples
+          <span aria-hidden="true">→</span>
         </a>
       </div>
     </section>
