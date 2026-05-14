@@ -1467,6 +1467,10 @@
     "codeExampleLabel": "코드 예제",
     "sharedCapabilitiesTitle": "모든 전략에서 공유",
     "strategies": {
+      "single-agent": {
+        "name": "단일 에이전트",
+        "description": "단일 GMI 뇌가 작업 전체를 혼자 처리합니다. 팀 조정도, 공유 상태도 없습니다. 아래 전략들이 Agency가 무엇을 추가하는지 보여주는 기준선입니다."
+      },
       "sequential": {
         "name": "순차",
         "description": "에이전트가 선형 파이프라인에서 차례로 실행됩니다. 각 에이전트는 이전 에이전트의 출력을 컨텍스트로 받아 점진적 정제 체인을 형성합니다."
@@ -1497,6 +1501,7 @@
       }
     },
     "diagrams": {
+      "singleAgent": "에이전트",
       "agentA": "에이전트 A",
       "agentB": "에이전트 B",
       "agentC": "에이전트 C",

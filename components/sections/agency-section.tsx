@@ -12,6 +12,7 @@ import {
   Gauge,
   Eye,
   Users,
+  User,
   MessageSquare,
   RotateCcw,
   TreePine,
@@ -24,7 +25,7 @@ import {
 /*  Strategy type definitions                                          */
 /* ------------------------------------------------------------------ */
 
-type StrategyId = 'sequential' | 'parallel' | 'debate' | 'review-loop' | 'hierarchical' | 'graph'
+type StrategyId = 'single-agent' | 'sequential' | 'parallel' | 'debate' | 'review-loop' | 'hierarchical' | 'graph'
 
 interface StrategyDef {
   id: StrategyId
@@ -33,6 +34,7 @@ interface StrategyDef {
 }
 
 const STRATEGIES: StrategyDef[] = [
+  { id: 'single-agent', icon: User, color: 'var(--color-text-muted)' },
   { id: 'sequential', icon: ArrowRight, color: 'var(--color-accent-primary)' },
   { id: 'parallel', icon: Layers, color: 'var(--color-accent-secondary)' },
   { id: 'debate', icon: MessageSquare, color: '#f59e0b' },
@@ -46,6 +48,18 @@ const STRATEGIES: StrategyDef[] = [
 /* ------------------------------------------------------------------ */
 
 const CODE_SNIPPETS: Record<StrategyId, string> = {
+  'single-agent': `import { agent } from '@framers/agentos';
+
+// One GMI brain. Cognition, memory, persona, tools live inside.
+// No team, no shared state, no inter-agent flow.
+const writer = agent({
+  instructions: 'Research, draft, and polish an article.',
+});
+
+const { text } = await writer.generate('Write about quantum computing.');
+// The agency tabs below show what composing a team of these brains adds:
+// shared memory, shared RAG, inter-brain communication, orchestrated flow.`,
+
   sequential: `import { agency } from '@framers/agentos';
 
 const pipeline = agency({
@@ -258,6 +272,29 @@ function AgentNode({
   )
 }
 
+/** Single agent: Input -> one brain -> Output */
+function SingleAgentDiagram({ t }: { t: ReturnType<typeof useTranslations> }) {
+  return (
+    <svg viewBox="0 0 520 80" className="w-full h-auto" aria-label={t('strategies.single-agent.name')}>
+      <defs>
+        <marker id="single-arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="var(--color-text-muted)" />
+        </marker>
+      </defs>
+      {/* Arrows */}
+      <line x1="118" y1="40" x2="220" y2="40" stroke="var(--color-text-muted)" strokeWidth="1.5" markerEnd="url(#single-arrow)" opacity="0.6" />
+      <line x1="320" y1="40" x2="422" y2="40" stroke="var(--color-text-muted)" strokeWidth="1.5" markerEnd="url(#single-arrow)" opacity="0.6" />
+      {/* Flow dots */}
+      <FlowDot path="M118,40 L220,40" delay={0} duration={2.5} color="var(--color-text-muted)" />
+      <FlowDot path="M320,40 L422,40" delay={1.2} duration={2.5} color="var(--color-text-muted)" />
+      {/* Nodes */}
+      <AgentNode x={70} y={40} label={t('diagrams.input')} color="var(--color-text-muted)" w={76} />
+      <AgentNode x={270} y={40} label={t('diagrams.singleAgent')} color="var(--color-text-muted)" w={92} />
+      <AgentNode x={472} y={40} label={t('diagrams.output')} color="var(--color-text-muted)" w={76} />
+    </svg>
+  )
+}
+
 /** Sequential: A -> B -> C */
 function SequentialDiagram({ t }: { t: ReturnType<typeof useTranslations> }) {
   const agents = [
@@ -465,6 +502,8 @@ function GraphDiagram({ t }: { t: ReturnType<typeof useTranslations> }) {
 
 function StrategyDiagram({ strategy, t }: { strategy: StrategyId; t: ReturnType<typeof useTranslations> }) {
   switch (strategy) {
+    case 'single-agent':
+      return <SingleAgentDiagram t={t} />
     case 'sequential':
       return <SequentialDiagram t={t} />
     case 'parallel':

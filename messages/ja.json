@@ -1467,6 +1467,10 @@
     "codeExampleLabel": "コード例",
     "sharedCapabilitiesTitle": "すべての戦略で共有",
     "strategies": {
+      "single-agent": {
+        "name": "単一エージェント",
+        "description": "1 つの GMI ブレインがタスク全体を単独で処理します。チーム調整も共有状態もありません。以下の戦略が Agency によって何が追加されるかを示すためのベースラインです。"
+      },
       "sequential": {
         "name": "シーケンシャル",
         "description": "エージェントは線形パイプラインで次々と実行されます。各エージェントは前のエージェントの出力をコンテキストとして受け取り、漸進的な洗練のチェーンを形成します。"
@@ -1497,6 +1501,7 @@
       }
     },
     "diagrams": {
+      "singleAgent": "エージェント",
       "agentA": "エージェント A",
       "agentB": "エージェント B",
       "agentC": "エージェント C",

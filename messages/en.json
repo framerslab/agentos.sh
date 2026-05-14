@@ -1467,6 +1467,10 @@
     "codeExampleLabel": "Code Example",
     "sharedCapabilitiesTitle": "Shared Across All Strategies",
     "strategies": {
+      "single-agent": {
+        "name": "Single Agent",
+        "description": "One GMI brain handling the full task on its own. No team coordination, no shared state. The baseline against which the strategies below show what an agency adds."
+      },
       "sequential": {
         "name": "Sequential",
         "description": "Agents run one after another in a linear pipeline. Each agent receives the previous agent's output as context, forming a progressive refinement chain."
@@ -1497,6 +1501,7 @@
       }
     },
     "diagrams": {
+      "singleAgent": "Agent",
       "agentA": "Agent A",
       "agentB": "Agent B",
       "agentC": "Agent C",

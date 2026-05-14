@@ -1467,6 +1467,10 @@
     "codeExampleLabel": "Ejemplo de Código",
     "sharedCapabilitiesTitle": "Compartido entre Todas las Estrategias",
     "strategies": {
+      "single-agent": {
+        "name": "Agente Único",
+        "description": "Un solo cerebro GMI maneja la tarea completa por sí mismo. Sin coordinación de equipo, sin estado compartido. La línea base contra la cual las estrategias a continuación muestran lo que añade una agency."
+      },
       "sequential": {
         "name": "Secuencial",
         "description": "Los agentes se ejecutan uno tras otro en un pipeline lineal. Cada agente recibe la salida del anterior como contexto, formando una cadena de refinamiento progresivo."
@@ -1497,6 +1501,7 @@
       }
     },
     "diagrams": {
+      "singleAgent": "Agente",
       "agentA": "Agente A",
       "agentB": "Agente B",
       "agentC": "Agente C",

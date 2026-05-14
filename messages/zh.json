@@ -1467,6 +1467,10 @@
     "codeExampleLabel": "代码示例",
     "sharedCapabilitiesTitle": "所有策略共享",
     "strategies": {
+      "single-agent": {
+        "name": "单个智能体",
+        "description": "一个 GMI 大脑独立处理整个任务。无团队协调,无共享状态。下方策略相对于此基线展示 agency 增加了什么。"
+      },
       "sequential": {
         "name": "顺序",
         "description": "智能体在线性管道中依次运行。每个智能体接收前一个智能体的输出作为上下文,形成渐进式精炼链。"
@@ -1497,6 +1501,7 @@
       }
     },
     "diagrams": {
+      "singleAgent": "智能体",
       "agentA": "智能体 A",
       "agentB": "智能体 B",
       "agentC": "智能体 C",
