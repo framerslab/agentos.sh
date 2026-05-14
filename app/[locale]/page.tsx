@@ -41,14 +41,6 @@ const DemoVideoPlayerLazy = dynamic(
 // live on /about. The homepage stays focused on the conversion path:
 // hero → demo → benchmarks → live run gallery → code → CTAs.
 
-const CodeExamplesSectionLazy = dynamic(
-  () => import('../../components/sections/code-examples-section').then(m => m.CodeExamplesSection),
-  {
-    ssr: false,
-    loading: () => <SectionSkeleton minHeight={400} contentHeightClass="h-64" />,
-  }
-)
-
 const BenchmarksSectionLazy = dynamic(
   () => import('../../components/sections/benchmarks-section').then(m => m.BenchmarksSection),
   {
@@ -133,18 +125,14 @@ export default function LandingPageRedesigned() {
           <RuntimeIntelligenceSectionLazy />
         </div>
 
-        {/* Live run demo — real script + captured output side-by-side */}
-        <div id="live-demo" style={{ scrollMarginTop: '80px' }}>
-          <LiveRunDemoSectionLazy />
-        </div>
-
-        {/* Code Examples — production-ready code patterns. Hoisted up the page next
-            to the live run demo so the narrative flows: benchmarks (proof of quality)
-            → live run (proof it works) → code examples (here's how to write it). The
-            wrapping `id="code"` keeps the hero "See code examples" CTA href="#code"
-            scroll target stable. */}
+        {/* Examples — single consolidated surface: real scripts captured from
+            `node examples/...mjs`, side-by-side source + output. The wrapping
+            id="code" keeps the hero "See code examples" CTA scroll target
+            stable; id="live-demo" is preserved for any inbound deep link. */}
         <div id="code" style={{ scrollMarginTop: '80px' }}>
-          <CodeExamplesSectionLazy />
+          <div id="live-demo" style={{ scrollMarginTop: '80px' }}>
+            <LiveRunDemoSectionLazy />
+          </div>
         </div>
 
         {/* Whitepaper coming-soon CTA — full architecture + benchmark methodology.
