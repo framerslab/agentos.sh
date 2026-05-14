@@ -16,6 +16,8 @@ import {
   RotateCcw,
   TreePine,
   Workflow,
+  Share2,
+  BookOpen,
 } from 'lucide-react'
 
 /* ------------------------------------------------------------------ */
@@ -135,7 +137,9 @@ const team = agency({
     },
   },
   strategy: 'graph',
-  memory: { shared: true }, // scope: this generate() call
+  memory: { shared: true },               // cognitive memory shared across brains
+  rag: { vectorStore: 'in-memory', topK: 5 }, // shared retrieval corpus (RAG)
+  // shared state scope: this generate() call
 });`,
 }
 
@@ -150,6 +154,8 @@ interface SharedCapability {
 
 const SHARED_CAPABILITIES: SharedCapability[] = [
   { icon: Brain, labelKey: 'sharedMemory' },
+  { icon: BookOpen, labelKey: 'sharedRAG' },
+  { icon: Share2, labelKey: 'sharedExecState' },
   { icon: Eye, labelKey: 'hitlGates' },
   { icon: Zap, labelKey: 'streamingOutput' },
   { icon: Gauge, labelKey: 'resourceControls' },
@@ -641,7 +647,7 @@ export function AgencySection() {
               {t('sharedCapabilitiesTitle')}
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4">
             {SHARED_CAPABILITIES.map((cap) => {
               const Icon = cap.icon
               return (

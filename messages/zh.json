@@ -1463,7 +1463,7 @@
   "agencySection": {
     "badge": "多智能体编排",
     "title": "并行代理",
-    "subtitle": "使用 6 种内置执行策略协调专业化 GMI 团队。智能体共享记忆,通过结构化通道通信,以顺序、并行或基于依赖关系的顺序执行任务。",
+    "subtitle": "由专门化 GMI 组成的团队在整个 roster 中共享执行状态、认知内存和 RAG 上下文。6 种内置策略在大脑之间路由输出：顺序、并行、辩论、复审循环、分层或 graph DAG。",
     "codeExampleLabel": "代码示例",
     "sharedCapabilitiesTitle": "所有策略共享",
     "strategies": {
@@ -1520,6 +1520,8 @@
     },
     "sharedCapabilities": {
       "sharedMemory": "共享记忆",
+      "sharedRAG": "共享 RAG",
+      "sharedExecState": "共享执行状态",
       "hitlGates": "HITL 审批门",
       "streamingOutput": "流式输出",
       "resourceControls": "资源控制",

@@ -1463,7 +1463,7 @@
   "agencySection": {
     "badge": "Orquestación Multi-Agente",
     "title": "Agencia Paralela",
-    "subtitle": "Coordina equipos de GMIs especializados con 6 estrategias de ejecución integradas. Los agentes comparten memoria, se comunican a través de canales estructurados y ejecutan tareas en orden secuencial, paralelo o basado en dependencias.",
+    "subtitle": "Equipos de GMIs especializados comparten estado de ejecución, memoria cognitiva y contexto RAG a través del roster. Seis estrategias integradas enrutan salidas entre cerebros: secuencial, paralela, debate, review-loop, jerárquica o graph DAG.",
     "codeExampleLabel": "Ejemplo de Código",
     "sharedCapabilitiesTitle": "Compartido entre Todas las Estrategias",
     "strategies": {
@@ -1520,6 +1520,8 @@
     },
     "sharedCapabilities": {
       "sharedMemory": "Memoria Compartida",
+      "sharedRAG": "RAG Compartido",
+      "sharedExecState": "Estado de Ejecución Compartido",
       "hitlGates": "Gates de Aprobación HITL",
       "streamingOutput": "Salida en Streaming",
       "resourceControls": "Controles de Recursos",

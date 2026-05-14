@@ -1463,7 +1463,7 @@
   "agencySection": {
     "badge": "Orchestration Multi-Agents",
     "title": "Agency Parallèle",
-    "subtitle": "Coordonnez des équipes de GMI spécialisés avec 6 stratégies d’exécution intégrées. Les agents partagent la mémoire, communiquent via des canaux structurés et exécutent les tâches dans un ordre séquentiel, parallèle ou basé sur les dépendances.",
+    "subtitle": "Des équipes de GMIs spécialisés partagent l’état d’exécution, la mémoire cognitive et le contexte RAG à travers tout le roster. Six stratégies intégrées acheminent les sorties entre cerveaux : séquentielle, parallèle, débat, review-loop, hiérarchique ou graph DAG.",
     "codeExampleLabel": "Exemple de Code",
     "sharedCapabilitiesTitle": "Partagé entre Toutes les Stratégies",
     "strategies": {
@@ -1520,6 +1520,8 @@
     },
     "sharedCapabilities": {
       "sharedMemory": "Mémoire Partagée",
+      "sharedRAG": "RAG Partagé",
+      "sharedExecState": "État d’Exécution Partagé",
       "hitlGates": "Gates d’Approbation HITL",
       "streamingOutput": "Sortie en Streaming",
       "resourceControls": "Contrôles de Ressources",

@@ -1463,7 +1463,7 @@
   "agencySection": {
     "badge": "멀티 에이전트 오케스트레이션",
     "title": "병렬 에이전시",
-    "subtitle": "6가지 내장 실행 전략으로 전문화된 GMI 팀을 조정합니다. 에이전트는 메모리를 공유하고, 구조화된 채널을 통해 통신하며, 순차, 병렬 또는 의존성 기반 순서로 작업을 실행합니다.",
+    "subtitle": "전문화된 GMI 팀이 로스터 전체에서 실행 상태, 인지 메모리, RAG 컨텍스트를 공유합니다. 6가지 내장 전략이 뇌 간에 출력을 라우팅합니다: 순차, 병렬, 토론, 리뷰 루프, 계층, graph DAG.",
     "codeExampleLabel": "코드 예제",
     "sharedCapabilitiesTitle": "모든 전략에서 공유",
     "strategies": {
@@ -1520,6 +1520,8 @@
     },
     "sharedCapabilities": {
       "sharedMemory": "공유 메모리",
+      "sharedRAG": "공유 RAG",
+      "sharedExecState": "공유 실행 상태",
       "hitlGates": "HITL 승인 게이트",
       "streamingOutput": "스트리밍 출력",
       "resourceControls": "리소스 제어",

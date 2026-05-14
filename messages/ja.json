@@ -1463,7 +1463,7 @@
   "agencySection": {
     "badge": "マルチエージェント・オーケストレーション",
     "title": "パラレル・エージェンシー",
-    "subtitle": "6 つの組み込み実行戦略で専門化された GMI のチームを調整します。エージェントはメモリを共有し、構造化されたチャネルで通信し、シーケンシャル、パラレル、または依存関係ベースの順序でタスクを実行します。",
+    "subtitle": "専門化された GMI のチームが、ロスター全体で実行状態、認知メモリ、RAG コンテキストを共有します。6 つの組み込み戦略がブレイン間で出力をルーティングします：順次、並列、ディベート、レビューループ、階層、graph DAG。",
     "codeExampleLabel": "コード例",
     "sharedCapabilitiesTitle": "すべての戦略で共有",
     "strategies": {
@@ -1520,6 +1520,8 @@
     },
     "sharedCapabilities": {
       "sharedMemory": "共有メモリ",
+      "sharedRAG": "共有 RAG",
+      "sharedExecState": "共有実行状態",
       "hitlGates": "HITL 承認ゲート",
       "streamingOutput": "ストリーミング出力",
       "resourceControls": "リソース制御",

@@ -1463,7 +1463,7 @@
   "agencySection": {
     "badge": "Multi-Agent Orchestration",
     "title": "Parallel Agency",
-    "subtitle": "Coordinate teams of specialized GMIs with 6 built-in execution strategies. Agents share memory, communicate through structured channels, and execute tasks in sequential, parallel, or dependency-based order.",
+    "subtitle": "Teams of specialized GMIs share execution state, cognitive memory, and RAG context across the roster. Six built-in strategies route outputs between brains: sequential, parallel, debate, review-loop, hierarchical, or graph DAG.",
     "codeExampleLabel": "Code Example",
     "sharedCapabilitiesTitle": "Shared Across All Strategies",
     "strategies": {
@@ -1520,6 +1520,8 @@
     },
     "sharedCapabilities": {
       "sharedMemory": "Shared Memory",
+      "sharedRAG": "Shared RAG",
+      "sharedExecState": "Shared Execution State",
       "hitlGates": "HITL Approval Gates",
       "streamingOutput": "Streaming Output",
       "resourceControls": "Resource Controls",
