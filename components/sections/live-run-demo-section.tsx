@@ -57,6 +57,26 @@ interface DemoData {
   caption: React.ReactNode
 }
 
+const SINGLE_AGENT_CODE = `import { agent } from '@framers/agentos';
+
+// One GMI brain handles the whole task. Cognition, memory, persona, and
+// tools live inside this single agent(). No team, no shared state, no
+// inter-agent flow. This is the baseline that the next tab upgrades.
+const researcher = agent({
+  provider: 'openai',
+  model: 'gpt-4o',
+  instructions:
+    'You are a research analyst. Find authoritative sources and ' +
+    'write concise prose.',
+});
+
+const result = await researcher.generate(
+  'Write a 2-paragraph briefing on agentic-AI sandbox security risks. ' +
+  'Include a security-audit perspective on node:vm vs container isolation.',
+);
+
+console.log(result.text);`
+
 const EMERGENT_CODE = `import { agency } from '@framers/agentos';
 
 const team = agency({
@@ -165,6 +185,26 @@ for (const claim of result.claims) {
 }`
 
 const demos: DemoData[] = [
+  {
+    id: 'single-agent',
+    title: 'One agent, one task',
+    exampleSlug: 'examples/single-agent-briefing.mjs',
+    language: 'typescript',
+    code: SINGLE_AGENT_CODE,
+    output: {
+      finalAnswer:
+        "Agentic AI sandbox environments expose a recurring trade-off between isolation strength and operational cost. Node:vm runs untrusted code inside a fresh V8 context: light to spin up, ergonomic for short LLM-generated snippets, and adequate when the threat model is bugs rather than adversaries. The weakness is that node:vm shares the host Node.js process. Prototype-pollution paths, async-hook escapes, and richly documented context-break primitives mean an attacker with code-execution inside the sandbox can usually reach the host runtime. For a security audit, node:vm is acceptable only when the code's author is trusted and the data inside the sandbox is non-sensitive.\n\nContainer isolation (Docker, gVisor, Firecracker microVMs) adds kernel-level boundaries: namespaces, cgroups, seccomp, and in the gVisor/Firecracker case a separate user-space kernel or hypervisor. The audit win is that even a fully compromised agent inside the container cannot directly read host memory, mount host filesystems, or pivot to other tenants without a kernel-level exploit. The cost is orchestration overhead, image-supply-chain hygiene, and slower cold-start. For production agentic workloads where the runtime executes prompts, tool calls, or forge-generated code from untrusted prompts, container isolation should be the default; node:vm is reserved for trusted-author paths where the threat model permits the weaker boundary.",
+      agentCalls: [
+        { agent: 'researcher', input: 'Write a 2-paragraph briefing on agentic-AI sandbox security risks...' },
+      ],
+      usage: { tokens: 1840 },
+    },
+    caption: (
+      <>
+        A single <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> handles the whole brief. No team, no shared state, no inter-agent flow. One GMI brain reasons through the task with its own cognition, memory, persona, and tools. The next tab shows the same prompt routed through an <code className="font-mono text-[var(--color-accent-primary)]">agency()</code> that spawns a security auditor at runtime when its static roster falls short.
+      </>
+    ),
+  },
   {
     id: 'emergent',
     title: 'Spawn an agent at runtime',
@@ -884,7 +924,7 @@ export function LiveRunDemoSection() {
           Real output from real scripts
         </h2>
         <p className="mt-3 text-base text-[var(--color-text-secondary)]">
-          Three examples, captured from <code className="font-mono text-[var(--color-text-primary)]">node examples/&hellip;.mjs</code> against the OpenAI API. The full source is committed at{' '}
+          Examples captured from <code className="font-mono text-[var(--color-text-primary)]">node examples/&hellip;.mjs</code> against the OpenAI API. The full source is committed at{' '}
           <a
             className="underline underline-offset-4 hover:opacity-80"
             href="https://github.com/framersai/agentos/tree/master/examples"
