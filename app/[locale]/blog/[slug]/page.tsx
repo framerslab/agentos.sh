@@ -112,7 +112,14 @@ export default function BlogPostPage({ params: { locale, slug } }: Props) {
 
   return (
     <main id="main-content" className="relative overflow-x-clip bg-[var(--color-background-primary)] text-[var(--color-text-primary)]">
-      {/* Article JSON-LD */}
+      {/* Article JSON-LD.
+          Author Org vs Person: "AgentOS Team" and similar collective
+          names map to Organization Frame; everything else (e.g. "Johnny
+          Dunn") is treated as a Person. dateModified uses post.updated
+          when present, falls back to post.date. articleSection comes
+          from the post category. inLanguage carries the locale so
+          Google ranks correctly per-region. Image becomes an
+          ImageObject because Google's Rich Results test prefers it. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -122,20 +129,41 @@ export default function BlogPostPage({ params: { locale, slug } }: Props) {
             headline: post.title,
             description: post.excerpt || post.title,
             datePublished: post.date,
-            dateModified: post.date,
-            author: {
-              '@type': 'Organization',
-              name: post.author || 'Frame',
-              url: 'https://frame.dev',
-            },
+            dateModified: post.updated || post.lastModified || post.date,
+            inLanguage: locale,
+            ...(post.category ? { articleSection: post.category } : {}),
+            author:
+              !post.author || /\b(team|inc|llc|ai|labs|group)\b/i.test(post.author)
+                ? {
+                    '@type': 'Organization',
+                    name: 'Frame',
+                    url: 'https://frame.dev',
+                  }
+                : {
+                    '@type': 'Person',
+                    name: post.author,
+                    url: 'https://frame.dev',
+                  },
             publisher: {
               '@type': 'Organization',
               name: 'Frame',
               url: 'https://frame.dev',
-              logo: { '@type': 'ImageObject', url: 'https://agentos.sh/og-image-v2.png' },
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://agentos.sh/og-image-v2.png',
+                width: 1200,
+                height: 630,
+              },
             },
             mainEntityOfPage: canonical,
-            image: post.image ? `https://agentos.sh${post.image}` : 'https://agentos.sh/og-image-v2.png',
+            image: {
+              '@type': 'ImageObject',
+              url: post.image
+                ? `https://agentos.sh${post.image}`
+                : 'https://agentos.sh/og-image-v2.png',
+              width: 1200,
+              height: 630,
+            },
           }),
         }}
       />

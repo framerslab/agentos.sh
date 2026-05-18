@@ -1,6 +1,29 @@
+Sitemap: https://agentos.sh/sitemap.xml
+
 User-agent: *
 Allow: /
-Disallow: /_next/static/
+Disallow: /_next/
 Disallow: /api/
 
-Sitemap: https://agentos.sh/sitemap.xml
+# Explicit allow for AI crawlers and major search engines. AgentOS docs
+# are open-source and we want them surfaced in AI-assisted search.
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
