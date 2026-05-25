@@ -86,7 +86,7 @@ const footerHtml = `
           <li><a href="https://docs.agentos.sh/api" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-accent-primary transition-colors">API Reference (TypeDoc/TSDoc)</a></li>
           <li><a href="https://agentos.sh/#code" class="text-text-secondary hover:text-accent-primary transition-colors">Examples</a></li>
           <li><a href="https://github.com/framersai/agentos" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-accent-primary transition-colors">GitHub</a></li>
-          <li><a href="https://discord.gg/usEkfCeQxs" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-accent-primary transition-colors">Discord</a></li>
+          <li><a href="https://wilds.ai/discord" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-accent-primary transition-colors">Discord</a></li>
         </ul>
       </div>
       <div>

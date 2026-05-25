@@ -453,7 +453,7 @@ export function EcosystemSection() {
               {t('cta.followOnGithub')}
             </a>
             <a
-              href="https://discord.gg/usEkfCeQxs"
+              href="https://wilds.ai/discord"
               className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 dark:from-accent-primary dark:to-accent-secondary rounded-xl font-semibold text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all flex items-center justify-center gap-2 border border-purple-500/20"
             >
               <Users className="w-5 h-5" />

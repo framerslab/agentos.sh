@@ -16,7 +16,7 @@
   <a href="https://github.com/framersai/agentos">Runtime repo</a> ·
   <a href="https://www.npmjs.com/package/@framers/agentos">npm</a> ·
   <a href="https://docs.agentos.sh/blog">Blog</a> ·
-  <a href="https://discord.gg/usEkfCeQxs">Discord</a>
+  <a href="https://wilds.ai/discord">Discord</a>
 </p>
 
 ---

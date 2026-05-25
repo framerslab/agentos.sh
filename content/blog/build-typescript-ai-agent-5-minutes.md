@@ -15,7 +15,7 @@ keywords: "typescript ai agent runtime, build ai agent typescript, typescript ai
 
 Five-minute tutorials are usually a lie. They omit the API key setup, they assume your network and your `node_modules` cooperate, and they end at "hello world" instead of at something you can use. This one tries not to be that. By the end of these five minutes you'll have a TypeScript AI agent runtime with persistent cognitive memory, an opt-in HEXACO personality, web search, and a guardrail pack. The whole thing is under fifty lines of TypeScript. None of those lines are placeholder code.
 
-If you are setting up your first AgentOS agent and run into trouble at any step, the [Discord](https://discord.gg/usEkfCeQxs) is the fastest way to unblock yourself; we monitor it. Runnable examples live at [github.com/framersai/agentos/tree/master/packages/agentos/examples](https://github.com/framersai/agentos/tree/master/packages/agentos/examples). `high-level-api.mjs` is the closest match to this tutorial.
+If you are setting up your first AgentOS agent and run into trouble at any step, the [Discord](https://wilds.ai/discord) is the fastest way to unblock yourself; we monitor it. Runnable examples live at [github.com/framersai/agentos/tree/master/packages/agentos/examples](https://github.com/framersai/agentos/tree/master/packages/agentos/examples). `high-level-api.mjs` is the closest match to this tutorial.
 
 Zero to a working AI agent with personality, cognitive memory, web search, and guardrails. Five steps, under 50 lines of TypeScript.
 
@@ -231,7 +231,7 @@ npm install @framers/agentos
 - [GitHub](https://github.com/framersai/agentos)
 - [npm](https://www.npmjs.com/package/@framers/agentos)
 - [Documentation](https://docs.agentos.sh)
-- [Discord](https://discord.gg/usEkfCeQxs)
+- [Discord](https://wilds.ai/discord)
 
 ## FAQ
 

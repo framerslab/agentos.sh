@@ -11,7 +11,7 @@ AgentOS is built by [Manic Agency LLC](https://manic.agency). It treats each age
 - API Reference: https://docs.agentos.sh/api
 - npm: https://www.npmjs.com/package/@framers/agentos
 - GitHub: https://github.com/framersai/agentos
-- Discord: https://discord.gg/usEkfCeQxs
+- Discord: https://wilds.ai/discord
 - Blog: https://docs.agentos.sh/blog
 - Sitemap: https://agentos.sh/sitemap.xml
 

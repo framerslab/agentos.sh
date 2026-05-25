@@ -115,4 +115,4 @@ Opt-in. Omit the `personality` block and the agent runs without trait shaping. W
 - [Build a TypeScript AI Agent Runtime in 5 Minutes](/blog/build-typescript-ai-agent-5-minutes)
 - [Emergent Capabilities Guide](https://docs.agentos.sh/features/emergent-capabilities)
 - [AgentOS vs LangGraph vs CrewAI vs Mastra vs VoltAgent](/blog/agentos-vs-langgraph-vs-crewai)
-- [GitHub](https://github.com/framersai/agentos) | [Discord](https://discord.gg/usEkfCeQxs) | [npm](https://www.npmjs.com/package/@framers/agentos)
+- [GitHub](https://github.com/framersai/agentos) | [Discord](https://wilds.ai/discord) | [npm](https://www.npmjs.com/package/@framers/agentos)
