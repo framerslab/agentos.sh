@@ -56,7 +56,7 @@ export function ForgeDemoSection() {
             }}
           >
             <span>
-              Real capture from <code className="font-mono text-[var(--color-accent-primary)]">node examples/emergent-hierarchical-spawning.mjs</code>. Three commands, no mocks.
+              Captured from <code className="font-mono text-[var(--color-accent-primary)]">node examples/emergent-hierarchical-spawning.mjs</code>.
             </span>
             <a
               href="https://github.com/framersai/agentos/blob/master/examples/emergent-hierarchical-spawning.mjs"
