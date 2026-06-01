@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback, memo, useMemo } from 'react';
+import { clampDpr } from '@/lib/hero/dpr';
 
 interface ParticleMorphTextProps {
   words: [string, string];
@@ -39,6 +40,8 @@ export const ParticleMorphText = memo(function ParticleMorphText({
   const [wordA, wordB] = words;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
+  const isVisibleRef = useRef(true);
+  const prefersReducedMotionRef = useRef(false);
   const stateRef = useRef({
     wordIdx: startIndex,
     morphT: 0,
@@ -139,6 +142,28 @@ export const ParticleMorphText = memo(function ParticleMorphText({
 
   useEffect(() => { setMounted(true); }, []);
 
+  // Respect reduced-motion: skip the rAF loop, keep the static gradient word.
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    prefersReducedMotionRef.current = mq.matches;
+    const onChange = (e: MediaQueryListEvent) => { prefersReducedMotionRef.current = e.matches; };
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  // Pause drawing when the hero is scrolled out of view.
+  useEffect(() => {
+    if (!mounted) return;
+    const el = canvasRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting; },
+      { threshold: 0, rootMargin: '50px' }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [mounted]);
+
   useEffect(() => {
     if (!mounted) return;
     stateRef.current.wordIdx = startIndex;
@@ -185,7 +210,11 @@ export const ParticleMorphText = memo(function ParticleMorphText({
     const ctx = canvas?.getContext('2d');
     if (!canvas || !ctx) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Reduced motion: the static gradient fallback span already shows; skip
+    // the rAF loop entirely so there is no per-frame main-thread cost.
+    if (prefersReducedMotionRef.current) return;
+
+    const dpr = clampDpr(window.devicePixelRatio || 1, window.innerWidth);
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
@@ -195,6 +224,11 @@ export const ParticleMorphText = memo(function ParticleMorphText({
     stateRef.current.lastSwitch = performance.now();
 
     const draw = (t: number) => {
+      // Keep the loop alive but skip heavy work while scrolled offscreen.
+      if (!isVisibleRef.current) {
+        animRef.current = requestAnimationFrame(draw);
+        return;
+      }
       const s = stateRef.current;
       const elapsed = t - s.lastSwitch;
 
@@ -270,9 +304,22 @@ export const ParticleMorphText = memo(function ParticleMorphText({
 
       animRef.current = requestAnimationFrame(draw);
     };
-    
-    animRef.current = requestAnimationFrame(draw);
-    return () => cancelAnimationFrame(animRef.current);
+
+    // Defer the first frame to idle so the morph loop does not compete with
+    // hydration / LCP. Falls back to a short timeout where rIC is missing.
+    let idleId = 0;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const begin = () => { animRef.current = requestAnimationFrame(draw); };
+    if (typeof window.requestIdleCallback === 'function') {
+      idleId = window.requestIdleCallback(begin, { timeout: 1500 });
+    } else {
+      timer = setTimeout(begin, 200);
+    }
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      if (timer) clearTimeout(timer);
+      if (idleId && typeof window.cancelIdleCallback === 'function') window.cancelIdleCallback(idleId);
+    };
   }, [mounted, width, height, wordA, wordB, interval, sampleText, easeOutExpo, easeInOutExpo]);
 
   // Inline-block for proper text flow alignment
