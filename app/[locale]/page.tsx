@@ -8,6 +8,7 @@ import { ParacosmBanner } from '../../components/sections/paracosm-banner'
 import { WorkbenchCTA } from '../../components/sections/workbench-cta'
 import { SchemaMarkup } from '../../components/seo/seo-metadata'
 import { SectionSkeleton } from '../../components/ui/section-skeleton'
+import { LazyVisible } from '../../components/ui/lazy-visible'
 
 // Enable static generation for faster initial loads
 export const dynamicParams = false
@@ -122,7 +123,9 @@ export default function LandingPageRedesigned() {
 
         {/* Memory Benchmarks SOTA — matched gpt-4o reader on LongMemEval-S/M */}
         <div className="lazy-section-lg">
-          <BenchmarksSectionLazy />
+          <LazyVisible fallback={<SectionSkeleton minHeight={600} contentHeightClass="h-96" />}>
+            <BenchmarksSectionLazy />
+          </LazyVisible>
         </div>
 
         {/* Runtime intelligence pillars — emergent tools + adaptive prompt
@@ -130,7 +133,9 @@ export default function LandingPageRedesigned() {
             "what makes AgentOS distinct" answer lands while the proof-of-quality
             is still on the reader's screen. */}
         <div id="runtime-intelligence-pillar" style={{ scrollMarginTop: '80px' }}>
-          <RuntimeIntelligenceSectionLazy />
+          <LazyVisible fallback={<SectionSkeleton minHeight={700} contentHeightClass="h-96" />}>
+            <RuntimeIntelligenceSectionLazy />
+          </LazyVisible>
         </div>
 
         {/* Examples — single consolidated surface: real scripts captured from
@@ -139,7 +144,9 @@ export default function LandingPageRedesigned() {
             stable; id="live-demo" is preserved for any inbound deep link. */}
         <div id="code" style={{ scrollMarginTop: '80px' }}>
           <div id="live-demo" style={{ scrollMarginTop: '80px' }}>
-            <LiveRunDemoSectionLazy />
+            <LazyVisible fallback={<SectionSkeleton minHeight={600} contentHeightClass="h-96" />}>
+              <LiveRunDemoSectionLazy />
+            </LazyVisible>
           </div>
         </div>
 
@@ -149,7 +156,9 @@ export default function LandingPageRedesigned() {
             live on /features. Generalized Mind Instances, product showcase, ecosystem,
             and social proof live on /about. */}
         <div className="lazy-section">
-          <WhitepaperCTALazy />
+          <LazyVisible fallback={<SectionSkeleton minHeight={400} contentHeightClass="h-48" />}>
+            <WhitepaperCTALazy />
+          </LazyVisible>
         </div>
 
         {/* CTA Section */}
