@@ -358,12 +358,19 @@ export const ParticleMorphText = memo(function ParticleMorphText({
     };
   }, [mounted, width, height, wordA, wordB, interval, sampleText, easeOutExpo, easeInOutExpo]);
 
-  // Inline-block for proper text flow alignment
+  // The wrapper's width is defined by a HIDDEN real-text sizer rendering the
+  // wider of the two words, NOT by the JS character-count estimate. Real glyph
+  // metrics are identical at SSR (CSS) and post-hydration, so the wrapper width
+  // never changes — eliminating the inline reflow that moved the second H1 line
+  // and caused ~0.15 CLS. The canvas and static fallback are absolutely
+  // positioned ON TOP of the sizer, so swapping them never affects layout.
+  // (The visible word is whichever is widest; both gradients/animation are
+  // unchanged. The longer word defines the box; the shorter just has slack.)
+  const widestWord = wordWidths[0] >= wordWidths[1] ? wordA : wordB;
   return (
     <span
       className={`inline-block ${className}`}
       style={{
-        width,            // pinned to max(wordA,wordB); never reflows => 0 CLS
         height,
         overflow: 'visible',
         verticalAlign: 'baseline',
@@ -373,16 +380,31 @@ export const ParticleMorphText = memo(function ParticleMorphText({
       }}
     >
       <span className="sr-only">{wordA} / {wordB}</span>
+      {/* Width sizer: real glyphs, no estimate, defines the box at SSR + runtime
+          identically. aria-hidden + visibility:hidden so it neither paints nor
+          is announced; it only reserves horizontal space. */}
+      <span
+        aria-hidden="true"
+        style={{ visibility: 'hidden', fontSize, fontWeight: 700, whiteSpace: 'nowrap', display: 'inline-block' }}
+      >
+        {widestWord}
+      </span>
       {mounted ? (
-        <canvas ref={canvasRef} style={{ width, height, display: 'block' }} aria-hidden="true" />
+        <canvas
+          ref={canvasRef}
+          style={{ width, height, display: 'block', position: 'absolute', top: 0, left: 0 }}
+          aria-hidden="true"
+        />
       ) : (
-        <span 
+        <span
+          aria-hidden="true"
           style={{
+            position: 'absolute', top: 0, left: 0,
             background: `linear-gradient(90deg, ${gradientFrom}, ${gradientTo})`,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
-            fontSize, fontWeight: 700,
+            fontSize, fontWeight: 700, whiteSpace: 'nowrap',
           }}
         >
           {words[startIndex]}

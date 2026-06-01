@@ -135,13 +135,14 @@ const HeroSectionInner = memo(function HeroSectionInner() {
         <article className="max-w-2xl">
           {/* Reserve the H1's rendered height up-front so the morph canvas
               settling post-hydration doesn't reflow the rest of the page.
-              Values are MEASURED from a real mobile-emulated DevTools trace,
-              not text-line math: the particle-morph canvas adds ~7-15px of
-              vertical extent over plain two-line text, so the reservation
-              must exceed the bare line-box. Measured rendered heights:
-              79px @28px (mobile), 100px @36px (sm), 135px @48px (lg).
-              Reserved a few px above each so undershoot can't cause CLS;
-              overshoot is just whitespace. */}
+              Two lines of text at leading-1.2: 28px*2.4=68px mobile,
+              36px*2.4=87px, 48px*2.4=116px desktop. Slight overshoot is
+              intentional — undershoot causes CLS, overshoot is whitespace.
+              NB: the residual hero CLS is NOT a height issue (height is
+              stable here) — it's the morph wrapper WIDTH correcting from an
+              SSR estimate to the measured glyph width, reflowing the inline
+              line. Fixed in particle-morph-text.tsx by width-defining each
+              wrapper with hidden real text instead of a char-count estimate. */}
           {/* `aria-label` is the single source of truth for both
               accessibility and crawler entity recognition. The visible
               children render the particle-morph animation alongside
@@ -156,7 +157,7 @@ const HeroSectionInner = memo(function HeroSectionInner() {
               duplicate. */}
           <h1
             aria-label="Emergent intelligence for adaptive agents"
-            className="font-bold tracking-tight mb-3 text-[28px] sm:text-[36px] lg:text-[48px] leading-[1.2] min-h-[84px] sm:min-h-[104px] lg:min-h-[140px]"
+            className="font-bold tracking-tight mb-3 text-[28px] sm:text-[36px] lg:text-[48px] leading-[1.2] min-h-[72px] sm:min-h-[92px] lg:min-h-[120px]"
             itemProp="name"
           >
             <span aria-hidden="true">
