@@ -39,7 +39,7 @@ export function ForgeDemoSection() {
               Re-encoded to a 742 KB H.264 MP4, served as an autoplaying,
               looping, muted, inline <video>. preload="none" defers the load
               until it scrolls into view so it never competes with first paint.
-              Same 1600x920 box + classes; PNG poster, GIF kept only as the
+              Same 1600x920 box + classes; WebP poster, GIF kept only as the
               ancient-browser fallback inside <video>. */}
           <video
             autoPlay
@@ -47,7 +47,7 @@ export function ForgeDemoSection() {
             muted
             playsInline
             preload="none"
-            poster="/img/blog/og/agentos-emergent-demo.png"
+            poster="/img/blog/og/agentos-emergent-demo.webp"
             width={1600}
             height={920}
             aria-label="Three AgentOS agents with distinct HEXACO personalities collaborate on a code review, forge a new tool at runtime, the LLM judge approves the spec, and all three invoke it on the next turn."

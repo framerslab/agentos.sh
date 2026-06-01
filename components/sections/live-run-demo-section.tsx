@@ -273,7 +273,7 @@ const demos: DemoData[] = [
         src: '/img/blog/og/agentos-forge-demo.gif',
         webpSrc: '/img/blog/og/agentos-forge-demo.webp',
         mp4Src: '/img/blog/og/agentos-forge-demo.mp4',
-        poster: '/img/blog/og/agentos-emergent-demo.png',
+        poster: '/img/blog/og/agentos-emergent-demo.webp',
         alt: 'Three AgentOS agents with distinct HEXACO personalities collaborate on a code review, forge a new tool at runtime, the LLM judge approves the spec, and all three invoke it on the next turn.',
         width: 1600,
         height: 920,
