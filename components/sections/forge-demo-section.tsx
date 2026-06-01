@@ -54,9 +54,14 @@ export function ForgeDemoSection() {
             className="w-full h-auto block"
           >
             <source src="/img/blog/og/agentos-forge-demo.mp4" type="video/mp4" />
+            {/* Fallback for the (essentially nonexistent) browsers that can't
+                play H.264 MP4: a static 91KB WebP, NOT the 2.5MB animated GIF.
+                The GIF was costing ~2.5MB on loads where the renderer fetched
+                <video> fallback content; H.264 is universally supported so the
+                animated path is always the MP4. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/img/blog/og/agentos-forge-demo.gif"
+              src="/img/blog/og/agentos-emergent-demo.webp"
               alt="Three AgentOS agents with distinct HEXACO personalities collaborate on a code review, forge a new tool at runtime, the LLM judge approves the spec, and all three invoke it on the next turn."
               width={1600}
               height={920}

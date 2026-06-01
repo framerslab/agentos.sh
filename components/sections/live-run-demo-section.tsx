@@ -1113,9 +1113,12 @@ function OutputPanel({ demo }: { demo: DemoData }) {
                 className="w-full h-auto block"
               >
                 <source src={output.demoGif.mp4Src} type="video/mp4" />
+                {/* MP4 is the animated source (universally supported). The
+                    <video> fallback is a STATIC poster/WebP, never the heavy
+                    animated GIF — fetching that as fallback cost ~2.5MB. */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={output.demoGif.src}
+                  src={output.demoGif.poster ?? output.demoGif.webpSrc ?? output.demoGif.src}
                   alt={output.demoGif.alt}
                   width={output.demoGif.width}
                   height={output.demoGif.height}
