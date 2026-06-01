@@ -776,7 +776,7 @@
       },
       "whatIsParacosm": {
         "question": "Paracosm 是什么?",
-        "answer": "Paracosm (https://paracosm.agentos.sh) 是构建在 AgentOS 之上的结构化世界模型仿真引擎。它将 JSON ScenarioPackage 加上 HEXACO 领导者画像编译为确定性的回合循环,其中 AgentOS 智能体提出事件,在加固的 node:vm 沙箱中运行时锻造新的 TypeScript 工具,并产生可以分叉与回放的反事实产物。三种模式共享一套 schema:回合循环式文明仿真 (Mars Genesis 是典型示例)、批量轨迹数字孪生,以及批量点蒙特卡洛预测。Apache 2.0 开源,npm install paracosm。在线 Demo: https://paracosm.agentos.sh/sim。源码: https://github.com/framersai/paracosm。长文发布博客 (我们为什么构建它、wilds.ai 金库故事、引擎参考): https://agentos.sh/blog/paracosm-launch。"
+        "answer": "Paracosm (https://paracosm.agentos.sh) 是构建在 AgentOS 之上的结构化世界模型仿真引擎。它将 JSON ScenarioPackage 加上 HEXACO 领导者画像编译为确定性的回合循环,其中 AgentOS 智能体提出事件,在加固的 node:vm 沙箱中运行时锻造新的 TypeScript 工具,并产生可以分叉与回放的反事实产物。三种模式共享一套 schema:回合循环式文明仿真 (Mars Genesis 是典型示例)、批量轨迹数字孪生,以及批量点蒙特卡洛预测。Apache 2.0 开源,npm install paracosm。在线 Demo: https://paracosm.agentos.sh/sim。源码: https://github.com/framerslab/paracosm。长文发布博客 (我们为什么构建它、wilds.ai 金库故事、引擎参考): https://agentos.sh/blog/paracosm-launch。"
       },
       "whatIsWildsAi": {
         "question": "Wilds.ai 是什么?",

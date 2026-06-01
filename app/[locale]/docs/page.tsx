@@ -164,7 +164,7 @@ export default function DocsPage({ params }: Props) {
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href="https://github.com/framersai/agentos"
+                href="https://github.com/framerslab/agentos"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[var(--color-border-primary)] bg-[var(--color-background-card)] px-6 py-3 text-sm font-semibold text-[var(--color-text-primary)] shadow-sm transition hover:border-[var(--color-accent-primary)] hover:text-[var(--color-accent-primary)] hover:bg-[var(--color-accent-primary)]/10"

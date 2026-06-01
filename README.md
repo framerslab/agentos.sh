@@ -13,7 +13,7 @@
 <p align="center">
   <a href="https://agentos.sh">Website</a> ·
   <a href="https://docs.agentos.sh">Documentation</a> ·
-  <a href="https://github.com/framersai/agentos">Runtime repo</a> ·
+  <a href="https://github.com/framerslab/agentos">Runtime repo</a> ·
   <a href="https://www.npmjs.com/package/@framers/agentos">npm</a> ·
   <a href="https://docs.agentos.sh/blog">Blog</a> ·
   <a href="https://wilds.ai/discord">Discord</a>
@@ -40,7 +40,7 @@ Get started:
 npm install @framers/agentos
 ```
 
-→ [Documentation](https://docs.agentos.sh/getting-started) · [Examples](https://github.com/framersai/agentos/tree/master/examples) · [Benchmarks](https://docs.agentos.sh/benchmarks)
+→ [Documentation](https://docs.agentos.sh/getting-started) · [Examples](https://github.com/framerslab/agentos/tree/master/examples) · [Benchmarks](https://docs.agentos.sh/benchmarks)
 
 ---
 
@@ -98,12 +98,12 @@ Some sections render optional media. When files are missing, a placeholder appea
 
 ## Other AgentOS surfaces
 
-- [`framersai/agentos`](https://github.com/framersai/agentos) — the runtime
-- [`framersai/agentos-live-docs`](https://github.com/framersai/agentos-live-docs) → [docs.agentos.sh](https://docs.agentos.sh)
-- [`framersai/agentos-bench`](https://github.com/framersai/agentos-bench) → published benchmarks + leaderboards
-- [`framersai/agentos-extensions`](https://github.com/framersai/agentos-extensions) — extension registry
-- [`framersai/agentos-skills`](https://github.com/framersai/agentos-skills) — SKILL.md community registry
-- [`framersai/paracosm`](https://github.com/framersai/paracosm) → [paracosm.agentos.sh](https://paracosm.agentos.sh) — agent-swarm world simulation
+- [`framersai/agentos`](https://github.com/framerslab/agentos) — the runtime
+- [`framersai/agentos-live-docs`](https://github.com/framerslab/agentos-live-docs) → [docs.agentos.sh](https://docs.agentos.sh)
+- [`framersai/agentos-bench`](https://github.com/framerslab/agentos-bench) → published benchmarks + leaderboards
+- [`framersai/agentos-extensions`](https://github.com/framerslab/agentos-extensions) — extension registry
+- [`framersai/agentos-skills`](https://github.com/framerslab/agentos-skills) — SKILL.md community registry
+- [`framersai/paracosm`](https://github.com/framerslab/paracosm) → [paracosm.agentos.sh](https://paracosm.agentos.sh) — agent-swarm world simulation
 
 ## Contributing & Security
 

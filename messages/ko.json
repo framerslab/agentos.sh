@@ -928,7 +928,7 @@
       },
       "whatIsParacosm": {
         "question": "Paracosm이란 무엇인가요?",
-        "answer": "Paracosm (https://paracosm.agentos.sh)은 AgentOS 위에 구축된 구조화된 월드 모델 시뮬레이션 엔진입니다. JSON ScenarioPackage와 HEXACO 리더 프로파일을 결정론적 턴 루프로 컴파일하며, AgentOS 에이전트들이 이벤트를 제안하고, 강화된 node:vm 샌드박스 안에서 런타임에 새로운 TypeScript 도구를 단조해내며, 분기하고 재생할 수 있는 반사실 산출물을 생성합니다. 세 가지 모드가 하나의 스키마를 공유합니다. 턴 루프 문명 시뮬레이션(Mars Genesis가 대표 예시), 배치 트라젝토리 디지털 트윈, 그리고 배치 포인트 몬테카를로 예측. Apache 2.0 라이선스로 오픈소스, npm install paracosm. 라이브 데모: https://paracosm.agentos.sh/sim. 소스: https://github.com/framersai/paracosm. 긴 런치 포스트(왜 만들었는지, wilds.ai 볼트 이야기, 엔진 참조): https://agentos.sh/blog/paracosm-launch."
+        "answer": "Paracosm (https://paracosm.agentos.sh)은 AgentOS 위에 구축된 구조화된 월드 모델 시뮬레이션 엔진입니다. JSON ScenarioPackage와 HEXACO 리더 프로파일을 결정론적 턴 루프로 컴파일하며, AgentOS 에이전트들이 이벤트를 제안하고, 강화된 node:vm 샌드박스 안에서 런타임에 새로운 TypeScript 도구를 단조해내며, 분기하고 재생할 수 있는 반사실 산출물을 생성합니다. 세 가지 모드가 하나의 스키마를 공유합니다. 턴 루프 문명 시뮬레이션(Mars Genesis가 대표 예시), 배치 트라젝토리 디지털 트윈, 그리고 배치 포인트 몬테카를로 예측. Apache 2.0 라이선스로 오픈소스, npm install paracosm. 라이브 데모: https://paracosm.agentos.sh/sim. 소스: https://github.com/framerslab/paracosm. 긴 런치 포스트(왜 만들었는지, wilds.ai 볼트 이야기, 엔진 참조): https://agentos.sh/blog/paracosm-launch."
       },
       "whatIsWildsAi": {
         "question": "Wilds.ai란 무엇인가요?",

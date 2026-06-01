@@ -55,7 +55,7 @@ export function WorkbenchCTA() {
 
             <div className="flex flex-col gap-3 w-full lg:w-auto">
               <a
-                href="https://github.com/framersai/agentos-workbench"
+                href="https://github.com/framerslab/agentos-workbench"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold bg-gradient-to-r from-[var(--color-accent-primary)] to-[var(--color-accent-secondary)] text-white shadow-lg hover:shadow-xl hover:brightness-110 transition-all"

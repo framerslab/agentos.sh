@@ -11,7 +11,7 @@ export function SocialProofSection() {
   const tFooter = useTranslations('footer')
 
   const updateLinks = [
-    { label: tFooter('releaseNotes'), href: 'https://github.com/framersai/agentos/releases' },
+    { label: tFooter('releaseNotes'), href: 'https://github.com/framerslab/agentos/releases' },
     { label: tNav('changelog'), href: 'https://docs.agentos.sh/docs/getting-started/releasing' },
     { label: tNav('faq'), href: '/faq' }
   ] as const

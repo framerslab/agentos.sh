@@ -193,7 +193,7 @@ const HeroSectionInner = memo(function HeroSectionInner() {
               {t('getStarted')}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
             </LinkButton>
-            <a href="https://github.com/framersai/agentos" target="_blank" rel="noopener noreferrer" 
+            <a href="https://github.com/framerslab/agentos" target="_blank" rel="noopener noreferrer" 
                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] text-[var(--color-text-primary)] dark:text-white font-medium text-sm hover:border-[var(--color-accent-primary)] hover:bg-[var(--color-background-elevated)] transition-all"
                itemProp="codeRepository">
               <Github className="w-4 h-4 text-[var(--color-text-primary)]" aria-hidden="true" />
@@ -240,11 +240,11 @@ const HeroSectionInner = memo(function HeroSectionInner() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://img.shields.io/codecov/c/github/framersai/agentos?logo=codecov" alt="test coverage" width={120} height={20} className="h-5 w-auto" loading="lazy" decoding="async" />
             </a>
-            <a href="https://github.com/framersai/agentos/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <a href="https://github.com/framerslab/agentos/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://img.shields.io/github/actions/workflow/status/framersai/agentos/ci.yml?logo=github" alt="CI status" width={100} height={20} className="h-5 w-auto" loading="lazy" decoding="async" />
             </a>
-            <a href="https://github.com/framersai/agentos/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <a href="https://github.com/framerslab/agentos/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://img.shields.io/badge/tests-3%2C866%2B_passed-2ea043?logo=vitest&logoColor=white" alt="tests" width={134} height={20} className="h-5 w-auto" loading="lazy" decoding="async" />
             </a>
@@ -252,7 +252,7 @@ const HeroSectionInner = memo(function HeroSectionInner() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://img.shields.io/badge/TypeScript-5.4+-3178c6?logo=typescript&logoColor=white" alt="TypeScript" width={120} height={20} className="h-5 w-auto" loading="lazy" decoding="async" />
             </span>
-            <a href="https://github.com/framersai/agentos/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <a href="https://github.com/framerslab/agentos/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://img.shields.io/badge/License-Apache_2.0-blue?logo=apache&logoColor=white" alt="Apache 2.0 License" width={128} height={20} className="h-5 w-auto" loading="lazy" decoding="async" />
             </a>

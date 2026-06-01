@@ -291,8 +291,8 @@ export const seoDefaults = {
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@framersai',
-    site: '@framersai',
+    creator: '@framerslab',
+    site: '@framerslab',
   },
 }
 
@@ -307,8 +307,8 @@ export const structuredData = {
     url: 'https://agentos.sh',
     logo: 'https://agentos.sh/logo.png',
     sameAs: [
-      'https://github.com/framersai',
-      'https://twitter.com/framersai',
+      'https://github.com/framerslab',
+      'https://twitter.com/framerslab',
     ],
   },
 }

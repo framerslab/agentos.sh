@@ -42,7 +42,7 @@ const Sections = [
         <p>
           Security improvements are welcomed through pull requests on{" "}
           <a
-            href="https://github.com/framersai/agentos"
+            href="https://github.com/framerslab/agentos"
             className="font-semibold text-brand hover:underline"
             target="_blank"
             rel="noopener noreferrer"

@@ -235,7 +235,7 @@ The [5-minute quickstart](https://agentos.sh/blog/build-typescript-ai-agent-5-mi
 
 Try it live at [wilds.ai](https://wilds.ai), where every companion runs on this exact stack.
 
-Source: [github.com/framersai/agentos](https://github.com/framersai/agentos) (Apache 2.0)
+Source: [github.com/framerslab/agentos](https://github.com/framerslab/agentos) (Apache 2.0)
 
 ---
 

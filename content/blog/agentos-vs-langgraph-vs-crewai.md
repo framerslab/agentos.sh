@@ -45,7 +45,7 @@ This comparison covers the six production-ready frameworks a TypeScript develope
 | **Tool Forging** | [Runtime tool creation](https://docs.agentos.sh/features/emergent-capabilities) | None | None | None | None | None |
 | **Self-Hosted** | Yes (`npm install`) | Yes | Yes | Yes | Yes | Yes |
 | **License** | Apache 2.0 | MIT | MIT | MIT + Enterprise | MIT | MIT |
-| **GitHub Stars** | [71](https://github.com/framersai/agentos) | [~29,000](https://github.com/langchain-ai/langgraph) | [~48,600](https://github.com/crewAIInc/crewAI) | [~22,900](https://github.com/mastra-ai/mastra) | [~7,900](https://github.com/VoltAgent/voltagent) | [~3,200](https://github.com/openai/openai-agents-js) |
+| **GitHub Stars** | [71](https://github.com/framerslab/agentos) | [~29,000](https://github.com/langchain-ai/langgraph) | [~48,600](https://github.com/crewAIInc/crewAI) | [~22,900](https://github.com/mastra-ai/mastra) | [~7,900](https://github.com/VoltAgent/voltagent) | [~3,200](https://github.com/openai/openai-agents-js) |
 
 ## Code Comparison: Same Task, Five Frameworks
 
@@ -227,7 +227,7 @@ console.log(result.text);
 ```
 
 - [Documentation](https://docs.agentos.sh)
-- [GitHub](https://github.com/framersai/agentos)
+- [GitHub](https://github.com/framerslab/agentos)
 - [npm](https://www.npmjs.com/package/@framers/agentos)
 - [Discord](https://wilds.ai/discord)
 

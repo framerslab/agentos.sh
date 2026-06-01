@@ -170,7 +170,7 @@ All TypeScript. All open source. Apache 2.0.
 npm install @framers/agentos
 ```
 
-Start with the [5-minute quickstart](https://agentos.sh/blog/build-typescript-ai-agent-5-minutes). Read the [docs](https://docs.agentos.sh). Browse the [source on GitHub](https://github.com/framersai/agentos). Or try it live at [wilds.ai](https://wilds.ai), where Alice and dozens of other AI companions are waiting.
+Start with the [5-minute quickstart](https://agentos.sh/blog/build-typescript-ai-agent-5-minutes). Read the [docs](https://docs.agentos.sh). Browse the [source on GitHub](https://github.com/framerslab/agentos). Or try it live at [wilds.ai](https://wilds.ai), where Alice and dozens of other AI companions are waiting.
 
 ---
 

@@ -207,7 +207,7 @@ export function SiteHeader() {
 
           {/* GitHub — desktop only */}
           <a
-            href="https://github.com/framersai/agentos"
+            href="https://github.com/framerslab/agentos"
             className="relative hidden lg:inline-flex items-center gap-2 px-3 py-2 rounded-full border border-border-subtle text-[var(--color-text-primary)] hover:text-accent-primary transition-all duration-300 hover:-translate-y-0.5 group"
             target="_blank"
             rel="noopener noreferrer"
@@ -285,7 +285,7 @@ export function SiteHeader() {
               );
             })}
             <a
-              href="https://github.com/framersai/agentos"
+              href="https://github.com/framerslab/agentos"
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}

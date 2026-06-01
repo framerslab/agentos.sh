@@ -506,7 +506,7 @@ console.log(reply.text)`}
             </li>
             <li>
               <a
-                href="https://github.com/framersai/agentos"
+                href="https://github.com/framerslab/agentos"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[var(--color-accent-primary)] hover:underline font-semibold"

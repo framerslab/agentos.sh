@@ -170,7 +170,7 @@ Penfield Labs found 62.81% FPR on LOCOMO's default judge (`gpt-4o-mini` with the
 
 (Breakdown by native LOCOMO category: single-hop 0% of 21, multi-hop 0% of 11, open-domain 0% of 45, temporal 0% of 5, adversarial 0% of 18.)
 
-Cost: $0.04. Elapsed: 167 seconds. Standalone script at [`src/scripts/stage-g-locomo-judge-fpr-probe.ts`](https://github.com/framersai/agentos-bench/blob/master/src/scripts/stage-g-locomo-judge-fpr-probe.ts).
+Cost: $0.04. Elapsed: 167 seconds. Standalone script at [`src/scripts/stage-g-locomo-judge-fpr-probe.ts`](https://github.com/framerslab/agentos-bench/blob/master/src/scripts/stage-g-locomo-judge-fpr-probe.ts).
 
 Two conclusions from the 63 points gap between Penfield's LOCOMO FPR and ours:
 
@@ -198,7 +198,7 @@ We ran the probe on LongMemEval-S: 100 randomly sampled cases (seed=42), synthes
 
 The gap between our 1% on LongMemEval-S and Penfield's 62.81% on LOCOMO is big enough to deserve two explanations. First, LOCOMO gold answers are often short entity-style strings ("Sweden", "beach, mountains, forest") where topical-adjacent distractors land inside the judge's tolerance band. LongMemEval-S gold answers are usually complete propositions, which makes topical distractors easier to reject. Second, the `rubricVersion 2026-04-18.1` is stricter than whatever rubric Penfield's audit subject used. Rubric strictness is a first-order FPR variable.
 
-Either way, on LongMemEval-S the 85.6% is not meaningfully inflated by judge false-positives. The judge's noise floor (1-3%) is well below the bootstrap CI on the accuracy number (±3 points at n=500). Score differences above that bound are interpretable. The 100-probe run cost $0.05 and took 174 seconds. The standalone script is at [`src/scripts/stage-g-judge-fpr-probe.ts`](https://github.com/framersai/agentos-bench/blob/master/src/scripts/stage-g-judge-fpr-probe.ts). Any vendor who wants to reproduce this on their own benchmark can fork it in ten minutes.
+Either way, on LongMemEval-S the 85.6% is not meaningfully inflated by judge false-positives. The judge's noise floor (1-3%) is well below the bootstrap CI on the accuracy number (±3 points at n=500). Score differences above that bound are interpretable. The 100-probe run cost $0.05 and took 174 seconds. The standalone script is at [`src/scripts/stage-g-judge-fpr-probe.ts`](https://github.com/framerslab/agentos-bench/blob/master/src/scripts/stage-g-judge-fpr-probe.ts). Any vendor who wants to reproduce this on their own benchmark can fork it in ten minutes.
 
 This is the probe every memory-library publication should run and none of the eight vendors in our methodology audit did.
 
@@ -227,7 +227,7 @@ For developers evaluating memory libraries for their own stack, the takeaway is 
 
 Three open-source bench frameworks exist to do that without writing your own harness:
 
-- [**AgentOS agentos-bench**](https://github.com/framersai/agentos-bench) covers LongMemEval-S, LOCOMO, BEAM, and eight cognitive-mechanism micro-benchmarks. Bootstrap CIs, judge-adversarial probes, per-stage retention metric, kill-ladder methodology, per-case run JSONs at `--seed 42`. Depth over breadth.
+- [**AgentOS agentos-bench**](https://github.com/framerslab/agentos-bench) covers LongMemEval-S, LOCOMO, BEAM, and eight cognitive-mechanism micro-benchmarks. Bootstrap CIs, judge-adversarial probes, per-stage retention metric, kill-ladder methodology, per-case run JSONs at `--seed 42`. Depth over breadth.
 - [**Supermemory memorybench**](https://github.com/supermemoryai/memorybench) covers LoCoMo, LongMemEval, and ConvoMem across Supermemory, Mem0, and Zep with any of GPT-4o, Claude, or Gemini as judge. Checkpointed pipeline, web UI, MemScore triple. Breadth over depth.
 - [**Mem0 memory-benchmarks**](https://github.com/mem0ai/memory-benchmarks) covers LOCOMO and LongMemEval against Mem0 Cloud and OSS. Mem0-specific but fully open.
 
@@ -257,7 +257,7 @@ Mastra's 95% is at a different answer LLM than the LongMemEval paper's evaluatio
 
 ### Is the AgentOS bench reproducible?
 
-Yes. [agentos-bench](https://github.com/framersai/agentos-bench) is Apache-2.0 with seeded runs, per-case JSONs, and a single CLI command per headline. Bootstrap 95% CIs at 10k resamples and judge false-positive rate 1% [0%, 3%] at n=100 are published alongside every shipping number.
+Yes. [agentos-bench](https://github.com/framerslab/agentos-bench) is Apache-2.0 with seeded runs, per-case JSONs, and a single CLI command per headline. Bootstrap 95% CIs at 10k resamples and judge false-positive rate 1% [0%, 3%] at n=100 are published alongside every shipping number.
 
 ### Should I trust any memory library benchmark?
 
@@ -293,4 +293,4 @@ Trust the methodology, not the percentage. A 70% number with a published seed, r
 
 ---
 
-*All claims in this post are sourced from primary URLs visited April 24, 2026. The full audit with per-vendor transparency report cards is at [`packages/agentos-bench/docs/COMPETITOR_METHODOLOGY_AUDIT_2026-04-24.md`](https://github.com/framersai/agentos-bench/blob/master/docs/COMPETITOR_METHODOLOGY_AUDIT_2026-04-24.md). The AgentOS bench implementation is open source at [`packages/agentos-bench`](https://github.com/framersai/agentos-bench).*
+*All claims in this post are sourced from primary URLs visited April 24, 2026. The full audit with per-vendor transparency report cards is at [`packages/agentos-bench/docs/COMPETITOR_METHODOLOGY_AUDIT_2026-04-24.md`](https://github.com/framerslab/agentos-bench/blob/master/docs/COMPETITOR_METHODOLOGY_AUDIT_2026-04-24.md). The AgentOS bench implementation is open source at [`packages/agentos-bench`](https://github.com/framerslab/agentos-bench).*

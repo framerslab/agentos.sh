@@ -38,9 +38,9 @@ That was a moment that was not a NPC or game refusing to do combat with my chara
 
 Emergent behavior in AI has been a desirable and incredibly ambiguous achievement to solve, up until the point of language models becoming coherent and good enough to make some sensible, new output. Yes, all training data in a LLM has to come from somewhere, whether it's another generative model or taken from humanity, but what they produce is just as novel as a person thinking of a new idea or new sentence that's never been uttered before. At our most stripped down functionality, we are all simply monkeys chittering away at metaphorical typewriters to produce our thoughts and actions; every utterance that will ever be said and every action done is already stored in an infinite palace like the Library of Babel. And in fact, every single language model in existence is functionally another iteration of the Library of Babel.
 
-[Paracosm](https://github.com/framersai/paracosm) is the legibility layer of a LLM. It is an open-source TypeScript engine that takes a natural-language scenario and compiles it into a typed, deterministic, forkable world model, then runs multiple AI actors, with their own traits, like HEXACO personalities and / or specialized goals and objectives, and gives full reproducible artifact of every decision, every event, every forged reusable tool, and every divergence. Same world, same kernel, same seed, divergent events and futures.
+[Paracosm](https://github.com/framerslab/paracosm) is the legibility layer of a LLM. It is an open-source TypeScript engine that takes a natural-language scenario and compiles it into a typed, deterministic, forkable world model, then runs multiple AI actors, with their own traits, like HEXACO personalities and / or specialized goals and objectives, and gives full reproducible artifact of every decision, every event, every forged reusable tool, and every divergence. Same world, same kernel, same seed, divergent events and futures.
 
-Live at [paracosm.agentos.sh](https://paracosm.agentos.sh) with a demo available to try at [paracosm.agentos.sh/sim](https://paracosm.agentos.sh/sim) and the package is `npm install paracosm`. Apache-2.0. Built on [AgentOS](https://github.com/framersai/agentos), an agent orchestration runtime for adaptive intelligence and emergent behavior through creating new validated functions needed by agents at runtime, which I also lead.
+Live at [paracosm.agentos.sh](https://paracosm.agentos.sh) with a demo available to try at [paracosm.agentos.sh/sim](https://paracosm.agentos.sh/sim) and the package is `npm install paracosm`. Apache-2.0. Built on [AgentOS](https://github.com/framerslab/agentos), an agent orchestration runtime for adaptive intelligence and emergent behavior through creating new validated functions needed by agents at runtime, which I also lead.
 
 The rest of this post revolves around the next step in human-computer interaction being structured, replayable but dynamic simulations with language models, rather than a typical chatbot-like interaction, and what current "world models" mean and involve, why half of those conversations are talking past each other, and how Paracosm fits into the second half. There are arxiv links because I want you to follow them. There is a live demo at the bottom because I want you to use it. There is a fight that ended with both sides locked into different rooms of the same crisis.
 
@@ -84,7 +84,7 @@ This engine builds one — but for AI agents to inhabit instead of children to d
 - **Tools.** Specialists forge new TypeScript functions at runtime inside a hardened `node:vm` sandbox; an LLM judge approves; reuse costs tens of tokens.
 - **Output.** A `RunArtifact` you can fork from any captured turn, replay byte-equal, diff against another actor's run, or feed into any JSON pipeline.
 
-`npm install paracosm` · [paracosm.agentos.sh/sim](https://paracosm.agentos.sh/sim) · [`framersai/paracosm`](https://github.com/framersai/paracosm) · [API docs](https://paracosm.agentos.sh/docs)
+`npm install paracosm` · [paracosm.agentos.sh/sim](https://paracosm.agentos.sh/sim) · [`framersai/paracosm`](https://github.com/framerslab/paracosm) · [API docs](https://paracosm.agentos.sh/docs)
 
 </aside>
 
@@ -163,7 +163,7 @@ Five LLM calls per turn: Director, Department, Commander, Judge, Reactions. Skel
 
 ### The Event Director
 
-[`src/runtime/orchestrator/director.ts:142`](https://github.com/framersai/paracosm/blob/master/src/runtime/orchestrator/director.ts#L142). Decides what happens this turn. Reads kernel state, the leader's HEXACO profile, recent decision history, the agent mood roll-up, the research-bundle topics. Returns one to three events with options.
+[`src/runtime/orchestrator/director.ts:142`](https://github.com/framerslab/paracosm/blob/master/src/runtime/orchestrator/director.ts#L142). Decides what happens this turn. Reads kernel state, the leader's HEXACO profile, recent decision history, the agent mood roll-up, the research-bundle topics. Returns one to three events with options.
 
 ```text
 GENERATE EVENT FOR TURN {turn}, YEAR {time}
@@ -226,7 +226,7 @@ Two lines in there cost runs to get right.
 
 ### The Department Analysis
 
-[`src/runtime/orchestrator/departments.ts:17`](https://github.com/framersai/paracosm/blob/master/src/runtime/orchestrator/departments.ts#L17). Every active department gets its own prompt. Dept head's drift-adjusted HEXACO profile at the top, then conditional behavioral cues that fire only when a trait is on a pole. Openness 0.45 gets no forge-vs-reuse cue; Openness 0.95 gets:
+[`src/runtime/orchestrator/departments.ts:17`](https://github.com/framerslab/paracosm/blob/master/src/runtime/orchestrator/departments.ts#L17). Every active department gets its own prompt. Dept head's drift-adjusted HEXACO profile at the top, then conditional behavioral cues that fire only when a trait is on a pole. Openness 0.45 gets no forge-vs-reuse cue; Openness 0.95 gets:
 
 ```text
 Your high openness invites exploration. When this event involves any analysis
@@ -243,13 +243,13 @@ tools whenever their scope overlaps the current analysis. Forge a new tool
 only when an existing one would clearly mislead you on this specific event.
 ```
 
-Six axes × pole-conditional cues = up to six firing cues per dept head per turn. Full phrasing for each pole at [`departments.ts:38-94`](https://github.com/framersai/paracosm/blob/master/src/runtime/orchestrator/departments.ts#L38-L94). Earlier version listed every axis's high-low guidance unconditionally and asked the model to weight them; dept heads converged on the same forge counts across leaders. Conditional firing is sharper, and a mid-HEXACO dept head produces baseline-neutral reports, which is the right behaviour for that profile.
+Six axes × pole-conditional cues = up to six firing cues per dept head per turn. Full phrasing for each pole at [`departments.ts:38-94`](https://github.com/framerslab/paracosm/blob/master/src/runtime/orchestrator/departments.ts#L38-L94). Earlier version listed every axis's high-low guidance unconditionally and asked the model to weight them; dept heads converged on the same forge counts across leaders. Conditional firing is sharper, and a mid-HEXACO dept head produces baseline-neutral reports, which is the right behaviour for that profile.
 
 The full prompt also carries the prior-turn memory (`YOUR PREVIOUS ANALYSES`), the research-grounded canonical facts + counterpoints from the citation bundle, the current colony state line, and a domain-specific block from the scenario's `departmentPromptHook`.
 
 ### The Commander Decision
 
-Prompt at [`orchestrator/index.ts:1598`](https://github.com/framersai/paracosm/blob/master/src/runtime/orchestrator/index.ts#L1598-L1615), response schema at [`validators/commander.ts:14`](https://github.com/framersai/paracosm/blob/master/src/runtime/validators/commander.ts#L14-L54). Commander gets the event, dept reports, forged toolbox, kernel state, and a five-step REASONING block to populate in the JSON response before choosing:
+Prompt at [`orchestrator/index.ts:1598`](https://github.com/framerslab/paracosm/blob/master/src/runtime/orchestrator/index.ts#L1598-L1615), response schema at [`validators/commander.ts:14`](https://github.com/framerslab/paracosm/blob/master/src/runtime/validators/commander.ts#L14-L54). Commander gets the event, dept reports, forged toolbox, kernel state, and a five-step REASONING block to populate in the JSON response before choosing:
 
 ```text
 TURN {turn} (Event {ei+1}/{total}) — {time}: {event.title}
@@ -291,11 +291,11 @@ Explicit step-by-step CoT isn't novel — standard since [Wei et al. 2022](https
 
 `reasoning` threads into the artifact. Dashboard renders it behind a "Show full analysis" expand on the decision card, so the audit covers which forged-tool output the commander cited, which dept they overrode, which trait pole they referenced.
 
-Second CoT lever: **schema-guided retry**. The framework's `generateValidatedObject` ([`agentos/src/api/generateObject.ts`](https://github.com/framersai/agentos/blob/master/packages/agentos/src/api/generateObject.ts)) runs the response through the Zod schema; on validation failure the response and the error get appended to the conversation, model gets a second shot at the same call. Up to 3 attempts before the configured fallback fires. Second attempt has new information — its own error — so it's meaningfully different reasoning, not a re-roll.
+Second CoT lever: **schema-guided retry**. The framework's `generateValidatedObject` ([`agentos/src/api/generateObject.ts`](https://github.com/framerslab/agentos/blob/master/packages/agentos/src/api/generateObject.ts)) runs the response through the Zod schema; on validation failure the response and the error get appended to the conversation, model gets a second shot at the same call. Up to 3 attempts before the configured fallback fires. Second attempt has new information — its own error — so it's meaningfully different reasoning, not a re-roll.
 
 ### The Reactions
 
-[`agent-reactions.ts:82`](https://github.com/framersai/paracosm/blob/master/src/runtime/agents/agent-reactions.ts#L82-L95) for the system prompt, [`buildBatchSituationContext`](https://github.com/framersai/paracosm/blob/master/src/runtime/agents/agent-reactions.ts#L104) for the per-turn dynamic block. Last LLM stage. Runs in parallel batches of ~10 colonists per call — a 100-agent colony fires roughly 10 reaction calls per turn after dedupe and inactive-skip filtering. Static system prompt cached once across the run:
+[`agent-reactions.ts:82`](https://github.com/framerslab/paracosm/blob/master/src/runtime/agents/agent-reactions.ts#L82-L95) for the system prompt, [`buildBatchSituationContext`](https://github.com/framerslab/paracosm/blob/master/src/runtime/agents/agent-reactions.ts#L104) for the per-turn dynamic block. Last LLM stage. Runs in parallel batches of ~10 colonists per call — a 100-agent colony fires roughly 10 reaction calls per turn after dedupe and inactive-skip filtering. Static system prompt cached once across the run:
 
 ```text
 You are each of several colony members reacting to what just happened at your
@@ -329,16 +329,16 @@ There is nothing magical about HEXACO. It is a measurement framework with extens
 
 Two things to note. First, HEXACO is opt-in. Many Paracosm scenarios do not touch personality at all. You can simulate a financial market without giving the market a Big Six profile. Second, when personality is on it does not act through prompt injection alone. Personality biases which specialists get consulted, which decisions get accepted, which tools get forged. The drift mechanism (leader-pull, role-activation, outcome-reinforcement) is encoded in the kernel, not in a prompt. Prompt-only personality dissolves under context pressure. Kernel-encoded personality survives.
 
-The microbenchmark for this lives in agentos-bench: [`HexacoEncodingBias`](https://github.com/framersai/agentos-bench/blob/master/src/micro/HexacoEncodingBias.ts). It asserts that each HEXACO trait modulates encoding in the direction the literature predicts. Pass criterion is in the source.
+The microbenchmark for this lives in agentos-bench: [`HexacoEncodingBias`](https://github.com/framerslab/agentos-bench/blob/master/src/micro/HexacoEncodingBias.ts). It asserts that each HEXACO trait modulates encoding in the direction the literature predicts. Pass criterion is in the source.
 
 ## Where the agents come from
 
-A scenario starts with a roster — key personnel the user or compiler seeded — and the engine fills the rest from [`agent-generator.ts:63`](https://github.com/framersai/paracosm/blob/master/src/engine/core/agent-generator.ts#L63): fixed name pool, department distribution weighted toward life-critical roles, HEXACO sampled in [0.2, 0.8] so no agent starts pinned to a pole. Boring on purpose. The interesting part is the per-turn loop in [`progression.ts`](https://github.com/framersai/paracosm/blob/master/src/engine/core/progression.ts):
+A scenario starts with a roster — key personnel the user or compiler seeded — and the engine fills the rest from [`agent-generator.ts:63`](https://github.com/framerslab/paracosm/blob/master/src/engine/core/agent-generator.ts#L63): fixed name pool, department distribution weighted toward life-critical roles, HEXACO sampled in [0.2, 0.8] so no agent starts pinned to a pole. Boring on purpose. The interesting part is the per-turn loop in [`progression.ts`](https://github.com/framerslab/paracosm/blob/master/src/engine/core/progression.ts):
 
 1. **Aging.** Birthdays accumulate. Over 60 hits an age-stepped natural-causes probability.
 2. **Cause-attributed mortality.** Six independent causes — natural, radiation cancer, starvation, despair, fatal fracture, accident — each fire on their own conditions. Death carries the cause as a string. Stats card shows `DEATHS 8 (3 radiation · 2 accident · 1 despair / 5 age)`; the verdict reads the same breakdown.
-3. **Partnership formation.** Unpartnered adults aged 20–60, HEXACO compatibility above 0.4 (six-axis distance scaled by age delta, Extraversion boost on initiator), morale-gated probability. ([`progression.ts:344`](https://github.com/framersai/paracosm/blob/master/src/engine/core/progression.ts#L344-L378))
-4. **Births.** Partnered couples reproduce at 3× the unpartnered base rate when morale > 40% and food reserves > 6 months. Child HEXACO is mid-parent + `±0.05` jitter per trait, Mars-born, clamped [0.05, 0.95]. Heritability with mutation. ([`progression.ts:419`](https://github.com/framersai/paracosm/blob/master/src/engine/core/progression.ts#L419-L446))
+3. **Partnership formation.** Unpartnered adults aged 20–60, HEXACO compatibility above 0.4 (six-axis distance scaled by age delta, Extraversion boost on initiator), morale-gated probability. ([`progression.ts:344`](https://github.com/framerslab/paracosm/blob/master/src/engine/core/progression.ts#L344-L378))
+4. **Births.** Partnered couples reproduce at 3× the unpartnered base rate when morale > 40% and food reserves > 6 months. Child HEXACO is mid-parent + `±0.05` jitter per trait, Mars-born, clamped [0.05, 0.95]. Heritability with mutation. ([`progression.ts:419`](https://github.com/framerslab/paracosm/blob/master/src/engine/core/progression.ts#L419-L446))
 5. **Career progression.** Junior → Senior at 5 years, Senior → Lead at 12, both behind a low-probability roll. Promotion events fire on the SSE stream.
 6. **Psych effects.** Partner death costs 0.25 psych, child death 0.35, friend 0.08 each. Partnered colonists regenerate slowly. Isolation (no partner, no friends, no Earth contacts) drains.
 
@@ -352,11 +352,11 @@ The other ~95 cells aren't props. Chat panel against any colonist post-run is a 
 
 "Deterministic" lands wrong with most readers. They hear "scripted in advance" and the dynamism reads as decoration. The actual claim is narrower, and worth pulling apart, because the same word is doing two jobs.
 
-**Reproducibility** is one axis. Same seed, same scenario, same leader, same outputs. The kernel pulls from a Mulberry32 [`SeededRng`](https://github.com/framersai/paracosm/blob/master/src/engine/core/rng.ts) in a fixed order, so an identical input run produces an identical sequence of deaths, births, partnerships, career promotions, and outcome rolls. That's the property forking depends on — capture a snapshot at turn three, hand it to a different commander, and turns one through three played out byte-equal in both runs. No replay, no compare modal, no benchmark without this property.
+**Reproducibility** is one axis. Same seed, same scenario, same leader, same outputs. The kernel pulls from a Mulberry32 [`SeededRng`](https://github.com/framerslab/paracosm/blob/master/src/engine/core/rng.ts) in a fixed order, so an identical input run produces an identical sequence of deaths, births, partnerships, career promotions, and outcome rolls. That's the property forking depends on — capture a snapshot at turn three, hand it to a different commander, and turns one through three played out byte-equal in both runs. No replay, no compare modal, no benchmark without this property.
 
 **Narrative causality** is the other axis. Did *this specific death* happen because of *that specific event*? Paracosm's answer is: sometimes yes, sometimes no, and the architecture doesn't let me pretend otherwise.
 
-Three rolls in [`progression.ts`](https://github.com/framersai/paracosm/blob/master/src/engine/core/progression.ts) are honest background noise:
+Three rolls in [`progression.ts`](https://github.com/framerslab/paracosm/blob/master/src/engine/core/progression.ts) are honest background noise:
 
 - Natural mortality past 60 is age-stepped. A healthy colony's 78-year-old chief medical officer is no less likely to die this turn than a panicked one's. Old people die. Mars doesn't change that.
 - Baseline accident probability is `0.003 * timeDelta`, role-weighted (engineering 1.5×, governance 0.5×). EVAs go wrong. Pressure-suit tears. Vehicle rollovers. These exist in any plausible Mars habitat at a small background rate, and pretending otherwise would be the cheat.
@@ -373,7 +373,7 @@ if (metrics.foodMonthsReserve < 1.0) {
 }
 ```
 
-Food reserves don't drop on their own. They drop because the commander picked `option_b` on a turn-three resource event and the [`EffectRegistry`](https://github.com/framersai/paracosm/blob/master/src/engine/registries/effects.ts) subtracted eight months from reserves. Or because dept agents forged six tools in one event, every forge cost 1.2 kW of power, hydroponics ran short, food production fell behind. The starvation roll *is* a probability. But the gate that opens the roll is the cumulative residue of every LLM decision so far. Same shape for despair (gated on `psychScore < 0.2`, only fires after grief cascades from prior named deaths plus isolation), radiation cancer (`cumulativeRadiationMsv > 1000`, only true after multiple turns of no shielding decisions), fatal fractures (`boneDensityPct < 60`, only true after the Mars progression hook chips away at low-G for decades).
+Food reserves don't drop on their own. They drop because the commander picked `option_b` on a turn-three resource event and the [`EffectRegistry`](https://github.com/framerslab/paracosm/blob/master/src/engine/registries/effects.ts) subtracted eight months from reserves. Or because dept agents forged six tools in one event, every forge cost 1.2 kW of power, hydroponics ran short, food production fell behind. The starvation roll *is* a probability. But the gate that opens the roll is the cumulative residue of every LLM decision so far. Same shape for despair (gated on `psychScore < 0.2`, only fires after grief cascades from prior named deaths plus isolation), radiation cancer (`cumulativeRadiationMsv > 1000`, only true after multiple turns of no shielding decisions), fatal fractures (`boneDensityPct < 60`, only true after the Mars progression hook chips away at low-G for decades).
 
 The kernel doesn't *initiate* dynamism. It consolidates upstream LLM decisions into per-actor fates, picks which named individuals the consequence lands on, and stamps a cause string into the artifact. *That's* the work. Aria Chen died of despair this turn because her partner died turn three because the radiation event went `risky_failure` because the commander's HEXACO Openness-0.85 pushed her toward the bold option and the seeded roll came up below the success probability. The chain is auditable end-to-end. The probability is dynamic. The roll picks the actor; the cascade picks whether a roll fires at all.
 
@@ -408,7 +408,7 @@ Reuse turned out to be the largest cost lever in the system, which I did not pre
 
 ### What the judge actually checks
 
-One LLM call per forged tool, stable system prompt, JSON verdict. Lives in [`agentos/src/cognition/emergent/EmergentJudge.ts:435`](https://github.com/framersai/agentos/blob/master/packages/agentos/src/cognition/emergent/EmergentJudge.ts#L435-L475) (Paracosm wires the forge loop, AgentOS owns the judge):
+One LLM call per forged tool, stable system prompt, JSON verdict. Lives in [`agentos/src/cognition/emergent/EmergentJudge.ts:435`](https://github.com/framerslab/agentos/blob/master/packages/agentos/src/cognition/emergent/EmergentJudge.ts#L435-L475) (Paracosm wires the forge loop, AgentOS owns the judge):
 
 ```text
 You are a security auditor reviewing a tool an AI agent created at runtime.
@@ -481,7 +481,7 @@ A real verdict from a Mars Genesis run on seed 950 — Dietrich's chief medical 
 }
 ```
 
-0.87 confidence, above the 0.8 promotion threshold. Tool became callable by every other dept on turn four for tens of tokens of dispatch. After five reuses at ≥ 0.8 it moves from `session` tier to `agent` tier through a two-judge promotion panel — separate prompts at [line 478](https://github.com/framersai/agentos/blob/master/packages/agentos/src/cognition/emergent/EmergentJudge.ts#L478) (safety) and [line 502](https://github.com/framersai/agentos/blob/master/packages/agentos/src/cognition/emergent/EmergentJudge.ts#L502) (correctness), both must approve.
+0.87 confidence, above the 0.8 promotion threshold. Tool became callable by every other dept on turn four for tens of tokens of dispatch. After five reuses at ≥ 0.8 it moves from `session` tier to `agent` tier through a two-judge promotion panel — separate prompts at [line 478](https://github.com/framerslab/agentos/blob/master/packages/agentos/src/cognition/emergent/EmergentJudge.ts#L478) (safety) and [line 502](https://github.com/framerslab/agentos/blob/master/packages/agentos/src/cognition/emergent/EmergentJudge.ts#L502) (correctness), both must approve.
 
 Failed verdict from the same run, two turns later — different dept forged a tool that called `Math.random` inside its return value:
 
@@ -631,12 +631,12 @@ If you make something interesting, [send us a thought](https://agentos.sh/contac
 
 ## Links
 
-- Code: [github.com/framersai/paracosm](https://github.com/framersai/paracosm) (Apache-2.0, TypeScript, `npm install paracosm`)
+- Code: [github.com/framerslab/paracosm](https://github.com/framerslab/paracosm) (Apache-2.0, TypeScript, `npm install paracosm`)
 - Live demo: [paracosm.agentos.sh/sim](https://paracosm.agentos.sh/sim)
 - API reference: [paracosm.agentos.sh/docs](https://paracosm.agentos.sh/docs)
 - Mars Genesis case study: [Inside Mars Genesis](/en/blog/inside-mars-genesis-ai-colony-simulation/)
-- Underlying runtime: [github.com/framersai/agentos](https://github.com/framersai/agentos) (Apache-2.0)
-- Benchmark methodology: [framersai/agentos-bench](https://github.com/framersai/agentos-bench)
+- Underlying runtime: [github.com/framerslab/agentos](https://github.com/framerslab/agentos) (Apache-2.0)
+- Benchmark methodology: [framersai/agentos-bench](https://github.com/framerslab/agentos-bench)
 - wilds.ai (the AI companion product where the NPCs locked themselves in a vault): [wilds.ai](https://wilds.ai)
 
 ## References

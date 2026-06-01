@@ -18,7 +18,7 @@ import { FileText, ArrowRight } from 'lucide-react';
  * Reused on:
  *   - agentos.sh landing page
  *   - agentos.sh docs page
- *   - github.com/framersai/agentos README (mirrored markdown version)
+ *   - github.com/framerslab/agentos README (mirrored markdown version)
  */
 export function WhitepaperCTA() {
   return (
@@ -109,7 +109,7 @@ export function WhitepaperCTA() {
                 },
                 {
                   title: 'Reproducibility',
-                  body: 'Per-case run JSONs at seed=42, single-CLI reproduction, MIT-licensed bench at github.com/framersai/agentos-bench',
+                  body: 'Per-case run JSONs at seed=42, single-CLI reproduction, MIT-licensed bench at github.com/framerslab/agentos-bench',
                 },
               ].map((card) => (
                 <div
@@ -138,7 +138,7 @@ export function WhitepaperCTA() {
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </a>
               <a
-                href="https://github.com/framersai/agentos-bench/blob/master/results/LEADERBOARD.md"
+                href="https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/40 hover:bg-white/5"
               >
                 Read the benchmarks while you wait

@@ -49,7 +49,7 @@ const contactCards = [
     icon: Github,
     title: 'GitHub Issues — bug reports',
     body: 'For framework bugs, feature requests, or code-level questions. The repo is the canonical place to track engineering work.',
-    href: 'https://github.com/framersai/agentos/issues',
+    href: 'https://github.com/framerslab/agentos/issues',
     cta: 'Open an issue',
     external: true,
   },

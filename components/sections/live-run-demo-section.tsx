@@ -1215,7 +1215,7 @@ export function LiveRunDemoSection() {
           Examples captured from <code className="font-mono text-[var(--color-text-primary)]">node examples/&hellip;.mjs</code> against the OpenAI API. The full source is committed at{' '}
           <a
             className="underline underline-offset-4 hover:opacity-80"
-            href="https://github.com/framersai/agentos/tree/master/examples"
+            href="https://github.com/framerslab/agentos/tree/master/examples"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1333,7 +1333,7 @@ export function LiveRunDemoSection() {
           "act now / install / read more" without scanning every button. */}
       <div className="mt-8 flex flex-wrap items-center gap-3">
         <a
-          href={`https://github.com/framersai/agentos/blob/master/${active.exampleSlug}`}
+          href={`https://github.com/framerslab/agentos/blob/master/${active.exampleSlug}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-text-primary)] px-5 py-2.5 text-sm font-semibold text-[var(--color-background-primary)] shadow-sm transition-all hover:opacity-90 hover:shadow-md"
@@ -1362,7 +1362,7 @@ export function LiveRunDemoSection() {
           <span aria-hidden="true">→</span>
         </a>
         <a
-          href="https://github.com/framersai/agentos/tree/master/examples"
+          href="https://github.com/framerslab/agentos/tree/master/examples"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--color-text-secondary)] transition-all hover:text-[var(--color-text-primary)] hover:translate-x-0.5"

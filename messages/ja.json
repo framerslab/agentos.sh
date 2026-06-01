@@ -892,7 +892,7 @@
       },
       "whatIsParacosm": {
         "question": "Paracosm とは何ですか?",
-        "answer": "Paracosm (https://paracosm.agentos.sh) は AgentOS の上に構築された構造化ワールドモデル・シミュレーションエンジンです。JSON の ScenarioPackage と HEXACO のリーダープロファイルを決定論的なターンループにコンパイルし、AgentOS エージェントがイベントを提案し、強化された node:vm サンドボックス内で新しい TypeScript ツールを実行時にフォージし、フォークしてリプレイ可能な反実仮想のアーティファクトを生成します。3 つのモードが 1 つのスキーマを共有します。ターンループ型の文明シム (Mars Genesis が代表例)、バッチ軌道のデジタルツイン、バッチポイントのモンテカルロ予測です。Apache 2.0 のもとオープンソース、npm install paracosm。ライブデモ: https://paracosm.agentos.sh/sim。ソース: https://github.com/framersai/paracosm。長文のローンチ記事 (なぜ作ったか、wilds.ai のヴォルトの話、エンジンリファレンス): https://agentos.sh/blog/paracosm-launch。"
+        "answer": "Paracosm (https://paracosm.agentos.sh) は AgentOS の上に構築された構造化ワールドモデル・シミュレーションエンジンです。JSON の ScenarioPackage と HEXACO のリーダープロファイルを決定論的なターンループにコンパイルし、AgentOS エージェントがイベントを提案し、強化された node:vm サンドボックス内で新しい TypeScript ツールを実行時にフォージし、フォークしてリプレイ可能な反実仮想のアーティファクトを生成します。3 つのモードが 1 つのスキーマを共有します。ターンループ型の文明シム (Mars Genesis が代表例)、バッチ軌道のデジタルツイン、バッチポイントのモンテカルロ予測です。Apache 2.0 のもとオープンソース、npm install paracosm。ライブデモ: https://paracosm.agentos.sh/sim。ソース: https://github.com/framerslab/paracosm。長文のローンチ記事 (なぜ作ったか、wilds.ai のヴォルトの話、エンジンリファレンス): https://agentos.sh/blog/paracosm-launch。"
       },
       "whatIsWildsAi": {
         "question": "Wilds.ai とは何ですか?",

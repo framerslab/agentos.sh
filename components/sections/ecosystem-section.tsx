@@ -39,7 +39,7 @@ const repositories: Repository[] = [
   {
     name: 'AgentOS',
     description: 'TypeScript runtime for adaptive AI agent intelligence. Core framework for building autonomous agents.',
-    url: 'https://github.com/framersai/agentos',
+    url: 'https://github.com/framerslab/agentos',
     category: 'core',
     icon: Brain,
     language: 'TypeScript',
@@ -49,7 +49,7 @@ const repositories: Repository[] = [
   {
     name: 'Paracosm',
     description: 'AI agent swarm simulation engine. Emergent tool forging, HEXACO personality evolution, deterministic divergence kernels. Built on AgentOS.',
-    url: 'https://github.com/framersai/paracosm',
+    url: 'https://github.com/framerslab/paracosm',
     category: 'core',
     icon: Globe,
     language: 'TypeScript',
@@ -59,7 +59,7 @@ const repositories: Repository[] = [
   {
     name: 'AgentOS Skills',
     description: '88 curated SKILL.md prompt modules -- web search, coding, research, social media, and more. Data-only package with zero runtime dependencies.',
-    url: 'https://github.com/framersai/agentos-skills',
+    url: 'https://github.com/framerslab/agentos-skills',
     category: 'core',
     icon: BookOpen,
     language: 'Markdown',
@@ -69,7 +69,7 @@ const repositories: Repository[] = [
   {
     name: 'AgentOS Extensions',
     description: '45+ tool extensions, channel adapters, voice providers, and browser automation packs.',
-    url: 'https://github.com/framersai/agentos-extensions',
+    url: 'https://github.com/framerslab/agentos-extensions',
     category: 'core',
     icon: Puzzle,
     language: 'TypeScript',
@@ -81,7 +81,7 @@ const repositories: Repository[] = [
   {
     name: 'SQL Storage Adapter',
     description: `Universal SQL storage for cross-platform builds with smart fallbacks and syncing.${process.env.NEXT_PUBLIC_SQL_ADAPTER_VERSION ? ` Latest: v${process.env.NEXT_PUBLIC_SQL_ADAPTER_VERSION}` : ''}`,
-    url: 'https://github.com/framersai/sql-storage-adapter',
+    url: 'https://github.com/framerslab/sql-storage-adapter',
     category: 'infrastructure',
     icon: Database,
     language: 'TypeScript',
@@ -91,7 +91,7 @@ const repositories: Repository[] = [
   {
     name: 'AgentOS Skills Registry',
     description: 'Catalog SDK -- SKILLS_CATALOG, query helpers, factories, and workspace discovery for lazy-loading skills into agents.',
-    url: 'https://github.com/framersai/agentos-skills-registry',
+    url: 'https://github.com/framerslab/agentos-skills-registry',
     category: 'infrastructure',
     icon: Package,
     language: 'TypeScript',
@@ -101,7 +101,7 @@ const repositories: Repository[] = [
   {
     name: 'AgentOS Extensions Registry',
     description: 'Extension catalog -- channel, tool, and provider metadata with createCuratedManifest() for dynamic loading.',
-    url: 'https://github.com/framersai/agentos-extensions-registry',
+    url: 'https://github.com/framerslab/agentos-extensions-registry',
     category: 'infrastructure',
     icon: Package,
     language: 'TypeScript',
@@ -113,7 +113,7 @@ const repositories: Repository[] = [
   {
     name: 'AgentOS Workbench',
     description: 'Developer cockpit for AgentOS sessions: inspect personas, debug tool calls, and replay streaming transcripts.',
-    url: 'https://github.com/framersai/agentos-workbench',
+    url: 'https://github.com/framerslab/agentos-workbench',
     category: 'tools',
     icon: Terminal,
     language: 'TypeScript',
@@ -135,7 +135,7 @@ const repositories: Repository[] = [
   {
     name: 'AgentOS.sh',
     description: 'Marketing site and documentation hub for AgentOS. This website!',
-    url: 'https://github.com/framersai/agentos.sh',
+    url: 'https://github.com/framerslab/agentos.sh',
     category: 'apps',
     icon: BookOpen,
     language: 'TypeScript',
@@ -147,7 +147,7 @@ const repositories: Repository[] = [
   {
     name: 'Discussions',
     description: 'Public discourse forum for the Framers community. Ask questions and share ideas.',
-    url: 'https://github.com/framersai/discussions',
+    url: 'https://github.com/framerslab/discussions',
     category: 'community',
     icon: Users,
     status: 'stable',
@@ -444,7 +444,7 @@ export function EcosystemSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://github.com/framersai"
+              href="https://github.com/framerslab"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-background-primary rounded-xl font-semibold border-2 border-accent-primary hover:bg-accent-primary/10 transition-all flex items-center justify-center gap-2"
@@ -460,7 +460,7 @@ export function EcosystemSection() {
               {t('cta.joinDiscord')}
             </a>
             <a
-              href="https://github.com/framersai/agentos"
+              href="https://github.com/framerslab/agentos"
               className="px-6 py-3 bg-background-glass backdrop-blur-md rounded-xl font-semibold border border-border-interactive hover:border-accent-primary transition-all flex items-center justify-center gap-2"
             >
               <Code2 className="w-5 h-5" />

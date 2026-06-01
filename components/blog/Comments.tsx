@@ -117,7 +117,7 @@ export function Comments({ slug }: { slug: string }) {
           </code>{' '}
           to enable them. See{' '}
           <a
-            href="https://github.com/framersai/agentos.sh/issues"
+            href="https://github.com/framerslab/agentos.sh/issues"
             className="text-[var(--color-accent-primary)] hover:underline"
             target="_blank"
             rel="noopener noreferrer"

@@ -36,7 +36,7 @@ export function CTASection() {
             </a>
 
             <a
-              href="https://github.com/framersai/agentos"
+              href="https://github.com/framerslab/agentos"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 p-4 bg-[var(--color-background-card)] backdrop-blur-xl rounded-xl border border-[var(--color-border-subtle)] text-[var(--color-text-primary)] hover:border-[var(--color-accent-primary)] hover:bg-[var(--color-accent-primary)]/5 transition-all duration-300"
@@ -92,7 +92,7 @@ export function CTASection() {
             <div className="mt-4 flex items-center justify-center gap-4 text-sm text-[var(--color-text-muted)]">
               <span>frame.dev</span>
               <span className="w-1 h-1 rounded-full bg-[var(--color-accent-primary)]" />
-              <span>@framersai</span>
+              <span>@framerslab</span>
             </div>
           </a>
         </div>

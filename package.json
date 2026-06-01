@@ -1,5 +1,5 @@
 {
-  "name": "@framersai/agentos.sh",
+  "name": "@framers/agentos.sh",
   "version": "0.1.0",
   "private": true,
   "description": "Marketing site for AgentOS (agentos.sh) built with Next.js, React, and Tailwind CSS.",
@@ -72,6 +72,6 @@
   "packageManager": "pnpm@10.15.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/framersai/agentos.sh"
+    "url": "https://github.com/framerslab/agentos.sh"
   }
 }

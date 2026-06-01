@@ -115,19 +115,19 @@ See [AgentOS vs LangGraph vs CrewAI vs Mastra vs VoltAgent](/blog/agentos-vs-lan
 
 ## What we measured (and what we didn't)
 
-AgentOS ships with [agentos-bench](https://github.com/framersai/agentos-bench), an Apache 2.0 memory benchmark suite. We publish bootstrap CIs at 10k resamples on every headline number and the per-cell run JSON for replication. The recent results:
+AgentOS ships with [agentos-bench](https://github.com/framerslab/agentos-bench), an Apache 2.0 memory benchmark suite. We publish bootstrap CIs at 10k resamples on every headline number and the per-cell run JSON for replication. The recent results:
 
-- **LongMemEval-S**: 85.6% [82.4%, 88.6%] at $0.0090 per correct, gpt-4o reader, 4-second avg latency. Beats Mastra OM gpt-4o (84.2% published) on accuracy at the same answer LLM. Beats EmergenceMem Simple Fast (80.6% measured in our harness, their public reference repo ships with no LICENSE) by +5.0 points at 6.5x lower cost-per-correct. Statistically tied with EmergenceMem Internal's published 86.0%, but Emergence's number comes from **closed-source SaaS at [emergence.ai/web-automation-api](https://www.emergence.ai/web-automation-api), not a library you can install**. AgentOS ships the full architecture under [Apache-2.0](https://github.com/framersai/agentos/blob/master/LICENSE).
+- **LongMemEval-S**: 85.6% [82.4%, 88.6%] at $0.0090 per correct, gpt-4o reader, 4-second avg latency. Beats Mastra OM gpt-4o (84.2% published) on accuracy at the same answer LLM. Beats EmergenceMem Simple Fast (80.6% measured in our harness, their public reference repo ships with no LICENSE) by +5.0 points at 6.5x lower cost-per-correct. Statistically tied with EmergenceMem Internal's published 86.0%, but Emergence's number comes from **closed-source SaaS at [emergence.ai/web-automation-api](https://www.emergence.ai/web-automation-api), not a library you can install**. AgentOS ships the full architecture under [Apache-2.0](https://github.com/framerslab/agentos/blob/master/LICENSE).
 - **LongMemEval-M** (1.5M tokens, 500 sessions per haystack): 70.2% [66.0%, 74.0%] at $0.0078 per correct with reader-router top-K=5. Competitive with the strongest published M results in the original LongMemEval paper ([Wu et al, ICLR 2025, Table 3](https://arxiv.org/abs/2410.10813)). At Top-5, +4.5 points above the paper's round-level configuration (65.7%) and 1.2 below the paper's session-level configuration (71.4%); 1.8 below the paper's overall best (72.0% at round-level Top-10).
 
-We do not run benchmarks against vendors that don't ship complete standalone runnables. We do not claim X-times-cheaper unless reader model and config match between the two systems being compared. The entire methodology (judges, sample sizes, judge FPR probes, adversarial calibration) is documented in [agentos-bench/docs](https://github.com/framersai/agentos-bench/tree/master/docs).
+We do not run benchmarks against vendors that don't ship complete standalone runnables. We do not claim X-times-cheaper unless reader model and config match between the two systems being compared. The entire methodology (judges, sample sizes, judge FPR probes, adversarial calibration) is documented in [agentos-bench/docs](https://github.com/framerslab/agentos-bench/tree/master/docs).
 
 This is what an honest benchmark looks like. If something on this list is wrong, file an issue against agentos-bench and we'll fix it or retract the claim.
 
 ## Get Started
 
 - [Documentation](https://docs.agentos.sh)
-- [GitHub](https://github.com/framersai/agentos)
+- [GitHub](https://github.com/framerslab/agentos)
 - [Discord](https://wilds.ai/discord)
 - [npm](https://www.npmjs.com/package/@framers/agentos)
 - [How to Build a TypeScript AI Agent in 5 Minutes](/blog/build-typescript-ai-agent-5-minutes)
@@ -148,8 +148,8 @@ This is what an honest benchmark looks like. If something on this list is wrong,
 
 **Can AgentOS run agents that talk on the phone?** Yes. The voice pipeline (12 STT providers, 12 TTS providers) plus telephony adapters in the channels system gets you a voice agent that runs as a phone call. We have [a case study with Wilds.ai](/blog/ai-companion-case-study-wilds) on the companion side of the same stack.
 
-**What about safety?** Six guardrail packs ship: topicality, ML classifiers (toxicity / prompt-injection / NSFW), grounding (NLI), PII redaction, code safety (static analysis), and skills (curated SKILL.md execution). Each has its own README in the [packages/agentos-ext-*](https://github.com/framersai/agentos/tree/master/packages) tree.
+**What about safety?** Six guardrail packs ship: topicality, ML classifiers (toxicity / prompt-injection / NSFW), grounding (NLI), PII redaction, code safety (static analysis), and skills (curated SKILL.md execution). Each has its own README in the [packages/agentos-ext-*](https://github.com/framerslab/agentos/tree/master/packages) tree.
 
 **Is this production-ready for X?** Define X. We don't publish a generic "production-ready" label because the answer depends on what you're shipping. We do publish concrete benchmark numbers, concrete safety posture, and concrete provider compatibility. Read those, judge for yourself, file issues when we miss.
 
-[Apache 2.0 licensed](https://github.com/framersai/agentos/blob/master/LICENSE). Built by [Frame](https://frame.dev).
+[Apache 2.0 licensed](https://github.com/framerslab/agentos/blob/master/LICENSE). Built by [Frame](https://frame.dev).

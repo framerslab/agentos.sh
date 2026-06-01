@@ -162,7 +162,7 @@ export default function GuidesPage({ params }: Props) {
               Module API
             </a>
             <a
-              href="https://github.com/framersai/agentos/tree/master/docs"
+              href="https://github.com/framerslab/agentos/tree/master/docs"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-[var(--color-border-primary)] text-[var(--color-text-primary)] font-semibold hover:border-[var(--color-accent-primary)] hover:text-[var(--color-accent-primary)] transition-all"

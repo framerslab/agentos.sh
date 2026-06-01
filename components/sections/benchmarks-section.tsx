@@ -79,7 +79,7 @@ const LONGMEMEVAL_S_ROWS: BenchmarkRow[] = [
     p50Latency: '3,703 ms',
     source: {
       label: 'vendor reproduction',
-      href: 'https://github.com/framersai/agentos-bench/blob/master/vendors/emergence-simple-fast/',
+      href: 'https://github.com/framerslab/agentos-bench/blob/master/vendors/emergence-simple-fast/',
     },
   },
   {
@@ -138,7 +138,7 @@ const LONGMEMEVAL_M_ROWS: MRow[] = [
     accuracy: 'not published',
     ci: '—',
     license: 'various',
-    source: { label: 'reports S only', href: 'https://github.com/framersai/agentos-bench/blob/master/results/LEADERBOARD.md' },
+    source: { label: 'reports S only', href: 'https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md' },
   },
 ]
 
@@ -393,7 +393,7 @@ export function BenchmarksSection() {
           className="flex flex-wrap gap-3"
         >
           <a
-            href="https://github.com/framersai/agentos-bench/blob/master/results/LEADERBOARD.md"
+            href="https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md"
             className="inline-flex items-center gap-2 rounded-full bg-[var(--color-text-primary)] px-6 py-3 text-sm font-medium text-[var(--color-background-primary)] transition-all hover:opacity-90"
           >
             {t('ctaBenchmarksPage')}
@@ -407,7 +407,7 @@ export function BenchmarksSection() {
             <ExternalLink className="h-4 w-4" aria-hidden />
           </a>
           <a
-            href="https://github.com/framersai/agentos-bench"
+            href="https://github.com/framerslab/agentos-bench"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-subtle)] px-6 py-3 text-sm font-medium text-[var(--color-text-primary)] transition-all hover:border-[var(--color-border-primary)] hover:bg-[var(--color-background-secondary)]"

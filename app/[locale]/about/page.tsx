@@ -91,14 +91,14 @@ export default async function AboutPage({ params: { locale } }: Props) {
   };
 
   const connectLinks = [
-    { label: t('connect.github'), href: 'https://github.com/framersai/agentos', icon: Github },
+    { label: t('connect.github'), href: 'https://github.com/framerslab/agentos', icon: Github },
     { label: 'Frame', href: 'https://frame.dev', icon: Globe },
     { label: 'Paracosm', href: 'https://paracosm.agentos.sh', icon: Globe },
     { label: 'Wilds.ai', href: 'https://wilds.ai', icon: Globe },
     { label: 'Wunderland', href: 'https://wunderland.sh', icon: Globe },
     { label: t('connect.frameDev'), href: 'https://frame.dev', icon: Globe },
     { label: t('connect.linkedin'), href: 'https://www.linkedin.com/company/framerslab', icon: Linkedin },
-    { label: t('connect.twitter'), href: 'https://twitter.com/framersai', icon: Twitter },
+    { label: t('connect.twitter'), href: 'https://twitter.com/framerslab', icon: Twitter },
   ];
 
   const contactCards = [
@@ -153,7 +153,7 @@ export default async function AboutPage({ params: { locale } }: Props) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://github.com/framersai/agentos"
+              href="https://github.com/framerslab/agentos"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#5b21b6] dark:bg-gradient-to-r dark:from-accent-primary dark:to-accent-secondary text-white font-semibold shadow-lg shadow-accent-primary/30 hover:bg-[#6d28d9] dark:hover:from-accent-primary dark:hover:to-accent-secondary transition-colors"
