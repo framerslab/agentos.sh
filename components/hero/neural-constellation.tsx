@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback, useMemo, memo } from 'react';
 import { useTheme } from 'next-themes';
+import { clampDpr } from '@/lib/hero/dpr';
 
 interface NeuralConstellationProps {
   size?: number;
@@ -155,7 +156,7 @@ export const NeuralConstellation = memo(function NeuralConstellation({
     const ctx = canvas?.getContext('2d');
     if (!canvas || !ctx) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = clampDpr(window.devicePixelRatio || 1, window.innerWidth);
     canvas.width = size * dpr;
     canvas.height = size * dpr;
     ctx.scale(dpr, dpr);
@@ -167,8 +168,22 @@ export const NeuralConstellation = memo(function NeuralConstellation({
       }
       animRef.current = requestAnimationFrame(loop);
     };
-    loop();
-    return () => cancelAnimationFrame(animRef.current);
+
+    // Defer the first frame to idle so the constellation does not compete
+    // with hydration / LCP. Falls back to a short timeout where rIC is absent.
+    let idleId = 0;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const begin = () => { loop(); };
+    if (typeof window.requestIdleCallback === 'function') {
+      idleId = window.requestIdleCallback(begin, { timeout: 1500 });
+    } else {
+      timer = setTimeout(begin, 200);
+    }
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      if (timer) clearTimeout(timer);
+      if (idleId && typeof window.cancelIdleCallback === 'function') window.cancelIdleCallback(idleId);
+    };
   }, [mounted, size, draw]);
 
   // Ambient glow via CSS (GPU accelerated)
