@@ -246,20 +246,29 @@ export const ParticleMorphText = memo(function ParticleMorphText({
       const fromParticles = s.wordIdx === 0 ? particlesARef.current : particlesBRef.current;
       const toParticles = s.wordIdx === 0 ? particlesBRef.current : particlesARef.current;
       const morphing = mt > 0 && mt < 1;
-      const easeT = morphing ? easeInOutExpo(mt) : 0;
+      // Linear progress here; the gentle smoothstep is applied per-particle
+      // below. Previously easeInOutExpo here STACKED with a second ease,
+      // producing the harsh whip-across motion that read as chaotic.
+      const easeT = mt;
       const maxLen = Math.max(fromParticles.length, toParticles.length);
 
       for (let i = 0; i < maxLen; i++) {
         const fromP = fromParticles[i % fromParticles.length];
         const toP = toParticles[i % toParticles.length];
 
-        // Per-particle stagger based on seed for organic feel
-        const stagger = (fromP.seed % 100) / 100 * 0.15;
+        // Per-particle stagger based on seed for organic feel. Tightened from
+        // 0.15 so particles travel more in unison (less scattered/chaotic).
+        const stagger = (fromP.seed % 100) / 100 * 0.10;
         const particleT = Math.max(0, Math.min(1, (easeT - stagger) / (1 - stagger)));
-        const smoothT = easeOutExpo(particleT);
+        // Smoothstep instead of a second exponential ease: gentle symmetric
+        // S-curve with no harsh mid-transit acceleration. The old easeOutExpo
+        // (stacked on the already-eased easeT) made particles whip across,
+        // which read as jittery/abrupt.
+        const smoothT = particleT * particleT * (3 - 2 * particleT);
 
-        // Reduced wobble keeps letters readable during transit.
-        const wobble = morphing ? Math.sin(t * 0.003 + fromP.seed) * 0.6 * (1 - Math.abs(smoothT - 0.5) * 2) : 0;
+        // Subtle drift, not shimmer: half the amplitude and ~half the
+        // frequency of before, so particles gently float rather than vibrate.
+        const wobble = morphing ? Math.sin(t * 0.0016 + fromP.seed) * 0.25 * (1 - Math.abs(smoothT - 0.5) * 2) : 0;
 
         const x = fromP.x + (toP.x - fromP.x) * smoothT + wobble;
         const y = fromP.y + (toP.y - fromP.y) * smoothT;
@@ -270,7 +279,9 @@ export const ParticleMorphText = memo(function ParticleMorphText({
         const g = Math.round(fRgb[1] + (tRgb[1] - fRgb[1]) * smoothT);
         const b = Math.round(fRgb[2] + (tRgb[2] - fRgb[2]) * smoothT);
 
-        const alpha = morphing ? 0.85 + 0.15 * Math.cos(mt * Math.PI * 2) : 1;
+        // Near-opaque throughout. The old 0.85+0.15*cos(2π) dipped to ~0.7 at
+        // mid-morph and rebounded, which read as a flicker. Hold steady.
+        const alpha = 1;
 
         // Soft radial glow — colored per-particle gradient (violet→magenta melt).
         const grad = ctx.createRadialGradient(x, y, 0, x, y, fromP.r * 2.5);
@@ -285,7 +296,7 @@ export const ParticleMorphText = memo(function ParticleMorphText({
     // rAF loop that runs ONLY during a morph, then stops and schedules the next.
     const animateMorph = (t: number) => {
       const s = stateRef.current;
-      s.morphT += 0.04; // ~0.4s morph at 60fps
+      s.morphT += 0.018; // ~0.9s morph at 60fps — slower, more graceful than the old 0.4s
 
       // Switch width at morph midpoint so spacing animates in sync.
       if (s.morphT >= 0.5 && !s.widthSwitched) {
