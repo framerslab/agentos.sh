@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback, memo, useMemo } from 'react';
 import { clampDpr } from '@/lib/hero/dpr';
+import { slideOffsetPx } from '@/lib/hero/morph-geometry';
 
 interface ParticleMorphTextProps {
   words: [string, string];
@@ -68,15 +69,12 @@ export const ParticleMorphText = memo(function ParticleMorphText({
     return [estimate(wordA), estimate(wordB)];
   });
   const width = useMemo(() => Math.max(wordWidths[0], wordWidths[1]), [wordWidths]);
-  // Per-word wrapper width drives the slide-and-reflow effect: as
-  // "Emergent" morphs into "Adaptive", the wrapper shrinks/grows and
-  // the surrounding inline flow ("intelligence", "agents") slides with
-  // it. CSS `transition: width 180ms ease-out` (set on the wrapper)
-  // animates the change. This costs ~0.10–0.15 CLS per morph cycle —
-  // explicitly accepted as a design trade because the slide is part of
-  // the hero's identity. The font-display:optional and body-shift
-  // fixes elsewhere already cut the bigger CLS contributors.
-  const _wrapperWidth = wordWidths[activeWordIndex] ?? width;
+  // The wrapper is pinned to the WIDER of the two words (`width`) and never
+  // changes size, so it contributes zero CLS. To keep the original slide of
+  // the surrounding inline flow ("intelligence", "agents"), we expose a
+  // `--morph-slide` custom property (<= 0px) that the adjacent word translates
+  // by via CSS transform — a GPU move that is not counted as layout shift.
+  const slideOffset = slideOffsetPx(wordWidths, activeWordIndex);
 
   const hexToRgb = useCallback((hex: string) => {
     const v = parseInt(hex.slice(1), 16);
@@ -348,14 +346,15 @@ export const ParticleMorphText = memo(function ParticleMorphText({
     <span
       className={`inline-block ${className}`}
       style={{
-        width: _wrapperWidth,
+        width,            // pinned to max(wordA,wordB); never reflows => 0 CLS
         height,
         overflow: 'visible',
         verticalAlign: 'baseline',
         position: 'relative',
         top: `${0.22 + nudgeY}em`,
         marginRight: '0.2em',
-        transition: 'width 180ms ease-out',
+        // Surfaced for the adjacent inline word to translate by (GPU, no CLS).
+        ['--morph-slide' as string]: `${slideOffset}px`,
       }}
     >
       <span className="sr-only">{wordA} / {wordB}</span>
