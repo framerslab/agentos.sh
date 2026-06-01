@@ -10,7 +10,7 @@ AgentOS is built by [Framers Lab, Inc.](https://frame.dev). It treats each agent
 - Documentation: https://docs.agentos.sh
 - API Reference: https://docs.agentos.sh/api
 - npm: https://www.npmjs.com/package/@framers/agentos
-- GitHub: https://github.com/framersai/agentos
+- GitHub: https://github.com/framerslab/agentos
 - Discord: https://wilds.ai/discord
 - Blog: https://docs.agentos.sh/blog
 - Sitemap: https://agentos.sh/sitemap.xml
