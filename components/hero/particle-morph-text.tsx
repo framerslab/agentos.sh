@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, useCallback, memo, useMemo } from 'react';
 import { clampDpr } from '@/lib/hero/dpr';
-import { slideOffsetPx } from '@/lib/hero/morph-geometry';
 
 interface ParticleMorphTextProps {
   words: [string, string];
@@ -22,19 +21,18 @@ interface ParticleMorphTextProps {
    * `false` keeps the legacy organic-jitter behavior for standalone uses.
    */
   synchronized?: boolean;
-  /**
-   * Fired with the horizontal offset (px, <= 0) the inline word FOLLOWING this
-   * morph should translate by to reproduce the original slide without CLS. The
-   * wrapper itself is pinned to the wider word's width (zero reflow); the slide
-   * lives on the sibling word, which can only be reached from the parent — so
-   * the parent lifts this value into state and applies the transform. Fires on
-   * word-flip (~2x per interval), not per animation frame.
-   */
-  onSlideOffsetChange?: (px: number) => void;
 }
 
 /**
- * ParticleMorphText - Smooth exponential decay morphing with randomized timing
+ * ParticleMorphText - Smooth exponential decay morphing with randomized timing.
+ *
+ * Visuals are the original colored-gradient particle melt. The only additions
+ * over the original are INVISIBLE performance gates that change WHEN the rAF
+ * loop runs, never how it looks:
+ *   - prefers-reduced-motion → render the static gradient word, no loop
+ *   - IntersectionObserver → pause drawing while scrolled offscreen
+ *   - requestIdleCallback → defer the first frame until after first paint/LCP
+ *   - clampDpr → cap the canvas backing store on mobile
  */
 export const ParticleMorphText = memo(function ParticleMorphText({
   words,
@@ -46,7 +44,6 @@ export const ParticleMorphText = memo(function ParticleMorphText({
   startIndex = 0,
   nudgeY = 0,
   synchronized = false,
-  onSlideOffsetChange,
 }: ParticleMorphTextProps) {
   const [wordA, wordB] = words;
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -79,26 +76,22 @@ export const ParticleMorphText = memo(function ParticleMorphText({
     return [estimate(wordA), estimate(wordB)];
   });
   const width = useMemo(() => Math.max(wordWidths[0], wordWidths[1]), [wordWidths]);
-  // The wrapper is pinned to the WIDER of the two words (`width`) and never
-  // changes size, so it contributes zero CLS. To keep the original slide of
-  // the surrounding inline flow ("intelligence", "agents"), we report this
-  // offset (<= 0px) to the parent, which translates the sibling word by it
-  // (a GPU transform that is not counted as layout shift). A CSS custom
-  // property cannot reach a sibling, so the value must be lifted up.
-  const slideOffset = slideOffsetPx(wordWidths, activeWordIndex);
-
-  // Report the slide offset upward whenever it changes (on word-flip, ~2x per
-  // interval — not per frame). The parent applies it to the trailing word.
-  useEffect(() => {
-    onSlideOffsetChange?.(slideOffset);
-  }, [slideOffset, onSlideOffsetChange]);
+  // Per-word wrapper width drives the slide-and-reflow effect: as
+  // "Emergent" morphs into "Adaptive", the wrapper shrinks/grows and
+  // the surrounding inline flow ("intelligence", "agents") slides with
+  // it. CSS `transition: width 180ms ease-out` (set on the wrapper)
+  // animates the change. This costs ~0.10–0.15 CLS per morph cycle —
+  // explicitly accepted as a design trade because the slide is part of
+  // the hero's identity. The font-display:optional and body-shift
+  // fixes elsewhere already cut the bigger CLS contributors.
+  const _wrapperWidth = wordWidths[activeWordIndex] ?? width;
 
   const hexToRgb = useCallback((hex: string) => {
     const v = parseInt(hex.slice(1), 16);
     return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
   }, []);
 
-  const lerp = useCallback((a: number[], b: number[], t: number) => 
+  const lerp = useCallback((a: number[], b: number[], t: number) =>
     `rgb(${Math.round(a[0] + (b[0] - a[0]) * t)},${Math.round(a[1] + (b[1] - a[1]) * t)},${Math.round(a[2] + (b[2] - a[2]) * t)})`, []);
 
   // Exponential decay easing for smooth organic motion
@@ -234,24 +227,6 @@ export const ParticleMorphText = memo(function ParticleMorphText({
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
 
-    // Pre-render a soft white radial-glow sprite ONCE. The previous hot path
-    // created a fresh createRadialGradient per particle per frame (~1.4s of
-    // script exec in PSI). Now we stamp this cached sprite via drawImage and
-    // tint with a solid arc underneath. SPRITE_R covers the old r*2.5 extent.
-    const SPRITE_R = 3; // device-independent px
-    const sprite = document.createElement('canvas');
-    sprite.width = sprite.height = Math.ceil(SPRITE_R * 2 * dpr);
-    const sctx = sprite.getContext('2d');
-    if (sctx) {
-      sctx.scale(dpr, dpr);
-      const sg = sctx.createRadialGradient(SPRITE_R, SPRITE_R, 0, SPRITE_R, SPRITE_R, SPRITE_R);
-      sg.addColorStop(0, 'rgba(255,255,255,1)');
-      sg.addColorStop(0.5, 'rgba(255,255,255,0.5)');
-      sg.addColorStop(1, 'rgba(255,255,255,0)');
-      sctx.fillStyle = sg;
-      sctx.fillRect(0, 0, SPRITE_R * 2, SPRITE_R * 2);
-    }
-
     particlesARef.current = sampleText(wordA);
     particlesBRef.current = sampleText(wordB);
     stateRef.current.lastSwitch = performance.now();
@@ -294,55 +269,55 @@ export const ParticleMorphText = memo(function ParticleMorphText({
 
       const fromParticles = s.wordIdx === 0 ? particlesARef.current : particlesBRef.current;
       const toParticles = s.wordIdx === 0 ? particlesBRef.current : particlesARef.current;
-      
+
       // Use exponential easing for smooth organic motion
       const easeT = s.isMorphing ? easeInOutExpo(s.morphT) : 0;
       const maxLen = Math.max(fromParticles.length, toParticles.length);
-      
+
       for (let i = 0; i < maxLen; i++) {
         const fromP = fromParticles[i % fromParticles.length];
         const toP = toParticles[i % toParticles.length];
-        
+
         // Per-particle stagger based on seed for organic feel
         const stagger = (fromP.seed % 100) / 100 * 0.15;
         const particleT = Math.max(0, Math.min(1, (easeT - stagger) / (1 - stagger)));
         const smoothT = easeOutExpo(particleT);
-        
+
         // Reduced wobble keeps letters readable during transit. Previously
         // 2px peak amplitude smeared the glyph shapes; 0.6px gives a hint
         // of organic motion without trashing legibility.
         const wobble = s.isMorphing ? Math.sin(t * 0.003 + fromP.seed) * 0.6 * (1 - Math.abs(smoothT - 0.5) * 2) : 0;
-        
+
         const x = fromP.x + (toP.x - fromP.x) * smoothT + wobble;
         const y = fromP.y + (toP.y - fromP.y) * smoothT;
-        
+
         // Use pre-cached RGB values instead of regex parsing per frame
         const fRgb = fromP.rgb;
         const tRgb = toP.rgb;
         const r = Math.round(fRgb[0] + (tRgb[0] - fRgb[0]) * smoothT);
         const g = Math.round(fRgb[1] + (tRgb[1] - fRgb[1]) * smoothT);
         const b = Math.round(fRgb[2] + (tRgb[2] - fRgb[2]) * smoothT);
-        
+
         // Smoother alpha transition
         const alpha = s.isMorphing ? 0.85 + 0.15 * Math.cos(s.morphT * Math.PI * 2) : 1;
-        
-        // Soft glow: solid tinted dot + cached white sprite at the particle's
-        // alpha. Replaces the per-particle createRadialGradient (the old hot
-        // path). Same visual: colored core under a soft white halo.
-        ctx.globalAlpha = alpha;
-        ctx.fillStyle = `rgb(${r},${g},${b})`;
-        ctx.beginPath();
-        ctx.arc(x, y, fromP.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.drawImage(sprite, x - SPRITE_R, y - SPRITE_R, SPRITE_R * 2, SPRITE_R * 2);
-        ctx.globalAlpha = 1;
+
+        // Soft radial glow — colored per-particle gradient is the original
+        // look (violet→magenta melt). Kept verbatim; the idle-start gate
+        // above is what recovered the load-time perf, not cheapening this.
+        const grad = ctx.createRadialGradient(x, y, 0, x, y, fromP.r * 2.5);
+        grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
+        grad.addColorStop(0.5, `rgba(${r},${g},${b},${alpha * 0.5})`);
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(x - fromP.r * 2.5, y - fromP.r * 2.5, fromP.r * 5, fromP.r * 5);
       }
 
       animRef.current = requestAnimationFrame(draw);
     };
 
     // Defer the first frame to idle so the morph loop does not compete with
-    // hydration / LCP. Falls back to a short timeout where rIC is missing.
+    // hydration / LCP. This is the change that recovered load-time perf while
+    // keeping the original visuals intact. Falls back to a short timeout.
     let idleId = 0;
     let timer: ReturnType<typeof setTimeout> | null = null;
     const begin = () => { animRef.current = requestAnimationFrame(draw); };
@@ -356,55 +331,34 @@ export const ParticleMorphText = memo(function ParticleMorphText({
       if (timer) clearTimeout(timer);
       if (idleId && typeof window.cancelIdleCallback === 'function') window.cancelIdleCallback(idleId);
     };
-  }, [mounted, width, height, wordA, wordB, interval, sampleText, easeOutExpo, easeInOutExpo]);
+  }, [mounted, width, height, wordA, wordB, interval, synchronized, sampleText, easeOutExpo, easeInOutExpo]);
 
-  // The wrapper's width is defined by a HIDDEN real-text sizer rendering the
-  // wider of the two words, NOT by the JS character-count estimate. Real glyph
-  // metrics are identical at SSR (CSS) and post-hydration, so the wrapper width
-  // never changes — eliminating the inline reflow that moved the second H1 line
-  // and caused ~0.15 CLS. The canvas and static fallback are absolutely
-  // positioned ON TOP of the sizer, so swapping them never affects layout.
-  // (The visible word is whichever is widest; both gradients/animation are
-  // unchanged. The longer word defines the box; the shorter just has slack.)
-  const widestWord = wordWidths[0] >= wordWidths[1] ? wordA : wordB;
+  // Inline-block for proper text flow alignment
   return (
     <span
       className={`inline-block ${className}`}
       style={{
+        width: _wrapperWidth,
         height,
         overflow: 'visible',
         verticalAlign: 'baseline',
         position: 'relative',
         top: `${0.22 + nudgeY}em`,
         marginRight: '0.2em',
+        transition: 'width 180ms ease-out',
       }}
     >
       <span className="sr-only">{wordA} / {wordB}</span>
-      {/* Width sizer: real glyphs, no estimate, defines the box at SSR + runtime
-          identically. aria-hidden + visibility:hidden so it neither paints nor
-          is announced; it only reserves horizontal space. */}
-      <span
-        aria-hidden="true"
-        style={{ visibility: 'hidden', fontSize, fontWeight: 700, whiteSpace: 'nowrap', display: 'inline-block' }}
-      >
-        {widestWord}
-      </span>
       {mounted ? (
-        <canvas
-          ref={canvasRef}
-          style={{ width, height, display: 'block', position: 'absolute', top: 0, left: 0 }}
-          aria-hidden="true"
-        />
+        <canvas ref={canvasRef} style={{ width, height, display: 'block' }} aria-hidden="true" />
       ) : (
         <span
-          aria-hidden="true"
           style={{
-            position: 'absolute', top: 0, left: 0,
             background: `linear-gradient(90deg, ${gradientFrom}, ${gradientTo})`,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
-            fontSize, fontWeight: 700, whiteSpace: 'nowrap',
+            fontSize, fontWeight: 700,
           }}
         >
           {words[startIndex]}

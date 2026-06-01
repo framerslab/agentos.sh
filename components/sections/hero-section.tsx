@@ -32,11 +32,6 @@ const HeroSectionInner = memo(function HeroSectionInner() {
   const [githubForks, setGithubForks] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
   const [morphFontSize, setMorphFontSize] = useState(40);
-  // Slide offsets (px, <= 0) reported by each ParticleMorphText. Applied as a
-  // GPU transform to the inline word following each morph so the original
-  // slide is preserved without the width-driven layout shift (CLS).
-  const [slide1, setSlide1] = useState(0);
-  const [slide2, setSlide2] = useState(0);
   const isDark = resolvedTheme === 'dark';
 
   // Mark as mounted after hydration
@@ -104,7 +99,7 @@ const HeroSectionInner = memo(function HeroSectionInner() {
 
 
   return (
-    <section className="relative min-h-screen flex items-start bg-[var(--color-background-primary)] overflow-hidden" itemScope itemType="https://schema.org/SoftwareApplication">
+    <section className="relative min-h-screen flex items-center bg-[var(--color-background-primary)] overflow-hidden" itemScope itemType="https://schema.org/SoftwareApplication">
       <meta itemProp="name" content="AgentOS" />
       <meta itemProp="applicationCategory" content="AI Framework" />
       <meta itemProp="operatingSystem" content="Any" />
@@ -133,16 +128,15 @@ const HeroSectionInner = memo(function HeroSectionInner() {
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-18">
         <article className="max-w-2xl">
-          {/* Reserve the H1's rendered height up-front so the morph canvas
-              settling post-hydration doesn't reflow the rest of the page.
-              Two lines of text at leading-1.2: 28px*2.4=68px mobile,
-              36px*2.4=87px, 48px*2.4=116px desktop. Slight overshoot is
-              intentional — undershoot causes CLS, overshoot is whitespace.
-              NB: the residual hero CLS is NOT a height issue (height is
-              stable here) — it's the morph wrapper WIDTH correcting from an
-              SSR estimate to the measured glyph width, reflowing the inline
-              line. Fixed in particle-morph-text.tsx by width-defining each
-              wrapper with hidden real text instead of a char-count estimate. */}
+          {/* Reserve the H1's rendered height up-front so the canvas
+              hydrate doesn't reflow the rest of the page. Two lines of
+              text at leading-1.2: 28px*2.4=68px mobile, 36px*2.4=87px,
+              48px*2.4=116px desktop. Slight overshoot is intentional —
+              undershoot causes CLS, overshoot is just whitespace.
+              The morph keeps its original colored-gradient particle melt
+              and width-driven slide; perf was recovered by deferring the
+              rAF loop to idle (see particle-morph-text.tsx), not by
+              changing the visuals. */}
           {/* `aria-label` is the single source of truth for both
               accessibility and crawler entity recognition. The visible
               children render the particle-morph animation alongside
@@ -161,18 +155,12 @@ const HeroSectionInner = memo(function HeroSectionInner() {
             itemProp="name"
           >
             <span aria-hidden="true">
-              <ParticleMorphText words={['Emergent', 'Adaptive']} interval={7000} fontSize={morphFontSize} gradientFrom={isDark ? '#7b66ff' : '#6024f3'} gradientTo={isDark ? '#d27bfc' : '#a538e5'} startIndex={0} synchronized onSlideOffsetChange={setSlide1} />
-              <span
-                className="text-[var(--color-text-primary)] inline-block"
-                style={{ transform: `translateX(${slide1}px)`, transition: 'transform 180ms ease-out', willChange: 'transform' }}
-              >intelligence</span>
+              <ParticleMorphText words={['Emergent', 'Adaptive']} interval={7000} fontSize={morphFontSize} gradientFrom={isDark ? '#7b66ff' : '#6024f3'} gradientTo={isDark ? '#d27bfc' : '#a538e5'} startIndex={0} synchronized />
+              <span className="text-[var(--color-text-primary)]">intelligence</span>
               <br />
               <span className="text-[var(--color-text-secondary)]">for </span>
-              <ParticleMorphText words={['adaptive', 'emergent']} interval={7000} fontSize={morphFontSize} gradientFrom={isDark ? '#d27bfc' : '#a538e5'} gradientTo={isDark ? '#f87bb8' : '#f25b8c'} startIndex={0} nudgeY={0.04} synchronized onSlideOffsetChange={setSlide2} />
-              <span
-                className="text-[var(--color-text-primary)] inline-block"
-                style={{ transform: `translateX(${slide2}px)`, transition: 'transform 180ms ease-out', willChange: 'transform' }}
-              >agents</span>
+              <ParticleMorphText words={['adaptive', 'emergent']} interval={7000} fontSize={morphFontSize} gradientFrom={isDark ? '#d27bfc' : '#a538e5'} gradientTo={isDark ? '#f87bb8' : '#f25b8c'} startIndex={0} nudgeY={0.04} synchronized />
+              <span className="text-[var(--color-text-primary)]">agents</span>
             </span>
           </h1>
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-accent-primary)] mb-3">
