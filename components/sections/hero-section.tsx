@@ -32,6 +32,11 @@ const HeroSectionInner = memo(function HeroSectionInner() {
   const [githubForks, setGithubForks] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
   const [morphFontSize, setMorphFontSize] = useState(40);
+  // Slide offsets (px, <= 0) reported by each ParticleMorphText. Applied as a
+  // GPU transform to the inline word following each morph so the original
+  // slide is preserved without the width-driven layout shift (CLS).
+  const [slide1, setSlide1] = useState(0);
+  const [slide2, setSlide2] = useState(0);
   const isDark = resolvedTheme === 'dark';
 
   // Mark as mounted after hydration
@@ -99,7 +104,7 @@ const HeroSectionInner = memo(function HeroSectionInner() {
 
 
   return (
-    <section className="relative min-h-screen flex items-center bg-[var(--color-background-primary)] overflow-hidden" itemScope itemType="https://schema.org/SoftwareApplication">
+    <section className="relative min-h-screen flex items-start bg-[var(--color-background-primary)] overflow-hidden" itemScope itemType="https://schema.org/SoftwareApplication">
       <meta itemProp="name" content="AgentOS" />
       <meta itemProp="applicationCategory" content="AI Framework" />
       <meta itemProp="operatingSystem" content="Any" />
@@ -151,12 +156,18 @@ const HeroSectionInner = memo(function HeroSectionInner() {
             itemProp="name"
           >
             <span aria-hidden="true">
-              <ParticleMorphText words={['Emergent', 'Adaptive']} interval={7000} fontSize={morphFontSize} gradientFrom={isDark ? '#7b66ff' : '#6024f3'} gradientTo={isDark ? '#d27bfc' : '#a538e5'} startIndex={0} synchronized />
-              <span className="text-[var(--color-text-primary)]">intelligence</span>
+              <ParticleMorphText words={['Emergent', 'Adaptive']} interval={7000} fontSize={morphFontSize} gradientFrom={isDark ? '#7b66ff' : '#6024f3'} gradientTo={isDark ? '#d27bfc' : '#a538e5'} startIndex={0} synchronized onSlideOffsetChange={setSlide1} />
+              <span
+                className="text-[var(--color-text-primary)] inline-block"
+                style={{ transform: `translateX(${slide1}px)`, transition: 'transform 180ms ease-out', willChange: 'transform' }}
+              >intelligence</span>
               <br />
               <span className="text-[var(--color-text-secondary)]">for </span>
-              <ParticleMorphText words={['adaptive', 'emergent']} interval={7000} fontSize={morphFontSize} gradientFrom={isDark ? '#d27bfc' : '#a538e5'} gradientTo={isDark ? '#f87bb8' : '#f25b8c'} startIndex={0} nudgeY={0.04} synchronized />
-              <span className="text-[var(--color-text-primary)]">agents</span>
+              <ParticleMorphText words={['adaptive', 'emergent']} interval={7000} fontSize={morphFontSize} gradientFrom={isDark ? '#d27bfc' : '#a538e5'} gradientTo={isDark ? '#f87bb8' : '#f25b8c'} startIndex={0} nudgeY={0.04} synchronized onSlideOffsetChange={setSlide2} />
+              <span
+                className="text-[var(--color-text-primary)] inline-block"
+                style={{ transform: `translateX(${slide2}px)`, transition: 'transform 180ms ease-out', willChange: 'transform' }}
+              >agents</span>
             </span>
           </h1>
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-accent-primary)] mb-3">

@@ -22,6 +22,15 @@ interface ParticleMorphTextProps {
    * `false` keeps the legacy organic-jitter behavior for standalone uses.
    */
   synchronized?: boolean;
+  /**
+   * Fired with the horizontal offset (px, <= 0) the inline word FOLLOWING this
+   * morph should translate by to reproduce the original slide without CLS. The
+   * wrapper itself is pinned to the wider word's width (zero reflow); the slide
+   * lives on the sibling word, which can only be reached from the parent — so
+   * the parent lifts this value into state and applies the transform. Fires on
+   * word-flip (~2x per interval), not per animation frame.
+   */
+  onSlideOffsetChange?: (px: number) => void;
 }
 
 /**
@@ -37,6 +46,7 @@ export const ParticleMorphText = memo(function ParticleMorphText({
   startIndex = 0,
   nudgeY = 0,
   synchronized = false,
+  onSlideOffsetChange,
 }: ParticleMorphTextProps) {
   const [wordA, wordB] = words;
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -71,10 +81,17 @@ export const ParticleMorphText = memo(function ParticleMorphText({
   const width = useMemo(() => Math.max(wordWidths[0], wordWidths[1]), [wordWidths]);
   // The wrapper is pinned to the WIDER of the two words (`width`) and never
   // changes size, so it contributes zero CLS. To keep the original slide of
-  // the surrounding inline flow ("intelligence", "agents"), we expose a
-  // `--morph-slide` custom property (<= 0px) that the adjacent word translates
-  // by via CSS transform — a GPU move that is not counted as layout shift.
+  // the surrounding inline flow ("intelligence", "agents"), we report this
+  // offset (<= 0px) to the parent, which translates the sibling word by it
+  // (a GPU transform that is not counted as layout shift). A CSS custom
+  // property cannot reach a sibling, so the value must be lifted up.
   const slideOffset = slideOffsetPx(wordWidths, activeWordIndex);
+
+  // Report the slide offset upward whenever it changes (on word-flip, ~2x per
+  // interval — not per frame). The parent applies it to the trailing word.
+  useEffect(() => {
+    onSlideOffsetChange?.(slideOffset);
+  }, [slideOffset, onSlideOffsetChange]);
 
   const hexToRgb = useCallback((hex: string) => {
     const v = parseInt(hex.slice(1), 16);
@@ -353,8 +370,6 @@ export const ParticleMorphText = memo(function ParticleMorphText({
         position: 'relative',
         top: `${0.22 + nudgeY}em`,
         marginRight: '0.2em',
-        // Surfaced for the adjacent inline word to translate by (GPU, no CLS).
-        ['--morph-slide' as string]: `${slideOffset}px`,
       }}
     >
       <span className="sr-only">{wordA} / {wordB}</span>
