@@ -104,7 +104,10 @@ export function ParticleMorphTextImpl({
   return (
     <span
       className={`inline-grid align-baseline ${className}`}
-      style={{ gridAutoColumns: '1fr' }}
+      // marginRight gives the morph a normal word-space so it never jams against
+      // the next word ("Emergent intelligence", "adaptive agents"); JSX collapses
+      // the source whitespace between the component and the following <span>.
+      style={{ gridAutoColumns: '1fr', marginRight: '0.28em' }}
       aria-label={`${wordA} / ${wordB}`}
     >
       {/* Both words occupy the same grid cell; the wider one defines the box so
