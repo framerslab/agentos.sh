@@ -61,18 +61,15 @@ export function ParticleMorphTextImpl({
   const stateRef = useRef({ wordIdx: startIndex });
 
   const [mounted, setMounted] = useState(false);
-  // Which word is shown at rest, and whether a melt is currently animating.
+  // Which word the invisible width-definer shows (tracks the active word so the
+  // box width is always correct). The visible render is always the canvas dots.
   const [activeWordIndex, setActiveWordIndex] = useState(startIndex);
-  const [morphing, setMorphing] = useState(false);
-  // Generous canvas backing size — covers the wider word; canvas is overlaid
-  // and centered on the box, only visible mid-morph so exact width doesn't matter.
+  // True once the canvas has drawn its first dotted frame (fade it in, no flash).
+  const [painted, setPainted] = useState(false);
+  // Generous canvas backing size — covers the wider word; canvas is centered on
+  // the box and always visible (the word is always shown as dots).
   const canvasW = useMemo(() => Math.ceil(Math.max(wordA.length, wordB.length) * fontSize * 0.66) + 8, [wordA, wordB, fontSize]);
   const height = useMemo(() => Math.ceil(fontSize * 1.18), [fontSize]);
-
-  const gradientCss = useMemo(
-    () => `linear-gradient(90deg, ${gradientFrom}, ${gradientTo})`,
-    [gradientFrom, gradientTo]
-  );
 
   const hexToRgb = useCallback((hex: string): [number, number, number] => {
     const v = parseInt(hex.slice(1), 16);
@@ -188,11 +185,11 @@ export function ParticleMorphTextImpl({
     const animateMorph = (t: number) => {
       morphT += 0.028; // ~0.6s melt at 60fps
       if (morphT >= 1) {
-        // Settle: flip the resting word, fade canvas out / DOM word in.
+        // Settle: flip the word, draw it as STILL dots (mt=0), then idle.
         stateRef.current.wordIdx = 1 - fromIdx;
-        setActiveWordIndex(stateRef.current.wordIdx);
-        setMorphing(false);
-        ctx.clearRect(0, 0, canvasW, height);
+        fromIdx = stateRef.current.wordIdx;
+        setActiveWordIndex(stateRef.current.wordIdx); // resize box to new word
+        drawParticles(0, t); // resting dotted word
         scheduleNext();
         return;
       }
@@ -209,14 +206,20 @@ export function ParticleMorphTextImpl({
         if (!isVisibleRef.current) { scheduleNext(); return; }
         fromIdx = stateRef.current.wordIdx;
         morphT = 0;
-        setMorphing(true); // reveal canvas, hide DOM word
         animRef.current = requestAnimationFrame(animateMorph);
       }, wait);
     };
 
-    // Defer to idle so the loop never competes with first paint / LCP.
-    if (typeof window.requestIdleCallback === 'function') idleId = window.requestIdleCallback(scheduleNext, { timeout: 1500 });
-    else morphTimer = setTimeout(scheduleNext, 400);
+    // First paint: draw the resting word AS DOTS immediately (the word is always
+    // particles), reveal the canvas, then start the idle→morph cycle. Deferred
+    // to idle so it doesn't compete with LCP.
+    const begin = () => {
+      drawParticles(0, performance.now());
+      setPainted(true);
+      scheduleNext();
+    };
+    if (typeof window.requestIdleCallback === 'function') idleId = window.requestIdleCallback(begin, { timeout: 1500 });
+    else morphTimer = setTimeout(begin, 400);
 
     return () => {
       cancelAnimationFrame(animRef.current);
@@ -233,24 +236,24 @@ export function ParticleMorphTextImpl({
       style={{ verticalAlign: 'baseline', marginRight: '0.25em', top: nudgeY ? `${nudgeY}em` : undefined }}
       aria-label={`${wordA} / ${wordB}`}
     >
-      {/* REST: real DOM gradient word — defines the inline box (exact width,
-          exact font). Hidden only while the melt is animating. */}
+      {/* INVISIBLE width-definer: the real DOM word sizes the inline box exactly
+          (so spacing is correct) but is never shown — the visible rendering is
+          ALWAYS the canvas dots. Also carries no a11y (the wrapper has the
+          aria-label). visibility:hidden keeps layout but paints nothing. */}
       <span
         aria-hidden="true"
         style={{
           fontWeight: 700,
-          background: gradientCss,
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
           whiteSpace: 'nowrap',
-          opacity: morphing ? 0 : 1,
-          transition: 'opacity 140ms ease-out',
+          visibility: 'hidden',
         }}
       >
         {words[activeWordIndex]}
       </span>
-      {/* MELT: canvas overlay, centered on the box, only visible mid-morph. */}
+      {/* The word is ALWAYS rendered as particles/dots (matching font). At rest
+          it's a still dotted word; during a morph the dots flow to the next
+          word. The canvas is always visible. Before first paint, the SSR sizer
+          above reserves the slot so there's no layout flash. */}
       {mounted && (
         <canvas
           ref={canvasRef}
@@ -263,8 +266,8 @@ export function ParticleMorphTextImpl({
             width: canvasW,
             height,
             pointerEvents: 'none',
-            opacity: morphing ? 1 : 0,
-            transition: 'opacity 140ms ease-out',
+            opacity: painted ? 1 : 0,
+            transition: 'opacity 200ms ease-out',
           }}
         />
       )}
