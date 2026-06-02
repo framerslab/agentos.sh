@@ -186,7 +186,7 @@ export function ParticleMorphTextImpl({
     };
 
     const animateMorph = (t: number) => {
-      morphT += 0.028; // ~0.6s melt at 60fps
+      morphT += 0.045; // ~0.37s melt at 60fps — snappy, not sluggish
       if (morphT >= 1) {
         // Settle: flip the word, draw it as STILL dots (mt=0), then idle.
         stateRef.current.wordIdx = 1 - fromIdx;
@@ -204,7 +204,8 @@ export function ParticleMorphTextImpl({
       cycleRef.current += 1;
       const hash = Math.sin(cycleRef.current * 12.9898) * 43758.5453;
       const frac = hash - Math.floor(hash);
-      const wait = Math.max(2500, interval + (frac - 0.5) * 5000);
+      // Tight jitter (±0.75s) so cadence is consistent, not a 4.5–9.5s lottery.
+      const wait = Math.max(2000, interval + (frac - 0.5) * 1500);
       morphTimer = setTimeout(() => {
         if (!isVisibleRef.current) { scheduleNext(); return; }
         fromIdx = stateRef.current.wordIdx;
