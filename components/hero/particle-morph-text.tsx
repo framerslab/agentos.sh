@@ -244,13 +244,35 @@ export const ParticleMorphText = memo(function ParticleMorphText({
     // exactly one draw, not 60 redraws/sec. This is the optimization: the loop
     // only runs during the ~0.4s morph; the other ~6.6s of every cycle the
     // canvas holds a single static frame with zero CPU.
+    // Crisp gradient text — pixel-identical sharpness to the static words.
+    // Drawn at REST (between morphs) so the headline never looks fuzzy; the
+    // soft particle melt only appears during the brief transition.
+    const grad = ctx.createLinearGradient(0, 0, width, 0);
+    grad.addColorStop(0, gradientFrom);
+    grad.addColorStop(1, gradientTo);
+    const drawCrispWord = (text: string) => {
+      ctx.clearRect(0, 0, width, height);
+      ctx.font = `700 ${fontSize}px Inter, system-ui, sans-serif`;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillStyle = grad;
+      ctx.fillText(text, 0, fontSize * 0.92);
+    };
+
     const paintFrame = (mt: number, t: number) => {
       const s = stateRef.current;
-      ctx.clearRect(0, 0, width, height);
+      const morphing = mt > 0 && mt < 1;
 
+      // At rest: crisp text, no blur. (mt===0 just settled on the new word;
+      // mt is only >0 during an active morph.)
+      if (!morphing) {
+        drawCrispWord(s.wordIdx === 0 ? wordA : wordB);
+        return;
+      }
+
+      ctx.clearRect(0, 0, width, height);
       const fromParticles = s.wordIdx === 0 ? particlesARef.current : particlesBRef.current;
       const toParticles = s.wordIdx === 0 ? particlesBRef.current : particlesARef.current;
-      const morphing = mt > 0 && mt < 1;
       // Linear progress here; the gentle smoothstep is applied per-particle
       // below. Previously easeInOutExpo here STACKED with a second ease,
       // producing the harsh whip-across motion that read as chaotic.
@@ -271,9 +293,8 @@ export const ParticleMorphText = memo(function ParticleMorphText({
         // which read as jittery/abrupt.
         const smoothT = particleT * particleT * (3 - 2 * particleT);
 
-        // Subtle drift, not shimmer: half the amplitude and ~half the
-        // frequency of before, so particles gently float rather than vibrate.
-        const wobble = morphing ? Math.sin(t * 0.0016 + fromP.seed) * 0.25 * (1 - Math.abs(smoothT - 0.5) * 2) : 0;
+        // Subtle drift, not shimmer (this branch only runs during a morph).
+        const wobble = Math.sin(t * 0.0016 + fromP.seed) * 0.25 * (1 - Math.abs(smoothT - 0.5) * 2);
 
         const x = fromP.x + (toP.x - fromP.x) * smoothT + wobble;
         const y = fromP.y + (toP.y - fromP.y) * smoothT;
@@ -289,11 +310,12 @@ export const ParticleMorphText = memo(function ParticleMorphText({
         const alpha = 1;
 
         // Soft radial glow — colored per-particle gradient (violet→magenta melt).
-        const grad = ctx.createRadialGradient(x, y, 0, x, y, fromP.r * 2.5);
-        grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
-        grad.addColorStop(0.5, `rgba(${r},${g},${b},${alpha * 0.5})`);
-        grad.addColorStop(1, 'transparent');
-        ctx.fillStyle = grad;
+        // `pg` (not `grad`) to avoid shadowing the outer linear text gradient.
+        const pg = ctx.createRadialGradient(x, y, 0, x, y, fromP.r * 2.5);
+        pg.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
+        pg.addColorStop(0.5, `rgba(${r},${g},${b},${alpha * 0.5})`);
+        pg.addColorStop(1, 'transparent');
+        ctx.fillStyle = pg;
         ctx.fillRect(x - fromP.r * 2.5, y - fromP.r * 2.5, fromP.r * 5, fromP.r * 5);
       }
     };
@@ -385,6 +407,25 @@ export const ParticleMorphText = memo(function ParticleMorphText({
       }}
     >
       <span className="sr-only">{wordA} / {wordB}</span>
+      {/* Loading skeleton: a rounded shimmer block sitting behind the word,
+          shown only until the canvas has painted. Covers the cold-load window
+          where the morph cell isn't ready yet, then fades out. Uses the
+          critical-CSS `.skeleton` shimmer so it animates from first paint. */}
+      {!painted && (
+        <span
+          aria-hidden="true"
+          className="skeleton"
+          style={{
+            position: 'absolute',
+            top: '0.12em',
+            left: 0,
+            width: '100%',
+            height: '0.82em',
+            borderRadius: '0.18em',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
       {/* The static gradient word is ALWAYS rendered — it's the SSR content,
           it holds the inline box, and it stays visible until the canvas has
           actually drawn (painted=true). Crossfades out once the canvas is up,
