@@ -161,6 +161,8 @@ const companion = createAgent({
 
 The memory bridge handles encoding (forming new memories from conversation), decay (Ebbinghaus curve), consolidation (merging related traces), and retrieval (the 4-stage cascade). The companion calls `recall_memories` as a tool when the conversation warrants it. Memory formation happens automatically during the response pipeline.
 
+For a markdown-native take on the same substrate, [`souledAgent()`](https://docs.agentos.sh/getting-started/high-level-api) loads a `SOUL.md` workspace and wires its [`memory/` wiki](https://docs.agentos.sh/features/soul-files) as the companion's long-term memory: the agent reads `memory/index.md` from its prelude, opens pages with a `read_memory_page` tool, and folds new conversation back into entity and concept pages on consolidation. Same cognitive store underneath; the markdown is the source of truth you can read, edit, and commit.
+
 ## Quantified personality
 
 AgentOS uses the [HEXACO model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) from personality psychology. Six dimensions, each scored 0 to 1:

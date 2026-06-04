@@ -166,6 +166,8 @@ Everything above runs on five [AgentOS](https://agentos.sh) primitives:
 
 All TypeScript. All open source. Apache 2.0.
 
+Prefer markdown? [`souledAgent()`](https://docs.agentos.sh/getting-started/high-level-api) loads a `SOUL.md` workspace and wires its [`memory/` wiki](https://docs.agentos.sh/features/soul-files) as the companion's long-term memory, so its identity and what it remembers are editable, git-versioned files.
+
 ```bash
 npm install @framers/agentos
 ```
