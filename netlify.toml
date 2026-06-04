@@ -162,12 +162,12 @@
 # Proxy TypeDoc API docs from GitHub Pages
 [[redirects]]
   from = "/docs-generated/library/*"
-  to = "https://framersai.github.io/agentos/api/:splat"
+  to = "https://framerslab.github.io/agentos/api/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/docs-generated/api/*"
-  to = "https://framersai.github.io/agentos/api/:splat"
+  to = "https://framerslab.github.io/agentos/api/:splat"
   status = 200
   force = true
