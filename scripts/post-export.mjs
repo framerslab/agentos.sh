@@ -4,12 +4,25 @@ import path from 'node:path';
 const locales = ['en', 'zh', 'ko', 'ja', 'es', 'de', 'fr', 'pt'];
 const outDir = path.resolve(process.cwd(), 'out');
 
-// Default-locale top-level page directories. Each one in out/en/<page>/ is
-// copied recursively to out/<page>/ so the bare-path URL serves the real
-// English content directly. Cloudflare 301s /en/<page>/ → /<page>/ so the
-// /en/ form collapses into the canonical bare path. See
-// lib/seo/canonical.ts for the canonical strategy.
-const localizedPages = ['about', 'blog', 'careers', 'contact', 'docs', 'faq', 'features', 'guides', 'legal', 'partners'];
+// Default-locale top-level page directories are auto-discovered from the
+// export output (out/en/<page>/) and copied to out/<page>/ so the bare-path
+// URL serves the real English content directly. Cloudflare 301s
+// /en/<page>/ → /<page>/ so the /en/ form collapses into the canonical bare
+// path. See lib/seo/canonical.ts for the canonical strategy. Reading the set
+// from disk means a new page is mirrored automatically and never has to be
+// registered here by hand.
+async function discoverLocalizedPages() {
+  const enDir = path.join(outDir, 'en');
+  try {
+    const entries = await fs.readdir(enDir, { withFileTypes: true });
+    return entries
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name);
+  } catch (error) {
+    console.warn(`[post-export] Could not read ${enDir} to discover pages:`, error.message);
+    return [];
+  }
+}
 
 async function copyIfExists(src, dest) {
   try {
@@ -115,6 +128,7 @@ async function run() {
   // /en/<page>/; that was correct when the canonical was the /en/-
   // prefixed URL. The canonical now is the bare path, so /<page>/ must
   // serve content directly.
+  const localizedPages = await discoverLocalizedPages();
   await Promise.all(
     localizedPages.map(async (page) => {
       const src = path.join(outDir, 'en', page);
