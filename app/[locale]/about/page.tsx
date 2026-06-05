@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import type { Route } from 'next';
 import dynamic from 'next/dynamic';
-import { ArrowLeft, ArrowRight, Github, Linkedin, Twitter, Globe, Mail, Handshake } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Github, Linkedin, Twitter, Globe, Mail, Handshake, Cpu, Rocket } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '../../../i18n';
 import { canonical } from '@/lib/seo/canonical';
@@ -11,7 +11,7 @@ import { DiscordCTA } from '@/components/sections/discord-cta';
 import { SectionSkeleton } from '@/components/ui/section-skeleton';
 
 /**
- * Product, ecosystem, and social-proof sections — moved here from the
+ * Product, ecosystem, and social-proof sections, moved here from the
  * homepage to focus the landing flow on conversion. These are the
  * "what we are" sections that deserve their own page.
  */
@@ -189,6 +189,46 @@ export default async function AboutPage({ params: { locale } }: Props) {
           <p className="text-lg text-[var(--color-text-secondary)]">{t('mission.p2')}</p>
         </section>
 
+        {/* Partners & Sponsors */}
+        <section id="partners" className="rounded-3xl bg-gradient-to-r from-accent-primary/10 via-transparent to-accent-secondary/10 p-8 sm:p-12 border border-border-subtle/60 space-y-10">
+          <div className="text-center space-y-4">
+            <p className="uppercase tracking-[0.3em] text-xs text-accent-primary">Partners &amp; Sponsors</p>
+            <h2 className="text-3xl sm:text-4xl font-bold gradient-text">Build with us</h2>
+            <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+              AgentOS is Apache-2.0 and free, funded by{' '}
+              <a href="https://frame.dev" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline font-semibold">Frame</a>{' '}
+              and the companies that build with it. There are three ways to work together.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3 text-left">
+            <a href="https://github.com/framerslab/agentos/blob/master/SPONSORS.md" target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-border-subtle/60 bg-[var(--color-background-secondary)] dark:bg-white/5 p-6 hover:border-accent-primary transition-colors">
+              <Handshake className="w-7 h-7 mb-3 text-accent-primary" aria-hidden="true" />
+              <h3 className="text-lg font-semibold mb-2 text-[var(--color-text-primary)]">Sponsor</h3>
+              <p className="text-sm text-[var(--color-text-secondary)]">Fund maintenance, releases, and benchmarks. Sponsors get clearly-labeled, featured placement in the README and docs, sized by tier.</p>
+            </a>
+            <a href="https://docs.agentos.sh/contributing/new-provider" target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-border-subtle/60 bg-[var(--color-background-secondary)] dark:bg-white/5 p-6 hover:border-accent-primary transition-colors">
+              <Cpu className="w-7 h-7 mb-3 text-accent-primary" aria-hidden="true" />
+              <h3 className="text-lg font-semibold mb-2 text-[var(--color-text-primary)]">Provider integration</h3>
+              <p className="text-sm text-[var(--color-text-secondary)]">Ship your model or API as a first-class provider. Free and on technical merit; partners can be featured near the top of the provider list and in examples.</p>
+            </a>
+            <a href="mailto:team@frame.dev" className="rounded-2xl border border-border-subtle/60 bg-[var(--color-background-secondary)] dark:bg-white/5 p-6 hover:border-accent-primary transition-colors">
+              <Rocket className="w-7 h-7 mb-3 text-accent-primary" aria-hidden="true" />
+              <h3 className="text-lg font-semibold mb-2 text-[var(--color-text-primary)]">Startup &amp; credit programs</h3>
+              <p className="text-sm text-[var(--color-text-secondary)]">AgentOS and its sister platforms (paracosm.agentos.sh, wilds.ai) run real production workloads, and we credit the services that power them.</p>
+            </a>
+          </div>
+          <div className="text-center space-y-4">
+            <p className="text-sm text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+              Current partner:{' '}
+              <a href="https://deepgram.com/startups" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline font-semibold">Deepgram</a>{' '}
+              (Startup Program), speech-to-text and text-to-speech credits powering the voice pipeline. Every partner placement is labeled as such.
+            </p>
+            <a href="mailto:team@frame.dev" className="inline-flex items-center gap-2 text-lg font-semibold text-accent-primary hover:underline">
+              Partner with us: team@frame.dev <ArrowRight className="w-5 h-5" aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+
         {/* Team & Contact */}
         <section className="space-y-8">
           <div className="space-y-4">
@@ -232,14 +272,6 @@ export default async function AboutPage({ params: { locale } }: Props) {
                 <ArrowRight className="w-4 h-4 ml-auto text-[var(--color-text-secondary)]" />
               </a>
             ))}
-            <Link
-              href={`/${locale}/partners` as Route}
-              className="flex items-center gap-4 rounded-2xl border border-border-subtle/60 bg-[var(--color-background-secondary)] dark:bg-white/5 px-5 py-4 hover:border-accent-primary hover:bg-[var(--color-accent-primary)]/5 transition-colors"
-            >
-              <Handshake className="w-5 h-5 text-accent-primary" />
-              <span className="text-lg font-semibold text-[var(--color-text-primary)]">Partners &amp; Sponsors</span>
-              <ArrowRight className="w-4 h-4 ml-auto text-[var(--color-text-secondary)]" />
-            </Link>
           </div>
         </section>
 
@@ -268,7 +300,7 @@ export default async function AboutPage({ params: { locale } }: Props) {
         </section>
       </div>
 
-      {/* Product surface — Generalized Mind Instances, what teams build, ecosystem packages, social proof */}
+      {/* Product surface: Generalized Mind Instances, what teams build, ecosystem packages, social proof */}
       <div className="lazy-section-lg">
         <GMISectionLazy />
       </div>
