@@ -141,22 +141,15 @@
       var segments = path.split('/').filter(Boolean);
       var first = segments[0];
 
-      /* If the path has no locale prefix, try adding one and redirecting */
-      if (first && !locales.includes(first)) {
-        var lang = (navigator.language || 'en').slice(0, 2);
-        var locale = locales.includes(lang) ? lang : 'en';
-        var dest = '/' + locale + path;
-
-        document.getElementById('message').textContent =
-          'This page should be accessed with a language prefix.';
-        document.getElementById('redirect-notice').style.display = 'block';
-        document.getElementById('redirect-text').textContent =
-          'Redirecting to ' + dest + '...';
-        document.getElementById('actions').style.display = 'none';
-
-        setTimeout(function () { window.location.href = dest; }, 500);
-      } else if (first && locales.includes(first)) {
-        /* Locale prefix present but page missing */
+      /*
+       * Show the 404 directly. Do NOT redirect a bare path to a locale
+       * prefix: existing pages are mirrored to the bare path at build time
+       * (scripts/post-export.mjs), and Cloudflare 301s /en/<path> back to
+       * /<path>. Redirecting a genuinely-missing page to /en/<path> just
+       * bounces straight back here and loops forever.
+       */
+      if (first && locales.includes(first)) {
+        /* Locale prefix present: point "Go Home" at that locale's home. */
         document.getElementById('home-link').href =
           first === 'en' ? '/' : '/' + first;
       }
