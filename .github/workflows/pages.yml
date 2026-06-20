@@ -33,6 +33,10 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 20
+          # No pnpm-lock.yaml in this repo; disable setup-node@v5's default
+          # package-manager cache, which otherwise errors with "Dependencies
+          # lock file is not found". pnpm is provisioned by the step above.
+          package-manager-cache: false
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
       - name: Build and export

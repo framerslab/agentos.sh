@@ -26,6 +26,11 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: '20'
+          # This repo has no pnpm-lock.yaml. setup-node@v5 defaults
+          # package-manager-cache to true, reads the packageManager field, and
+          # then fails with "Dependencies lock file is not found". pnpm is
+          # provisioned by the step above, so disable the built-in cache.
+          package-manager-cache: false
       - name: Install
         run: |
           if [ "${{ steps.pm.outputs.pm }}" = "pnpm" ]; then
