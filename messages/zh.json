@@ -301,7 +301,7 @@
     "description": "真实世界的AgentOS实施和生产部署"
   },
   "footer": {
-    "backedBy": "Frame 是 <deepgramLink>Deepgram Startup Program</deepgramLink> 的成员",
+    "backedBy": "Frame 是 <deepgramLink>Deepgram Startup Program</deepgramLink> 和 <nvidiaLink>NVIDIA Inception Program</nvidiaLink> 的成员",
     "tagline": "Frame.dev开发的自适应AI代理TypeScript运行时",
     "resources": "资源",
     "docsGuides": "文档（指南）",

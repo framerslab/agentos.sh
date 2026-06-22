@@ -406,6 +406,11 @@ export default async function LocaleLayout({
                       {chunks}
                     </a>
                   ),
+                  nvidiaLink: (chunks: ReactNode) => (
+                    <a href="https://www.nvidia.com/en-us/startups/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
+                      {chunks}
+                    </a>
+                  ),
                 })}
               </p>
             </div>

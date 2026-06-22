@@ -220,7 +220,7 @@
     "description": "Implementações reais e implantações em produção com AgentOS"
   },
   "footer": {
-    "backedBy": "A Frame é membro do <deepgramLink>Deepgram Startup Program</deepgramLink>",
+    "backedBy": "A Frame é membro do <deepgramLink>Deepgram Startup Program</deepgramLink> e do <nvidiaLink>NVIDIA Inception Program</nvidiaLink>",
     "tagline": "Runtime TypeScript para agentes IA adaptativos por Frame.dev",
     "resources": "Recursos",
     "docsGuides": "Docs (Guias)",

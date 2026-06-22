@@ -220,7 +220,7 @@
     "description": "Real-world AgentOS implementations and production deployments"
   },
   "footer": {
-    "backedBy": "Frame is a member of the <deepgramLink>Deepgram Startup Program</deepgramLink>",
+    "backedBy": "Frame is a member of the <deepgramLink>Deepgram Startup Program</deepgramLink> and the <nvidiaLink>NVIDIA Inception Program</nvidiaLink>",
     "tagline": "Open-source TypeScript AI agent runtime by Frame.dev",
     "resources": "Resources",
     "docsGuides": "Docs (Guides)",

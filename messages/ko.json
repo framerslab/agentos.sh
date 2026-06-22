@@ -220,7 +220,7 @@
     "description": "실제 AgentOS 구현 및 프로덕션 배포"
   },
   "footer": {
-    "backedBy": "Frame은 <deepgramLink>Deepgram Startup Program</deepgramLink>의 회원입니다",
+    "backedBy": "Frame은 <deepgramLink>Deepgram Startup Program</deepgramLink> 및 <nvidiaLink>NVIDIA Inception Program</nvidiaLink>의 회원입니다",
     "tagline": "Frame.dev의 적응형 AI 에이전트를 위한 TypeScript 런타임",
     "resources": "리소스",
     "docsGuides": "문서(가이드)",
