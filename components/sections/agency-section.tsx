@@ -86,8 +86,8 @@ const panel = agency({
   quorum: { minAgents: 2, minProviders: 2 },         // at least two providers must answer
 });
 
-// prDiff: the unified diff of the change under review
-const { text } = await panel.generate(\`Review this change:\\n\\n\${prDiff}\`);`,
+const change = '- if (attempt > maxRetries) throw err;\\n+ if (attempt >= maxRetries) throw err;';
+const { text } = await panel.generate('Review this change for defects:\\n' + change);`,
 
   debate: `import { agency } from '@framers/agentos';
 
