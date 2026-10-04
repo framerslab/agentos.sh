@@ -83,9 +83,10 @@ const panel = agency({
     gemini: { provider: 'gemini',    model: 'gemini-3.1-pro-preview', instructions: 'Review for defects.' },
   },
   strategy: 'parallel',
-  quorum: { minAgents: 2, minProviders: 2 },         // at least two vendors must answer
+  quorum: { minAgents: 2, minProviders: 2 },         // at least two providers must answer
 });
 
+// prDiff: the unified diff of the change under review
 const { text } = await panel.generate(\`Review this change:\\n\\n\${prDiff}\`);`,
 
   debate: `import { agency } from '@framers/agentos';
