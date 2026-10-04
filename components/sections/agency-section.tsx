@@ -76,24 +76,25 @@ const { text } = await pipeline.generate('Write about quantum computing.');`,
   parallel: `import { agency } from '@framers/agentos';
 
 const panel = agency({
-  provider: 'openai', model: 'gpt-4o',
+  provider: 'anthropic', model: 'claude-opus-5-5',   // the chair
   agents: {
-    optimist:  { instructions: 'Argue in favour.' },
-    pessimist: { instructions: 'Argue against.' },
-    neutral:   { instructions: 'Give a balanced view.' },
+    claude: { provider: 'anthropic', model: 'claude-opus-5-5',        instructions: 'Review for defects.' },
+    gpt:    { provider: 'openai',    model: 'gpt-6-astra',            instructions: 'Review for defects.' },
+    gemini: { provider: 'gemini',    model: 'gemini-3.1-pro-preview', instructions: 'Review for defects.' },
   },
   strategy: 'parallel',
+  quorum: { minAgents: 2, minProviders: 2 },         // at least two vendors must answer
 });
 
-const { text } = await panel.generate('Should AI have legal rights?');`,
+const { text } = await panel.generate(\`Review this change:\\n\\n\${prDiff}\`);`,
 
   debate: `import { agency } from '@framers/agentos';
 
 const debaters = agency({
-  provider: 'openai', model: 'gpt-4o',
+  provider: 'openai', model: 'gpt-6-astra',            // the judge
   agents: {
-    proponent: { instructions: 'Defend your position.' },
-    critic:    { instructions: 'Challenge every claim.' },
+    proponent: { provider: 'anthropic', model: 'claude-opus-5-5',     instructions: 'Defend your position.' },
+    critic:    { provider: 'gemini',    model: 'gemini-3.1-pro-preview', instructions: 'Challenge every claim.' },
   },
   strategy: 'debate',
   maxRounds: 4,
@@ -104,10 +105,9 @@ const { text } = await debaters.generate('Remote vs. in-office work?');`,
   'review-loop': `import { agency } from '@framers/agentos';
 
 const loop = agency({
-  provider: 'openai', model: 'gpt-4o',
   agents: {
-    drafter:  { instructions: 'Draft a press release.' },
-    reviewer: { instructions: 'Review for brand voice.' },
+    drafter:  { provider: 'openai',    model: 'gpt-6-astra',     instructions: 'Draft a press release.' },
+    reviewer: { provider: 'anthropic', model: 'claude-opus-5-5', instructions: 'Review for brand voice.' },
   },
   strategy: 'review-loop',
   maxRounds: 3,
@@ -118,12 +118,11 @@ const { text } = await loop.generate('Announce our product launch.');`,
   hierarchical: `import { agency } from '@framers/agentos';
 
 const team = agency({
-  provider: 'openai', model: 'gpt-4o',
+  provider: 'openai', model: 'gpt-6-astra',            // the coordinator
   agents: {
-    manager:    { instructions: 'Coordinate the team.' },
-    researcher: { instructions: 'Find information.' },
-    coder:      { instructions: 'Write code.' },
-    writer:     { instructions: 'Produce polished prose.' },
+    researcher: { provider: 'gemini',    model: 'gemini-3.1-pro-preview', instructions: 'Find information.' },
+    coder:      { provider: 'anthropic', model: 'claude-opus-5-5',        instructions: 'Write code.' },
+    writer:     { instructions: 'Produce polished prose.' },   // inherits openai / gpt-6-astra
   },
   strategy: 'hierarchical',
 });
