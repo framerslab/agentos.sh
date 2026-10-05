@@ -1,30 +1,22 @@
 name: Bug report
-description: Create a report to help us improve
+description: Something on the site is wrong or broken.
 labels: [bug]
 body:
+  - type: input
+    id: url
+    attributes:
+      label: Page
+      description: The address of the page.
+    validations:
+      required: true
   - type: textarea
     id: description
     attributes:
-      label: Describe the bug
-      description: A clear and concise description of what the bug is.
-    validations:
-      required: true
-  - type: textarea
-    id: steps
-    attributes:
-      label: Steps to reproduce
-      description: How can we reproduce this issue?
+      label: What is wrong
+      description: What you saw and what you expected to see.
     validations:
       required: true
   - type: input
-    id: version
+    id: browser
     attributes:
-      label: Version
-      description: Package version or commit SHA
-  - type: textarea
-    id: extra
-    attributes:
-      label: Additional context
-      description: Add any other context about the problem here.
-
-
+      label: Browser and device

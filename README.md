@@ -105,11 +105,15 @@ Some sections render optional media. When files are missing, a placeholder appea
 - [`framerslab/agentos-skills`](https://github.com/framerslab/agentos-skills) — SKILL.md community registry
 - [`framerslab/paracosm`](https://github.com/framerslab/paracosm) → [paracosm.agentos.sh](https://paracosm.agentos.sh) — agent-swarm world simulation
 
-## Contributing & Security
+## Contributing and support
 
-- [Contributing](https://github.com/manicinc/voice-chat-assistant/blob/master/.github/CONTRIBUTING.md)
-- [Code of Conduct](https://github.com/manicinc/voice-chat-assistant/blob/master/.github/CODE_OF_CONDUCT.md)
-- [Security policy](https://github.com/manicinc/voice-chat-assistant/blob/master/.github/SECURITY.md)
+| Guide | What |
+|---|---|
+| [Contributing](https://github.com/framerslab/agentos.sh/blob/master/CONTRIBUTING.md) | Development setup, commit and pull request rules, review threads, contribution licensing |
+| [Agent instructions](https://github.com/framerslab/agentos.sh/blob/master/AGENTS.md) | Commands and conventions for coding agents |
+| [Code of Conduct](https://github.com/framerslab/agentos.sh/blob/master/.github/CODE_OF_CONDUCT.md) | Community standards |
+| [Security Policy](https://github.com/framerslab/agentos.sh/blob/master/.github/SECURITY.md) | Reporting vulnerabilities privately |
+| [Support](https://github.com/framerslab/agentos.sh/blob/master/SUPPORT.md) | Where to get help |
 
 ---
 

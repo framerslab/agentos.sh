@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Marketing site for AgentOS (agentos.sh) built with Next.js, React, and Tailwind CSS.",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "dev:full": "concurrently \"pnpm --filter @framers/agentos run docs:watch\" \"next dev\"",
