@@ -1,11 +1,9 @@
-## Security Policy
+# Security policy
 
-We take security seriously.
+## Reporting a vulnerability
 
-### Reporting a Vulnerability
-- Email: team@frame.dev
-- Please include steps to reproduce and any relevant details.
+Report it privately through GitHub: open the [security advisory form](https://github.com/framerslab/agentos.sh/security/advisories/new), or email team@frame.dev. Do not open a public issue, pull request or chat message about a vulnerability.
 
-We will acknowledge your report within 72 hours and provide a timeline for remediation where possible.
+## Response
 
-
+A maintainer acknowledges a report within 5 business days and sends an assessment and a plan within 14 days.
