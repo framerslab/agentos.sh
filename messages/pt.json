@@ -686,7 +686,7 @@
       },
       "behavior": {
         "traditional": "O mesmo comportamento em todo turno",
-        "gmi": "Pontuação de sentimento em cada turno do usuário quando a persona ativa o rastreamento de sentimento; metaprompts então a ajudam a se recuperar de frustração ou confusão e a reler seu humor e contexto de tarefa com base em evidências"
+        "gmi": "Pontuação de sentimento e metaprompts de recuperação quando a persona ativa o rastreamento de sentimento; metaprompts periódicos ou manuais, como a autorreflexão que relê seu humor e contexto de tarefa com base em evidências, rodam a partir das próprias definições da persona"
       },
       "selfImprovement": {
         "traditional": "Os traços só mudam quando você edita o prompt",
