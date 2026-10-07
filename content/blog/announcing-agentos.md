@@ -21,7 +21,7 @@ The short version: `npm install @framers/agentos`.
 
 ## What AgentOS Is
 
-[AgentOS](https://agentos.sh) is a TypeScript runtime for building AI agents that adapt, remember, and collaborate. Every agent is a **Generalized Mind Instance (GMI)**: a persistent cognitive core with personality traits, episodic memory, and autonomous decision-making.
+[AgentOS](https://agentos.sh) is a TypeScript runtime for building AI agents that adapt, remember, and collaborate. An agent on the full runtime is a **Generalized Mind Instance (GMI)**: a persistent cognitive core with personality traits, a reasoning trace and, when a memory manager is attached, episodic memory. The lightweight `agent()` helper runs the same model call without one.
 
 ```bash
 npm install @framers/agentos

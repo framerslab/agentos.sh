@@ -1175,8 +1175,8 @@
         "description": "Grundkonfiguration eines Agenten mit Speicher und Werkzeugen"
       },
       "gmiRoles": {
-        "title": "GMI-Rollen und Agenturen",
-        "description": "Implementierung von Generalised-Mind-Instance-Rollen"
+        "title": "Rollen mehrerer Anbieter in einer Agentur",
+        "description": "Eine Agentur, drei Anbieter, ein Abhängigkeitsgraph"
       },
       "memorySystem": {
         "title": "Persönlichkeit und kognitives Gedächtnis",
@@ -1535,7 +1535,7 @@
       "perAgentGuardrails": "Guardrails pro Agent"
     },
     "sharedCapabilitiesScopeNoteLabel": "Geltungsbereich:",
-    "sharedCapabilitiesScopeNote": "Gemeinsamer Speicher und Roster gelten innerhalb eines einzigen <code>generate()</code>-Aufrufs. Über <code>session().send()</code>-Runden hinweg bleibt nur der Nachrichtenverlauf erhalten. Siehe die <link>Agency-API-Dokumentation</link> für Muster zur turn-übergreifenden Speicherung.",
+    "sharedCapabilitiesScopeNote": "Der Roster gilt innerhalb eines einzigen <code>generate()</code>-Aufrufs. Über <code>session().send()</code>-Runden hinweg bleibt nur der Nachrichtenverlauf erhalten. Siehe die <link>Agency-API-Dokumentation</link> für Speichermuster.",
     "ctaExploreDocs": "Agency-API erkunden"
   },
   "benchmarks": {

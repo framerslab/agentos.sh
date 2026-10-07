@@ -60,43 +60,36 @@ interface DemoData {
 
 const AGENCY_SHARED_CODE = `import { agency } from '@framers/agentos';
 
-// Three GMI brains, one shared state layer.
-//   memory: { shared: true } gives every agent in the roster read+write
-//     access to the same cognitive memory store.
-//   rag: { ... } points all of them at the same retrieval corpus.
-// The strategy decides the order; the shared layer means each agent's
-// output flows into the next agent's recall + retrieval window.
+// Three agents, one hand-off chain.
+//   strategy: 'sequential' runs the roster in order and gives each agent
+//   the previous agent's output as its input. Nothing else is shared:
+//   agency() has no shared memory store and no shared retrieval corpus,
+//   so what flows between agents is the text each one returns.
 const team = agency({
   provider: 'openai',
   model: 'gpt-4o',
   strategy: 'sequential',
-  memory: { shared: true },                 // cognitive memory shared across brains
-  rag: {                                    // shared retrieval corpus (RAG)
-    vectorStore: 'in-memory',
-    documents: ['./docs/quic-rfc-9000.md', './docs/tcp-rfc-9293.md'],
-    topK: 5,
-  },
   agents: {
-    researcher: { instructions: 'Pull factual claims from the RAG corpus.' },
-    writer:     { instructions: "Compose a briefing from the researcher's notes." },
-    reviewer:   { instructions: 'Verify the briefing against the same RAG corpus.' },
+    researcher: { instructions: 'List the factual claims that matter for the comparison, one per line.' },
+    writer:     { instructions: "Compose a two-paragraph briefing from the researcher's notes." },
+    reviewer:   { instructions: 'Review the briefing you receive: flag any claim that needs a source and any sentence a reader could misread.' },
   },
 });
 
-// Same .generate() surface as a single agent. The agency routes outputs
-// between brains; the shared memory + RAG layer means each brain reads
-// what the previous one wrote without an explicit handoff payload.
+// Same .generate() surface as a single agent. The agency routes each
+// agent's output into the next agent's prompt; result.agentCalls lists
+// who ran, in what order, with what input.
 const result = await team.generate(
   'Compare QUIC and TCP for low-latency game networking.',
 );
 console.log(result.text);
-console.log(result.agentCalls);             // who read which chunks, in what order`
+console.log(result.agentCalls);             // who ran, in what order`
 
 const SINGLE_AGENT_CODE = `import { agent } from '@framers/agentos';
 
-// One GMI brain handles the whole task. Cognition, memory, persona, and
-// tools live inside this single agent(). No team, no shared state, no
-// inter-agent flow. This is the baseline that the next tab upgrades.
+// One agent handles the whole task: instructions, personality, tools and
+// session history live inside this single agent(). No team, no hand-off.
+// This is the baseline that the next tab upgrades.
 const researcher = agent({
   provider: 'openai',
   model: 'gpt-4o',
@@ -242,23 +235,23 @@ const demos: DemoData[] = [
   },
   {
     id: 'agency-shared',
-    title: 'Agency: shared memory + RAG',
-    exampleSlug: 'examples/agency-shared-memory.mjs',
+    title: 'Agency: sequential hand-off',
+    exampleSlug: 'examples/agency-sequential-handoff.mjs',
     language: 'typescript',
     code: AGENCY_SHARED_CODE,
     output: {
       finalAnswer:
         "QUIC and TCP target different points on the latency-versus-reliability curve, and for real-time game networking the differences are decisive. QUIC runs over UDP and bundles encryption (TLS 1.3) directly into the transport handshake, collapsing what was three round trips in TCP+TLS into a single 1-RTT (or 0-RTT on resume) connection setup. Head-of-line blocking, the headline tax of TCP for any application that multiplexes multiple logical streams over one connection, is eliminated at the transport layer: a lost packet in one QUIC stream does not stall the others. For a game pushing positional updates plus chat plus voice over one socket, that property alone shifts the worst-case latency curve materially.\n\nThe trade-offs are real. QUIC's UDP base means middleboxes and legacy NATs sometimes drop or throttle it, so a production game still needs a TCP fallback path. CPU overhead is higher per-packet today because the kernel does less of the work; this gap is closing as Linux kQUIC and BSD-side acceleration land, but on resource-constrained server fleets it matters. For game traffic that is loss-tolerant (positional snapshots, voice frames), use QUIC unreliable datagrams. For reliable in-game RPC and chat, use QUIC reliable streams. Keep TCP only for the fallback case where UDP is filtered.",
       agentCalls: [
-        { agent: 'researcher', input: 'Pull factual claims about QUIC vs TCP latency, head-of-line blocking, handshake RTTs from the RAG corpus.' },
-        { agent: 'writer',     input: "Compose a 2-paragraph briefing from the researcher's notes in shared memory." },
-        { agent: 'reviewer',   input: 'Re-query the RAG corpus and verify each load-bearing claim in the briefing.' },
+        { agent: 'researcher', input: 'Compare QUIC and TCP for low-latency game networking.' },
+        { agent: 'writer',     input: '- QUIC runs over UDP with TLS 1.3 in the handshake: 1-RTT setup, 0-RTT on resume\n- No head-of-line blocking across streams\n- UDP is throttled by some middleboxes; keep a TCP fallback\n- Higher per-packet CPU today ...' },
+        { agent: 'reviewer',   input: 'QUIC and TCP target different points on the latency-versus-reliability curve ... (the writer\'s two-paragraph briefing)' },
       ],
       usage: { tokens: 3120 },
     },
     caption: (
       <>
-        Three brains, one shared cognitive memory store, one shared RAG corpus. The <code className="font-mono text-[var(--color-accent-primary)]">researcher</code> pulls chunks from QUIC and TCP RFCs; the <code className="font-mono text-[var(--color-accent-primary)]">writer</code> reads them via shared memory without an explicit handoff payload; the <code className="font-mono text-[var(--color-accent-primary)]">reviewer</code> re-queries the same corpus to fact-check. Same <code className="font-mono text-[var(--color-accent-primary)]">.generate()</code> surface as a single agent. <code className="font-mono text-[var(--color-accent-primary)]">memory: {'{ shared: true }'}</code> scopes to this <code className="font-mono text-[var(--color-accent-primary)]">generate()</code> call. The next tab adds runtime synthesis on top: the team can spawn a new specialist mid-run.
+        Three agents in sequence. The <code className="font-mono text-[var(--color-accent-primary)]">researcher</code> lists the claims; the <code className="font-mono text-[var(--color-accent-primary)]">writer</code> receives those notes as its input; the <code className="font-mono text-[var(--color-accent-primary)]">reviewer</code> receives the briefing and flags what needs a source. Same <code className="font-mono text-[var(--color-accent-primary)]">.generate()</code> surface as a single agent; <code className="font-mono text-[var(--color-accent-primary)]">result.agentCalls</code> shows who ran, in what order. Nothing is shared between the agents beyond the text each one returns. The next tab adds runtime synthesis on top: the team can spawn a new specialist mid-run.
       </>
     ),
   },

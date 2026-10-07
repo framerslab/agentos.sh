@@ -76,8 +76,7 @@ console.log(result.toolCalls)      // => [{ toolName: 'calculator', args: { ... 
 
 // Multi-agent team — each agent gets its own provider + personality
 const researchTeam = agency({
-  strategy: 'graph',              // dependency-based DAG execution
-  memory: { shared: true },       // agents share conversation context
+  strategy: 'graph',              // dependency-based DAG execution; each member gets the outputs it depends on
   agents: {
     researcher: {
       provider: 'anthropic',                       // Claude for deep reasoning

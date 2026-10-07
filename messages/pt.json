@@ -767,8 +767,8 @@
         "description": "Configuração básica de agente com memória e ferramentas"
       },
       "gmiRoles": {
-        "title": "Papéis e Agências de GMI",
-        "description": "Implementando papéis de Generalised Mind Instance"
+        "title": "Papéis de vários provedores em uma agência",
+        "description": "Uma agência, três provedores, um grafo de dependências"
       },
       "memorySystem": {
         "title": "Personalidade e Memória Cognitiva",
@@ -1535,7 +1535,7 @@
       "perAgentGuardrails": "Guardrails por Agente"
     },
     "sharedCapabilitiesScopeNoteLabel": "Escopo:",
-    "sharedCapabilitiesScopeNote": "A memória compartilhada e o roster aplicam-se dentro de uma única chamada <code>generate()</code>. Entre turnos de <code>session().send()</code> apenas o histórico de mensagens persiste. Veja a <link>documentação da API de Agency</link> para padrões de memória entre turnos.",
+    "sharedCapabilitiesScopeNote": "O roster aplica-se dentro de uma única chamada <code>generate()</code>. Entre turnos de <code>session().send()</code> apenas o histórico de mensagens persiste. Veja a <link>documentação da Agency API</link> para padrões de memória.",
     "ctaExploreDocs": "Explorar API de Agency"
   },
   "benchmarks": {

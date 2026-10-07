@@ -1175,8 +1175,8 @@
         "description": "메모리와 도구를 갖춘 기본 에이전트 설정"
       },
       "gmiRoles": {
-        "title": "GMI 역할 및 에이전시",
-        "description": "Generalised Mind Instance 역할 구현"
+        "title": "에이전시의 다중 공급자 역할",
+        "description": "하나의 에이전시, 세 공급자, 하나의 의존성 그래프"
       },
       "memorySystem": {
         "title": "성격과 인지 메모리",
@@ -1535,7 +1535,7 @@
       "perAgentGuardrails": "에이전트별 가드레일"
     },
     "sharedCapabilitiesScopeNoteLabel": "범위:",
-    "sharedCapabilitiesScopeNote": "공유 메모리와 로스터는 단일 <code>generate()</code> 호출 내에서 적용됩니다. <code>session().send()</code> 턴 간에는 메시지 기록만 유지됩니다. 턴 간 메모리 패턴은 <link>Agency API 문서</link>를 참조하세요.",
+    "sharedCapabilitiesScopeNote": "로스터는 단일 <code>generate()</code> 호출 내에서 적용됩니다. <code>session().send()</code> 턴 간에는 메시지 기록만 유지됩니다. 메모리 패턴은 <link>Agency API 문서</link>를 참조하세요.",
     "ctaExploreDocs": "Agency API 탐색"
   },
   "benchmarks": {
