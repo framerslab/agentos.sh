@@ -838,7 +838,7 @@
       },
       "behavior": {
         "traditional": "In jedem Turn dasselbe Verhalten",
-        "gmi": "Stimmungsbewertung bei jedem Nutzer-Turn; wenn aktiviert, helfen Metaprompts ihm, sich von Frustration oder Verwirrung zu erholen und seine Merkmale anhand von Belegen anzupassen"
+        "gmi": "Stimmungsbewertung und Erholungs-Metaprompts, wenn die Persona das Stimmungs-Tracking aktiviert; periodische oder manuelle Metaprompts, etwa die Selbstreflexion, die Stimmung und Aufgabenkontext anhand von Belegen neu liest, laufen aus den eigenen Definitionen der Persona"
       },
       "selfImprovement": {
         "traditional": "Merkmale ändern sich nur, wenn Sie den Prompt bearbeiten",

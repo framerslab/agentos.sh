@@ -838,7 +838,7 @@
       },
       "behavior": {
         "traditional": "Le même comportement à chaque tour",
-        "gmi": "Notation du sentiment à chaque tour utilisateur ; une fois activés, des metaprompts l’aident à se remettre de la frustration ou de la confusion et à ajuster ses traits à partir de preuves"
+        "gmi": "Notation du sentiment et metaprompts de récupération quand la persona active le suivi du sentiment ; les metaprompts périodiques ou manuels, comme l’autoréflexion qui relit son humeur et son contexte de tâche à partir de preuves, s’exécutent depuis les définitions propres de la persona"
       },
       "selfImprovement": {
         "traditional": "Les traits ne changent que si vous modifiez le prompt",
