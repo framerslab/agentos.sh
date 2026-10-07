@@ -22,7 +22,7 @@
   "hero": {
     "badge": "Open Source · TypeScript · Production-Ready",
     "title": "Open-Source TypeScript AI Agent Runtime",
-    "subtitle": "Open-source TypeScript runtime for AI agents that remember, adapt, and spawn new tools. Agents write their own functions mid-task and the judge approves them; managers create specialists when the static roster does not cover the task. Cognitive memory grounded in neuroscience. 85.6% on LongMemEval-S. Apache 2.0.",
+    "subtitle": "Open-source TypeScript runtime for AI agents that remember, adapt, and spawn new tools. Every session on the runtime is a GMI, a Generalized Mind Instance that keeps its own persona, mood and memory and can adjust its own traits over time. Agents write their own functions mid-task and the judge approves them; managers create specialists when the static roster does not cover the task. Cognitive memory grounded in neuroscience. 85.6% on LongMemEval-S. Apache 2.0.",
     "cycleWords": [
       "Adaptive",
       "Emergent"
@@ -907,12 +907,12 @@
   "gmiSection": {
     "badge": "Core Concept",
     "title": "Generalized Mind Instances",
-    "subtitle": "On the AgentOS runtime, every session is served by a GMI: a persistent agent with its own persona, mood, history and reasoning trace. It can carry cognitive memory across sessions, and it runs each turn itself, from retrieval to the model call to tool calls.",
+    "subtitle": "On the AgentOS runtime, every session is served by a GMI: a persistent agent with its own persona, mood, history and reasoning trace. A plain agent() call sends the model a prompt. A GMI runs a turn loop that scores sentiment, encodes and recalls memory weighted by its mood, and can adjust its own traits.",
     "ctaExploreDocs": "Learn More",
     "codeExampleLabel": "Create a GMI",
-    "comparisonTitle": "GMI vs Traditional Agents",
-    "comparisonTraditionalLabel": "Traditional Agent",
-    "comparisonGmiLabel": "AgentOS GMI",
+    "comparisonTitle": "What a GMI adds over a plain agent",
+    "comparisonTraditionalLabel": "Plain agent()",
+    "comparisonGmiLabel": "GMI on the AgentOS runtime",
     "layers": {
       "channels": {
         "name": "Channels & I/O",
@@ -945,28 +945,28 @@
     },
     "comparison": {
       "identity": {
-        "traditional": "Stateless prompt",
-        "gmi": "Persistent identity with HEXACO personality"
+        "traditional": "A system prompt with HEXACO values",
+        "gmi": "A persona with traits, a mood state and per-session overlays"
       },
       "memory": {
-        "traditional": "No memory between sessions",
-        "gmi": "Cognitive memory with Ebbinghaus decay + 8 mechanisms"
+        "traditional": "Memory you build and inject yourself",
+        "gmi": "With cognitive memory attached, every exchange is encoded with the current mood and recalled with emotional congruence in the score"
       },
       "behavior": {
-        "traditional": "Fixed behavior",
-        "gmi": "Style adaptation — learns your preferences"
+        "traditional": "The same behavior every turn",
+        "gmi": "Sentiment scoring on every user turn; when enabled, metaprompts recover from frustration or confusion and adjust its traits from evidence"
       },
-      "providers": {
-        "traditional": "Single model",
-        "gmi": "11 LLM providers behind one interface"
+      "selfImprovement": {
+        "traditional": "Traits change only when you edit the prompt",
+        "gmi": "When self-improvement is enabled, adapt_personality and manage_skills let it change its own traits and active skills within bounds, and keep the change"
       },
       "tools": {
-        "traditional": "Manual tool wiring",
-        "gmi": "Capability discovery — finds tools semantically"
+        "traditional": "Tools you list by hand",
+        "gmi": "Capability discovery and runtime tool forging wired into the turn loop"
       },
       "safety": {
-        "traditional": "No safety",
-        "gmi": "Real-time content safety with PII redaction and injection defense"
+        "traditional": "Guardrail config accepted, not enforced",
+        "gmi": "Guardrail packs evaluate every turn"
       }
     }
   },

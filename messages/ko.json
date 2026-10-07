@@ -22,7 +22,7 @@
   "hero": {
     "badge": "오픈소스 · 적응형 · 창발형",
     "title": "적응형 및 창발형 지능을 위한 휴대용 AI 에이전트 런타임",
-    "subtitle": "메모리, 도구 및 자율성을 갖춘 적응형, 창발형 AI 에이전트를 구축하세요. GMI 역할, 다중 에이전트 오케스트레이션 및 엔터프라이즈 가드레일을 갖춘 TypeScript 런타임.",
+    "subtitle": "기억하고, 적응하고, 새로운 도구를 만들어내는 AI 에이전트를 위한 오픈 소스 TypeScript 런타임. 런타임의 각 세션은 GMI(Generalized Mind Instance)로 실행되어 고유한 페르소나, 무드, 메모리를 유지하고 시간이 지남에 따라 자신의 특성을 조정할 수 있습니다. 에이전트는 작업 도중 직접 함수를 작성하고 심판이 이를 승인하며, 고정 로스터가 작업을 감당하지 못하면 매니저가 전문가를 생성합니다. 신경과학에 기반한 인지 메모리. LongMemEval-S 85.6%. Apache 2.0.",
     "cycleWords": [
       "적응형",
       "창발형"
@@ -791,12 +791,12 @@
   "gmiSection": {
     "badge": "핵심 개념",
     "title": "Generalized Mind Instances",
-    "subtitle": "AgentOS 런타임에서는 각 세션을 GMI가 담당합니다. GMI는 고유한 페르소나, 무드, 기록, 추론 트레이스를 가진 영속적인 에이전트로, 세션 간에 인지 메모리를 이어갈 수 있으며 검색부터 모델 호출, 도구 호출까지 각 턴을 직접 실행합니다.",
+    "subtitle": "AgentOS 런타임에서는 각 세션을 GMI가 담당합니다. GMI는 고유한 페르소나, 무드, 기록, 추론 트레이스를 가진 영속적인 에이전트입니다. 단순한 agent() 호출은 모델에 프롬프트를 보낼 뿐이지만, GMI는 감정을 점수화하고, 무드로 가중한 메모리를 저장하고 불러오며, 자신의 특성을 조정할 수 있는 턴 루프를 실행합니다.",
     "ctaExploreDocs": "자세히 알아보기",
     "codeExampleLabel": "GMI 만들기",
-    "comparisonTitle": "GMI 대 기존 에이전트",
-    "comparisonTraditionalLabel": "기존 에이전트",
-    "comparisonGmiLabel": "AgentOS GMI",
+    "comparisonTitle": "GMI가 단순한 에이전트에 더하는 것",
+    "comparisonTraditionalLabel": "단순한 agent()",
+    "comparisonGmiLabel": "AgentOS 런타임의 GMI",
     "layers": {
       "channels": {
         "name": "채널 및 I/O",
@@ -829,28 +829,28 @@
     },
     "comparison": {
       "identity": {
-        "traditional": "상태 없는 프롬프트",
-        "gmi": "HEXACO 성격을 가진 영속적 정체성"
+        "traditional": "HEXACO 값이 담긴 시스템 프롬프트",
+        "gmi": "특성, 무드 상태, 세션별 오버레이를 가진 페르소나"
       },
       "memory": {
-        "traditional": "세션 간 메모리 없음",
-        "gmi": "Ebbinghaus 감쇠와 8가지 메커니즘을 갖춘 인지 메모리"
+        "traditional": "직접 구축하고 주입하는 메모리",
+        "gmi": "인지 메모리를 연결하면 각 대화가 현재 무드와 함께 저장되고, 감정적 일치를 점수에 반영해 불러옵니다"
       },
       "behavior": {
-        "traditional": "고정된 동작",
-        "gmi": "스타일 적응 — 사용자의 선호를 학습"
+        "traditional": "매 턴 같은 행동",
+        "gmi": "사용자 턴마다 감정을 점수화하고, 활성화하면 메타프롬프트가 좌절이나 혼란에서 회복하며 근거를 바탕으로 특성을 조정합니다"
       },
-      "providers": {
-        "traditional": "단일 모델",
-        "gmi": "하나의 인터페이스 뒤에 있는 11개 LLM 프로바이더"
+      "selfImprovement": {
+        "traditional": "특성은 프롬프트를 편집할 때만 바뀜",
+        "gmi": "자기 개선을 활성화하면 adapt_personality와 manage_skills로 자신의 특성과 활성 스킬을 범위 안에서 바꾸고 그 변경을 유지합니다"
       },
       "tools": {
-        "traditional": "수동 도구 연결",
-        "gmi": "능력 발견 — 의미론적으로 도구를 찾습니다"
+        "traditional": "직접 나열하는 도구",
+        "gmi": "역량 탐색과 런타임 도구 생성이 턴 루프에 연결되어 있습니다"
       },
       "safety": {
-        "traditional": "안전 기능 없음",
-        "gmi": "PII 마스킹과 인젝션 방어를 갖춘 실시간 콘텐츠 안전"
+        "traditional": "가드레일 설정은 받아들이지만 적용하지 않음",
+        "gmi": "가드레일 팩이 매 턴을 평가합니다"
       }
     }
   },

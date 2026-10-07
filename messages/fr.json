@@ -22,7 +22,7 @@
   "hero": {
     "badge": "Open Source · Adaptatif · Émergent",
     "title": "Runtime production-ready pour agents IA adaptatifs et émergents",
-    "subtitle": "Créez des agents IA adaptatifs avec mémoire, outils et autonomie. Runtime TypeScript avec rôles GMI, orchestration multi-agents et garde-fous entreprise.",
+    "subtitle": "Runtime TypeScript open source pour des agents IA qui se souviennent, s’adaptent et créent de nouveaux outils. Chaque session sur le runtime est un GMI, une Generalized Mind Instance qui conserve sa propre persona, son humeur et sa mémoire et peut ajuster ses propres traits au fil du temps. Les agents écrivent leurs propres fonctions en cours de tâche et le juge les approuve ; les managers créent des spécialistes quand l’effectif fixe ne couvre pas la tâche. Mémoire cognitive fondée sur les neurosciences. 85.6% sur LongMemEval-S. Apache 2.0.",
     "headlinePairs": [
       {
         "top": "Intelligence adaptative",
@@ -791,12 +791,12 @@
   "gmiSection": {
     "badge": "Concept Central",
     "title": "Generalized Mind Instances",
-    "subtitle": "Sur le runtime AgentOS, chaque session est servie par un GMI : un agent persistant doté de sa propre persona, de son humeur, de son historique et de sa trace de raisonnement. Il peut conserver une mémoire cognitive d’une session à l’autre et exécute lui-même chaque tour, de la récupération à l’appel du modèle et aux appels d’outils.",
+    "subtitle": "Sur le runtime AgentOS, chaque session est servie par un GMI : un agent persistant doté de sa propre persona, de son humeur, de son historique et de sa trace de raisonnement. Un simple appel agent() envoie un prompt au modèle. Un GMI exécute une boucle de tour qui note le sentiment, encode et rappelle la mémoire pondérée par son humeur, et peut ajuster ses propres traits.",
     "ctaExploreDocs": "En Savoir Plus",
     "codeExampleLabel": "Créer un GMI",
-    "comparisonTitle": "GMI vs Agents Traditionnels",
-    "comparisonTraditionalLabel": "Agent Traditionnel",
-    "comparisonGmiLabel": "GMI AgentOS",
+    "comparisonTitle": "Ce qu’un GMI ajoute à un agent simple",
+    "comparisonTraditionalLabel": "agent() simple",
+    "comparisonGmiLabel": "GMI sur le runtime AgentOS",
     "layers": {
       "channels": {
         "name": "Canaux et E/S",
@@ -829,28 +829,28 @@
     },
     "comparison": {
       "identity": {
-        "traditional": "Prompt sans état",
-        "gmi": "Identité persistante avec personnalité HEXACO"
+        "traditional": "Un prompt système avec des valeurs HEXACO",
+        "gmi": "Une persona avec des traits, un état d’humeur et des surcouches par session"
       },
       "memory": {
-        "traditional": "Aucune mémoire entre les sessions",
-        "gmi": "Mémoire cognitive avec décroissance d’Ebbinghaus + 8 mécanismes"
+        "traditional": "Une mémoire que vous construisez et injectez vous-même",
+        "gmi": "Avec une mémoire cognitive attachée, chaque échange est encodé avec l’humeur du moment et rappelé avec la congruence émotionnelle dans le score"
       },
       "behavior": {
-        "traditional": "Comportement fixe",
-        "gmi": "Adaptation du style — apprend vos préférences"
+        "traditional": "Le même comportement à chaque tour",
+        "gmi": "Notation du sentiment à chaque tour utilisateur ; une fois activés, des metaprompts récupèrent la frustration ou la confusion et ajustent ses traits à partir de preuves"
       },
-      "providers": {
-        "traditional": "Modèle unique",
-        "gmi": "11 fournisseurs LLM derrière une seule interface"
+      "selfImprovement": {
+        "traditional": "Les traits ne changent que si vous modifiez le prompt",
+        "gmi": "Avec l’auto-amélioration activée, adapt_personality et manage_skills lui permettent de changer ses propres traits et skills actifs dans des limites, et de conserver le changement"
       },
       "tools": {
-        "traditional": "Câblage manuel des outils",
-        "gmi": "Découverte de capacités — trouve les outils sémantiquement"
+        "traditional": "Des outils que vous listez à la main",
+        "gmi": "Découverte de capacités et forge d’outils à l’exécution intégrées à la boucle de tour"
       },
       "safety": {
-        "traditional": "Aucune sécurité",
-        "gmi": "Sécurité de contenu en temps réel avec rédaction de PII et défense contre l’injection"
+        "traditional": "Configuration de guardrails acceptée, non appliquée",
+        "gmi": "Les packs de guardrails évaluent chaque tour"
       }
     }
   },

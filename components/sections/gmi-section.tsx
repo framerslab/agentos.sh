@@ -105,7 +105,7 @@ const COMPARISON_KEYS = [
   'identity',
   'memory',
   'behavior',
-  'providers',
+  'selfImprovement',
   'tools',
   'safety',
 ] as const
