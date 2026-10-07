@@ -43,14 +43,14 @@ jobs:
       - name: Lint
         run: |
           if [ "${{ steps.pm.outputs.pm }}" = "pnpm" ]; then
-            pnpm run lint || echo "No lint script; skipping"
+            pnpm run --if-present lint
           else
             npm run lint --if-present
           fi
       - name: Test
         run: |
           if [ "${{ steps.pm.outputs.pm }}" = "pnpm" ]; then
-            pnpm run test || echo "No test script; skipping"
+            pnpm run --if-present test
           else
             npm test --if-present
           fi
