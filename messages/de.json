@@ -22,7 +22,7 @@
   "hero": {
     "badge": "Open Source · Adaptiv · Emergent",
     "title": "Produktionsfertige KI-Agenten-Laufzeit für Adaptive & Emergente Intelligenz",
-    "subtitle": "Bauen Sie adaptive, emergente KI-Agenten mit Gedächtnis, Tools und Autonomie. TypeScript-Laufzeit mit GMI-Rollen, Multi-Agenten-Orchestrierung und Enterprise-Leitplanken.",
+    "subtitle": "Open-Source-TypeScript-Runtime für KI-Agenten, die sich erinnern, anpassen und neue Tools erzeugen. Jede Sitzung auf der Runtime ist ein GMI, eine Generalized Mind Instance, die ihre eigene Persona, Stimmung und ihr Gedächtnis behält und ihre eigenen Merkmale mit der Zeit anpassen kann. Agenten schreiben mitten in der Aufgabe eigene Funktionen, und der Judge genehmigt sie; Manager erzeugen Spezialisten, wenn das feste Roster die Aufgabe nicht abdeckt. Kognitives Gedächtnis auf neurowissenschaftlicher Grundlage. 85.6% auf LongMemEval-S. Apache 2.0.",
     "cycleWords": [
       "Adaptiv",
       "Emergent"
@@ -791,12 +791,12 @@
   "gmiSection": {
     "badge": "Kernkonzept",
     "title": "Generalized Mind Instances",
-    "subtitle": "Auf der AgentOS-Runtime wird jede Sitzung von einem GMI bedient: einem persistenten Agenten mit eigener Persona, Stimmung, eigenem Verlauf und Reasoning-Trace. Er kann kognitives Gedächtnis über Sitzungen hinweg mitführen und führt jeden Turn selbst aus, von der Suche über den Modellaufruf bis zu den Tool-Aufrufen.",
+    "subtitle": "Auf der AgentOS-Runtime wird jede Sitzung von einem GMI bedient: einem persistenten Agenten mit eigener Persona, Stimmung, eigenem Verlauf und Reasoning-Trace. Ein einfacher agent()-Aufruf schickt dem Modell einen Prompt. Ein GMI führt eine Turn-Schleife aus, die Stimmung bewertet, Gedächtnis gewichtet nach seiner Stimmung kodiert und abruft und seine eigenen Merkmale anpassen kann.",
     "ctaExploreDocs": "Mehr erfahren",
     "codeExampleLabel": "Ein GMI erstellen",
-    "comparisonTitle": "GMI vs. herkömmliche Agenten",
-    "comparisonTraditionalLabel": "Herkömmlicher Agent",
-    "comparisonGmiLabel": "AgentOS GMI",
+    "comparisonTitle": "Was ein GMI gegenüber einem einfachen Agenten hinzufügt",
+    "comparisonTraditionalLabel": "Einfaches agent()",
+    "comparisonGmiLabel": "GMI auf der AgentOS-Runtime",
     "layers": {
       "channels": {
         "name": "Kanäle & I/O",
@@ -829,28 +829,28 @@
     },
     "comparison": {
       "identity": {
-        "traditional": "Zustandsloser Prompt",
-        "gmi": "Persistente Identität mit HEXACO-Persönlichkeit"
+        "traditional": "Ein System-Prompt mit HEXACO-Werten",
+        "gmi": "Eine Persona mit Merkmalen, einem Stimmungszustand und Overlays pro Sitzung"
       },
       "memory": {
-        "traditional": "Keine Erinnerung zwischen Sitzungen",
-        "gmi": "Kognitives Gedächtnis mit Ebbinghaus-Vergessenskurve + 8 Mechanismen"
+        "traditional": "Gedächtnis, das Sie selbst aufbauen und einspeisen",
+        "gmi": "Mit angebundenem kognitivem Gedächtnis wird jeder Austausch mit der aktuellen Stimmung kodiert und mit emotionaler Kongruenz im Score abgerufen"
       },
       "behavior": {
-        "traditional": "Festes Verhalten",
-        "gmi": "Stil-Anpassung — lernt deine Präferenzen"
+        "traditional": "In jedem Turn dasselbe Verhalten",
+        "gmi": "Stimmungsbewertung bei jedem Nutzer-Turn; wenn aktiviert, helfen Metaprompts ihm, sich von Frustration oder Verwirrung zu erholen und seine Merkmale anhand von Belegen anzupassen"
       },
-      "providers": {
-        "traditional": "Einzelnes Modell",
-        "gmi": "11 LLM-Anbieter hinter einer Schnittstelle"
+      "selfImprovement": {
+        "traditional": "Merkmale ändern sich nur, wenn Sie den Prompt bearbeiten",
+        "gmi": "Mit aktivierter Selbstverbesserung lassen adapt_personality und manage_skills es seine eigenen Merkmale und aktiven Skills in Grenzen ändern und die Änderung behalten"
       },
       "tools": {
-        "traditional": "Manuelle Tool-Verdrahtung",
-        "gmi": "Capability-Discovery — findet Werkzeuge semantisch"
+        "traditional": "Tools, die Sie von Hand auflisten",
+        "gmi": "Fähigkeitserkennung und Tool-Schmieden zur Laufzeit, in die Turn-Schleife eingebunden"
       },
       "safety": {
-        "traditional": "Keine Sicherheit",
-        "gmi": "Echtzeit-Inhaltssicherheit mit PII-Redaktion und Injection-Abwehr"
+        "traditional": "Guardrail-Konfiguration angenommen, nicht durchgesetzt",
+        "gmi": "Guardrail-Pakete bewerten jeden Turn"
       }
     }
   },

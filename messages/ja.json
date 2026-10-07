@@ -22,7 +22,7 @@
   "hero": {
     "badge": "オープンソース · 適応型 · 創発型",
     "title": "適応型および創発型インテリジェンスのためのポータブルAIエージェントランタイム",
-    "subtitle": "メモリ、ツール、自律性を備えた適応型、創発型AIエージェントを構築。GMIロール、マルチエージェントオーケストレーション、エンタープライズガードレールを備えたTypeScriptランタイム。",
+    "subtitle": "記憶し、適応し、新しいツールを生み出す AI エージェントのためのオープンソース TypeScript ランタイム。ランタイム上の各セッションは GMI(Generalized Mind Instance)として動き、独自のペルソナ、ムード、メモリを保ち、時間とともに自らの特性を調整できます。エージェントはタスクの途中で自ら関数を書き、ジャッジが承認します。固定のロスターでタスクを賄えないとき、マネージャーがスペシャリストを生成します。神経科学に基づく認知メモリ。LongMemEval-S で 85.6%。Apache 2.0。",
     "headlinePairs": [
       {
         "top": "適応型インテリジェンス",
@@ -639,12 +639,12 @@
   "gmiSection": {
     "badge": "コアコンセプト",
     "title": "Generalized Mind Instances",
-    "subtitle": "AgentOS ランタイムでは、各セッションを GMI が担当します。GMI は独自のパーソナリティ、ムード、履歴、推論トレースを持つ永続的なエージェントで、セッションをまたいで認知メモリを引き継ぐことができ、検索からモデル呼び出し、ツール呼び出しまで各ターンを自ら実行します。",
+    "subtitle": "AgentOS ランタイムでは、各セッションを GMI が担当します。GMI は独自のペルソナ、ムード、履歴、推論トレースを持つ永続的なエージェントです。単純な agent() 呼び出しはモデルにプロンプトを送るだけですが、GMI はセンチメントを採点し、ムードで重み付けしたメモリを符号化・想起し、自らの特性を調整できるターンループを実行します。",
     "ctaExploreDocs": "詳しく見る",
     "codeExampleLabel": "GMI を作成",
-    "comparisonTitle": "GMI と従来のエージェントの比較",
-    "comparisonTraditionalLabel": "従来のエージェント",
-    "comparisonGmiLabel": "AgentOS GMI",
+    "comparisonTitle": "GMI が単純なエージェントに加えるもの",
+    "comparisonTraditionalLabel": "単純な agent()",
+    "comparisonGmiLabel": "AgentOS ランタイム上の GMI",
     "layers": {
       "channels": {
         "name": "チャネルと I/O",
@@ -677,28 +677,28 @@
     },
     "comparison": {
       "identity": {
-        "traditional": "ステートレスなプロンプト",
-        "gmi": "HEXACO パーソナリティを持つ永続的なアイデンティティ"
+        "traditional": "HEXACO 値を含むシステムプロンプト",
+        "gmi": "特性、ムード状態、セッションごとのオーバーレイを持つペルソナ"
       },
       "memory": {
-        "traditional": "セッション間でメモリなし",
-        "gmi": "Ebbinghaus 減衰と 8 つのメカニズムを備えた認知メモリ"
+        "traditional": "自分で構築して注入するメモリ",
+        "gmi": "認知メモリを接続すると、各やり取りが現在のムードとともに符号化され、感情的一致をスコアに含めて想起されます"
       },
       "behavior": {
-        "traditional": "固定的な振る舞い",
-        "gmi": "スタイル適応 — ユーザーの好みを学習"
+        "traditional": "毎ターン同じ振る舞い",
+        "gmi": "ユーザーの各ターンでセンチメントを採点。有効化すれば、メタプロンプトが GMI の不満や混乱からの立て直しを助け、証拠に基づいて特性を調整します"
       },
-      "providers": {
-        "traditional": "単一モデル",
-        "gmi": "1 つのインターフェースの背後にある 11 の LLM プロバイダ"
+      "selfImprovement": {
+        "traditional": "特性はプロンプトを編集したときだけ変わる",
+        "gmi": "自己改善を有効化すると、adapt_personality と manage_skills により、自らの特性と有効なスキルを範囲内で変更し、その変更を保持できます"
       },
       "tools": {
-        "traditional": "手動でのツール接続",
-        "gmi": "能力ディスカバリー — 意味的にツールを発見"
+        "traditional": "手作業で列挙するツール",
+        "gmi": "ケイパビリティ発見とランタイムでのツール生成がターンループに組み込まれています"
       },
       "safety": {
-        "traditional": "安全機能なし",
-        "gmi": "PII 編集とインジェクション防御を備えたリアルタイムコンテンツセーフティ"
+        "traditional": "ガードレール設定は受け付けるが適用されない",
+        "gmi": "ガードレールパックが毎ターンを評価します"
       }
     }
   },

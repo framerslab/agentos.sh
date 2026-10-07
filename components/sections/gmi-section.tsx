@@ -105,7 +105,7 @@ const COMPARISON_KEYS = [
   'identity',
   'memory',
   'behavior',
-  'providers',
+  'selfImprovement',
   'tools',
   'safety',
 ] as const
@@ -458,7 +458,7 @@ export function GMISection() {
                     style={{ color: 'var(--color-text-muted)' }}
                   />
                   <span
-                    className="text-sm"
+                    className="text-sm min-w-0 break-words [overflow-wrap:anywhere]"
                     style={{ color: 'var(--color-text-muted)' }}
                   >
                     {t(`comparison.${key}.traditional`)}
@@ -483,7 +483,7 @@ export function GMISection() {
                     style={{ color: 'var(--color-accent-primary)' }}
                   />
                   <span
-                    className="text-sm font-medium"
+                    className="text-sm font-medium min-w-0 break-words [overflow-wrap:anywhere]"
                     style={{ color: 'var(--color-text-primary)' }}
                   >
                     {t(`comparison.${key}.gmi`)}

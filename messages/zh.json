@@ -22,7 +22,7 @@
   "hero": {
     "badge": "开源 · 自适应 · 涌现",
     "title": "自适应与涌现智能的便携式AI代理运行时",
-    "subtitle": "构建具有记忆、工具和自主能力的自适应涌现AI代理。TypeScript运行时，具有GMI角色、多代理编排和企业级护栏。",
+    "subtitle": "面向会记忆、会适应、能创造新工具的 AI 智能体的开源 TypeScript 运行时。运行时中的每个会话都是一个 GMI(Generalized Mind Instance),它保留自己的人格、情绪和记忆,并能随时间调整自己的特质。智能体在任务中途编写自己的函数并由裁判批准;当固定名单无法覆盖任务时,管理者会创建专家。基于神经科学的认知记忆。LongMemEval-S 85.6%。Apache 2.0。",
     "headlinePairs": [
       {
         "top": "自适应智能",
@@ -639,12 +639,12 @@
   "gmiSection": {
     "badge": "核心概念",
     "title": "Generalized Mind Instances",
-    "subtitle": "在 AgentOS 运行时中,每个会话都由一个 GMI 负责:它是一个持久的智能体,拥有自己的人格、情绪、历史记录和推理轨迹。它可以跨会话保留认知记忆,并自行执行每一轮,从检索到模型调用再到工具调用。",
+    "subtitle": "在 AgentOS 运行时中,每个会话都由一个 GMI 负责:它是一个持久的智能体,拥有自己的人格、情绪、历史记录和推理轨迹。普通的 agent() 调用只是把提示词发给模型;GMI 则运行一个回合循环:为情绪打分,按自身情绪加权地编码和回忆记忆,并能调整自己的特质。",
     "ctaExploreDocs": "了解更多",
     "codeExampleLabel": "创建 GMI",
-    "comparisonTitle": "GMI 与传统智能体对比",
-    "comparisonTraditionalLabel": "传统智能体",
-    "comparisonGmiLabel": "AgentOS GMI",
+    "comparisonTitle": "GMI 比普通智能体多了什么",
+    "comparisonTraditionalLabel": "普通 agent()",
+    "comparisonGmiLabel": "AgentOS 运行时中的 GMI",
     "layers": {
       "channels": {
         "name": "通道与 I/O",
@@ -677,28 +677,28 @@
     },
     "comparison": {
       "identity": {
-        "traditional": "无状态提示",
-        "gmi": "具备 HEXACO 人格的持久身份"
+        "traditional": "带有 HEXACO 数值的系统提示词",
+        "gmi": "拥有特质、情绪状态和每会话覆盖层的人格"
       },
       "memory": {
-        "traditional": "会话之间无记忆",
-        "gmi": "具备 Ebbinghaus 遗忘曲线和 8 种机制的认知记忆"
+        "traditional": "需要你自己构建并注入的记忆",
+        "gmi": "接入认知记忆后,每次交流都带着当前情绪被编码,并在评分中纳入情绪一致性进行回忆"
       },
       "behavior": {
-        "traditional": "固定行为",
-        "gmi": "风格适应 — 学习用户偏好"
+        "traditional": "每一轮行为都相同",
+        "gmi": "每个用户回合都进行情绪打分;启用后,元提示会帮助 GMI 从挫折或困惑中恢复,并依据证据调整其特质"
       },
-      "providers": {
-        "traditional": "单一模型",
-        "gmi": "一个接口背后的 11 个 LLM 提供商"
+      "selfImprovement": {
+        "traditional": "只有你编辑提示词时特质才会改变",
+        "gmi": "启用自我改进后,adapt_personality 和 manage_skills 让它在限定范围内改变自己的特质和启用的技能,并保留这些改变"
       },
       "tools": {
-        "traditional": "手动工具接线",
-        "gmi": "能力发现 — 根据语义查找工具"
+        "traditional": "需要手动列出的工具",
+        "gmi": "能力发现与运行时工具锻造已接入回合循环"
       },
       "safety": {
-        "traditional": "无安全机制",
-        "gmi": "实时内容安全,带 PII 脱敏和注入防御"
+        "traditional": "接受护栏配置但不执行",
+        "gmi": "护栏包会评估每一回合"
       }
     }
   },
