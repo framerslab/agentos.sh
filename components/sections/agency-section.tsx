@@ -18,7 +18,6 @@ import {
   TreePine,
   Workflow,
   Share2,
-  BookOpen,
 } from 'lucide-react'
 
 /* ------------------------------------------------------------------ */
