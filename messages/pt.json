@@ -686,7 +686,7 @@
       },
       "behavior": {
         "traditional": "O mesmo comportamento em todo turno",
-        "gmi": "Pontuação de sentimento em cada turno do usuário; quando ativados, metaprompts recuperam de frustração ou confusão e ajustam seus traços com base em evidências"
+        "gmi": "Pontuação de sentimento em cada turno do usuário; quando ativados, metaprompts a ajudam a se recuperar de frustração ou confusão e a ajustar seus traços com base em evidências"
       },
       "selfImprovement": {
         "traditional": "Os traços só mudam quando você edita o prompt",

@@ -838,7 +838,7 @@
       },
       "behavior": {
         "traditional": "In jedem Turn dasselbe Verhalten",
-        "gmi": "Stimmungsbewertung bei jedem Nutzer-Turn; wenn aktiviert, fangen Metaprompts Frustration oder Verwirrung auf und passen seine Merkmale anhand von Belegen an"
+        "gmi": "Stimmungsbewertung bei jedem Nutzer-Turn; wenn aktiviert, helfen Metaprompts ihm, sich von Frustration oder Verwirrung zu erholen und seine Merkmale anhand von Belegen anzupassen"
       },
       "selfImprovement": {
         "traditional": "Merkmale ändern sich nur, wenn Sie den Prompt bearbeiten",
