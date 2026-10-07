@@ -165,7 +165,6 @@ interface SharedCapability {
 }
 
 const SHARED_CAPABILITIES: SharedCapability[] = [
-  { icon: BookOpen, labelKey: 'sharedRAG' },
   { icon: Share2, labelKey: 'sharedExecState' },
   { icon: Eye, labelKey: 'hitlGates' },
   { icon: Zap, labelKey: 'streamingOutput' },

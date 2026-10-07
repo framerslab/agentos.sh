@@ -1535,7 +1535,7 @@
       "perAgentGuardrails": "Guardrails por Agente"
     },
     "sharedCapabilitiesScopeNoteLabel": "Escopo:",
-    "sharedCapabilitiesScopeNote": "O roster aplica-se dentro de uma única chamada <code>generate()</code>. Entre turnos de <code>session().send()</code> apenas o histórico de mensagens persiste. Consulte a <link>documentação da API de agências</link> para padrões de memória.",
+    "sharedCapabilitiesScopeNote": "O roster aplica-se dentro de uma única chamada <code>generate()</code>. Entre turnos de <code>session().send()</code> apenas o histórico de mensagens persiste. Veja a <link>documentação da Agency API</link> para padrões de memória.",
     "ctaExploreDocs": "Explorar API de Agency"
   },
   "benchmarks": {

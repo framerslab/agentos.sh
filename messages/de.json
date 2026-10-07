@@ -1535,7 +1535,7 @@
       "perAgentGuardrails": "Guardrails pro Agent"
     },
     "sharedCapabilitiesScopeNoteLabel": "Geltungsbereich:",
-    "sharedCapabilitiesScopeNote": "Der Roster gilt innerhalb eines einzigen <code>generate()</code>-Aufrufs. Über <code>session().send()</code>-Runden hinweg bleibt nur der Nachrichtenverlauf erhalten. Muster für Speicher finden Sie in der <link>Agency-API-Dokumentation</link>.",
+    "sharedCapabilitiesScopeNote": "Der Roster gilt innerhalb eines einzigen <code>generate()</code>-Aufrufs. Über <code>session().send()</code>-Runden hinweg bleibt nur der Nachrichtenverlauf erhalten. Siehe die <link>Agency-API-Dokumentation</link> für Speichermuster.",
     "ctaExploreDocs": "Agency-API erkunden"
   },
   "benchmarks": {
