@@ -907,7 +907,7 @@
   "gmiSection": {
     "badge": "Core Concept",
     "title": "Generalized Mind Instances",
-    "subtitle": "Every agent in AgentOS is powered by a GMI — a persistent cognitive core with personality, memory, and autonomous decision-making. Not just a prompt wrapper: a mind.",
+    "subtitle": "On the AgentOS runtime, every session is served by a GMI: a persistent agent with its own persona, mood, history and reasoning trace. It can carry cognitive memory across sessions, and it runs each turn itself, from retrieval to the model call to tool calls.",
     "ctaExploreDocs": "Learn More",
     "codeExampleLabel": "Create a GMI",
     "comparisonTitle": "GMI vs Traditional Agents",
@@ -958,7 +958,7 @@
       },
       "providers": {
         "traditional": "Single model",
-        "gmi": "11 providers with automatic fallback"
+        "gmi": "11 LLM providers behind one interface"
       },
       "tools": {
         "traditional": "Manual tool wiring",
@@ -1017,7 +1017,7 @@
     "technical": {
       "whatIsGMI": {
         "question": "What is a GMI?",
-        "answer": "GMI stands for General Machine Intelligence — it is the cognitive core of each AgentOS agent. A GMI encapsulates the agent's personality traits (via HEXACO), memory systems, tool access, guardrail configuration, and communication style into a single persistent identity. GMIs maintain state across sessions and adapt their behavior based on accumulated experience."
+        "answer": "GMI stands for Generalized Mind Instance. It is the agent the AgentOS runtime creates for each session: it holds that session's persona (HEXACO traits), conversation history, mood and reasoning trace, runs each turn through retrieval, prompt assembly, the model call and tool calls, and can be given cognitive memory that persists across sessions. The lightweight agent() helper calls the model directly and creates no GMI; the full runtime (AgentOS.processRequest) does."
       },
       "hexaco": {
         "question": "What is HEXACO personality?",
@@ -1465,13 +1465,13 @@
   "agencySection": {
     "badge": "Multi-Agent Orchestration",
     "title": "Parallel Agency",
-    "subtitle": "Teams of specialized GMIs share execution state, cognitive memory, and RAG context across the roster. Six built-in strategies route outputs between brains: sequential, parallel, debate, review-loop, hierarchical, or graph DAG.",
+    "subtitle": "Teams of specialized agents share execution state and RAG context across the roster. Six built-in strategies route outputs between them: sequential, parallel, debate, review-loop, hierarchical, or graph DAG.",
     "codeExampleLabel": "Code Example",
     "sharedCapabilitiesTitle": "Shared Across All Strategies",
     "strategies": {
       "single-agent": {
         "name": "Single Agent",
-        "description": "One GMI brain handling the full task on its own. No team coordination, no shared state. The baseline against which the strategies below show what an agency adds."
+        "description": "One agent handling the full task on its own, with no team coordination and no shared state. The baseline against which the strategies below show what an agency adds."
       },
       "sequential": {
         "name": "Sequential",

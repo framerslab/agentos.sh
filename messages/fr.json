@@ -791,7 +791,7 @@
   "gmiSection": {
     "badge": "Concept Central",
     "title": "Generalized Mind Instances",
-    "subtitle": "Chaque agent dans AgentOS est alimenté par un GMI — un noyau cognitif persistant doté de personnalité, de mémoire et de prise de décision autonome. Pas un simple wrapper de prompt : un esprit.",
+    "subtitle": "Sur le runtime AgentOS, chaque session est servie par un GMI : un agent persistant doté de sa propre persona, de son humeur, de son historique et de sa trace de raisonnement. Il peut conserver une mémoire cognitive d’une session à l’autre et exécute lui-même chaque tour, de la récupération à l’appel du modèle et aux appels d’outils.",
     "ctaExploreDocs": "En Savoir Plus",
     "codeExampleLabel": "Créer un GMI",
     "comparisonTitle": "GMI vs Agents Traditionnels",
@@ -842,7 +842,7 @@
       },
       "providers": {
         "traditional": "Modèle unique",
-        "gmi": "11 fournisseurs avec fallback automatique"
+        "gmi": "11 fournisseurs LLM derrière une seule interface"
       },
       "tools": {
         "traditional": "Câblage manuel des outils",
@@ -1059,7 +1059,7 @@
     "technical": {
       "whatIsGMI": {
         "question": "Qu’est-ce qu’une GMI ?",
-        "answer": "GMI signifie General Machine Intelligence — c’est le noyau cognitif de chaque agent AgentOS. Une GMI encapsule les traits de personnalité de l’agent (via HEXACO), les systèmes de mémoire, l’accès aux outils, la configuration des guardrails et le style de communication dans une seule identité persistante. Les GMI maintiennent leur état entre les sessions et adaptent leur comportement selon l’expérience accumulée."
+        "answer": "GMI signifie Generalized Mind Instance. C’est l’agent que le runtime AgentOS crée pour chaque session : il conserve la persona de la session (traits HEXACO), l’historique de la conversation, l’humeur et la trace de raisonnement, exécute chaque tour en passant par la récupération, l’assemblage du prompt, l’appel du modèle et les appels d’outils, et peut recevoir une mémoire cognitive qui persiste d’une session à l’autre. Le helper léger agent() appelle directement le modèle et ne crée aucun GMI ; c’est le runtime complet (AgentOS.processRequest) qui en crée un."
       },
       "hexaco": {
         "question": "Qu’est-ce que la personnalité HEXACO ?",
@@ -1465,13 +1465,13 @@
   "agencySection": {
     "badge": "Orchestration Multi-Agents",
     "title": "Agency Parallèle",
-    "subtitle": "Des équipes de GMIs spécialisés partagent l’état d’exécution, la mémoire cognitive et le contexte RAG à travers tout le roster. Six stratégies intégrées acheminent les sorties entre cerveaux : séquentielle, parallèle, débat, review-loop, hiérarchique ou graph DAG.",
+    "subtitle": "Des équipes d’agents spécialisés partagent l’état d’exécution et le contexte RAG à travers tout le roster. Six stratégies intégrées acheminent les sorties entre eux : séquentielle, parallèle, débat, review-loop, hiérarchique ou graph DAG.",
     "codeExampleLabel": "Exemple de Code",
     "sharedCapabilitiesTitle": "Partagé entre Toutes les Stratégies",
     "strategies": {
       "single-agent": {
         "name": "Agent Unique",
-        "description": "Un seul cerveau GMI gère toute la tâche par lui-même. Pas de coordination d’équipe, pas d’état partagé. La référence par rapport à laquelle les stratégies ci-dessous montrent ce qu’apporte une agency."
+        "description": "Un seul agent gère toute la tâche par lui-même, sans coordination d’équipe ni état partagé. La référence par rapport à laquelle les stratégies ci-dessous montrent ce qu’apporte une agency."
       },
       "sequential": {
         "name": "Séquentiel",

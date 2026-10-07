@@ -114,25 +114,20 @@ const COMPARISON_KEYS = [
 /*  Code example                                                        */
 /* ------------------------------------------------------------------ */
 
-const CODE_EXAMPLE = `import { agent } from '@framers/agentos';
+const CODE_EXAMPLE = `import { AgentOS, AgentOSResponseChunkType } from '@framers/agentos';
 
-const gmi = agent({
-  provider: 'anthropic',
-  instructions: 'You are a thorough research analyst.',
-  personality: {
-    conscientiousness: 0.95,
-    openness: 0.85,
-    agreeableness: 0.7,
-  },
-  memory: { enabled: true, consolidation: true },
-  guardrails: ['pii-redaction', 'grounding-guard'],
-});
+const agentos = await AgentOS.create();
 
-const session = gmi.session('research-q1');
-const reply = await session.send(
-  'Analyze Q1 market trends in AI infrastructure.'
-);
-console.log(reply.text);`
+for await (const chunk of agentos.processRequest({
+  userId: 'user-42',
+  sessionId: 'research-q1',
+  selectedPersonaId: 'v_researcher',
+  textInput: 'Analyze Q1 market trends in AI infrastructure.',
+})) {
+  if (chunk.type === AgentOSResponseChunkType.TEXT_DELTA) {
+    process.stdout.write(chunk.textDelta);
+  }
+}`
 
 /* ------------------------------------------------------------------ */
 /*  Main exported component                                             */
@@ -144,7 +139,7 @@ console.log(reply.text);`
  * Focused "What is a GMI?" explainer with:
  * - 7-layer interactive concentric ring diagram
  * - GMI vs Traditional Agent comparison
- * - Code example showing `agent()` with personality, memory, guardrails
+ * - Code example: `AgentOS.create()` and `processRequest()` streaming a GMI reply
  * - CTA to docs
  */
 export function GMISection() {
