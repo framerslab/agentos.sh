@@ -767,8 +767,8 @@
         "description": "メモリとツールを備えた基本的なエージェント設定"
       },
       "gmiRoles": {
-        "title": "GMI ロールとエージェンシー",
-        "description": "Generalised Mind Instance ロールの実装"
+        "title": "エージェンシーにおける複数プロバイダーのロール",
+        "description": "1つのエージェンシー、3つのプロバイダー、1つの依存グラフ"
       },
       "memorySystem": {
         "title": "パーソナリティと認知メモリ",
@@ -1535,7 +1535,7 @@
       "perAgentGuardrails": "エージェントごとのガードレール"
     },
     "sharedCapabilitiesScopeNoteLabel": "スコープ：",
-    "sharedCapabilitiesScopeNote": "共有メモリとロスターは1回の <code>generate()</code> 呼び出し内で適用されます。<code>session().send()</code> のターン間ではメッセージ履歴のみが保持されます。ターン間メモリのパターンについては <link>Agency API ドキュメント</link>を参照してください。",
+    "sharedCapabilitiesScopeNote": "ロスターは1回の <code>generate()</code> 呼び出し内で適用されます。<code>session().send()</code> のターン間ではメッセージ履歴のみが保持されます。メモリのパターンについては <link>Agency API ドキュメント</link>を参照してください。",
     "ctaExploreDocs": "Agency API を探索"
   },
   "benchmarks": {

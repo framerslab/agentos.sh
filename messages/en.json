@@ -837,8 +837,8 @@
         "description": "Basic agent setup with memory and tools"
       },
       "gmiRoles": {
-        "title": "GMI Roles & Agencies",
-        "description": "Implementing Generalised Mind Instance roles"
+        "title": "Multi-provider roles in an agency",
+        "description": "One agency, three providers, a dependency graph"
       },
       "memorySystem": {
         "title": "Personality & Cognitive Memory",
@@ -1535,7 +1535,7 @@
       "perAgentGuardrails": "Per-Agent Guardrails"
     },
     "sharedCapabilitiesScopeNoteLabel": "Scope:",
-    "sharedCapabilitiesScopeNote": "Shared memory and roster apply within one <code>generate()</code> call. Across <code>session().send()</code> turns only message history persists. See the <link>agency API docs</link> for cross-turn memory patterns.",
+    "sharedCapabilitiesScopeNote": "The roster applies within one <code>generate()</code> call. Across <code>session().send()</code> turns only message history persists. See the <link>agency API docs</link> for memory patterns.",
     "ctaExploreDocs": "Explore Agency API"
   },
   "benchmarks": {

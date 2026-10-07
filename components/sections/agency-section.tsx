@@ -151,9 +151,7 @@ const team = agency({
     },
   },
   strategy: 'graph',
-  memory: { shared: true },               // cognitive memory shared across brains
-  rag: { vectorStore: 'in-memory', topK: 5 }, // shared retrieval corpus (RAG)
-  // shared state scope: this generate() call
+  // each member receives the outputs of the members it depends on
 });`,
 }
 
@@ -167,7 +165,6 @@ interface SharedCapability {
 }
 
 const SHARED_CAPABILITIES: SharedCapability[] = [
-  { icon: Brain, labelKey: 'sharedMemory' },
   { icon: BookOpen, labelKey: 'sharedRAG' },
   { icon: Share2, labelKey: 'sharedExecState' },
   { icon: Eye, labelKey: 'hitlGates' },

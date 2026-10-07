@@ -1175,8 +1175,8 @@
         "description": "带有记忆和工具的基础智能体配置"
       },
       "gmiRoles": {
-        "title": "GMI 角色与代理",
-        "description": "实现 Generalised Mind Instance 角色"
+        "title": "代理中的多提供商角色",
+        "description": "一个代理，三个提供商，一张依赖图"
       },
       "memorySystem": {
         "title": "人格与认知记忆",
@@ -1535,7 +1535,7 @@
       "perAgentGuardrails": "每智能体护栏"
     },
     "sharedCapabilitiesScopeNoteLabel": "范围：",
-    "sharedCapabilitiesScopeNote": "共享内存和 roster 仅在单次 <code>generate()</code> 调用内生效。跨 <code>session().send()</code> 轮次只保留消息历史。请参阅 <link>Agency API 文档</link>了解跨轮次内存模式。",
+    "sharedCapabilitiesScopeNote": "roster 仅在单次 <code>generate()</code> 调用内生效。跨 <code>session().send()</code> 轮次只保留消息历史。请参阅 <link>Agency API 文档</link>了解内存模式。",
     "ctaExploreDocs": "探索 Agency API"
   },
   "benchmarks": {
