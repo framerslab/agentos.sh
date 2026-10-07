@@ -33,8 +33,8 @@ CI runs the commands below, and its result decides. Run any of them locally to c
 CI runs (job "build" in [`.github/workflows/ci.yml`](https://github.com/framerslab/agentos.sh/blob/master/.github/workflows/ci.yml)), in order:
 
 1. `pnpm install --no-frozen-lockfile`
-2. `pnpm run lint` (`next lint`; the step prints failures and does not fail the job)
-3. `pnpm run test` (`vitest run --passWithNoTests`; reported the same way)
+2. `pnpm run lint` (`next lint`; a lint error fails the job, a warning does not)
+3. `pnpm run test` (`vitest run --passWithNoTests`; a failing test fails the job)
 4. `pnpm exec vitest run --coverage` (a failing test fails the job)
 
 The deploy workflow ([`pages.yml`](https://github.com/framerslab/agentos.sh/blob/master/.github/workflows/pages.yml)) runs `pnpm install --no-frozen-lockfile` and `pnpm run build` on every push to `master`.

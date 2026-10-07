@@ -33,7 +33,7 @@ To set the analytics IDs and the blog comment settings, copy `.env.example` to `
 
 To run one test file: `pnpm exec vitest run <path>`.
 
-CI ([`ci.yml`](https://github.com/framerslab/agentos.sh/blob/master/.github/workflows/ci.yml)) runs one job, "build", on Node 20 for every pull request to `master` and every push to `master`. In order: `pnpm install --no-frozen-lockfile`, `pnpm run lint`, `pnpm run test`, then `pnpm exec vitest run --coverage`. The lint and test steps print their result and do not fail the job; the job fails when the last step's test run fails. CI does not run the type check or build the site, so run `pnpm lint`, `pnpm typecheck` and `pnpm build` yourself for a change to pages, components or configuration. Maintainers merge a pull request only when CI is green.
+CI ([`ci.yml`](https://github.com/framerslab/agentos.sh/blob/master/.github/workflows/ci.yml)) runs one job, "build", on Node 20 for every pull request to `master` and every push to `master`. In order: `pnpm install --no-frozen-lockfile`, `pnpm run lint`, `pnpm run test`, then `pnpm exec vitest run --coverage`. A lint error or a failing test fails the job; lint warnings do not. CI does not run the type check or build the site, so run `pnpm typecheck` and `pnpm build` yourself for a change to pages, components or configuration. Maintainers merge a pull request only when CI is green.
 
 ## Commit messages
 
