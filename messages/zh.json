@@ -639,7 +639,7 @@
   "gmiSection": {
     "badge": "核心概念",
     "title": "Generalized Mind Instances",
-    "subtitle": "AgentOS 中的每个智能体都由 GMI 驱动 — 一个具备人格、记忆和自主决策能力的持久认知内核。这不是简单的提示词包装,而是一个心智。",
+    "subtitle": "在 AgentOS 运行时中,每个会话都由一个 GMI 负责:它是一个持久的智能体,拥有自己的人格、情绪、历史记录和推理轨迹。它可以跨会话保留认知记忆,并自行执行每一轮,从检索到模型调用再到工具调用。",
     "ctaExploreDocs": "了解更多",
     "codeExampleLabel": "创建 GMI",
     "comparisonTitle": "GMI 与传统智能体对比",
@@ -690,7 +690,7 @@
       },
       "providers": {
         "traditional": "单一模型",
-        "gmi": "11 个提供商,自动回退"
+        "gmi": "一个接口背后的 11 个 LLM 提供商"
       },
       "tools": {
         "traditional": "手动工具接线",
@@ -791,7 +791,7 @@
     "technical": {
       "whatIsGMI": {
         "question": "GMI 是什么?",
-        "answer": "GMI 代表 General Machine Intelligence — 它是每个 AgentOS 智能体的认知核心。一个 GMI 将智能体的人格特质(通过 HEXACO)、记忆系统、工具访问、护栏配置和沟通风格封装为单一持久身份。GMI 在会话之间保持状态,并根据积累的经验调整行为。"
+        "answer": "GMI 代表 Generalized Mind Instance。它是 AgentOS 运行时为每个会话创建的智能体:保存该会话的人格(HEXACO 特质)、对话历史、情绪和推理轨迹,通过检索、提示词组装、模型调用和工具调用执行每一轮,并且可以被赋予跨会话持久的认知记忆。轻量级辅助函数 agent() 直接调用模型,不会创建 GMI;创建 GMI 的是完整运行时(AgentOS.processRequest)。"
       },
       "hexaco": {
         "question": "HEXACO 人格是什么?",
@@ -1465,13 +1465,13 @@
   "agencySection": {
     "badge": "多智能体编排",
     "title": "并行代理",
-    "subtitle": "由专门化 GMI 组成的团队在整个 roster 中共享执行状态、认知内存和 RAG 上下文。6 种内置策略在大脑之间路由输出：顺序、并行、辩论、复审循环、分层或 graph DAG。",
+    "subtitle": "由专门化智能体组成的团队在整个 roster 中共享执行状态和 RAG 上下文。6 种内置策略在它们之间路由输出：顺序、并行、辩论、复审循环、分层或 graph DAG。",
     "codeExampleLabel": "代码示例",
     "sharedCapabilitiesTitle": "所有策略共享",
     "strategies": {
       "single-agent": {
         "name": "单个智能体",
-        "description": "一个 GMI 大脑独立处理整个任务。无团队协调,无共享状态。下方策略相对于此基线展示 agency 增加了什么。"
+        "description": "一个智能体独立处理整个任务,无团队协调,无共享状态。下方策略相对于此基线展示 agency 增加了什么。"
       },
       "sequential": {
         "name": "顺序",

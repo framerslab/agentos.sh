@@ -50,15 +50,15 @@ const STRATEGIES: StrategyDef[] = [
 const CODE_SNIPPETS: Record<StrategyId, string> = {
   'single-agent': `import { agent } from '@framers/agentos';
 
-// One GMI brain. Cognition, memory, persona, tools live inside.
+// One agent. Instructions, personality, tools and session history live inside.
 // No team, no shared state, no inter-agent flow.
 const writer = agent({
   instructions: 'Research, draft, and polish an article.',
 });
 
 const { text } = await writer.generate('Write about quantum computing.');
-// The agency tabs below show what composing a team of these brains adds:
-// shared memory, shared RAG, inter-brain communication, orchestrated flow.`,
+// The agency tabs below show what composing a team of these agents adds:
+// shared RAG context, routed hand-offs between agents, orchestrated flow.`,
 
   sequential: `import { agency } from '@framers/agentos';
 
