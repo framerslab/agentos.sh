@@ -954,7 +954,7 @@
       },
       "behavior": {
         "traditional": "The same behavior every turn",
-        "gmi": "Sentiment scoring on every user turn; when enabled, metaprompts help it recover from frustration or confusion and adjust its traits from evidence"
+        "gmi": "Sentiment scoring on every user turn when the persona enables sentiment tracking; metaprompts then help it recover from frustration or confusion and re-read its mood and task context from evidence"
       },
       "selfImprovement": {
         "traditional": "Traits change only when you edit the prompt",

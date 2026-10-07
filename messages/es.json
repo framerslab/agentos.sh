@@ -613,7 +613,7 @@
       },
       "behavior": {
         "traditional": "El mismo comportamiento en cada turno",
-        "gmi": "Puntuación de sentimiento en cada turno del usuario; cuando están activados, los metaprompts ayudan a la GMI a recuperarse de la frustración o la confusión y a ajustar sus rasgos a partir de evidencia"
+        "gmi": "Puntuación de sentimiento en cada turno del usuario cuando la persona activa el seguimiento de sentimiento; los metaprompts entonces ayudan a la GMI a recuperarse de la frustración o la confusión y a releer su estado de ánimo y contexto de tarea a partir de evidencia"
       },
       "selfImprovement": {
         "traditional": "Los rasgos solo cambian cuando editas el prompt",
