@@ -800,31 +800,31 @@
     "layers": {
       "channels": {
         "name": "Canaux et E/S",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter et 32 autres. Voix via 12 fournisseurs STT + 12 TTS. Chaque adaptateur de canal diffuse les tokens en temps réel via un protocole unifié."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter et 32 autres. La voix passe par 12 fournisseurs STT et 13 TTS. Chaque adaptateur de canal implémente une seule interface, avec indicateur de saisie et modification des messages quand la plateforme le permet."
       },
       "guardrails": {
         "name": "Guardrails et Sécurité",
-        "description": "Chaque chunk de sortie est évalué en temps réel. Rédaction de PII, détection de toxicité, vérification du grounding contre les hallucinations et analyse de sécurité du code — configurable du permissif au verrouillé."
+        "description": "Les guardrails qui activent le streaming vérifient le texte pendant sa diffusion ; les autres vérifient la réponse finale. Six packs optionnels couvrent le masquage des PII, des classificateurs de toxicité et d’injection, la vérification contre les sources, le contrôle du sujet, la réécriture selon une politique de contenu et la sécurité du code."
       },
       "tools": {
         "name": "Outils et Extensions",
-        "description": "Recherche web, automatisation de navigateur, génération d’images, exécution shell, publication sociale. 115 extensions et 88 skills sélectionnés. La découverte de capacités trouve le bon outil sémantiquement."
+        "description": "Recherche web, automatisation du navigateur, génération d’images, exécution shell, publication sur les réseaux sociaux. Plus de 100 extensions sélectionnées et 88 skills sélectionnées. La découverte de capacités trouve le bon outil par la sémantique."
       },
       "orchestration": {
         "name": "Orchestration",
-        "description": "Stratégies séquentielle, parallèle, débat, hiérarchique, review-loop et graphe. Planification Tree-of-Thought. Checkpointing de mission avec sémantique de fork et resume."
+        "description": "Stratégies séquentielle, parallèle, débat, hiérarchique, review-loop et graphe. Planification ReAct. Points de contrôle de mission avec sémantique fork et resume."
       },
       "memory": {
         "name": "Mémoire",
-        "description": "Décroissance d’Ebbinghaus, reconsolidation, oubli induit par la récupération, rappel involontaire, sentiment de savoir, gist temporel, encodage de schémas, décroissance de la confiance de la source. Récupération HyDE + GraphRAG sur 7 backends vectoriels."
+        "description": "Huit mécanismes au-dessus du déclin d’Ebbinghaus : reconsolidation, oubli induit par la récupération, rappel involontaire, sentiment de savoir, essentiel temporel, encodage par schémas, déclin de la confiance en la source et régulation émotionnelle. Récupération HyDE + GraphRAG sur 7 backends vectoriels."
       },
       "personality": {
         "name": "Personnalité (HEXACO)",
-        "description": "Honnêteté-Humilité, Émotionnalité, Extraversion, Agréabilité, Conscience, Ouverture. Les traits modulent l’encodage mémoriel, le style de communication et la tolérance au risque."
+        "description": "Honnêteté-Humilité, Émotionnalité, Extraversion, Agréabilité, Conscience, Ouverture. Les traits fixent des directives de style de communication dans le prompt et ajustent l’encodage de la mémoire, la capacité de la mémoire de travail et sept des huit mécanismes de mémoire."
       },
       "llmCore": {
         "name": "Noyau LLM",
-        "description": "11 fournisseurs LLM avec chaînes de fallback automatiques. Conception d’API provider-first. Le moteur de pensée au cœur de chaque GMI."
+        "description": "13 fournisseurs de LLM avec chaînes de repli automatiques. Conception d’API provider-first. Le moteur de réflexion au cœur de chaque GMI."
       }
     },
     "comparison": {

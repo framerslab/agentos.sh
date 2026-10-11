@@ -648,31 +648,31 @@
     "layers": {
       "channels": {
         "name": "通道与 I/O",
-        "description": "Telegram、Discord、Slack、WhatsApp、Twitter 以及另外 32 种。语音通过 12 个 STT 和 12 个 TTS 提供商。每个通道适配器通过统一协议实时流式传输令牌。"
+        "description": "Telegram、Discord、Slack、WhatsApp、Twitter 以及另外 32 个渠道。语音通过 12 个 STT 和 13 个 TTS 提供商实现。每个渠道适配器都实现同一个接口，平台支持时还提供输入状态提示和消息编辑。"
       },
       "guardrails": {
         "name": "护栏与安全",
-        "description": "每个输出块都在实时评估中。PII 编辑、毒性检测、幻觉接地与代码安全扫描 — 可从宽松到完全锁定灵活配置。"
+        "description": "启用流式检查的护栏会在文本流出时检查，其余护栏检查最终回复。六个可选护栏包涵盖 PII 脱敏、有害内容与注入分类器、对照来源核查、话题控制、按内容政策改写以及代码安全。"
       },
       "tools": {
         "name": "工具与扩展",
-        "description": "网络搜索、浏览器自动化、图像生成、Shell 执行、社交发布。115 个扩展和 88 个精选技能。能力发现根据语义找到合适的工具。"
+        "description": "网页搜索、浏览器自动化、图像生成、Shell 执行、社交发布。100 多个精选扩展和 88 个精选技能。能力发现会按语义找到合适的工具。"
       },
       "orchestration": {
         "name": "编排",
-        "description": "顺序、并行、辩论、分层、审查循环和图策略。Tree-of-Thought 规划。具备 fork 和 resume 语义的任务检查点。"
+        "description": "顺序、并行、辩论、分层、复审循环和图策略。ReAct 规划。支持 fork 与 resume 语义的任务检查点。"
       },
       "memory": {
         "name": "记忆",
-        "description": "Ebbinghaus 遗忘、再巩固、检索诱发遗忘、非自主回忆、知晓感、时间要旨、模式编码、来源置信度衰减。在 7 个向量后端上进行 HyDE + GraphRAG 检索。"
+        "description": "在 Ebbinghaus 衰减之上的八种机制：再巩固、提取诱发遗忘、非自主回忆、知晓感、时间要旨、图式编码、来源置信度衰减和情绪调节。跨 7 个向量后端的 HyDE + GraphRAG 检索。"
       },
       "personality": {
         "name": "人格 (HEXACO)",
-        "description": "诚实-谦逊、情绪性、外向性、宜人性、尽责性、开放性。各特质调节记忆编码、沟通风格和风险容忍度。"
+        "description": "诚实-谦逊、情绪性、外向性、宜人性、尽责性、开放性。特质会在提示中设定沟通风格指令，并调节记忆编码、工作记忆容量以及八种记忆机制中的七种。"
       },
       "llmCore": {
         "name": "LLM 核心",
-        "description": "11 个 LLM 提供商,具备自动回退链。Provider-first API 设计。每个 GMI 核心的思考引擎。"
+        "description": "13 个 LLM 提供商，支持自动回退链。provider-first 的 API 设计。每个 GMI 核心的思考引擎。"
       }
     },
     "comparison": {

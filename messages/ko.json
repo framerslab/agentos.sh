@@ -800,31 +800,31 @@
     "layers": {
       "channels": {
         "name": "채널 및 I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter 외 32개. 음성은 STT 12개 + TTS 12개 프로바이더를 통해. 각 채널 어댑터는 통합 프로토콜로 토큰을 실시간 스트리밍합니다."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter 외 32개. 음성은 STT 12개, TTS 13개 제공자로 처리합니다. 모든 채널 어댑터는 하나의 인터페이스를 구현하며, 플랫폼이 지원하면 입력 중 표시와 메시지 수정도 지원합니다."
       },
       "guardrails": {
         "name": "가드레일 및 안전",
-        "description": "각 출력 청크를 실시간으로 평가합니다. PII 편집, 독성 감지, 환각 그라운딩, 코드 안전 검사 — 허용형부터 완전 차단까지 구성 가능."
+        "description": "스트리밍을 켠 가드레일은 전송되는 텍스트를, 나머지는 최종 응답을 검사합니다. 6개의 옵트인 팩이 PII 마스킹, 유해성·인젝션 분류기, 출처 대조, 주제 제어, 콘텐츠 정책 기반 재작성, 코드 안전성을 다룹니다."
       },
       "tools": {
         "name": "도구 및 확장",
-        "description": "웹 검색, 브라우저 자동화, 이미지 생성, 셸 실행, 소셜 포스팅. 115개 확장과 88개의 큐레이션된 스킬. 능력 발견이 의미론적으로 적절한 도구를 찾습니다."
+        "description": "웹 검색, 브라우저 자동화, 이미지 생성, 셸 실행, 소셜 게시. 100개 이상의 엄선된 확장 기능과 88개의 엄선된 스킬. 기능 탐색이 의미 기반으로 알맞은 도구를 찾습니다."
       },
       "orchestration": {
         "name": "오케스트레이션",
-        "description": "순차, 병렬, 디베이트, 계층, 리뷰 루프, 그래프 전략. Tree-of-Thought 플래닝. fork 및 resume 시맨틱을 갖춘 미션 체크포인팅."
+        "description": "순차, 병렬, 토론, 계층, 리뷰 루프, 그래프 전략. ReAct 계획. fork와 resume 의미 체계를 갖춘 미션 체크포인트."
       },
       "memory": {
         "name": "메모리",
-        "description": "Ebbinghaus 감쇠, 재공고화, 검색 유도 망각, 비자발적 회상, 앎의 느낌, 시간적 요지, 스키마 부호화, 출처 신뢰도 감쇠. 7개 벡터 백엔드에 걸친 HyDE + GraphRAG 검색."
+        "description": "Ebbinghaus 감쇠 위에서 작동하는 8가지 메커니즘: 재공고화, 인출 유도 망각, 비자발적 회상, 기지감, 시간적 요지, 스키마 부호화, 출처 신뢰도 감쇠, 정서 조절. 7개 벡터 백엔드에 걸친 HyDE + GraphRAG 검색."
       },
       "personality": {
         "name": "성격 (HEXACO)",
-        "description": "정직-겸손, 정서성, 외향성, 친화성, 성실성, 개방성. 각 특성이 메모리 부호화, 커뮤니케이션 스타일, 위험 감내도를 조절합니다."
+        "description": "정직-겸손, 정서성, 외향성, 친화성, 성실성, 개방성. 특성은 프롬프트에 의사소통 스타일 지시문을 넣고, 기억 부호화와 작업 기억 용량, 8가지 기억 메커니즘 중 7가지를 조정합니다."
       },
       "llmCore": {
         "name": "LLM 코어",
-        "description": "자동 폴백 체인을 갖춘 11개 LLM 프로바이더. 프로바이더 우선 API 설계. 모든 GMI의 핵심 사고 엔진."
+        "description": "자동 폴백 체인을 갖춘 13개 LLM 제공자. provider-first API 설계. 모든 GMI의 중심에 있는 사고 엔진."
       }
     },
     "comparison": {

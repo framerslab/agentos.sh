@@ -800,31 +800,31 @@
     "layers": {
       "channels": {
         "name": "Kanäle & I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter und 32 weitere. Sprache über 12 STT- + 12 TTS-Anbieter. Jeder Kanal-Adapter streamt Tokens in Echtzeit über ein einheitliches Protokoll."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter und 32 weitere. Sprache über 12 STT- und 13 TTS-Anbieter. Jeder Kanal-Adapter implementiert eine gemeinsame Schnittstelle, mit Tippanzeige und Nachrichtenbearbeitung, wo die Plattform sie unterstützt."
       },
       "guardrails": {
         "name": "Guardrails & Sicherheit",
-        "description": "Jeder Output-Chunk wird in Echtzeit evaluiert. PII-Redaktion, Toxizitätserkennung, Halluzinations-Grounding und Code-Sicherheitsscan — konfigurierbar von permissiv bis vollständig gesperrt."
+        "description": "Guardrails, die Streaming aktivieren, prüfen den Text während des Streamings; die übrigen prüfen die fertige Antwort. Sechs optionale Pakete decken PII-Schwärzung, Klassifikatoren für Toxizität und Injection, den Abgleich mit Quellen, Themenkontrolle, Umschreiben nach Content-Policy und Code-Sicherheit ab."
       },
       "tools": {
         "name": "Werkzeuge & Erweiterungen",
-        "description": "Websuche, Browser-Automatisierung, Bildgenerierung, Shell-Ausführung, Social Posting. 115 Erweiterungen und 88 kuratierte Skills. Die Capability-Discovery findet semantisch das richtige Werkzeug."
+        "description": "Websuche, Browser-Automatisierung, Bildgenerierung, Shell-Ausführung, Social Posting. Über 100 kuratierte Erweiterungen und 88 kuratierte Skills. Die Capability Discovery findet das passende Tool semantisch."
       },
       "orchestration": {
         "name": "Orchestrierung",
-        "description": "Sequentielle, parallele, Debate-, hierarchische, Review-Loop- und Graph-Strategien. Tree-of-Thought-Planung. Mission-Checkpointing mit Fork- und Resume-Semantik."
+        "description": "Sequentielle, parallele, Debate-, hierarchische, Review-Loop- und Graph-Strategien. ReAct-Planung. Mission-Checkpointing mit Fork- und Resume-Semantik."
       },
       "memory": {
         "name": "Gedächtnis",
-        "description": "Ebbinghaus-Vergessenskurve, Rekonsolidierung, abrufbedingtes Vergessen, unwillkürliche Erinnerung, Feeling-of-Knowing, temporaler Gist, Schema-Kodierung, Quellenvertrauens-Verfall. HyDE + GraphRAG-Retrieval über 7 Vektor-Backends."
+        "description": "Acht Mechanismen über dem Ebbinghaus-Verfall: Rekonsolidierung, abrufbedingtes Vergessen, unwillkürliche Erinnerung, Feeling-of-Knowing, temporaler Gist, Schema-Enkodierung, Verfall des Quellenvertrauens und Emotionsregulation. HyDE- und GraphRAG-Retrieval über 7 Vektor-Backends."
       },
       "personality": {
         "name": "Persönlichkeit (HEXACO)",
-        "description": "Ehrlichkeit-Bescheidenheit, Emotionalität, Extraversion, Verträglichkeit, Gewissenhaftigkeit, Offenheit. Die Merkmale modulieren Gedächtniskodierung, Kommunikationsstil und Risikotoleranz."
+        "description": "Ehrlichkeit-Bescheidenheit, Emotionalität, Extraversion, Verträglichkeit, Gewissenhaftigkeit, Offenheit. Die Merkmale setzen Anweisungen zum Kommunikationsstil im Prompt und stimmen die Gedächtnis-Enkodierung, die Kapazität des Arbeitsgedächtnisses und sieben der acht Gedächtnismechanismen ab."
       },
       "llmCore": {
         "name": "LLM-Kern",
-        "description": "11 LLM-Anbieter mit automatischen Fallback-Ketten. Provider-First-API-Design. Die denkende Engine im Herzen jedes GMI."
+        "description": "13 LLM-Anbieter mit automatischen Fallback-Ketten. Provider-First-API-Design. Die denkende Engine im Herzen jedes GMI."
       }
     },
     "comparison": {

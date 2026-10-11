@@ -840,31 +840,31 @@
     "layers": {
       "channels": {
         "name": "Channels & I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter, and 32 more. Voice via 12 STT + 12 TTS providers. Every channel adapter streams tokens in real-time through a unified protocol."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter, and 32 more. Voice via 12 STT and 13 TTS providers. Every channel adapter implements one interface, with typing indicators and message edits where the platform supports them."
       },
       "guardrails": {
         "name": "Guardrails & Safety",
-        "description": "Every output chunk is evaluated in real time. PII redaction, toxicity detection, hallucination grounding, and code safety scanning — configurable from permissive to fully locked down."
+        "description": "Guardrails that opt into streaming check text as it streams; the rest check the final reply. Six opt-in packs cover PII redaction, toxicity and injection classifiers, grounding against sources, topic control, content-policy rewriting and code safety."
       },
       "tools": {
         "name": "Tools & Extensions",
-        "description": "Web search, browser automation, image generation, shell execution, social posting. 115 extensions and 88 curated skills. Capability discovery finds the right tool semantically."
+        "description": "Web search, browser automation, image generation, shell execution, social posting. 100+ curated extensions and 88 curated skills. Capability discovery finds the right tool semantically."
       },
       "orchestration": {
         "name": "Orchestration",
-        "description": "Sequential, parallel, debate, hierarchical, review-loop, and graph strategies. Tree-of-Thought planning. Mission checkpointing with fork and resume semantics."
+        "description": "Sequential, parallel, debate, hierarchical, review-loop, and graph strategies. ReAct planning. Mission checkpointing with fork and resume semantics."
       },
       "memory": {
         "name": "Memory",
-        "description": "Ebbinghaus decay, reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist, schema encoding, source confidence decay. HyDE + GraphRAG retrieval across 7 vector backends."
+        "description": "Eight mechanisms on top of Ebbinghaus decay: reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist, schema encoding, source confidence decay and emotion regulation. HyDE + GraphRAG retrieval across 7 vector backends."
       },
       "personality": {
         "name": "Personality (HEXACO)",
-        "description": "Honesty-Humility, Emotionality, Extraversion, Agreeableness, Conscientiousness, Openness. Traits modulate memory encoding, communication style, and risk tolerance."
+        "description": "Honesty-Humility, Emotionality, Extraversion, Agreeableness, Conscientiousness, Openness. Traits set communication-style directives in the prompt and tune memory encoding, working-memory capacity and seven of the eight memory mechanisms."
       },
       "llmCore": {
         "name": "LLM Core",
-        "description": "11 LLM providers with automatic fallback chains. Provider-first API design. The thinking engine at the heart of every GMI."
+        "description": "13 LLM providers with automatic fallback chains. Provider-first API design. The thinking engine at the heart of every GMI."
       }
     },
     "comparison": {
