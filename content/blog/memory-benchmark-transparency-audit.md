@@ -17,7 +17,7 @@ The benchmarks the AI memory industry uses as proof are broken in measurable way
 
 > **Note:**
 >
-> This post laid out the methodology audit framework that drives every published agentos-bench number. The current LongMemEval-S Phase B headline is **[85.6% on LongMemEval-S at $0.009/correct, 4-second latency](/blog/agentos-memory-sota-longmemeval)**, validated under the same transparency stack this post describes (per-cell run JSON at seed 42, bootstrap 95% CI at 10k resamples, judge FPR 1% [0%, 3%] at n=100, eleven adjacent stress-tests all regressing). The current LongMemEval-M headline is **[70.2% on LongMemEval-M](/blog/agentos-memory-sota-longmemeval)**.
+> This post laid out the methodology audit framework that drives every published agentos-bench number. The current LongMemEval-S Phase B headline is **[85.6% on LongMemEval-S at $0.009/correct, 4-second latency](/blog/agentos-memory-sota-longmemeval)**, validated under the same transparency stack this post describes (bootstrap 95% CI at 10k resamples, judge FPR 1% [0%, 3%] at n=100, and every adjacent configuration stress-tested on top of it regressing). The current LongMemEval-M headline is **[70.2% on LongMemEval-M](/blog/agentos-memory-sota-longmemeval)**.
 
 
 In April 2026, [Penfield Labs](https://dev.to/penfieldlabs/we-audited-locomo-64-of-the-answer-key-is-wrong-and-the-judge-accepts-up-to-63-of-intentionally-33lg) ran a systematic audit of [LOCOMO](https://aclanthology.org/2024.acl-long.747.pdf), the long-term-memory benchmark every major memory-library vendor cites as their SOTA proving ground. The audit found 99 errors in 1,540 answer-key entries: a 6.4% ground-truth error rate. Penfield then tested the LLM judge the benchmark relies on. It accepted **62.81% of intentionally wrong answers** when the wrong answer was topically adjacent to the correct one.
@@ -91,11 +91,11 @@ Across Mem0, Mastra, Supermemory, Zep, EmergenceMem, and Letta, no single vendor
 | Latency avg / p50 / p95 | no | no | no | partial (p95 search) | median only | no | yes |
 | Per-category breakdown | no | yes | yes | yes | yes | partial | yes |
 | Open-source benchmark runner | yes | partial (workshop) | yes | partial | yes | no | yes |
-| Per-case run JSONs at seed | no | no | no | no | no | no | yes |
+| Per-case run JSONs at seed | no | no | no | no | no | no | LFS pointers only |
 | Judge-adversarial probe | no | no | no | no | no | no | yes |
 | Cross-vendor cross-vendor table | no | no | partial | partial | yes | no | yes |
 
-**Bench tooling: two open suites in the space.** [Supermemory's memorybench](https://github.com/supermemoryai/memorybench) is a TypeScript framework with multi-provider support (Supermemory, Mem0, Zep), multi-benchmark coverage (LoCoMo, LongMemEval, ConvoMem), multi-judge support (GPT-4o, Claude, Gemini), a checkpointed pipeline (ingest → index → search → answer → evaluate → report), a web UI, and a MemScore triple (accuracy / latency / tokens). agentos-bench covers a narrower vendor surface but adds bootstrap CIs, judge-adversarial probes, kill-ladder methodology, and per-case run JSONs at fixed seed.
+**Bench tooling: two open suites in the space.** [Supermemory's memorybench](https://github.com/supermemoryai/memorybench) is a TypeScript framework with multi-provider support (Supermemory, Mem0, Zep), multi-benchmark coverage (LoCoMo, LongMemEval, ConvoMem), multi-judge support (GPT-4o, Claude, Gemini), a checkpointed pipeline (ingest → index → search → answer → evaluate → report), a web UI, and a MemScore triple (accuracy / latency / tokens). agentos-bench covers a narrower vendor surface but adds bootstrap CIs, judge-adversarial probes, kill-ladder methodology, and a per-case run JSON written for every run.
 
 Two vendors ship real bench suites. Everyone else ships a runner for their own system (Mem0's [memory-benchmarks](https://github.com/mem0ai/memory-benchmarks) runs Mem0 Cloud and OSS, not other vendors) or a workshop (Mastra's [workshop-longmemeval](https://github.com/mastra-ai/workshop-longmemeval) is examples from a July 2025 workshop). Five do not ship anything beyond their memory system itself.
 
@@ -103,11 +103,11 @@ Supermemory goes wide. AgentOS goes deep. Neither is strictly better, and no sin
 
 ## Applying the audit to our own publications
 
-The benchmark numbers AgentOS publishes run against the same disclosure stack this audit applies to other vendors: bootstrap 95% CIs at 10,000 resamples (seed 42), per-case run JSONs, judge-FPR probes per benchmark, single-CLI reproduction. Current LongMemEval-S sits at **85.6%** at `gpt-4o` reader, $0.0090 per correct, 3.6 s median latency. LongMemEval-M is at **70.2%** on the 1.5M-token variant. Architecture, ablations, and per-category data are in the [dedicated benchmark post](/blog/agentos-memory-sota-longmemeval); the validation experiments below show the audit framework applied in-house.
+The benchmark numbers AgentOS publishes run against the same disclosure stack this audit applies to other vendors: bootstrap 95% CIs at 10,000 resamples, judge-FPR probes per benchmark, single-CLI reproduction. One axis in the matrix above we only half meet. agentos-bench writes a per-case run JSON for every run, but the ones behind our published numbers are committed only as Git LFS pointers, and GitHub holds none of their objects, so nobody can download our per-case outputs; checking a case means rerunning it. `--seed 42` fixes the bootstrap resampling on a rerun; without the flag it draws from `Math.random`. Current LongMemEval-S sits at **85.6%**, $0.0090 per correct, 3.6 s median latency, with a per-category reader router: `gpt-4o` answers temporal-reasoning and single-session-user questions, and `gpt-5-mini` answers the other four categories. LongMemEval-M is at **70.2%** on the 1.5M-token variant, with the same router. Architecture, ablations, and per-category data are in the [dedicated benchmark post](/blog/agentos-memory-sota-longmemeval); the validation experiments below show the audit framework applied in-house.
 
 ## Validation experiments
 
-In-distribution Phase B numbers are vulnerable to test-set optimization. Four validation experiments demonstrate the principles a benchmark publication should defend: hold-out calibration to detect routing-table overfit, OOD transfer to a second benchmark, retrieval ablation under the OOD distribution, and an adversarial judge false-positive probe on the shipping number. The judge FPR probe on LongMemEval-S returns **1%** [0%, 3%]; the same probe on LOCOMO returns **0%** [0%, 0%], far below Penfield's 62.81% measurement on the default LOCOMO judge. All four publish with per-case run JSONs at `--seed 42`.
+In-distribution Phase B numbers are vulnerable to test-set optimization. Four validation experiments demonstrate the principles a benchmark publication should defend: hold-out calibration to detect routing-table overfit, OOD transfer to a second benchmark, retrieval ablation under the OOD distribution, and an adversarial judge false-positive probe on the shipping number. The judge FPR probe on LongMemEval-S returns **1%** [0%, 3%]; the same probe on LOCOMO returns **0%** [0%, 0%], far below Penfield's 62.81% measurement on the default LOCOMO judge. Both probe scripts draw their 100 cases with a fixed seed of 42.
 
 ### Hold-out calibration
 
@@ -200,7 +200,7 @@ The gap between our 1% on LongMemEval-S and Penfield's 62.81% on LOCOMO is big e
 
 Either way, on LongMemEval-S the 85.6% is not meaningfully inflated by judge false-positives. The judge's noise floor (1-3%) is well below the bootstrap CI on the accuracy number (±3 points at n=500). Score differences above that bound are interpretable. The 100-probe run cost $0.05 and took 174 seconds. The standalone script is at [`src/scripts/stage-g-judge-fpr-probe.ts`](https://github.com/framerslab/agentos-bench/blob/master/src/scripts/stage-g-judge-fpr-probe.ts). Any vendor who wants to reproduce this on their own benchmark can fork it in ten minutes.
 
-This is the probe every memory-library publication should run and none of the eight vendors in our methodology audit did.
+This is the probe every memory-library publication should run and none of the six vendors in the matrix above did.
 
 ## What a good memory benchmark publication would include
 
@@ -227,15 +227,15 @@ For developers evaluating memory libraries for their own stack, the takeaway is 
 
 Three open-source bench frameworks exist to do that without writing your own harness:
 
-- [**AgentOS agentos-bench**](https://github.com/framerslab/agentos-bench) covers LongMemEval-S, LOCOMO, BEAM, and eight cognitive-mechanism micro-benchmarks. Bootstrap CIs, judge-adversarial probes, per-stage retention metric, kill-ladder methodology, per-case run JSONs at `--seed 42`. Depth over breadth.
+- [**AgentOS agentos-bench**](https://github.com/framerslab/agentos-bench) covers LongMemEval-S, LOCOMO, BEAM, and seven cognitive-mechanism micro-benchmarks. Bootstrap CIs, judge-adversarial probes, per-stage retention metric, kill-ladder methodology, and a `--seed` flag that makes the bootstrap ranges repeatable. Depth over breadth.
 - [**Supermemory memorybench**](https://github.com/supermemoryai/memorybench) covers LoCoMo, LongMemEval, and ConvoMem across Supermemory, Mem0, and Zep with any of GPT-4o, Claude, or Gemini as judge. Checkpointed pipeline, web UI, MemScore triple. Breadth over depth.
 - [**Mem0 memory-benchmarks**](https://github.com/mem0ai/memory-benchmarks) covers LOCOMO and LongMemEval against Mem0 Cloud and OSS. Mem0-specific but fully open.
 
 For vendors publishing benchmark numbers: use one of these harnesses and publish the seed, the config, and the per-case run JSONs alongside your headline. Anything less makes your number a claim, not a measurement. The community will find the gap between the claim and the reproduction. The reproduction will be louder than the launch.
 
-AgentOS posts 85.6% on LongMemEval-S at gpt-4o reader, 0.4 points behind Emergence.ai's published 86% closed-source SaaS SOTA, +1.4 points above Mastra's 84.23% at the same gpt-4o answer LLM. Judge false-positive rate is measured at 1% on LongMemEval-S, 0% on LOCOMO, both far below the +/-3 point bootstrap CI on the accuracy number. Two competing self-reports (Zep's 71.2%, Mem0's 92-93.4%) have been independently disputed or unreproducible. (MemPalace's 100% gets a separate aside above; that one is a broken evaluator, not a real claim.)
+AgentOS posts 85.6% on LongMemEval-S with `gpt-4o` answering two of the six question categories and `gpt-5-mini` the other four, 0.4 points behind Emergence.ai's published 86% closed-source SaaS SOTA and 1.4 points above Mastra's 84.23% at `gpt-4o`. With `gpt-4o` answering every case, our best recorded run is 83.2% [79.8%, 86.4%], which puts Mastra's 84.23% inside our confidence range. Judge false-positive rate is measured at 1% on LongMemEval-S, 0% on LOCOMO, both far below the +/-3 point bootstrap CI on the accuracy number. Two competing self-reports (Zep's 71.2%, Mem0's 92-93.4%) have been independently disputed or unreproducible. (MemPalace's 100% gets a separate aside above; that one is a broken evaluator, not a real claim.)
 
-What AgentOS is: the only vendor in the surveyed set that publishes bootstrap CIs, judge false-positive probes on shipping numbers (measured, not hypothesized), per-stage retention metrics, full cost-per-correct accounting, latency distributions, per-case run JSONs, hold-out calibration against shipping tables, and cross-vendor comparison tables at a seeded reproducible configuration. For the reader trying to decide which memory library to use, those are the things that matter. The headline number is a lottery ticket. The methodology is the infrastructure.
+What AgentOS is: the only vendor in the surveyed set that publishes bootstrap CIs, judge false-positive probes on shipping numbers (measured, not hypothesized), per-stage retention metrics, full cost-per-correct accounting, latency distributions, hold-out calibration against shipping tables, and cross-vendor comparison tables with the configuration and CLI flags stated. For the reader trying to decide which memory library to use, those are the things that matter. The headline number is a lottery ticket. The methodology is the infrastructure.
 
 ## FAQ
 
@@ -253,11 +253,11 @@ Their evaluator is broken in a way that returns 100% no matter the input. Not a 
 
 ### Mastra claims 95%. What's the same-answer-LLM number?
 
-Mastra's 95% is at a different answer LLM than the LongMemEval paper's evaluation protocol uses. At the same `gpt-4o` answer LLM, Mastra Observational Memory (their Apache-2.0 release) posts 84.23%. AgentOS posts 85.6% at the same answer LLM. Mastra's 95% is best read as a configuration-specific result, not a like-for-like comparison.
+Mastra's 95% is at a different answer LLM than the LongMemEval paper's evaluation protocol uses. At the `gpt-4o` answer LLM, Mastra Observational Memory (their Apache-2.0 release) posts 84.23%. AgentOS's 85.6% routes each question to a reader by category, `gpt-4o` for temporal-reasoning and single-session-user and `gpt-5-mini` for the other four, so under the same-answer-LLM rule above it compares two different reader setups. With `gpt-4o` answering every case, AgentOS's best recorded run is 83.2% [79.8%, 86.4%], a range that holds Mastra's 84.23%. Mastra's 95% is best read as a configuration-specific result, not a like-for-like comparison.
 
 ### Is the AgentOS bench reproducible?
 
-Yes. [agentos-bench](https://github.com/framerslab/agentos-bench) is Apache-2.0 with seeded runs, per-case JSONs, and a single CLI command per headline. Bootstrap 95% CIs at 10k resamples and judge false-positive rate 1% [0%, 3%] at n=100 are published alongside every shipping number.
+Yes. [agentos-bench](https://github.com/framerslab/agentos-bench) is Apache-2.0, with a single CLI command per headline and a `--seed` flag that fixes the bootstrap resampling. Every run writes a per-case run JSON, but the ones behind our published numbers are committed only as Git LFS pointers whose objects GitHub does not hold, so a rerun can be compared with the [leaderboard](https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md)'s aggregate and per-category numbers; our per-case outputs are not there to compare against. Bootstrap 95% CIs at 10k resamples are published with every headline, and the judge false-positive probe at n=100 measures 1% [0%, 3%] on LongMemEval-S, 2% [0%, 5%] on LongMemEval-M and 0% on LOCOMO.
 
 ### Should I trust any memory library benchmark?
 
@@ -293,4 +293,4 @@ Trust the methodology, not the percentage. A 70% number with a published seed, r
 
 ---
 
-*All claims in this post are sourced from primary URLs visited April 24, 2026. The full audit with per-vendor transparency report cards is at [`packages/agentos-bench/docs/COMPETITOR_METHODOLOGY_AUDIT_2026-04-24.md`](https://github.com/framerslab/agentos-bench/blob/master/docs/COMPETITOR_METHODOLOGY_AUDIT_2026-04-24.md). The AgentOS bench implementation is open source at [`packages/agentos-bench`](https://github.com/framerslab/agentos-bench).*
+*All claims in this post are sourced from primary URLs visited April 24, 2026. The AgentOS bench implementation is open source at [`framerslab/agentos-bench`](https://github.com/framerslab/agentos-bench), and its recorded numbers are in [`results/LEADERBOARD.md`](https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md).*
