@@ -1389,7 +1389,7 @@
   "agencySection": {
     "badge": "多智能体编排",
     "title": "并行代理",
-    "subtitle": "由专门化智能体组成的团队在整个 roster 中共享执行状态和 RAG 上下文。6 种内置策略在它们之间路由输出：顺序、并行、辩论、复审循环、分层或 graph DAG。",
+    "subtitle": "由专门化智能体组成的团队共同处理同一个请求。6 种内置策略在它们之间路由输出：顺序、并行、辩论、复审循环、分层或 graph DAG。",
     "codeExampleLabel": "代码示例",
     "sharedCapabilitiesTitle": "所有策略共享",
     "strategies": {
@@ -1450,13 +1450,11 @@
       "illustrator": "插画师"
     },
     "sharedCapabilities": {
-      "sharedMemory": "共享记忆",
-      "sharedRAG": "共享 RAG",
       "sharedExecState": "共享执行状态",
       "hitlGates": "HITL 审批门",
       "streamingOutput": "流式输出",
       "resourceControls": "资源控制",
-      "perAgentGuardrails": "每智能体护栏"
+      "perAgentProviders": "按智能体指定提供商"
     },
     "sharedCapabilitiesScopeNoteLabel": "范围：",
     "sharedCapabilitiesScopeNote": "roster 仅在单次 <code>generate()</code> 调用内生效。跨 <code>session().send()</code> 轮次只保留消息历史。请参阅 <link>Agency API 文档</link>了解内存模式。",

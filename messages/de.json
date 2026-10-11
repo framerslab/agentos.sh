@@ -1389,7 +1389,7 @@
   "agencySection": {
     "badge": "Multi-Agenten-Orchestrierung",
     "title": "Parallel Agency",
-    "subtitle": "Teams spezialisierter Agenten teilen Ausführungsstatus und RAG-Kontext über das gesamte Roster. Sechs integrierte Strategien routen Ausgaben zwischen ihnen: sequenziell, parallel, Debatte, Review-Loop, hierarchisch oder Graph-DAG.",
+    "subtitle": "Teams spezialisierter Agenten bearbeiten gemeinsam eine Anfrage. Sechs integrierte Strategien routen Ausgaben zwischen ihnen: sequenziell, parallel, Debatte, Review-Loop, hierarchisch oder Graph-DAG.",
     "codeExampleLabel": "Code-Beispiel",
     "sharedCapabilitiesTitle": "Über alle Strategien hinweg geteilt",
     "strategies": {
@@ -1450,13 +1450,11 @@
       "illustrator": "Illustrator"
     },
     "sharedCapabilities": {
-      "sharedMemory": "Geteiltes Memory",
-      "sharedRAG": "Gemeinsames RAG",
       "sharedExecState": "Gemeinsamer Ausführungsstatus",
       "hitlGates": "HITL-Approval-Gates",
       "streamingOutput": "Streaming-Ausgabe",
       "resourceControls": "Ressourcen-Kontrollen",
-      "perAgentGuardrails": "Guardrails pro Agent"
+      "perAgentProviders": "Anbieter pro Agent"
     },
     "sharedCapabilitiesScopeNoteLabel": "Geltungsbereich:",
     "sharedCapabilitiesScopeNote": "Der Roster gilt innerhalb eines einzigen <code>generate()</code>-Aufrufs. Über <code>session().send()</code>-Runden hinweg bleibt nur der Nachrichtenverlauf erhalten. Siehe die <link>Agency-API-Dokumentation</link> für Speichermuster.",

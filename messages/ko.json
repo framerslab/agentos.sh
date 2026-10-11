@@ -1389,7 +1389,7 @@
   "agencySection": {
     "badge": "멀티 에이전트 오케스트레이션",
     "title": "병렬 에이전시",
-    "subtitle": "전문화된 에이전트 팀이 로스터 전체에서 실행 상태와 RAG 컨텍스트를 공유합니다. 6가지 내장 전략이 에이전트 간에 출력을 라우팅합니다: 순차, 병렬, 토론, 리뷰 루프, 계층, graph DAG.",
+    "subtitle": "전문화된 에이전트 팀이 하나의 요청을 함께 처리합니다. 6가지 내장 전략이 에이전트 간에 출력을 라우팅합니다: 순차, 병렬, 토론, 리뷰 루프, 계층, graph DAG.",
     "codeExampleLabel": "코드 예제",
     "sharedCapabilitiesTitle": "모든 전략에서 공유",
     "strategies": {
@@ -1450,13 +1450,11 @@
       "illustrator": "일러스트레이터"
     },
     "sharedCapabilities": {
-      "sharedMemory": "공유 메모리",
-      "sharedRAG": "공유 RAG",
       "sharedExecState": "공유 실행 상태",
       "hitlGates": "HITL 승인 게이트",
       "streamingOutput": "스트리밍 출력",
       "resourceControls": "리소스 제어",
-      "perAgentGuardrails": "에이전트별 가드레일"
+      "perAgentProviders": "에이전트별 제공자"
     },
     "sharedCapabilitiesScopeNoteLabel": "범위:",
     "sharedCapabilitiesScopeNote": "로스터는 단일 <code>generate()</code> 호출 내에서 적용됩니다. <code>session().send()</code> 턴 간에는 메시지 기록만 유지됩니다. 메모리 패턴은 <link>Agency API 문서</link>를 참조하세요.",

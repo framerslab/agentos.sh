@@ -1389,7 +1389,7 @@
   "agencySection": {
     "badge": "Multi-Agent Orchestration",
     "title": "Parallel Agency",
-    "subtitle": "Teams of specialized agents share execution state and RAG context across the roster. Six built-in strategies route outputs between them: sequential, parallel, debate, review-loop, hierarchical, or graph DAG.",
+    "subtitle": "Teams of specialized agents work on one request together. Six built-in strategies route outputs between them: sequential, parallel, debate, review-loop, hierarchical, or graph DAG.",
     "codeExampleLabel": "Code Example",
     "sharedCapabilitiesTitle": "Shared Across All Strategies",
     "strategies": {
@@ -1450,13 +1450,11 @@
       "illustrator": "Illustrator"
     },
     "sharedCapabilities": {
-      "sharedMemory": "Shared Memory",
-      "sharedRAG": "Shared RAG",
       "sharedExecState": "Shared Execution State",
       "hitlGates": "HITL Approval Gates",
       "streamingOutput": "Streaming Output",
       "resourceControls": "Resource Controls",
-      "perAgentGuardrails": "Per-Agent Guardrails"
+      "perAgentProviders": "Per-Agent Providers"
     },
     "sharedCapabilitiesScopeNoteLabel": "Scope:",
     "sharedCapabilitiesScopeNote": "The roster applies within one <code>generate()</code> call. Across <code>session().send()</code> turns only message history persists. See the <link>agency API docs</link> for memory patterns.",

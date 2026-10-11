@@ -1389,7 +1389,7 @@
   "agencySection": {
     "badge": "マルチエージェント・オーケストレーション",
     "title": "パラレル・エージェンシー",
-    "subtitle": "専門化されたエージェントのチームが、ロスター全体で実行状態と RAG コンテキストを共有します。6 つの組み込み戦略がエージェント間で出力をルーティングします：順次、並列、ディベート、レビューループ、階層、graph DAG。",
+    "subtitle": "専門化されたエージェントのチームが 1 つのリクエストに一緒に取り組みます。6 つの組み込み戦略がエージェント間で出力をルーティングします：順次、並列、ディベート、レビューループ、階層、graph DAG。",
     "codeExampleLabel": "コード例",
     "sharedCapabilitiesTitle": "すべての戦略で共有",
     "strategies": {
@@ -1450,13 +1450,11 @@
       "illustrator": "イラストレーター"
     },
     "sharedCapabilities": {
-      "sharedMemory": "共有メモリ",
-      "sharedRAG": "共有 RAG",
       "sharedExecState": "共有実行状態",
       "hitlGates": "HITL 承認ゲート",
       "streamingOutput": "ストリーミング出力",
       "resourceControls": "リソース制御",
-      "perAgentGuardrails": "エージェントごとのガードレール"
+      "perAgentProviders": "エージェントごとのプロバイダー"
     },
     "sharedCapabilitiesScopeNoteLabel": "スコープ：",
     "sharedCapabilitiesScopeNote": "ロスターは1回の <code>generate()</code> 呼び出し内で適用されます。<code>session().send()</code> のターン間ではメッセージ履歴のみが保持されます。メモリのパターンについては <link>Agency API ドキュメント</link>を参照してください。",

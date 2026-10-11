@@ -1389,7 +1389,7 @@
   "agencySection": {
     "badge": "Orchestration Multi-Agents",
     "title": "Agency Parallèle",
-    "subtitle": "Des équipes d’agents spécialisés partagent l’état d’exécution et le contexte RAG à travers tout le roster. Six stratégies intégrées acheminent les sorties entre eux : séquentielle, parallèle, débat, review-loop, hiérarchique ou graph DAG.",
+    "subtitle": "Des équipes d’agents spécialisés travaillent ensemble sur une même requête. Six stratégies intégrées acheminent les sorties entre eux : séquentielle, parallèle, débat, review-loop, hiérarchique ou graph DAG.",
     "codeExampleLabel": "Exemple de Code",
     "sharedCapabilitiesTitle": "Partagé entre Toutes les Stratégies",
     "strategies": {
@@ -1450,13 +1450,11 @@
       "illustrator": "Illustrateur"
     },
     "sharedCapabilities": {
-      "sharedMemory": "Mémoire Partagée",
-      "sharedRAG": "RAG Partagé",
       "sharedExecState": "État d’Exécution Partagé",
       "hitlGates": "Gates d’Approbation HITL",
       "streamingOutput": "Sortie en Streaming",
       "resourceControls": "Contrôles de Ressources",
-      "perAgentGuardrails": "Guardrails par Agent"
+      "perAgentProviders": "Fournisseurs par agent"
     },
     "sharedCapabilitiesScopeNoteLabel": "Portée :",
     "sharedCapabilitiesScopeNote": "Le roster s’applique à un seul appel <code>generate()</code>. Sur plusieurs tours <code>session().send()</code>, seul l’historique des messages persiste. Voir la <link>documentation de l’API agency</link> pour les schémas de mémoire.",
