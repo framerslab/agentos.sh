@@ -21,7 +21,7 @@ Memory benchmarks for AI agents reward retrieval over inference. The score goes 
 
 The numbers people quote (LongMemEval, LOCOMO) inherit this. So when Dhravya publishes 99% and Mastra publishes 95%, the right reaction is not "huh, our 85.6% looks bad" but "what reader, what retrieval, what judge, and can I rerun it." Most of the time, at least one of those answers is missing. (MemPalace also publishes 100% on every memory bench, but that's a broken evaluator that returns 100% no matter what you feed it, so it's not a competitor result, it's a methodology bug.)
 
-[AgentOS](https://github.com/framerslab/agentos) is the open-source TypeScript runtime I work on. It implements [nine cognitive mechanisms from published neuroscience](https://docs.agentos.sh/features/cognitive-memory) (Ebbinghaus decay, retrieval-induced forgetting, reconsolidation, source-confidence decay, more) so the agent forgets on purpose. The bench numbers below are how that design holds up against everyone else's at the same `gpt-4o` answer model — the comparison the headline percentages alone don't give you.
+[AgentOS](https://github.com/framerslab/agentos) is the open-source TypeScript runtime I work on. It implements [eight cognitive mechanisms from published memory research](https://docs.agentos.sh/features/cognitive-memory) (retrieval-induced forgetting, reconsolidation, source-confidence decay, more) on top of Ebbinghaus decay, so the agent forgets on purpose. The bench numbers below are how that design holds up against everyone else's at the same `gpt-4o` answer model, the comparison the headline percentages alone don't give you.
 
 Two results, both at the `gpt-4o` reader, both at full N=500.
 
@@ -31,7 +31,7 @@ Two results, both at the `gpt-4o` reader, both at full N=500.
 
 (Aside: M's $0.0078 per correct is lower than S's $0.0090, which sounds backwards because M's haystacks are 13× larger. The reader never sees the haystack. Retrieval narrows it. M's headline config uses reader-Top-K=5, so the reader receives 5 chunks per question regardless of corpus size. S's headline runs a per-category classifier + reader router that sends some categories to gpt-4o with larger top-K and an extra classifier call per case. M's per-call reader cost is structurally smaller; the corpus size never enters the bill because the retriever absorbs it.)
 
-Both numbers ship with per-case run JSONs at seed 42. Anyone can rerun the same configuration and compare per-question against my results. The runtime is Apache-2.0 at [github.com/framerslab/agentos](https://github.com/framerslab/agentos); the bench harness is Apache-2.0 at [github.com/framerslab/agentos-bench](https://github.com/framerslab/agentos-bench). One CLI command at the bottom of this post reproduces each headline.
+Both numbers are recorded in the bench's [leaderboard](https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md) with their per-category breakdowns, confidence ranges, cost and latency. The per-case run JSONs sit in the repository only as Git LFS pointers, and GitHub holds none of their objects, so a per-question comparison means rerunning the configuration yourself. The runtime is Apache-2.0 at [github.com/framerslab/agentos](https://github.com/framerslab/agentos); the bench harness is Apache-2.0 at [github.com/framerslab/agentos-bench](https://github.com/framerslab/agentos-bench). One CLI command at the bottom of this post reproduces each headline.
 
 The rest of the post covers: the architecture changes that produced each number, the audit of the vendor landscape (including the 99% / 95% claims that fall apart once you check what answer LLM the competitor used), the methodology checks behind every number above, and the reproduction commands. There's a lot of skepticism baked in. I built the bench harness because I wasn't going to trust my own numbers without a way to make them break.
 
@@ -42,7 +42,7 @@ The rest of the post covers: the architecture changes that produced each number,
 | **LongMemEval-S** (115K tokens, 50 sessions) | **85.6%** | EmergenceMem Internal **(closed-source)** 86.0%, Mastra OM gpt-4o 84.23%, Supermemory 81.6% | **$0.0090** | Apache-2.0 | +1.4 over Mastra; +5.0 over EmergenceMem's open Simple Fast (80.6%) |
 | **LongMemEval-M** (1.5M tokens, 500 sessions) | **70.2%** | AgentBrain 71.7% (closed-source SaaS). No other open-source library publishes M. | **$0.0078** | Apache-2.0 | first open-source above 65% |
 
-[Full benchmarks reference](https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md) · [Reproducible run JSONs](https://github.com/framerslab/agentos-bench/tree/master/results/runs) · [Transparency audit framework](/blog/memory-benchmark-transparency-audit)
+[Full benchmarks reference](https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md) · [Transparency audit framework](/blog/memory-benchmark-transparency-audit)
 
 ---
 
@@ -58,7 +58,7 @@ The table below holds the reader model constant at `gpt-4o`, so the comparison i
 | **AgentOS canonical-hybrid + reader-router** | **85.6%** | **$0.0090** | **3,558 ms** | **7,264 ms** | this work |
 | Mastra OM gpt-4o (gemini-flash observer) | 84.23% | not published | not published | not published | [mastra.ai](https://mastra.ai/research/observational-memory) |
 | Supermemory gpt-4o | 81.6% | not published | not published | not published | [supermemory.ai](https://supermemory.ai/research/) |
-| EmergenceMem Simple Fast (rerun in agentos-bench) | 80.6% | $0.0586 | 3,703 ms | 9,200 ms | [adapter](https://github.com/framerslab/agentos-bench/blob/master/vendors/emergence-simple-fast/) |
+| EmergenceMem Simple Fast (rerun in agentos-bench) | 80.6% | $0.0581 | 3,703 ms | 9,200 ms | [adapter](https://github.com/framerslab/agentos-bench/blob/master/vendors/emergence-simple-fast/) |
 | Zep self / independent reproduction | 71.2% / 63.8% | not published | not published | 632 ms p95 search | [self](https://blog.getzep.com/state-of-the-art-agent-memory/) / [arXiv:2512.13564](https://arxiv.org/abs/2512.13564) |
 
 AgentOS is 1.4 points above the Mastra OM gpt-4o number and 0.4 points below EmergenceMem **Internal**. Internal is **closed-source SaaS** behind [emergence.ai/web-automation-api](https://www.emergence.ai/web-automation-api), not a library you can install. Their public reference, [`EmergenceAI/emergence_simple_fast`](https://github.com/EmergenceAI/emergence_simple_fast), publishes 79% (we reproduced it at 80.6%), but **the repo has no license**: the code is publicly visible but not legally usable in derivative work. The 86% Internal number cannot be reproduced from public code at all.
@@ -96,7 +96,7 @@ Per-category at the 85.6% headline:
 | Category | Accuracy | n |
 |---|---:|---:|
 | single-session-assistant | 98.2% | 56 |
-| single-session-user | 94.3% | 70 |
+| single-session-user | 92.9% | 70 |
 | knowledge-update | 91.0% | 78 |
 | single-session-preference | 86.7% | 30 |
 | temporal-reasoning | 84.2% | 133 |
@@ -173,13 +173,13 @@ The table below covers every memory library or platform with a public LongMemEva
 | [AgentBrain](https://github.com/AgentBrainHQ) | **closed-source SaaS** | not published | **71.7%** (Test 0; requires hosted Brain endpoint to reproduce) |
 | **[agentos-bench](https://github.com/framerslab/agentos-bench) (this work)** | **Apache-2.0** | **85.6%** | **70.2%** |
 
-The full per-vendor audit is at [packages/agentos-bench/docs/COMPETITOR_METHODOLOGY_AUDIT_2026-04-24.md](https://github.com/framerslab/agentos-bench/blob/master/docs/COMPETITOR_METHODOLOGY_AUDIT_2026-04-24.md).
+Each row links the vendor's own published claim, and the [transparency audit](/blog/memory-benchmark-transparency-audit) scores what six of them disclose on 12 axes.
 
 ### Three operational barriers to publishing on M
 
 1. Context window. S (115K tokens) fits in every modern long-context LLM. M (1.5M tokens) exceeds every production context window. Architectures that rely on prompt-stuffing or compression-then-stuffing score lower on M than on S.
 
-2. Dataset loading. `longmemeval_m.json` is 2.7 GB. Node's V8 engine has a max-string-length cap that rejects `fs.readFile` on a file of that size. The streaming fix is `chain([createReadStream, parser(), streamArray()])` from `stream-json` + `stream-chain`, routed by a file-size probe at >1 GB. [STAGE_J_BLOCKED_2026-04-25.md](https://github.com/framerslab/agentos-bench/blob/master/docs/STAGE_J_BLOCKED_2026-04-25.md) records the workaround.
+2. Dataset loading. `longmemeval_m.json` is 2.7 GB. Node's V8 engine has a max-string-length cap that rejects `fs.readFile` on a file of that size. The streaming fix is `chain([createReadStream, parser(), streamArray()])` from `stream-json` + `stream-chain`, routed by a file-size probe at >1 GB. The loader is [`src/benchmarks/longmemeval/dataset.ts`](https://github.com/framerslab/agentos-bench/blob/master/src/benchmarks/longmemeval/dataset.ts).
 
 3. Run cost. A memory-augmented full-context M run consumes ~750M input tokens at GPT-4o-128K pricing, roughly $1,250 per run. Retrieval-augmented M runs are $5 to $15.
 
@@ -202,7 +202,7 @@ The dataset, evaluation harness, and rubric are open source at [xiaowu0162/LongM
 | LongMemEval paper, strongest GPT-4o result | 72.0% (round, Top-10) / 71.4% (session, Top-5) | not published | open repo | [Wu et al., ICLR 2025, Table 3](https://arxiv.org/abs/2410.10813) |
 | Mem0 v3, Mastra OM, Hindsight, Zep, EmergenceMem, Supermemory, MemMachine, Memoria, agentmemory, Backboard, ByteRover, Letta, Cognee | not published | | various | reports S only |
 
-AgentOS at 70.2% is competitive with the strongest published M results in the LongMemEval paper. The paper's strongest GPT-4o result is 72.0% at round-level Top-10; at matched Top-5 retrieval the paper's results span 65.7% (round) to 71.4% (session). The closest published external number is AgentBrain's 71.7% from their closed-source SaaS, which requires access to a hosted endpoint to reproduce. agentos-bench publishes per-case run JSONs and a one-line CLI reproduction at [github.com/framerslab/agentos-bench](https://github.com/framerslab/agentos-bench).
+AgentOS at 70.2% is competitive with the strongest published M results in the LongMemEval paper. The paper's strongest GPT-4o result is 72.0% at round-level Top-10; at matched Top-5 retrieval the paper's results span 65.7% (round) to 71.4% (session). The closest published external number is AgentBrain's 71.7% from their closed-source SaaS, which requires access to a hosted endpoint to reproduce. agentos-bench publishes the configuration and a CLI reproduction at [github.com/framerslab/agentos-bench](https://github.com/framerslab/agentos-bench).
 
 ### Architecture
 
@@ -319,7 +319,7 @@ Zep's self-reported LongMemEval-S number is 71.2% at `gpt-4o`, from [their SOTA 
 | Latency avg / p50 / p95 | no | no | no | partial | median only | no | yes |
 | Per-category breakdown | no | yes | yes | yes | yes | partial | yes |
 | Open-source benchmark runner | yes | partial | yes | partial | yes | no | yes |
-| Per-case run JSONs at fixed seed | no | no | no | no | no | no | yes |
+| Per-case run JSONs at fixed seed | no | no | no | no | no | no | LFS pointers only |
 | Judge-adversarial probe | no | no | no | no | no | no | yes |
 | Cross-vendor cross-vendor table | no | no | partial | partial | yes | no | yes |
 
@@ -337,7 +337,7 @@ LOCOMO's default `gpt-4o-mini` judge measures at 62.81% FPR on the Penfield adve
 
 ## Part 5: Reproducing both headlines
 
-OpenAI and Cohere API keys are required.
+OpenAI and Cohere API keys are required. The `setup` command downloads the LongMemEval dataset from its upstream on Hugging Face.
 
 ### LongMemEval-S 85.6% headline
 
@@ -345,22 +345,26 @@ OpenAI and Cohere API keys are required.
 git clone https://github.com/framerslab/agentos-bench
 cd agentos-bench
 pnpm install && pnpm build
+node ./dist/cli.js setup --benchmark longmemeval-s
 
 # Set OPENAI_API_KEY and COHERE_API_KEY in your environment
-NODE_OPTIONS="--max-old-space-size=8192" pnpm exec tsx src/cli.ts run longmemeval-s \
+NODE_OPTIONS="--max-old-space-size=8192" node ./dist/cli.js run longmemeval-s \
   --reader gpt-4o \
   --memory full-cognitive --replay ingest \
   --hybrid-retrieval --rerank cohere \
   --embedder-model text-embedding-3-small \
   --reader-router min-cost-best-cat-2026-04-28 \
   --concurrency 5 \
-  --bootstrap-resamples 10000
+  --bootstrap-resamples 10000 \
+  --seed 42
 ```
 
 ### LongMemEval-M 70.2% headline
 
 ```bash
-NODE_OPTIONS="--max-old-space-size=8192" pnpm exec tsx src/cli.ts run longmemeval-m \
+node ./dist/cli.js setup --benchmark longmemeval-m
+
+NODE_OPTIONS="--max-old-space-size=8192" node ./dist/cli.js run longmemeval-m \
   --reader gpt-4o \
   --memory full-cognitive --replay ingest \
   --hybrid-retrieval --rerank cohere --rerank-candidate-multiplier 5 \
@@ -369,10 +373,11 @@ NODE_OPTIONS="--max-old-space-size=8192" pnpm exec tsx src/cli.ts run longmemeva
   --embedder-model text-embedding-3-small \
   --reader-router min-cost-best-cat-2026-04-28 \
   --concurrency 5 \
-  --bootstrap-resamples 10000
+  --bootstrap-resamples 10000 \
+  --seed 42
 ```
 
-Both runs emit per-case run JSONs under `seed=42`. Cross-run comparison is possible against the leaderboard at [`packages/agentos-bench/results/LEADERBOARD.md`](https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md).
+Both runs write a per-case run JSON under `results/runs/`. `--seed 42` seeds the bootstrap resampling; without it the confidence ranges draw from `Math.random`. Cross-run comparison is possible against the leaderboard at [`results/LEADERBOARD.md`](https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md).
 
 ---
 
@@ -382,13 +387,13 @@ The AgentOS memory decomposition follows the [CoALA framework (Sumers et al., 20
 
 The closest comparable architecture in the published record is [Letta](https://www.letta.com/blog/memgpt-and-letta) (formerly MemGPT, [Packer et al., 2023](https://arxiv.org/pdf/2310.08560)), which models the LLM as a virtual operating system with paged memory. Letta has not published a LongMemEval number under the post-MemGPT branding.
 
-Eight cognitive-memory mechanisms underlie the architecture (Ebbinghaus decay, reconsolidation, retrieval-induced forgetting, feeling-of-knowing, gist extraction, schema encoding, source confidence decay, emotion regulation) and are documented with primary-source citations in the [AgentOS Cognitive Memory docs](https://docs.agentos.sh/features/cognitive-memory).
+Eight cognitive-memory mechanisms underlie the architecture (reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, gist extraction, schema encoding, source confidence decay, emotion regulation), running on top of Ebbinghaus decay, and are documented with primary-source citations in the [AgentOS Cognitive Memory docs](https://docs.agentos.sh/features/cognitive-memory).
 
 ## Remaining headroom
 
 Multi-session is the lowest per-category score on both variants. On M it measures at 48.9% (up from 29.3% under top-K=50), against a per-category ceiling of ~96% on SSA/SSU. On S it measures at 74.4% against the 85.6% aggregate. The MS category requires bridge queries across distinct sessions; pure retrieval-broadening does not close the gap.
 
-Two candidate v2 mechanisms are queued:
+Two mechanisms that target that gap are untested here:
 
 1. Stage E: Hindsight 4-network typed-observer, adding a typed-graph signal orthogonal to BM25 + dense + Cohere rerank. Architecture follows [Hindsight (vectorize.io, 2025)](https://arxiv.org/html/2512.12818v1).
 2. K=V+fact key augmentation (Wu et al., Table 3 configuration): index sessions by raw content and extracted facts, with dual-key vector lookup. The Phase B `--rerank-candidate-multiplier 10` ablation regressed -10.2 points on the same retrieval-heavy categories K=V+fact would affect, suggesting bounded expected lift.
@@ -418,7 +423,7 @@ What isn't, with caveats:
 
 Three open-source benchmark harnesses cover the LongMemEval / LOCOMO space:
 
-- [agentos-bench](https://github.com/framerslab/agentos-bench) [^5]: LongMemEval-S/M, LOCOMO, BEAM, and eight cognitive-mechanism micro-benchmarks. 95% confidence ranges, judge-adversarial probes, per-stage retention metric, per-case run JSONs at `--seed 42`.
+- [agentos-bench](https://github.com/framerslab/agentos-bench) [^5]: LongMemEval-S/M, LOCOMO, BEAM, and eight cognitive-mechanism micro-benchmarks. 95% confidence ranges, judge-adversarial probes, per-stage retention metric, and a `--seed` flag that makes the bootstrap ranges repeatable.
 - [Supermemory memorybench](https://github.com/supermemoryai/memorybench) [^6]: LoCoMo, LongMemEval, ConvoMem against Supermemory, Mem0, and Zep with multi-judge support.
 - [Mem0 memory-benchmarks](https://github.com/mem0ai/memory-benchmarks) [^7]: LOCOMO and LongMemEval against Mem0 Cloud and OSS.
 
@@ -428,9 +433,9 @@ Reproducible memory benchmarks require a published seed, configuration, and per-
 
 Two numbers end up here. **85.6% on LongMemEval-S** at $0.0090 per correct, +1.4 points above the strongest competitor at the same `gpt-4o` answer model. **70.2% on LongMemEval-M** at $0.0078 per correct, the only open-source library on the public record above 65% on the variant whose haystacks no production context window can absorb.
 
-The intent of the design behind both numbers is not perfect recall. AgentOS implements [Ebbinghaus decay](https://docs.agentos.sh/features/cognitive-memory), [retrieval-induced forgetting](https://docs.agentos.sh/features/cognitive-memory), [reconsolidation](https://docs.agentos.sh/features/cognitive-memory), and seven other cognitive-science mechanisms precisely so the agent generalizes from what it has seen rather than drowns in it. The benchmark numbers are the measurable part of that argument. The rest of the [whitepaper](https://github.com/framerslab/agentos-bench) covers the part that can't be reduced to a percentage.
+The intent of the design behind both numbers is not perfect recall. AgentOS implements [Ebbinghaus decay](https://docs.agentos.sh/features/cognitive-memory) and eight cognitive-science mechanisms on top of it, [retrieval-induced forgetting](https://docs.agentos.sh/features/cognitive-memory) and [reconsolidation](https://docs.agentos.sh/features/cognitive-memory) among them, so the agent generalizes from what it has seen rather than drowns in it. The benchmark numbers are the measurable part of that argument. The rest of the [whitepaper](https://github.com/framerslab/agentos-bench) covers the part that can't be reduced to a percentage.
 
-The runtime is Apache-2.0 at [github.com/framerslab/agentos](https://github.com/framerslab/agentos). The bench is at [github.com/framerslab/agentos-bench](https://github.com/framerslab/agentos-bench). Reproducing the headlines is the two CLI commands above, on a dataset anyone can download from [the LongMemEval upstream](https://github.com/xiaowu0162/LongMemEval), against per-case run JSONs at seed 42.
+The runtime is Apache-2.0 at [github.com/framerslab/agentos](https://github.com/framerslab/agentos). The bench is at [github.com/framerslab/agentos-bench](https://github.com/framerslab/agentos-bench). Reproducing the headlines is the setup and run commands above, on the dataset [the LongMemEval upstream](https://github.com/xiaowu0162/LongMemEval) publishes.
 
 ## FAQ
 
@@ -444,11 +449,11 @@ S has 115K tokens of conversation per question and ~50 sessions per haystack: it
 
 ### Why publish 85.6% when others claim higher numbers?
 
-Because the argument I care about is reproducibility, not headline percentage. Every number above comes with stated answer LLM, stated retrieval config, stated judge, fixed seed, per-case run JSONs, a single CLI to reproduce, and Apache-2.0 code. The 99% / 95% claims that beat AgentOS at face value miss at least one of those. The honest cost rule says I can't compare scores until those gaps close. If a competitor publishes their numbers at the same `gpt-4o` answer LLM tomorrow and beats 85.6%, I'll cite them and ship a faster bench. That's the deal.
+Because the argument I care about is reproducibility, not headline percentage. Every number above comes with stated answer LLM, stated retrieval config, stated judge, a seed flag for the confidence ranges, a CLI to reproduce, and Apache-2.0 code. The 99% / 95% claims that beat AgentOS at face value miss at least one of those. The honest cost rule says I can't compare scores until those gaps close. If a competitor publishes their numbers at the same `gpt-4o` answer LLM tomorrow and beats 85.6%, I'll cite them and ship a faster bench. That's the deal.
 
 ### Is the AgentOS bench code public?
 
-Yes. [github.com/framerslab/agentos-bench](https://github.com/framerslab/agentos-bench), Apache-2.0. Includes the harness, vendor adapters, judge config, seed list, and per-case run JSONs for every reported headline.
+Yes. [github.com/framerslab/agentos-bench](https://github.com/framerslab/agentos-bench), Apache-2.0. Includes the harness, the EmergenceMem Simple Fast adapter, the judge config, and the leaderboard with every reported headline. The per-case run JSONs are committed only as Git LFS pointers, without their objects.
 
 ### What reader model does AgentOS use?
 
@@ -456,19 +461,19 @@ Yes. [github.com/framerslab/agentos-bench](https://github.com/framerslab/agentos
 
 ### What about Mem0's claimed numbers?
 
-Mem0 cites 66.9% on S with their "super memory" preset; the reader model and config aren't always matched to the LongMemEval paper. I rerun Mem0 OSS in agentos-bench under controlled conditions and the reproduced numbers appear in the Part 4 reproducibility section. Differences between their claim and my reproduction are documented per-case.
+Mem0's published numbers sit in the vendor table and the methodology disclosures above, as their own pages report them; the reader model and config aren't always matched to the LongMemEval paper. agentos-bench has no Mem0 adapter, so none of those numbers is a rerun. The one vendor rerun in the bench is EmergenceMem Simple Fast.
 
 ### How often are these numbers refreshed?
 
-Quarterly. Next refresh date: 2026-08. Each refresh re-runs the bench against the upstream LongMemEval dataset at seed 42, refreshes the same-answer-LLM comparison table, and adds any new competitor entrants (VoltAgent, whichever vendor surfaces between now and then) that publish reproducible numbers. The bench is open; if you ship a memory library and want to be in the next refresh, open a PR with your adapter.
+The numbers in this post are the leaderboard's as of the post's date, 2026-04-29. The bench is open; if you ship a memory library and want it in the comparison, open a PR with your adapter.
 
 ## Further reading
 
 - [Full benchmarks reference](https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md): canonical comparison tables, methodology disclosure matrix, LOCOMO judge-FPR data.
 - [Memory Benchmark Transparency Audit](/blog/memory-benchmark-transparency-audit): the broader transparency framework behind every number above.
-- [Cognitive Memory architecture (docs)](https://docs.agentos.sh/features/cognitive-memory): the nine cognitive-memory mechanisms behind AgentOS, with primary-source citations.
-- [agentos-bench v1 evaluation matrix](https://github.com/framerslab/agentos-bench/blob/master/results/eval-matrix-v1/comparison-table.md): per-cell run JSONs.
-- [agentos-bench docs](https://github.com/framerslab/agentos-bench/tree/master/docs): engineering writeups including M-series intermediate stages (45.4%, 57.6%), Stage L/I negative findings, ingest-router executor design, and memory archive rehydration.
+- [Cognitive Memory architecture (docs)](https://docs.agentos.sh/features/cognitive-memory): the eight cognitive-memory mechanisms and the decay model behind AgentOS, with primary-source citations.
+- [agentos-bench v1 evaluation matrix](https://github.com/framerslab/agentos-bench/blob/master/results/eval-matrix-v1/comparison-table.md): the per-cell comparison table.
+- [agentos-bench docs](https://github.com/framerslab/agentos-bench/tree/master/docs): the bootstrap and judge-adversarial methodology, and the April 2026 LongMemEval rollout writeup.
 
 ---
 
