@@ -287,7 +287,7 @@
           "4-tier PII redaction",
           "ONNX BERT classifiers",
           "Grounding guard (NLI)",
-          "OWASP Top 10 scanning"
+          "25 OWASP-aligned code rules"
         ],
         "capabilities": [
           "PII Redaction",

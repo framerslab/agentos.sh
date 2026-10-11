@@ -991,7 +991,7 @@
           "4级PII编辑",
           "ONNX BERT分类器",
           "接地护栏 (NLI)",
-          "OWASP Top 10扫描"
+          "25 条对齐 OWASP 的代码规则"
         ],
         "capabilities": [
           "PII 脱敏",

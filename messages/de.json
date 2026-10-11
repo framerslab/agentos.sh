@@ -287,7 +287,7 @@
           "4-stufige PII-Redaktion",
           "ONNX BERT Klassifikatoren",
           "Grounding Guard (NLI)",
-          "OWASP Top 10 Scanning"
+          "25 an OWASP ausgerichtete Code-Regeln"
         ],
         "capabilities": [
           "PII-Schwärzung",

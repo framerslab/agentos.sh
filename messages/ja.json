@@ -1031,7 +1031,7 @@
           "4段階PII削除",
           "ONNX BERT分類器",
           "グラウンディングガード (NLI)",
-          "OWASP Top 10スキャン"
+          "OWASP に沿った 25 のコードルール"
         ],
         "capabilities": [
           "PII マスキング",

@@ -287,7 +287,7 @@
           "Redaccion PII de 4 niveles",
           "Clasificadores ONNX BERT",
           "Grounding guard (NLI)",
-          "Escaneo OWASP Top 10"
+          "25 reglas de código alineadas con OWASP"
         ],
         "capabilities": [
           "Enmascaramiento de PII",

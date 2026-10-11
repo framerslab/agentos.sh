@@ -287,7 +287,7 @@
           "4단계 PII 삭제",
           "ONNX BERT 분류기",
           "그라운딩 가드 (NLI)",
-          "OWASP Top 10 스캔"
+          "OWASP 기반 코드 규칙 25개"
         ],
         "capabilities": [
           "PII 마스킹",
