@@ -1,5 +1,5 @@
 /**
- * ForgeDemoSection. Full-width animated demo of runtime tool forging,
+ * ForgeDemoSection. Full-width animated demo of runtime agent spawning,
  * positioned directly under the hero. Server component, zero client JS:
  * the only dynamic element is an autoplaying inline <video>.
  *
@@ -22,14 +22,14 @@ export function ForgeDemoSection() {
       <div className="mx-auto max-w-6xl">
         <header className="text-center mb-8">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-accent-primary)] mb-2">
-            Runtime tool forging
+            Runtime agent spawning
           </p>
           <h2 id="forge-demo-heading" className="text-3xl sm:text-4xl font-bold mb-3">
-            <span className="gradient-text">Watch a tool get forged at runtime</span>
+            <span className="gradient-text">Watch an agent get spawned at runtime</span>
           </h2>
           <p className="text-base sm:text-lg max-w-3xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
-            Three HEXACO-distinct agents collaborate on a code review. When their static toolkit can&apos;t cover the task, the manager calls{' '}
-            <code className="font-mono text-[var(--color-accent-primary)]">spawn_specialist</code>, an LLM judge approves the spec, and all three invoke the forged tool on the next turn.
+            A manager coordinates a researcher and a writer. When the task needs a role neither covers, the manager calls{' '}
+            <code className="font-mono text-[var(--color-accent-primary)]">spawn_specialist</code>, an LLM judge approves the new agent&apos;s spec, and the specialist joins the roster for the manager&apos;s next turn.
           </p>
         </header>
 
@@ -53,7 +53,7 @@ export function ForgeDemoSection() {
             poster="/img/blog/og/agentos-emergent-demo.webp"
             width={1600}
             height={920}
-            aria-label="Three AgentOS agents with distinct HEXACO personalities collaborate on a code review, forge a new tool at runtime, the LLM judge approves the spec, and all three invoke it on the next turn."
+            aria-label="A hierarchical AgentOS agency spawns a security_auditor specialist at runtime after the LLM judge approves its spec."
             className="w-full h-auto block"
           >
             <source src="/img/blog/og/agentos-forge-demo.mp4" type="video/mp4" />
@@ -65,7 +65,7 @@ export function ForgeDemoSection() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/img/blog/og/agentos-emergent-demo.webp"
-              alt="Three AgentOS agents with distinct HEXACO personalities collaborate on a code review, forge a new tool at runtime, the LLM judge approves the spec, and all three invoke it on the next turn."
+              alt="A hierarchical AgentOS agency spawns a security_auditor specialist at runtime after the LLM judge approves its spec."
               width={1600}
               height={920}
               loading="lazy"
@@ -81,7 +81,7 @@ export function ForgeDemoSection() {
             }}
           >
             <span>
-              Captured from <code className="font-mono text-[var(--color-accent-primary)]">node examples/emergent-hierarchical-spawning.mjs</code>.
+              Run it yourself with <code className="font-mono text-[var(--color-accent-primary)]">node examples/emergent-hierarchical-spawning.mjs</code> in a built clone.
             </span>
             <a
               href="https://github.com/framerslab/agentos/blob/master/examples/emergent-hierarchical-spawning.mjs"
