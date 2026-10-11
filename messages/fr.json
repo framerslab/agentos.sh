@@ -856,7 +856,7 @@
   },
   "ecosystem": {
     "title": "L’Écosystème AgentOS",
-    "subtitle": "Explorez l’écosystème open source d’AgentOS : RAG multimodal, orchestration multi-agents, 37 adaptateurs de canaux, 13 fournisseurs de LLM et 111 extensions sélectionnées.",
+    "subtitle": "Explorez l’écosystème open source d’AgentOS : RAG multimodal, orchestration multi-agents, 37 adaptateurs de canaux, 13 fournisseurs de LLM et plus de 100 extensions sélectionnées.",
     "stats": {
       "repositories": "Dépôts",
       "weeklyDownloads": "Téléchargements Hebdomadaires",

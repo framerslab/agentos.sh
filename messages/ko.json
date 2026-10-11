@@ -1112,7 +1112,7 @@
   },
   "ecosystem": {
     "title": "AgentOS 에코시스템",
-    "subtitle": "오픈 소스 AgentOS 에코시스템을 탐색하세요. 멀티모달 RAG, 멀티 에이전트 오케스트레이션, 37개 채널 어댑터, 13개 LLM 제공자, 111개 엄선된 확장 기능.",
+    "subtitle": "오픈 소스 AgentOS 에코시스템을 탐색하세요. 멀티모달 RAG, 멀티 에이전트 오케스트레이션, 37개 채널 어댑터, 13개 LLM 제공자, 100개 이상의 엄선된 확장 기능.",
     "stats": {
       "repositories": "리포지토리",
       "weeklyDownloads": "주간 다운로드",

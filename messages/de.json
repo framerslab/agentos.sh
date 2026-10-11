@@ -1112,7 +1112,7 @@
   },
   "ecosystem": {
     "title": "Das AgentOS-Ökosystem",
-    "subtitle": "Erkunde das Open-Source-Ökosystem von AgentOS: multimodales RAG, Multi-Agenten-Orchestrierung, 37 Kanal-Adapter, 13 LLM-Anbieter und 111 kuratierte Erweiterungen.",
+    "subtitle": "Erkunde das Open-Source-Ökosystem von AgentOS: multimodales RAG, Multi-Agenten-Orchestrierung, 37 Kanal-Adapter, 13 LLM-Anbieter und über 100 kuratierte Erweiterungen.",
     "stats": {
       "repositories": "Repositorys",
       "weeklyDownloads": "Wöchentliche Downloads",
