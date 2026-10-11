@@ -408,15 +408,15 @@
   },
   "enterprise": {
     "title": "Enterprise-fähige Infrastruktur",
-    "subtitle": "5-stufige Sicherheit, 6 Guardrail-Erweiterungen, 11 LLM-Anbieter, 37 Kanäle und kognitives Gedächtnis — produktionsreif ab dem ersten Tag",
+    "subtitle": "Sicherheits-Guardrails, 13 LLM-Anbieter, 37 Kanal-Adapter und kognitives Gedächtnis in einer Open-Source-Runtime",
     "features": {
       "security": {
         "title": "5-Stufen-Sicherheit",
         "items": [
-          "Dangerous, Permissive, Balanced, Strict, Paranoid Stufen",
-          "LLM-basierte Sentiment-Analyse mit Keyword-Fallback",
-          "Konfigurierbare Sicherheits-Presets pro Agent",
-          "Integrierter Prompt-Injection-Schutz"
+          "Freigaben über die CLI, einen Webhook, Slack oder einen LLM-Judge",
+          "Ausgabenbudgets, die einen Aufruf über dem Limit ablehnen",
+          "Vom Judge geprüftes Tool-Forging in einer node:vm-Sandbox",
+          "Optionaler Prompt-Injection-Klassifikator (Paket ml-classifiers)"
         ]
       },
       "guardrails": {
@@ -424,7 +424,7 @@
         "items": [
           "PII-Redaktion und Anonymisierung",
           "ML-Classifier Inhaltsmoderation",
-          "Code-Sicherheit und Sandbox-Ausführung",
+          "Statische Analyse von generiertem Code auf gefährliche Muster",
           "Grounding Guard, Topicality Filter, Content-Policy Rewriter"
         ]
       },
@@ -441,9 +441,9 @@
         "title": "Audit & Beobachtbarkeit",
         "items": [
           "OpenTelemetry-kompatible Telemetrie (OTLP)",
-          "Vollständige Audit-Protokollierung aller Agentenaktionen",
-          "Echtzeit-Monitoring und Anomalieerkennung",
-          "Kostenschutz, Circuit Breaker, Stuck Detection"
+          "Signiertes Provenienz-Ledger der Speicher-Schreibvorgänge",
+          "Token- und Kostenverbrauch pro Sitzung",
+          "Kostenwächter und Circuit Breaker pro Anbieter"
         ]
       },
       "soc2": {
@@ -457,8 +457,8 @@
       "scale": {
         "title": "Produktions-Skalierung",
         "items": [
-          "115 Erweiterungen, 88 kuratierte Skills",
-          "11 LLM-Anbieter, 37 Kanal-Adapter",
+          "Über 100 kuratierte Erweiterungen, 88 kuratierte Skills",
+          "13 LLM-Anbieter, 37 Kanal-Adapter",
           "Video-, Audio- und Bildgenerierung",
           "Selbstverbessernde Agenten mit Tool Forging"
         ]
@@ -467,7 +467,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "Vollständig implementiert",
-        "description": "5-Stufen-Sicherheit, 6 Guardrails, PII-Redaktion, Audit-Logging, kognitives Gedächtnis und 115 Erweiterungen sind heute produktionsreif"
+        "description": "PII-Schwärzung, Klassifikatoren für Injection und Toxizität, das signierte Provenienz-Ledger, kognitives Gedächtnis und über 100 kuratierte Erweiterungen sind Open Source und schon verfügbar"
       },
       "inProgress": {
         "title": "Audit-Trail",

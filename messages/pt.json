@@ -256,15 +256,15 @@
   "skipToMain": "Ir para o conteúdo principal",
   "enterprise": {
     "title": "Infraestrutura Pronta para Empresas",
-    "subtitle": "Segurança de 5 níveis, 6 extensões de guardrails, 11 provedores LLM, 37 canais e memória cognitiva — pronto para produção desde o primeiro dia",
+    "subtitle": "Guardrails de segurança, 13 provedores de LLM, 37 adaptadores de canal e memória cognitiva em um único runtime open source",
     "features": {
       "security": {
         "title": "Segurança de 5 Níveis",
         "items": [
-          "Níveis Dangerous, Permissive, Balanced, Strict, Paranoid",
-          "Análise de sentimento LLM com fallback por keywords",
-          "Presets de segurança configuráveis por agente",
-          "Defesa contra injeção de prompt integrada"
+          "Portões de aprovação via CLI, webhook, Slack ou um juiz LLM",
+          "Orçamentos de gasto que recusam uma chamada acima do limite",
+          "Criação de ferramentas revisada por um juiz, em um sandbox node:vm",
+          "Classificador opcional de injeção de prompt (pacote ml-classifiers)"
         ]
       },
       "guardrails": {
@@ -272,7 +272,7 @@
         "items": [
           "Redação e anonimização de PII",
           "Moderação de conteúdo por classificador ML",
-          "Segurança de código e execução em sandbox",
+          "Análise estática do código gerado em busca de padrões perigosos",
           "Grounding guard, filtro de topicality, reescritor de política de conteúdo"
         ]
       },
@@ -289,9 +289,9 @@
         "title": "Auditoria e Observabilidade",
         "items": [
           "Telemetria compatível com OpenTelemetry (OTLP)",
-          "Registro completo de auditoria de todas as ações do agente",
-          "Monitoramento em tempo real e detecção de anomalias",
-          "Guardas de custo, circuit breakers, detecção de travamento"
+          "Registro de proveniência assinado das gravações no armazenamento",
+          "Uso de tokens e custo por sessão",
+          "Proteções de custo e circuit breakers por provedor"
         ]
       },
       "soc2": {
@@ -305,8 +305,8 @@
       "scale": {
         "title": "Escala de Produção",
         "items": [
-          "115 extensões, 88 skills curados",
-          "11 provedores LLM, 37 adaptadores de canal",
+          "Mais de 100 extensões curadas, 88 skills curadas",
+          "13 provedores de LLM, 37 adaptadores de canal",
           "Geração de vídeo, áudio e imagem",
           "Agentes auto-aperfeiçoantes com forja de ferramentas"
         ]
@@ -315,7 +315,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "Totalmente Implementado",
-        "description": "Segurança de 5 níveis, 6 guardrails, redação PII, registro de auditoria, memória cognitiva e 115 extensões estão prontos para produção hoje"
+        "description": "Ocultação de PII, classificadores de injeção e toxicidade, o registro de proveniência assinado, a memória cognitiva e mais de 100 extensões curadas são open source e já estão disponíveis"
       },
       "inProgress": {
         "title": "Trilha de Auditoria",

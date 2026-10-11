@@ -408,15 +408,15 @@
   },
   "enterprise": {
     "title": "Enterprise-Ready Infrastructure",
-    "subtitle": "Safety guardrails, 11 LLM providers, 37 channels, and cognitive memory — production-grade from day one",
+    "subtitle": "Safety guardrails, 13 LLM providers, 37 channel adapters and cognitive memory in one open-source runtime",
     "features": {
       "security": {
         "title": "Agent Safety",
         "items": [
-          "Dangerous, Permissive, Balanced, Strict, Paranoid tiers",
-          "LLM-based sentiment analysis with keyword fallback",
-          "Configurable per-agent security presets",
-          "Prompt injection defense built-in"
+          "Approval gates through the CLI, a webhook, Slack or an LLM judge",
+          "Spend budgets that refuse a call past the cap",
+          "Judge-reviewed tool forging in a node:vm sandbox",
+          "Opt-in prompt-injection classifier (ml-classifiers pack)"
         ]
       },
       "guardrails": {
@@ -424,7 +424,7 @@
         "items": [
           "PII redaction and anonymization",
           "ML classifier content moderation",
-          "Code safety and sandboxed execution",
+          "Static analysis of generated code for dangerous patterns",
           "Grounding guard, topicality filter, content-policy rewriter"
         ]
       },
@@ -441,9 +441,9 @@
         "title": "Audit & Observability",
         "items": [
           "OpenTelemetry-compatible telemetry (OTLP)",
-          "Full audit logging for every agent action",
-          "Real-time monitoring and anomaly detection",
-          "Cost guards, circuit breakers, stuck detection"
+          "Signed provenance ledger of storage writes",
+          "Token and cost usage per session",
+          "Cost guards and provider circuit breakers"
         ]
       },
       "soc2": {
@@ -457,8 +457,8 @@
       "scale": {
         "title": "Production Scale",
         "items": [
-          "115 extensions, 88 curated skills",
-          "11 LLM providers, 37 channel adapters",
+          "100+ curated extensions, 88 curated skills",
+          "13 LLM providers, 37 channel adapters",
           "Video, audio, and image generation",
           "Self-improving agents with tool forging"
         ]
@@ -467,7 +467,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "Fully Implemented",
-        "description": "PII redaction, prompt injection defense, content moderation, audit logging, cognitive memory, and 115 extensions are production-ready today"
+        "description": "PII redaction, injection and toxicity classifiers, the signed provenance ledger, cognitive memory and 100+ curated extensions are open source and available now"
       },
       "inProgress": {
         "title": "Audit Trail",
