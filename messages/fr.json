@@ -912,7 +912,7 @@
       },
       "cognitiveMemory": {
         "question": "Comment fonctionne la mémoire cognitive ?",
-        "answer": "La mémoire cognitive d’AgentOS implémente 8 mécanismes issus de la recherche en sciences cognitives : reconsolidation, oubli induit par la récupération, rappel involontaire, sentiment de savoir, extraction de gist temporel, encodage de schémas, décroissance de la confiance de la source et régulation émotionnelle. Les souvenirs s’estompent avec le temps en suivant les courbes d’oubli d’Ebbinghaus (Ebbinghaus, 1885), et chaque récupération réussie rend un souvenir plus stable, comme dans la répétition espacée. La mémoire de travail suit le modèle multicomposant de Baddeley (Baddeley, 2000) avec 7 emplacements, de 5 à 9 selon l’Ouverture et la Conscience. Un souvenir chassé d’une mémoire de travail pleine est stocké comme souvenir épisodique, et la consolidation transforme ensuite les souvenirs épisodiques anciens et souvent récupérés en souvenirs sémantiques."
+        "answer": "La mémoire cognitive d’AgentOS implémente 8 mécanismes issus de la recherche en sciences cognitives : reconsolidation, oubli induit par la récupération, rappel involontaire, sentiment de savoir, extraction de gist temporel, encodage de schémas, décroissance de la confiance de la source et régulation émotionnelle. Les souvenirs s’estompent avec le temps en suivant les courbes d’oubli d’Ebbinghaus (Ebbinghaus, 1885), et chaque récupération réussie rend un souvenir plus stable, comme dans la répétition espacée. La mémoire de travail suit le modèle multicomposant de Baddeley (Baddeley, 2000) avec 7 emplacements, de 5 à 9 selon l’Ouverture et la Conscience. Un nouveau souvenir est stocké par défaut comme souvenir épisodique et occupe un emplacement de la mémoire de travail. Quand les emplacements sont pleins, le moins actif est libéré et son souvenir reste stocké. La consolidation transforme ensuite les souvenirs épisodiques anciens et souvent récupérés en souvenirs sémantiques."
       },
       "guardrails": {
         "question": "Quels guardrails sont disponibles ?",
@@ -972,7 +972,7 @@
       },
       "compliance": {
         "question": "Comment AgentOS prend-il en charge les workflows RGPD et SOC 2 ?",
-        "answer": "AgentOS inclut un guardrail de rédaction de PII qui supprime les données personnelles avant qu'elles n'atteignent les fournisseurs LLM, et un déploiement auto-hébergé pour que les données restent sur votre infrastructure. Le système de mémoire prend en charge la suppression et l'exportation pour les demandes de droit d'accès. La conformité RGPD et SOC 2 relève de la responsabilité organisationnelle de l'équipe qui déploie, pas d'une propriété de la bibliothèque elle-même."
+        "answer": "AgentOS inclut un guardrail de rédaction de PII qui supprime les données personnelles avant qu'elles n'atteignent les fournisseurs LLM, et un déploiement auto-hébergé pour que les données restent sur votre infrastructure. La mémoire s'exporte en JSON, Markdown, Obsidian ou SQLite pour une demande d'accès. Oublier un souvenir le retire du rappel mais garde sa ligne dans la base de données ; une demande d'effacement exige donc une suppression dans votre propre stockage. La conformité RGPD et SOC 2 relève de la responsabilité organisationnelle de l'équipe qui déploie, pas d'une propriété de la bibliothèque elle-même."
       },
       "support": {
         "question": "Le support entreprise est-il disponible ?",

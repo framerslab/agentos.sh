@@ -872,7 +872,7 @@
       },
       "cognitiveMemory": {
         "question": "Wie funktioniert das kognitive Gedächtnis?",
-        "answer": "Das kognitive Gedächtnis von AgentOS implementiert 8 Mechanismen aus der kognitionswissenschaftlichen Forschung: Rekonsolidierung, abrufbedingtes Vergessen, unwillkürliche Erinnerung, Feeling-of-Knowing, temporale Gist-Extraktion, Schema-Kodierung, Quellenvertrauens-Verfall und Emotionsregulation. Erinnerungen verblassen über die Zeit gemäß den Ebbinghaus-Vergessenskurven (Ebbinghaus, 1885), und jeder erfolgreiche Abruf macht eine Erinnerung stabiler, wie bei verteilter Wiederholung. Das Arbeitsgedächtnis folgt Baddeleys Multikomponentenmodell (Baddeley, 2000) mit 7 Slots, je nach Offenheit und Gewissenhaftigkeit 5 bis 9. Eine Erinnerung, die aus dem vollen Arbeitsgedächtnis verdrängt wird, wird als episodische Erinnerung gespeichert, und die Konsolidierung macht später alte, oft abgerufene episodische Erinnerungen zu semantischen."
+        "answer": "Das kognitive Gedächtnis von AgentOS implementiert 8 Mechanismen aus der kognitionswissenschaftlichen Forschung: Rekonsolidierung, abrufbedingtes Vergessen, unwillkürliche Erinnerung, Feeling-of-Knowing, temporale Gist-Extraktion, Schema-Kodierung, Quellenvertrauens-Verfall und Emotionsregulation. Erinnerungen verblassen über die Zeit gemäß den Ebbinghaus-Vergessenskurven (Ebbinghaus, 1885), und jeder erfolgreiche Abruf macht eine Erinnerung stabiler, wie bei verteilter Wiederholung. Das Arbeitsgedächtnis folgt Baddeleys Multikomponentenmodell (Baddeley, 2000) mit 7 Slots, je nach Offenheit und Gewissenhaftigkeit 5 bis 9. Eine neue Erinnerung wird standardmäßig als episodische Erinnerung gespeichert und belegt einen Slot im Arbeitsgedächtnis. Sind alle Slots belegt, wird der am wenigsten aktive frei, und seine Erinnerung bleibt gespeichert. Die Konsolidierung macht später alte, oft abgerufene episodische Erinnerungen zu semantischen."
       },
       "guardrails": {
         "question": "Welche Guardrails sind verfügbar?",
@@ -932,7 +932,7 @@
       },
       "compliance": {
         "question": "Wie unterstützt AgentOS DSGVO- und SOC-2-Workflows?",
-        "answer": "AgentOS liefert eine PII-Redaktions-Guardrail, die personenbezogene Daten entfernt, bevor sie LLM-Anbieter erreichen, und Self-Hosting, sodass Daten auf der eigenen Infrastruktur bleiben. Das Memory-System unterstützt Löschung und Export für Auskunftsersuchen. DSGVO- und SOC-2-Konformität sind organisatorische Verantwortungen des einsetzenden Teams, keine Eigenschaften der Bibliothek selbst."
+        "answer": "AgentOS liefert eine PII-Redaktions-Guardrail, die personenbezogene Daten entfernt, bevor sie LLM-Anbieter erreichen, und Self-Hosting, sodass Daten auf der eigenen Infrastruktur bleiben. Das Memory-System exportiert für ein Auskunftsersuchen nach JSON, Markdown, Obsidian oder SQLite. Eine vergessene Erinnerung fällt aus dem Abruf heraus, ihre Zeile bleibt aber in der Datenbank; ein Löschantrag braucht deshalb ein Löschen im eigenen Speicher. DSGVO- und SOC-2-Konformität sind organisatorische Verantwortungen des einsetzenden Teams, keine Eigenschaften der Bibliothek selbst."
       },
       "support": {
         "question": "Ist Enterprise-Support verfügbar?",

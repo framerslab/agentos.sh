@@ -938,7 +938,7 @@
       },
       "cognitiveMemory": {
         "question": "¿Cómo funciona la memoria cognitiva?",
-        "answer": "La memoria cognitiva de AgentOS implementa 8 mecanismos de la investigación en ciencia cognitiva: reconsolidación, olvido inducido por recuperación, recuerdo involuntario, sensación de saber, extracción de gist temporal, codificación de esquemas, decaimiento de confianza de la fuente y regulación emocional. Las memorias decaen con el tiempo siguiendo las curvas del olvido de Ebbinghaus (Ebbinghaus, 1885), y cada recuperación exitosa vuelve una memoria más estable, como en la repetición espaciada. La memoria de trabajo sigue el modelo multicomponente de Baddeley (Baddeley, 2000) con 7 slots, de 5 a 9 según la Apertura y la Conciencia. Una memoria desplazada de la memoria de trabajo llena se guarda como memoria episódica, y la consolidación convierte después las memorias episódicas antiguas y muy recuperadas en memorias semánticas."
+        "answer": "La memoria cognitiva de AgentOS implementa 8 mecanismos de la investigación en ciencia cognitiva: reconsolidación, olvido inducido por recuperación, recuerdo involuntario, sensación de saber, extracción de gist temporal, codificación de esquemas, decaimiento de confianza de la fuente y regulación emocional. Las memorias decaen con el tiempo siguiendo las curvas del olvido de Ebbinghaus (Ebbinghaus, 1885), y cada recuperación exitosa vuelve una memoria más estable, como en la repetición espaciada. La memoria de trabajo sigue el modelo multicomponente de Baddeley (Baddeley, 2000) con 7 slots, de 5 a 9 según la Apertura y la Conciencia. Una memoria nueva se guarda como memoria episódica por defecto y ocupa un slot de la memoria de trabajo. Cuando los slots están llenos, se libera el slot menos activo y su memoria sigue guardada. La consolidación convierte después las memorias episódicas antiguas y muy recuperadas en memorias semánticas."
       },
       "guardrails": {
         "question": "¿Qué guardrails están disponibles?",
@@ -998,7 +998,7 @@
       },
       "compliance": {
         "question": "¿Cómo soporta AgentOS los workflows de GDPR y SOC 2?",
-        "answer": "AgentOS incluye un guardrail de redacción de PII que elimina datos personales antes de que lleguen a los proveedores de LLM, y despliegue self-hosted para que los datos permanezcan en tu infraestructura. El sistema de memoria admite eliminación y exportación para solicitudes de derecho de acceso. El cumplimiento de GDPR y SOC 2 es una responsabilidad organizacional del equipo que despliega, no una propiedad de la biblioteca en sí."
+        "answer": "AgentOS incluye un guardrail de redacción de PII que elimina datos personales antes de que lleguen a los proveedores de LLM, y despliegue self-hosted para que los datos permanezcan en tu infraestructura. La memoria se puede exportar a JSON, Markdown, Obsidian o SQLite para una solicitud de acceso. Olvidar una memoria la saca de la recuperación pero mantiene su fila en la base de datos, así que una solicitud de supresión exige borrarla en tu propio almacenamiento. El cumplimiento de GDPR y SOC 2 es una responsabilidad organizacional del equipo que despliega, no una propiedad de la biblioteca en sí."
       },
       "support": {
         "question": "¿Hay soporte empresarial disponible?",

@@ -870,7 +870,7 @@
       },
       "cognitiveMemory": {
         "question": "How does cognitive memory work?",
-        "answer": "AgentOS cognitive memory implements 8 mechanisms from cognitive science research: reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist extraction, schema encoding, source confidence decay, and emotion regulation. Memories decay over time following Ebbinghaus forgetting curves (Ebbinghaus, 1885), and each successful retrieval makes a memory more stable, as in spaced repetition. Working memory follows Baddeley's multi-component model (Baddeley, 2000) with 7 slots, 5 to 9 depending on Openness and Conscientiousness. A memory pushed out of full working memory is stored as an episodic memory, and consolidation later turns old, often-retrieved episodic memories into semantic ones."
+        "answer": "AgentOS cognitive memory implements 8 mechanisms from cognitive science research: reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist extraction, schema encoding, source confidence decay, and emotion regulation. Memories decay over time following Ebbinghaus forgetting curves (Ebbinghaus, 1885), and each successful retrieval makes a memory more stable, as in spaced repetition. Working memory follows Baddeley's multi-component model (Baddeley, 2000) with 7 slots, 5 to 9 depending on Openness and Conscientiousness. A new memory is stored as an episodic memory by default and takes a working-memory slot. When the slots are full, the least active slot gives way and its memory stays in storage. Consolidation later turns old, often-retrieved episodic memories into semantic ones."
       },
       "guardrails": {
         "question": "What guardrails are available?",
@@ -930,7 +930,7 @@
       },
       "compliance": {
         "question": "How does AgentOS support GDPR and SOC 2 workflows?",
-        "answer": "AgentOS ships a PII redaction guardrail that strips personal data before it reaches LLM providers, and self-hosted deployment so data stays on your infrastructure. The memory system supports deletion and export for data-subject access requests. GDPR and SOC 2 compliance are organizational responsibilities of the deploying team, not properties of the library itself."
+        "answer": "AgentOS ships a PII redaction guardrail that strips personal data before it reaches LLM providers, and self-hosted deployment so data stays on your infrastructure. Memory exports to JSON, Markdown, Obsidian or SQLite for an access request. Forgetting a memory hides it from recall and keeps its row in the database, so an erasure request needs a delete in your own storage. GDPR and SOC 2 compliance are organizational responsibilities of the deploying team, not properties of the library itself."
       },
       "support": {
         "question": "Is there enterprise support available?",
