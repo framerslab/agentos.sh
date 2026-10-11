@@ -423,7 +423,7 @@ function EbbinghausCurve({ annotation }: { annotation: string }) {
  * **Cognitive Memory Section**
  *
  * Showcases the 8 neuroscience-backed memory mechanisms built into AgentOS,
- * each modulated by HEXACO personality traits. Features:
+ * seven of them tuned by HEXACO personality traits. Features:
  *
  * - Badge + title/subtitle header
  * - 4x2 grid of mechanism cards with custom SVG line-art icons
@@ -607,7 +607,7 @@ export function CognitiveSection() {
           <EbbinghausCurve annotation={t('ebbinghausAnnotation')} />
         </motion.div>
 
-        {/* ---- Subsection 2: 4-Tier Memory Hierarchy ---- */}
+        {/* ---- Subsection 2: memory types ---- */}
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -629,7 +629,7 @@ export function CognitiveSection() {
             </p>
           </div>
 
-          {/* Memory tier cards with flow arrows */}
+          {/* Memory cards; one arrow marks consolidation from episodic to semantic */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
             {MEMORY_TIER_KEYS.map((key, i) => {
               const TierIcon = MEMORY_TIER_ICONS[i]
@@ -689,8 +689,8 @@ export function CognitiveSection() {
                     </span>
                   </div>
 
-                  {/* Flow arrow between cards (hidden on last card) */}
-                  {i < 3 && (
+                  {/* Consolidation arrow: episodic (index 1) to semantic (index 2) */}
+                  {i === 1 && (
                     <div className="hidden lg:flex absolute -right-2 top-1/2 -translate-y-1/2 z-10">
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path

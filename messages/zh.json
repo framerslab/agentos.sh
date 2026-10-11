@@ -1165,7 +1165,7 @@
   "cognitive": {
     "badge": "神经科学支撑",
     "title": "认知记忆",
-    "subtitle": "8种受认知科学研究启发的记忆机制。全部由智能体的HEXACO人格特质调节。",
+    "subtitle": "受认知科学研究启发的 8 种记忆机制，其中 7 种由智能体的 HEXACO 特质调节。",
     "mechanisms": {
       "reconsolidation": "再巩固",
       "rif": "检索诱导性遗忘",
@@ -1187,23 +1187,23 @@
       "emotionRegulation": "记忆的情绪价值随时间被调节"
     },
     "modulators": {
-      "reconsolidation": "开放性",
+      "reconsolidation": "情绪性",
       "rif": "尽责性",
       "involuntaryRecall": "开放性",
       "fok": "外向性",
-      "temporalGist": "尽责性",
+      "temporalGist": "不受调节",
       "schemaEncoding": "开放性",
       "sourceConfidence": "诚实-谦逊",
       "emotionRegulation": "宜人性"
     },
     "research": {
-      "reconsolidation": "每次检索行为都会不稳定记忆痕迹，允许用当前上下文更新后再稳定。开放性越高，重写程度越大。",
+      "reconsolidation": "每次提取都会使记忆痕迹变得不稳定，使其在重新稳定之前可以用当前情境更新。情绪性越高，改写程度越大，记忆更具适应性但更不稳定。",
       "rif": "检索目标记忆通过侧向抑制积极地抑制相关竞争者。尽责性越高，这种抑制越强。",
-      "involuntaryRecall": "上下文线索可以在没有刻意搜索的情况下触发相关记忆的自发激活。开放性越高，激活阈值越低。",
+      "involuntaryRecall": "情境线索无需刻意搜索就能自发激活相关记忆。开放性越高，非自主回忆的概率越高，带来更多意外的联想。",
       "fok": "对成功检索可能性的元认知判断。外向性越高，FOK信号越强。",
-      "temporalGist": "随时间推移，逐字细节衰减，而语义要旨通过抽象得以保留。尽责性越低，细节丢失越快。",
-      "schemaEncoding": "新信息被同化到现有知识图式中。开放性越高，图式修改越灵活。",
-      "sourceConfidence": "对信息来源的记忆比信息内容本身衰减得更快。诚实-谦逊越高，对不确定来源的怀疑越多。",
+      "temporalGist": "随着时间推移，逐字细节逐渐消退，而语义要旨通过抽象得以保留。这是人格唯一不调节的机制。",
+      "schemaEncoding": "新信息会被同化进已有的知识图式，与图式一致的内容更容易被编码。开放性越高，对违背图式的信息的编码加成越强。",
+      "sourceConfidence": "对信息来源（谁说的、在哪里读到的）的记忆比信息内容本身衰减得更快。诚实-谦逊越高，智能体对自身推断与反思的置信度下降得越快。",
       "emotionRegulation": "附着在记忆上的情绪强度在检索和巩固过程中被积极调节。宜人性越高，情绪平滑越多。"
     },
     "citations": {
@@ -1220,12 +1220,12 @@
     "ctaLearnMore": "探索认知记忆",
     "ctaSoulWiki": "Markdown 记忆维基",
     "memoryTypes": {
-      "title": "4层记忆架构",
-      "subtitle": "从易失的工作记忆到永久知识图谱——每层自动向上合并。",
+      "title": "四种记忆",
+      "subtitle": "工作记忆保存当前会话。情景记忆痕迹沿 Ebbinghaus 曲线衰减，巩固流程（默认每小时一次）用 LLM 把成簇的痕迹总结为语义记忆。可选的观察器会把长对话压缩成笔记。",
       "working": {
         "name": "工作记忆",
-        "description": "当前对话轮次的短期记事本。会话间清除。",
-        "detail": "约128k token，易失性"
+        "description": "当前会话的短期槽位，新会话开始时清空。",
+        "detail": "7 个槽位，依特质为 5 到 9 个"
       },
       "episodic": {
         "name": "情景记忆",
@@ -1239,26 +1239,26 @@
       },
       "observational": {
         "name": "观察记忆",
-        "description": "过去交互的压缩摘要。LLM 3-10倍压缩。",
-        "detail": "从情景记忆自动合并"
+        "description": "可选的观察器笔记。对话超过 token 阈值后，LLM 会提取笔记，再压缩并进行反思。",
+        "detail": "需手动开启，需要 LLM"
       },
-      "flowLabel": "合并管道"
+      "flowLabel": "巩固：从情景记忆到语义记忆"
     },
     "ragPipeline": {
       "title": "多模态RAG管道",
-      "subtitle": "摄取文档、图像、音频——多种策略检索。",
+      "subtitle": "摄入文档、图像和音频，再用多种策略检索。",
       "steps": {
         "ingest": {
           "name": "摄取",
-          "description": "10种文档加载器: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, 图像, 音频, 视频"
+          "description": "8 个文档加载器，支持 PDF、DOCX、Markdown、HTML、URL、TXT、CSV、JSON 和 YAML；图像和音频经由 MultimodalIndexer 处理"
         },
         "chunk": {
           "name": "分块",
-          "description": "4种策略: 固定大小、句子、递归、语义"
+          "description": "4 种策略：固定、语义、层级、版面"
         },
         "embed": {
           "name": "嵌入",
-          "description": "OpenAI、Ollama、Cohere、自定义嵌入"
+          "description": "OpenAI、Gemini、Ollama、OpenRouter 或任何兼容 OpenAI 的端点"
         },
         "store": {
           "name": "存储",

@@ -1165,7 +1165,7 @@
   "cognitive": {
     "badge": "Respaldado por neurociencia",
     "title": "Memoria Cognitiva",
-    "subtitle": "8 mecanismos de memoria inspirados en investigación de ciencia cognitiva. Todos modulados por los rasgos de personalidad HEXACO del agente.",
+    "subtitle": "8 mecanismos de memoria inspirados en la investigación en ciencia cognitiva. Los rasgos HEXACO del agente ajustan siete de ellos.",
     "mechanisms": {
       "reconsolidation": "Reconsolidación",
       "rif": "Olvido Inducido por Recuperación",
@@ -1187,23 +1187,23 @@
       "emotionRegulation": "La valencia emocional de los recuerdos se modula con el tiempo"
     },
     "modulators": {
-      "reconsolidation": "Apertura",
+      "reconsolidation": "Emocionalidad",
       "rif": "Responsabilidad",
       "involuntaryRecall": "Apertura",
       "fok": "Extraversión",
-      "temporalGist": "Responsabilidad",
+      "temporalGist": "Sin modulación",
       "schemaEncoding": "Apertura",
       "sourceConfidence": "Honestidad-Humildad",
       "emotionRegulation": "Amabilidad"
     },
     "research": {
-      "reconsolidation": "Cada acto de recuperación desestabiliza la huella de memoria, permitiéndole actualizarse con el contexto actual antes de reestabilizarse. Mayor Apertura amplifica el grado de reescritura.",
+      "reconsolidation": "Cada acto de recuperación desestabiliza la huella de memoria y permite actualizarla con el contexto actual antes de que se estabilice de nuevo. Una mayor Emocionalidad amplifica el grado de reescritura, haciendo los recuerdos más adaptables pero menos estables.",
       "rif": "Recuperar una memoria objetivo inhibe activamente a los competidores relacionados mediante supresión lateral. Mayor Responsabilidad fortalece esta supresión.",
-      "involuntaryRecall": "Las señales contextuales pueden desencadenar la activación espontánea de recuerdos asociados sin búsqueda deliberada. Mayor Apertura reduce el umbral de activación.",
+      "involuntaryRecall": "Las señales contextuales pueden activar espontáneamente recuerdos asociados sin una búsqueda deliberada. Una mayor Apertura aumenta la probabilidad de un recuerdo involuntario y produce más conexiones inesperadas.",
       "fok": "Un juicio metacognitivo sobre la probabilidad de recuperación exitosa. Mayor Extraversión amplifica las señales FOK.",
-      "temporalGist": "Con el tiempo, los detalles literales decaen mientras la esencia semántica se preserva mediante abstracción. Menor Responsabilidad acelera la pérdida de detalles.",
-      "schemaEncoding": "La nueva información se asimila en esquemas de conocimiento existentes. Mayor Apertura permite una modificación de esquemas más flexible.",
-      "sourceConfidence": "La memoria de la fuente de información decae más rápido que el contenido informativo mismo. Mayor Honestidad-Humildad aumenta el escepticismo hacia fuentes inciertas.",
+      "temporalGist": "Con el tiempo, los detalles literales se desvanecen mientras la esencia semántica se conserva por abstracción. Es el único mecanismo que la personalidad no ajusta.",
+      "schemaEncoding": "La información nueva se asimila a los esquemas de conocimiento existentes, y el material coherente con el esquema se codifica con más facilidad. Una mayor Apertura refuerza el impulso de codificación de la información que contradice un esquema.",
+      "sourceConfidence": "La memoria de la fuente de una información (quién la dijo, dónde se leyó) decae más rápido que el propio contenido. Una mayor Honestidad-Humildad hace que las inferencias y reflexiones del propio agente pierdan confianza más rápido.",
       "emotionRegulation": "La intensidad emocional vinculada a los recuerdos se modula activamente durante la recuperación y consolidación. Mayor Amabilidad aumenta el suavizado emocional."
     },
     "citations": {
@@ -1220,12 +1220,12 @@
     "ctaLearnMore": "Explorar Memoria Cognitiva",
     "ctaSoulWiki": "Wiki de memoria en Markdown",
     "memoryTypes": {
-      "title": "Jerarquia de Memoria de 4 Niveles",
-      "subtitle": "Desde memorias volatiles hasta grafos de conocimiento permanentes — cada nivel se consolida automaticamente.",
+      "title": "Cuatro tipos de memoria",
+      "subtitle": "La memoria de trabajo guarda la sesión actual. Las huellas episódicas decaen según la curva de Ebbinghaus, y una pasada de consolidación (cada hora por defecto) resume grupos de ellas en memoria semántica con un LLM. Un observador opcional comprime las conversaciones largas en notas.",
       "working": {
         "name": "Memoria de Trabajo",
-        "description": "Bloc de notas a corto plazo para el turno actual. Se borra entre sesiones.",
-        "detail": "~128k tokens, volatil"
+        "description": "Espacios de corto plazo para la sesión actual, que se vacían al empezar una nueva sesión.",
+        "detail": "7 espacios, de 5 a 9 según los rasgos"
       },
       "episodic": {
         "name": "Memoria Episodica",
@@ -1239,26 +1239,26 @@
       },
       "observational": {
         "name": "Memoria Observacional",
-        "description": "Resumenes comprimidos de interacciones pasadas. Compresion 3-10x via LLM.",
-        "detail": "Autoconsolidacion desde episodica"
+        "description": "Notas opcionales del observador. Cuando una conversación supera un umbral de tokens, un LLM extrae notas y después las comprime y reflexiona sobre ellas.",
+        "detail": "Opcional, requiere un LLM"
       },
-      "flowLabel": "Pipeline de Consolidacion"
+      "flowLabel": "Consolidación: de episódica a semántica"
     },
     "ragPipeline": {
       "title": "Pipeline RAG Multimodal",
-      "subtitle": "Ingesta de documentos, imagenes, audio — recuperacion con multiples estrategias.",
+      "subtitle": "Ingiere documentos, imágenes y audio, y luego recupera con varias estrategias.",
       "steps": {
         "ingest": {
           "name": "Ingestar",
-          "description": "10 cargadores: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, imagenes, audio, video"
+          "description": "8 cargadores de documentos para PDF, DOCX, Markdown, HTML, URLs, TXT, CSV, JSON y YAML; las imágenes y el audio pasan por MultimodalIndexer"
         },
         "chunk": {
           "name": "Fragmentar",
-          "description": "4 estrategias: tamano fijo, oracion, recursiva, semantica"
+          "description": "4 estrategias: fija, semántica, jerárquica, por diseño"
         },
         "embed": {
           "name": "Embeber",
-          "description": "OpenAI, Ollama, Cohere, embeddings personalizados"
+          "description": "OpenAI, Gemini, Ollama, OpenRouter o cualquier endpoint compatible con OpenAI"
         },
         "store": {
           "name": "Almacenar",

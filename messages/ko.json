@@ -1165,7 +1165,7 @@
   "cognitive": {
     "badge": "신경과학 기반",
     "title": "인지 기억",
-    "subtitle": "인지과학 연구에서 영감을 받은 8가지 기억 메커니즘. 모두 에이전트의 HEXACO 성격 특성에 의해 조절됩니다.",
+    "subtitle": "인지과학 연구에서 착안한 8가지 기억 메커니즘. 그중 7가지를 에이전트의 HEXACO 특성이 조정합니다.",
     "mechanisms": {
       "reconsolidation": "재고정화",
       "rif": "검색 유도 망각",
@@ -1187,23 +1187,23 @@
       "emotionRegulation": "기억의 감정적 가치는 시간이 지남에 따라 조절됩니다"
     },
     "modulators": {
-      "reconsolidation": "개방성",
+      "reconsolidation": "정서성",
       "rif": "성실성",
       "involuntaryRecall": "개방성",
       "fok": "외향성",
-      "temporalGist": "성실성",
+      "temporalGist": "조절 없음",
       "schemaEncoding": "개방성",
       "sourceConfidence": "정직성-겸손성",
       "emotionRegulation": "친화성"
     },
     "research": {
-      "reconsolidation": "각 검색 행위는 기억 흔적을 불안정화시켜 현재 맥락으로 업데이트한 후 재안정화합니다. 개방성이 높을수록 재작성 정도가 증폭됩니다.",
+      "reconsolidation": "기억을 꺼낼 때마다 기억 흔적이 불안정해지고, 다시 안정되기 전에 현재 맥락으로 갱신될 수 있습니다. 정서성이 높을수록 다시 쓰는 정도가 커져 기억은 더 적응적이지만 덜 안정적이 됩니다.",
       "rif": "목표 기억의 검색은 측방 억제를 통해 관련 경쟁자를 적극적으로 억제합니다. 성실성이 높을수록 이 억제가 강화됩니다.",
-      "involuntaryRecall": "맥락적 단서는 의도적 검색 없이 관련 기억의 자발적 활성화를 유발할 수 있습니다. 개방성이 높을수록 활성화 임계값이 낮아집니다.",
+      "involuntaryRecall": "맥락 단서는 의도적으로 찾지 않아도 관련 기억을 자발적으로 떠올리게 합니다. 개방성이 높을수록 비자발적 회상 확률이 올라가 뜻밖의 연결이 늘어납니다.",
       "fok": "성공적인 검색 가능성에 대한 메타인지적 판단. 외향성이 높을수록 FOK 신호가 증폭됩니다.",
-      "temporalGist": "시간이 지남에 따라 축어적 세부 사항이 감소하고 의미적 요지가 추상화를 통해 보존됩니다. 성실성이 낮을수록 세부 사항 손실이 가속화됩니다.",
-      "schemaEncoding": "새로운 정보는 기존 지식 스키마에 동화됩니다. 개방성이 높을수록 더 유연한 스키마 수정이 가능합니다.",
-      "sourceConfidence": "정보 출처에 대한 기억은 정보 내용 자체보다 더 빨리 감소합니다. 정직성-겸손성이 높을수록 불확실한 출처에 대한 회의이 증가합니다.",
+      "temporalGist": "시간이 지나면 글자 그대로의 세부는 사라지고 의미의 요지는 추상화로 보존됩니다. 성격이 조정하지 않는 유일한 메커니즘입니다.",
+      "schemaEncoding": "새 정보는 기존 지식 스키마에 동화되며, 스키마에 맞는 내용일수록 더 쉽게 부호화됩니다. 개방성이 높을수록 스키마에 어긋나는 정보에 대한 부호화 가중치가 커집니다.",
+      "sourceConfidence": "정보의 출처(누가 말했는지, 어디서 읽었는지)에 대한 기억은 정보 자체보다 빨리 사라집니다. 정직성-겸손성이 높을수록 에이전트 자신의 추론과 성찰의 신뢰도가 더 빨리 낮아집니다.",
       "emotionRegulation": "기억에 부착된 감정적 강도는 검색과 고정화 중에 적극적으로 조절됩니다. 친화성이 높을수록 감정 평활화가 증가합니다."
     },
     "citations": {
@@ -1220,12 +1220,12 @@
     "ctaLearnMore": "인지 기억 탐색",
     "ctaSoulWiki": "Markdown 기억 위키",
     "memoryTypes": {
-      "title": "4계층 메모리 아키텍처",
-      "subtitle": "휘발성 작업 메모리에서 영구 지식 그래프까지 — 각 계층이 자동으로 통합됩니다.",
+      "title": "네 가지 기억",
+      "subtitle": "작업 기억은 현재 세션을 담습니다. 일화 기억 흔적은 에빙하우스 곡선을 따라 감쇠하고, 통합 단계(기본 매시간)가 LLM으로 그 묶음을 의미 기억으로 요약합니다. 선택 사항인 관찰자는 긴 대화를 노트로 압축합니다.",
       "working": {
         "name": "작업 메모리",
-        "description": "현재 대화 턴을 위한 단기 메모. 세션 간 초기화됩니다.",
-        "detail": "~128k 토큰, 휘발성"
+        "description": "현재 세션을 위한 단기 슬롯으로, 새 세션이 시작되면 비워집니다.",
+        "detail": "7개 슬롯, 특성에 따라 5~9개"
       },
       "episodic": {
         "name": "에피소드 기억",
@@ -1239,26 +1239,26 @@
       },
       "observational": {
         "name": "관찰 기억",
-        "description": "과거 상호작용의 압축 요약. LLM을 통한 3-10배 압축.",
-        "detail": "에피소드에서 자동 통합"
+        "description": "선택 사항인 관찰자 노트. 대화가 토큰 임계값을 넘으면 LLM이 노트를 추출한 뒤 압축하고 성찰합니다.",
+        "detail": "옵트인, LLM 필요"
       },
-      "flowLabel": "통합 파이프라인"
+      "flowLabel": "통합: 일화 기억에서 의미 기억으로"
     },
     "ragPipeline": {
       "title": "멀티모달 RAG 파이프라인",
-      "subtitle": "문서, 이미지, 오디오 수집 — 다양한 전략으로 검색.",
+      "subtitle": "문서, 이미지, 오디오를 수집한 뒤 여러 전략으로 검색합니다.",
       "steps": {
         "ingest": {
           "name": "수집",
-          "description": "10개 문서 로더: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, 이미지, 오디오, 비디오"
+          "description": "PDF, DOCX, Markdown, HTML, URL, TXT, CSV, JSON, YAML용 8개 문서 로더. 이미지와 오디오는 MultimodalIndexer로 처리"
         },
         "chunk": {
           "name": "청크",
-          "description": "4가지 전략: 고정 크기, 문장, 재귀, 의미적"
+          "description": "4가지 전략: 고정, 의미 기반, 계층, 레이아웃"
         },
         "embed": {
           "name": "임베딩",
-          "description": "OpenAI, Ollama, Cohere, 사용자 정의 임베딩"
+          "description": "OpenAI, Gemini, Ollama, OpenRouter 또는 OpenAI 호환 엔드포인트"
         },
         "store": {
           "name": "저장",

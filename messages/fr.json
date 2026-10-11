@@ -1165,7 +1165,7 @@
   "cognitive": {
     "badge": "Fondé sur les neurosciences",
     "title": "Mémoire Cognitive",
-    "subtitle": "8 mécanismes de mémoire inspirés de la recherche en sciences cognitives. Tous modulés par les traits de personnalité HEXACO de l'agent.",
+    "subtitle": "8 mécanismes de mémoire inspirés de la recherche en sciences cognitives. Les traits HEXACO de l’agent en ajustent sept.",
     "mechanisms": {
       "reconsolidation": "Reconsolidation",
       "rif": "Oubli Induit par la Récupération",
@@ -1187,23 +1187,23 @@
       "emotionRegulation": "La valence émotionnelle des souvenirs est modulée au fil du temps"
     },
     "modulators": {
-      "reconsolidation": "Ouverture",
+      "reconsolidation": "Émotivité",
       "rif": "Conscienciosité",
       "involuntaryRecall": "Ouverture",
       "fok": "Extraversion",
-      "temporalGist": "Conscienciosité",
+      "temporalGist": "Non modulé",
       "schemaEncoding": "Ouverture",
       "sourceConfidence": "Honnêtété-Humilité",
       "emotionRegulation": "Agréabilité"
     },
     "research": {
-      "reconsolidation": "Chaque acte de récupération déstabilise la trace mnésique, permettant sa mise à jour avec le contexte actuel. Une Ouverture plus élevée amplifie le degré de réécriture.",
+      "reconsolidation": "Chaque rappel déstabilise la trace mnésique, qui peut alors être mise à jour avec le contexte actuel avant de se stabiliser de nouveau. Une Émotivité plus élevée amplifie la réécriture, rendant les souvenirs plus adaptables mais moins stables.",
       "rif": "Récupérer un souvenir cible inhibe activement les concurrents associés par suppression latérale. Une Conscienciosité plus élevée renforce cette suppression.",
-      "involuntaryRecall": "Les indices contextuels peuvent déclencher l'activation spontanée de souvenirs associés sans recherche délibérée. Une Ouverture plus élevée abaisse le seuil d'activation.",
+      "involuntaryRecall": "Des indices contextuels peuvent déclencher l’activation spontanée de souvenirs associés sans recherche délibérée. Une Ouverture plus élevée augmente la probabilité d’un rappel involontaire et produit davantage de connexions fortuites.",
       "fok": "Un jugement métacognitif sur la probabilité d'une récupération réussie. Une Extraversion plus élevée amplifie les signaux FOK.",
-      "temporalGist": "Au fil du temps, les détails verbatim déclinent tandis que l'essentiel sémantique est préservé par abstraction. Une Conscienciosité plus faible accélère la perte de détails.",
-      "schemaEncoding": "Les nouvelles informations sont assimilées dans les schémas de connaissances existants. Une Ouverture plus élevée permet une modification de schémas plus flexible.",
-      "sourceConfidence": "La mémoire de la source d'information décline plus vite que le contenu informationnel. Une Honnêtété-Humilité plus élevée augmente le scepticisme envers les sources incertaines.",
+      "temporalGist": "Avec le temps, les détails littéraux s’estompent tandis que l’essentiel sémantique est préservé par abstraction. C’est le seul mécanisme que la personnalité n’ajuste pas.",
+      "schemaEncoding": "Les informations nouvelles sont assimilées aux schémas de connaissances existants, et le contenu cohérent avec un schéma est encodé plus facilement. Une Ouverture plus élevée renforce le bonus d’encodage des informations qui contredisent un schéma.",
+      "sourceConfidence": "Le souvenir de la source d’une information (qui l’a dite, où elle a été lue) s’efface plus vite que son contenu. Une Honnêteté-Humilité plus élevée fait perdre plus vite leur fiabilité aux inférences et réflexions de l’agent lui-même.",
       "emotionRegulation": "L'intensité émotionnelle attachée aux souvenirs est activement modulée lors de la récupération et de la consolidation. Une Agréabilité plus élevée augmente le lissage émotionnel."
     },
     "citations": {
@@ -1220,12 +1220,12 @@
     "ctaLearnMore": "Explorer la Mémoire Cognitive",
     "ctaSoulWiki": "Wiki mémoire en Markdown",
     "memoryTypes": {
-      "title": "Hierarchie de Memoire a 4 Niveaux",
-      "subtitle": "Des tampons volatils aux graphes de connaissances permanents — chaque niveau se consolide automatiquement.",
+      "title": "Quatre types de mémoire",
+      "subtitle": "La mémoire de travail contient la session en cours. Les traces épisodiques déclinent selon la courbe d’Ebbinghaus, et une passe de consolidation (toutes les heures par défaut) en résume des groupes en mémoire sémantique avec un LLM. Un observateur optionnel compresse les longues conversations en notes.",
       "working": {
         "name": "Memoire de Travail",
-        "description": "Bloc-notes a court terme pour le tour de conversation actuel. Efface entre les sessions.",
-        "detail": "~128k tokens, volatile"
+        "description": "Emplacements à court terme pour la session en cours, vidés au début d’une nouvelle session.",
+        "detail": "7 emplacements, de 5 à 9 selon les traits"
       },
       "episodic": {
         "name": "Memoire Episodique",
@@ -1239,26 +1239,26 @@
       },
       "observational": {
         "name": "Memoire Observationnelle",
-        "description": "Resumes comprimes des interactions passees. Compression 3-10x via LLM.",
-        "detail": "Auto-consolidation depuis episodique"
+        "description": "Notes optionnelles de l’observateur. Quand une conversation dépasse un seuil de tokens, un LLM en extrait des notes, puis les compresse et en tire des réflexions.",
+        "detail": "Optionnel, nécessite un LLM"
       },
-      "flowLabel": "Pipeline de Consolidation"
+      "flowLabel": "Consolidation : de l’épisodique au sémantique"
     },
     "ragPipeline": {
       "title": "Pipeline RAG Multimodal",
-      "subtitle": "Ingestion de documents, images, audio — recuperation avec strategies multiples.",
+      "subtitle": "Ingérez des documents, des images et de l’audio, puis récupérez-les avec plusieurs stratégies.",
       "steps": {
         "ingest": {
           "name": "Ingerer",
-          "description": "10 chargeurs: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, images, audio, video"
+          "description": "8 chargeurs de documents pour PDF, DOCX, Markdown, HTML, URL, TXT, CSV, JSON et YAML ; les images et l’audio passent par MultimodalIndexer"
         },
         "chunk": {
           "name": "Decouper",
-          "description": "4 strategies: taille fixe, phrase, recursif, semantique"
+          "description": "4 stratégies : fixe, sémantique, hiérarchique, par mise en page"
         },
         "embed": {
           "name": "Encoder",
-          "description": "OpenAI, Ollama, Cohere, embeddings personnalises"
+          "description": "OpenAI, Gemini, Ollama, OpenRouter ou tout endpoint compatible OpenAI"
         },
         "store": {
           "name": "Stocker",

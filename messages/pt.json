@@ -1165,7 +1165,7 @@
   "cognitive": {
     "badge": "Baseado em Neurociência",
     "title": "Memória Cognitiva",
-    "subtitle": "8 mecanismos de memória inspirados em pesquisa de ciência cognitiva. Todos modulados pelos traços de personalidade HEXACO do agente.",
+    "subtitle": "8 mecanismos de memória inspirados em pesquisas de ciência cognitiva. Os traços HEXACO do agente ajustam sete deles.",
     "mechanisms": {
       "reconsolidation": "Reconsolidação",
       "rif": "Esquecimento Induzido pela Recuperação",
@@ -1187,23 +1187,23 @@
       "emotionRegulation": "A valência emocional das memórias é modulada ao longo do tempo"
     },
     "modulators": {
-      "reconsolidation": "Abertura",
+      "reconsolidation": "Emocionalidade",
       "rif": "Conscienciosidade",
       "involuntaryRecall": "Abertura",
       "fok": "Extraversão",
-      "temporalGist": "Conscienciosidade",
+      "temporalGist": "Sem modulação",
       "schemaEncoding": "Abertura",
       "sourceConfidence": "Honestidade-Humildade",
       "emotionRegulation": "Amabilidade"
     },
     "research": {
-      "reconsolidation": "Cada ato de recuperação desestabiliza o traço de memória, permitindo atualização com o contexto atual antes da reestabilização. Maior Abertura amplifica o grau de reescrita.",
+      "reconsolidation": "Cada ato de recuperação desestabiliza o traço de memória, permitindo que ele seja atualizado com o contexto atual antes de se estabilizar de novo. Maior Emocionalidade amplia o grau de reescrita, tornando as memórias mais adaptáveis, porém menos estáveis.",
       "rif": "Recuperar uma memória alvo inibe ativamente concorrentes relacionados por supressão lateral. Maior Conscienciosidade fortalece essa supressão.",
-      "involuntaryRecall": "Pistas contextuais podem desencadear ativação espontânea de memórias associadas sem busca deliberada. Maior Abertura reduz o limiar de ativação.",
+      "involuntaryRecall": "Pistas contextuais podem disparar a ativação espontânea de memórias associadas sem busca deliberada. Maior Abertura aumenta a chance de uma recordação involuntária, produzindo mais conexões inesperadas.",
       "fok": "Um julgamento metacognitivo sobre a probabilidade de recuperação bem-sucedida. Maior Extraversão amplifica os sinais FOK.",
-      "temporalGist": "Ao longo do tempo, detalhes literais decaem enquanto a essência semântica é preservada por abstração. Menor Conscienciosidade acelera a perda de detalhes.",
-      "schemaEncoding": "Novas informações são assimiladas em esquemas de conhecimento existentes. Maior Abertura permite modificação de esquemas mais flexível.",
-      "sourceConfidence": "A memória da fonte de informação decai mais rápido que o conteúdo informacional. Maior Honestidade-Humildade aumenta o ceticismo em relação a fontes incertas.",
+      "temporalGist": "Com o tempo, os detalhes literais se perdem enquanto a essência semântica é preservada por abstração. Este é o único mecanismo que a personalidade não ajusta.",
+      "schemaEncoding": "Novas informações são assimiladas a esquemas de conhecimento existentes, e o material coerente com o esquema é codificado com mais facilidade. Maior Abertura reforça o impulso de codificação para informações que violam um esquema.",
+      "sourceConfidence": "A memória da fonte de uma informação (quem disse, onde foi lida) decai mais rápido do que o próprio conteúdo. Maior Honestidade-Humildade faz as próprias inferências e reflexões do agente perderem confiança mais rápido.",
       "emotionRegulation": "A intensidade emocional ligada às memórias é ativamente modulada durante a recuperação e consolidação. Maior Amabilidade aumenta a suavização emocional."
     },
     "citations": {
@@ -1220,12 +1220,12 @@
     "ctaLearnMore": "Explorar Memória Cognitiva",
     "ctaSoulWiki": "Wiki de memória em Markdown",
     "memoryTypes": {
-      "title": "Hierarquia de Memoria de 4 Niveis",
-      "subtitle": "De rascunhos volateis a grafos de conhecimento permanentes — cada nivel se consolida automaticamente.",
+      "title": "Quatro tipos de memória",
+      "subtitle": "A memória de trabalho guarda a sessão atual. Os traços episódicos decaem segundo a curva de Ebbinghaus, e uma etapa de consolidação (a cada hora por padrão) resume grupos deles em memória semântica com um LLM. Um observador opcional comprime conversas longas em notas.",
       "working": {
         "name": "Memoria de Trabalho",
-        "description": "Bloco de notas de curto prazo para o turno atual. Limpo entre sessoes.",
-        "detail": "~128k tokens, volatil"
+        "description": "Espaços de curto prazo para a sessão atual, limpos quando uma nova sessão começa.",
+        "detail": "7 espaços, de 5 a 9 conforme os traços"
       },
       "episodic": {
         "name": "Memoria Episodica",
@@ -1239,26 +1239,26 @@
       },
       "observational": {
         "name": "Memoria Observacional",
-        "description": "Resumos comprimidos de interacoes passadas. Compressao 3-10x via LLM.",
-        "detail": "Autoconsolidacao a partir de episodica"
+        "description": "Notas opcionais do observador. Quando uma conversa passa de um limite de tokens, um LLM extrai notas e depois as comprime e reflete sobre elas.",
+        "detail": "Opcional, requer um LLM"
       },
-      "flowLabel": "Pipeline de Consolidacao"
+      "flowLabel": "Consolidação: de episódica a semântica"
     },
     "ragPipeline": {
       "title": "Pipeline RAG Multimodal",
-      "subtitle": "Ingestao de documentos, imagens, audio — recuperacao com multiplas estrategias.",
+      "subtitle": "Ingira documentos, imagens e áudio e depois recupere com várias estratégias.",
       "steps": {
         "ingest": {
           "name": "Ingerir",
-          "description": "10 carregadores: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, imagens, audio, video"
+          "description": "8 carregadores de documentos para PDF, DOCX, Markdown, HTML, URLs, TXT, CSV, JSON e YAML; imagens e áudio passam pelo MultimodalIndexer"
         },
         "chunk": {
           "name": "Fragmentar",
-          "description": "4 estrategias: tamanho fixo, sentenca, recursivo, semantico"
+          "description": "4 estratégias: fixa, semântica, hierárquica, por layout"
         },
         "embed": {
           "name": "Embutir",
-          "description": "OpenAI, Ollama, Cohere, embeddings personalizados"
+          "description": "OpenAI, Gemini, Ollama, OpenRouter ou qualquer endpoint compatível com OpenAI"
         },
         "store": {
           "name": "Armazenar",

@@ -1165,7 +1165,7 @@
   "cognitive": {
     "badge": "Neuroscience-Backed",
     "title": "Cognitive Memory",
-    "subtitle": "8 memory mechanisms inspired by cognitive science research. All modulated by the agent's HEXACO personality traits.",
+    "subtitle": "8 memory mechanisms inspired by cognitive science research. The agent's HEXACO traits tune seven of them.",
     "mechanisms": {
       "reconsolidation": "Reconsolidation",
       "rif": "Retrieval-Induced Forgetting",
@@ -1187,23 +1187,23 @@
       "emotionRegulation": "Emotional valence of memories is modulated over time"
     },
     "modulators": {
-      "reconsolidation": "Openness",
+      "reconsolidation": "Emotionality",
       "rif": "Conscientiousness",
       "involuntaryRecall": "Openness",
       "fok": "Extraversion",
-      "temporalGist": "Conscientiousness",
+      "temporalGist": "Not modulated",
       "schemaEncoding": "Openness",
       "sourceConfidence": "Honesty-Humility",
       "emotionRegulation": "Agreeableness"
     },
     "research": {
-      "reconsolidation": "Each act of retrieval destabilizes the memory trace, allowing it to be updated with current context before re-stabilizing. Higher Openness amplifies the degree of rewrite, making memories more adaptive but less stable.",
+      "reconsolidation": "Each act of retrieval destabilizes the memory trace, allowing it to be updated with current context before re-stabilizing. Higher Emotionality amplifies the degree of rewrite, making memories more adaptive but less stable.",
       "rif": "Retrieving a target memory actively inhibits related competitors via lateral suppression. Higher Conscientiousness strengthens this suppression, keeping retrieval focused but increasing forgetting of peripheral associations.",
-      "involuntaryRecall": "Contextual cues can trigger spontaneous activation of associated memories without deliberate search. Higher Openness lowers the activation threshold, producing more frequent involuntary recalls and serendipitous connections.",
+      "involuntaryRecall": "Contextual cues can trigger spontaneous activation of associated memories without deliberate search. Higher Openness raises the chance of an involuntary recall, producing more serendipitous connections.",
       "fok": "A metacognitive judgment about the likelihood of successful retrieval, even before the answer surfaces. Higher Extraversion amplifies FOK signals, making the agent more confident in its sense of 'almost knowing.'",
-      "temporalGist": "Over time, verbatim details decay while the semantic gist is preserved through abstraction. Lower Conscientiousness accelerates detail loss, leaving only the core meaning behind.",
-      "schemaEncoding": "New information is assimilated into existing knowledge schemas, with schema-consistent material encoded more readily. Higher Openness allows more flexible schema modification, enabling novel information to reshape existing structures.",
-      "sourceConfidence": "Memory for the source of information (who said it, where it was read) decays faster than the information content itself. Higher Honesty-Humility increases skepticism toward uncertain sources, treating low-confidence provenance as unreliable.",
+      "temporalGist": "Over time, verbatim details decay while the semantic gist is preserved through abstraction. This is the one mechanism personality does not tune.",
+      "schemaEncoding": "New information is assimilated into existing knowledge schemas, with schema-consistent material encoded more readily. Higher Openness strengthens the encoding boost for information that violates a schema.",
+      "sourceConfidence": "Memory for the source of information (who said it, where it was read) decays faster than the information content itself. Higher Honesty-Humility makes the agent's own inferences and reflections lose confidence faster.",
       "emotionRegulation": "The emotional intensity attached to memories is actively modulated during retrieval and consolidation. Higher Agreeableness increases emotional smoothing, dampening extreme valence over time for more balanced recall."
     },
     "citations": {
@@ -1220,12 +1220,12 @@
     "ctaLearnMore": "Explore Cognitive Memory",
     "ctaSoulWiki": "Markdown Memory Wiki",
     "memoryTypes": {
-      "title": "4-Tier Memory Hierarchy",
-      "subtitle": "From volatile scratchpads to permanent knowledge graphs — each tier consolidates upward automatically.",
+      "title": "Four Kinds of Memory",
+      "subtitle": "Working memory holds the current session. Episodic traces decay along the Ebbinghaus curve, and a consolidation pass (hourly by default) summarizes clusters of them into semantic memory with an LLM. An optional observer compresses long conversations into notes.",
       "working": {
         "name": "Working Memory",
-        "description": "Short-term scratchpad for the current conversation turn. Cleared between sessions.",
-        "detail": "~128k tokens, volatile"
+        "description": "Short-term slots for the current session, cleared when a new session starts.",
+        "detail": "7 slots, 5 to 9 by traits"
       },
       "episodic": {
         "name": "Episodic Memory",
@@ -1239,26 +1239,26 @@
       },
       "observational": {
         "name": "Observational Memory",
-        "description": "Compressed summaries of past interactions. 3-10x compression via LLM with temporal reasoning.",
-        "detail": "Auto-consolidation from episodic"
+        "description": "Optional observer notes. Once a conversation passes a token threshold, an LLM extracts notes, then compresses and reflects on them.",
+        "detail": "Opt-in, needs an LLM"
       },
-      "flowLabel": "Consolidation Pipeline"
+      "flowLabel": "Consolidation: episodic to semantic"
     },
     "ragPipeline": {
       "title": "Multimodal RAG Pipeline",
-      "subtitle": "Ingest documents, images, audio — retrieve with multiple strategies.",
+      "subtitle": "Ingest documents, images and audio, then retrieve with several strategies.",
       "steps": {
         "ingest": {
           "name": "Ingest",
-          "description": "10 document loaders: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, images, audio, video"
+          "description": "8 document loaders for PDF, DOCX, Markdown, HTML, URLs, TXT, CSV, JSON and YAML; images and audio go through MultimodalIndexer"
         },
         "chunk": {
           "name": "Chunk",
-          "description": "4 strategies: fixed-size, sentence, recursive, semantic"
+          "description": "4 strategies: fixed, semantic, hierarchical, layout"
         },
         "embed": {
           "name": "Embed",
-          "description": "OpenAI, Ollama, Cohere, custom embeddings"
+          "description": "OpenAI, Gemini, Ollama, OpenRouter or any OpenAI-compatible endpoint"
         },
         "store": {
           "name": "Store",

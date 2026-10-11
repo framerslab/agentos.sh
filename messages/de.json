@@ -1165,7 +1165,7 @@
   "cognitive": {
     "badge": "Neurowissenschaftlich fundiert",
     "title": "Kognitives Gedächtnis",
-    "subtitle": "8 Gedächtnismechanismen inspiriert von kognitionswissenschaftlicher Forschung. Alle moduliert durch die HEXACO-Persönlichkeitsmerkmale des Agenten.",
+    "subtitle": "8 Gedächtnismechanismen nach Erkenntnissen der Kognitionswissenschaft. Die HEXACO-Merkmale des Agenten stimmen sieben davon ab.",
     "mechanisms": {
       "reconsolidation": "Rekonsolidierung",
       "rif": "Abrufinduziertes Vergessen",
@@ -1187,23 +1187,23 @@
       "emotionRegulation": "Die emotionale Valenz von Erinnerungen wird über die Zeit moduliert"
     },
     "modulators": {
-      "reconsolidation": "Offenheit",
+      "reconsolidation": "Emotionalität",
       "rif": "Gewissenhaftigkeit",
       "involuntaryRecall": "Offenheit",
       "fok": "Extraversion",
-      "temporalGist": "Gewissenhaftigkeit",
+      "temporalGist": "Nicht moduliert",
       "schemaEncoding": "Offenheit",
       "sourceConfidence": "Ehrlichkeit-Bescheidenheit",
       "emotionRegulation": "Verträglichkeit"
     },
     "research": {
-      "reconsolidation": "Jeder Abrufakt destabilisiert die Gedächtnisspur und ermöglicht eine Aktualisierung mit aktuellem Kontext vor der Restabilisierung. Höhere Offenheit verstärkt den Grad der Umschreibung.",
+      "reconsolidation": "Jeder Abruf destabilisiert die Gedächtnisspur, sodass sie vor der erneuten Stabilisierung mit dem aktuellen Kontext aktualisiert werden kann. Höhere Emotionalität verstärkt das Ausmaß der Umschreibung und macht Erinnerungen anpassungsfähiger, aber weniger stabil.",
       "rif": "Das Abrufen einer Zielerinnerung hemmt aktiv verwandte Konkurrenten durch laterale Suppression. Höhere Gewissenhaftigkeit verstärkt diese Unterdrückung.",
-      "involuntaryRecall": "Kontextuelle Hinweise können spontane Aktivierung assoziierter Erinnerungen ohne bewusste Suche auslösen. Höhere Offenheit senkt die Aktivierungsschwelle.",
+      "involuntaryRecall": "Kontextreize können verknüpfte Erinnerungen ohne bewusste Suche spontan aktivieren. Höhere Offenheit erhöht die Wahrscheinlichkeit eines unwillkürlichen Erinnerns und erzeugt mehr zufällige Verbindungen.",
       "fok": "Ein metakognitives Urteil über die Wahrscheinlichkeit eines erfolgreichen Abrufs. Höhere Extraversion verstärkt FOK-Signale.",
-      "temporalGist": "Über die Zeit verfallen wörtliche Details, während der semantische Kern durch Abstraktion erhalten bleibt. Geringere Gewissenhaftigkeit beschleunigt den Detailverlust.",
-      "schemaEncoding": "Neue Informationen werden in bestehende Wissensschemata assimiliert. Höhere Offenheit ermöglicht flexiblere Schema-Modifikation.",
-      "sourceConfidence": "Das Gedächtnis für die Quelle von Informationen verfällt schneller als der Informationsinhalt selbst. Höhere Ehrlichkeit-Bescheidenheit erhöht die Skepsis gegenüber unsicheren Quellen.",
+      "temporalGist": "Mit der Zeit verblassen wörtliche Details, während der semantische Kern durch Abstraktion erhalten bleibt. Es ist der einzige Mechanismus, den die Persönlichkeit nicht abstimmt.",
+      "schemaEncoding": "Neue Informationen werden in bestehende Wissensschemata eingeordnet, und schemakonformes Material wird leichter enkodiert. Höhere Offenheit verstärkt den Enkodierungsbonus für Informationen, die einem Schema widersprechen.",
+      "sourceConfidence": "Die Erinnerung an die Quelle einer Information (wer es gesagt hat, wo man es gelesen hat) verfällt schneller als der Inhalt selbst. Höhere Ehrlichkeit-Bescheidenheit lässt die eigenen Schlussfolgerungen und Reflexionen des Agenten schneller an Vertrauen verlieren.",
       "emotionRegulation": "Die an Erinnerungen gebundene emotionale Intensität wird bei Abruf und Konsolidierung aktiv moduliert. Höhere Verträglichkeit erhöht die emotionale Glättung."
     },
     "citations": {
@@ -1220,12 +1220,12 @@
     "ctaLearnMore": "Kognitives Gedächtnis erkunden",
     "ctaSoulWiki": "Markdown-Gedächtnis-Wiki",
     "memoryTypes": {
-      "title": "4-stufige Speicherhierarchie",
-      "subtitle": "Von fluechtigem Arbeitsspeicher bis zu permanenten Wissensgraphen — jede Stufe konsolidiert automatisch nach oben.",
+      "title": "Vier Arten von Gedächtnis",
+      "subtitle": "Das Arbeitsgedächtnis hält die aktuelle Sitzung. Episodische Spuren verfallen entlang der Ebbinghaus-Kurve, und ein Konsolidierungslauf (standardmäßig stündlich) fasst Gruppen davon mit einem LLM zu semantischem Gedächtnis zusammen. Ein optionaler Beobachter verdichtet lange Gespräche zu Notizen.",
       "working": {
         "name": "Arbeitsspeicher",
-        "description": "Kurzzeit-Zwischenspeicher fuer den aktuellen Gespraechszug. Wird zwischen Sitzungen geleert.",
-        "detail": "~128k Token, fluechtig"
+        "description": "Kurzzeit-Slots für die aktuelle Sitzung, geleert, wenn eine neue Sitzung beginnt.",
+        "detail": "7 Slots, je nach Merkmalen 5 bis 9"
       },
       "episodic": {
         "name": "Episodisches Gedaechtnis",
@@ -1239,26 +1239,26 @@
       },
       "observational": {
         "name": "Beobachtungsgedaechtnis",
-        "description": "Komprimierte Zusammenfassungen vergangener Interaktionen. 3-10x Kompression via LLM.",
-        "detail": "Autokonsolidierung aus episodisch"
+        "description": "Optionale Beobachter-Notizen. Sobald ein Gespräch eine Token-Schwelle überschreitet, extrahiert ein LLM Notizen, verdichtet sie und reflektiert darüber.",
+        "detail": "Optional, braucht ein LLM"
       },
-      "flowLabel": "Konsolidierungspipeline"
+      "flowLabel": "Konsolidierung: episodisch zu semantisch"
     },
     "ragPipeline": {
       "title": "Multimodale RAG-Pipeline",
-      "subtitle": "Dokumente, Bilder, Audio einlesen — mit mehreren Strategien abrufen.",
+      "subtitle": "Dokumente, Bilder und Audio einlesen und dann mit mehreren Strategien abrufen.",
       "steps": {
         "ingest": {
           "name": "Einlesen",
-          "description": "10 Dokumentlader: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, Bilder, Audio, Video"
+          "description": "8 Dokumentlader für PDF, DOCX, Markdown, HTML, URLs, TXT, CSV, JSON und YAML; Bilder und Audio laufen über MultimodalIndexer"
         },
         "chunk": {
           "name": "Aufteilen",
-          "description": "4 Strategien: Feste Groesse, Satz, rekursiv, semantisch"
+          "description": "4 Strategien: fest, semantisch, hierarchisch, layoutbasiert"
         },
         "embed": {
           "name": "Einbetten",
-          "description": "OpenAI, Ollama, Cohere, benutzerdefinierte Einbettungen"
+          "description": "OpenAI, Gemini, Ollama, OpenRouter oder jeder OpenAI-kompatible Endpunkt"
         },
         "store": {
           "name": "Speichern",
