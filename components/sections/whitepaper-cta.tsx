@@ -109,7 +109,7 @@ export function WhitepaperCTA() {
                 },
                 {
                   title: 'Reproducibility',
-                  body: 'Per-case run JSONs at seed=42, single-CLI reproduction, MIT-licensed bench at github.com/framerslab/agentos-bench',
+                  body: 'Reproduction from one CLI, bootstrap CIs seeded with --seed, Apache-2.0 bench at github.com/framerslab/agentos-bench',
                 },
               ].map((card) => (
                 <div
