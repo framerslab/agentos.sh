@@ -306,11 +306,10 @@ function StateSurfacesDiagram() {
     { label: 'User context', detail: 'skillLevel · sentiment' },
     { label: 'Task context', detail: 'complexity · goal · phase' },
     { label: 'Working memory', detail: 'imprints persist across turns' },
-    { label: 'HEXACO traits', detail: 'via AdaptPersonalityTool + drift' },
   ]
 
   return (
-    <svg viewBox="0 0 800 280" className="w-full h-auto" role="img" aria-label="Five state surfaces metaprompts mutate">
+    <svg viewBox="0 0 800 280" className="w-full h-auto" role="img" aria-label="Four state surfaces metaprompts mutate">
       <defs>
         <radialGradient id="state-center" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="var(--color-accent-primary)" stopOpacity={0.18} />
@@ -328,12 +327,14 @@ function StateSurfacesDiagram() {
         applyMetapromptUpdates()
       </text>
 
-      {/* Five surface nodes positioned radially */}
+      {/* Surface nodes positioned radially */}
       {surfaces.map((s, i) => {
         const angle = (i / surfaces.length) * 2 * Math.PI - Math.PI / 2
-        const r = 105
-        const cx = 400 + r * Math.cos(angle)
-        const cy = 140 + r * Math.sin(angle)
+        // Wide ellipse so the side nodes clear the central hub and its label.
+        const rx = 250
+        const ry = 90
+        const cx = 400 + rx * Math.cos(angle)
+        const cy = 140 + ry * Math.sin(angle)
 
         return (
           <g key={i}>
@@ -395,7 +396,7 @@ function StateSurfacesDiagram() {
       })}
 
       <text x={400} y={266} textAnchor="middle" fontSize="10" fill="var(--color-text-muted)">
-        Mutations flow back through callbacks · all reflected in next turn&apos;s prompt
+        Mood, skill and complexity are matched against contextual prompt elements on the next turn
       </text>
     </svg>
   )
@@ -481,10 +482,10 @@ export function AdaptiveSection() {
             className="text-lg max-w-3xl mx-auto"
             style={{ color: 'var(--color-text-secondary)' }}
           >
-            Between turns, metaprompts re-tune mood, inferred user skill, task complexity,
-            working-memory imprints, and HEXACO traits. Three trigger types decide when. Most
-            turns fire nothing — adaptive overhead lands around $0.12 per 1000 turns on
-            gpt-4o-mini at default cadence.
+            Between turns, metaprompts re-tune mood, inferred user skill, task complexity and
+            working-memory imprints. Three trigger types decide when. A turn with no trigger adds
+            no metaprompt call, and the worked example in the docs puts the overhead near $0.12
+            per 1000 turns on gpt-4o-mini.
           </p>
         </motion.div>
 
@@ -581,9 +582,9 @@ export function AdaptiveSection() {
                       </div>
                       <div className="space-y-3">
                         {[
-                          'turn_interval — runs every Nth user turn (counter persists in working memory across sessions)',
-                          'event_based — fires when SentimentTracker emits a matching GMIEvent like USER_FRUSTRATED',
-                          'manual — host code or tools set a flag in working memory; cleared on fire',
+                          'turn_interval: runs every Nth user turn (the counter lives in working memory for the session)',
+                          'event_based: fires when SentimentTracker emits a matching GMIEvent like USER_FRUSTRATED',
+                          'manual: host code or tools set a flag in working memory; cleared on fire',
                         ].map((detail) => (
                           <div
                             key={detail}
@@ -652,11 +653,11 @@ export function AdaptiveSection() {
                       className="text-sm leading-relaxed max-w-3xl mx-auto text-center"
                       style={{ color: 'var(--color-text-secondary)' }}
                     >
-                      Five surfaces, five callbacks. The executor never mutates GMI internals
-                      directly; everything flows through callbacks the GMI registered at
-                      construction. Mood, user context, and task context reset between
-                      sessions; working-memory imprints persist for the session; HEXACO trait
-                      drift persists across sessions through the persona overlay.
+                      Four surfaces. Mood, user skill and task complexity reach the GMI through
+                      callbacks it registered at construction, and imprints go to working memory,
+                      so the executor never touches GMI internals directly. All four last for the
+                      session and reset when a new one starts. HEXACO traits sit outside this
+                      loop; adapt_personality changes them for the life of that GMI.
                     </p>
                   </motion.div>
                 )}
