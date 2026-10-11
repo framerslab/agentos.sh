@@ -127,17 +127,17 @@
     "sectionSubtitle": "Infraestrutura de produção para criar, lançar e escalar agentes IA",
     "multiAgent": {
       "title": "Coordenação multiagente emergente",
-      "description": "Gere pesquisador, analista, crítico e executor a partir de um único objetivo. Contexto, orçamento e aprovações compartilhados mantêm cada ramo sincronizado.",
-      "pill": "🆕 v0.1.3",
+      "description": "Coloque agentes pesquisador, analista, crítico e executor no mesmo objetivo e deixe um gerente hierárquico criar especialistas quando a equipe não der conta. Limites de tokens e de tempo e portões de aprovação valem para a equipe toda.",
+      "pill": "6 estratégias",
       "bullet1": "Roteamento determinístico ou fan-out adaptativo",
-      "bullet2": "Citações + memória costuradas automaticamente"
+      "bullet2": "Provedores e modelos por agente"
     },
     "toolPacks": {
       "title": "Packs de ferramentas e guardrails",
-      "description": "Extensões opinativas para busca, visão, execução de código ou APIs customizadas, com permissões e retries embutidos.",
+      "description": "Adicione extensões curadas para busca, visão, execução de código ou suas próprias APIs. Um gerenciador de permissões verifica cada chamada de ferramenta contra as capacidades da persona.",
       "pill": "Ecossistema de extensões",
       "bullet1": "Registro de ferramentas baseado em manifesto",
-      "bullet2": "Presets de guardrails + etiquetas de conformidade"
+      "bullet2": "Seis pacotes de guardrails opcionais"
     },
     "language": {
       "title": "Idioma e tradução",
@@ -148,66 +148,45 @@
     },
     "storage": {
       "title": "Armazenamento e implantação",
-      "description": "7 backends de armazenamento vetorial com auto-scaling de 4 níveis (SQLite → HNSW → Postgres+pgvector → Qdrant). Migração entre todos os backends com um comando. Docker auto-setup para Qdrant e Postgres.",
+      "description": "7 backends de armazenamento vetorial. A Memory adiciona um índice HNSW acima de 1,000 traços quando há embeddings, o MigrationEngine move dados entre SQLite, Postgres, Qdrant e Pinecone, e um helper de Docker inicia um Qdrant local.",
       "pill": "Implante em qualquer lugar",
-      "bullet1": "Migração de backend vetorial com um comando",
-      "bullet2": "Docker auto-setup para Qdrant + Postgres"
+      "bullet1": "MigrationEngine para SQLite, Postgres, Qdrant e Pinecone",
+      "bullet2": "Helper de Docker para um Qdrant local"
     },
     "workbench": {
       "title": "Workbench local-first",
-      "description": "Prototipe agências completas no navegador com SQL persistente, scrubber de timeline e marketplace embutido.",
-      "pill": "Offline-ready",
-      "bullet1": "Inspecione raciocínio e traces OpenTelemetry ao vivo",
-      "bullet2": "Sincronize artefatos de volta para a nuvem",
+      "description": "Inspecione sessões do AgentOS num painel local no navegador, com linha do tempo em streaming, compositor de requisições, visões de agências e de planejamento e um executor de avaliações.",
+      "pill": "Roda localmente",
+      "bullet1": "Linha do tempo de texto em streaming, chamadas de ferramentas e erros",
+      "bullet2": "Executor de avaliações e checkpoints de planejamento",
       "bullet3": "Exporte agências em bundles Markdown/JSON"
     },
     "capabilityDiscovery": {
       "title": "Descoberta Inteligente de Capacidades",
-      "description": "Motor de descoberta semântico e em camadas que reduz o contexto de capacidades em ~90%. Busca vetorial + re-ranking por grafo encontra a ferramenta, habilidade ou canal certo na hora certa.",
-      "pill": "~90% Redução de Tokens",
+      "description": "Um mecanismo de descoberta semântico e em camadas coloca no contexto só as capacidades relevantes, dentro de orçamentos de tokens por camada (200, 800 e 2,000 por padrão). Busca vetorial com reordenação por grafo encontra a ferramenta, skill ou canal certo.",
+      "pill": "Contexto em camadas",
       "bullet1": "Montagem de contexto em três camadas com orçamento de tokens",
       "bullet2": "Re-ranking baseado em relações de grafo"
     },
-    "memoryCompression": {
-      "title": "Compressão de Memória Observacional",
-      "description": "Compressão de memória 3-10x baseada em LLM com raciocínio temporal. Consolidação auto-aperfeiçoante que mescla, poda e fortalece memórias ao longo do tempo.",
-      "pill": "Compressão 3-10x",
-      "bullet1": "Raciocínio temporal preserva cadeias causais",
-      "bullet2": "Ciclo de consolidação auto-aperfeiçoante"
-    },
-    "documentIngestion": {
-      "title": "Pipeline de Ingestão de Documentos",
-      "description": "10 carregadores de documentos com extração multimodal. 3 níveis de processamento PDF (básico, OCR, visão). 4 estratégias de chunking (fixo, semântico, recursivo, janela deslizante).",
-      "pill": "10 Carregadores",
-      "bullet1": "3 níveis PDF: básico, OCR, visão",
-      "bullet2": "4 estratégias de chunking incluindo semântico"
-    },
-    "memoryPortability": {
-      "title": "Importação / Exportação de Memória",
-      "description": "Importe e exporte memória de agente em 10 formatos incluindo cofre Obsidian, exportações ChatGPT, Markdown, JSON e CSV. Migração com um comando entre os 7 backends vetoriais.",
-      "pill": "10 Formatos",
-      "bullet1": "Importação de cofre Obsidian + ChatGPT",
-      "bullet2": "Migração de backend com um comando"
-    },
     "guardrails": {
       "title": "Guardrails e Segurança",
-      "description": "Moderação de conteúdo, detecção de PII e verificações de conformidade integradas. Disjuntores, controles de custo e detecção de travamento previnem loops descontrolados e gastos excessivos.",
+      "description": "Pacotes opcionais para moderação de conteúdo, ocultação de PII e verificação de fundamentação. Orçamentos de gasto limitam o custo de uma execução, e circuit breakers tiram de rotação um provedor que está falhando.",
       "pill": "Segurança Empresarial",
-      "bullet1": "Disjuntor + controle de custo + detecção de travamento",
+      "bullet1": "Circuit breakers por provedor + orçamentos de gasto",
       "bullet2": "Filtragem de conteúdo e fluxos de aprovação"
     },
     "streaming": {
       "title": "Runtime de Streaming",
-      "description": "Streaming de tokens em tempo real. Construído para interações de baixa latência com suporte a SSE, WebSockets e transportes personalizados.",
+      "description": "Streaming em nível de token com saída em tempo real. streamText entrega os trechos de texto conforme chegam, e o runtime completo transmite chunks tipados para texto, chamadas de ferramentas e progresso.",
       "pill": "Tempo Real",
       "bullet1": "Entrega token a token",
       "bullet2": "Suporte multi-canal"
     },
     "workflow": {
       "title": "Mecanismo de Workflow",
-      "description": "Defina workflows complexos de múltiplas etapas com ramificação condicional, execução paralela e lógica de retry automática.",
+      "description": "Defina workflows de várias etapas como grafos. A estratégia graph roda agentes independentes em paralelo, o AgentGraph roteia por condições e as etapas de ferramenta repetem com backoff.",
       "pill": "Orquestração",
-      "bullet1": "Construtor visual de workflow",
+      "bullet1": "Políticas de retry com backoff exponencial",
       "bullet2": "Execução paralela de tarefas"
     }
   },
@@ -256,15 +235,15 @@
   "skipToMain": "Ir para o conteúdo principal",
   "enterprise": {
     "title": "Infraestrutura Pronta para Empresas",
-    "subtitle": "Segurança de 5 níveis, 6 extensões de guardrails, 11 provedores LLM, 37 canais e memória cognitiva — pronto para produção desde o primeiro dia",
+    "subtitle": "Guardrails de segurança, 13 provedores de LLM, 37 adaptadores de canal e memória cognitiva em um único runtime open source",
     "features": {
       "security": {
         "title": "Segurança de 5 Níveis",
         "items": [
-          "Níveis Dangerous, Permissive, Balanced, Strict, Paranoid",
-          "Análise de sentimento LLM com fallback por keywords",
-          "Presets de segurança configuráveis por agente",
-          "Defesa contra injeção de prompt integrada"
+          "Portões de aprovação via CLI, webhook, Slack ou um juiz LLM",
+          "Orçamentos de gasto que recusam uma chamada acima do limite",
+          "Criação de ferramentas revisada por um juiz, em um sandbox node:vm",
+          "Classificador opcional de injeção de prompt (pacote ml-classifiers)"
         ]
       },
       "guardrails": {
@@ -272,7 +251,7 @@
         "items": [
           "Redação e anonimização de PII",
           "Moderação de conteúdo por classificador ML",
-          "Segurança de código e execução em sandbox",
+          "Análise estática do código gerado em busca de padrões perigosos",
           "Grounding guard, filtro de topicality, reescritor de política de conteúdo"
         ]
       },
@@ -289,9 +268,9 @@
         "title": "Auditoria e Observabilidade",
         "items": [
           "Telemetria compatível com OpenTelemetry (OTLP)",
-          "Registro completo de auditoria de todas as ações do agente",
-          "Monitoramento em tempo real e detecção de anomalias",
-          "Guardas de custo, circuit breakers, detecção de travamento"
+          "Registro de proveniência assinado das gravações no armazenamento",
+          "Uso de tokens e custo por sessão",
+          "Proteções de custo e circuit breakers por provedor"
         ]
       },
       "soc2": {
@@ -305,8 +284,8 @@
       "scale": {
         "title": "Escala de Produção",
         "items": [
-          "115 extensões, 88 skills curados",
-          "11 provedores LLM, 37 adaptadores de canal",
+          "Mais de 100 extensões curadas, 88 skills curadas",
+          "13 provedores de LLM, 37 adaptadores de canal",
           "Geração de vídeo, áudio e imagem",
           "Agentes auto-aperfeiçoantes com forja de ferramentas"
         ]
@@ -315,7 +294,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "Totalmente Implementado",
-        "description": "Segurança de 5 níveis, 6 guardrails, redação PII, registro de auditoria, memória cognitiva e 115 extensões estão prontos para produção hoje"
+        "description": "Ocultação de PII, classificadores de injeção e toxicidade, o registro de proveniência assinado, a memória cognitiva e mais de 100 extensões curadas são open source e já estão disponíveis"
       },
       "inProgress": {
         "title": "Trilha de Auditoria",
@@ -648,31 +627,31 @@
     "layers": {
       "channels": {
         "name": "Canais e I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter e mais 32. Voz via 12 provedores de STT + 12 de TTS. Cada adaptador de canal transmite tokens em tempo real através de um protocolo unificado."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter e mais 32. Voz via 12 provedores STT e 13 TTS. Cada adaptador de canal implementa uma única interface, com indicador de digitação e edição de mensagens onde a plataforma permite."
       },
       "guardrails": {
         "name": "Guardrails e Segurança",
-        "description": "Cada chunk de saída é avaliado em tempo real. Redação de PII, detecção de toxicidade, grounding contra alucinação e análise de segurança de código — configurável de permissivo a totalmente bloqueado."
+        "description": "Guardrails que optam por streaming verificam o texto enquanto ele é transmitido; os demais verificam a resposta final. Seis pacotes opcionais cobrem ocultação de PII, classificadores de toxicidade e injeção, verificação contra fontes, controle de tema, reescrita por política de conteúdo e segurança de código."
       },
       "tools": {
         "name": "Ferramentas e Extensões",
-        "description": "Pesquisa web, automação de navegador, geração de imagens, execução de shell, postagem em redes sociais. 115 extensões e 88 skills curadas. A descoberta de capacidades encontra a ferramenta certa semanticamente."
+        "description": "Busca na web, automação de navegador, geração de imagens, execução de shell, publicação em redes sociais. Mais de 100 extensões curadas e 88 skills curadas. A descoberta de capacidades encontra a ferramenta certa por semântica."
       },
       "orchestration": {
         "name": "Orquestração",
-        "description": "Estratégias sequencial, paralela, debate, hierárquica, review-loop e graph. Planejamento Tree-of-Thought. Checkpointing de missão com semântica de fork e resume."
+        "description": "Estratégias sequencial, paralela, debate, hierárquica, review-loop e grafo. Planejamento ReAct. Checkpoints de missão com semântica de fork e resume."
       },
       "memory": {
         "name": "Memória",
-        "description": "Decaimento de Ebbinghaus, reconsolidação, esquecimento induzido por recuperação, recordação involuntária, sensação de saber, gist temporal, codificação de esquemas, decaimento de confiança da fonte. Recuperação HyDE + GraphRAG em 7 backends de vetor."
+        "description": "Oito mecanismos sobre o decaimento de Ebbinghaus: reconsolidação, esquecimento induzido por recuperação, recordação involuntária, sensação de saber, essência temporal, codificação por esquemas, decaimento da confiança na fonte e regulação emocional. Recuperação HyDE + GraphRAG em 7 backends vetoriais."
       },
       "personality": {
         "name": "Personalidade (HEXACO)",
-        "description": "Honestidade-Humildade, Emocionalidade, Extroversão, Amabilidade, Conscienciosidade, Abertura. Os traços modulam a codificação de memória, o estilo de comunicação e a tolerância ao risco."
+        "description": "Honestidade-Humildade, Emocionalidade, Extroversão, Amabilidade, Conscienciosidade, Abertura. Os traços definem diretivas de estilo de comunicação no prompt e ajustam a codificação da memória, a capacidade da memória de trabalho e sete dos oito mecanismos de memória."
       },
       "llmCore": {
         "name": "Núcleo LLM",
-        "description": "11 provedores de LLM com cadeias de fallback automáticas. Design de API provider-first. O motor de pensamento no coração de cada GMI."
+        "description": "13 provedores de LLM com cadeias de fallback automáticas. Design de API provider-first. O motor de raciocínio no centro de cada GMI."
       }
     },
     "comparison": {
@@ -704,7 +683,7 @@
   },
   "ecosystem": {
     "title": "O Ecossistema AgentOS",
-    "subtitle": "Explore o ecossistema AgentOS pronto para produção que alimenta inteligência adaptativa, emergente e permanente — SDKs, agentes, utilitários de RAG e kits de implantação para equipes de IA empresariais.",
+    "subtitle": "Explore o ecossistema open source do AgentOS: RAG multimodal, orquestração multiagente, 37 adaptadores de canal, 13 provedores de LLM e mais de 100 extensões curadas.",
     "stats": {
       "repositories": "Repositórios",
       "weeklyDownloads": "Downloads Semanais",
@@ -740,82 +719,6 @@
       "followOnGithub": "Seguir no GitHub",
       "joinDiscord": "Entrar na Comunidade do Discord",
       "contributeCode": "Contribuir com Código"
-    }
-  },
-  "codeExamples": {
-    "badge": "Exemplos de Código",
-    "title": "Construa com AgentOS",
-    "subtitle": "Exemplos de código e padrões prontos para produção para construir sistemas inteligentes de agentes",
-    "categories": {
-      "all": "Todos os Exemplos",
-      "basic": "Básico",
-      "advanced": "Avançado",
-      "integration": "Integração",
-      "deployment": "Implantação"
-    },
-    "selectExample": "Selecionar Exemplo",
-    "tabs": {
-      "synchronous": "Síncrono",
-      "streaming": "Streaming"
-    },
-    "copyButton": "Copiar código",
-    "docsButton": "Ver Documentação",
-    "runButton": "Testar no Playground",
-    "examples": {
-      "basicAgent": {
-        "title": "Crie Seu Primeiro Agente",
-        "description": "Configuração básica de agente com memória e ferramentas"
-      },
-      "gmiRoles": {
-        "title": "Papéis de vários provedores em uma agência",
-        "description": "Uma agência, três provedores, um grafo de dependências"
-      },
-      "memorySystem": {
-        "title": "Personalidade e Memória Cognitiva",
-        "description": "Traços de personalidade HEXACO com decaimento de Ebbinghaus e histórico de sessão"
-      },
-      "toolIntegration": {
-        "title": "Pipeline de RAG",
-        "description": "Ingerir documentos e recuperar contexto com embeddings HyDE"
-      },
-      "skillsIntegration": {
-        "title": "Skills e Extensões",
-        "description": "Navegue pelo catálogo curado e registre extensões programaticamente"
-      },
-      "realtimeStream": {
-        "title": "Respostas em Streaming em Tempo Real",
-        "description": "Receba respostas do agente via streaming para uma melhor UX"
-      },
-      "deployment": {
-        "title": "Implantação em Produção",
-        "description": "Implante AgentOS com Docker e Kubernetes"
-      },
-      "emergentTools": {
-        "title": "Ferramentas Emergentes",
-        "description": "Habilite a forja de ferramentas em runtime — agentes criam novas ferramentas quando encontram lacunas de capacidade"
-      },
-      "missionOrchestrator": {
-        "title": "Orquestrador de Missão",
-        "description": "Descreva um objetivo em linguagem natural — o planejador o decompõe em agentes"
-      },
-      "voiceAgent": {
-        "title": "Agente de Voz com Ferramentas",
-        "description": "Construa um agente habilitado para voz com STT, TTS e chamada de funções"
-      },
-      "orchestrationGraph": {
-        "title": "Grafo de Execução (Loop de Revisão)",
-        "description": "Construa um workflow cíclico de revisão com gates de aprovação humana"
-      },
-      "imageGeneration": {
-        "title": "Saída Estruturada (Zod)",
-        "description": "Extraia dados tipados e validados de texto não estruturado com qualquer provedor"
-      }
-    },
-    "cta": {
-      "title": "Pronto para Construir Seu Primeiro Agente?",
-      "description": "Comece com AgentOS em menos de 5 minutos. Instale o SDK e siga nosso tutorial interativo.",
-      "button": "Começar a Construir",
-      "time": "5 min"
     }
   },
   "about": {
@@ -1089,11 +992,11 @@
       "workflowDsl": "DSL de Workflow",
       "protocols": "Protocolos",
       "guardrailMode": "Modo Guardrail",
-      "connectionStability": "Estabilidade de Conexao",
+      "chunkTypes": "Tipos de chunk",
       "dimensions": "Dimensoes",
-      "presets": "Presets de Agente",
-      "styleAdaptation": "Adaptacao de Estilo",
-      "securityTiers": "Niveis de Seguranca",
+      "tunedMechanisms": "Mecanismos ajustados",
+      "workingMemory": "Memória de trabalho",
+      "guardrailPacks": "Pacotes de guardrails",
       "piiLayers": "Camadas PII",
       "mlClassifiers": "Classificadores ML",
       "sttProviders": "Provedores STT",
@@ -1121,7 +1024,7 @@
       },
       "graphRag": {
         "title": "RAG Baseado em Grafo",
-        "description": "7 backends de armazenamento vetorial com recuperacao HyDE, deteccao de comunidades GraphRAG e 10 carregadores de documentos",
+        "description": "7 backends de armazenamento vetorial com recuperação HyDE, detecção de comunidades GraphRAG e 8 carregadores de documentos",
         "features": [
           "Embeddings hipoteticos HyDE",
           "Deteccao de comunidades Louvain",
@@ -1136,7 +1039,7 @@
       },
       "orchestration": {
         "title": "Orquestração Multi-Agente",
-        "description": "6 estrategias de sequencial a baseada em grafos com Mission API, planejamento Tree-of-Thought e workflow DSL",
+        "description": "6 estratégias, do sequencial ao baseado em grafos, com Mission API, planejamento ReAct e workflow DSL",
         "features": [
           "Sequencial e paralelo",
           "Debate e review-loop",
@@ -1166,22 +1069,22 @@
       },
       "hexaco": {
         "title": "Personalidade HEXACO (Opcional)",
-        "description": "Vetor de personalidade de 6 dimensões com adesão opcional. Quando ativado, influencia a recuperação de memória, estilo de comunicação e tomada de decisão no nível do kernel (não no prompt). Se omitido, o tempo de execução permanece neutro em relação à personalidade.",
+        "description": "Vetor de personalidade opcional de 6 dimensões. agent() escreve os traços acima de 0.65 ou abaixo de 0.35 no prompt de sistema como diretivas de comportamento, e na memória cognitiva os traços ajustam sete dos oito mecanismos. Se omitido, o runtime permanece neutro em personalidade.",
         "features": [
           "Modelagem de tracos de 6 eixos",
           "Modulacao de memoria",
-          "Adaptacao de estilo",
-          "9 presets de agente"
+          "Diretivas no prompt",
+          "Capacidade da memória de trabalho"
         ],
         "capabilities": [
           "Trait Engine",
           "Modulacao Cognitiva",
-          "Estilo Adaptativo"
+          "Ferramenta adapt_personality"
         ]
       },
       "guardrails": {
         "title": "Segurança Integrada",
-        "description": "Niveis de seguranca de perigoso a paranoico com redacao PII, classificadores ML e deteccao de alucinacoes",
+        "description": "Seis pacotes de guardrails opcionais: classificadores de injeção e toxicidade, ocultação de PII, verificação das respostas contra as fontes, controle de tema, um reescritor de política de conteúdo e um scanner para código gerado",
         "features": [
           "Redacao PII de 4 niveis",
           "Classificadores ONNX BERT",
@@ -1189,16 +1092,16 @@
           "Scan OWASP Top 10"
         ],
         "capabilities": [
-          "Niveis de Seguranca",
+          "Ocultação de PII",
           "Classificadores de Conteudo",
           "Seguranca de Codigo"
         ]
       },
       "voice": {
         "title": "Pipeline de Voz",
-        "description": "12 provedores STT e 12 TTS com streaming em tempo real, VAD, diarizacao de falantes e suporte a telefonia",
+        "description": "12 provedores STT e 13 TTS com streaming em tempo real, VAD, diarização de falantes e suporte a telefonia",
         "features": [
-          "12 STT + 12 TTS",
+          "12 STT + 13 TTS",
           "VAD + diarizacao",
           "Streaming em tempo real",
           "Twilio/Telnyx/Plivo"
@@ -1210,8 +1113,8 @@
         ]
       },
       "providers": {
-        "title": "11 Provedores de LLM",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq e mais 6 com cadeias de fallback automaticas e API provider-first",
+        "title": "13 Provedores de LLM",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq e mais 8 com cadeias de fallback automáticas e API provider-first",
         "features": [
           "Auto fallback (402/429/5xx)",
           "Provider-first API",
@@ -1228,12 +1131,12 @@
   },
   "workbench": {
     "title": "AgentOS Workbench",
-    "description": "O aplicativo de desktop oficial para criar, gerenciar e interagir com experiências AgentOS. Crie agentes de IA poderosos com uma interface visual, teste em tempo real e implante em qualquer lugar.",
+    "description": "Um painel React + Vite que você executa na sua própria máquina para inspecionar e depurar sessões do AgentOS. Acompanhe a saída em streaming numa linha do tempo da sessão, componha e reproduza turnos e rode avaliações nos seus agentes.",
     "badge1": "Licença MIT",
     "badge2": "Código Aberto",
-    "feature1": "Construtor visual de agentes com workflows drag-and-drop",
+    "feature1": "Inspetor de sessão para texto em streaming, chamadas de ferramentas e erros",
     "feature2": "Ferramentas de teste e depuração em tempo real",
-    "feature3": "Implantação em um clique para nuvem ou local",
+    "feature3": "Visualizações de estratégias de agência, checkpoints de planos e recuperação RAG",
     "viewGithub": "Ver no GitHub",
     "downloadLatest": "Baixar Última Versão",
     "downloadComingSoon": "Download (em breve)"
@@ -1241,7 +1144,7 @@
   "cognitive": {
     "badge": "Baseado em Neurociência",
     "title": "Memória Cognitiva",
-    "subtitle": "8 mecanismos de memória inspirados em pesquisa de ciência cognitiva. Todos modulados pelos traços de personalidade HEXACO do agente.",
+    "subtitle": "8 mecanismos de memória inspirados em pesquisas de ciência cognitiva. Os traços HEXACO do agente ajustam sete deles.",
     "mechanisms": {
       "reconsolidation": "Reconsolidação",
       "rif": "Esquecimento Induzido pela Recuperação",
@@ -1263,23 +1166,23 @@
       "emotionRegulation": "A valência emocional das memórias é modulada ao longo do tempo"
     },
     "modulators": {
-      "reconsolidation": "Abertura",
+      "reconsolidation": "Emocionalidade",
       "rif": "Conscienciosidade",
       "involuntaryRecall": "Abertura",
       "fok": "Extraversão",
-      "temporalGist": "Conscienciosidade",
+      "temporalGist": "Sem modulação",
       "schemaEncoding": "Abertura",
       "sourceConfidence": "Honestidade-Humildade",
       "emotionRegulation": "Amabilidade"
     },
     "research": {
-      "reconsolidation": "Cada ato de recuperação desestabiliza o traço de memória, permitindo atualização com o contexto atual antes da reestabilização. Maior Abertura amplifica o grau de reescrita.",
+      "reconsolidation": "Cada ato de recuperação desestabiliza o traço de memória, permitindo que ele seja atualizado com o contexto atual antes de se estabilizar de novo. Maior Emocionalidade amplia o grau de reescrita, tornando as memórias mais adaptáveis, porém menos estáveis.",
       "rif": "Recuperar uma memória alvo inibe ativamente concorrentes relacionados por supressão lateral. Maior Conscienciosidade fortalece essa supressão.",
-      "involuntaryRecall": "Pistas contextuais podem desencadear ativação espontânea de memórias associadas sem busca deliberada. Maior Abertura reduz o limiar de ativação.",
+      "involuntaryRecall": "Pistas contextuais podem disparar a ativação espontânea de memórias associadas sem busca deliberada. Maior Abertura aumenta a chance de uma recordação involuntária, produzindo mais conexões inesperadas.",
       "fok": "Um julgamento metacognitivo sobre a probabilidade de recuperação bem-sucedida. Maior Extraversão amplifica os sinais FOK.",
-      "temporalGist": "Ao longo do tempo, detalhes literais decaem enquanto a essência semântica é preservada por abstração. Menor Conscienciosidade acelera a perda de detalhes.",
-      "schemaEncoding": "Novas informações são assimiladas em esquemas de conhecimento existentes. Maior Abertura permite modificação de esquemas mais flexível.",
-      "sourceConfidence": "A memória da fonte de informação decai mais rápido que o conteúdo informacional. Maior Honestidade-Humildade aumenta o ceticismo em relação a fontes incertas.",
+      "temporalGist": "Com o tempo, os detalhes literais se perdem enquanto a essência semântica é preservada por abstração. Este é o único mecanismo que a personalidade não ajusta.",
+      "schemaEncoding": "Novas informações são assimiladas a esquemas de conhecimento existentes, e o material coerente com o esquema é codificado com mais facilidade. Maior Abertura reforça o impulso de codificação para informações que violam um esquema.",
+      "sourceConfidence": "A memória da fonte de uma informação (quem disse, onde foi lida) decai mais rápido do que o próprio conteúdo. Maior Honestidade-Humildade faz as próprias inferências e reflexões do agente perderem confiança mais rápido.",
       "emotionRegulation": "A intensidade emocional ligada às memórias é ativamente modulada durante a recuperação e consolidação. Maior Amabilidade aumenta a suavização emocional."
     },
     "citations": {
@@ -1296,12 +1199,12 @@
     "ctaLearnMore": "Explorar Memória Cognitiva",
     "ctaSoulWiki": "Wiki de memória em Markdown",
     "memoryTypes": {
-      "title": "Hierarquia de Memoria de 4 Niveis",
-      "subtitle": "De rascunhos volateis a grafos de conhecimento permanentes — cada nivel se consolida automaticamente.",
+      "title": "Quatro tipos de memória",
+      "subtitle": "A memória de trabalho guarda a sessão atual. Os traços episódicos decaem segundo a curva de Ebbinghaus, e uma etapa de consolidação (a cada hora por padrão) resume grupos deles em memória semântica com um LLM. Um observador opcional comprime conversas longas em notas.",
       "working": {
         "name": "Memoria de Trabalho",
-        "description": "Bloco de notas de curto prazo para o turno atual. Limpo entre sessoes.",
-        "detail": "~128k tokens, volatil"
+        "description": "Espaços de curto prazo para a sessão atual, limpos quando uma nova sessão começa.",
+        "detail": "7 espaços, de 5 a 9 conforme os traços"
       },
       "episodic": {
         "name": "Memoria Episodica",
@@ -1315,26 +1218,26 @@
       },
       "observational": {
         "name": "Memoria Observacional",
-        "description": "Resumos comprimidos de interacoes passadas. Compressao 3-10x via LLM.",
-        "detail": "Autoconsolidacao a partir de episodica"
+        "description": "Notas opcionais do observador. Quando uma conversa passa de um limite de tokens, um LLM extrai notas e depois as comprime e reflete sobre elas.",
+        "detail": "Opcional, requer um LLM"
       },
-      "flowLabel": "Pipeline de Consolidacao"
+      "flowLabel": "Consolidação: de episódica a semântica"
     },
     "ragPipeline": {
       "title": "Pipeline RAG Multimodal",
-      "subtitle": "Ingestao de documentos, imagens, audio — recuperacao com multiplas estrategias.",
+      "subtitle": "Ingira documentos, imagens e áudio e depois recupere com várias estratégias.",
       "steps": {
         "ingest": {
           "name": "Ingerir",
-          "description": "10 carregadores: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, imagens, audio, video"
+          "description": "8 carregadores de documentos para PDF, DOCX, Markdown, HTML, URLs, TXT, CSV, JSON e YAML; imagens e áudio passam pelo MultimodalIndexer"
         },
         "chunk": {
           "name": "Fragmentar",
-          "description": "4 estrategias: tamanho fixo, sentenca, recursivo, semantico"
+          "description": "4 estratégias: fixa, semântica, hierárquica, por layout"
         },
         "embed": {
           "name": "Embutir",
-          "description": "OpenAI, Ollama, Cohere, embeddings personalizados"
+          "description": "OpenAI, Gemini, Ollama, OpenRouter ou qualquer endpoint compatível com OpenAI"
         },
         "store": {
           "name": "Armazenar",
@@ -1432,11 +1335,11 @@
       "step3": "Juiz Avalia",
       "step4": "Ferramenta Ativada",
       "step5": "Agente Usa",
-      "description": "Runtime Tool Forging significa que um agente pode escrever para si uma nova função TypeScript no meio da decisão, tê-la revisada por um juiz LLM separado e executá-la dentro de uma sandbox node:vm reforçada (5s de relógio de parede padrão, 128 MB de orçamento de memória nominal, lista de permissões vazia por padrão para fetch/fs/crypto, eval/require/import/process/child_process proibidos estaticamente), tudo antes da próxima jogada. As ferramentas aprovadas são colocadas em um índice pesquisável para reutilização, de modo que o custo se estabiliza após as primeiras forjas em uma sessão.",
+      "description": "A forja de ferramentas em runtime permite que um agente escreva uma nova função JavaScript no meio da tarefa, a submeta à revisão de um juiz LLM separado e a execute antes do próximo turno. O executor padrão é um sandbox node:vm com limite de 5 s de tempo real, bloqueio estático de eval, require, import, process e child_process, e fetch, fs e crypto apenas quando você os concede; ele mede a memória sem limitá-la e não é uma fronteira de segurança. O QuickJSExecutor opcional isola o código e limita sua memória. As ferramentas aprovadas vão para um registro para reutilização.",
       "details": [
         "Modo composable: encadeia ferramentas existentes via etapas de pipeline, seguro por construção",
-        "Modo sandbox: código escrito pelo agente roda em isolamento limitado por memória e tempo",
-        "Ciclo de vida em três níveis: por sessão, por agente, ou promovido ao registro compartilhado",
+        "Modo sandbox: o código escrito pelo agente roda com limite de tempo, em node:vm ou QuickJS",
+        "Três níveis de ciclo de vida (sessão, agente, compartilhado); a promoção move uma ferramenta de sessão para agente",
         "Painel de promoção com juiz duplo: auditor de segurança e revisor de correção devem ambos aprovar",
         "Rastreamento de uso com promoção automática de nível quando os limiares de confiabilidade são atingidos"
       ]
@@ -1455,17 +1358,17 @@
       "observe": "Observar Resultado",
       "update": "Atualizar Estratégia",
       "executeBetter": "Executar Melhor",
-      "circuitBreaker": "Disjuntor em falhas",
-      "styleAdaptation": "Adaptação de estilo (preferências do usuário)",
+      "selfEvaluation": "Autoavaliação por juiz LLM",
+      "skillsAndWorkflows": "Ferramentas de skills e workflows",
       "memoryConsolidation": "Consolidação de memória",
-      "description": "Agentes aprendem com falhas e adaptam sua abordagem ao longo do tempo. O rastreamento de falhas de ferramentas dispara disjuntores para evitar erros repetidos. A adaptação de estilo aprende as preferências do usuário em formalidade, verbosidade e tecnicidade. A consolidação de memória fortalece memórias úteis e deixa as irrelevantes decaírem via curvas de Ebbinghaus."
+      "description": "Com a automelhoria ativada, um agente recebe quatro ferramentas para trabalhar em si mesmo. self_evaluate avalia suas respostas com um juiz LLM, adapt_personality ajusta seus traços HEXACO dentro de um orçamento por sessão, manage_skills ativa e desativa skills, e create_workflow encadeia ferramentas em sequências reutilizáveis. A consolidação da memória fortalece memórias úteis e deixa as irrelevantes decaírem segundo curvas de Ebbinghaus."
     },
     "ctaExploreDocs": "Explorar Capacidades Emergentes"
   },
   "agencySection": {
     "badge": "Orquestração Multi-Agente",
     "title": "Agência Paralela",
-    "subtitle": "Equipes de agentes especializados compartilham estado de execução e contexto RAG por todo o roster. Seis estratégias integradas roteiam saídas entre eles: sequencial, paralela, debate, review-loop, hierárquica ou graph DAG.",
+    "subtitle": "Equipes de agentes especializados trabalham juntas em uma única solicitação. Seis estratégias integradas roteiam saídas entre eles: sequencial, paralela, debate, review-loop, hierárquica ou graph DAG.",
     "codeExampleLabel": "Exemplo de Código",
     "sharedCapabilitiesTitle": "Compartilhado entre Todas as Estratégias",
     "strategies": {
@@ -1526,13 +1429,11 @@
       "illustrator": "Ilustrador"
     },
     "sharedCapabilities": {
-      "sharedMemory": "Memória Compartilhada",
-      "sharedRAG": "RAG Compartilhado",
       "sharedExecState": "Estado de Execução Compartilhado",
       "hitlGates": "Gates de Aprovação HITL",
       "streamingOutput": "Saída em Streaming",
       "resourceControls": "Controles de Recursos",
-      "perAgentGuardrails": "Guardrails por Agente"
+      "perAgentProviders": "Provedores por agente"
     },
     "sharedCapabilitiesScopeNoteLabel": "Escopo:",
     "sharedCapabilitiesScopeNote": "O roster aplica-se dentro de uma única chamada <code>generate()</code>. Entre turnos de <code>session().send()</code> apenas o histórico de mensagens persiste. Veja a <link>documentação da Agency API</link> para padrões de memória.",
@@ -1540,20 +1441,20 @@
   },
   "benchmarks": {
     "badge": "SOTA · LongMemEval · LOCOMO · Phase B N=500",
-    "title": "Benchmarks de Memória com Reader Equivalente",
-    "subtitle": "Comparação honesta e direta: mesmo reader gpt-4o, mesmo dataset, mesma metodologia Phase B N=500, mesmo juiz gpt-4o-2024-08-06 com rubric 2026-04-18.1. Configurações cross-provider são excluídas porque não podem ser reproduzidas a partir das divulgações de metodologia pública.",
+    "title": "Benchmarks de memória com o leitor identificado",
+    "subtitle": "As execuções do AgentOS usam o mesmo conjunto de dados e o mesmo juiz gpt-4o-2024-08-06; os números dos fornecedores são os que cada um publica. O resultado de 85.6% envia quatro das seis categorias de perguntas ao gpt-5-mini, então a tabela também mostra a execução com o gpt-4o respondendo a todas as perguntas.",
     "tabS": "LongMemEval-S (115K tokens)",
     "tabM": "LongMemEval-M (1.5M tokens)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "[82.4%, 88.6%] · $0,0090/correta · 4 segundos de latência média",
+    "highlightSCi": "Roteador de leitor por categoria (gpt-4o + gpt-5-mini) · 84.2% só com gpt-4o, empatado com Mastra OM gpt-4o (84.23%) · $0.0090 por acerto · latência mediana de 3.6 segundos",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "[66.0%, 74.0%] · Primeira biblioteca open source acima de 65% na variante de 1,5M tokens",
-    "matrixIntro": "Reader gpt-4o equivalente, Phase B N=500. Os CIs de bootstrap usam 10.000 reamostragens Mulberry32 com seed=42.",
+    "highlightMCi": "Roteador de leitor por categoria, recuperação top-5 · $0.0078 por acerto · a melhor configuração com GPT-4o do artigo do LongMemEval marca 72.0% em top-10",
+    "matrixIntro": "As linhas do AgentOS e a reexecução do EmergenceMem Simple Fast vêm de execuções do agentos-bench nos conjuntos de 500 perguntas do LongMemEval, avaliadas pelo gpt-4o-2024-08-06 com a rubrica do LongMemEval. As linhas dos fornecedores são os números que cada um publica.",
     "ctaReadAudit": "Ler a Auditoria de Transparência",
-    "ctaSeeRunJsons": "Ver os JSONs de execução no GitHub",
+    "ctaSeeRunJsons": "Ver o agentos-bench no GitHub",
     "ctaBenchmarksPage": "Referência Completa de Benchmarks",
-    "footnote": "Mastra OM 94,9%, Mem0 v3 93,4%, Hindsight 91,4%, agentmemory 96,2% e Supermemory 85,2% todos usam readers cross-provider (gpt-5-mini, gemini-3-pro) ou infraestrutura de plataforma gerenciada onde o modelo do juiz, rubric e seed subjacentes não são publicados. A comparação com reader equivalente acima é o que pode ser reproduzido independentemente a partir da metodologia que cada vendor divulga."
+    "footnote": "Outros resultados publicados no LongMemEval-S incluem agentmemory 96.2% (leitor GPT-4o), Mastra OM 94.9% (leitor gpt-5-mini) e Supermemory 85.2% (leitor gemini-3-pro). O leaderboard do agentos-bench lista cada linha com seu leitor e sua fonte."
   }
 }

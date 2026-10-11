@@ -127,17 +127,17 @@
     "sectionSubtitle": "用于构建、部署和扩展AI代理的生产级基础设施",
     "multiAgent": {
       "title": "涌现式多代理协调",
-      "description": "从单一目标生成研究员、分析师、评论家和执行者角色。共享上下文、预算和审批，确保每个分支同步。",
-      "pill": "🆕 v0.1.3",
+      "description": "让研究员、分析师、评审和执行者智能体围绕同一个目标工作，团队覆盖不了时由分层管理者生成专家。token 与时间上限以及审批关口作用于整个团队。",
+      "pill": "6 种策略",
       "bullet1": "确定性路由或自适应扇出",
-      "bullet2": "自动引用和记忆拼接"
+      "bullet2": "按智能体指定提供商和模型"
     },
     "toolPacks": {
       "title": "工具和护栏包",
-      "description": "为搜索、视觉、代码执行或自定义API提供具有内置权限和重试的固定扩展。",
+      "description": "添加用于搜索、视觉、代码执行或你自己 API 的精选扩展。权限管理器会对照人格的能力检查每一次工具调用。",
       "pill": "扩展生态系统",
       "bullet1": "清单驱动的工具注册表",
-      "bullet2": "护栏预设和合规标签"
+      "bullet2": "六个可选护栏包"
     },
     "language": {
       "title": "语言和翻译",
@@ -148,80 +148,59 @@
     },
     "storage": {
       "title": "存储和部署",
-      "description": "7个向量存储后端，支持4级自动扩展（SQLite → HNSW → Postgres+pgvector → Qdrant）。一键迁移所有后端。Qdrant和Postgres的Docker自动设置。",
+      "description": "7 个向量存储后端。启用嵌入时，Memory 在超过 1,000 条痕迹后添加 HNSW 索引；MigrationEngine 在 SQLite、Postgres、Qdrant 和 Pinecone 之间迁移数据；Docker 辅助工具可启动本地 Qdrant。",
       "pill": "随处部署",
-      "bullet1": "一键向量后端迁移",
-      "bullet2": "Qdrant + Postgres Docker自动设置"
+      "bullet1": "支持 SQLite、Postgres、Qdrant 和 Pinecone 的 MigrationEngine",
+      "bullet2": "用于本地 Qdrant 的 Docker 辅助工具"
     },
     "workbench": {
       "title": "本地优先工作台",
-      "description": "使用持久化SQL、时间线刷新器和内置角色市场在浏览器中原型化整个代理机构。",
-      "pill": "离线可用",
-      "bullet1": "实时检查推理和OpenTelemetry追踪",
-      "bullet2": "将制品同步回云端",
+      "description": "在本地浏览器仪表板中检查 AgentOS 会话，提供流式时间线、请求编写器、代理与规划视图以及评估运行器。",
+      "pill": "本地运行",
+      "bullet1": "流式文本、工具调用和错误的时间线",
+      "bullet2": "评估运行器与规划检查点",
       "bullet3": "将完整代理机构导出为Markdown/JSON包"
     },
     "capabilityDiscovery": {
       "title": "智能能力发现",
-      "description": "语义化分层发现引擎，将能力上下文减少约90%。向量搜索+图重排序在正确的时间找到正确的工具、技能或频道。",
-      "pill": "~90% Token 减少",
+      "description": "语义化、分层的发现引擎只把相关能力放入上下文，并遵守每层的 token 预算（默认 200、800 和 2,000）。向量搜索加图重排找到合适的工具、技能或渠道。",
+      "pill": "分层上下文",
       "bullet1": "三层 Token 预算化上下文组装",
       "bullet2": "基于图的关系重排序"
     },
-    "memoryCompression": {
-      "title": "观察性记忆压缩",
-      "description": "基于LLM的3-10倍记忆压缩，配合时间推理。自我改进的整合机制，随时间合并、修剪和强化记忆。",
-      "pill": "3-10倍压缩",
-      "bullet1": "时间推理保留因果链",
-      "bullet2": "自我改进整合周期"
-    },
-    "documentIngestion": {
-      "title": "文档摄入管道",
-      "description": "10个文档加载器，支持多模态提取。3级PDF处理（基础、OCR、视觉）。4种分块策略（固定、语义、递归、滑动窗口）。",
-      "pill": "10个加载器",
-      "bullet1": "3级PDF：基础、OCR、视觉",
-      "bullet2": "包含语义的4种分块策略"
-    },
-    "memoryPortability": {
-      "title": "记忆导入/导出",
-      "description": "以10种格式导入和导出代理记忆，包括Obsidian库、ChatGPT导出、Markdown、JSON和CSV。一键迁移所有7个向量后端。",
-      "pill": "10种格式",
-      "bullet1": "Obsidian库 + ChatGPT导入",
-      "bullet2": "一键后端迁移"
-    },
     "guardrails": {
       "title": "护栏与安全",
-      "description": "内置内容审核、PII 检测和合规检查。熔断器、成本守护和卡死检测防止失控循环与过度支出。",
+      "description": "用于内容审核、PII 脱敏和事实依据检查的可选护栏包。支出预算为一次运行的成本设上限，熔断器会把出故障的提供商移出轮换。",
       "pill": "企业级安全",
-      "bullet1": "熔断器 + 成本守护 + 卡死检测",
+      "bullet1": "按提供商的熔断器 + 支出预算",
       "bullet2": "内容过滤与审批流程"
     },
     "streaming": {
       "title": "流式运行时",
-      "description": "实时令牌级流式输出。专为低延迟交互而设计,支持 SSE、WebSocket 和自定义传输。",
+      "description": "token 级流式输出，实时返回结果。streamText 在文本增量到达时即时产出，完整运行时则流式发送文本、工具调用和进度等类型化数据块。",
       "pill": "实时",
       "bullet1": "逐令牌交付",
       "bullet2": "多通道支持"
     },
     "workflow": {
       "title": "工作流引擎",
-      "description": "定义具有条件分支、并行执行和自动重试逻辑的复杂多步骤工作流。",
+      "description": "把多步骤工作流定义为图。graph 策略并行运行相互独立的智能体，AgentGraph 按条件路由，工具步骤按退避策略重试。",
       "pill": "编排",
-      "bullet1": "可视化工作流构建器",
+      "bullet1": "带指数退避的重试策略",
       "bullet2": "并行任务执行"
     }
   },
   "enterprise": {
     "title": "企业级基础设施",
-    "subtitle": "5级安全、6个护栏扩展、11个LLM提供商、37个通道和认知记忆 — 从第一天起就可用于生产环境",
+    "subtitle": "安全护栏、13 个 LLM 提供商、37 个渠道适配器和认知记忆，集成于一个开源运行时",
     "features": {
       "security": {
         "title": "5级安全体系",
         "items": [
-          "Dangerous、Permissive、Balanced、Strict、Paranoid五个安全等级",
-          "基于LLM的情感分析，带关键词回退",
-          "每个代理可配置的安全预设",
-          "内置提示注入防御"
+          "通过 CLI、Webhook、Slack 或 LLM 裁判进行审批把关",
+          "超出上限即拒绝调用的支出预算",
+          "经裁判审查的工具锻造，运行于 node:vm 沙箱",
+          "可选的提示注入分类器（ml-classifiers 包）"
         ]
       },
       "guardrails": {
@@ -229,7 +208,7 @@
         "items": [
           "PII编辑和匿名化",
           "ML分类器内容审核",
-          "代码安全和沙箱执行",
+          "对生成代码进行危险模式静态分析",
           "Grounding Guard、主题过滤器、内容策略重写器"
         ]
       },
@@ -246,9 +225,9 @@
         "title": "审计与可观测性",
         "items": [
           "兼容OpenTelemetry的遥测 (OTLP)",
-          "所有代理操作的完整审计日志",
-          "实时监控和异常检测",
-          "成本保护、断路器、卡顿检测"
+          "存储写入的签名溯源账本",
+          "按会话统计的 token 用量与成本",
+          "成本守护与按提供商的熔断器"
         ]
       },
       "soc2": {
@@ -262,8 +241,8 @@
       "scale": {
         "title": "生产规模",
         "items": [
-          "115个扩展，88个精选技能",
-          "11个LLM提供商，37个通道适配器",
+          "100 多个精选扩展，88 个精选技能",
+          "13 个 LLM 提供商，37 个渠道适配器",
           "视频、音频和图像生成",
           "通过工具锻造实现自我改进的代理"
         ]
@@ -272,7 +251,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "完全实现",
-        "description": "5级安全、6个护栏、PII编辑、审计日志、认知记忆和115个扩展今天已可用于生产环境"
+        "description": "PII 脱敏、注入与有害内容分类器、签名溯源账本、认知记忆以及 100 多个精选扩展均已开源，现已可用"
       },
       "inProgress": {
         "title": "审计追踪",
@@ -648,31 +627,31 @@
     "layers": {
       "channels": {
         "name": "通道与 I/O",
-        "description": "Telegram、Discord、Slack、WhatsApp、Twitter 以及另外 32 种。语音通过 12 个 STT 和 12 个 TTS 提供商。每个通道适配器通过统一协议实时流式传输令牌。"
+        "description": "Telegram、Discord、Slack、WhatsApp、Twitter 以及另外 32 个渠道。语音通过 12 个 STT 和 13 个 TTS 提供商实现。每个渠道适配器都实现同一个接口，平台支持时还提供输入状态提示和消息编辑。"
       },
       "guardrails": {
         "name": "护栏与安全",
-        "description": "每个输出块都在实时评估中。PII 编辑、毒性检测、幻觉接地与代码安全扫描 — 可从宽松到完全锁定灵活配置。"
+        "description": "启用流式检查的护栏会在文本流出时检查，其余护栏检查最终回复。六个可选护栏包涵盖 PII 脱敏、有害内容与注入分类器、对照来源核查、话题控制、按内容政策改写以及代码安全。"
       },
       "tools": {
         "name": "工具与扩展",
-        "description": "网络搜索、浏览器自动化、图像生成、Shell 执行、社交发布。115 个扩展和 88 个精选技能。能力发现根据语义找到合适的工具。"
+        "description": "网页搜索、浏览器自动化、图像生成、Shell 执行、社交发布。100 多个精选扩展和 88 个精选技能。能力发现会按语义找到合适的工具。"
       },
       "orchestration": {
         "name": "编排",
-        "description": "顺序、并行、辩论、分层、审查循环和图策略。Tree-of-Thought 规划。具备 fork 和 resume 语义的任务检查点。"
+        "description": "顺序、并行、辩论、分层、复审循环和图策略。ReAct 规划。支持 fork 与 resume 语义的任务检查点。"
       },
       "memory": {
         "name": "记忆",
-        "description": "Ebbinghaus 遗忘、再巩固、检索诱发遗忘、非自主回忆、知晓感、时间要旨、模式编码、来源置信度衰减。在 7 个向量后端上进行 HyDE + GraphRAG 检索。"
+        "description": "在 Ebbinghaus 衰减之上的八种机制：再巩固、提取诱发遗忘、非自主回忆、知晓感、时间要旨、图式编码、来源置信度衰减和情绪调节。跨 7 个向量后端的 HyDE + GraphRAG 检索。"
       },
       "personality": {
         "name": "人格 (HEXACO)",
-        "description": "诚实-谦逊、情绪性、外向性、宜人性、尽责性、开放性。各特质调节记忆编码、沟通风格和风险容忍度。"
+        "description": "诚实-谦逊、情绪性、外向性、宜人性、尽责性、开放性。特质会在提示中设定沟通风格指令，并调节记忆编码、工作记忆容量以及八种记忆机制中的七种。"
       },
       "llmCore": {
         "name": "LLM 核心",
-        "description": "11 个 LLM 提供商,具备自动回退链。Provider-first API 设计。每个 GMI 核心的思考引擎。"
+        "description": "13 个 LLM 提供商，支持自动回退链。provider-first 的 API 设计。每个 GMI 核心的思考引擎。"
       }
     },
     "comparison": {
@@ -973,11 +952,11 @@
       "workflowDsl": "工作流 DSL",
       "protocols": "协议",
       "guardrailMode": "护栏模式",
-      "connectionStability": "连接稳定性",
+      "chunkTypes": "数据块类型",
       "dimensions": "维度",
-      "presets": "代理预设",
-      "styleAdaptation": "风格适应",
-      "securityTiers": "安全等级",
+      "tunedMechanisms": "受调节的机制",
+      "workingMemory": "工作记忆",
+      "guardrailPacks": "护栏包",
       "piiLayers": "PII层",
       "mlClassifiers": "ML分类器",
       "sttProviders": "STT提供商",
@@ -1005,7 +984,7 @@
       },
       "graphRag": {
         "title": "基于图的 RAG",
-        "description": "7个向量存储后端，具有HyDE检索、GraphRAG社区检测和10个文档加载器",
+        "description": "7个向量存储后端，具有HyDE检索、GraphRAG社区检测和8个文档加载器",
         "features": [
           "HyDE假设嵌入",
           "Louvain社区检测",
@@ -1020,7 +999,7 @@
       },
       "orchestration": {
         "title": "多智能体编排",
-        "description": "从顺序到基于图的6种策略，配合Mission API、思维树规划和工作流DSL",
+        "description": "从顺序到基于图的6种策略，配合Mission API、ReAct规划和工作流DSL",
         "features": [
           "顺序与并行",
           "辩论与审查循环",
@@ -1050,22 +1029,22 @@
       },
       "hexaco": {
         "title": "HEXACO人格（可选）",
-        "description": "选择加入的6维人格向量。启用时，在内核级别（而不是在提示中）偏向记忆检索、沟通风格和决策。省略它，运行时保持人格中立。",
+        "description": "选择加入的6维人格向量。agent() 会把高于 0.65 或低于 0.35 的特质作为行为指令写入系统提示；在认知记忆中，特质还会调节八种机制中的七种。省略它，运行时保持人格中立。",
         "features": [
           "6轴特质建模",
           "记忆调节",
-          "风格适应",
-          "9个代理预设"
+          "提示指令",
+          "工作记忆容量"
         ],
         "capabilities": [
           "Trait Engine",
           "认知调节",
-          "自适应风格"
+          "adapt_personality 工具"
         ]
       },
       "guardrails": {
         "title": "内置安全",
-        "description": "从危险到偏执的安全等级，具有PII编辑、ML分类器和幻觉检测",
+        "description": "六个可选护栏包：注入与有害内容分类器、PII 脱敏、对照来源的事实核查、话题控制、内容政策改写器，以及生成代码扫描器",
         "features": [
           "4级PII编辑",
           "ONNX BERT分类器",
@@ -1073,16 +1052,16 @@
           "OWASP Top 10扫描"
         ],
         "capabilities": [
-          "安全等级",
+          "PII 脱敏",
           "内容分类器",
           "代码安全"
         ]
       },
       "voice": {
         "title": "语音管道",
-        "description": "12个STT和12个TTS提供商，具有实时流式传输、VAD、说话人分离和电话支持",
+        "description": "12个STT和13个TTS提供商，具有实时流式传输、VAD、说话人分离和电话支持",
         "features": [
-          "12 STT + 12 TTS",
+          "12 STT + 13 TTS",
           "VAD + 说话人分离",
           "实时流式传输",
           "Twilio/Telnyx/Plivo"
@@ -1094,8 +1073,8 @@
         ]
       },
       "providers": {
-        "title": "11 个 LLM 提供商",
-        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq及16个以上，具有自动回退链和provider-first API",
+        "title": "13 个 LLM 提供商",
+        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq 及另外 8 个，具有自动回退链和 provider-first API",
         "features": [
           "自动回退 (402/429/5xx)",
           "Provider-first API",
@@ -1112,7 +1091,7 @@
   },
   "ecosystem": {
     "title": "AgentOS 生态系统",
-    "subtitle": "探索为自适应、涌现式、持久智能提供动力的生产就绪 AgentOS 生态系统 — 面向企业 AI 团队的 SDK、智能体、RAG 工具和部署套件。",
+    "subtitle": "探索开源的 AgentOS 生态系统：多模态 RAG、多智能体编排、37 个渠道适配器、13 个 LLM 提供商和 100 多个精选扩展。",
     "stats": {
       "repositories": "仓库",
       "weeklyDownloads": "每周下载量",
@@ -1150,90 +1129,14 @@
       "contributeCode": "贡献代码"
     }
   },
-  "codeExamples": {
-    "badge": "代码示例",
-    "title": "使用 AgentOS 构建",
-    "subtitle": "用于构建智能体系统的生产级代码示例与模式",
-    "categories": {
-      "all": "全部示例",
-      "basic": "基础",
-      "advanced": "高级",
-      "integration": "集成",
-      "deployment": "部署"
-    },
-    "selectExample": "选择示例",
-    "tabs": {
-      "synchronous": "同步",
-      "streaming": "流式"
-    },
-    "copyButton": "复制代码",
-    "docsButton": "查看文档",
-    "runButton": "在 Playground 中尝试",
-    "examples": {
-      "basicAgent": {
-        "title": "创建你的第一个智能体",
-        "description": "带有记忆和工具的基础智能体配置"
-      },
-      "gmiRoles": {
-        "title": "代理中的多提供商角色",
-        "description": "一个代理，三个提供商，一张依赖图"
-      },
-      "memorySystem": {
-        "title": "人格与认知记忆",
-        "description": "具有 Ebbinghaus 遗忘曲线和会话历史的 HEXACO 人格特质"
-      },
-      "toolIntegration": {
-        "title": "RAG 管道",
-        "description": "使用 HyDE 嵌入摄取文档并检索上下文"
-      },
-      "skillsIntegration": {
-        "title": "技能与扩展",
-        "description": "浏览精选目录并以编程方式注册扩展"
-      },
-      "realtimeStream": {
-        "title": "实时流式响应",
-        "description": "流式接收智能体响应以提升用户体验"
-      },
-      "deployment": {
-        "title": "生产环境部署",
-        "description": "使用 Docker 和 Kubernetes 部署 AgentOS"
-      },
-      "emergentTools": {
-        "title": "涌现式工具",
-        "description": "启用运行时工具铸造 — 智能体在遇到能力缺口时创建新工具"
-      },
-      "missionOrchestrator": {
-        "title": "任务编排器",
-        "description": "用自然语言描述目标 — 规划器将其分解为多个智能体"
-      },
-      "voiceAgent": {
-        "title": "带工具的语音智能体",
-        "description": "构建支持 STT、TTS 和函数调用的语音智能体"
-      },
-      "orchestrationGraph": {
-        "title": "执行图(审查循环)",
-        "description": "构建带有人工审批门控的循环审查工作流"
-      },
-      "imageGeneration": {
-        "title": "结构化输出 (Zod)",
-        "description": "使用任何提供商从非结构化文本中提取类型化、经验证的数据"
-      }
-    },
-    "cta": {
-      "title": "准备好构建你的第一个智能体了吗?",
-      "description": "在 5 分钟内开始使用 AgentOS。安装 SDK 并跟随我们的交互式教程。",
-      "button": "开始构建",
-      "time": "5 分钟"
-    }
-  },
   "workbench": {
     "title": "AgentOS Workbench",
-    "description": "用于构建、管理和体验 AgentOS 的官方桌面应用。通过可视化界面创建强大的AI代理，实时测试，部署到任何地方。",
+    "description": "在自己的机器上运行、用于检查和调试 AgentOS 会话的 React + Vite 仪表板。在会话时间线上查看流式输出，编写并重放对话轮次，并对你的代理运行评估。",
     "badge1": "MIT 许可证",
     "badge2": "开源",
-    "feature1": "拖放式可视化代理构建器",
+    "feature1": "会话检查器，显示流式文本、工具调用和错误",
     "feature2": "实时测试和调试工具",
-    "feature3": "一键部署到云端或本地",
+    "feature3": "查看代理协作策略、计划检查点和 RAG 检索的视图",
     "viewGithub": "在 GitHub 上查看",
     "downloadLatest": "下载最新版本",
     "downloadComingSoon": "下载 (即将推出)"
@@ -1241,7 +1144,7 @@
   "cognitive": {
     "badge": "神经科学支撑",
     "title": "认知记忆",
-    "subtitle": "8种受认知科学研究启发的记忆机制。全部由智能体的HEXACO人格特质调节。",
+    "subtitle": "受认知科学研究启发的 8 种记忆机制，其中 7 种由智能体的 HEXACO 特质调节。",
     "mechanisms": {
       "reconsolidation": "再巩固",
       "rif": "检索诱导性遗忘",
@@ -1263,23 +1166,23 @@
       "emotionRegulation": "记忆的情绪价值随时间被调节"
     },
     "modulators": {
-      "reconsolidation": "开放性",
+      "reconsolidation": "情绪性",
       "rif": "尽责性",
       "involuntaryRecall": "开放性",
       "fok": "外向性",
-      "temporalGist": "尽责性",
+      "temporalGist": "不受调节",
       "schemaEncoding": "开放性",
       "sourceConfidence": "诚实-谦逊",
       "emotionRegulation": "宜人性"
     },
     "research": {
-      "reconsolidation": "每次检索行为都会不稳定记忆痕迹，允许用当前上下文更新后再稳定。开放性越高，重写程度越大。",
+      "reconsolidation": "每次提取都会使记忆痕迹变得不稳定，使其在重新稳定之前可以用当前情境更新。情绪性越高，改写程度越大，记忆更具适应性但更不稳定。",
       "rif": "检索目标记忆通过侧向抑制积极地抑制相关竞争者。尽责性越高，这种抑制越强。",
-      "involuntaryRecall": "上下文线索可以在没有刻意搜索的情况下触发相关记忆的自发激活。开放性越高，激活阈值越低。",
+      "involuntaryRecall": "情境线索无需刻意搜索就能自发激活相关记忆。开放性越高，非自主回忆的概率越高，带来更多意外的联想。",
       "fok": "对成功检索可能性的元认知判断。外向性越高，FOK信号越强。",
-      "temporalGist": "随时间推移，逐字细节衰减，而语义要旨通过抽象得以保留。尽责性越低，细节丢失越快。",
-      "schemaEncoding": "新信息被同化到现有知识图式中。开放性越高，图式修改越灵活。",
-      "sourceConfidence": "对信息来源的记忆比信息内容本身衰减得更快。诚实-谦逊越高，对不确定来源的怀疑越多。",
+      "temporalGist": "随着时间推移，逐字细节逐渐消退，而语义要旨通过抽象得以保留。这是人格唯一不调节的机制。",
+      "schemaEncoding": "新信息会被同化进已有的知识图式，与图式一致的内容更容易被编码。开放性越高，对违背图式的信息的编码加成越强。",
+      "sourceConfidence": "对信息来源（谁说的、在哪里读到的）的记忆比信息内容本身衰减得更快。诚实-谦逊越高，智能体对自身推断与反思的置信度下降得越快。",
       "emotionRegulation": "附着在记忆上的情绪强度在检索和巩固过程中被积极调节。宜人性越高，情绪平滑越多。"
     },
     "citations": {
@@ -1296,12 +1199,12 @@
     "ctaLearnMore": "探索认知记忆",
     "ctaSoulWiki": "Markdown 记忆维基",
     "memoryTypes": {
-      "title": "4层记忆架构",
-      "subtitle": "从易失的工作记忆到永久知识图谱——每层自动向上合并。",
+      "title": "四种记忆",
+      "subtitle": "工作记忆保存当前会话。情景记忆痕迹沿 Ebbinghaus 曲线衰减，巩固流程（默认每小时一次）用 LLM 把成簇的痕迹总结为语义记忆。可选的观察器会把长对话压缩成笔记。",
       "working": {
         "name": "工作记忆",
-        "description": "当前对话轮次的短期记事本。会话间清除。",
-        "detail": "约128k token，易失性"
+        "description": "当前会话的短期槽位，新会话开始时清空。",
+        "detail": "7 个槽位，依特质为 5 到 9 个"
       },
       "episodic": {
         "name": "情景记忆",
@@ -1315,26 +1218,26 @@
       },
       "observational": {
         "name": "观察记忆",
-        "description": "过去交互的压缩摘要。LLM 3-10倍压缩。",
-        "detail": "从情景记忆自动合并"
+        "description": "可选的观察器笔记。对话超过 token 阈值后，LLM 会提取笔记，再压缩并进行反思。",
+        "detail": "需手动开启，需要 LLM"
       },
-      "flowLabel": "合并管道"
+      "flowLabel": "巩固：从情景记忆到语义记忆"
     },
     "ragPipeline": {
       "title": "多模态RAG管道",
-      "subtitle": "摄取文档、图像、音频——多种策略检索。",
+      "subtitle": "摄入文档、图像和音频，再用多种策略检索。",
       "steps": {
         "ingest": {
           "name": "摄取",
-          "description": "10种文档加载器: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, 图像, 音频, 视频"
+          "description": "8 个文档加载器，支持 PDF、DOCX、Markdown、HTML、URL、TXT、CSV、JSON 和 YAML；图像和音频经由 MultimodalIndexer 处理"
         },
         "chunk": {
           "name": "分块",
-          "description": "4种策略: 固定大小、句子、递归、语义"
+          "description": "4 种策略：固定、语义、层级、版面"
         },
         "embed": {
           "name": "嵌入",
-          "description": "OpenAI、Ollama、Cohere、自定义嵌入"
+          "description": "OpenAI、Gemini、Ollama、OpenRouter 或任何兼容 OpenAI 的端点"
         },
         "store": {
           "name": "存储",
@@ -1432,11 +1335,11 @@
       "step3": "裁判评估",
       "step4": "工具激活",
       "step5": "智能体使用",
-      "description": "运行时工具铸造意味着代理可以在决策中途为自己编写一个新的TypeScript函数，由一个独立的法官LLM审核，并在一个强化的node:vm沙箱中执行（默认5秒挂钟，128 MB名义内存预算，fetch/fs/crypto的默认空白名单，静态禁止eval/require/import/process/child_process），所有这些都在下一回合之前完成。批准的工具会进入一个可发现的索引以供重用，因此在会话中的前几次锻造后成本会趋于平稳。",
+      "description": "运行时工具锻造让智能体在任务中途编写一个新的 JavaScript 函数，交由独立的裁判 LLM 审查，并在下一轮之前运行。默认执行器是 node:vm 沙箱：5 秒挂钟时限，静态禁止 eval、require、import、process 和 child_process，fetch、fs 和 crypto 仅在你授权时可用；它会测量内存但不设上限，也不是安全边界。可选的 QuickJSExecutor 会隔离代码并限制其内存。通过审批的工具进入注册表以供复用。",
       "details": [
         "Composable 模式: 通过流水线步骤串联现有工具,构造上即安全",
-        "Sandbox 模式: 智能体编写的代码在受内存与时间约束的隔离环境中运行",
-        "三层生命周期: 会话级、智能体级,或晋升至共享注册表",
+        "Sandbox 模式: 智能体编写的代码在时间限制下运行于 node:vm 或 QuickJS",
+        "三个生命周期层级（会话、智能体、共享）；晋升把工具从会话级移到智能体级",
         "双裁判晋升面板: 安全审计员与正确性审阅者必须同时通过",
         "使用追踪;当达到可靠性阈值时自动晋升层级"
       ]
@@ -1455,17 +1358,17 @@
       "observe": "观察结果",
       "update": "更新策略",
       "executeBetter": "更好地执行",
-      "circuitBreaker": "故障时熔断",
-      "styleAdaptation": "风格适应(用户偏好)",
+      "selfEvaluation": "LLM 裁判自我评估",
+      "skillsAndWorkflows": "技能与工作流工具",
       "memoryConsolidation": "记忆巩固",
-      "description": "智能体从失败中学习并随时间调整方法。工具故障跟踪触发熔断以避免重复错误。风格适应学习用户在正式度、冗长度和技术性方面的偏好。记忆巩固强化有用记忆,并通过 Ebbinghaus 曲线让无关记忆衰减。"
+      "description": "开启自我改进后，智能体会获得四个用于改进自身的工具。self_evaluate 用 LLM 裁判为自己的回复打分，adapt_personality 在每会话预算内调整其 HEXACO 特质，manage_skills 开关技能，create_workflow 把工具串成可复用的流程。记忆巩固会强化有用的记忆，并让无关记忆沿 Ebbinghaus 曲线衰减。"
     },
     "ctaExploreDocs": "探索涌现能力"
   },
   "agencySection": {
     "badge": "多智能体编排",
     "title": "并行代理",
-    "subtitle": "由专门化智能体组成的团队在整个 roster 中共享执行状态和 RAG 上下文。6 种内置策略在它们之间路由输出：顺序、并行、辩论、复审循环、分层或 graph DAG。",
+    "subtitle": "由专门化智能体组成的团队共同处理同一个请求。6 种内置策略在它们之间路由输出：顺序、并行、辩论、复审循环、分层或 graph DAG。",
     "codeExampleLabel": "代码示例",
     "sharedCapabilitiesTitle": "所有策略共享",
     "strategies": {
@@ -1526,13 +1429,11 @@
       "illustrator": "插画师"
     },
     "sharedCapabilities": {
-      "sharedMemory": "共享记忆",
-      "sharedRAG": "共享 RAG",
       "sharedExecState": "共享执行状态",
       "hitlGates": "HITL 审批门",
       "streamingOutput": "流式输出",
       "resourceControls": "资源控制",
-      "perAgentGuardrails": "每智能体护栏"
+      "perAgentProviders": "按智能体指定提供商"
     },
     "sharedCapabilitiesScopeNoteLabel": "范围：",
     "sharedCapabilitiesScopeNote": "roster 仅在单次 <code>generate()</code> 调用内生效。跨 <code>session().send()</code> 轮次只保留消息历史。请参阅 <link>Agency API 文档</link>了解内存模式。",
@@ -1540,20 +1441,20 @@
   },
   "benchmarks": {
     "badge": "SOTA · LongMemEval · LOCOMO · Phase B N=500",
-    "title": "在匹配读取器下的记忆基准",
-    "subtitle": "诚实的同基准对比:相同的 gpt-4o 读取器、相同的数据集、相同的 Phase B N=500 方法、相同的 gpt-4o-2024-08-06 裁判、相同的评分准则 2026-04-18.1。跨提供商配置因无法从公开方法论披露中复现而被排除。",
+    "title": "注明读取模型的记忆基准",
+    "subtitle": "AgentOS 的各次运行使用同一数据集和同一个 gpt-4o-2024-08-06 裁判；厂商数字按各厂商公布的原样列出。85.6% 的结果把六类问题中的四类交给 gpt-5-mini，因此表中还列出由 gpt-4o 回答全部问题的那次运行。",
     "tabS": "LongMemEval-S (115K 个 token)",
     "tabM": "LongMemEval-M (1.5M 个 token)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "[82.4%, 88.6%] · 每条正确 $0.0090 · 平均延迟 4 秒",
+    "highlightSCi": "按类别的读取模型路由（gpt-4o + gpt-5-mini）· 仅用 gpt-4o 为 84.2%，与 Mastra OM gpt-4o（84.23%）持平 · 每个正确答案 $0.0090 · 中位延迟 3.6 秒",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "[66.0%, 74.0%] · 在 1.5M token 变体上首个超过 65% 的开源库",
-    "matrixIntro": "匹配的 gpt-4o 读取器,Phase B N=500。Bootstrap 置信区间使用 seed=42 的 10,000 次 Mulberry32 重采样。",
+    "highlightMCi": "按类别的读取模型路由，top-5 检索 · 每个正确答案 $0.0078 · LongMemEval 论文中最佳 GPT-4o 配置在 top-10 下为 72.0%",
+    "matrixIntro": "AgentOS 各行以及 EmergenceMem Simple Fast 的复现结果来自 agentos-bench 在 500 题 LongMemEval 数据集上的运行，由 gpt-4o-2024-08-06 按 LongMemEval 评分标准判分。厂商行是各厂商公布的数字。",
     "ctaReadAudit": "阅读透明度审计",
-    "ctaSeeRunJsons": "在 GitHub 上查看运行 JSON",
+    "ctaSeeRunJsons": "在 GitHub 上查看 agentos-bench",
     "ctaBenchmarksPage": "完整基准参考",
-    "footnote": "Mastra OM 94.9%、Mem0 v3 93.4%、Hindsight 91.4%、agentmemory 96.2% 和 Supermemory 85.2% 都使用了跨提供商读取器(gpt-5-mini、gemini-3-pro)或托管平台基础设施,其底层裁判模型、评分准则与种子均未公开。上方的匹配读取器对比是从每个供应商公开的方法论中可独立复现的部分。"
+    "footnote": "其他已公布的 LongMemEval-S 分数包括 agentmemory 96.2%（GPT-4o 读取模型）、Mastra OM 94.9%（gpt-5-mini 读取模型）和 Supermemory 85.2%（gemini-3-pro 读取模型）。agentos-bench 排行榜列出了每一行及其读取模型和来源。"
   }
 }

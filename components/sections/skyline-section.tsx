@@ -98,7 +98,7 @@ const skylineFeatures: BuildingFeature[] = [
  * SkylineSection — consolidated enterprise section for the homepage.
  *
  * Renders an animated city-skyline visualization where each building represents
- * an enterprise capability pillar (security tiers, guardrails, privacy
+ * an enterprise capability pillar (agent safety, guardrails, privacy
  * architecture, audit/observability, audit-friendly architecture, and
  * production scale). Below the skyline sit three legend cards (Fully
  * Implemented / Audit Trail / Enterprise Support) and an enterprise contact CTA.

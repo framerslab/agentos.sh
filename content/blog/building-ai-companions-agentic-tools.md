@@ -1,7 +1,7 @@
 ---
 title: "Building AI Companions with Agentic Tools, Memory, and Personality in TypeScript"
 date: "2026-04-14"
-excerpt: "How to build an AI companion that remembers conversations, sends GIFs, analyzes images, and develops a personality over time. Complete TypeScript implementation with AgentOS."
+excerpt: "Build an AI companion in TypeScript on AgentOS: agent() with inline tools, HEXACO personality and cognitive memory, and the layer wilds.ai adds on top."
 author: "AgentOS Team"
 category: "Tutorial"
 audience: "engineer"
@@ -15,9 +15,9 @@ keywords: "build AI companion TypeScript, AI companion with memory, agentic tool
 
 The companion product on [wilds.ai](https://wilds.ai) was the first AgentOS deployment we built where the user explicitly cares about continuity. A simulator like Mars Genesis runs once, produces an artifact, and the user inspects it. A companion runs forever, in the background, and the user expects the entity on the other end to remember that they had a fight on Tuesday and that their mom is named Cara.
 
-The mechanical implication is that every component of the runtime that *might* persist needs to actually persist. Memory. Personality drift. Tool affordances. Provider preferences. None of this is special-case code; it's the runtime working as designed. "Designed for continuity" is what separates a companion stack from a chat-completion API call. This post is the implementation walk.
+The mechanical implication is that everything that *might* persist needs to actually persist. Memory. Personality drift. Tool affordances. Provider preferences. In wilds.ai, a companion layer written on top of AgentOS's `agent()` keeps all of that, and this post shows where the line between the two runs. "Designed for continuity" is what separates a companion stack from a chat-completion API call. This post is the implementation walk.
 
-This post walks through building an AI companion with persistent memory, 11 agentic tools, and a quantified personality system. Everything here runs in production on [wilds.ai](https://wilds.ai). The full companion system is open source via [AgentOS](https://agentos.sh).
+This post walks through building an AI companion with persistent memory, agentic tools, and a quantified personality system, with the companions on [wilds.ai](https://wilds.ai) as the worked example. The AgentOS pieces (`agent()`, inline tools, HEXACO personality, cognitive memory, the policy router) are open source in [AgentOS](https://github.com/framerslab/agentos). The companion layer on top of them (`CompanionOrchestrator`, `CompanionMemoryBridge`, the recall pipeline and the companion's tools) is wilds.ai's own application code. Its `@wilds/*` packages are not published, so the samples taken from it show its shape and do not run outside wilds.ai.
 
 If you haven't read the [case study](https://agentos.sh/blog/ai-companion-case-study-wilds) showing what this looks like from a user's perspective, start there. This post is the implementation guide.
 
@@ -27,7 +27,7 @@ An AgentOS companion is a `createAgent()` call with three layers:
 
 1. **Personality and instructions** (system prompt): who the companion is, how they speak, what they know
 2. **Tools** (function calls): what the companion can do during a conversation turn
-3. **Memory bridge** (retrieval callbacks): what the companion remembers across sessions
+3. **Memory** (retrieval callbacks): what the companion remembers across sessions, through `agent()`'s `memoryProvider` hooks or tools that query a memory store
 
 ```typescript
 import { agent as createAgent } from '@framers/agentos/api/agent';
@@ -43,7 +43,7 @@ const companion = createAgent({
 });
 ```
 
-The LLM sees the instructions (from personality + skills), the tool schemas (from tools), and the conversation history. It generates text and tool calls. AgentOS executes tool calls, returns results, and lets the LLM continue for up to `maxSteps` iterations per turn.
+`characterDirective`, `hexacoTraits`, `agenticTools`, `policyRouter` and `companionWriterSkill` are yours to build; the sections below show the tools, the personality and the router. The LLM sees one system prompt that `agent()` assembles from `instructions`, `name`, the personality and each skill's content, plus the tool schemas and the conversation history. It generates text and tool calls. AgentOS executes the tool calls, returns the results, and lets the LLM continue for up to `maxSteps` steps per turn (5 when unset).
 
 ## Defining agentic tools
 
@@ -103,9 +103,9 @@ function buildCompanionTools(actorId: string, slug: string, policyTier: string) 
 }
 ```
 
-This cannot come from a registry or plugin system. The `actorId` and `slug` closures are different for every request. Define tools inline where you have the runtime context.
+This cannot come from a registry or plugin system. The `actorId` and `slug` closures are different for every request. Define tools inline where you have the runtime context. `searchMemoryTraces`, `searchGiphy` and `describeImage` stand in for your own lookups.
 
-The companion in production has [11 tools](https://docs.agentos.sh/architecture/skills-vs-tools-vs-extensions): `recall_messages`, `search_conversation`, `conversation_stats`, `recall_attachments`, `recall_memories`, `send_gif`, `send_selfie`, `send_photo`, `web_search`, `generate_image`, and `analyze_image`. The LLM decides which to call based on conversation context, chaining up to 8 tool calls per turn.
+wilds.ai's companion builds all of its tools this way, in three factories that close over the request's state. Five recall tools are always on (`recall_messages`, `search_conversation`, `conversation_stats`, `recall_attachments`, `recall_memories`), and so is `export_conversation`. The other twelve register only when wilds.ai's chat route passes in the callback behind them: `send_selfie`, `send_gif`, `send_photo`, `web_search`, `generate_image`, `generate_video`, `analyze_image`, `deep_research`, `verify_claims`, `news_search`, `recall_other_companions` and `remember_moment`. The LLM decides which to call from the conversation, across up to `maxSteps` model steps per turn, each of which can call tools; wilds.ai's companion runs with `maxSteps: 12`.
 
 ## Wiring persistent memory
 
@@ -123,22 +123,26 @@ The taxonomy follows the [CoALA framework](https://arxiv.org/abs/2309.02427) (Su
 
 Memories decay over time following an [Ebbinghaus forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). Encoding strength determines how fast a memory fades. Emotionally significant moments (flashbulb memories) get high encoding strength and resist decay.
 
-Retrieval fires in four stages when the companion needs to remember something:
+In wilds.ai, the memory bridge's `assembleContext` gathers recall from six sources at once and ranks the results as one set:
 
-1. **Semantic recall:** embedding similarity search against all memory traces
-2. **Recency recall:** bias toward recent memories
-3. **GraphRAG fallback:** relationship graph traversal for connected knowledge (fires when semantic recall returns sparse results)
-4. **Attachment recall:** images and files the user has shared
+1. **Semantic recall:** embedding similarity search over the companion's memory traces
+2. **Recency:** the five most recent traces
+3. **Shared memory:** facts, preferences and relationships from the account's shared memory layer
+4. **Documents:** chunks of files the user uploaded
+5. **Images:** multimodal recall over images the user attached
+6. **Word match:** a full-text search over the traces, for exact words that embedding recall misses
 
-Wire the memory bridge into the companion via callbacks:
+When semantic recall returns fewer than two traces and the user has a recent game session, a GraphRAG query over that game's world adds world knowledge. Duplicates collapse across sources before the recall reaches the prompt.
+
+wilds.ai wires its memory bridge into the companion through a tool. Condensed from its chat route and its `recall_memories` tool:
 
 ```typescript
-import { CompanionMemoryBridge } from '@wilds/wilds-memory';
+import { CompanionMemoryBridge } from '@wilds/memory';
 
-const memoryBridge = new CompanionMemoryBridge(facade, llmInvoker, {
-  resolvedSettings,
-  policyTier,
-  moodProvider,
+// memoryFacade: wilds.ai's facade over AgentOS's CognitiveMemoryManager,
+// leased per account and companion
+const memoryBridge = new CompanionMemoryBridge(memoryFacade, (event) => {
+  memoryEvents.push(event); // memory_formed events for the client
 });
 
 const companion = createAgent({
@@ -151,15 +155,15 @@ const companion = createAgent({
       description: 'Search your long-term memory about this user.',
       parameters: { /* ... */ },
       execute: async ({ query }) => {
-        const results = await memoryBridge.recall(query);
-        return { memories: results };
+        const ctx = await memoryBridge.assembleContext(query, 10);
+        return { memories: ctx.systemPromptSection };
       },
     },
   },
 });
 ```
 
-The memory bridge handles encoding (forming new memories from conversation), decay (Ebbinghaus curve), consolidation (merging related traces), and retrieval (the 4-stage cascade). The companion calls `recall_memories` as a tool when the conversation warrants it. Memory formation happens automatically during the response pipeline.
+The bridge has two jobs. Before generating each reply, wilds.ai's orchestrator calls `assembleContext` and puts the result in the system prompt; the `recall_memories` tool calls the same method when the companion decides to look something up. After each reply, `syncAfterTurn` writes one episodic trace for the exchange and passes both messages to the observer, whose reflector turns accumulated conversation into typed traces once enough of it builds up. Decay (the Ebbinghaus curve) and hourly consolidation run in AgentOS's `CognitiveMemoryManager` under the facade.
 
 For a markdown-native take on the same substrate, [`souledAgent()`](https://docs.agentos.sh/getting-started/high-level-api) loads a `SOUL.md` workspace and wires its [`memory/` wiki](https://docs.agentos.sh/features/soul-files) as the companion's long-term memory: the agent reads `memory/index.md` from its prelude, opens pages with a `read_memory_page` tool, and folds new conversation back into entity and concept pages on consolidation. Same cognitive store underneath; the markdown is the source of truth you can read, edit, and commit.
 
@@ -178,54 +182,59 @@ personality: {
 }
 ```
 
-The traits map to behavioral rules at generation time, not just the system prompt. High openness means the companion goes off-topic willingly. Low agreeableness means it pushes back on the user's ideas. High emotionality means bigger mood swings between turns.
+`agent()` turns each trait above 0.65 or below 0.35 into one directive in the system prompt and adds nothing for a trait in between, so in the profile above honesty, extraversion and openness speak while the other three stay quiet. High openness tells the model to explore creative angles and draw unexpected connections. Low agreeableness tells it to question assumptions and push back when something seems wrong. High emotionality asks for emotional awareness and empathy. On the default runtime, `agent()` keeps no mood from one turn to the next.
+
+wilds.ai goes further in its own layer. It keeps the companion's mood as a PAD-model state (the `moodPad` below), and it lets the personality drift: AgentOS's `analyzePersonaDrift` reads the companion's memory traces and relationship changes and proposes bounded trait changes, and wilds.ai applies them to its own copy of the traits. wilds.ai also writes its companions' system prompt itself, through `agent()`'s `systemBlocks` option, which replaces the prompt `agent()` would assemble; its trait phrases come from the live, drifted values.
 
 ### Policy routing
 
-Content safety is enforced at the framework level via a `policyRouter`. Four tiers: safe, standard, mature, and private-adult. The router intercepts tool calls and generation output, blocking content that violates the tier.
+The `router` option takes a model router. AgentOS's `PolicyAwareRouter` routes on the conversation's content tier, one of four: safe, standard, mature, and private-adult (the agent's `policyTier`, or the router's default tier). Mature and private-adult conversations go to a per-tier override or a model from its uncensored catalog; safe and standard ones go to the base router you hand it, or stay on the agent's own model. It picks models and blocks nothing.
 
-The companion's personality shapes how it communicates the boundary. A high-agreeableness companion apologizes and redirects. A low-agreeableness companion dismisses the request bluntly. The safety boundary is identical. The character voice is not.
+The boundary itself is wilds.ai's. Its content-policy guardrail checks the user's message against the tier before generation and the companion's reply after it (through `agent()`'s `onAfterGeneration` hook), and swaps a blocked reply for a fallback message. AgentOS's guardrail packs run on the full AgentOS runtime; `agent()` applies none. With `agent()`'s directives, the personality shapes how the companion words a refusal: a high-agreeableness companion is told to validate the other perspective and stay supportive, a low-agreeableness one to push back. The safety boundary is identical. The character voice is not.
 
 ### Graduated familiarity
 
-Trust builds over time. AgentOS tracks trust and memory depth to determine a familiarity stage:
+Trust builds over time. wilds.ai builds graduated familiarity on top of the runtime: its relationship engine keeps a trust score from 0 to 100, and a stage needs both enough trust and enough memory traces, so a few intense messages can't make a companion "bonded" without the history, and a long history can't do it without the trust:
 
-- **Stranger** (trust < 30, few memories): polite, curious, formal
-- **Acquaintance** (trust 30-60): relaxed, shares opinions, remembers preferences
-- **Friend** (trust > 60, many memories): uses inside jokes, references shared history, shows genuine preferences
+- **Stranger** (below the acquaintance gate): first meeting, warm but not presumptuous, no references to past events
+- **Acquaintance** (trust 15+, 10+ memories): recognizes the user, remembers basic facts, friendly without assuming familiarity
+- **Familiar** (trust 35+, 40+ memories): inside references and shared context, brings up past conversations when relevant
+- **Close** (trust 60+, 100+ memories): knows the user's patterns, moods and preferences, brings up shared memories naturally
+- **Bonded** (trust 80+, 200+ memories): shorthand-heavy, deeply personal
 
-The familiarity preamble is injected into the system prompt before each generation. As trust increases through positive interactions, the companion's behavior shifts naturally.
+wilds.ai resolves the stage each time it builds the companion's agent for a message and adds that stage's preamble to the system prompt. As trust and memories accumulate, the companion moves up the stages and its behavior shifts with them.
 
 ## Putting it together
 
-The full companion creation in production:
+The companion creation in wilds.ai's chat route, condensed:
 
 ```typescript
-const orchestrator = new CompanionOrchestrator(persona, relationship, {
+const orchestrator = new CompanionOrchestrator(persona, snapshot.relationship, {
   moodPad: snapshot.moodPad,
-  history: snapshot.messages,
+  history,
   memoryBridge,
   userContext,
-  onRecallMessages: buildDbRecallCallback(actorId, slug),
+  onRecallMessages: buildDbRecallCallback(actorId, slug, branchId, personaId),
   onRecallAttachments: buildDbAttachmentRecallCallback(actorId, slug),
   onGenerateSelfie,
   onResolveMedia,
-  onAnalyzeImage: async (url) => describeImage(url),
+  onMediaResolved,
+  onAnalyzeImage,
+  onRememberMoment,
   totalMessageCount: snapshot.messageCount,
 });
 
-// Stream the response via SSE
+// Stream the reply via SSE
 for await (const event of orchestrator.handleMessageStream({
   content: userMessage,
   multimodalContent,
 })) {
-  if (event.type === 'token') controller.enqueue(encode(event));
-  if (event.type === 'memory_formed') emitMemoryEvent(event);
-  if (event.type === 'media') emitMediaEvent(event);
+  if (event.type === 'text') controller.enqueue(encode(event));
+  if (event.type === 'done') finalReply = event.reply;
 }
 ```
 
-The `CompanionOrchestrator` wraps `createAgent()` with the full cognitive pipeline: memory encoding, mood shifts (PAD model), personality drift detection, and multi-segment response splitting. It streams events via SSE so the client can show typing indicators, memory formation toasts, and media as they resolve.
+wilds.ai's `CompanionOrchestrator` wraps `createAgent()` with the companion pipeline: trust and mood updates (the PAD model), memory recall and encoding through the bridge, persona drift checks, and a prompt that has the model break a reply into up to five chat bubbles with `[msg_break]` markers. `handleMessageStream` yields `text` chunks and one `done` event with the complete reply. The route streams the text over SSE as it arrives; after `done` it sends the `memory_formed` events the bridge queued, splits the reply into its bubbles, and sends the media `onMediaResolved` collected, so the client can show the reply as it streams, memory formation toasts, and media as it resolves.
 
 ## Start building
 
@@ -235,9 +244,9 @@ npm install @framers/agentos
 
 The [5-minute quickstart](https://agentos.sh/blog/build-typescript-ai-agent-5-minutes) gets you to a working agent. The [Skills vs Tools vs Extensions guide](https://docs.agentos.sh/architecture/skills-vs-tools-vs-extensions) explains when to use each capability system. The [cognitive memory docs](https://docs.agentos.sh/features/cognitive-memory) cover the full memory architecture.
 
-Try it live at [wilds.ai](https://wilds.ai), where every companion runs on this exact stack.
+Try a companion at [wilds.ai](https://wilds.ai), where companion chat runs on `agent()` and the companion layer described above.
 
-Source: [github.com/framerslab/agentos](https://github.com/framerslab/agentos) (Apache 2.0)
+AgentOS source: [github.com/framerslab/agentos](https://github.com/framerslab/agentos) (Apache 2.0). The companion layer described above is wilds.ai's and is not part of it.
 
 ---
 

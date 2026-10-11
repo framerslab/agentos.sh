@@ -54,10 +54,11 @@ export default function FeaturesGridClient() {
         code: `import { agency } from '@framers/agentos'
 
 const team = agency({
+  provider: 'openai', model: 'gpt-4o',   // merges the parallel answers
   strategy: 'parallel',
   agents: {
     researcher: { provider: 'openai', model: 'gpt-4o', instructions: 'Research the topic.' },
-    analyst:    { provider: 'anthropic', model: 'claude-sonnet-4-20250514', instructions: 'Analyze findings.' },
+    analyst:    { provider: 'anthropic', model: 'claude-sonnet-4-6', instructions: 'Analyze findings.' },
     executor:   { provider: 'ollama', model: 'llama3', instructions: 'Execute the plan.' },
   },
 })
@@ -76,13 +77,14 @@ const result = await team.generate('Plan a product launch')`
         language: 'typescript',
         code: `import { agent } from '@framers/agentos'
 
-// Guardrails are built into agent configuration
+// agent() runs no guardrail packs; they run on the full AgentOS runtime.
+// Its own limits: a tool-step cap, an output cap and a spend budget.
 const safeAgent = agent({
   provider: 'openai', model: 'gpt-4o',
   instructions: 'You are a helpful assistant.',
-  guardrails: ['pii-redaction', 'prompt-injection-defense'],
-  maxSteps: 5,           // limits runaway tool loops
-  maxTokens: 8000,       // caps output length (Anthropic default: 16000)
+  maxSteps: 5,                 // limits runaway tool loops
+  maxTokens: 8000,             // caps output length
+  budget: { maxCostUSD: 1 },   // refuses a call that would pass $1
 })
 const result = await safeAgent.generate('Summarize this document')`
       }
@@ -90,11 +92,11 @@ const result = await safeAgent.generate('Summarize this document')`
     {
       icon: UserCheck,
       title: 'Human-in-the-Loop',
-      body: 'Pause an agency run at five lifecycle events (before tool, agent, emergent, return, strategy-override). Route the pending action to a human, an LLM judge with fallback, a webhook, or Slack — all on one decision contract.',
-      pill: '5 triggers · 6 handlers',
+      body: 'Pause an agency run before a tool call, an agent, an emergent spawn or the final return. Route the pending action to a human, an LLM judge with fallback, a webhook or Slack, all on one decision contract.',
+      pill: '4 triggers · 6 handlers',
       gradient: 'from-cyan-500 to-blue-500',
       bullets: [
-        'beforeTool · beforeAgent · beforeEmergent · beforeReturn · beforeStrategyOverride',
+        'beforeTool · beforeAgent · beforeEmergent · beforeReturn',
         'hitl.cli() · hitl.llmJudge() · hitl.slack() · hitl.webhook() · auto-approve/reject',
       ],
       codeExample: {
@@ -127,32 +129,31 @@ const guarded = agency({
     {
       icon: Sparkles,
       title: 'Emergent Tool Forging',
-      body: 'Hierarchical agencies can forge new tools and spawn specialist agents mid-run when the static roster falls short. Bounded by per-session budgets and provenance-tracked for every mutation.',
-      pill: 'forgeTool · spawn_specialist · adapt_personality',
+      body: 'Hierarchical agencies spawn specialist agents mid-run when the static roster falls short, and agents on the full AgentOS runtime can forge new tools. Each capability has its own budget.',
+      pill: 'forge_tool · spawn_specialist · adapt_personality',
       gradient: 'from-fuchsia-500 to-pink-500',
       bullets: [
         'Manager-tier agent decides at runtime when to synthesize capability',
-        'Mutation store records every forge with reasoning + delta',
+        'An LLM judge reviews each new agent spec before it joins the roster',
       ],
       codeExample: {
         title: 'Emergent capabilities',
         language: 'typescript',
         code: `import { agency } from '@framers/agentos'
 
-// Hierarchical + emergent: manager can forge tools and spawn specialists
-// as gaps in the static roster surface mid-run.
+// Hierarchical + emergent: the manager can spawn specialists
+// when the static roster cannot cover the task.
 const team = agency({
+  provider: 'openai', model: 'gpt-4o',   // the manager
   strategy: 'hierarchical',
-  manager: { instructions: 'Plan and delegate to specialists.' },
   agents: {
     researcher: { instructions: 'Gather information from the web.' },
     analyst:    { instructions: 'Synthesize findings into a report.' },
   },
   emergent: {
-    enabled: true,
-    forgeTool: { maxPerSession: 3 },
-    spawnSpecialist: { maxPerSession: 2 },
-    adaptPersonality: { maxDeltaPerSession: 0.3 },
+    enabled: true,                    // unlocks spawn_specialist
+    judge: true,                      // an LLM judge reviews each spec
+    planner: { maxSpecialists: 2 },   // cap on spawns per run
   },
 })
 const result = await team.generate('Investigate a novel domain')
@@ -163,8 +164,8 @@ const result = await team.generate('Investigate a novel domain')
     {
       icon: Brain,
       title: 'Adaptive Prompt Intelligence',
-      body: 'Three trigger types (periodic, sentiment-event, manual) drive metaprompts that re-tune mood, user-skill inference, task complexity, and HEXACO traits between turns. Default sentiment is lexicon-based and free; everything else is opt-in.',
-      pill: '3 triggers · 5 presets · ~$0.12 / 1k turns',
+      body: 'Three trigger types (periodic, sentiment-event, manual) drive metaprompts that re-tune mood, user-skill inference and task complexity between turns. Sentiment tracking and metaprompts are opt-in.',
+      pill: '3 triggers · 5 presets',
       gradient: 'from-indigo-500 to-violet-500',
       bullets: [
         'turn_interval · event_based · manual triggers, all opt-in',
@@ -173,27 +174,32 @@ const result = await team.generate('Investigate a novel domain')
       codeExample: {
         title: 'Adaptive metaprompts',
         language: 'typescript',
-        code: `import { agent } from '@framers/agentos'
+        code: `import { AgentOS, type IPersonaDefinition } from '@framers/agentos'
 
-// Sentiment events drive recovery presets; periodic self-reflection
-// re-tunes inferred user skill + task complexity every 5 turns.
-const tutor = agent({
-  provider: 'openai',
-  model: 'gpt-4o-mini',
-  instructions: 'You are a patient programming tutor.',
-  personality: { conscientiousness: 0.85, agreeableness: 0.75 },
+// sentimentTracking and metaPrompts belong to a persona on the full runtime.
+// Sentiment events drive recovery presets; a self-reflection every 5 turns
+// re-reads mood, user skill and task complexity.
+const tutor: IPersonaDefinition = {
+  id: 'tutor',
+  name: 'Tutor',
+  description: 'A patient programming tutor.',
+  version: '1.0.0',
+  baseSystemPrompt: 'You are a patient programming tutor.',
+  defaultProviderId: 'openai',
+  defaultModelId: 'gpt-4o-mini',
   sentimentTracking: {
     enabled: true,
-    method: 'lexicon_based', // free; ~10-50ms per turn
     presets: ['frustration_recovery', 'confusion_clarification', 'satisfaction_reinforcement'],
   },
   metaPrompts: [{
     id: 'gmi_self_trait_adjustment',
-    promptTemplate: 'Review {{evidence}}. Adjust mood, user_skill, task_complexity if warranted.',
+    promptTemplate: 'Review {{evidence}}. Respond JSON with optional updatedGmiMood, updatedUserSkillLevel, updatedTaskComplexity.',
     trigger: { type: 'turn_interval', intervalTurns: 5 },
     temperature: 0.3,
   }],
-})
+}
+
+const agentos = await AgentOS.create({ personas: [tutor] })
 
 // Full guide: https://docs.agentos.sh/features/adaptive-prompt-intelligence`,
       }
@@ -230,19 +236,17 @@ const fullText = await stream.text`
       codeExample: {
         title: 'Tool Pack Integration',
         language: 'typescript',
-        code: `import { agent } from '@framers/agentos'
+        code: `import { AgentOS } from '@framers/agentos'
 import { createCuratedManifest } from '@framers/agentos-extensions-registry'
 
+// Builds manifest entries for the installed packs; packs that are
+// not installed are skipped.
 const manifest = await createCuratedManifest({
   tools: ['web-search', 'news-search', 'image-generation'],
   channels: ['telegram', 'discord'],
 })
 
-const myAgent = agent({
-  provider: 'openai', model: 'gpt-4o',
-  instructions: 'Research assistant with web access.',
-  tools: manifest.tools,
-})`
+const agentos = await AgentOS.create({ extensionManifest: manifest })`
       }
     },
     {
@@ -324,11 +328,11 @@ const reply = await session.send('What is my favorite color?')
       codeExample: {
         title: 'Dev Workbench',
         language: 'bash',
-        code: `# Start development environment
-agentos dev --port 3000
-
-# Deploy to production
-agentos deploy --env production`
+        code: `# Run the Workbench from a clone
+git clone https://github.com/framerslab/agentos-workbench.git
+cd agentos-workbench
+pnpm install && (cd backend && npm ci)
+pnpm dev   # opens http://localhost:5175`
       }
     },
     {
@@ -344,10 +348,10 @@ agentos deploy --env production`
         code: `const result = await discoveryEngine.discover(
   'search the web for AI news'
 );
-// Tier 0: Category summaries (~150 tokens)
-// Tier 1: Top-5 relevant capabilities (~200 tokens)
-// Tier 2: Full schemas for top-2 (~1500 tokens)
-// Total: ~1,850 tokens (down from ~20,000)`
+// Default token budgets per tier:
+// Tier 0: category summaries (200)
+// Tier 1: top-5 relevant capabilities (800)
+// Tier 2: full schemas for the top 2 (2,000)`
       }
     }
   ]

@@ -114,9 +114,10 @@ const COMPARISON_KEYS = [
 /*  Code example                                                        */
 /* ------------------------------------------------------------------ */
 
-const CODE_EXAMPLE = `import { AgentOS, AgentOSResponseChunkType } from '@framers/agentos';
+const CODE_EXAMPLE = `import { AgentOS, AgentOSResponseChunkType, BUILT_IN_PERSONAS } from '@framers/agentos';
 
-const agentos = await AgentOS.create();
+// Without a ./personas directory, pass personas inline: here the five the package ships.
+const agentos = await AgentOS.create({ personas: BUILT_IN_PERSONAS });
 
 for await (const chunk of agentos.processRequest({
   userId: 'user-42',

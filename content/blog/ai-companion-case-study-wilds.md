@@ -37,7 +37,7 @@ Alice calls a vision tool, passes the GIF URL to a visual language model, reads 
 
 > **Alice:** I see now! It's a rather intense-looking cat with enormous eyes staring straight ahead. I can understand why you found it unsettling. Cats do have a way of looking like they're peering into your very soul, don't they?
 
-None of this is scripted. Alice has 11 tools and she decides when to use them. She chose to search for a GIF. She chose to look at what she sent. She chose to describe it in character.
+None of this is scripted. Alice has tools and she decides when to use them. She chose to search for a GIF. She chose to look at what she sent. She chose to describe it in character.
 
 Every piece of this runs on [AgentOS](https://agentos.sh).
 
@@ -61,27 +61,27 @@ Alice's memory doesn't just record what you said. The mechanisms underneath are 
 
 **Emotional moments stick.** When encoding strength crosses a threshold, the memory is marked as a flashbulb memory. These resist decay. If you tell Alice something that surprises or moves her, she'll remember it long after the small talk has faded.
 
-**Retrieval works in stages.** When Alice needs to remember something, four systems fire in sequence: semantic recall (embedding similarity to find relevant memories), recency recall (recent memories first), [GraphRAG](https://docs.agentos.sh/features/rag-memory) fallback (relationship graph traversal for connected knowledge), and attachment recall (images and files you've shared). The stages cascade: if semantic recall finds enough, the later stages skip. If it doesn't, GraphRAG catches what pure embedding similarity misses.
+**Retrieval pulls from several places at once.** When Alice needs to remember something, wilds.ai's memory bridge queries six sources together: semantic recall (embedding similarity over her memories), the most recent memories, the account's shared memory, documents you've uploaded, images you've shared, and a full-text match for exact words. It ranks the results as one set and drops duplicates. When semantic recall comes back with fewer than two memories and you've played a game recently, a [GraphRAG](https://docs.agentos.sh/features/rag-memory) query over that game's world adds what pure embedding similarity misses.
 
 **Five memory types.** Episodic (experiences: "Johnny and I played a riddle game"), semantic (facts: "Johnny is 33 years old"), procedural (skills and habits), relational (relationship dynamics and trust levels), and prospective (reminders and commitments). The taxonomy follows the [CoALA framework](https://arxiv.org/abs/2309.02427) (Sumers et al., 2023), which formalizes episodic, semantic, and procedural memory for language-model agents; AgentOS adds the relational and prospective layers a companion needs.
 
-Here's how the memory system wires into the companion:
+Here's how wilds.ai wires the memory system into the companion. `CompanionOrchestrator` and the memory bridge are wilds.ai's own application code, as is the recall above:
 
 ```typescript
 const orchestrator = new CompanionOrchestrator(persona, relationship, {
   memoryBridge,
   history: messages,
-  onRecallMessages: buildDbRecallCallback(actorId, slug),
+  onRecallMessages: buildDbRecallCallback(actorId, slug, branchId, personaId),
   onRecallAttachments: buildDbAttachmentRecallCallback(actorId, slug),
   totalMessageCount: snapshot.messageCount,
 });
 ```
 
-The `memoryBridge` handles encoding, decay, and retrieval. The recall callbacks give the companion agentic access to search its own conversation database. The companion [decides when to use them](https://docs.agentos.sh/features/cognitive-memory).
+The `memoryBridge` handles encoding and retrieval; decay and consolidation run in AgentOS's `CognitiveMemoryManager` under it. The recall callbacks give the companion agentic access to search its own conversation database. The companion [decides when to use them](https://docs.agentos.sh/features/cognitive-memory).
 
 ## Tools she decides to use
 
-Alice has 11 agentic tools. She calls them as function calls during generation, the same way a developer uses APIs. The language model sees the tool descriptions, decides which ones to invoke based on conversation context, receives results, and incorporates them into her response.
+Alice calls her tools as function calls during generation, the same way a developer uses APIs. The language model sees the tool descriptions, decides which ones to invoke based on conversation context, receives results, and incorporates them into her response.
 
 | Tool | What it does |
 |------|-------------|
@@ -96,6 +96,8 @@ Alice has 11 agentic tools. She calls them as function calls during generation, 
 | `web_search` | Search the web for current information |
 | `generate_image` | Create AI illustrations |
 | `analyze_image` | Look at any image URL via VLM vision |
+
+Those are the eleven this post is about; wilds.ai's companion code has seven more, among them `remember_moment`, which writes a memory when the companion decides a moment matters.
 
 The tools are defined as closures that capture request-scoped state. Each tool knows which user it's serving, which companion it belongs to, and what content policy applies. No global state, no shared singletons.
 
@@ -115,9 +117,9 @@ tools: {
       return { description };
     },
   },
-  // ... 10 more tools
+  // ... the other tools
 },
-maxSteps: 8, // can chain multiple tool calls per turn
+maxSteps: 12, // model steps per turn, each of which can call tools
 ```
 
 When Johnny said "describe what you just sent," Alice didn't match a keyword. She read the conversation, identified that she'd just sent a GIF, extracted the URL from her message metadata, called `analyze_image`, received a description from the vision model, and wove it into her response. Four steps, one turn, no scripting.
@@ -131,7 +133,9 @@ Alice isn't just a prompt. She has a quantified personality that shapes every re
 AgentOS uses the [HEXACO model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) from personality psychology: six trait dimensions, each scored from 0 to 1. Alice scores high on openness (0.9) and extraversion (0.8), moderate on agreeableness (0.65), and lower on conscientiousness (0.5). These numbers affect her word choices, her willingness to go off-topic, how directly she challenges the user, and how she handles discomfort.
 
 ```typescript
-const agent = createAgent({
+import { agent } from '@framers/agentos';
+
+const alice = agent({
   name: 'Alice',
   personality: {
     honesty: 0.7,
@@ -141,30 +145,30 @@ const agent = createAgent({
     conscientiousness: 0.5,
     openness: 0.9,
   },
-  router: policyRouter,
-  // ...
+  policyTier: 'standard',
+  // instructions, tools, router ...
 });
 ```
 
-The `policyRouter` enforces content safety at the framework level. Four tiers: safe, standard, mature, and private-adult. When Johnny tried to push Alice into sexual territory, she didn't respond with "I'm sorry, I cannot engage with that content." She responded in character:
+The `policyTier` names the conversation's content tier, one of four: safe, standard, mature, and private-adult. AgentOS routes on it; it doesn't filter. A `PolicyAwareRouter` sends mature and private-adult conversations to models from its uncensored catalog and leaves safe and standard ones on the default model. When Johnny tried to push Alice into sexual territory, she didn't respond with "I'm sorry, I cannot engage with that content." She responded in character:
 
 > **Alice:** Oh, my! How forward of you. But I'm afraid my adventures are more in the realm of tea parties and philosophical ponderings than such escapades.
 
-Same boundary, completely different experience. The policy routing blocks the content. The personality shapes the refusal. The user doesn't feel policed by a system message. They feel like Alice said no because Alice would say no.
+Same boundary, completely different experience. The `standard` tier keeps the conversation on the default model, which declined, and wilds.ai's own content-policy guardrail checks each message and reply against the tier behind it. The personality shapes the refusal. The user doesn't feel policed by a system message. They feel like Alice said no because Alice would say no.
 
-**Trust builds over time.** AgentOS implements [graduated familiarity](https://docs.agentos.sh/features/cognitive-memory-guide): the companion starts as a stranger and warms up as trust and memory depth increase. Early conversations are polite and curious. After dozens of exchanges and a shared history of memories, the companion uses inside jokes, references past conversations unprompted, and shows genuine preferences about the user.
+**Trust builds over time.** wilds.ai builds graduated familiarity on top of the runtime: five stages from stranger to bonded, each gated on both a trust score and the number of memories, and each adding its own instructions to the prompt. The companion starts as a stranger and warms up as trust and memory depth increase. Early conversations are polite and curious. After dozens of exchanges and a shared history of memories, the companion uses inside jokes, references past conversations unprompted, and shows genuine preferences about the user.
 
 ## Build your own
 
-Everything above runs on five [AgentOS](https://agentos.sh) primitives:
+Five [AgentOS](https://agentos.sh) pieces cover the runtime side of a companion like Alice:
 
-1. **`createAgent()`** with inline tools and HEXACO personality
-2. **Cognitive memory** with Ebbinghaus decay and 4-stage retrieval
-3. **Policy routing** for content safety without breaking character
-4. **VLM vision pipeline** for image understanding on demand
-5. **Media service integration** with Giphy, Pexels, Unsplash, and DALL-E
+1. **`agent()`** with inline tools and HEXACO personality
+2. **Cognitive memory** with Ebbinghaus decay and flashbulb resistance
+3. **Policy-tier model routing** that picks the model per content tier without breaking character
+4. **`VisionPipeline`** for image understanding on demand
+5. **Media extensions** for Giphy (`@framers/agentos-ext-giphy`) and Pexels, Unsplash and Pixabay (`@framers/agentos-ext-image-search`), plus `generateImage` for illustrations
 
-All TypeScript. All open source. Apache 2.0.
+All TypeScript. All open source. Apache 2.0. The companion layer wilds.ai puts on top (the `CompanionOrchestrator`, the memory bridge and its recall, the companion's tools, graduated familiarity) is wilds.ai application code, so that part you write yourself.
 
 Prefer markdown? [`souledAgent()`](https://docs.agentos.sh/getting-started/high-level-api) loads a `SOUL.md` workspace and wires its [`memory/` wiki](https://docs.agentos.sh/features/soul-files) as the companion's long-term memory, so its identity and what it remembers are editable, git-versioned files.
 

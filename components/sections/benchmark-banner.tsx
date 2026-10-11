@@ -53,16 +53,7 @@ export function BenchmarkBanner() {
     >
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-1.5 px-4 py-2.5 sm:flex-row sm:justify-center sm:gap-4">
         <span className="text-center text-[13px] font-semibold leading-snug text-white sm:text-sm sm:text-left">
-          New benchmarks: 85.6% on LongMemEval-S, 0.4 points behind{' '}
-          <a
-            href="https://www.emergence.ai/blog/sota-on-longmemeval-with-rag"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-bold text-white underline underline-offset-2 hover:opacity-90"
-          >
-            Emergence.ai
-          </a>
-          &apos;s 86% closed-source SaaS, +1.4 above{' '}
+          New benchmarks: 85.6% on LongMemEval-S with a per-category reader router, 84.2% with gpt-4o alone, level with{' '}
           <a
             href="https://mastra.ai"
             target="_blank"

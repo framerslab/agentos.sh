@@ -127,17 +127,17 @@
     "sectionSubtitle": "Production-grade infrastructure for building, deploying, and scaling AI agents",
     "multiAgent": {
       "title": "Emergent Multi-Agent Coordination",
-      "description": "Spawn researcher, analyst, critic, and executor personas from a single goal. Shared context, budgets, and approvals keep every branch in sync.",
-      "pill": "🆕 v0.1.3",
+      "description": "Run researcher, analyst, critic and executor agents on one goal, and let a hierarchical manager spawn specialists when the roster falls short. Token and time limits and approval gates cover the whole team.",
+      "pill": "6 strategies",
       "bullet1": "Deterministic routing or adaptive fan-out",
-      "bullet2": "Citations + memory stitched automatically"
+      "bullet2": "Per-agent providers and models"
     },
     "toolPacks": {
       "title": "Tool & Guardrail Packs",
-      "description": "Ship opinionated extensions for search, vision, code execution, or custom APIs with built-in permissions and retries.",
+      "description": "Add curated extensions for search, vision, code execution or your own APIs. A permission manager checks each tool call against the persona's capabilities.",
       "pill": "Extension Ecosystem",
       "bullet1": "Manifest-driven tool registry",
-      "bullet2": "Guardrail presets + compliance tags"
+      "bullet2": "Six opt-in guardrail packs"
     },
     "language": {
       "title": "Language & Translation",
@@ -148,67 +148,46 @@
     },
     "storage": {
       "title": "Storage & Deployment",
-      "description": "7 vector store backends with 4-tier auto-scaling (SQLite → HNSW → Postgres+pgvector → Qdrant). One-command migration between all backends. Docker auto-setup for Qdrant and Postgres.",
+      "description": "7 vector store backends. Memory adds an HNSW index past 1,000 traces when embeddings are on, MigrationEngine moves data between SQLite, Postgres, Qdrant and Pinecone, and a Docker helper starts a local Qdrant.",
       "pill": "Deploy Anywhere",
-      "bullet1": "One-command vector backend migration",
-      "bullet2": "Docker auto-setup for Qdrant + Postgres"
+      "bullet1": "MigrationEngine for SQLite, Postgres, Qdrant and Pinecone",
+      "bullet2": "Docker helper for a local Qdrant"
     },
     "workbench": {
       "title": "Local-First Workbench",
-      "description": "Prototype entire agencies in-browser with persisted SQL, timeline scrubbers, and a built-in marketplace of personas.",
-      "pill": "Offline Capable",
-      "bullet1": "Inspect reasoning + OpenTelemetry traces live",
-      "bullet2": "Sync artifacts back to the cloud",
+      "description": "Inspect AgentOS sessions in a local browser dashboard with a streaming timeline, a request composer, agency and planning views, and an evaluation runner.",
+      "pill": "Runs Locally",
+      "bullet1": "Timeline of streamed text, tool calls and errors",
+      "bullet2": "Evaluation runner and planning checkpoints",
       "bullet3": "Export full agencies as Markdown/JSON bundles"
     },
     "guardrails": {
       "title": "Guardrails & Safety",
-      "description": "Built-in content moderation, PII detection, and compliance checks. Circuit breakers, cost guards, and stuck detection prevent runaway loops and excessive spending.",
+      "description": "Opt-in packs for content moderation, PII redaction and grounding checks. Spend budgets cap what a run can cost, and circuit breakers take a failing provider out of rotation.",
       "pill": "Enterprise Safety",
-      "bullet1": "Circuit breaker + cost guard + stuck detection",
+      "bullet1": "Provider circuit breakers + spend budgets",
       "bullet2": "Content filtering & approval workflows"
     },
     "streaming": {
       "title": "Streaming Runtime",
-      "description": "Token-level streaming with real-time output. Built for low-latency interactions with support for SSE, WebSockets, and custom transports.",
+      "description": "Token-level streaming with real-time output. streamText yields text deltas as they arrive, and the full runtime streams typed chunks for text, tool calls and progress.",
       "pill": "Real-time",
       "bullet1": "Token-by-token delivery",
       "bullet2": "Multi-channel support"
     },
     "workflow": {
       "title": "Workflow Engine",
-      "description": "Define complex multi-step workflows with conditional branching, parallel execution, and automatic retry logic.",
+      "description": "Define multi-step workflows as graphs. The graph strategy runs independent agents in parallel, AgentGraph routes on conditions, and tool steps retry with backoff.",
       "pill": "Orchestration",
-      "bullet1": "Visual workflow builder",
+      "bullet1": "Retry policies with exponential backoff",
       "bullet2": "Parallel task execution"
     },
     "capabilityDiscovery": {
       "title": "Smart Capability Discovery",
-      "description": "Semantic, tiered discovery engine that reduces capability context by ~90%. Vector search + graph re-ranking finds the right tool, skill, or channel at the right time.",
-      "pill": "~90% Token Reduction",
+      "description": "A semantic, tiered discovery engine puts only the relevant capabilities in context, within token budgets per tier (200, 800 and 2,000 by default). Vector search plus graph re-ranking finds the right tool, skill or channel.",
+      "pill": "Tiered Context",
       "bullet1": "Three-tier token-budgeted context assembly",
       "bullet2": "Graph-based relationship re-ranking"
-    },
-    "memoryCompression": {
-      "title": "Observational Memory Compression",
-      "description": "LLM-based 3-10x memory compression with temporal reasoning. Self-improving consolidation that merges, prunes, and strengthens memories over time.",
-      "pill": "3-10x Compression",
-      "bullet1": "Temporal reasoning preserves causal chains",
-      "bullet2": "Self-improving consolidation cycle"
-    },
-    "documentIngestion": {
-      "title": "Document Ingestion Pipeline",
-      "description": "10 document loaders with multimodal extraction. 3 PDF processing tiers (basic, OCR, vision). 4 chunking strategies (fixed, semantic, recursive, sliding window).",
-      "pill": "10 Loaders",
-      "bullet1": "3 PDF tiers: basic, OCR, vision",
-      "bullet2": "4 chunking strategies including semantic"
-    },
-    "memoryPortability": {
-      "title": "Memory Import / Export",
-      "description": "Import and export agent memory in 10 formats including Obsidian vault, ChatGPT exports, Markdown, JSON, and CSV. One-command migration between all 7 vector backends.",
-      "pill": "10 Formats",
-      "bullet1": "Obsidian vault + ChatGPT import",
-      "bullet2": "One-command backend migration"
     }
   },
   "marketplace": {
@@ -269,11 +248,11 @@
       "workflowDsl": "Workflow DSL",
       "protocols": "Protocols",
       "guardrailMode": "Guardrail Mode",
-      "connectionStability": "Connection Stability",
+      "chunkTypes": "Chunk Types",
       "dimensions": "Dimensions",
-      "presets": "Agent Presets",
-      "styleAdaptation": "Style Adaptation",
-      "securityTiers": "Security Tiers",
+      "tunedMechanisms": "Tuned Mechanisms",
+      "workingMemory": "Working Memory",
+      "guardrailPacks": "Guardrail Packs",
       "piiLayers": "PII Layers",
       "mlClassifiers": "ML Classifiers",
       "sttProviders": "STT Providers",
@@ -301,7 +280,7 @@
       },
       "graphRag": {
         "title": "Graph-Based RAG",
-        "description": "7 vector store backends with HyDE retrieval, GraphRAG community detection, and 10 document loaders",
+        "description": "7 vector store backends with HyDE retrieval, GraphRAG community detection, and 8 document loaders",
         "features": [
           "HyDE hypothetical embeddings",
           "Louvain community detection",
@@ -316,7 +295,7 @@
       },
       "orchestration": {
         "title": "Multi-Agent Orchestration",
-        "description": "6 strategies from sequential to graph-based with Mission API, Tree-of-Thought planning, and workflow DSL",
+        "description": "6 strategies from sequential to graph-based with Mission API, ReAct planning, and workflow DSL",
         "features": [
           "Sequential & parallel",
           "Debate & review-loop",
@@ -346,22 +325,22 @@
       },
       "hexaco": {
         "title": "HEXACO Personality (Optional)",
-        "description": "Opt-in 6-dimensional personality vector. When enabled, biases memory retrieval, communication style, and decision-making at the kernel level (not in the prompt). Omit it and the runtime stays personality-neutral.",
+        "description": "Opt-in 6-dimensional personality vector. agent() writes traits above 0.65 or below 0.35 into the system prompt as behavior directives, and in cognitive memory traits tune seven of the eight mechanisms. Omit it and the runtime stays personality-neutral.",
         "features": [
           "6-axis trait modeling",
           "Memory modulation",
-          "Style adaptation",
-          "9 agent presets"
+          "Prompt directives",
+          "Working-memory capacity"
         ],
         "capabilities": [
           "Trait Engine",
           "Cognitive Modulation",
-          "Adaptive Style"
+          "adapt_personality Tool"
         ]
       },
       "guardrails": {
         "title": "Built-in Safety",
-        "description": "Blocks prompt injection, redacts personal data, catches hallucinations, and scans generated code — configurable from permissive to locked-down",
+        "description": "Six opt-in guardrail packs: injection and toxicity classifiers, PII redaction, grounding checks against sources, topic control, a content-policy rewriter and a scanner for generated code",
         "features": [
           "4-tier PII redaction",
           "ONNX BERT classifiers",
@@ -369,16 +348,16 @@
           "OWASP Top 10 scanning"
         ],
         "capabilities": [
-          "Security Tiers",
+          "PII Redaction",
           "Content Classifiers",
           "Code Safety"
         ]
       },
       "voice": {
         "title": "Voice Pipeline",
-        "description": "12 STT and 12 TTS providers with real-time streaming, VAD, speaker diarization, and telephony support",
+        "description": "12 STT and 13 TTS providers with real-time streaming, VAD, speaker diarization, and telephony support",
         "features": [
-          "12 STT + 12 TTS",
+          "12 STT + 13 TTS",
           "VAD + diarization",
           "Real-time streaming",
           "Twilio/Telnyx/Plivo"
@@ -390,8 +369,8 @@
         ]
       },
       "providers": {
-        "title": "11 LLM Providers",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq, and 6 more with automatic fallback chains and provider-first API",
+        "title": "13 LLM Providers",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq, and 8 more with automatic fallback chains and provider-first API",
         "features": [
           "Auto fallback (402/429/5xx)",
           "Provider-first API",
@@ -408,15 +387,15 @@
   },
   "enterprise": {
     "title": "Enterprise-Ready Infrastructure",
-    "subtitle": "Safety guardrails, 11 LLM providers, 37 channels, and cognitive memory — production-grade from day one",
+    "subtitle": "Safety guardrails, 13 LLM providers, 37 channel adapters and cognitive memory in one open-source runtime",
     "features": {
       "security": {
         "title": "Agent Safety",
         "items": [
-          "Dangerous, Permissive, Balanced, Strict, Paranoid tiers",
-          "LLM-based sentiment analysis with keyword fallback",
-          "Configurable per-agent security presets",
-          "Prompt injection defense built-in"
+          "Approval gates through the CLI, a webhook, Slack or an LLM judge",
+          "Spend budgets that refuse a call past the cap",
+          "Judge-reviewed tool forging in a node:vm sandbox",
+          "Opt-in prompt-injection classifier (ml-classifiers pack)"
         ]
       },
       "guardrails": {
@@ -424,7 +403,7 @@
         "items": [
           "PII redaction and anonymization",
           "ML classifier content moderation",
-          "Code safety and sandboxed execution",
+          "Static analysis of generated code for dangerous patterns",
           "Grounding guard, topicality filter, content-policy rewriter"
         ]
       },
@@ -441,9 +420,9 @@
         "title": "Audit & Observability",
         "items": [
           "OpenTelemetry-compatible telemetry (OTLP)",
-          "Full audit logging for every agent action",
-          "Real-time monitoring and anomaly detection",
-          "Cost guards, circuit breakers, stuck detection"
+          "Signed provenance ledger of storage writes",
+          "Token and cost usage per session",
+          "Cost guards and provider circuit breakers"
         ]
       },
       "soc2": {
@@ -457,8 +436,8 @@
       "scale": {
         "title": "Production Scale",
         "items": [
-          "115 extensions, 88 curated skills",
-          "11 LLM providers, 37 channel adapters",
+          "100+ curated extensions, 88 curated skills",
+          "13 LLM providers, 37 channel adapters",
           "Video, audio, and image generation",
           "Self-improving agents with tool forging"
         ]
@@ -467,7 +446,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "Fully Implemented",
-        "description": "PII redaction, prompt injection defense, content moderation, audit logging, cognitive memory, and 115 extensions are production-ready today"
+        "description": "PII redaction, injection and toxicity classifiers, the signed provenance ledger, cognitive memory and 100+ curated extensions are open source and available now"
       },
       "inProgress": {
         "title": "Audit Trail",
@@ -774,7 +753,7 @@
   },
   "ecosystem": {
     "title": "The AgentOS Ecosystem",
-    "subtitle": "Explore the open-source AgentOS ecosystem — multimodal RAG, multi-agent orchestration, 37 channel adapters, 11 LLM providers, and deployment kits for production AI teams.",
+    "subtitle": "Explore the open-source AgentOS ecosystem: multimodal RAG, multi-agent orchestration, 37 channel adapters, 13 LLM providers and 100+ curated extensions.",
     "stats": {
       "repositories": "Repositories",
       "weeklyDownloads": "Weekly Downloads",
@@ -812,82 +791,6 @@
       "contributeCode": "Contribute Code"
     }
   },
-  "codeExamples": {
-    "badge": "Code Examples",
-    "title": "Build with AgentOS",
-    "subtitle": "Production-ready code examples and patterns for building intelligent agent systems",
-    "categories": {
-      "all": "All Examples",
-      "basic": "Basic",
-      "advanced": "Advanced",
-      "integration": "Integration",
-      "deployment": "Deployment"
-    },
-    "selectExample": "Select Example",
-    "tabs": {
-      "synchronous": "Synchronous",
-      "streaming": "Streaming"
-    },
-    "copyButton": "Copy code",
-    "docsButton": "View Docs",
-    "runButton": "Try in Playground",
-    "examples": {
-      "basicAgent": {
-        "title": "Create Your First Agent",
-        "description": "Basic agent setup with memory and tools"
-      },
-      "gmiRoles": {
-        "title": "Multi-provider roles in an agency",
-        "description": "One agency, three providers, a dependency graph"
-      },
-      "memorySystem": {
-        "title": "Personality & Cognitive Memory",
-        "description": "HEXACO personality traits with Ebbinghaus decay and session history"
-      },
-      "toolIntegration": {
-        "title": "RAG Pipeline",
-        "description": "Ingest documents and retrieve context with HyDE embeddings"
-      },
-      "skillsIntegration": {
-        "title": "Skills & Extensions",
-        "description": "Browse the curated catalog and register extensions programmatically"
-      },
-      "realtimeStream": {
-        "title": "Real-time Streaming Responses",
-        "description": "Stream agent responses for better UX"
-      },
-      "deployment": {
-        "title": "Production Deployment",
-        "description": "Deploy AgentOS with Docker and Kubernetes"
-      },
-      "missionOrchestrator": {
-        "title": "Mission Orchestrator",
-        "description": "Describe a goal in natural language — the planner decomposes it into agents"
-      },
-      "voiceAgent": {
-        "title": "Voice Agent with Tools",
-        "description": "Build a voice-enabled agent with STT, TTS, and function calling"
-      },
-      "orchestrationGraph": {
-        "title": "Execution Graph (Review Loop)",
-        "description": "Build a cyclic review workflow with human approval gates"
-      },
-      "imageGeneration": {
-        "title": "Structured Output (Zod)",
-        "description": "Extract typed, validated data from unstructured text with any provider"
-      },
-      "emergentTools": {
-        "title": "Emergent Tools",
-        "description": "Enable runtime tool forging — agents create new tools when they hit capability gaps"
-      }
-    },
-    "cta": {
-      "title": "Ready to Build Your First Agent?",
-      "description": "Get started with AgentOS in less than 5 minutes. Install the SDK and follow our interactive tutorial.",
-      "button": "Start Building",
-      "time": "5 min"
-    }
-  },
   "socialProof": {
     "badge": "Social proof",
     "title": "Trusted deployments (revealing soon)",
@@ -916,31 +819,31 @@
     "layers": {
       "channels": {
         "name": "Channels & I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter, and 32 more. Voice via 12 STT + 12 TTS providers. Every channel adapter streams tokens in real-time through a unified protocol."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter, and 32 more. Voice via 12 STT and 13 TTS providers. Every channel adapter implements one interface, with typing indicators and message edits where the platform supports them."
       },
       "guardrails": {
         "name": "Guardrails & Safety",
-        "description": "Every output chunk is evaluated in real time. PII redaction, toxicity detection, hallucination grounding, and code safety scanning — configurable from permissive to fully locked down."
+        "description": "Guardrails that opt into streaming check text as it streams; the rest check the final reply. Six opt-in packs cover PII redaction, toxicity and injection classifiers, grounding against sources, topic control, content-policy rewriting and code safety."
       },
       "tools": {
         "name": "Tools & Extensions",
-        "description": "Web search, browser automation, image generation, shell execution, social posting. 115 extensions and 88 curated skills. Capability discovery finds the right tool semantically."
+        "description": "Web search, browser automation, image generation, shell execution, social posting. 100+ curated extensions and 88 curated skills. Capability discovery finds the right tool semantically."
       },
       "orchestration": {
         "name": "Orchestration",
-        "description": "Sequential, parallel, debate, hierarchical, review-loop, and graph strategies. Tree-of-Thought planning. Mission checkpointing with fork and resume semantics."
+        "description": "Sequential, parallel, debate, hierarchical, review-loop, and graph strategies. ReAct planning. Mission checkpointing with fork and resume semantics."
       },
       "memory": {
         "name": "Memory",
-        "description": "Ebbinghaus decay, reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist, schema encoding, source confidence decay. HyDE + GraphRAG retrieval across 7 vector backends."
+        "description": "Eight mechanisms on top of Ebbinghaus decay: reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist, schema encoding, source confidence decay and emotion regulation. HyDE + GraphRAG retrieval across 7 vector backends."
       },
       "personality": {
         "name": "Personality (HEXACO)",
-        "description": "Honesty-Humility, Emotionality, Extraversion, Agreeableness, Conscientiousness, Openness. Traits modulate memory encoding, communication style, and risk tolerance."
+        "description": "Honesty-Humility, Emotionality, Extraversion, Agreeableness, Conscientiousness, Openness. Traits set communication-style directives in the prompt and tune memory encoding, working-memory capacity and seven of the eight memory mechanisms."
       },
       "llmCore": {
         "name": "LLM Core",
-        "description": "11 LLM providers with automatic fallback chains. Provider-first API design. The thinking engine at the heart of every GMI."
+        "description": "13 LLM providers with automatic fallback chains. Provider-first API design. The thinking engine at the heart of every GMI."
       }
     },
     "comparison": {
@@ -1228,12 +1131,12 @@
   },
   "workbench": {
     "title": "AgentOS Workbench",
-    "description": "The official desktop application for building, managing, and interacting with AgentOS experiences. Create powerful AI agents with a visual interface, test in real-time, and deploy anywhere.",
+    "description": "A React + Vite dashboard you run on your own machine to inspect and debug AgentOS sessions. Watch streamed output on a session timeline, compose and replay turns, and run evaluations against your agents.",
     "badge1": "MIT Licensed",
     "badge2": "Open Source",
-    "feature1": "Visual agent builder with drag-and-drop workflows",
+    "feature1": "Session inspector for streamed text, tool calls and errors",
     "feature2": "Real-time testing and debugging tools",
-    "feature3": "One-click deployment to cloud or local",
+    "feature3": "Views for agency strategies, plan checkpoints and RAG retrieval",
     "viewGithub": "View on GitHub",
     "downloadLatest": "Download Latest",
     "downloadComingSoon": "Download (coming soon)"
@@ -1241,7 +1144,7 @@
   "cognitive": {
     "badge": "Neuroscience-Backed",
     "title": "Cognitive Memory",
-    "subtitle": "8 memory mechanisms inspired by cognitive science research. All modulated by the agent's HEXACO personality traits.",
+    "subtitle": "8 memory mechanisms inspired by cognitive science research. The agent's HEXACO traits tune seven of them.",
     "mechanisms": {
       "reconsolidation": "Reconsolidation",
       "rif": "Retrieval-Induced Forgetting",
@@ -1263,23 +1166,23 @@
       "emotionRegulation": "Emotional valence of memories is modulated over time"
     },
     "modulators": {
-      "reconsolidation": "Openness",
+      "reconsolidation": "Emotionality",
       "rif": "Conscientiousness",
       "involuntaryRecall": "Openness",
       "fok": "Extraversion",
-      "temporalGist": "Conscientiousness",
+      "temporalGist": "Not modulated",
       "schemaEncoding": "Openness",
       "sourceConfidence": "Honesty-Humility",
       "emotionRegulation": "Agreeableness"
     },
     "research": {
-      "reconsolidation": "Each act of retrieval destabilizes the memory trace, allowing it to be updated with current context before re-stabilizing. Higher Openness amplifies the degree of rewrite, making memories more adaptive but less stable.",
+      "reconsolidation": "Each act of retrieval destabilizes the memory trace, allowing it to be updated with current context before re-stabilizing. Higher Emotionality amplifies the degree of rewrite, making memories more adaptive but less stable.",
       "rif": "Retrieving a target memory actively inhibits related competitors via lateral suppression. Higher Conscientiousness strengthens this suppression, keeping retrieval focused but increasing forgetting of peripheral associations.",
-      "involuntaryRecall": "Contextual cues can trigger spontaneous activation of associated memories without deliberate search. Higher Openness lowers the activation threshold, producing more frequent involuntary recalls and serendipitous connections.",
+      "involuntaryRecall": "Contextual cues can trigger spontaneous activation of associated memories without deliberate search. Higher Openness raises the chance of an involuntary recall, producing more serendipitous connections.",
       "fok": "A metacognitive judgment about the likelihood of successful retrieval, even before the answer surfaces. Higher Extraversion amplifies FOK signals, making the agent more confident in its sense of 'almost knowing.'",
-      "temporalGist": "Over time, verbatim details decay while the semantic gist is preserved through abstraction. Lower Conscientiousness accelerates detail loss, leaving only the core meaning behind.",
-      "schemaEncoding": "New information is assimilated into existing knowledge schemas, with schema-consistent material encoded more readily. Higher Openness allows more flexible schema modification, enabling novel information to reshape existing structures.",
-      "sourceConfidence": "Memory for the source of information (who said it, where it was read) decays faster than the information content itself. Higher Honesty-Humility increases skepticism toward uncertain sources, treating low-confidence provenance as unreliable.",
+      "temporalGist": "Over time, verbatim details decay while the semantic gist is preserved through abstraction. This is the one mechanism personality does not tune.",
+      "schemaEncoding": "New information is assimilated into existing knowledge schemas, with schema-consistent material encoded more readily. Higher Openness strengthens the encoding boost for information that violates a schema.",
+      "sourceConfidence": "Memory for the source of information (who said it, where it was read) decays faster than the information content itself. Higher Honesty-Humility makes the agent's own inferences and reflections lose confidence faster.",
       "emotionRegulation": "The emotional intensity attached to memories is actively modulated during retrieval and consolidation. Higher Agreeableness increases emotional smoothing, dampening extreme valence over time for more balanced recall."
     },
     "citations": {
@@ -1296,12 +1199,12 @@
     "ctaLearnMore": "Explore Cognitive Memory",
     "ctaSoulWiki": "Markdown Memory Wiki",
     "memoryTypes": {
-      "title": "4-Tier Memory Hierarchy",
-      "subtitle": "From volatile scratchpads to permanent knowledge graphs — each tier consolidates upward automatically.",
+      "title": "Four Kinds of Memory",
+      "subtitle": "Working memory holds the current session. Episodic traces decay along the Ebbinghaus curve, and a consolidation pass (hourly by default) summarizes clusters of them into semantic memory with an LLM. An optional observer compresses long conversations into notes.",
       "working": {
         "name": "Working Memory",
-        "description": "Short-term scratchpad for the current conversation turn. Cleared between sessions.",
-        "detail": "~128k tokens, volatile"
+        "description": "Short-term slots for the current session, cleared when a new session starts.",
+        "detail": "7 slots, 5 to 9 by traits"
       },
       "episodic": {
         "name": "Episodic Memory",
@@ -1315,26 +1218,26 @@
       },
       "observational": {
         "name": "Observational Memory",
-        "description": "Compressed summaries of past interactions. 3-10x compression via LLM with temporal reasoning.",
-        "detail": "Auto-consolidation from episodic"
+        "description": "Optional observer notes. Once a conversation passes a token threshold, an LLM extracts notes, then compresses and reflects on them.",
+        "detail": "Opt-in, needs an LLM"
       },
-      "flowLabel": "Consolidation Pipeline"
+      "flowLabel": "Consolidation: episodic to semantic"
     },
     "ragPipeline": {
       "title": "Multimodal RAG Pipeline",
-      "subtitle": "Ingest documents, images, audio — retrieve with multiple strategies.",
+      "subtitle": "Ingest documents, images and audio, then retrieve with several strategies.",
       "steps": {
         "ingest": {
           "name": "Ingest",
-          "description": "10 document loaders: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, images, audio, video"
+          "description": "8 document loaders for PDF, DOCX, Markdown, HTML, URLs, TXT, CSV, JSON and YAML; images and audio go through MultimodalIndexer"
         },
         "chunk": {
           "name": "Chunk",
-          "description": "4 strategies: fixed-size, sentence, recursive, semantic"
+          "description": "4 strategies: fixed, semantic, hierarchical, layout"
         },
         "embed": {
           "name": "Embed",
-          "description": "OpenAI, Ollama, Cohere, custom embeddings"
+          "description": "OpenAI, Gemini, Ollama, OpenRouter or any OpenAI-compatible endpoint"
         },
         "store": {
           "name": "Store",
@@ -1432,11 +1335,11 @@
       "step3": "Judge Evaluates",
       "step4": "Tool Activated",
       "step5": "Agent Uses It",
-      "description": "Runtime Tool Forging means an agent can write itself a new TypeScript function mid-decision, get it reviewed by a separate judge LLM, and execute it inside a hardened node:vm sandbox (5s default wall clock, 128 MB nominal memory budget, default-empty allowlist for fetch/fs/crypto, statically-banned eval/require/import/process/child_process), all before the next turn. Approved tools land in a discoverable index for reuse, so cost flattens after the first few forges in a session.",
+      "description": "Runtime Tool Forging lets an agent write a new JavaScript function mid-task, have a separate judge LLM review it, and run it before the next turn. The default executor is a node:vm sandbox with a 5 s wall clock, a static ban on eval, require, import, process and child_process, and fetch, fs and crypto only when you grant them; it measures memory without capping it and is not a security boundary. The optional QuickJSExecutor isolates the code and caps its memory. Approved tools go into a registry for reuse.",
       "details": [
         "Composable mode: chains existing tools via pipeline steps — safe by construction",
-        "Sandbox mode: agent-written code runs in memory/time-bounded isolation",
-        "Three-tier lifecycle: session-scoped, agent-scoped, or promoted to shared registry",
+        "Sandbox mode: agent-written code runs under a time limit, in node:vm or QuickJS",
+        "Three lifetime tiers (session, agent, shared); promotion moves a tool from session to agent",
         "Dual-judge promotion panel: safety auditor + correctness reviewer must both approve",
         "Usage tracking with automatic tier promotion when reliability thresholds are met"
       ]
@@ -1455,17 +1358,17 @@
       "observe": "Observe Outcome",
       "update": "Update Strategy",
       "executeBetter": "Execute Better",
-      "circuitBreaker": "Circuit breaker on failures",
-      "styleAdaptation": "Style adaptation (user prefs)",
+      "selfEvaluation": "LLM-judged self-evaluation",
+      "skillsAndWorkflows": "Skill and workflow tools",
       "memoryConsolidation": "Memory consolidation",
-      "description": "Agents learn from failures and adapt their approach over time. Tool failure tracking triggers circuit breakers to avoid repeated errors. Style adaptation learns user preferences for formality, verbosity, and technicality. Memory consolidation strengthens useful memories and lets irrelevant ones decay via Ebbinghaus curves."
+      "description": "With self-improvement on, an agent gets four tools for working on itself. self_evaluate scores its replies with an LLM judge, adapt_personality shifts its HEXACO traits within a per-session budget, manage_skills turns skills on and off, and create_workflow chains tools into reusable sequences. Memory consolidation strengthens useful memories and lets irrelevant ones decay along Ebbinghaus curves."
     },
     "ctaExploreDocs": "Explore Emergent Capabilities"
   },
   "agencySection": {
     "badge": "Multi-Agent Orchestration",
     "title": "Parallel Agency",
-    "subtitle": "Teams of specialized agents share execution state and RAG context across the roster. Six built-in strategies route outputs between them: sequential, parallel, debate, review-loop, hierarchical, or graph DAG.",
+    "subtitle": "Teams of specialized agents work on one request together. Six built-in strategies route outputs between them: sequential, parallel, debate, review-loop, hierarchical, or graph DAG.",
     "codeExampleLabel": "Code Example",
     "sharedCapabilitiesTitle": "Shared Across All Strategies",
     "strategies": {
@@ -1526,13 +1429,11 @@
       "illustrator": "Illustrator"
     },
     "sharedCapabilities": {
-      "sharedMemory": "Shared Memory",
-      "sharedRAG": "Shared RAG",
       "sharedExecState": "Shared Execution State",
       "hitlGates": "HITL Approval Gates",
       "streamingOutput": "Streaming Output",
       "resourceControls": "Resource Controls",
-      "perAgentGuardrails": "Per-Agent Guardrails"
+      "perAgentProviders": "Per-Agent Providers"
     },
     "sharedCapabilitiesScopeNoteLabel": "Scope:",
     "sharedCapabilitiesScopeNote": "The roster applies within one <code>generate()</code> call. Across <code>session().send()</code> turns only message history persists. See the <link>agency API docs</link> for memory patterns.",
@@ -1540,20 +1441,20 @@
   },
   "benchmarks": {
     "badge": "Memory benchmarks · LongMemEval · LOCOMO",
-    "title": "Memory Benchmarks at Matched Reader",
-    "subtitle": "Same gpt-4o reader, same dataset, same judge across every row. Cross-provider configurations are excluded because they cannot be reproduced from the methodology each vendor discloses publicly.",
+    "title": "Memory Benchmarks with the Reader Named",
+    "subtitle": "AgentOS runs share one dataset and one gpt-4o-2024-08-06 judge; vendor numbers are as each vendor publishes them. The 85.6% headline routes four of six question categories to gpt-5-mini, so the table also shows the run with gpt-4o answering every question.",
     "tabS": "LongMemEval-S (115K tokens)",
     "tabM": "LongMemEval-M (1.5M tokens)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "0.4 points behind Emergence.ai SOTA (86%, closed-source SaaS) · +1.4 points above Mastra OM gpt-4o (84.23%) · $0.0090 per correct · 3.6-second median latency",
+    "highlightSCi": "Per-category reader router (gpt-4o + gpt-5-mini) · 84.2% with gpt-4o alone, level with Mastra OM gpt-4o (84.23%) · $0.0090 per correct · 3.6-second median latency",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "First open-source library above 65% on the 1.5M-token M variant · +4.5 points above Wu et al., ICLR 2025 baseline",
-    "matrixIntro": "Each row is a full N=500 run at gpt-4o reader, with the same gpt-4o-2024-08-06 judge and the same rubric. Cross-provider configurations are excluded from this table.",
+    "highlightMCi": "Per-category reader router, top-5 retrieval · $0.0078 per correct · the LongMemEval paper's best GPT-4o setup scores 72.0% at top-10",
+    "matrixIntro": "AgentOS rows and the EmergenceMem Simple Fast rerun come from agentos-bench runs on the 500-question LongMemEval sets, judged by gpt-4o-2024-08-06 with the LongMemEval rubric. Vendor rows are the numbers each vendor publishes.",
     "ctaReadAudit": "Read the Transparency Audit",
-    "ctaSeeRunJsons": "See run JSONs on GitHub",
+    "ctaSeeRunJsons": "See agentos-bench on GitHub",
     "ctaBenchmarksPage": "Full Benchmarks Reference",
-    "footnote": "Mastra OM 94.9%, Mem0 v3 93.4%, Hindsight 91.4%, agentmemory 96.2%, and Supermemory 85.2% all use cross-provider readers (gpt-5-mini, gemini-3-pro) or managed-platform infrastructure where the judge model, rubric, and seed are not published. The cross-vendor comparison above is what is independently reproducible from the methodology each vendor discloses."
+    "footnote": "Other published LongMemEval-S scores include agentmemory 96.2% (GPT-4o reader), Mastra OM 94.9% (gpt-5-mini reader) and Supermemory 85.2% (gemini-3-pro reader). The agentos-bench leaderboard lists every row with its reader and source."
   }
 }

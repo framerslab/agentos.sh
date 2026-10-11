@@ -7,7 +7,6 @@ import {
   ArrowRight,
   Layers,
   Brain,
-  Shield,
   Zap,
   Gauge,
   Eye,
@@ -57,7 +56,7 @@ const writer = agent({
 
 const { text } = await writer.generate('Write about quantum computing.');
 // The agency tabs below show what composing a team of these agents adds:
-// shared RAG context, routed hand-offs between agents, orchestrated flow.`,
+// routed hand-offs between agents, one orchestrated flow, agency-wide limits.`,
 
   sequential: `import { agency } from '@framers/agentos';
 
@@ -168,7 +167,7 @@ const SHARED_CAPABILITIES: SharedCapability[] = [
   { icon: Eye, labelKey: 'hitlGates' },
   { icon: Zap, labelKey: 'streamingOutput' },
   { icon: Gauge, labelKey: 'resourceControls' },
-  { icon: Shield, labelKey: 'perAgentGuardrails' },
+  { icon: Layers, labelKey: 'perAgentProviders' },
 ]
 
 /* ------------------------------------------------------------------ */

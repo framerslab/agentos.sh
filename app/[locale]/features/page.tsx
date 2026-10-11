@@ -56,7 +56,7 @@ type Props = {
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const title = 'AgentOS Features: Multi-Agent Orchestration, Cognitive Memory, Runtime Tool Generation';
   const description =
-    'AgentOS features for the open-source TypeScript AI agent framework: 6 multi-agent collaboration strategies, cognitive memory with Ebbinghaus decay, runtime tool generation, specialist spawning, voice pipelines, and 11 LLM providers.';
+    'AgentOS features for the open-source TypeScript AI agent framework: 6 multi-agent collaboration strategies, cognitive memory with Ebbinghaus decay, runtime tool generation, specialist spawning, voice pipelines, and 13 LLM providers.';
   const path = '/features';
   const url = canonical(locale, path);
 

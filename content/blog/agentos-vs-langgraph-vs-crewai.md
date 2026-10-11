@@ -15,7 +15,7 @@ keywords: "typescript ai agent framework, langgraph alternative, crewai alternat
 
 A confession before the table: we have built production agents on three of the frameworks in this post. Each one was the right choice at the time. Each one was wrong in a different way once the workload changed. The honest truth about agent frameworks in 2026 is that none of them are bad and none of them are universal. The job-to-be-done determines the right pick more than any feature checklist. Most comparison posts pretend otherwise. This one will try not to.
 
-For reader-matched benchmark numbers behind the AgentOS column in the table below, see [LongMemEval SOTA at gpt-4o reader](/en/blog/agentos-memory-sota-longmemeval/).
+For AgentOS's LongMemEval numbers, with the answer model named beside each one, see [AgentOS on LongMemEval: 85.6% on S, 70.2% on M](/en/blog/agentos-memory-sota-longmemeval/).
 
 A few rules we tried to follow:
 
@@ -36,7 +36,7 @@ This comparison covers the six production-ready frameworks a TypeScript develope
 | **Language** | TypeScript | Python + JS | Python | TypeScript | TypeScript | TypeScript |
 | **Architecture** | GMI (cognitive entities) | State graphs | Role-based crews | Agents + workflows | Supervisor agents | Lightweight agents |
 | **Memory** | Cognitive ([Ebbinghaus decay](https://en.wikipedia.org/wiki/Forgetting_curve), [8 mechanisms](https://docs.agentos.sh/features/cognitive-memory)) | Conversation + checkpoints | Short/long-term + entity | Conversation + semantic | Conversation + RAG | Conversation |
-| **LLM Providers** | [21](https://docs.agentos.sh/features/llm-output-validation) (OpenAI, Anthropic, Gemini, Ollama, etc.) | Via LangChain | OpenAI, Anthropic, Mistral + more | 40+ via [AI SDK](https://sdk.vercel.ai/) | Multi-provider | OpenAI only |
+| **LLM Providers** | [13](https://github.com/framerslab/agentos/blob/master/src/core/llm/providers/AIModelProviderManager.ts) (OpenAI, Anthropic, Gemini, Ollama, etc.) | Via LangChain | OpenAI, Anthropic, Mistral + more | 40+ via [AI SDK](https://sdk.vercel.ai/) | Multi-provider | OpenAI only |
 | **Guardrails** | [6 packs](https://docs.agentos.sh/features/guardrails) (PII, injection, code safety, grounding, content policy, topicality) | Content moderation middleware | Basic output validation | None built-in | Guardrails module | None built-in |
 | **Multi-Agent** | [6 strategies](https://docs.agentos.sh/features/agency-api) + emergent teams | State graph orchestration | Role-based crew orchestration | Workflow engine | [Supervisor orchestration](https://voltagent.dev/) | Handoffs |
 | **Channels** | [37 adapters](https://docs.agentos.sh/features/channels) (Telegram, WhatsApp, Discord, Slack, etc.) | None built-in | None built-in | None built-in | None built-in | None built-in |
@@ -55,18 +55,32 @@ Create an agent that searches the web and answers questions.
 
 ```typescript
 import { agent } from '@framers/agentos';
+import { WebSearchService, TavilyProvider } from '@framers/agentos/cognition/web-search';
+
+// Needs ANTHROPIC_API_KEY and TAVILY_API_KEY in the environment.
+const search = new WebSearchService();
+search.registerProvider(new TavilyProvider(process.env.TAVILY_API_KEY!));
 
 const researcher = agent({
   provider: 'anthropic',
-  model: 'claude-sonnet-4-20250514',
+  model: 'claude-sonnet-4-6',
   instructions: 'You are a research assistant.',
-  tools: ['web_search', 'deep_research'],
+  tools: {
+    web_search: {
+      description: 'Search the web. Returns titles, URLs and snippets.',
+      parameters: {
+        type: 'object',
+        properties: { query: { type: 'string' } },
+        required: ['query'],
+      },
+      execute: async ({ query }) => search.search(query, { maxResults: 3 }),
+    },
+  },
   personality: { openness: 0.9, conscientiousness: 0.8 },
-  memory: { enabled: true, decay: 'ebbinghaus' },
-  guardrails: { output: ['grounding-guard'] },
 });
 
-const answer = await researcher.text('What caused the 2008 financial crisis?');
+const answer = await researcher.generate('What caused the 2008 financial crisis?');
+console.log(answer.text);
 ```
 
 ### LangGraph (Python)
@@ -76,7 +90,7 @@ from langgraph.prebuilt import create_react_agent
 from langchain_anthropic import ChatAnthropic
 from langchain_community.tools import TavilySearchResults
 
-model = ChatAnthropic(model="claude-sonnet-4-20250514")
+model = ChatAnthropic(model="claude-sonnet-4-6")
 tools = [TavilySearchResults(max_results=3)]
 
 agent = create_react_agent(model, tools)
@@ -115,7 +129,7 @@ import { Agent } from '@mastra/core';
 
 const agent = new Agent({
   name: 'researcher',
-  model: anthropic('claude-sonnet-4-20250514'),
+  model: anthropic('claude-sonnet-4-6'),
   instructions: 'You are a research assistant.',
   tools: { webSearch: createTool({ ... }) },
 });
@@ -142,13 +156,13 @@ const volt = new VoltAgent({ agents: { researcher } });
 
 ### AgentOS: Cognitive Agents with Personality, Memory, and Safety
 
-AgentOS treats each agent as a persistent cognitive entity. The [HEXACO personality system](https://docs.agentos.sh/features/cognitive-memory-guide), based on the [six-factor model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) validated across [multiple cross-cultural studies](https://doi.org/10.1016/j.jrp.2004.09.010), shapes communication style and decision-making. [Cognitive memory](https://docs.agentos.sh/features/cognitive-memory) uses [Ebbinghaus decay curves](https://en.wikipedia.org/wiki/Forgetting_curve) and [8 neuroscience-backed mechanisms](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine) including [reconsolidation](https://doi.org/10.1038/35021052) and [retrieval-induced forgetting](https://doi.org/10.1037/0096-3445.123.2.186).
+AgentOS treats each agent as a persistent cognitive entity. The [HEXACO personality system](https://docs.agentos.sh/features/cognitive-memory-guide), based on the [six-factor model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) validated across [psycholexical studies in seven languages](https://doi.org/10.1037/0022-3514.86.2.356), shapes communication style and decision-making. [Cognitive memory](https://docs.agentos.sh/features/cognitive-memory) uses [Ebbinghaus decay curves](https://en.wikipedia.org/wiki/Forgetting_curve) and [8 neuroscience-backed mechanisms](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine) including [reconsolidation](https://doi.org/10.1038/35021052) and [retrieval-induced forgetting](https://doi.org/10.1037/0278-7393.20.5.1063).
 
 Unique capabilities no other framework offers:
 
 - **[Runtime tool forging](https://docs.agentos.sh/features/emergent-capabilities)**: agents create new tools at runtime, reviewed by an [LLM-as-judge](https://docs.agentos.sh/api/classes/EmergentJudge) before activation
 - **[37 channel adapters](https://docs.agentos.sh/features/channels)**: Telegram, WhatsApp, Discord, Slack, email, and 32 more
-- **[Voice pipeline](https://docs.agentos.sh/features/voice-pipeline)**: 12 STT + 12 TTS providers, VAD, speaker diarization, [telephony](https://docs.agentos.sh/features/telephony-providers)
+- **[Voice pipeline](https://docs.agentos.sh/features/voice-pipeline)**: 12 STT + 13 TTS providers, VAD, speaker diarization, [telephony](https://docs.agentos.sh/features/telephony-providers)
 - **[6 guardrail packs](https://docs.agentos.sh/features/guardrails)**: PII redaction, prompt injection defense, code safety, grounding verification, content policy, topicality enforcement
 - **[6 multi-agent strategies](https://docs.agentos.sh/features/agency-api)**: sequential, parallel, debate, review loop, hierarchical, graph DAG
 
@@ -202,7 +216,7 @@ The tradeoff: OpenAI models only. No multi-provider support.
 - Your agent needs a **consistent personality** across thousands of conversations
 - **Memory matters**: the agent should remember, forget, and reconsolidate like a human
 - You deploy to **messaging channels**: Telegram, WhatsApp, Discord, Slack out of the box
-- **Safety is non-negotiable**: 6 guardrail packs, 5 security tiers, prompt injection defense
+- **Safety is non-negotiable**: 6 guardrail packs, prompt injection defense
 - You're building in **TypeScript** and want a cognitive runtime, not just an orchestration layer
 - **Voice is part of the product**: built-in STT, TTS, VAD, telephony
 - You want **one framework** for tools, memory, channels, guardrails, and orchestration
@@ -239,15 +253,15 @@ If your job is "build a deterministic LLM workflow with a graph of nodes," LangG
 
 ### Are the benchmark numbers in this post compared at the same answer LLM?
 
-Where AgentOS numbers appear in this post, the answer LLM and retrieval config are named in the LongMemEval SOTA post. For competitor numbers cited from their own marketing, the answer LLM is whatever they ship. If two systems claim a different score on the same benchmark with different answer LLMs, that's a pricing observation, not a quality claim. We flag those distinctions inline rather than burying them.
+Where AgentOS numbers appear in this post, the answer LLM and retrieval config are named in the LongMemEval post. For competitor numbers cited from their own marketing, the answer LLM is whatever they ship. If two systems claim a different score on the same benchmark with different answer LLMs, that's a pricing observation, not a quality claim. We flag those distinctions inline rather than burying them.
 
 ### Can I migrate from LangGraph to AgentOS without rewriting my graph?
 
 Partially. AgentOS has a `workflow()` API and an `AgentGraph` primitive that handle DAG orchestration. The translation maps cleanly for graphs whose nodes are LLM calls or tool calls. Custom Python state-graph nodes don't translate; you'd rewrite those as TypeScript handlers. Most migrations take less than a day for graphs under 20 nodes.
 
-### Why does AgentOS support more LLM providers than the others?
+### How does AgentOS handle LLM providers?
 
-Not strategy, just scope: provider integrations are cheap to maintain when the runtime treats every provider as a thin adapter over the same `generateText` shape. We add providers when users ask. Framework competitors that lock to one or two providers tend to do it because their orchestration layer makes assumptions about token-stream shape that aren't portable.
+Every provider is a thin adapter over the same `generateText` shape, which keeps each integration cheap to maintain. AgentOS ships 13 and adds providers when users ask; Mastra reaches more, 40+ through the AI SDK. Framework competitors that lock to one or two providers tend to do it because their orchestration layer makes assumptions about token-stream shape that aren't portable.
 
 ### Where does AgentOS lose to a competitor?
 

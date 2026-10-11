@@ -68,7 +68,7 @@ const repositories: Repository[] = [
   },
   {
     name: 'AgentOS Extensions',
-    description: '45+ tool extensions, channel adapters, voice providers, and browser automation packs.',
+    description: '100+ curated extensions, including 37 channel adapters, 16 voice and telephony packs, 6 guardrail packs, and research, cloud and browser-automation tools.',
     url: 'https://github.com/framerslab/agentos-extensions',
     category: 'core',
     icon: Puzzle,

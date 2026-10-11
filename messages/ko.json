@@ -127,17 +127,17 @@
     "sectionSubtitle": "AI 에이전트를 구축, 배포 및 확장하기 위한 프로덕션급 인프라",
     "multiAgent": {
       "title": "창발형 다중 에이전트 조정",
-      "description": "단일 목표에서 연구원, 분석가, 비평가 및 실행자 페르소나를 생성합니다. 공유된 컨텍스트, 예산 및 승인으로 모든 분기를 동기화합니다.",
-      "pill": "🆕 v0.1.3",
+      "description": "연구자, 분석가, 비평가, 실행자 에이전트를 하나의 목표에 투입하고, 팀으로 부족할 때는 계층형 매니저가 전문가를 생성합니다. 토큰·시간 한도와 승인 게이트는 팀 전체에 적용됩니다.",
+      "pill": "6가지 전략",
       "bullet1": "결정론적 라우팅 또는 적응형 팬아웃",
-      "bullet2": "인용 + 메모리 자동 연결"
+      "bullet2": "에이전트별 제공자와 모델"
     },
     "toolPacks": {
       "title": "도구 및 가드레일 팩",
-      "description": "검색, 비전, 코드 실행 또는 사용자 지정 API를 위한 내장 권한 및 재시도 기능이 포함된 고정된 확장을 제공합니다.",
+      "description": "검색, 비전, 코드 실행 또는 자체 API를 위한 엄선된 확장 기능을 추가하세요. 권한 관리자가 각 도구 호출을 페르소나의 기능과 대조해 확인합니다.",
       "pill": "확장 생태계",
       "bullet1": "매니페스트 기반 도구 레지스트리",
-      "bullet2": "가드레일 프리셋 + 규정 준수 태그"
+      "bullet2": "6개의 옵트인 가드레일 팩"
     },
     "language": {
       "title": "언어 및 번역",
@@ -148,66 +148,45 @@
     },
     "storage": {
       "title": "저장 및 배포",
-      "description": "4단계 자동 확장이 가능한 7개의 벡터 스토어 백엔드 (SQLite → HNSW → Postgres+pgvector → Qdrant). 모든 백엔드 간 원커맨드 마이그레이션. Qdrant 및 Postgres Docker 자동 설정.",
+      "description": "7개 벡터 스토어 백엔드. 임베딩이 켜져 있으면 Memory는 1,000개 트레이스를 넘을 때 HNSW 인덱스를 추가하고, MigrationEngine은 SQLite, Postgres, Qdrant, Pinecone 사이에서 데이터를 옮기며, Docker 헬퍼가 로컬 Qdrant를 띄웁니다.",
       "pill": "어디서나 배포",
-      "bullet1": "원커맨드 벡터 백엔드 마이그레이션",
-      "bullet2": "Qdrant + Postgres Docker 자동 설정"
+      "bullet1": "SQLite, Postgres, Qdrant, Pinecone용 MigrationEngine",
+      "bullet2": "로컬 Qdrant용 Docker 헬퍼"
     },
     "workbench": {
       "title": "로컬 우선 워크벤치",
-      "description": "지속된 SQL, 타임라인 스크러버 및 내장 페르소나 마켓플레이스를 사용하여 브라우저에서 전체 에이전시를 프로토타이핑하세요.",
-      "pill": "오프라인 가능",
-      "bullet1": "추론 + OpenTelemetry 트레이스 실시간 검사",
-      "bullet2": "아티팩트를 클라우드로 다시 동기화",
+      "description": "로컬 브라우저 대시보드에서 AgentOS 세션을 살펴보세요. 스트리밍 타임라인, 요청 작성기, 에이전시·플래닝 뷰, 평가 실행기를 갖추고 있습니다.",
+      "pill": "로컬에서 실행",
+      "bullet1": "스트리밍 텍스트, 도구 호출, 오류 타임라인",
+      "bullet2": "평가 실행기와 플래닝 체크포인트",
       "bullet3": "전체 에이전시를 Markdown/JSON 번들로 내보내기"
     },
     "capabilityDiscovery": {
       "title": "스마트 케이파빌리티 디스커버리",
-      "description": "케이파빌리티 컨텍스트를 약 90% 줄이는 시맨틱 계층형 디스커버리 엔진. 벡터 검색 + 그래프 리랭킹이 적절한 도구, 스킬 또는 채널을 적시에 찾습니다.",
-      "pill": "~90% 토큰 감소",
+      "description": "의미 기반의 계층형 탐색 엔진이 관련 기능만 계층별 토큰 예산(기본 200, 800, 2,000) 안에서 컨텍스트에 넣습니다. 벡터 검색과 그래프 재순위화로 알맞은 도구, 스킬, 채널을 찾습니다.",
+      "pill": "계층형 컨텍스트",
       "bullet1": "3단계 토큰 예산 기반 컨텍스트 어셈블리",
       "bullet2": "그래프 기반 관계 리랭킹"
     },
-    "memoryCompression": {
-      "title": "관찰적 메모리 압축",
-      "description": "시간적 추론이 포함된 LLM 기반 3-10배 메모리 압축. 시간이 지남에 따라 기억을 병합, 정리 및 강화하는 자기 개선 통합.",
-      "pill": "3-10배 압축",
-      "bullet1": "시간적 추론이 인과 관계 체인 보존",
-      "bullet2": "자기 개선 통합 사이클"
-    },
-    "documentIngestion": {
-      "title": "문서 수집 파이프라인",
-      "description": "멀티모달 추출을 지원하는 10개의 문서 로더. 3단계 PDF 처리 (기본, OCR, 비전). 4가지 청킹 전략 (고정, 시맨틱, 재귀, 슬라이딩 윈도우).",
-      "pill": "10개 로더",
-      "bullet1": "3단계 PDF: 기본, OCR, 비전",
-      "bullet2": "시맨틱을 포함한 4가지 청킹 전략"
-    },
-    "memoryPortability": {
-      "title": "메모리 가져오기 / 내보내기",
-      "description": "Obsidian 볼트, ChatGPT 내보내기, Markdown, JSON, CSV 등 10가지 형식으로 에이전트 메모리를 가져오고 내보내기. 7개 벡터 백엔드 간 원커맨드 마이그레이션.",
-      "pill": "10개 형식",
-      "bullet1": "Obsidian 볼트 + ChatGPT 가져오기",
-      "bullet2": "원커맨드 백엔드 마이그레이션"
-    },
     "guardrails": {
       "title": "가드레일 및 안전",
-      "description": "콘텐츠 모더레이션, PII 감지, 컴플라이언스 검증이 내장. 서킷 브레이커, 비용 가드, 정지 감지로 폭주 루프와 과도한 지출을 방지합니다.",
+      "description": "콘텐츠 모더레이션, PII 마스킹, 근거 검증을 위한 옵트인 팩. 지출 예산이 실행 비용에 한도를 두고, 서킷 브레이커가 장애가 난 제공자를 순환에서 뺍니다.",
       "pill": "엔터프라이즈 보안",
-      "bullet1": "서킷 브레이커 + 비용 가드 + 정지 감지",
+      "bullet1": "제공자별 서킷 브레이커 + 지출 예산",
       "bullet2": "콘텐츠 필터링 및 승인 워크플로"
     },
     "streaming": {
       "title": "스트리밍 런타임",
-      "description": "실시간 토큰 단위 스트리밍. SSE, WebSocket, 커스텀 전송을 지원하는 저지연 인터랙션용으로 설계.",
+      "description": "토큰 단위 스트리밍으로 실시간 출력합니다. streamText는 도착하는 텍스트 델타를 바로 내보내고, 전체 런타임은 텍스트, 도구 호출, 진행 상황에 대한 타입별 청크를 스트리밍합니다.",
       "pill": "실시간",
       "bullet1": "토큰 단위 전송",
       "bullet2": "멀티 채널 지원"
     },
     "workflow": {
       "title": "워크플로 엔진",
-      "description": "조건부 분기, 병렬 실행, 자동 재시도 로직을 갖춘 복잡한 다단계 워크플로를 정의합니다.",
+      "description": "여러 단계의 워크플로를 그래프로 정의하세요. graph 전략은 독립적인 에이전트를 병렬로 실행하고, AgentGraph는 조건에 따라 경로를 고르며, 도구 단계는 백오프로 재시도합니다.",
       "pill": "오케스트레이션",
-      "bullet1": "비주얼 워크플로 빌더",
+      "bullet1": "지수 백오프 재시도 정책",
       "bullet2": "병렬 작업 실행"
     }
   },
@@ -269,11 +248,11 @@
       "workflowDsl": "워크플로 DSL",
       "protocols": "프로토콜",
       "guardrailMode": "가드레일 모드",
-      "connectionStability": "연결 안정성",
+      "chunkTypes": "청크 유형",
       "dimensions": "차원",
-      "presets": "에이전트 프리셋",
-      "styleAdaptation": "스타일 적응",
-      "securityTiers": "보안 단계",
+      "tunedMechanisms": "조정되는 메커니즘",
+      "workingMemory": "작업 기억",
+      "guardrailPacks": "가드레일 팩",
       "piiLayers": "PII 계층",
       "mlClassifiers": "ML 분류기",
       "sttProviders": "STT 제공자",
@@ -301,7 +280,7 @@
       },
       "graphRag": {
         "title": "그래프 기반 RAG",
-        "description": "HyDE 검색, GraphRAG 커뮤니티 탐지 및 10개 문서 로더를 갖춘 7개의 벡터 스토어 백엔드",
+        "description": "HyDE 검색, GraphRAG 커뮤니티 탐지 및 8개 문서 로더를 갖춘 7개의 벡터 스토어 백엔드",
         "features": [
           "HyDE 가설적 임베딩",
           "Louvain 커뮤니티 탐지",
@@ -316,7 +295,7 @@
       },
       "orchestration": {
         "title": "멀티 에이전트 오케스트레이션",
-        "description": "순차에서 그래프 기반까지 6가지 전략과 Mission API, Tree-of-Thought 계획, 워크플로 DSL",
+        "description": "순차에서 그래프 기반까지 6가지 전략과 Mission API, ReAct 계획, 워크플로 DSL",
         "features": [
           "순차 및 병렬",
           "토론 및 리뷰 루프",
@@ -346,22 +325,22 @@
       },
       "hexaco": {
         "title": "HEXACO 성격 (선택 사항)",
-        "description": "옵트인 6차원 성격 벡터. 활성화되면 커널 수준에서 기억 검색, 의사소통 스타일 및 의사 결정에 편향을 줍니다 (프롬프트에는 아님). 생략하면 런타임은 성격 중립적으로 유지됩니다.",
+        "description": "옵트인 6차원 성격 벡터. agent()는 0.65보다 높거나 0.35보다 낮은 특성을 행동 지시문으로 시스템 프롬프트에 쓰고, 인지 메모리에서는 특성이 8개 메커니즘 중 7개를 조정합니다. 생략하면 런타임은 성격 중립적으로 유지됩니다.",
         "features": [
           "6축 특성 모델링",
           "기억 조절",
-          "스타일 적응",
-          "9개 에이전트 프리셋"
+          "프롬프트 지시문",
+          "작업 기억 용량"
         ],
         "capabilities": [
           "Trait Engine",
           "인지 조절",
-          "적응형 스타일"
+          "adapt_personality 도구"
         ]
       },
       "guardrails": {
         "title": "내장 안전 기능",
-        "description": "위험에서 편집증까지의 보안 단계와 PII 삭제, ML 분류기, 환각 탐지",
+        "description": "6개의 옵트인 가드레일 팩: 인젝션·유해성 분류기, PII 마스킹, 출처 대조 검증, 주제 제어, 콘텐츠 정책 리라이터, 생성 코드 스캐너",
         "features": [
           "4단계 PII 삭제",
           "ONNX BERT 분류기",
@@ -369,16 +348,16 @@
           "OWASP Top 10 스캔"
         ],
         "capabilities": [
-          "보안 단계",
+          "PII 마스킹",
           "콘텐츠 분류기",
           "코드 보안"
         ]
       },
       "voice": {
         "title": "음성 파이프라인",
-        "description": "실시간 스트리밍, VAD, 화자 분할 및 전화 지원을 포함한 12개 STT 및 12개 TTS 제공자",
+        "description": "실시간 스트리밍, VAD, 화자 분할 및 전화 지원을 포함한 12개 STT 및 13개 TTS 제공자",
         "features": [
-          "12 STT + 12 TTS",
+          "12 STT + 13 TTS",
           "VAD + 화자 분할",
           "실시간 스트리밍",
           "Twilio/Telnyx/Plivo"
@@ -390,8 +369,8 @@
         ]
       },
       "providers": {
-        "title": "11개 LLM 프로바이더",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq 외 6개 더, 자동 폴백 체인 및 provider-first API",
+        "title": "13개 LLM 프로바이더",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq 외 8개, 자동 폴백 체인 및 provider-first API",
         "features": [
           "자동 폴백 (402/429/5xx)",
           "Provider-first API",
@@ -408,15 +387,15 @@
   },
   "enterprise": {
     "title": "엔터프라이즈 대응 인프라",
-    "subtitle": "5단계 보안, 6개 가드레일 확장, 11개 LLM 제공자, 37개 채널, 인지 메모리 — 첫날부터 프로덕션 준비",
+    "subtitle": "안전 가드레일, 13개 LLM 제공자, 37개 채널 어댑터, 인지 메모리를 하나의 오픈 소스 런타임에",
     "features": {
       "security": {
         "title": "5단계 보안",
         "items": [
-          "Dangerous, Permissive, Balanced, Strict, Paranoid 티어",
-          "키워드 폴백이 있는 LLM 기반 감성 분석",
-          "에이전트별 구성 가능한 보안 프리셋",
-          "프롬프트 인젝션 방어 내장"
+          "CLI, 웹훅, Slack 또는 LLM 심판을 통한 승인 게이트",
+          "한도를 넘는 호출을 거부하는 지출 예산",
+          "심판이 검토하는 도구 포징(node:vm 샌드박스)",
+          "옵트인 프롬프트 인젝션 분류기(ml-classifiers 팩)"
         ]
       },
       "guardrails": {
@@ -424,7 +403,7 @@
         "items": [
           "PII 수정 및 익명화",
           "ML 분류기 콘텐츠 모더레이션",
-          "코드 안전성 및 샌드박스 실행",
+          "생성된 코드의 위험한 패턴을 찾는 정적 분석",
           "Grounding Guard, Topicality 필터, 콘텐츠 정책 리라이터"
         ]
       },
@@ -441,9 +420,9 @@
         "title": "감사 및 관측성",
         "items": [
           "OpenTelemetry 호환 텔레메트리 (OTLP)",
-          "모든 에이전트 동작의 전체 감사 로깅",
-          "실시간 모니터링 및 이상 감지",
-          "비용 가드, 서킷 브레이커, 스턱 감지"
+          "스토리지 쓰기에 대한 서명된 출처 원장",
+          "세션별 토큰 사용량과 비용",
+          "비용 가드와 제공자별 서킷 브레이커"
         ]
       },
       "soc2": {
@@ -457,8 +436,8 @@
       "scale": {
         "title": "프로덕션 규모",
         "items": [
-          "115개 확장, 88개 큐레이션 스킬",
-          "11개 LLM 제공자, 37개 채널 어댑터",
+          "100개 이상의 엄선된 확장 기능, 88개의 엄선된 스킬",
+          "13개 LLM 제공자, 37개 채널 어댑터",
           "비디오, 오디오, 이미지 생성",
           "도구 포징을 통한 자기 개선 에이전트"
         ]
@@ -467,7 +446,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "완전히 구현됨",
-        "description": "5단계 보안, 6개 가드레일, PII 수정, 감사 로깅, 인지 메모리, 115개 확장이 오늘 프로덕션 준비 완료"
+        "description": "PII 마스킹, 인젝션·유해성 분류기, 서명된 출처 원장, 인지 메모리, 100개 이상의 엄선된 확장 기능은 오픈 소스이며 지금 바로 사용할 수 있습니다"
       },
       "inProgress": {
         "title": "감사 추적",
@@ -800,31 +779,31 @@
     "layers": {
       "channels": {
         "name": "채널 및 I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter 외 32개. 음성은 STT 12개 + TTS 12개 프로바이더를 통해. 각 채널 어댑터는 통합 프로토콜로 토큰을 실시간 스트리밍합니다."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter 외 32개. 음성은 STT 12개, TTS 13개 제공자로 처리합니다. 모든 채널 어댑터는 하나의 인터페이스를 구현하며, 플랫폼이 지원하면 입력 중 표시와 메시지 수정도 지원합니다."
       },
       "guardrails": {
         "name": "가드레일 및 안전",
-        "description": "각 출력 청크를 실시간으로 평가합니다. PII 편집, 독성 감지, 환각 그라운딩, 코드 안전 검사 — 허용형부터 완전 차단까지 구성 가능."
+        "description": "스트리밍을 켠 가드레일은 전송되는 텍스트를, 나머지는 최종 응답을 검사합니다. 6개의 옵트인 팩이 PII 마스킹, 유해성·인젝션 분류기, 출처 대조, 주제 제어, 콘텐츠 정책 기반 재작성, 코드 안전성을 다룹니다."
       },
       "tools": {
         "name": "도구 및 확장",
-        "description": "웹 검색, 브라우저 자동화, 이미지 생성, 셸 실행, 소셜 포스팅. 115개 확장과 88개의 큐레이션된 스킬. 능력 발견이 의미론적으로 적절한 도구를 찾습니다."
+        "description": "웹 검색, 브라우저 자동화, 이미지 생성, 셸 실행, 소셜 게시. 100개 이상의 엄선된 확장 기능과 88개의 엄선된 스킬. 기능 탐색이 의미 기반으로 알맞은 도구를 찾습니다."
       },
       "orchestration": {
         "name": "오케스트레이션",
-        "description": "순차, 병렬, 디베이트, 계층, 리뷰 루프, 그래프 전략. Tree-of-Thought 플래닝. fork 및 resume 시맨틱을 갖춘 미션 체크포인팅."
+        "description": "순차, 병렬, 토론, 계층, 리뷰 루프, 그래프 전략. ReAct 계획. fork와 resume 의미 체계를 갖춘 미션 체크포인트."
       },
       "memory": {
         "name": "메모리",
-        "description": "Ebbinghaus 감쇠, 재공고화, 검색 유도 망각, 비자발적 회상, 앎의 느낌, 시간적 요지, 스키마 부호화, 출처 신뢰도 감쇠. 7개 벡터 백엔드에 걸친 HyDE + GraphRAG 검색."
+        "description": "Ebbinghaus 감쇠 위에서 작동하는 8가지 메커니즘: 재공고화, 인출 유도 망각, 비자발적 회상, 기지감, 시간적 요지, 스키마 부호화, 출처 신뢰도 감쇠, 정서 조절. 7개 벡터 백엔드에 걸친 HyDE + GraphRAG 검색."
       },
       "personality": {
         "name": "성격 (HEXACO)",
-        "description": "정직-겸손, 정서성, 외향성, 친화성, 성실성, 개방성. 각 특성이 메모리 부호화, 커뮤니케이션 스타일, 위험 감내도를 조절합니다."
+        "description": "정직-겸손, 정서성, 외향성, 친화성, 성실성, 개방성. 특성은 프롬프트에 의사소통 스타일 지시문을 넣고, 기억 부호화와 작업 기억 용량, 8가지 기억 메커니즘 중 7가지를 조정합니다."
       },
       "llmCore": {
         "name": "LLM 코어",
-        "description": "자동 폴백 체인을 갖춘 11개 LLM 프로바이더. 프로바이더 우선 API 설계. 모든 GMI의 핵심 사고 엔진."
+        "description": "자동 폴백 체인을 갖춘 13개 LLM 제공자. provider-first API 설계. 모든 GMI의 중심에 있는 사고 엔진."
       }
     },
     "comparison": {
@@ -1112,7 +1091,7 @@
   },
   "ecosystem": {
     "title": "AgentOS 에코시스템",
-    "subtitle": "적응형, 창발형, 영속적인 지능을 구동하는 프로덕션 준비된 AgentOS 에코시스템을 탐색하세요 — 엔터프라이즈 AI 팀을 위한 SDK, 에이전트, RAG 유틸리티, 배포 키트.",
+    "subtitle": "오픈 소스 AgentOS 에코시스템을 탐색하세요. 멀티모달 RAG, 멀티 에이전트 오케스트레이션, 37개 채널 어댑터, 13개 LLM 제공자, 100개 이상의 엄선된 확장 기능.",
     "stats": {
       "repositories": "리포지토리",
       "weeklyDownloads": "주간 다운로드",
@@ -1150,90 +1129,14 @@
       "contributeCode": "코드 기여"
     }
   },
-  "codeExamples": {
-    "badge": "코드 예제",
-    "title": "AgentOS로 구축하기",
-    "subtitle": "지능형 에이전트 시스템을 구축하기 위한 프로덕션 수준의 코드 예제와 패턴",
-    "categories": {
-      "all": "모든 예제",
-      "basic": "기본",
-      "advanced": "고급",
-      "integration": "통합",
-      "deployment": "배포"
-    },
-    "selectExample": "예제 선택",
-    "tabs": {
-      "synchronous": "동기",
-      "streaming": "스트리밍"
-    },
-    "copyButton": "코드 복사",
-    "docsButton": "문서 보기",
-    "runButton": "Playground에서 시도",
-    "examples": {
-      "basicAgent": {
-        "title": "첫 번째 에이전트 만들기",
-        "description": "메모리와 도구를 갖춘 기본 에이전트 설정"
-      },
-      "gmiRoles": {
-        "title": "에이전시의 다중 공급자 역할",
-        "description": "하나의 에이전시, 세 공급자, 하나의 의존성 그래프"
-      },
-      "memorySystem": {
-        "title": "성격과 인지 메모리",
-        "description": "Ebbinghaus 감쇠와 세션 기록을 갖춘 HEXACO 성격 특성"
-      },
-      "toolIntegration": {
-        "title": "RAG 파이프라인",
-        "description": "문서를 수집하고 HyDE 임베딩으로 컨텍스트 검색"
-      },
-      "skillsIntegration": {
-        "title": "스킬 및 확장",
-        "description": "큐레이션된 카탈로그를 탐색하고 확장을 프로그래밍 방식으로 등록"
-      },
-      "realtimeStream": {
-        "title": "실시간 스트리밍 응답",
-        "description": "에이전트 응답을 스트리밍하여 UX 개선"
-      },
-      "deployment": {
-        "title": "프로덕션 배포",
-        "description": "Docker와 Kubernetes로 AgentOS 배포"
-      },
-      "emergentTools": {
-        "title": "창발적 도구",
-        "description": "런타임 도구 포지를 활성화 — 능력 격차에 직면한 에이전트가 새 도구를 생성"
-      },
-      "missionOrchestrator": {
-        "title": "미션 오케스트레이터",
-        "description": "자연어로 목표를 기술하면 플래너가 에이전트로 분해합니다"
-      },
-      "voiceAgent": {
-        "title": "도구가 있는 음성 에이전트",
-        "description": "STT, TTS, 함수 호출을 지원하는 음성 에이전트 구축"
-      },
-      "orchestrationGraph": {
-        "title": "실행 그래프 (리뷰 루프)",
-        "description": "인간 승인 게이트가 있는 순환 리뷰 워크플로 구축"
-      },
-      "imageGeneration": {
-        "title": "구조화된 출력 (Zod)",
-        "description": "모든 프로바이더에서 비정형 텍스트로부터 타입이 지정되고 검증된 데이터 추출"
-      }
-    },
-    "cta": {
-      "title": "첫 번째 에이전트를 만들 준비가 되셨나요?",
-      "description": "5분 안에 AgentOS를 시작하세요. SDK를 설치하고 인터랙티브 튜토리얼을 따라 하세요.",
-      "button": "구축 시작",
-      "time": "5분"
-    }
-  },
   "workbench": {
     "title": "AgentOS Workbench",
-    "description": "AgentOS 경험을 구축, 관리 및 상호작용하기 위한 공식 데스크톱 애플리케이션입니다. 비주얼 인터페이스로 강력한 AI 에이전트를 만들고, 실시간으로 테스트하고, 어디서든 배포하세요.",
+    "description": "내 컴퓨터에서 실행해 AgentOS 세션을 살펴보고 디버깅하는 React + Vite 대시보드입니다. 스트리밍 출력을 세션 타임라인에서 확인하고, 턴을 작성·재생하고, 에이전트를 대상으로 평가를 실행하세요.",
     "badge1": "MIT 라이선스",
     "badge2": "오픈소스",
-    "feature1": "드래그 앤 드롭 워크플로가 포함된 비주얼 에이전트 빌더",
+    "feature1": "스트리밍 텍스트, 도구 호출, 오류를 보여주는 세션 인스펙터",
     "feature2": "실시간 테스트 및 디버깅 도구",
-    "feature3": "원클릭으로 클라우드 또는 로컬에 배포",
+    "feature3": "에이전시 전략, 플랜 체크포인트, RAG 검색 뷰",
     "viewGithub": "GitHub에서 보기",
     "downloadLatest": "최신 버전 다운로드",
     "downloadComingSoon": "다운로드 (곧 제공)"
@@ -1241,7 +1144,7 @@
   "cognitive": {
     "badge": "신경과학 기반",
     "title": "인지 기억",
-    "subtitle": "인지과학 연구에서 영감을 받은 8가지 기억 메커니즘. 모두 에이전트의 HEXACO 성격 특성에 의해 조절됩니다.",
+    "subtitle": "인지과학 연구에서 착안한 8가지 기억 메커니즘. 그중 7가지를 에이전트의 HEXACO 특성이 조정합니다.",
     "mechanisms": {
       "reconsolidation": "재고정화",
       "rif": "검색 유도 망각",
@@ -1263,23 +1166,23 @@
       "emotionRegulation": "기억의 감정적 가치는 시간이 지남에 따라 조절됩니다"
     },
     "modulators": {
-      "reconsolidation": "개방성",
+      "reconsolidation": "정서성",
       "rif": "성실성",
       "involuntaryRecall": "개방성",
       "fok": "외향성",
-      "temporalGist": "성실성",
+      "temporalGist": "조절 없음",
       "schemaEncoding": "개방성",
       "sourceConfidence": "정직성-겸손성",
       "emotionRegulation": "친화성"
     },
     "research": {
-      "reconsolidation": "각 검색 행위는 기억 흔적을 불안정화시켜 현재 맥락으로 업데이트한 후 재안정화합니다. 개방성이 높을수록 재작성 정도가 증폭됩니다.",
+      "reconsolidation": "기억을 꺼낼 때마다 기억 흔적이 불안정해지고, 다시 안정되기 전에 현재 맥락으로 갱신될 수 있습니다. 정서성이 높을수록 다시 쓰는 정도가 커져 기억은 더 적응적이지만 덜 안정적이 됩니다.",
       "rif": "목표 기억의 검색은 측방 억제를 통해 관련 경쟁자를 적극적으로 억제합니다. 성실성이 높을수록 이 억제가 강화됩니다.",
-      "involuntaryRecall": "맥락적 단서는 의도적 검색 없이 관련 기억의 자발적 활성화를 유발할 수 있습니다. 개방성이 높을수록 활성화 임계값이 낮아집니다.",
+      "involuntaryRecall": "맥락 단서는 의도적으로 찾지 않아도 관련 기억을 자발적으로 떠올리게 합니다. 개방성이 높을수록 비자발적 회상 확률이 올라가 뜻밖의 연결이 늘어납니다.",
       "fok": "성공적인 검색 가능성에 대한 메타인지적 판단. 외향성이 높을수록 FOK 신호가 증폭됩니다.",
-      "temporalGist": "시간이 지남에 따라 축어적 세부 사항이 감소하고 의미적 요지가 추상화를 통해 보존됩니다. 성실성이 낮을수록 세부 사항 손실이 가속화됩니다.",
-      "schemaEncoding": "새로운 정보는 기존 지식 스키마에 동화됩니다. 개방성이 높을수록 더 유연한 스키마 수정이 가능합니다.",
-      "sourceConfidence": "정보 출처에 대한 기억은 정보 내용 자체보다 더 빨리 감소합니다. 정직성-겸손성이 높을수록 불확실한 출처에 대한 회의이 증가합니다.",
+      "temporalGist": "시간이 지나면 글자 그대로의 세부는 사라지고 의미의 요지는 추상화로 보존됩니다. 성격이 조정하지 않는 유일한 메커니즘입니다.",
+      "schemaEncoding": "새 정보는 기존 지식 스키마에 동화되며, 스키마에 맞는 내용일수록 더 쉽게 부호화됩니다. 개방성이 높을수록 스키마에 어긋나는 정보에 대한 부호화 가중치가 커집니다.",
+      "sourceConfidence": "정보의 출처(누가 말했는지, 어디서 읽었는지)에 대한 기억은 정보 자체보다 빨리 사라집니다. 정직성-겸손성이 높을수록 에이전트 자신의 추론과 성찰의 신뢰도가 더 빨리 낮아집니다.",
       "emotionRegulation": "기억에 부착된 감정적 강도는 검색과 고정화 중에 적극적으로 조절됩니다. 친화성이 높을수록 감정 평활화가 증가합니다."
     },
     "citations": {
@@ -1296,12 +1199,12 @@
     "ctaLearnMore": "인지 기억 탐색",
     "ctaSoulWiki": "Markdown 기억 위키",
     "memoryTypes": {
-      "title": "4계층 메모리 아키텍처",
-      "subtitle": "휘발성 작업 메모리에서 영구 지식 그래프까지 — 각 계층이 자동으로 통합됩니다.",
+      "title": "네 가지 기억",
+      "subtitle": "작업 기억은 현재 세션을 담습니다. 일화 기억 흔적은 에빙하우스 곡선을 따라 감쇠하고, 통합 단계(기본 매시간)가 LLM으로 그 묶음을 의미 기억으로 요약합니다. 선택 사항인 관찰자는 긴 대화를 노트로 압축합니다.",
       "working": {
         "name": "작업 메모리",
-        "description": "현재 대화 턴을 위한 단기 메모. 세션 간 초기화됩니다.",
-        "detail": "~128k 토큰, 휘발성"
+        "description": "현재 세션을 위한 단기 슬롯으로, 새 세션이 시작되면 비워집니다.",
+        "detail": "7개 슬롯, 특성에 따라 5~9개"
       },
       "episodic": {
         "name": "에피소드 기억",
@@ -1315,26 +1218,26 @@
       },
       "observational": {
         "name": "관찰 기억",
-        "description": "과거 상호작용의 압축 요약. LLM을 통한 3-10배 압축.",
-        "detail": "에피소드에서 자동 통합"
+        "description": "선택 사항인 관찰자 노트. 대화가 토큰 임계값을 넘으면 LLM이 노트를 추출한 뒤 압축하고 성찰합니다.",
+        "detail": "옵트인, LLM 필요"
       },
-      "flowLabel": "통합 파이프라인"
+      "flowLabel": "통합: 일화 기억에서 의미 기억으로"
     },
     "ragPipeline": {
       "title": "멀티모달 RAG 파이프라인",
-      "subtitle": "문서, 이미지, 오디오 수집 — 다양한 전략으로 검색.",
+      "subtitle": "문서, 이미지, 오디오를 수집한 뒤 여러 전략으로 검색합니다.",
       "steps": {
         "ingest": {
           "name": "수집",
-          "description": "10개 문서 로더: PDF, DOCX, Markdown, HTML, CSV, JSON, TXT, 이미지, 오디오, 비디오"
+          "description": "PDF, DOCX, Markdown, HTML, URL, TXT, CSV, JSON, YAML용 8개 문서 로더. 이미지와 오디오는 MultimodalIndexer로 처리"
         },
         "chunk": {
           "name": "청크",
-          "description": "4가지 전략: 고정 크기, 문장, 재귀, 의미적"
+          "description": "4가지 전략: 고정, 의미 기반, 계층, 레이아웃"
         },
         "embed": {
           "name": "임베딩",
-          "description": "OpenAI, Ollama, Cohere, 사용자 정의 임베딩"
+          "description": "OpenAI, Gemini, Ollama, OpenRouter 또는 OpenAI 호환 엔드포인트"
         },
         "store": {
           "name": "저장",
@@ -1432,11 +1335,11 @@
       "step3": "판단자 평가",
       "step4": "도구 활성화",
       "step5": "에이전트가 사용",
-      "description": "Runtime Tool Forging은 에이전트가 결정 중간에 새로운 TypeScript 함수를 작성하고, 별도의 판사 LLM에 의해 검토를 받은 후, 강화된 node:vm 샌드박스 내에서 실행할 수 있음을 의미합니다 (기본 벽 시계 5초, 128 MB 명목 메모리 예산, fetch/fs/crypto에 대한 기본 빈 허용 목록, eval/require/import/process/child_process는 정적으로 금지됨), 모든 것이 다음 턴 전에 이루어집니다. 승인된 도구는 재사용을 위해 발견 가능한 인덱스에 등록되므로, 세션 내에서 처음 몇 번의 단조 후 비용이 평탄해집니다.",
+      "description": "런타임 도구 포징을 사용하면 에이전트가 작업 도중 새 JavaScript 함수를 작성하고, 별도의 심판 LLM에게 검토받고, 다음 턴 전에 실행할 수 있습니다. 기본 실행기는 node:vm 샌드박스로, 5초 실시간 제한과 eval, require, import, process, child_process의 정적 금지가 있으며 fetch, fs, crypto는 허용할 때만 쓸 수 있습니다. 메모리는 측정하지만 제한하지 않으며 보안 경계가 아닙니다. 선택 사항인 QuickJSExecutor는 코드를 격리하고 메모리를 제한합니다. 승인된 도구는 재사용을 위해 레지스트리에 들어갑니다.",
       "details": [
         "Composable 모드: 파이프라인 단계로 기존 도구를 연결, 구조적으로 안전",
-        "Sandbox 모드: 에이전트가 작성한 코드는 메모리와 시간이 제한된 격리 환경에서 실행",
-        "3단계 라이프사이클: 세션 범위, 에이전트 범위, 또는 공유 레지스트리로 승격",
+        "샌드박스 모드: 에이전트가 작성한 코드는 시간 제한을 두고 node:vm 또는 QuickJS에서 실행",
+        "세 가지 수명 계층(세션, 에이전트, 공유). 승격은 도구를 세션에서 에이전트로 옮깁니다",
         "이중 심사 승격 패널: 안전 감사자와 정확성 검토자 모두 승인 필요",
         "신뢰성 임계값 도달 시 자동 등급 승격 포함 사용량 추적"
       ]
@@ -1455,17 +1358,17 @@
       "observe": "결과 관찰",
       "update": "전략 업데이트",
       "executeBetter": "더 잘 실행",
-      "circuitBreaker": "실패 시 서킷 브레이커",
-      "styleAdaptation": "스타일 적응 (사용자 선호)",
+      "selfEvaluation": "LLM 심판 자기 평가",
+      "skillsAndWorkflows": "스킬·워크플로 도구",
       "memoryConsolidation": "메모리 공고화",
-      "description": "에이전트는 실패로부터 배우고 시간이 지남에 따라 접근 방식을 적응시킵니다. 도구 실패 추적은 서킷 브레이커를 발동시켜 반복 오류를 방지합니다. 스타일 적응은 형식성, 장황함, 기술성에 대한 사용자 선호를 학습합니다. 메모리 공고화는 유용한 기억을 강화하고 관련 없는 것은 Ebbinghaus 곡선을 통해 감쇠시킵니다."
+      "description": "자기 개선을 켜면 에이전트는 스스로를 다듬는 네 가지 도구를 얻습니다. self_evaluate는 LLM 심판으로 자신의 답변을 채점하고, adapt_personality는 세션별 예산 안에서 HEXACO 특성을 조정하고, manage_skills는 스킬을 켜고 끄며, create_workflow는 도구를 재사용 가능한 순서로 연결합니다. 기억 통합은 유용한 기억을 강화하고 관련 없는 기억은 에빙하우스 곡선을 따라 감쇠시킵니다."
     },
     "ctaExploreDocs": "창발적 능력 탐색"
   },
   "agencySection": {
     "badge": "멀티 에이전트 오케스트레이션",
     "title": "병렬 에이전시",
-    "subtitle": "전문화된 에이전트 팀이 로스터 전체에서 실행 상태와 RAG 컨텍스트를 공유합니다. 6가지 내장 전략이 에이전트 간에 출력을 라우팅합니다: 순차, 병렬, 토론, 리뷰 루프, 계층, graph DAG.",
+    "subtitle": "전문화된 에이전트 팀이 하나의 요청을 함께 처리합니다. 6가지 내장 전략이 에이전트 간에 출력을 라우팅합니다: 순차, 병렬, 토론, 리뷰 루프, 계층, graph DAG.",
     "codeExampleLabel": "코드 예제",
     "sharedCapabilitiesTitle": "모든 전략에서 공유",
     "strategies": {
@@ -1526,13 +1429,11 @@
       "illustrator": "일러스트레이터"
     },
     "sharedCapabilities": {
-      "sharedMemory": "공유 메모리",
-      "sharedRAG": "공유 RAG",
       "sharedExecState": "공유 실행 상태",
       "hitlGates": "HITL 승인 게이트",
       "streamingOutput": "스트리밍 출력",
       "resourceControls": "리소스 제어",
-      "perAgentGuardrails": "에이전트별 가드레일"
+      "perAgentProviders": "에이전트별 제공자"
     },
     "sharedCapabilitiesScopeNoteLabel": "범위:",
     "sharedCapabilitiesScopeNote": "로스터는 단일 <code>generate()</code> 호출 내에서 적용됩니다. <code>session().send()</code> 턴 간에는 메시지 기록만 유지됩니다. 메모리 패턴은 <link>Agency API 문서</link>를 참조하세요.",
@@ -1540,20 +1441,20 @@
   },
   "benchmarks": {
     "badge": "SOTA · LongMemEval · LOCOMO · Phase B N=500",
-    "title": "동일 리더로 측정한 메모리 벤치마크",
-    "subtitle": "정직한 동등 비교: 동일한 gpt-4o 리더, 동일한 데이터셋, 동일한 Phase B N=500 방법론, 동일한 gpt-4o-2024-08-06 판단자, 동일한 루브릭 2026-04-18.1. 크로스 프로바이더 구성은 공개된 방법론 공시에서 재현할 수 없기 때문에 제외됩니다.",
+    "title": "리더를 밝힌 메모리 벤치마크",
+    "subtitle": "AgentOS 실행은 모두 같은 데이터셋과 같은 gpt-4o-2024-08-06 심판을 사용하고, 벤더 수치는 각 벤더가 공개한 그대로입니다. 85.6% 결과는 6개 질문 범주 중 4개를 gpt-5-mini로 보내므로, 표에는 gpt-4o가 모든 질문에 답한 실행도 함께 싣습니다.",
     "tabS": "LongMemEval-S (115K 토큰)",
     "tabM": "LongMemEval-M (1.5M 토큰)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "[82.4%, 88.6%] · 정답당 $0.0090 · 평균 지연 4초",
+    "highlightSCi": "범주별 리더 라우터(gpt-4o + gpt-5-mini) · gpt-4o만으로 84.2%, Mastra OM gpt-4o(84.23%)와 동률 · 정답당 $0.0090 · 지연 시간 중앙값 3.6초",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "[66.0%, 74.0%] · 1.5M 토큰 변형에서 65%를 넘은 최초의 오픈소스 라이브러리",
-    "matrixIntro": "동일한 gpt-4o 리더, Phase B N=500. 부트스트랩 CI는 seed=42로 10,000회의 Mulberry32 재샘플링을 사용합니다.",
+    "highlightMCi": "범주별 리더 라우터, top-5 검색 · 정답당 $0.0078 · LongMemEval 논문의 최고 GPT-4o 설정은 top-10에서 72.0%",
+    "matrixIntro": "AgentOS 행과 EmergenceMem Simple Fast 재실행은 500문항 LongMemEval 세트에 대한 agentos-bench 실행 결과이며, LongMemEval 채점 기준으로 gpt-4o-2024-08-06이 채점했습니다. 벤더 행은 각 벤더가 공개한 수치입니다.",
     "ctaReadAudit": "투명성 감사 읽기",
-    "ctaSeeRunJsons": "GitHub에서 실행 JSON 보기",
+    "ctaSeeRunJsons": "GitHub에서 agentos-bench 보기",
     "ctaBenchmarksPage": "벤치마크 전체 레퍼런스",
-    "footnote": "Mastra OM 94.9%, Mem0 v3 93.4%, Hindsight 91.4%, agentmemory 96.2%, Supermemory 85.2%는 모두 크로스 프로바이더 리더(gpt-5-mini, gemini-3-pro) 또는 관리형 플랫폼 인프라를 사용하며, 그 아래 판단자 모델, 루브릭, 시드가 공개되지 않습니다. 위의 동일 리더 비교는 각 벤더가 공개한 방법론에서 독립적으로 재현 가능한 부분입니다."
+    "footnote": "LongMemEval-S의 다른 공개 점수로는 agentmemory 96.2%(GPT-4o 리더), Mastra OM 94.9%(gpt-5-mini 리더), Supermemory 85.2%(gemini-3-pro 리더)가 있습니다. agentos-bench 리더보드에는 모든 행이 리더와 출처와 함께 실려 있습니다."
   }
 }
