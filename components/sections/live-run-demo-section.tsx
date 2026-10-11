@@ -1001,7 +1001,7 @@ function OutputPanel({ demo }: { demo: DemoData }) {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
           </span>
-          Live run
+          Output
         </span>
       </div>
       <div className="px-5 py-4">
