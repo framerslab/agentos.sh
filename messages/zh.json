@@ -1356,11 +1356,11 @@
       "step3": "裁判评估",
       "step4": "工具激活",
       "step5": "智能体使用",
-      "description": "运行时工具铸造意味着代理可以在决策中途为自己编写一个新的TypeScript函数，由一个独立的法官LLM审核，并在一个强化的node:vm沙箱中执行（默认5秒挂钟，128 MB名义内存预算，fetch/fs/crypto的默认空白名单，静态禁止eval/require/import/process/child_process），所有这些都在下一回合之前完成。批准的工具会进入一个可发现的索引以供重用，因此在会话中的前几次锻造后成本会趋于平稳。",
+      "description": "运行时工具锻造让智能体在任务中途编写一个新的 JavaScript 函数，交由独立的裁判 LLM 审查，并在下一轮之前运行。默认执行器是 node:vm 沙箱：5 秒挂钟时限，静态禁止 eval、require、import、process 和 child_process，fetch、fs 和 crypto 仅在你授权时可用；它会测量内存但不设上限，也不是安全边界。可选的 QuickJSExecutor 会隔离代码并限制其内存。通过审批的工具进入注册表以供复用。",
       "details": [
         "Composable 模式: 通过流水线步骤串联现有工具,构造上即安全",
-        "Sandbox 模式: 智能体编写的代码在受内存与时间约束的隔离环境中运行",
-        "三层生命周期: 会话级、智能体级,或晋升至共享注册表",
+        "Sandbox 模式: 智能体编写的代码在时间限制下运行于 node:vm 或 QuickJS",
+        "三个生命周期层级（会话、智能体、共享）；晋升把工具从会话级移到智能体级",
         "双裁判晋升面板: 安全审计员与正确性审阅者必须同时通过",
         "使用追踪;当达到可靠性阈值时自动晋升层级"
       ]
@@ -1379,10 +1379,10 @@
       "observe": "观察结果",
       "update": "更新策略",
       "executeBetter": "更好地执行",
-      "circuitBreaker": "故障时熔断",
-      "styleAdaptation": "风格适应(用户偏好)",
+      "selfEvaluation": "LLM 裁判自我评估",
+      "skillsAndWorkflows": "技能与工作流工具",
       "memoryConsolidation": "记忆巩固",
-      "description": "智能体从失败中学习并随时间调整方法。工具故障跟踪触发熔断以避免重复错误。风格适应学习用户在正式度、冗长度和技术性方面的偏好。记忆巩固强化有用记忆,并通过 Ebbinghaus 曲线让无关记忆衰减。"
+      "description": "开启自我改进后，智能体会获得四个用于改进自身的工具。self_evaluate 用 LLM 裁判为自己的回复打分，adapt_personality 在每会话预算内调整其 HEXACO 特质，manage_skills 开关技能，create_workflow 把工具串成可复用的流程。记忆巩固会强化有用的记忆，并让无关记忆沿 Ebbinghaus 曲线衰减。"
     },
     "ctaExploreDocs": "探索涌现能力"
   },

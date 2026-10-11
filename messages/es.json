@@ -1356,11 +1356,11 @@
       "step3": "Juez Evalúa",
       "step4": "Herramienta Activada",
       "step5": "El Agente la Usa",
-      "description": "La Forja de Herramientas en Runtime significa que un agente puede escribirse una nueva función de TypeScript a mitad de decisión, hacer que un juez LLM separado la revise y ejecutarla dentro de un entorno seguro node:vm (5s de reloj de pared predeterminado, 128 MB de presupuesto de memoria nominal, lista de permitidos vacía por defecto para fetch/fs/crypto, eval/require/import/process/child_process prohibidos estáticamente), todo antes del siguiente turno. Las herramientas aprobadas se colocan en un índice consultable para su reutilización, por lo que el costo se aplana después de las primeras forjas en una sesión.",
+      "description": "La forja de herramientas en runtime permite que un agente escriba una nueva función JavaScript a mitad de tarea, la someta a la revisión de un juez LLM independiente y la ejecute antes del siguiente turno. El ejecutor por defecto es un sandbox node:vm con un límite de 5 s de tiempo real, un bloqueo estático de eval, require, import, process y child_process, y fetch, fs y crypto solo cuando los concedes; mide la memoria sin limitarla y no es una frontera de seguridad. El QuickJSExecutor opcional aísla el código y limita su memoria. Las herramientas aprobadas pasan a un registro para su reutilización.",
       "details": [
         "Modo composable: encadena herramientas existentes mediante pasos de pipeline, seguro por construcción",
-        "Modo sandbox: el código escrito por el agente se ejecuta en aislamiento con límites de memoria y tiempo",
-        "Ciclo de vida de tres niveles: por sesión, por agente, o promovido al registro compartido",
+        "Modo sandbox: el código escrito por el agente se ejecuta con límite de tiempo, en node:vm o QuickJS",
+        "Tres niveles de ciclo de vida (sesión, agente, compartido); la promoción lleva una herramienta de sesión a agente",
         "Panel de promoción con doble juez: el auditor de seguridad y el revisor de corrección deben aprobar ambos",
         "Seguimiento de uso con promoción automática de nivel cuando se alcanzan los umbrales de confiabilidad"
       ]
@@ -1379,10 +1379,10 @@
       "observe": "Observar Resultado",
       "update": "Actualizar Estrategia",
       "executeBetter": "Ejecutar Mejor",
-      "circuitBreaker": "Interruptor en fallos",
-      "styleAdaptation": "Adaptación de estilo (preferencias del usuario)",
+      "selfEvaluation": "Autoevaluación con juez LLM",
+      "skillsAndWorkflows": "Herramientas de skills y workflows",
       "memoryConsolidation": "Consolidación de memoria",
-      "description": "Los agentes aprenden de los fallos y adaptan su enfoque con el tiempo. El seguimiento de fallos de herramientas activa interruptores para evitar errores repetidos. La adaptación de estilo aprende las preferencias del usuario sobre formalidad, verbosidad y tecnicidad. La consolidación de memoria fortalece memorias útiles y deja decaer las irrelevantes vía curvas de Ebbinghaus."
+      "description": "Con la automejora activada, un agente recibe cuatro herramientas para trabajar sobre sí mismo. self_evaluate puntúa sus respuestas con un juez LLM, adapt_personality ajusta sus rasgos HEXACO dentro de un presupuesto por sesión, manage_skills activa y desactiva skills, y create_workflow encadena herramientas en secuencias reutilizables. La consolidación de memoria refuerza los recuerdos útiles y deja que los irrelevantes decaigan según curvas de Ebbinghaus."
     },
     "ctaExploreDocs": "Explorar Capacidades Emergentes"
   },

@@ -1356,11 +1356,11 @@
       "step3": "Richter bewertet",
       "step4": "Tool aktiviert",
       "step5": "Agent nutzt es",
-      "description": "Runtime-Tool-Forging bedeutet, dass ein Agent sich während einer Entscheidung eine neue TypeScript-Funktion schreiben, sie von einem separaten Richter-LLM überprüfen lassen und sie in einer gehärteten node:vm-Sandbox ausführen kann (5s Standard-Wanduhr, 128 MB nominales Speicherbudget, standardmäßig leere Erlaubnisliste für fetch/fs/crypto, statisch verbotene eval/require/import/process/child_process), alles vor dem nächsten Zug. Genehmigte Werkzeuge landen in einem auffindbaren Index zur Wiederverwendung, sodass die Kosten nach den ersten wenigen Schmieden in einer Sitzung abflachen.",
+      "description": "Runtime-Tool-Forging lässt einen Agenten mitten in der Aufgabe eine neue JavaScript-Funktion schreiben, sie von einem separaten Judge-LLM prüfen lassen und vor dem nächsten Turn ausführen. Der Standard-Executor ist eine node:vm-Sandbox mit 5 s Wanduhr-Limit, einem statischen Verbot von eval, require, import, process und child_process sowie fetch, fs und crypto nur, wenn Sie sie freigeben; er misst den Speicher, ohne ihn zu begrenzen, und ist keine Sicherheitsgrenze. Der optionale QuickJSExecutor isoliert den Code und begrenzt seinen Speicher. Freigegebene Tools landen zur Wiederverwendung in einer Registry.",
       "details": [
         "Composable-Modus: verkettet bestehende Tools über Pipeline-Schritte, sicher by construction",
-        "Sandbox-Modus: vom Agenten geschriebener Code läuft in speicher- und zeitbegrenzter Isolation",
-        "Drei-Tier-Lebenszyklus: sitzungsbezogen, agentenbezogen oder in die geteilte Registry hochgestuft",
+        "Sandbox-Modus: vom Agenten geschriebener Code läuft mit Zeitlimit in node:vm oder QuickJS",
+        "Drei Lebensdauer-Stufen (Sitzung, Agent, geteilt); die Beförderung hebt ein Tool von Sitzung auf Agent",
         "Doppel-Judge-Promotion-Panel: Sicherheitsauditor und Korrektheitsprüfer müssen beide zustimmen",
         "Nutzungs-Tracking mit automatischer Tier-Promotion, wenn Zuverlässigkeitsschwellen erreicht werden"
       ]
@@ -1379,10 +1379,10 @@
       "observe": "Ergebnis beobachten",
       "update": "Strategie aktualisieren",
       "executeBetter": "Besser ausführen",
-      "circuitBreaker": "Schutzschalter bei Fehlern",
-      "styleAdaptation": "Stil-Anpassung (Benutzerpräferenzen)",
+      "selfEvaluation": "Selbstbewertung per LLM-Judge",
+      "skillsAndWorkflows": "Skill- und Workflow-Tools",
       "memoryConsolidation": "Memory-Konsolidierung",
-      "description": "Agenten lernen aus Fehlern und passen ihren Ansatz im Laufe der Zeit an. Tool-Fehler-Tracking löst Schutzschalter aus, um wiederholte Fehler zu vermeiden. Stil-Anpassung lernt Benutzerpräferenzen für Formalität, Verbosität und Technikalität. Memory-Konsolidierung stärkt nützliche Erinnerungen und lässt irrelevante via Ebbinghaus-Kurven verblassen."
+      "description": "Mit aktivierter Selbstverbesserung erhält ein Agent vier Tools, um an sich selbst zu arbeiten. self_evaluate bewertet seine Antworten mit einem LLM-Judge, adapt_personality verschiebt seine HEXACO-Merkmale innerhalb eines Budgets pro Sitzung, manage_skills schaltet Skills ein und aus, und create_workflow verkettet Tools zu wiederverwendbaren Abläufen. Die Gedächtniskonsolidierung stärkt nützliche Erinnerungen und lässt irrelevante entlang von Ebbinghaus-Kurven verblassen."
     },
     "ctaExploreDocs": "Emergente Fähigkeiten erkunden"
   },

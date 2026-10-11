@@ -1356,11 +1356,11 @@
       "step3": "Juiz Avalia",
       "step4": "Ferramenta Ativada",
       "step5": "Agente Usa",
-      "description": "Runtime Tool Forging significa que um agente pode escrever para si uma nova função TypeScript no meio da decisão, tê-la revisada por um juiz LLM separado e executá-la dentro de uma sandbox node:vm reforçada (5s de relógio de parede padrão, 128 MB de orçamento de memória nominal, lista de permissões vazia por padrão para fetch/fs/crypto, eval/require/import/process/child_process proibidos estaticamente), tudo antes da próxima jogada. As ferramentas aprovadas são colocadas em um índice pesquisável para reutilização, de modo que o custo se estabiliza após as primeiras forjas em uma sessão.",
+      "description": "A forja de ferramentas em runtime permite que um agente escreva uma nova função JavaScript no meio da tarefa, a submeta à revisão de um juiz LLM separado e a execute antes do próximo turno. O executor padrão é um sandbox node:vm com limite de 5 s de tempo real, bloqueio estático de eval, require, import, process e child_process, e fetch, fs e crypto apenas quando você os concede; ele mede a memória sem limitá-la e não é uma fronteira de segurança. O QuickJSExecutor opcional isola o código e limita sua memória. As ferramentas aprovadas vão para um registro para reutilização.",
       "details": [
         "Modo composable: encadeia ferramentas existentes via etapas de pipeline, seguro por construção",
-        "Modo sandbox: código escrito pelo agente roda em isolamento limitado por memória e tempo",
-        "Ciclo de vida em três níveis: por sessão, por agente, ou promovido ao registro compartilhado",
+        "Modo sandbox: o código escrito pelo agente roda com limite de tempo, em node:vm ou QuickJS",
+        "Três níveis de ciclo de vida (sessão, agente, compartilhado); a promoção move uma ferramenta de sessão para agente",
         "Painel de promoção com juiz duplo: auditor de segurança e revisor de correção devem ambos aprovar",
         "Rastreamento de uso com promoção automática de nível quando os limiares de confiabilidade são atingidos"
       ]
@@ -1379,10 +1379,10 @@
       "observe": "Observar Resultado",
       "update": "Atualizar Estratégia",
       "executeBetter": "Executar Melhor",
-      "circuitBreaker": "Disjuntor em falhas",
-      "styleAdaptation": "Adaptação de estilo (preferências do usuário)",
+      "selfEvaluation": "Autoavaliação por juiz LLM",
+      "skillsAndWorkflows": "Ferramentas de skills e workflows",
       "memoryConsolidation": "Consolidação de memória",
-      "description": "Agentes aprendem com falhas e adaptam sua abordagem ao longo do tempo. O rastreamento de falhas de ferramentas dispara disjuntores para evitar erros repetidos. A adaptação de estilo aprende as preferências do usuário em formalidade, verbosidade e tecnicidade. A consolidação de memória fortalece memórias úteis e deixa as irrelevantes decaírem via curvas de Ebbinghaus."
+      "description": "Com a automelhoria ativada, um agente recebe quatro ferramentas para trabalhar em si mesmo. self_evaluate avalia suas respostas com um juiz LLM, adapt_personality ajusta seus traços HEXACO dentro de um orçamento por sessão, manage_skills ativa e desativa skills, e create_workflow encadeia ferramentas em sequências reutilizáveis. A consolidação da memória fortalece memórias úteis e deixa as irrelevantes decaírem segundo curvas de Ebbinghaus."
     },
     "ctaExploreDocs": "Explorar Capacidades Emergentes"
   },

@@ -1356,11 +1356,11 @@
       "step3": "Judge Evaluates",
       "step4": "Tool Activated",
       "step5": "Agent Uses It",
-      "description": "Runtime Tool Forging means an agent can write itself a new TypeScript function mid-decision, get it reviewed by a separate judge LLM, and execute it inside a hardened node:vm sandbox (5s default wall clock, 128 MB nominal memory budget, default-empty allowlist for fetch/fs/crypto, statically-banned eval/require/import/process/child_process), all before the next turn. Approved tools land in a discoverable index for reuse, so cost flattens after the first few forges in a session.",
+      "description": "Runtime Tool Forging lets an agent write a new JavaScript function mid-task, have a separate judge LLM review it, and run it before the next turn. The default executor is a node:vm sandbox with a 5 s wall clock, a static ban on eval, require, import, process and child_process, and fetch, fs and crypto only when you grant them; it measures memory without capping it and is not a security boundary. The optional QuickJSExecutor isolates the code and caps its memory. Approved tools go into a registry for reuse.",
       "details": [
         "Composable mode: chains existing tools via pipeline steps — safe by construction",
-        "Sandbox mode: agent-written code runs in memory/time-bounded isolation",
-        "Three-tier lifecycle: session-scoped, agent-scoped, or promoted to shared registry",
+        "Sandbox mode: agent-written code runs under a time limit, in node:vm or QuickJS",
+        "Three lifetime tiers (session, agent, shared); promotion moves a tool from session to agent",
         "Dual-judge promotion panel: safety auditor + correctness reviewer must both approve",
         "Usage tracking with automatic tier promotion when reliability thresholds are met"
       ]
@@ -1379,10 +1379,10 @@
       "observe": "Observe Outcome",
       "update": "Update Strategy",
       "executeBetter": "Execute Better",
-      "circuitBreaker": "Circuit breaker on failures",
-      "styleAdaptation": "Style adaptation (user prefs)",
+      "selfEvaluation": "LLM-judged self-evaluation",
+      "skillsAndWorkflows": "Skill and workflow tools",
       "memoryConsolidation": "Memory consolidation",
-      "description": "Agents learn from failures and adapt their approach over time. Tool failure tracking triggers circuit breakers to avoid repeated errors. Style adaptation learns user preferences for formality, verbosity, and technicality. Memory consolidation strengthens useful memories and lets irrelevant ones decay via Ebbinghaus curves."
+      "description": "With self-improvement on, an agent gets four tools for working on itself. self_evaluate scores its replies with an LLM judge, adapt_personality shifts its HEXACO traits within a per-session budget, manage_skills turns skills on and off, and create_workflow chains tools into reusable sequences. Memory consolidation strengthens useful memories and lets irrelevant ones decay along Ebbinghaus curves."
     },
     "ctaExploreDocs": "Explore Emergent Capabilities"
   },

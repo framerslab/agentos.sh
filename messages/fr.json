@@ -1356,11 +1356,11 @@
       "step3": "Le Juge Évalue",
       "step4": "Outil Activé",
       "step5": "L’Agent l’Utilise",
-      "description": "Runtime Tool Forging signifie qu'un agent peut s'écrire une nouvelle fonction TypeScript en cours de décision, la faire examiner par un juge LLM séparé et l'exécuter dans un bac à sable node:vm renforcé (horloge murale par défaut de 5s, budget mémoire nominal de 128 Mo, liste blanche par défaut vide pour fetch/fs/crypto, eval/require/import/process/child_process interdits statiquement), le tout avant le prochain tour. Les outils approuvés atterrissent dans un index découvrable pour réutilisation, de sorte que le coût s'aplanit après les premières forges d'une session.",
+      "description": "La forge d’outils au runtime permet à un agent d’écrire une nouvelle fonction JavaScript en cours de tâche, de la faire relire par un juge LLM distinct et de l’exécuter avant le tour suivant. L’exécuteur par défaut est un sandbox node:vm avec une limite de 5 s en temps réel, une interdiction statique de eval, require, import, process et child_process, et fetch, fs et crypto seulement si vous les accordez ; il mesure la mémoire sans la plafonner et n’est pas une frontière de sécurité. Le QuickJSExecutor optionnel isole le code et plafonne sa mémoire. Les outils approuvés rejoignent un registre pour être réutilisés.",
       "details": [
         "Mode composable : enchaîne les outils existants via des étapes de pipeline, sûr par construction",
-        "Mode sandbox : le code écrit par l’agent s’exécute dans un isolement borné en mémoire et en temps",
-        "Cycle de vie à trois niveaux : portée session, portée agent, ou promu au registre partagé",
+        "Mode sandbox : le code écrit par l’agent s’exécute avec une limite de temps, dans node:vm ou QuickJS",
+        "Trois niveaux de cycle de vie (session, agent, partagé) ; la promotion fait passer un outil de session à agent",
         "Panel de promotion à double juge : l’auditeur de sécurité et le réviseur de correction doivent tous deux approuver",
         "Suivi d’utilisation avec promotion de niveau automatique lorsque les seuils de fiabilité sont atteints"
       ]
@@ -1379,10 +1379,10 @@
       "observe": "Observer le Résultat",
       "update": "Mettre à Jour la Stratégie",
       "executeBetter": "Exécuter Mieux",
-      "circuitBreaker": "Disjoncteur en cas d’échec",
-      "styleAdaptation": "Adaptation du style (préférences utilisateur)",
+      "selfEvaluation": "Auto-évaluation par juge LLM",
+      "skillsAndWorkflows": "Outils de skills et de workflows",
       "memoryConsolidation": "Consolidation de la mémoire",
-      "description": "Les agents apprennent de leurs échecs et adaptent leur approche au fil du temps. Le suivi des échecs d’outils déclenche des disjoncteurs pour éviter les erreurs répétées. L’adaptation du style apprend les préférences utilisateur en matière de formalité, verbosité et technicité. La consolidation de la mémoire renforce les souvenirs utiles et laisse les non pertinents s’estomper via les courbes d’Ebbinghaus."
+      "description": "Avec l’auto-amélioration activée, un agent dispose de quatre outils pour travailler sur lui-même. self_evaluate note ses réponses avec un juge LLM, adapt_personality ajuste ses traits HEXACO dans un budget par session, manage_skills active et désactive des skills, et create_workflow enchaîne des outils en séquences réutilisables. La consolidation de la mémoire renforce les souvenirs utiles et laisse les autres s’estomper selon des courbes d’Ebbinghaus."
     },
     "ctaExploreDocs": "Explorer les Capacités Émergentes"
   },

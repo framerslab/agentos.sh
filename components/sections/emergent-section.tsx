@@ -430,8 +430,8 @@ function FeedbackLoopDiagram({ steps }: { steps: string[] }) {
 
       {/* Additional detail cards below */}
       {[
-        { label: steps[4] || 'Circuit breaker', x: 140, y: 290 },
-        { label: steps[5] || 'Style adaptation', x: 400, y: 290 },
+        { label: steps[4] || 'Self-evaluation', x: 140, y: 290 },
+        { label: steps[5] || 'Skill and workflow tools', x: 400, y: 290 },
         { label: steps[6] || 'Memory consolidation', x: 660, y: 290 },
       ].map((item, i) => (
         <g key={`detail-${i}`}>
@@ -505,8 +505,8 @@ export function EmergentSection() {
     t('loop.observe'),
     t('loop.update'),
     t('loop.executeBetter'),
-    t('loop.circuitBreaker'),
-    t('loop.styleAdaptation'),
+    t('loop.selfEvaluation'),
+    t('loop.skillsAndWorkflows'),
     t('loop.memoryConsolidation'),
   ], [t])
 
