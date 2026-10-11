@@ -840,7 +840,7 @@
   },
   "ecosystem": {
     "title": "El Ecosistema AgentOS",
-    "subtitle": "Explora el ecosistema AgentOS listo para producción que impulsa inteligencia adaptativa, emergente y permanente — SDKs, agentes, utilidades RAG y kits de despliegue para equipos de IA empresariales.",
+    "subtitle": "Explora el ecosistema de código abierto de AgentOS: RAG multimodal, orquestación multiagente, 37 adaptadores de canal, 13 proveedores de LLM y 111 extensiones curadas.",
     "stats": {
       "repositories": "Repositorios",
       "weeklyDownloads": "Descargas Semanales",

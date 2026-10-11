@@ -1112,7 +1112,7 @@
   },
   "ecosystem": {
     "title": "Das AgentOS-Ökosystem",
-    "subtitle": "Erkunde das produktionsreife AgentOS-Ökosystem, das adaptive, emergente und persistente Intelligenz antreibt — SDKs, Agenten, RAG-Utilities und Deployment-Kits für Enterprise-KI-Teams.",
+    "subtitle": "Erkunde das Open-Source-Ökosystem von AgentOS: multimodales RAG, Multi-Agenten-Orchestrierung, 37 Kanal-Adapter, 13 LLM-Anbieter und 111 kuratierte Erweiterungen.",
     "stats": {
       "repositories": "Repositorys",
       "weeklyDownloads": "Wöchentliche Downloads",

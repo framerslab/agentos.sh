@@ -1112,7 +1112,7 @@
   },
   "ecosystem": {
     "title": "AgentOS 生态系统",
-    "subtitle": "探索为自适应、涌现式、持久智能提供动力的生产就绪 AgentOS 生态系统 — 面向企业 AI 团队的 SDK、智能体、RAG 工具和部署套件。",
+    "subtitle": "探索开源的 AgentOS 生态系统：多模态 RAG、多智能体编排、37 个渠道适配器、13 个 LLM 提供商和 111 个精选扩展。",
     "stats": {
       "repositories": "仓库",
       "weeklyDownloads": "每周下载量",

@@ -774,7 +774,7 @@
   },
   "ecosystem": {
     "title": "The AgentOS Ecosystem",
-    "subtitle": "Explore the open-source AgentOS ecosystem — multimodal RAG, multi-agent orchestration, 37 channel adapters, 11 LLM providers, and deployment kits for production AI teams.",
+    "subtitle": "Explore the open-source AgentOS ecosystem: multimodal RAG, multi-agent orchestration, 37 channel adapters, 13 LLM providers and 111 curated extensions.",
     "stats": {
       "repositories": "Repositories",
       "weeklyDownloads": "Weekly Downloads",
