@@ -94,10 +94,10 @@ const HeroSectionInner = memo(function HeroSectionInner() {
   }, [copyToClipboard]);
 
   const highlights = [
-    { title: 'Agents that write their own tools', detail: 'Mid-task TS function generation, judge-approved, sandboxed' },
+    { title: 'Agents that write their own tools', detail: 'Mid-task JavaScript functions, judge-approved, sandboxed' },
     { title: 'Specialist spawning', detail: 'spawn_specialist mints new agents at runtime' },
     { title: 'Cognitive memory', detail: 'Ebbinghaus decay, reconsolidation, neuroscience-grounded' },
-    { title: '85.6% LongMemEval-S', detail: '0.4 below Emergence.ai (closed SaaS), +1.4 above Mastra' }
+    { title: '85.6% LongMemEval-S', detail: 'Reader router (gpt-4o + gpt-5-mini); 84.2% on gpt-4o alone' }
   ];
 
 
@@ -171,7 +171,7 @@ const HeroSectionInner = memo(function HeroSectionInner() {
           </p>
 
           <p className="sr-only">
-            AgentOS is an open-source TypeScript AI agent framework for building production-ready autonomous agents with multi-agent orchestration, cognitive memory, multimodal RAG, AI guardrails, voice pipelines, and 11 LLM providers. A type-safe alternative to LangGraph, CrewAI, Mastra, and AutoGen.
+            AgentOS is an open-source TypeScript AI agent framework for building production-ready autonomous agents with multi-agent orchestration, cognitive memory, multimodal RAG, AI guardrails, voice pipelines, and 13 LLM providers. A type-safe alternative to LangGraph, CrewAI, Mastra, and AutoGen.
           </p>
 
           <p className="text-sm sm:text-base text-[var(--color-text-secondary)] mb-4 max-w-lg" itemProp="abstract">
@@ -237,7 +237,7 @@ const HeroSectionInner = memo(function HeroSectionInner() {
             </a>
             <a href="https://github.com/framerslab/agentos/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://img.shields.io/badge/tests-3%2C866%2B_passed-2ea043?logo=vitest&logoColor=white" alt="tests" width={134} height={20} className="h-5 w-auto" loading="lazy" decoding="async" />
+              <img src="https://img.shields.io/badge/tests-10%2C043_passed-2ea043?logo=vitest&logoColor=white" alt="tests" width={134} height={20} className="h-5 w-auto" loading="lazy" decoding="async" />
             </a>
             <span className="hover:opacity-80 transition-opacity">
               {/* eslint-disable-next-line @next/next/no-img-element */}
