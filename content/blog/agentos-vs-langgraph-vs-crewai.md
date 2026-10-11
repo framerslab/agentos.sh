@@ -15,7 +15,7 @@ keywords: "typescript ai agent framework, langgraph alternative, crewai alternat
 
 A confession before the table: we have built production agents on three of the frameworks in this post. Each one was the right choice at the time. Each one was wrong in a different way once the workload changed. The honest truth about agent frameworks in 2026 is that none of them are bad and none of them are universal. The job-to-be-done determines the right pick more than any feature checklist. Most comparison posts pretend otherwise. This one will try not to.
 
-For reader-matched benchmark numbers behind the AgentOS column in the table below, see [LongMemEval SOTA at gpt-4o reader](/en/blog/agentos-memory-sota-longmemeval/).
+For AgentOS's LongMemEval numbers, with the answer model named beside each one, see [AgentOS on LongMemEval: 85.6% on S, 70.2% on M](/en/blog/agentos-memory-sota-longmemeval/).
 
 A few rules we tried to follow:
 
@@ -253,7 +253,7 @@ If your job is "build a deterministic LLM workflow with a graph of nodes," LangG
 
 ### Are the benchmark numbers in this post compared at the same answer LLM?
 
-Where AgentOS numbers appear in this post, the answer LLM and retrieval config are named in the LongMemEval SOTA post. For competitor numbers cited from their own marketing, the answer LLM is whatever they ship. If two systems claim a different score on the same benchmark with different answer LLMs, that's a pricing observation, not a quality claim. We flag those distinctions inline rather than burying them.
+Where AgentOS numbers appear in this post, the answer LLM and retrieval config are named in the LongMemEval post. For competitor numbers cited from their own marketing, the answer LLM is whatever they ship. If two systems claim a different score on the same benchmark with different answer LLMs, that's a pricing observation, not a quality claim. We flag those distinctions inline rather than burying them.
 
 ### Can I migrate from LangGraph to AgentOS without rewriting my graph?
 
