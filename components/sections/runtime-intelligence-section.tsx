@@ -12,9 +12,10 @@ import { ArrowRight, Sparkles, Brain } from 'lucide-react'
  *   - Emergent Tool Forging: agents can synthesize new tools and specialist
  *     agents at runtime, gated by a judge LLM and sandbox execution.
  *   - Adaptive Prompt Intelligence: per-turn metaprompts re-tune mood,
- *     inferred user skill, task complexity, working-memory imprints, and
- *     HEXACO traits between turns, with bounded budgets and concrete cost
- *     overhead (~\$0.12 per 1000 turns on gpt-4o-mini at default cadence).
+ *     inferred user skill, task complexity and working-memory imprints
+ *     between turns (HEXACO traits change only through adapt_personality).
+ *     The worked cost example in the agentos docs puts the overhead at
+ *     ~\$0.12 per 1000 turns on gpt-4o-mini.
  *
  * The two cards sit side-by-side on desktop, stack on mobile. Each card
  * surfaces a small inline SVG flow diagram and three feature bullets, then
@@ -137,9 +138,10 @@ export function RuntimeIntelligenceSection() {
               className="text-base mb-5 leading-relaxed"
               style={{ color: 'var(--color-text-secondary)' }}
             >
-              Hierarchical agencies forge new TypeScript tools and spawn specialist agents
-              mid-run when the static roster falls short. A judge LLM reviews every forge
-              before it runs sandboxed in a node:vm with bounded memory and time.
+              Agents on the full AgentOS runtime forge new JavaScript tools, and hierarchical
+              agencies spawn specialist agents mid-run when the static roster falls short. A
+              judge LLM reviews each forged tool&apos;s code and test runs before it is
+              registered, and the code runs in a node:vm sandbox with a time limit.
             </p>
 
             {/* Mini SVG flow */}
@@ -228,9 +230,9 @@ export function RuntimeIntelligenceSection() {
             {/* Bullets */}
             <ul className="space-y-2.5 mb-6">
               {[
-                'forgeTool · spawn_specialist · adapt_personality — three emergent tools, all bounded by per-session budgets',
+                'forge_tool · spawn_specialist · adapt_personality: three emergent tools, each capped by a budget',
                 'Judge LLM gates every forge; sandbox runs in node:vm with default-empty fetch/fs allowlist',
-                'PersonalityMutationStore records every trait edit with reasoning for audit',
+                'With a storage adapter, PersonalityMutationStore records each trait edit and its reasoning',
               ].map((bullet) => (
                 <li
                   key={bullet}
@@ -312,9 +314,9 @@ export function RuntimeIntelligenceSection() {
               style={{ color: 'var(--color-text-secondary)' }}
             >
               Between turns, metaprompts re-tune the GMI&apos;s mood, inferred user skill, task
-              complexity, working-memory imprints, and HEXACO traits. Three trigger types
-              (periodic, sentiment events, host flags) decide when. Default sentiment is
-              lexicon-based and free; everything else is opt-in.
+              complexity and working-memory imprints. Three trigger types (periodic,
+              sentiment events, host flags) decide when. Sentiment tracking is opt-in, and
+              gmi() scores it with a lexicon at no LLM cost.
             </p>
 
             {/* Mini SVG flow */}
@@ -410,9 +412,9 @@ export function RuntimeIntelligenceSection() {
 
             <ul className="space-y-2.5 mb-6">
               {[
-                'turn_interval · event_based · manual triggers — most turns fire nothing; cost stays at zero',
+                'turn_interval · event_based · manual triggers: a turn with no trigger adds no metaprompt call',
                 'Five built-in presets: frustration recovery, confusion clarification, satisfaction, error recovery, engagement',
-                'Roughly $0.12 per 1000 turns on gpt-4o-mini at default cadence — opt-in beyond that',
+                'About $0.12 per 1000 turns on gpt-4o-mini with lexicon sentiment and a metaprompt every 5 turns, per the worked example in the docs',
               ].map((bullet) => (
                 <li
                   key={bullet}
