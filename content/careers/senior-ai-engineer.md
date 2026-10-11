@@ -1,5 +1,5 @@
 ---
-title: "Senior AI Engineer (TypeScript/Rust)"
+title: "Senior AI Engineer (TypeScript)"
 location: "Remote (Global)"
 type: "Full-time"
 department: "Engineering"
@@ -8,12 +8,12 @@ excerpt: "Join the core team building the AgentOS runtime. We are looking for de
 
 ## About the Role
 
-We are looking for a **Senior AI Engineer** to join our core team. You will be working on the heart of AgentOS, designing the runtime that powers thousands of concurrent autonomous agents.
+We are looking for a **Senior AI Engineer** to join our core team. You will work on the AgentOS runtime itself, the open-source TypeScript library behind `agent()`, `agency()` and GMIs, the Generalized Mind Instances that keep their own persona, mood and memory.
 
 ### Responsibilities
 
 *   Design and implement low-latency agent orchestration protocols.
-*   Optimize the "Memory Fabric" for high-speed vector retrieval and context injection.
+*   Speed up how AgentOS recalls memories, from dense and BM25 retrieval in `MemoryStore` and `HybridRetriever` to the token-budgeted prompt assembly in `MemoryPromptAssembler`.
 *   Contribute to the open-source AgentOS core and manage community contributions.
 *   Work closely with our research team to implement new cognitive architectures (GMIs).
 
