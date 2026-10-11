@@ -1339,7 +1339,7 @@
       "details": [
         "Composable mode: chains existing tools via pipeline steps — safe by construction",
         "Sandbox mode: agent-written code runs under a time limit, in node:vm or QuickJS",
-        "Three lifetime tiers (session, agent, shared); promotion moves a tool from session to agent",
+        "Three lifetime tiers (session, agent, shared); automatic promotion moves a tool from session to agent, and a host can promote it to shared",
         "Dual-judge promotion panel: safety auditor + correctness reviewer must both approve",
         "Usage tracking with automatic tier promotion when reliability thresholds are met"
       ]

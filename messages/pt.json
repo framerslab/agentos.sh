@@ -1339,7 +1339,7 @@
       "details": [
         "Modo composable: encadeia ferramentas existentes via etapas de pipeline, seguro por construção",
         "Modo sandbox: o código escrito pelo agente roda com limite de tempo, em node:vm ou QuickJS",
-        "Três níveis de ciclo de vida (sessão, agente, compartilhado); a promoção move uma ferramenta de sessão para agente",
+        "Três níveis de ciclo de vida (sessão, agente, compartilhado); a promoção automática move uma ferramenta de sessão para agente, e um host pode promovê-la a compartilhado",
         "Painel de promoção com juiz duplo: auditor de segurança e revisor de correção devem ambos aprovar",
         "Rastreamento de uso com promoção automática de nível quando os limiares de confiabilidade são atingidos"
       ]

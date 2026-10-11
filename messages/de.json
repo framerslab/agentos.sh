@@ -1339,7 +1339,7 @@
       "details": [
         "Composable-Modus: verkettet bestehende Tools über Pipeline-Schritte, sicher by construction",
         "Sandbox-Modus: vom Agenten geschriebener Code läuft mit Zeitlimit in node:vm oder QuickJS",
-        "Drei Lebensdauer-Stufen (Sitzung, Agent, geteilt); die Beförderung hebt ein Tool von Sitzung auf Agent",
+        "Drei Lebensdauer-Stufen (Sitzung, Agent, geteilt); die automatische Beförderung hebt ein Tool von Sitzung auf Agent, und ein Host kann es auf geteilt befördern",
         "Doppel-Judge-Promotion-Panel: Sicherheitsauditor und Korrektheitsprüfer müssen beide zustimmen",
         "Nutzungs-Tracking mit automatischer Tier-Promotion, wenn Zuverlässigkeitsschwellen erreicht werden"
       ]
