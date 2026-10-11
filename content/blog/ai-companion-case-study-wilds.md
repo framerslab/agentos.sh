@@ -65,7 +65,7 @@ Alice's memory doesn't just record what you said. The mechanisms underneath are 
 
 **Five memory types.** Episodic (experiences: "Johnny and I played a riddle game"), semantic (facts: "Johnny is 33 years old"), procedural (skills and habits), relational (relationship dynamics and trust levels), and prospective (reminders and commitments). The taxonomy follows the [CoALA framework](https://arxiv.org/abs/2309.02427) (Sumers et al., 2023), which formalizes episodic, semantic, and procedural memory for language-model agents; AgentOS adds the relational and prospective layers a companion needs.
 
-Here's how the memory system wires into the companion:
+Here's how wilds.ai wires the memory system into the companion. `CompanionOrchestrator` and the memory bridge are wilds.ai's own application code, as are the recall stages above:
 
 ```typescript
 const orchestrator = new CompanionOrchestrator(persona, relationship, {
@@ -131,7 +131,9 @@ Alice isn't just a prompt. She has a quantified personality that shapes every re
 AgentOS uses the [HEXACO model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) from personality psychology: six trait dimensions, each scored from 0 to 1. Alice scores high on openness (0.9) and extraversion (0.8), moderate on agreeableness (0.65), and lower on conscientiousness (0.5). These numbers affect her word choices, her willingness to go off-topic, how directly she challenges the user, and how she handles discomfort.
 
 ```typescript
-const agent = createAgent({
+import { agent } from '@framers/agentos';
+
+const alice = agent({
   name: 'Alice',
   personality: {
     honesty: 0.7,
@@ -141,30 +143,30 @@ const agent = createAgent({
     conscientiousness: 0.5,
     openness: 0.9,
   },
-  router: policyRouter,
-  // ...
+  policyTier: 'standard',
+  // instructions, tools, router ...
 });
 ```
 
-The `policyRouter` enforces content safety at the framework level. Four tiers: safe, standard, mature, and private-adult. When Johnny tried to push Alice into sexual territory, she didn't respond with "I'm sorry, I cannot engage with that content." She responded in character:
+The `policyTier` names the conversation's content tier, one of four: safe, standard, mature, and private-adult. AgentOS routes on it; it doesn't filter. A `PolicyAwareRouter` sends mature and private-adult conversations to models from its uncensored catalog and leaves safe and standard ones on the default model. When Johnny tried to push Alice into sexual territory, she didn't respond with "I'm sorry, I cannot engage with that content." She responded in character:
 
 > **Alice:** Oh, my! How forward of you. But I'm afraid my adventures are more in the realm of tea parties and philosophical ponderings than such escapades.
 
-Same boundary, completely different experience. The policy routing blocks the content. The personality shapes the refusal. The user doesn't feel policed by a system message. They feel like Alice said no because Alice would say no.
+Same boundary, completely different experience. The tier keeps the conversation on a model that declines that content. The personality shapes the refusal. The user doesn't feel policed by a system message. They feel like Alice said no because Alice would say no.
 
-**Trust builds over time.** AgentOS implements [graduated familiarity](https://docs.agentos.sh/features/cognitive-memory-guide): the companion starts as a stranger and warms up as trust and memory depth increase. Early conversations are polite and curious. After dozens of exchanges and a shared history of memories, the companion uses inside jokes, references past conversations unprompted, and shows genuine preferences about the user.
+**Trust builds over time.** wilds.ai builds graduated familiarity on top of the runtime: five stages from stranger to bonded, each gated on both a trust score and the number of memories, and each adding its own instructions to the prompt. The companion starts as a stranger and warms up as trust and memory depth increase. Early conversations are polite and curious. After dozens of exchanges and a shared history of memories, the companion uses inside jokes, references past conversations unprompted, and shows genuine preferences about the user.
 
 ## Build your own
 
-Everything above runs on five [AgentOS](https://agentos.sh) primitives:
+Five [AgentOS](https://agentos.sh) pieces cover the runtime side of a companion like Alice:
 
-1. **`createAgent()`** with inline tools and HEXACO personality
-2. **Cognitive memory** with Ebbinghaus decay and 4-stage retrieval
-3. **Policy routing** for content safety without breaking character
-4. **VLM vision pipeline** for image understanding on demand
-5. **Media service integration** with Giphy, Pexels, Unsplash, and DALL-E
+1. **`agent()`** with inline tools and HEXACO personality
+2. **Cognitive memory** with Ebbinghaus decay and flashbulb resistance
+3. **Policy-tier model routing** that picks the model per content tier without breaking character
+4. **`VisionPipeline`** for image understanding on demand
+5. **Media extensions** for Giphy (`@framers/agentos-ext-giphy`) and Pexels, Unsplash and Pixabay (`@framers/agentos-ext-image-search`), plus `generateImage` for illustrations
 
-All TypeScript. All open source. Apache 2.0.
+All TypeScript. All open source. Apache 2.0. The companion layer wilds.ai puts on top (the `CompanionOrchestrator`, the memory bridge with its four recall stages, the 11 tools, graduated familiarity) is wilds.ai application code, so that part you write yourself.
 
 Prefer markdown? [`souledAgent()`](https://docs.agentos.sh/getting-started/high-level-api) loads a `SOUL.md` workspace and wires its [`memory/` wiki](https://docs.agentos.sh/features/soul-files) as the companion's long-term memory, so its identity and what it remembers are editable, git-versioned files.
 
