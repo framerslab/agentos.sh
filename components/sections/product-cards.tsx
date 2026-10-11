@@ -142,7 +142,7 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       description: t('cards.guardrails.description'),
       icon: Shield,
       stats: [
-        { label: t('stats.guardrailPacks'), value: '5' },
+        { label: t('stats.guardrailPacks'), value: '6' },
         { label: t('stats.piiLayers'), value: '4-tier' },
         { label: t('stats.mlClassifiers'), value: 'ONNX BERT' }
       ],

@@ -361,7 +361,7 @@
       },
       "guardrails": {
         "title": "Built-in Safety",
-        "description": "Five opt-in guardrail packs flag prompt injection, redact personal data, check answers against their sources, keep conversations on topic and scan generated code",
+        "description": "Six opt-in guardrail packs: injection and toxicity classifiers, PII redaction, grounding checks against sources, topic control, a content-policy rewriter and a scanner for generated code",
         "features": [
           "4-tier PII redaction",
           "ONNX BERT classifiers",

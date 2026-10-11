@@ -361,7 +361,7 @@
       },
       "guardrails": {
         "title": "Sécurité Intégrée",
-        "description": "Cinq packs de guardrails optionnels signalent l’injection de prompt, masquent les données personnelles, vérifient les réponses contre leurs sources, gardent les conversations dans le sujet et analysent le code généré",
+        "description": "Six packs de guardrails optionnels : classificateurs d’injection et de toxicité, masquage des PII, vérification des réponses contre leurs sources, contrôle du sujet, un réécrivain de politique de contenu et un scanner de code généré",
         "features": [
           "Redaction PII a 4 niveaux",
           "Classificateurs ONNX BERT",

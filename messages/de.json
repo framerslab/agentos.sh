@@ -361,7 +361,7 @@
       },
       "guardrails": {
         "title": "Integrierte Sicherheit",
-        "description": "Fünf optionale Guardrail-Pakete erkennen Prompt-Injection, schwärzen personenbezogene Daten, prüfen Antworten gegen ihre Quellen, halten Gespräche beim Thema und scannen generierten Code",
+        "description": "Sechs optionale Guardrail-Pakete: Klassifikatoren für Injection und Toxizität, PII-Schwärzung, Abgleich der Antworten mit ihren Quellen, Themenkontrolle, ein Content-Policy-Rewriter und ein Scanner für generierten Code",
         "features": [
           "4-stufige PII-Redaktion",
           "ONNX BERT Klassifikatoren",
