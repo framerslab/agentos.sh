@@ -924,7 +924,7 @@
       },
       "queryRouter": {
         "question": "Comment fonctionne le QueryRouter ?",
-        "answer": "Le QueryRouter classe chaque requête dans l’un de 4 niveaux et récupère en conséquence : T0 répond depuis la conversation sans récupération, T1 lance une seule recherche vectorielle, T2 combine plusieurs sources ou parcourt le graphe de connaissances et T3 mène une recherche approfondie sur tout le corpus. Il répond ensuite à partir de ce qu’il a récupéré et renvoie la réponse avec les citations de ses sources."
+        "answer": "Le QueryRouter classe chaque requête dans l’un de 4 niveaux et récupère en conséquence : T0 répond depuis la conversation sans récupération, T1 lance une seule recherche vectorielle (une recherche par mots-clés quand aucun fournisseur d’embeddings n’est configuré), T2 combine plusieurs sources ou parcourt le graphe de connaissances et T3 mène une recherche approfondie sur tout le corpus. Il répond ensuite à partir de ce qu’il a récupéré et renvoie la réponse avec les citations de ses sources."
       },
       "adaptiveIntelligence": {
         "question": "Qu’est-ce que l’intelligence adaptative ?",

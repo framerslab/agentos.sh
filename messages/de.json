@@ -884,7 +884,7 @@
       },
       "queryRouter": {
         "question": "Wie funktioniert der QueryRouter?",
-        "answer": "Der QueryRouter ordnet jede Anfrage einer von 4 Stufen zu und ruft entsprechend ab: T0 antwortet aus der Unterhaltung ohne Abruf, T1 führt eine einzelne Vektorsuche aus, T2 kombiniert mehrere Quellen oder durchläuft den Wissensgraphen und T3 recherchiert gründlich im gesamten Korpus. Danach antwortet er auf Basis des Abgerufenen und liefert die Antwort mit Quellenangaben."
+        "answer": "Der QueryRouter ordnet jede Anfrage einer von 4 Stufen zu und ruft entsprechend ab: T0 antwortet aus der Unterhaltung ohne Abruf, T1 führt eine einzelne Vektorsuche aus (eine Stichwortsuche, wenn kein Embedding-Anbieter konfiguriert ist), T2 kombiniert mehrere Quellen oder durchläuft den Wissensgraphen und T3 recherchiert gründlich im gesamten Korpus. Danach antwortet er auf Basis des Abgerufenen und liefert die Antwort mit Quellenangaben."
       },
       "adaptiveIntelligence": {
         "question": "Was ist adaptive Intelligenz?",
