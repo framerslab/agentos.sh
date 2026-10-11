@@ -2,7 +2,7 @@
 import { canonical } from '@/lib/seo/canonical';
 import { hreflangAlternates } from '@/lib/seo/hreflang';
 
-const updated = "November 6, 2025";
+const updated = "October 11, 2026";
 
 type MetadataProps = { params: { locale: string } };
 
@@ -33,9 +33,13 @@ const Sections = [
     title: "Open-source, self-hosted runtime",
     body: (
       <p className="text-slate-700 dark:text-slate-200">
-        AgentOS Core is released under the Apache License 2.0, with extensions and community agents under the MIT license.
-        It ships as a TypeScript package you run on your own infrastructure. The core project does not phone home,
-        collect analytics, or transmit end-user data to Frame.dev. Any information processed by AgentOS stays wherever you deploy it.
+        AgentOS is released under the Apache License 2.0, as are the extension packs in its registry, its guardrail
+        packs and its skills; its storage dependency, @framers/sql-storage-adapter, is MIT. It ships as a TypeScript
+        package you run on your own infrastructure. The runtime does not phone home, collect analytics, or send
+        end-user data to Frame.dev. It sends prompts and documents only to the services you configure, such as LLM,
+        embedding, speech and search providers, and keeps data in memory or in the storage you connect. Packs that
+        run a local model, such as the PII pack&apos;s NER tier, download the model files from Hugging Face the first
+        time they run.
       </p>
     )
   },
@@ -56,18 +60,8 @@ const Sections = [
         <li>Document what you log (e.g., agency launches, persona submissions) and why.</li>
         <li>Implement opt-in analytics and give end users a way to delete or export their data.</li>
         <li>Review marketplace submissions before publishing to avoid unlicensed content or personal data.</li>
-        <li>Mirror the guidance in the docs/MARKETPLACE.md file if you enable the optional marketplace module.</li>
+        <li>The <code>Marketplace</code> class in AgentOS keeps listings, reviews and installs in memory. If you persist them, give them the same retention and deletion rules as your other user data.</li>
       </ul>
-    )
-  },
-  {
-    title: "Using the hosted Voice Chat Assistant",
-    body: (
-      <p className="text-slate-700 dark:text-slate-200">
-        If you are using the managed Voice Chat Assistant service operated by Frame.dev, the hosted product has
-        its own privacy policy and terms. Refer to the latest documents published in-app or at
-        <a href="https://vca.chat/legal/privacy" className="ml-1 font-semibold text-brand hover:underline" target="_blank" rel="noopener noreferrer">vca.chat/legal/privacy</a>.
-      </p>
     )
   }
 ];

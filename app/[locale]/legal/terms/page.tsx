@@ -2,7 +2,7 @@
 import { canonical } from '@/lib/seo/canonical';
 import { hreflangAlternates } from '@/lib/seo/hreflang';
 
-const updated = "November 6, 2025";
+const updated = "October 11, 2026";
 
 type MetadataProps = { params: { locale: string } };
 
@@ -34,16 +34,21 @@ const Sections = [
     body: (
       <div className="space-y-3 text-slate-700 dark:text-slate-200">
         <p>
-          <strong>AgentOS Core Runtime</strong> is distributed under the <strong>Apache License 2.0</strong>.
-          You may use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software,
-          subject to including the copyright notice and license text in your distributions.
+          <strong>AgentOS</strong> (<code>@framers/agentos</code>) is distributed under the <strong>Apache License 2.0</strong>.
+          It lets you use, reproduce, modify and distribute the software in source or compiled form, and each
+          contributor grants a patent license that ends for anyone who sues claiming the software infringes a patent.
+          When you distribute it, include a copy of the license, mark the files you changed, and keep the copyright
+          and attribution notices.
         </p>
         <p>
-          <strong>Extensions, Agents, and Guardrails</strong> built on top of AgentOS are distributed under the <strong>MIT License</strong>,
-          allowing maximum flexibility for community contributions.
+          The extension packs in the <code>agentos-extensions</code> registry, the six guardrail packs and the skills
+          are under Apache 2.0 as well. <code>@framers/sql-storage-adapter</code>, which AgentOS installs for storage,
+          is under the <strong>MIT License</strong>, and so are two older standalone packs on npm,{" "}
+          <code>@framers/agentos-ext-http-api</code> and <code>@framers/agentos-ext-tip-ingestion</code>. The license
+          field of each package on npm is the authority.
         </p>
         <p>
-          As both licenses state, the software is provided &quot;as is&quot; without warranty of any kind.
+          Both licenses provide the software &quot;as is&quot;, without warranty of any kind.
         </p>
       </div>
     )
@@ -59,22 +64,12 @@ const Sections = [
     )
   },
   {
-    title: "Marketplace and bundles",
+    title: "Marketplace module",
     body: (
       <p className="text-slate-700 dark:text-slate-200">
-        Marketplace tooling referenced in this repository is optional. If you enable it, review submissions,
-        ownership, and payout flows on your own infrastructure. The open-source project does not process
-        payments or adjudicate disputes between marketplace participants.
-      </p>
-    )
-  },
-  {
-    title: "Hosted Voice Chat Assistant",
-    body: (
-      <p className="text-slate-700 dark:text-slate-200">
-        If you use the managed Voice Chat Assistant service operated by Frame.dev, that product is governed by
-        its own Terms of Service. See
-        <a href="https://vca.chat/legal/terms" className="ml-1 font-semibold text-brand hover:underline" target="_blank" rel="noopener noreferrer">vca.chat/legal/terms</a> for the hosted policy.
+        AgentOS exports an in-memory <code>Marketplace</code> class for publishing, installing and reviewing agents,
+        personas and extensions. It stores prices as data and processes no payments, so a deployment that sells
+        through it runs its own payments, payouts and dispute handling.
       </p>
     )
   }
@@ -103,7 +98,7 @@ export default function TermsPage() {
       <footer className="space-y-4 text-sm text-slate-500 dark:text-slate-300">
         <p>
           Want to contribute back? Check the repository on
-          <a href="https://github.com/wearetheframers/voice-chat-assistant" className="ml-1 font-semibold text-brand hover:underline" target="_blank" rel="noopener noreferrer">GitHub</a>.
+          <a href="https://github.com/framerslab/agentos" className="ml-1 font-semibold text-brand hover:underline" target="_blank" rel="noopener noreferrer">GitHub</a>.
         </p>
       </footer>
     </article>

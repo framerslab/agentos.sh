@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "AgentOS Legal",
-  description: "Terms, privacy, and compliance information for AgentOS and the Voice Chat Assistant platform."
+  description: "Terms, privacy, security and cookie information for the open-source AgentOS runtime."
 };
 
 export default function LegalLayout({ children }: { children: React.ReactNode }) {
