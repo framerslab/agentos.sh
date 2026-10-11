@@ -282,7 +282,7 @@
       },
       "guardrails": {
         "title": "Built-in Safety",
-        "description": "Six opt-in guardrail packs: injection and toxicity classifiers, PII redaction, grounding checks against sources, topic control, a content-policy rewriter and a scanner for generated code",
+        "description": "Six opt-in guardrail packs: toxicity and NSFW classifiers, PII redaction, grounding checks against sources, topic control, a content-policy rewriter and a scanner for generated code",
         "features": [
           "4-tier PII redaction",
           "ONNX BERT classifiers",
@@ -337,7 +337,7 @@
           "Approval gates through the CLI, a webhook, Slack or an LLM judge",
           "Spend budgets that refuse a call past the cap",
           "Judge-reviewed tool forging in a node:vm sandbox",
-          "Opt-in prompt-injection classifier (ml-classifiers pack)"
+          "Opt-in phrase-list guardrail that blocks a reviewed phrase or lets an LLM judge decide"
         ]
       },
       "guardrails": {
@@ -388,7 +388,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "Fully Implemented",
-        "description": "PII redaction, injection and toxicity classifiers, the signed provenance ledger, cognitive memory and 100+ curated extensions are open source and available now"
+        "description": "PII redaction, toxicity and NSFW classifiers, the signed provenance ledger, cognitive memory and 100+ curated extensions are open source and available now"
       },
       "inProgress": {
         "title": "Audit Trail",
@@ -765,7 +765,7 @@
       },
       "guardrails": {
         "name": "Guardrails & Safety",
-        "description": "Guardrails that opt into streaming check text as it streams; the rest check the final reply. Six opt-in packs cover PII redaction, toxicity and injection classifiers, grounding against sources, topic control, content-policy rewriting and code safety."
+        "description": "Guardrails that opt into streaming check text as it streams; the rest check the final reply. Six opt-in packs cover PII redaction, toxicity and NSFW classifiers, grounding against sources, topic control, content-policy rewriting and code safety."
       },
       "tools": {
         "name": "Tools & Extensions",
@@ -828,7 +828,7 @@
     "general": {
       "whatIsAgentOS": {
         "question": "What is AgentOS?",
-        "answer": "AgentOS is an open-source TypeScript runtime for building production AI agents, developed by Frame.dev. It provides multi-agent orchestration, cognitive memory, multimodal RAG, opt-in safety guardrails (PII redaction, prompt injection detection, content moderation), voice pipelines, 37 channel adapters, and 13 LLM provider integrations. AgentOS also powers the AI systems behind Wilds.ai, an AI-native gaming platform. Self-hostable and free."
+        "answer": "AgentOS is an open-source TypeScript runtime for building production AI agents, developed by Frame.dev. It provides multi-agent orchestration, cognitive memory, multimodal RAG, opt-in safety guardrails (PII redaction, content moderation, grounding checks), voice pipelines, 37 channel adapters, and 13 LLM provider integrations. AgentOS also powers the AI systems behind Wilds.ai, an AI-native gaming platform. Self-hostable and free."
       },
       "isOpenSource": {
         "question": "Is AgentOS free and open source?",
@@ -844,7 +844,7 @@
       },
       "comparison": {
         "question": "How is AgentOS different from LangChain, CrewAI, or AutoGen?",
-        "answer": "AgentOS is TypeScript-native (not Python), includes cognitive memory with Ebbinghaus decay curves and HEXACO personality modeling, offers opt-in guardrail packs for PII redaction, prompt injection detection and grounding checks, provides 37 channel adapters (Discord, Telegram, Slack, email, and more), and supports 6 orchestration strategies including graph-based agent DAGs. It also ships with 88 curated skills and a capability discovery engine that puts only the relevant tools and skills in context, within a token budget per tier."
+        "answer": "AgentOS is TypeScript-native (not Python), includes cognitive memory with Ebbinghaus decay curves and HEXACO personality modeling, offers opt-in guardrail packs for PII redaction, content moderation and grounding checks, provides 37 channel adapters (Discord, Telegram, Slack, email, and more), and supports 6 orchestration strategies including graph-based agent DAGs. It also ships with 88 curated skills and a capability discovery engine that puts only the relevant tools and skills in context, within a token budget per tier."
       },
       "whatIsParacosm": {
         "question": "What is Paracosm?",
@@ -874,7 +874,7 @@
       },
       "guardrails": {
         "question": "What guardrails are available?",
-        "answer": "AgentOS has six opt-in guardrail packs: PII redaction (names, emails, phone numbers, SSNs and more), ML classifiers for toxicity, prompt injection and NSFW content, static analysis of generated code for dangerous patterns, grounding checks against source documents, topicality enforcement to keep agents on-task, and a content-policy rewriter that rewrites or blocks output that breaks your policy. Each pack is an extension you enable on the AgentOS runtime."
+        "answer": "AgentOS has six opt-in guardrail packs: PII redaction (names, emails, phone numbers, SSNs and more), ML classifiers for toxicity, threats and NSFW content, static analysis of generated code for dangerous patterns, grounding checks against source documents, topicality enforcement to keep agents on-task, and a content-policy rewriter that rewrites or blocks output that breaks your policy. Each pack is an extension you enable on the AgentOS runtime. The classifiers pack scores prompt injection only when its local model cannot load, so for known injection phrases use the built-in phrase-list guardrail."
       },
       "capabilityDiscovery": {
         "question": "What is the capability discovery system?",
@@ -926,7 +926,7 @@
     "enterprise": {
       "productionReady": {
         "question": "Is AgentOS production-ready?",
-        "answer": "Yes. AgentOS ships opt-in guardrail packs that detect prompt injection, redact personal data and moderate content, approval gates for sensitive tool calls, spend budgets that refuse a call past the cap, and circuit breakers that take a failing provider out of rotation."
+        "answer": "Yes. AgentOS ships opt-in guardrail packs that redact personal data, moderate content and check answers against sources, approval gates for sensitive tool calls, spend budgets that refuse a call past the cap, and circuit breakers that take a failing provider out of rotation."
       },
       "compliance": {
         "question": "How does AgentOS support GDPR and SOC 2 workflows?",

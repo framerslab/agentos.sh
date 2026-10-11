@@ -185,7 +185,7 @@
           "Portões de aprovação via CLI, webhook, Slack ou um juiz LLM",
           "Orçamentos de gasto que recusam uma chamada acima do limite",
           "Criação de ferramentas revisada por um juiz, em um sandbox node:vm",
-          "Classificador opcional de injeção de prompt (pacote ml-classifiers)"
+          "Guardrail opcional de lista de frases que bloqueia uma frase revisada ou deixa um juiz LLM decidir"
         ]
       },
       "guardrails": {
@@ -236,7 +236,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "Totalmente Implementado",
-        "description": "Ocultação de PII, classificadores de injeção e toxicidade, o registro de proveniência assinado, a memória cognitiva e mais de 100 extensões curadas são open source e já estão disponíveis"
+        "description": "Ocultação de PII, classificadores de toxicidade e conteúdo NSFW, o registro de proveniência assinado, a memória cognitiva e mais de 100 extensões curadas são open source e já estão disponíveis"
       },
       "inProgress": {
         "title": "Trilha de Auditoria",
@@ -573,7 +573,7 @@
       },
       "guardrails": {
         "name": "Guardrails e Segurança",
-        "description": "Guardrails que optam por streaming verificam o texto enquanto ele é transmitido; os demais verificam a resposta final. Seis pacotes opcionais cobrem ocultação de PII, classificadores de toxicidade e injeção, verificação contra fontes, controle de tema, reescrita por política de conteúdo e segurança de código."
+        "description": "Guardrails que optam por streaming verificam o texto enquanto ele é transmitido; os demais verificam a resposta final. Seis pacotes opcionais cobrem ocultação de PII, classificadores de toxicidade e conteúdo NSFW, verificação contra fontes, controle de tema, reescrita por política de conteúdo e segurança de código."
       },
       "tools": {
         "name": "Ferramentas e Extensões",
@@ -718,7 +718,7 @@
     "general": {
       "whatIsAgentOS": {
         "question": "O que é AgentOS?",
-        "answer": "AgentOS é um runtime TypeScript open-source para construir agentes de IA em produção, desenvolvido pela Frame.dev. Oferece orquestração multi-agente, memória cognitiva, RAG multimodal, guardrails de segurança opcionais (redação de PII, detecção de prompt injection, moderação de conteúdo), pipelines de voz, 37 adaptadores de canal e 13 integrações de provedores de LLM. AgentOS também alimenta os sistemas de IA por trás do Wilds.ai, uma plataforma de jogos AI-native. Self-hostable e gratuito."
+        "answer": "AgentOS é um runtime TypeScript open-source para construir agentes de IA em produção, desenvolvido pela Frame.dev. Oferece orquestração multi-agente, memória cognitiva, RAG multimodal, guardrails de segurança opcionais (redação de PII, moderação de conteúdo, verificação de grounding), pipelines de voz, 37 adaptadores de canal e 13 integrações de provedores de LLM. AgentOS também alimenta os sistemas de IA por trás do Wilds.ai, uma plataforma de jogos AI-native. Self-hostable e gratuito."
       },
       "isOpenSource": {
         "question": "AgentOS é gratuito e open source?",
@@ -734,7 +734,7 @@
       },
       "comparison": {
         "question": "Como AgentOS é diferente de LangChain, CrewAI ou AutoGen?",
-        "answer": "AgentOS é nativo em TypeScript (não Python), inclui memória cognitiva com curvas de decaimento de Ebbinghaus e modelagem de personalidade HEXACO, oferece pacotes de guardrails opcionais para redação de PII, detecção de prompt injection e verificação de grounding, fornece 37 adaptadores de canal (Discord, Telegram, Slack, e-mail e mais) e suporta 6 estratégias de orquestração, incluindo DAGs de agentes baseados em grafo. Também inclui 88 skills curadas e um motor de descoberta de capacidades que coloca no contexto apenas as ferramentas e skills relevantes, dentro de um orçamento de tokens por camada."
+        "answer": "AgentOS é nativo em TypeScript (não Python), inclui memória cognitiva com curvas de decaimento de Ebbinghaus e modelagem de personalidade HEXACO, oferece pacotes de guardrails opcionais para redação de PII, moderação de conteúdo e verificação de grounding, fornece 37 adaptadores de canal (Discord, Telegram, Slack, e-mail e mais) e suporta 6 estratégias de orquestração, incluindo DAGs de agentes baseados em grafo. Também inclui 88 skills curadas e um motor de descoberta de capacidades que coloca no contexto apenas as ferramentas e skills relevantes, dentro de um orçamento de tokens por camada."
       },
       "whatIsParacosm": {
         "question": "O que é Paracosm?",
@@ -764,7 +764,7 @@
       },
       "guardrails": {
         "question": "Quais guardrails estão disponíveis?",
-        "answer": "AgentOS tem seis pacotes de guardrails opcionais: redação de PII (nomes, e-mails, telefones, SSNs e mais), classificadores de ML para toxicidade, prompt injection e conteúdo NSFW, análise estática de código gerado em busca de padrões perigosos, verificação de grounding contra documentos-fonte, aplicação de topicalidade para manter agentes na tarefa e um reescritor de política de conteúdo que reescreve ou bloqueia saídas que violam sua política. Cada pacote é uma extensão que você ativa no runtime do AgentOS."
+        "answer": "AgentOS tem seis pacotes de guardrails opcionais: redação de PII (nomes, e-mails, telefones, SSNs e mais), classificadores de ML para toxicidade, ameaças e conteúdo NSFW, análise estática de código gerado em busca de padrões perigosos, verificação de grounding contra documentos-fonte, aplicação de topicalidade para manter agentes na tarefa e um reescritor de política de conteúdo que reescreve ou bloqueia saídas que violam sua política. Cada pacote é uma extensão que você ativa no runtime do AgentOS. O pacote de classificadores só pontua prompt injection quando o seu modelo local não carrega; para frases de injeção conhecidas, use o guardrail de lista de frases embutido."
       },
       "capabilityDiscovery": {
         "question": "O que é o sistema de descoberta de capacidades?",
@@ -816,7 +816,7 @@
     "enterprise": {
       "productionReady": {
         "question": "AgentOS está pronto para produção?",
-        "answer": "Sim. AgentOS oferece pacotes de guardrails opcionais que detectam prompt injection, redigem dados pessoais e moderam conteúdo, além de aprovações para chamadas de ferramentas sensíveis, orçamentos de gasto que recusam uma chamada acima do limite e disjuntores que tiram de rotação um provedor com falhas."
+        "answer": "Sim. AgentOS oferece pacotes de guardrails opcionais que redigem dados pessoais, moderam conteúdo e verificam as respostas contra as fontes, além de aprovações para chamadas de ferramentas sensíveis, orçamentos de gasto que recusam uma chamada acima do limite e disjuntores que tiram de rotação um provedor com falhas."
       },
       "compliance": {
         "question": "Como o AgentOS suporta workflows de GDPR e SOC 2?",
@@ -1026,7 +1026,7 @@
       },
       "guardrails": {
         "title": "Segurança Integrada",
-        "description": "Seis pacotes de guardrails opcionais: classificadores de injeção e toxicidade, ocultação de PII, verificação das respostas contra as fontes, controle de tema, um reescritor de política de conteúdo e um scanner para código gerado",
+        "description": "Seis pacotes de guardrails opcionais: classificadores de toxicidade e conteúdo NSFW, ocultação de PII, verificação das respostas contra as fontes, controle de tema, um reescritor de política de conteúdo e um scanner para código gerado",
         "features": [
           "Redacao PII de 4 niveis",
           "Classificadores ONNX BERT",

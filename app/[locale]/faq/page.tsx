@@ -131,7 +131,7 @@ function FAQJsonLd({ locale: _locale }: { locale: string }) {
     },
     {
       q: 'Is AgentOS production-ready?',
-      a: 'Yes. AgentOS ships opt-in guardrail packs that detect prompt injection, redact personal data and moderate content, plus approval gates for tool calls, spend budgets and provider circuit breakers.',
+      a: 'Yes. AgentOS ships opt-in guardrail packs that redact personal data, moderate content and check answers against sources, plus approval gates for tool calls, spend budgets and provider circuit breakers.',
     },
     {
       q: 'Is there enterprise support?',

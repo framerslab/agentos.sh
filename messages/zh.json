@@ -147,7 +147,7 @@
           "通过 CLI、Webhook、Slack 或 LLM 裁判进行审批把关",
           "超出上限即拒绝调用的支出预算",
           "经裁判审查的工具锻造，运行于 node:vm 沙箱",
-          "可选的提示注入分类器（ml-classifiers 包）"
+          "可选的短语列表护栏，拦截经审核的短语或交由 LLM 裁判判断"
         ]
       },
       "guardrails": {
@@ -198,7 +198,7 @@
     "legend": {
       "fullyImplemented": {
         "title": "完全实现",
-        "description": "PII 脱敏、注入与有害内容分类器、签名溯源账本、认知记忆以及 100 多个精选扩展均已开源，现已可用"
+        "description": "PII 脱敏、有害内容与 NSFW 分类器、签名溯源账本、认知记忆以及 100 多个精选扩展均已开源，现已可用"
       },
       "inProgress": {
         "title": "审计追踪",
@@ -573,7 +573,7 @@
       },
       "guardrails": {
         "name": "护栏与安全",
-        "description": "启用流式检查的护栏会在文本流出时检查，其余护栏检查最终回复。六个可选护栏包涵盖 PII 脱敏、有害内容与注入分类器、对照来源核查、话题控制、按内容政策改写以及代码安全。"
+        "description": "启用流式检查的护栏会在文本流出时检查，其余护栏检查最终回复。六个可选护栏包涵盖 PII 脱敏、有害内容与 NSFW 分类器、对照来源核查、话题控制、按内容政策改写以及代码安全。"
       },
       "tools": {
         "name": "工具与扩展",
@@ -678,7 +678,7 @@
     "general": {
       "whatIsAgentOS": {
         "question": "AgentOS 是什么?",
-        "answer": "AgentOS 是一个用于构建生产级 AI 智能体的开源 TypeScript 运行时,由 Frame.dev 开发。它提供多智能体编排、认知记忆、多模态 RAG、可选的安全护栏(PII 编辑、提示注入检测、内容审核)、语音管道、37 个通道适配器和 13 个 LLM 提供商集成。AgentOS 还为 AI 原生游戏平台 Wilds.ai 提供 AI 系统支持。可自托管且免费。"
+        "answer": "AgentOS 是一个用于构建生产级 AI 智能体的开源 TypeScript 运行时,由 Frame.dev 开发。它提供多智能体编排、认知记忆、多模态 RAG、可选的安全护栏(PII 编辑、内容审核、事实依据校验)、语音管道、37 个通道适配器和 13 个 LLM 提供商集成。AgentOS 还为 AI 原生游戏平台 Wilds.ai 提供 AI 系统支持。可自托管且免费。"
       },
       "isOpenSource": {
         "question": "AgentOS 是免费且开源的吗?",
@@ -694,7 +694,7 @@
       },
       "comparison": {
         "question": "AgentOS 与 LangChain、CrewAI 或 AutoGen 有何不同?",
-        "answer": "AgentOS 是 TypeScript 原生(而非 Python),内置具有 Ebbinghaus 遗忘曲线和 HEXACO 人格建模的认知记忆,提供用于 PII 编辑、提示注入检测和事实依据校验的可选护栏包,提供 37 个通道适配器(Discord、Telegram、Slack、电子邮件等),支持 6 种编排策略,包括基于图的智能体 DAG。还附带 88 个精选技能和在每层 token 预算内只把相关工具和技能放入上下文的能力发现引擎。"
+        "answer": "AgentOS 是 TypeScript 原生(而非 Python),内置具有 Ebbinghaus 遗忘曲线和 HEXACO 人格建模的认知记忆,提供用于 PII 编辑、内容审核和事实依据校验的可选护栏包,提供 37 个通道适配器(Discord、Telegram、Slack、电子邮件等),支持 6 种编排策略,包括基于图的智能体 DAG。还附带 88 个精选技能和在每层 token 预算内只把相关工具和技能放入上下文的能力发现引擎。"
       },
       "whatIsParacosm": {
         "question": "Paracosm 是什么?",
@@ -724,7 +724,7 @@
       },
       "guardrails": {
         "question": "有哪些可用的护栏?",
-        "answer": "AgentOS 有六个可选的护栏包:PII 编辑(姓名、电子邮件、电话号码、SSN 等)、检测有害内容、提示词注入和 NSFW 内容的 ML 分类器、检查生成代码中危险模式的静态分析、对源文档的接地验证、让智能体专注任务的话题性强制,以及改写或拦截违反你的策略的输出的内容策略改写器。每个包都是你在 AgentOS 运行时中启用的扩展。"
+        "answer": "AgentOS 有六个可选的护栏包:PII 编辑(姓名、电子邮件、电话号码、SSN 等)、检测有害内容、威胁和 NSFW 内容的 ML 分类器、检查生成代码中危险模式的静态分析、对源文档的接地验证、让智能体专注任务的话题性强制,以及改写或拦截违反你的策略的输出的内容策略改写器。每个包都是你在 AgentOS 运行时中启用的扩展。分类器包只有在本地模型无法加载时才会给提示词注入打分,对于已知的注入短语,请使用内置的短语列表护栏。"
       },
       "capabilityDiscovery": {
         "question": "能力发现系统是什么?",
@@ -776,7 +776,7 @@
     "enterprise": {
       "productionReady": {
         "question": "AgentOS 是否生产就绪?",
-        "answer": "是的。AgentOS 提供可检测提示注入、编辑个人数据并审核内容的可选护栏包,以及敏感工具调用的审批关卡、拒绝超出上限调用的支出预算,和把故障提供商移出轮换的熔断器。"
+        "answer": "是的。AgentOS 提供可编辑个人数据、审核内容并对照来源核查回答的可选护栏包,以及敏感工具调用的审批关卡、拒绝超出上限调用的支出预算,和把故障提供商移出轮换的熔断器。"
       },
       "compliance": {
         "question": "AgentOS 如何支持 GDPR 与 SOC 2 工作流?",
@@ -986,7 +986,7 @@
       },
       "guardrails": {
         "title": "内置安全",
-        "description": "六个可选护栏包：注入与有害内容分类器、PII 脱敏、对照来源的事实核查、话题控制、内容政策改写器，以及生成代码扫描器",
+        "description": "六个可选护栏包：有害内容与 NSFW 分类器、PII 脱敏、对照来源的事实核查、话题控制、内容政策改写器，以及生成代码扫描器",
         "features": [
           "4级PII编辑",
           "ONNX BERT分类器",
