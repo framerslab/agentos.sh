@@ -23,60 +23,8 @@
     "badge": "开源 · 自适应 · 涌现",
     "title": "自适应与涌现智能的便携式AI代理运行时",
     "subtitle": "面向会记忆、会适应、能创造新工具的 AI 智能体的开源 TypeScript 运行时。运行时中的每个会话都是一个 GMI(Generalized Mind Instance),它保留自己的人格、情绪和记忆,并能随时间调整自己的特质。智能体在任务中途编写自己的函数并由裁判批准;当固定名单无法覆盖任务时,管理者会创建专家。基于神经科学的认知记忆。LongMemEval-S 85.6%。Apache 2.0。",
-    "headlinePairs": [
-      {
-        "top": "自适应智能",
-        "bottom": "面向自主代理"
-      },
-      {
-        "top": "涌现智能",
-        "bottom": "服务于企业级编排"
-      },
-      {
-        "top": "自适应智能",
-        "bottom": "守护安全关键工作流"
-      },
-      {
-        "top": "涌现智能",
-        "bottom": "赋能并行 AI 团队"
-      }
-    ],
-    "technicalHighlights": [
-      {
-        "title": "流式优先运行时",
-        "detail": "在角色、护栏与多通道之间实现逐 token 级别的流式传输。"
-      },
-      {
-        "title": "确定性编排",
-        "detail": "并行GMI，支持可审计的路由、审批与预算。"
-      },
-      {
-        "title": "零拷贝记忆织体",
-        "detail": "将向量、情节与工作记忆编织到同一条可回放的语义流。"
-      },
-      {
-        "title": "可移植智能胶囊",
-        "detail": "导出完整AgentOS实例为Markdown/JSON，并在任何技术栈中复用。"
-      }
-    ],
-    "visualStats": [
-      {
-        "label": "运行中的代理机构",
-        "value": "128"
-      },
-      {
-        "label": "审批SLA",
-        "value": "3.2 分钟"
-      },
-      {
-        "label": "护栏覆盖率",
-        "value": "98%"
-      }
-    ],
     "ctaPrimary": "体验 Voice Chat Assistant",
     "ctaSecondary": "在 GitHub 上点星",
-    "marketplaceLead": "想要精选代理？",
-    "marketplaceCta": "代理市场即将上线",
     "codeLabel": "npm install @framers/agentos",
     "copyToast": "已复制到剪贴板！",
     "copyAria": "复制命令",

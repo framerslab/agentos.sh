@@ -23,60 +23,8 @@
     "badge": "Open Source · Adaptatif · Émergent",
     "title": "Runtime production-ready pour agents IA adaptatifs et émergents",
     "subtitle": "Runtime TypeScript open source pour des agents IA qui se souviennent, s’adaptent et créent de nouveaux outils. Chaque session sur le runtime est un GMI, une Generalized Mind Instance qui conserve sa propre persona, son humeur et sa mémoire et peut ajuster ses propres traits au fil du temps. Les agents écrivent leurs propres fonctions en cours de tâche et le juge les approuve ; les managers créent des spécialistes quand l’effectif fixe ne couvre pas la tâche. Mémoire cognitive fondée sur les neurosciences. 85.6% sur LongMemEval-S. Apache 2.0.",
-    "headlinePairs": [
-      {
-        "top": "Intelligence adaptative",
-        "bottom": "pour des agents autonomes"
-      },
-      {
-        "top": "Intelligence émergente",
-        "bottom": "pour l'orchestration d'entreprise"
-      },
-      {
-        "top": "Intelligence adaptative",
-        "bottom": "pour les workflows critiques"
-      },
-      {
-        "top": "Intelligence émergente",
-        "bottom": "pour les équipes IA parallèles"
-      }
-    ],
-    "technicalHighlights": [
-      {
-        "title": "Runtime orienté streaming",
-        "detail": "Diffusion au niveau du token entre personas, garde-fous et canaux."
-      },
-      {
-        "title": "Orchestration déterministe",
-        "detail": "GMI parallèles avec routage, validations et budgets auditables."
-      },
-      {
-        "title": "Tissu mémoire sans copie",
-        "detail": "Mémoires vectorielle, épisodique et de travail réunies dans un flux réutilisable."
-      },
-      {
-        "title": "Capsules d'intelligence production-ready",
-        "detail": "Exportez AgentOS en Markdown/JSON et réimportez-le dans n'importe quelle stack."
-      }
-    ],
-    "visualStats": [
-      {
-        "label": "Agences en production",
-        "value": "128"
-      },
-      {
-        "label": "SLA d'approbation",
-        "value": "3,2 min"
-      },
-      {
-        "label": "Couverture des garde-fous",
-        "value": "98%"
-      }
-    ],
     "ctaPrimary": "Essayer Voice Chat Assistant",
     "ctaSecondary": "Étoiler sur GitHub",
-    "marketplaceLead": "Besoin d'agents sélectionnés ?",
-    "marketplaceCta": "Marketplace bientôt disponible",
     "codeLabel": "npm install @framers/agentos",
     "copyToast": "Copié dans le presse-papiers !",
     "copyAria": "Copier la commande",

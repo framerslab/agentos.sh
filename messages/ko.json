@@ -31,60 +31,8 @@
       "창발형",
       "적응형"
     ],
-    "headlinePairs": [
-      {
-        "top": "적응형 지능",
-        "bottom": "자율 에이전트를 위해"
-      },
-      {
-        "top": "창발형 지능",
-        "bottom": "엔터프라이즈 오케스트레이션용"
-      },
-      {
-        "top": "적응형 지능",
-        "bottom": "안전 필수 워크플로용"
-      },
-      {
-        "top": "창발형 지능",
-        "bottom": "병렬 AI 팀을 위해"
-      }
-    ],
-    "technicalHighlights": [
-      {
-        "title": "스트리밍 우선 런타임",
-        "detail": "페르소나, 가드레일, 채널 전반에 토큰 단위로 전달합니다."
-      },
-      {
-        "title": "결정론적 오케스트레이션",
-        "detail": "감사 가능한 라우팅·승인·예산을 갖춘 병렬 GMI."
-      },
-      {
-        "title": "제로 복사 메모리 패브릭",
-        "detail": "벡터·에피소드·작업 메모리를 하나의 회상 가능한 흐름으로 엮습니다."
-      },
-      {
-        "title": "휴대용 인텔리전스 캡슐",
-        "detail": "완전한 AgentOS 인스턴스를 Markdown/JSON으로 내보내 어느 스택에서도 사용합니다."
-      }
-    ],
-    "visualStats": [
-      {
-        "label": "가동 중인 에이전시",
-        "value": "128"
-      },
-      {
-        "label": "승인 SLA",
-        "value": "3.2분"
-      },
-      {
-        "label": "가드레일 커버리지",
-        "value": "98%"
-      }
-    ],
     "ctaPrimary": "Voice Chat Assistant 사용해보기",
     "ctaSecondary": "GitHub에서 Star",
-    "marketplaceLead": "선별된 에이전트가 필요하신가요?",
-    "marketplaceCta": "마켓플레이스가 곧 출시됩니다",
     "codeLabel": "npm install @framers/agentos",
     "copyToast": "클립보드에 복사했습니다!",
     "copyAria": "명령어 복사",

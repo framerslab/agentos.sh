@@ -23,60 +23,8 @@
     "badge": "Open Source · Adaptativo · Emergente",
     "title": "Runtime portátil para agentes IA adaptativos e emergentes",
     "subtitle": "Runtime TypeScript open source para agentes de IA que lembram, se adaptam e criam novas ferramentas. Cada sessão no runtime é uma GMI, uma Generalized Mind Instance que mantém sua própria persona, humor e memória e pode ajustar seus próprios traços ao longo do tempo. Os agentes escrevem suas próprias funções no meio da tarefa e o juiz as aprova; gerentes criam especialistas quando o elenco fixo não cobre a tarefa. Memória cognitiva fundamentada em neurociência. 85.6% no LongMemEval-S. Apache 2.0.",
-    "headlinePairs": [
-      {
-        "top": "Inteligência adaptativa",
-        "bottom": "para agentes autônomos"
-      },
-      {
-        "top": "Inteligência emergente",
-        "bottom": "para orquestração corporativa"
-      },
-      {
-        "top": "Inteligência adaptativa",
-        "bottom": "para fluxos críticos"
-      },
-      {
-        "top": "Inteligência emergente",
-        "bottom": "para equipes IA paralelas"
-      }
-    ],
-    "technicalHighlights": [
-      {
-        "title": "Runtime first em streaming",
-        "detail": "Entrega token a token entre personas, guardrails e canais."
-      },
-      {
-        "title": "Orquestração determinística",
-        "detail": "GMIs paralelos com roteamento, aprovações e orçamentos auditáveis."
-      },
-      {
-        "title": "Tecido de memória zero-cópia",
-        "detail": "Memórias vetorial, episódica e de trabalho unificadas em um fluxo reutilizável."
-      },
-      {
-        "title": "Cápsulas de inteligência portáveis",
-        "detail": "Exporte instâncias AgentOS como Markdown/JSON e use em qualquer stack."
-      }
-    ],
-    "visualStats": [
-      {
-        "label": "Agências ativas",
-        "value": "128"
-      },
-      {
-        "label": "SLA de aprovação",
-        "value": "3,2 min"
-      },
-      {
-        "label": "Cobertura de guardrails",
-        "value": "98%"
-      }
-    ],
     "ctaPrimary": "Testar Voice Chat Assistant",
     "ctaSecondary": "Dar estrela no GitHub",
-    "marketplaceLead": "Precisa de agentes curados?",
-    "marketplaceCta": "Marketplace chegando em breve",
     "codeLabel": "npm install @framers/agentos",
     "copyToast": "Copiado para a área de transferência!",
     "copyAria": "Copiar comando",

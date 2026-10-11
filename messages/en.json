@@ -31,60 +31,8 @@
       "emergent",
       "adaptive"
     ],
-    "headlinePairs": [
-      {
-        "top": "Production AI Agents",
-        "bottom": "with Multimodal RAG"
-      },
-      {
-        "top": "Multi-Agent Orchestration",
-        "bottom": "across 37 Channels"
-      },
-      {
-        "top": "Built-in Safety",
-        "bottom": "PII Redaction & Injection Defense"
-      },
-      {
-        "top": "11 LLM Providers",
-        "bottom": "with 72 Curated Skills"
-      }
-    ],
-    "technicalHighlights": [
-      {
-        "title": "Streaming-first runtime",
-        "detail": "Token-level delivery across 37 channel adapters and guardrails."
-      },
-      {
-        "title": "Multi-agent orchestration",
-        "detail": "Parallel agents with auditable routing, approvals, and budgets."
-      },
-      {
-        "title": "Multimodal RAG",
-        "detail": "7 vector backends with 4-tier auto-scaling (SQLite → HNSW → Postgres+pgvector → Qdrant), observational memory compression, 10 document loaders, and Ebbinghaus decay."
-      },
-      {
-        "title": "Self-hostable",
-        "detail": "Deploy anywhere — your infrastructure, your data, your agents."
-      }
-    ],
-    "visualStats": [
-      {
-        "label": "Agencies live",
-        "value": "128"
-      },
-      {
-        "label": "Approval SLA",
-        "value": "3.2 min"
-      },
-      {
-        "label": "Guardrail coverage",
-        "value": "98%"
-      }
-    ],
     "ctaPrimary": "Try Voice Chat Assistant",
     "ctaSecondary": "Star on GitHub",
-    "marketplaceLead": "Need curated agents?",
-    "marketplaceCta": "Marketplace coming soon",
     "codeLabel": "npm install @framers/agentos",
     "copyToast": "Copied to clipboard!",
     "copyAria": "Copy command",
