@@ -24,6 +24,23 @@ const categoryColors: Record<string, string> = {
   Other: 'from-gray-500 to-slate-600'
 };
 
+/**
+ * Guide pages on docs.agentos.sh. The standalone build of this site has no
+ * guide files (lib/guides.ts finds packages/agentos/docs only inside the
+ * monorepo), so the page links to these instead of listing local guides.
+ */
+const DOCS_SITE_GUIDES: { title: string; description: string; href: string }[] = [
+  { title: 'Getting Started', description: 'Install the package and run a first agent.', href: 'https://docs.agentos.sh/getting-started' },
+  { title: 'Architecture Overview', description: 'The system architecture and how a request moves through it.', href: 'https://docs.agentos.sh/architecture/system-architecture' },
+  { title: 'Planning Engine', description: 'How agents plan and run multi-step tasks.', href: 'https://docs.agentos.sh/features/planning-engine' },
+  { title: 'Human-in-the-Loop', description: 'Approval gates and human review of agent actions.', href: 'https://docs.agentos.sh/features/human-in-the-loop' },
+  { title: 'RAG & Memory', description: 'Retrieval and memory configuration.', href: 'https://docs.agentos.sh/features/rag-memory' },
+  { title: 'Cognitive Memory', description: 'Memory types, decay and the eight memory mechanisms.', href: 'https://docs.agentos.sh/features/cognitive-memory' },
+  { title: 'Agent Communication', description: 'Messages between agents on the communication bus.', href: 'https://docs.agentos.sh/features/agent-communication' },
+  { title: 'Guardrails', description: 'The guardrail packs and how to enable them.', href: 'https://docs.agentos.sh/features/guardrails' },
+  { title: 'Voice Pipeline', description: 'Streaming speech-to-text, the agent and text-to-speech in one loop.', href: 'https://docs.agentos.sh/features/voice-pipeline' },
+];
+
 type Props = {
   params: {
     locale: string;
@@ -35,14 +52,14 @@ export async function generateMetadata({ params: { locale } }: Props) {
   const url = canonical(locale, path);
   return {
     title: 'Guides | AgentOS Documentation',
-    description: 'Comprehensive guides for building with AgentOS — architecture, features, integration, and more.',
+    description: 'AgentOS guides on architecture, planning, human-in-the-loop approvals, RAG and memory, agent communication, guardrails and voice, with the API reference.',
     alternates: {
       canonical: url,
       languages: hreflangAlternates(path),
     },
     openGraph: {
       title: 'Guides | AgentOS Documentation',
-      description: 'Comprehensive guides for building with AgentOS.',
+      description: 'AgentOS guides on architecture, planning, memory, guardrails and voice.',
       url,
       siteName: 'AgentOS',
       type: 'website',
@@ -69,25 +86,52 @@ export default function GuidesPage({ params }: Props) {
           </p>
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
-          <div className="holographic-card p-4 text-center">
-            <div className="text-2xl font-bold text-[var(--color-accent-primary)]">{guides.length}</div>
-            <div className="text-sm text-[var(--color-text-secondary)]">Total Guides</div>
+        {/* Quick Stats (only when this build has guide files) */}
+        {guides.length > 0 && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12">
+            <div className="holographic-card p-4 text-center">
+              <div className="text-2xl font-bold text-[var(--color-accent-primary)]">{guides.length}</div>
+              <div className="text-sm text-[var(--color-text-secondary)]">Total Guides</div>
+            </div>
+            <div className="holographic-card p-4 text-center">
+              <div className="text-2xl font-bold text-[var(--color-accent-primary)]">{categories.length}</div>
+              <div className="text-sm text-[var(--color-text-secondary)]">Categories</div>
+            </div>
+            <div className="holographic-card p-4 text-center">
+              <div className="text-2xl font-bold text-[var(--color-accent-primary)]">TypeDoc</div>
+              <div className="text-sm text-[var(--color-text-secondary)]">API Reference</div>
+            </div>
           </div>
-          <div className="holographic-card p-4 text-center">
-            <div className="text-2xl font-bold text-[var(--color-accent-primary)]">{categories.length}</div>
-            <div className="text-sm text-[var(--color-text-secondary)]">Categories</div>
-          </div>
-          <div className="holographic-card p-4 text-center">
-            <div className="text-2xl font-bold text-[var(--color-accent-primary)]">126KB</div>
-            <div className="text-sm text-[var(--color-text-secondary)]">Architecture Doc</div>
-          </div>
-          <div className="holographic-card p-4 text-center">
-            <div className="text-2xl font-bold text-[var(--color-accent-primary)]">TypeDoc</div>
-            <div className="text-sm text-[var(--color-text-secondary)]">API Reference</div>
-          </div>
-        </div>
+        )}
+
+        {/* Without local guide files, link to the guides on docs.agentos.sh */}
+        {guides.length === 0 && (
+          <section className="mb-12">
+            <div className="grid gap-4 md:grid-cols-2">
+              {DOCS_SITE_GUIDES.map(guide => (
+                <a
+                  key={guide.href}
+                  href={guide.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group holographic-card p-6 transition-all hover:scale-[1.02] hover:shadow-lg"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-primary)] transition-colors mb-2">
+                        {guide.title}
+                      </h3>
+                      <p className="text-sm text-[var(--color-text-secondary)] line-clamp-2">
+                        {guide.description}
+                      </p>
+                    </div>
+                    <ChevronRight className="w-5 h-5 text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-primary)] group-hover:translate-x-1 transition-all flex-shrink-0" />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Guides by Category */}
         {categories.map(category => {
@@ -140,7 +184,7 @@ export default function GuidesPage({ params }: Props) {
         <div className="mt-16 holographic-card p-8 text-center">
           <h3 className="text-2xl font-bold text-[var(--color-text-primary)] mb-3">Looking for API Reference?</h3>
           <p className="text-[var(--color-text-secondary)] mb-6 max-w-xl mx-auto">
-            Check out the split API reference: a concise public surface for application builders and a deeper module reference for internal AgentOS subsystems.
+            The TypeDoc reference lists the classes, functions and interfaces that @framers/agentos exports, generated from the TypeScript source.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a
@@ -150,16 +194,7 @@ export default function GuidesPage({ params }: Props) {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--color-accent-primary)] to-[var(--color-accent-secondary)] text-white font-semibold hover:brightness-110 transition-all"
             >
               <BookOpen className="w-4 h-4" />
-              Public API
-            </a>
-            <a
-              href="https://docs.agentos.sh/api/modules/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-[var(--color-border-primary)] text-[var(--color-text-primary)] font-semibold hover:border-[var(--color-accent-primary)] hover:text-[var(--color-accent-primary)] transition-all"
-            >
-              <FileText className="w-4 h-4" />
-              Module API
+              API Reference
             </a>
             <a
               href="https://github.com/framerslab/agentos/tree/master/docs"

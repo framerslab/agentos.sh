@@ -1,7 +1,5 @@
-# Legacy guide copies
+# Guide files
 
-These files are no longer the source of truth. Guides are loaded from
-`packages/agentos/docs/` at build time. This directory serves as a
-fallback for standalone Docker builds only.
+`lib/guides.ts` reads guides from `../../packages/agentos/docs` when the site is built inside the monorepo, and from this directory otherwise. This directory holds no guides, so the standalone build that `pages.yml` deploys lists none: `/guides` links to the guide pages on [docs.agentos.sh](https://docs.agentos.sh) instead, and the `/guides/<slug>` route renders only a placeholder.
 
-To sync: `cp ../../packages/agentos/docs/*.md content/guides/`
+To render guides from a standalone build, copy Markdown files from [framerslab/agentos `docs/`](https://github.com/framerslab/agentos/tree/master/docs) into this directory; `lib/guides.ts` maps file names such as `ARCHITECTURE.md` to titles and categories.
