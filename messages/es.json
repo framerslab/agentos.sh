@@ -398,7 +398,7 @@
       },
       "inProgress": {
         "title": "Registro de Auditoría",
-        "description": "Registros estructurados por redacción, cadenas de procedencia y residencia de datos self-hosted. Las atestaciones formales de SOC 2 y GDPR son responsabilidad organizacional del equipo que despliega, no una propiedad de la biblioteca."
+        "description": "Cadenas de procedencia firmadas para las escrituras en el almacenamiento, un registro de auditoría de los eventos de herramientas forjadas y residencia de datos self-hosted. Las atestaciones formales de SOC 2 y GDPR son responsabilidad organizacional del equipo que despliega, no una propiedad de la biblioteca."
       },
       "enterpriseSupport": {
         "title": "Soporte Empresarial",

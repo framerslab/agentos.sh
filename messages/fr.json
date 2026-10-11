@@ -398,7 +398,7 @@
       },
       "inProgress": {
         "title": "Piste d'audit",
-        "description": "Journaux structurés par rédaction, chaînes de provenance et résidence de données self-hosted. Les attestations formelles SOC 2 et RGPD relèvent de la responsabilité organisationnelle de l'équipe qui déploie, pas d'une propriété de la bibliothèque."
+        "description": "Chaînes de provenance signées pour les écritures en stockage, un journal d’audit des événements des outils forgés et résidence de données self-hosted. Les attestations formelles SOC 2 et RGPD relèvent de la responsabilité organisationnelle de l'équipe qui déploie, pas d'une propriété de la bibliothèque."
       },
       "enterpriseSupport": {
         "title": "Support Entreprise",

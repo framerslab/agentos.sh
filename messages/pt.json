@@ -246,7 +246,7 @@
       },
       "inProgress": {
         "title": "Trilha de Auditoria",
-        "description": "Logs estruturados por redação, cadeias de proveniência e residência de dados self-hosted. Atestações formais de SOC 2 e GDPR são responsabilidade organizacional da equipe que implanta, não uma propriedade da biblioteca."
+        "description": "Cadeias de proveniência assinadas para gravações no armazenamento, um log de auditoria dos eventos de ferramentas forjadas e residência de dados self-hosted. Atestações formais de SOC 2 e GDPR são responsabilidade organizacional da equipe que implanta, não uma propriedade da biblioteca."
       },
       "enterpriseSupport": {
         "title": "Suporte Empresarial",

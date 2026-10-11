@@ -398,7 +398,7 @@
       },
       "inProgress": {
         "title": "Audit Trail",
-        "description": "Per-redaction structured logs, provenance chains, and self-hosted data residency. Formal SOC 2 and GDPR attestations are the deploying organization's responsibility, not a library property."
+        "description": "Signed provenance chains for storage writes, an audit log of forged-tool events, and self-hosted data residency. Formal SOC 2 and GDPR attestations are the deploying organization's responsibility, not a library property."
       },
       "enterpriseSupport": {
         "title": "Enterprise Support",

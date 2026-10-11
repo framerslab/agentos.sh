@@ -398,7 +398,7 @@
       },
       "inProgress": {
         "title": "Audit-Trail",
-        "description": "Strukturierte Logs pro Redaktion, Herkunftsketten und selbst gehostete Datenresidenz. Formale SOC-2- und DSGVO-Attestierungen liegen in der Verantwortung der einsetzenden Organisation, nicht als Bibliothekseigenschaft."
+        "description": "Signierte Herkunftsketten für Speicherschreibvorgänge, ein Audit-Log der Ereignisse geschmiedeter Tools und selbst gehostete Datenresidenz. Formale SOC-2- und DSGVO-Attestierungen liegen in der Verantwortung der einsetzenden Organisation, nicht als Bibliothekseigenschaft."
       },
       "enterpriseSupport": {
         "title": "Enterprise Support",
