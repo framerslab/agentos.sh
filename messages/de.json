@@ -1152,12 +1152,12 @@
   },
   "workbench": {
     "title": "AgentOS Workbench",
-    "description": "Die offizielle Desktop-Anwendung zum Erstellen, Verwalten und Interagieren mit AgentOS-Erlebnissen. Erstellen Sie leistungsstarke KI-Agenten über eine visuelle Oberfläche, testen Sie in Echtzeit und deployen Sie überall.",
+    "description": "Ein React + Vite-Dashboard, das Sie auf Ihrem eigenen Rechner starten, um AgentOS-Sitzungen zu untersuchen und zu debuggen. Verfolgen Sie gestreamte Ausgaben auf einer Sitzungs-Zeitleiste, verfassen und wiederholen Sie Turns und führen Sie Evaluierungen gegen Ihre Agenten aus.",
     "badge1": "MIT-Lizenz",
     "badge2": "Open Source",
-    "feature1": "Visueller Agenten-Builder mit Drag-and-Drop-Workflows",
+    "feature1": "Session-Inspektor für gestreamten Text, Tool-Aufrufe und Fehler",
     "feature2": "Echtzeit-Test- und Debug-Tools",
-    "feature3": "Ein-Klick-Deployment in die Cloud oder lokal",
+    "feature3": "Ansichten für Agency-Strategien, Plan-Checkpoints und RAG-Retrieval",
     "viewGithub": "Auf GitHub ansehen",
     "downloadLatest": "Neueste Version herunterladen",
     "downloadComingSoon": "Download (bald verfügbar)"

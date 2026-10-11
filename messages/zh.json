@@ -1152,12 +1152,12 @@
   },
   "workbench": {
     "title": "AgentOS Workbench",
-    "description": "用于构建、管理和体验 AgentOS 的官方桌面应用。通过可视化界面创建强大的AI代理，实时测试，部署到任何地方。",
+    "description": "在自己的机器上运行、用于检查和调试 AgentOS 会话的 React + Vite 仪表板。在会话时间线上查看流式输出，编写并重放对话轮次，并对你的代理运行评估。",
     "badge1": "MIT 许可证",
     "badge2": "开源",
-    "feature1": "拖放式可视化代理构建器",
+    "feature1": "会话检查器，显示流式文本、工具调用和错误",
     "feature2": "实时测试和调试工具",
-    "feature3": "一键部署到云端或本地",
+    "feature3": "查看代理协作策略、计划检查点和 RAG 检索的视图",
     "viewGithub": "在 GitHub 上查看",
     "downloadLatest": "下载最新版本",
     "downloadComingSoon": "下载 (即将推出)"

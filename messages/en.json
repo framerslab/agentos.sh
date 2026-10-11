@@ -1152,12 +1152,12 @@
   },
   "workbench": {
     "title": "AgentOS Workbench",
-    "description": "The official desktop application for building, managing, and interacting with AgentOS experiences. Create powerful AI agents with a visual interface, test in real-time, and deploy anywhere.",
+    "description": "A React + Vite dashboard you run on your own machine to inspect and debug AgentOS sessions. Watch streamed output on a session timeline, compose and replay turns, and run evaluations against your agents.",
     "badge1": "MIT Licensed",
     "badge2": "Open Source",
-    "feature1": "Visual agent builder with drag-and-drop workflows",
+    "feature1": "Session inspector for streamed text, tool calls and errors",
     "feature2": "Real-time testing and debugging tools",
-    "feature3": "One-click deployment to cloud or local",
+    "feature3": "Views for agency strategies, plan checkpoints and RAG retrieval",
     "viewGithub": "View on GitHub",
     "downloadLatest": "Download Latest",
     "downloadComingSoon": "Download (coming soon)"

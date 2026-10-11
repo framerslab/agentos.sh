@@ -1152,12 +1152,12 @@
   },
   "workbench": {
     "title": "AgentOS Workbench",
-    "description": "AgentOS 경험을 구축, 관리 및 상호작용하기 위한 공식 데스크톱 애플리케이션입니다. 비주얼 인터페이스로 강력한 AI 에이전트를 만들고, 실시간으로 테스트하고, 어디서든 배포하세요.",
+    "description": "내 컴퓨터에서 실행해 AgentOS 세션을 살펴보고 디버깅하는 React + Vite 대시보드입니다. 스트리밍 출력을 세션 타임라인에서 확인하고, 턴을 작성·재생하고, 에이전트를 대상으로 평가를 실행하세요.",
     "badge1": "MIT 라이선스",
     "badge2": "오픈소스",
-    "feature1": "드래그 앤 드롭 워크플로가 포함된 비주얼 에이전트 빌더",
+    "feature1": "스트리밍 텍스트, 도구 호출, 오류를 보여주는 세션 인스펙터",
     "feature2": "실시간 테스트 및 디버깅 도구",
-    "feature3": "원클릭으로 클라우드 또는 로컬에 배포",
+    "feature3": "에이전시 전략, 플랜 체크포인트, RAG 검색 뷰",
     "viewGithub": "GitHub에서 보기",
     "downloadLatest": "최신 버전 다운로드",
     "downloadComingSoon": "다운로드 (곧 제공)"

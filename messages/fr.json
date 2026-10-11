@@ -1152,12 +1152,12 @@
   },
   "workbench": {
     "title": "AgentOS Workbench",
-    "description": "L'application de bureau officielle pour créer, gérer et interagir avec les expériences AgentOS. Créez des agents IA puissants via une interface visuelle, testez en temps réel et déployez n'importe où.",
+    "description": "Un tableau de bord React + Vite que vous lancez sur votre propre machine pour inspecter et déboguer les sessions AgentOS. Suivez la sortie en streaming sur une chronologie de session, composez et rejouez des tours, et lancez des évaluations sur vos agents.",
     "badge1": "Licence MIT",
     "badge2": "Open Source",
-    "feature1": "Constructeur d'agents visuel avec glisser-déposer",
+    "feature1": "Inspecteur de session pour le texte en streaming, les appels d'outils et les erreurs",
     "feature2": "Outils de test et débogage en temps réel",
-    "feature3": "Déploiement en un clic vers le cloud ou en local",
+    "feature3": "Vues des stratégies d'agence, des points de contrôle de plan et de la récupération RAG",
     "viewGithub": "Voir sur GitHub",
     "downloadLatest": "Télécharger la dernière version",
     "downloadComingSoon": "Téléchargement (bientôt disponible)"
