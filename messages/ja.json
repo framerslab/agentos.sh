@@ -16,8 +16,7 @@
     "openapi": "OpenAPI",
     "faq": "よくある質問",
     "about": "について",
-    "github": "GitHub",
-    "marketplace": "マーケットプレイス"
+    "github": "GitHub"
   },
   "hero": {
     "badge": "オープンソース · 適応型 · 創発型",
@@ -138,10 +137,6 @@
       "bullet2": "タスクの並列実行"
     }
   },
-  "marketplace": {
-    "comingSoon": "エージェントマーケットプレイス近日公開",
-    "description": "AgentOSエージェンシーを共有、購入、販売。CI/CD、インフラストラクチャ、支払い、コンプライアンスを処理するので、適応型、創発型、永続的インテリジェンスに集中できます。"
-  },
   "caseStudies": {
     "comingSoon": "ケーススタディ近日公開",
     "description": "実世界のAgentOS実装とプロダクションデプロイ"
@@ -171,8 +166,7 @@
     "badge": "AI革命に参加",
     "exploreLabel": "または今日AgentOSを探索：",
     "tryVoiceChat": "音声チャットを試す",
-    "browseCode": "コードを閲覧",
-    "marketplace": "マーケットプレイス"
+    "browseCode": "コードを閲覧"
   },
   "LanguageSwitcher": {
     "switchLanguage": "言語を切り替え",

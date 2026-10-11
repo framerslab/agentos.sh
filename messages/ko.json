@@ -16,8 +16,7 @@
     "openapi": "OpenAPI",
     "faq": "자주 묻는 질문",
     "about": "소개",
-    "github": "GitHub",
-    "marketplace": "마켓플레이스"
+    "github": "GitHub"
   },
   "hero": {
     "badge": "오픈소스 · 적응형 · 창발형",
@@ -138,10 +137,6 @@
       "bullet2": "병렬 작업 실행"
     }
   },
-  "marketplace": {
-    "comingSoon": "에이전트 마켓플레이스 곧 출시",
-    "description": "AgentOS 에이전시를 공유, 구매 및 판매하세요. CI/CD, 인프라, 지급 및 규정 준수를 처리하므로 적응형, 창발형, 영구 지능에 집중할 수 있습니다."
-  },
   "caseStudies": {
     "comingSoon": "사례 연구 곧 출시",
     "description": "실제 AgentOS 구현 및 프로덕션 배포"
@@ -171,8 +166,7 @@
     "badge": "AI 혁명에 동참하세요",
     "exploreLabel": "지금 AgentOS를 살펴보세요:",
     "tryVoiceChat": "음성 채팅 사용해보기",
-    "browseCode": "코드 둘러보기",
-    "marketplace": "마켓플레이스"
+    "browseCode": "코드 둘러보기"
   },
   "LanguageSwitcher": {
     "switchLanguage": "언어 전환",

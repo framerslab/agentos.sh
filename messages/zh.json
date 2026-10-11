@@ -16,8 +16,7 @@
     "openapi": "OpenAPI",
     "faq": "常见问题",
     "about": "关于",
-    "github": "GitHub",
-    "marketplace": "市场"
+    "github": "GitHub"
   },
   "hero": {
     "badge": "开源 · 自适应 · 涌现",
@@ -219,10 +218,6 @@
     "wipLabel": "WIP",
     "currentlyDevelopment": "目前正在开发中"
   },
-  "marketplace": {
-    "comingSoon": "代理市场即将推出",
-    "description": "分享、购买和出售您的AgentOS代理机构。我们将处理CI/CD、基础设施、支付和合规，让您专注于自适应、涌现和永久智能。"
-  },
   "caseStudies": {
     "comingSoon": "案例研究即将推出",
     "description": "真实世界的AgentOS实施和生产部署"
@@ -252,8 +247,7 @@
     "badge": "加入AI革命",
     "exploreLabel": "或立即探索AgentOS：",
     "tryVoiceChat": "试用语音聊天",
-    "browseCode": "浏览代码",
-    "marketplace": "市场"
+    "browseCode": "浏览代码"
   },
   "LanguageSwitcher": {
     "switchLanguage": "切换语言",

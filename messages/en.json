@@ -16,8 +16,7 @@
     "openapi": "OpenAPI",
     "faq": "FAQ",
     "about": "About",
-    "github": "GitHub",
-    "marketplace": "Marketplace"
+    "github": "GitHub"
   },
   "hero": {
     "badge": "Open Source · TypeScript · Production-Ready",
@@ -138,10 +137,6 @@
       "bullet2": "Graph-based relationship re-ranking"
     }
   },
-  "marketplace": {
-    "comingSoon": "Agent Marketplace Coming Soon",
-    "description": "Share, buy, and sell your AgentOS agencies. We'll handle CI/CD, infrastructure, payouts, and compliance so you can focus on adaptive, emergent, permanent intelligence."
-  },
   "caseStudies": {
     "comingSoon": "Case Studies Coming Soon",
     "description": "Real-world AgentOS implementations and production deployments"
@@ -171,8 +166,7 @@
     "badge": "Join the AI Revolution",
     "exploreLabel": "Or explore AgentOS today:",
     "tryVoiceChat": "Try Voice Chat",
-    "browseCode": "Browse Code",
-    "marketplace": "Marketplace"
+    "browseCode": "Browse Code"
   },
   "LanguageSwitcher": {
     "switchLanguage": "Switch language",

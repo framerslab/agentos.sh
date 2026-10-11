@@ -16,8 +16,7 @@
     "openapi": "OpenAPI",
     "faq": "Preguntas Frecuentes",
     "about": "Acerca de",
-    "github": "GitHub",
-    "marketplace": "Mercado"
+    "github": "GitHub"
   },
   "hero": {
     "cycleWords": [
@@ -138,10 +137,6 @@
       "bullet2": "Ejecución paralela de tareas"
     }
   },
-  "marketplace": {
-    "comingSoon": "Mercado de Agentes Próximamente",
-    "description": "Comparte, compra y vende tus agencias AgentOS. Nos encargamos de CI/CD, infraestructura, pagos y cumplimiento para que puedas enfocarte en inteligencia adaptativa, emergente y permanente."
-  },
   "caseStudies": {
     "comingSoon": "Estudios de Caso Próximamente",
     "description": "Implementaciones y despliegues de producción reales de AgentOS"
@@ -171,8 +166,7 @@
     "badge": "Únete a la Revolución de IA",
     "exploreLabel": "O explora AgentOS hoy:",
     "tryVoiceChat": "Probar Chat de Voz",
-    "browseCode": "Explorar Código",
-    "marketplace": "Mercado"
+    "browseCode": "Explorar Código"
   },
   "LanguageSwitcher": {
     "switchLanguage": "Cambiar idioma",

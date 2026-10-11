@@ -16,8 +16,7 @@
     "openapi": "OpenAPI",
     "faq": "FAQ",
     "about": "Sobre",
-    "github": "GitHub",
-    "marketplace": "Marketplace"
+    "github": "GitHub"
   },
   "hero": {
     "badge": "Open Source · Adaptativo · Emergente",
@@ -138,10 +137,6 @@
       "bullet2": "Execução paralela de tarefas"
     }
   },
-  "marketplace": {
-    "comingSoon": "Marketplace de agentes em breve",
-    "description": "Compartilhe, compre e venda suas agências AgentOS. Nós cuidamos de CI/CD, infraestrutura, pagamentos e compliance para você focar em inteligência adaptativa."
-  },
   "caseStudies": {
     "comingSoon": "Estudos de caso em breve",
     "description": "Implementações reais e implantações em produção com AgentOS"
@@ -171,8 +166,7 @@
     "badge": "Junte-se à Revolução da IA",
     "exploreLabel": "Ou explore o AgentOS hoje:",
     "tryVoiceChat": "Experimentar chat de voz",
-    "browseCode": "Navegar código",
-    "marketplace": "Mercado"
+    "browseCode": "Navegar código"
   },
   "LanguageSwitcher": {
     "switchLanguage": "Trocar idioma",
