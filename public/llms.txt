@@ -24,7 +24,7 @@ npm install @framers/agentos
 ## Core Capabilities
 
 - **13 LLM Providers**: OpenAI, Anthropic, Gemini, Groq, Ollama, OpenRouter, Requesty, LiteLLM, Together, Mistral, xAI, Claude Code CLI, Gemini CLI
-- **Cognitive Memory**: 8 neuroscience-backed mechanisms — reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist extraction, schema encoding, source confidence decay, emotion regulation
+- **Cognitive Memory**: 8 mechanisms from cognitive science, active when `cognitiveMechanisms` is set: reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist extraction, schema encoding, source confidence decay, emotion regulation
 - **HEXACO Personality**: 6 traits (Honesty-Humility, Emotionality, Extraversion, Agreeableness, Conscientiousness, Openness) modulate memory, retrieval, and response style
 - **Multi-Agent Teams**: 6 strategies — sequential, parallel, debate, review-loop, hierarchical, graph (DAG)
 - **RAG Pipeline**: 7 vector backends, 4 retrieval strategies, GraphRAG
