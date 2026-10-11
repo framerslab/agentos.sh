@@ -752,7 +752,7 @@
     "technical": {
       "whatIsGMI": {
         "question": "GMI とは?",
-        "answer": "GMI は Generalized Mind Instance の略です。AgentOS ランタイムがセッションごとに生成するエージェントで、そのセッションのパーソナリティ(HEXACO 特性)、会話履歴、ムード、推論トレースを保持し、検索、プロンプト組み立て、モデル呼び出し、ツール呼び出しを経て各ターンを実行します。セッションをまたいで持続する認知メモリを持たせることもできます。軽量ヘルパーの agent() はモデルを直接呼び出し、GMI を生成しません。GMI を生成するのは完全なランタイム(AgentOS.processRequest)です。"
+        "answer": "GMI は Generalized Mind Instance の略です。AgentOS ランタイムがセッションごとに生成するエージェントで、そのセッションのパーソナリティ(HEXACO 特性)、会話履歴、ムード、推論トレースを保持し、検索、プロンプト組み立て、モデル呼び出し、ツール呼び出しを経て各ターンを実行します。セッションをまたいで持続する認知メモリを持たせることもできます。軽量ヘルパーの agent() はモデルを直接呼び出し、runtime: 'gmi' を渡さない限り GMI を生成しません。gmi() と完全なランタイム(AgentOS.processRequest)は GMI を生成します。"
       },
       "hexaco": {
         "question": "HEXACO パーソナリティとは?",

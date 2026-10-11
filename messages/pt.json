@@ -752,7 +752,7 @@
     "technical": {
       "whatIsGMI": {
         "question": "O que é uma GMI?",
-        "answer": "GMI significa Generalized Mind Instance. É o agente que o runtime do AgentOS cria para cada sessão: guarda a persona da sessão (traços HEXACO), o histórico da conversa, o humor e o rastro de raciocínio, executa cada turno passando por recuperação, montagem do prompt, chamada do modelo e chamadas de ferramentas, e pode receber memória cognitiva que persiste entre sessões. O helper leve agent() chama o modelo diretamente e não cria uma GMI; o runtime completo (AgentOS.processRequest) cria."
+        "answer": "GMI significa Generalized Mind Instance. É o agente que o runtime do AgentOS cria para cada sessão: guarda a persona da sessão (traços HEXACO), o histórico da conversa, o humor e o rastro de raciocínio, executa cada turno passando por recuperação, montagem do prompt, chamada do modelo e chamadas de ferramentas, e pode receber memória cognitiva que persiste entre sessões. O helper leve agent() chama o modelo diretamente e não cria uma GMI, a menos que você passe runtime: 'gmi'; gmi() e o runtime completo (AgentOS.processRequest) criam GMIs."
       },
       "hexaco": {
         "question": "O que é a personalidade HEXACO?",

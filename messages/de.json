@@ -864,7 +864,7 @@
     "technical": {
       "whatIsGMI": {
         "question": "Was ist ein GMI?",
-        "answer": "GMI steht für Generalized Mind Instance. Es ist der Agent, den die AgentOS-Runtime für jede Sitzung erzeugt: Er hält die Persona der Sitzung (HEXACO-Merkmale), den Gesprächsverlauf, die Stimmung und den Reasoning-Trace, führt jeden Turn über Suche, Prompt-Aufbau, Modellaufruf und Tool-Aufrufe aus und kann ein kognitives Gedächtnis erhalten, das über Sitzungen hinweg bestehen bleibt. Der leichtgewichtige Helper agent() ruft das Modell direkt auf und erzeugt kein GMI; die vollständige Runtime (AgentOS.processRequest) tut es."
+        "answer": "GMI steht für Generalized Mind Instance. Es ist der Agent, den die AgentOS-Runtime für jede Sitzung erzeugt: Er hält die Persona der Sitzung (HEXACO-Merkmale), den Gesprächsverlauf, die Stimmung und den Reasoning-Trace, führt jeden Turn über Suche, Prompt-Aufbau, Modellaufruf und Tool-Aufrufe aus und kann ein kognitives Gedächtnis erhalten, das über Sitzungen hinweg bestehen bleibt. Der leichtgewichtige Helper agent() ruft das Modell direkt auf und erzeugt kein GMI, außer du übergibst runtime: 'gmi'; gmi() und die vollständige Runtime (AgentOS.processRequest) erzeugen GMIs."
       },
       "hexaco": {
         "question": "Was ist die HEXACO-Persönlichkeit?",

@@ -712,7 +712,7 @@
     "technical": {
       "whatIsGMI": {
         "question": "GMI 是什么?",
-        "answer": "GMI 代表 Generalized Mind Instance。它是 AgentOS 运行时为每个会话创建的智能体:保存该会话的人格(HEXACO 特质)、对话历史、情绪和推理轨迹,通过检索、提示词组装、模型调用和工具调用执行每一轮,并且可以被赋予跨会话持久的认知记忆。轻量级辅助函数 agent() 直接调用模型,不会创建 GMI;创建 GMI 的是完整运行时(AgentOS.processRequest)。"
+        "answer": "GMI 代表 Generalized Mind Instance。它是 AgentOS 运行时为每个会话创建的智能体:保存该会话的人格(HEXACO 特质)、对话历史、情绪和推理轨迹,通过检索、提示词组装、模型调用和工具调用执行每一轮,并且可以被赋予跨会话持久的认知记忆。轻量级辅助函数 agent() 直接调用模型,除非传入 runtime: 'gmi',否则不会创建 GMI;gmi() 和完整运行时(AgentOS.processRequest)会创建 GMI。"
       },
       "hexaco": {
         "question": "HEXACO 人格是什么?",
