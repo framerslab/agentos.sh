@@ -627,7 +627,7 @@
     "layers": {
       "channels": {
         "name": "チャネルと I/O",
-        "description": "Telegram、Discord、Slack、WhatsApp、Twitter ほか 32 種類。音声は STT 12 種、TTS 13 種のプロバイダ経由。各チャネルアダプタは共通のインターフェースを実装し、プラットフォームが対応していれば入力中表示やメッセージ編集も使えます。"
+        "description": "Telegram、Discord、Slack、WhatsApp、Twitter ほか 32 種類。音声は STT 11 種、TTS 10 種のプロバイダ経由。各チャネルアダプタは共通のインターフェースを実装し、プラットフォームが対応していれば入力中表示やメッセージ編集も使えます。"
       },
       "guardrails": {
         "name": "ガードレールと安全性",
@@ -1099,9 +1099,9 @@
       },
       "voice": {
         "title": "音声パイプライン",
-        "description": "リアルタイムストリーミング、VAD、話者ダイアライゼーション、テレフォニーサポート付きの12 STTと13 TTSプロバイダー",
+        "description": "リアルタイムストリーミング、VAD、話者ダイアライゼーション、テレフォニーサポート付きの11 STTと10 TTSプロバイダー",
         "features": [
-          "12 STT + 13 TTS",
+          "11 STT + 10 TTS",
           "VAD + ダイアライゼーション",
           "リアルタイムストリーミング",
           "Twilio/Telnyx/Plivo"

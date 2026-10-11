@@ -627,7 +627,7 @@
     "layers": {
       "channels": {
         "name": "通道与 I/O",
-        "description": "Telegram、Discord、Slack、WhatsApp、Twitter 以及另外 32 个渠道。语音通过 12 个 STT 和 13 个 TTS 提供商实现。每个渠道适配器都实现同一个接口，平台支持时还提供输入状态提示和消息编辑。"
+        "description": "Telegram、Discord、Slack、WhatsApp、Twitter 以及另外 32 个渠道。语音通过 11 个 STT 和 10 个 TTS 提供商实现。每个渠道适配器都实现同一个接口，平台支持时还提供输入状态提示和消息编辑。"
       },
       "guardrails": {
         "name": "护栏与安全",
@@ -1059,9 +1059,9 @@
       },
       "voice": {
         "title": "语音管道",
-        "description": "12个STT和13个TTS提供商，具有实时流式传输、VAD、说话人分离和电话支持",
+        "description": "11个STT和10个TTS提供商，具有实时流式传输、VAD、说话人分离和电话支持",
         "features": [
-          "12 STT + 13 TTS",
+          "11 STT + 10 TTS",
           "VAD + 说话人分离",
           "实时流式传输",
           "Twilio/Telnyx/Plivo"

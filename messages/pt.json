@@ -627,7 +627,7 @@
     "layers": {
       "channels": {
         "name": "Canais e I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter e mais 32. Voz via 12 provedores STT e 13 TTS. Cada adaptador de canal implementa uma única interface, com indicador de digitação e edição de mensagens onde a plataforma permite."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter e mais 32. Voz via 11 provedores STT e 10 TTS. Cada adaptador de canal implementa uma única interface, com indicador de digitação e edição de mensagens onde a plataforma permite."
       },
       "guardrails": {
         "name": "Guardrails e Segurança",
@@ -1099,9 +1099,9 @@
       },
       "voice": {
         "title": "Pipeline de Voz",
-        "description": "12 provedores STT e 13 TTS com streaming em tempo real, VAD, diarização de falantes e suporte a telefonia",
+        "description": "11 provedores STT e 10 TTS com streaming em tempo real, VAD, diarização de falantes e suporte a telefonia",
         "features": [
-          "12 STT + 13 TTS",
+          "11 STT + 10 TTS",
           "VAD + diarizacao",
           "Streaming em tempo real",
           "Twilio/Telnyx/Plivo"

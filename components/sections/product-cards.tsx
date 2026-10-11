@@ -161,8 +161,8 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       description: t('cards.voice.description'),
       icon: Mic,
       stats: [
-        { label: t('stats.sttProviders'), value: '12' },
-        { label: t('stats.ttsProviders'), value: '13' },
+        { label: t('stats.sttProviders'), value: '11' },
+        { label: t('stats.ttsProviders'), value: '10' },
         { label: t('stats.telephony'), value: '3 carriers' }
       ],
       features: [t('cards.voice.features.0'), t('cards.voice.features.1'), t('cards.voice.features.2'), t('cards.voice.features.3')],

@@ -355,9 +355,9 @@
       },
       "voice": {
         "title": "음성 파이프라인",
-        "description": "실시간 스트리밍, VAD, 화자 분할 및 전화 지원을 포함한 12개 STT 및 13개 TTS 제공자",
+        "description": "실시간 스트리밍, VAD, 화자 분할 및 전화 지원을 포함한 11개 STT 및 10개 TTS 제공자",
         "features": [
-          "12 STT + 13 TTS",
+          "11 STT + 10 TTS",
           "VAD + 화자 분할",
           "실시간 스트리밍",
           "Twilio/Telnyx/Plivo"
@@ -779,7 +779,7 @@
     "layers": {
       "channels": {
         "name": "채널 및 I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter 외 32개. 음성은 STT 12개, TTS 13개 제공자로 처리합니다. 모든 채널 어댑터는 하나의 인터페이스를 구현하며, 플랫폼이 지원하면 입력 중 표시와 메시지 수정도 지원합니다."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter 외 32개. 음성은 STT 11개, TTS 10개 제공자로 처리합니다. 모든 채널 어댑터는 하나의 인터페이스를 구현하며, 플랫폼이 지원하면 입력 중 표시와 메시지 수정도 지원합니다."
       },
       "guardrails": {
         "name": "가드레일 및 안전",

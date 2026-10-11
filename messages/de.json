@@ -355,9 +355,9 @@
       },
       "voice": {
         "title": "Sprach-Pipeline",
-        "description": "12 STT- und 13 TTS-Anbieter mit Echtzeit-Streaming, VAD, Sprecherdiarisierung und Telefonie-Unterstützung",
+        "description": "11 STT- und 10 TTS-Anbieter mit Echtzeit-Streaming, VAD, Sprecherdiarisierung und Telefonie-Unterstützung",
         "features": [
-          "12 STT + 13 TTS",
+          "11 STT + 10 TTS",
           "VAD + Diarisierung",
           "Echtzeit-Streaming",
           "Twilio/Telnyx/Plivo"
@@ -779,7 +779,7 @@
     "layers": {
       "channels": {
         "name": "Kanäle & I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter und 32 weitere. Sprache über 12 STT- und 13 TTS-Anbieter. Jeder Kanal-Adapter implementiert eine gemeinsame Schnittstelle, mit Tippanzeige und Nachrichtenbearbeitung, wo die Plattform sie unterstützt."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter und 32 weitere. Sprache über 11 STT- und 10 TTS-Anbieter. Jeder Kanal-Adapter implementiert eine gemeinsame Schnittstelle, mit Tippanzeige und Nachrichtenbearbeitung, wo die Plattform sie unterstützt."
       },
       "guardrails": {
         "name": "Guardrails & Sicherheit",

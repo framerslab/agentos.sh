@@ -355,9 +355,9 @@
       },
       "voice": {
         "title": "Voice Pipeline",
-        "description": "12 STT and 13 TTS providers with real-time streaming, VAD, speaker diarization, and telephony support",
+        "description": "11 STT and 10 TTS providers with real-time streaming, VAD, speaker diarization, and telephony support",
         "features": [
-          "12 STT + 13 TTS",
+          "11 STT + 10 TTS",
           "VAD + diarization",
           "Real-time streaming",
           "Twilio/Telnyx/Plivo"
@@ -819,7 +819,7 @@
     "layers": {
       "channels": {
         "name": "Channels & I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter, and 32 more. Voice via 12 STT and 13 TTS providers. Every channel adapter implements one interface, with typing indicators and message edits where the platform supports them."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter, and 32 more. Voice via 11 STT and 10 TTS providers. Every channel adapter implements one interface, with typing indicators and message edits where the platform supports them."
       },
       "guardrails": {
         "name": "Guardrails & Safety",
