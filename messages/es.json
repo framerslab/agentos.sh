@@ -88,9 +88,9 @@
     },
     "language": {
       "title": "Idioma y Traducción",
-      "description": "Detecta automáticamente la configuración regional y el tono por superficie. Las personas permanecen fluidas en voz, chat y documentos con proveedores de traducción de su elección.",
+      "description": "LanguageService detecta el idioma de un texto con sus proveedores de detección y traduce con OpenAI o DeepL. En el runtime de AgentOS, los chunks de cada turno incluyen el idioma de respuesta elegido a partir de la indicación del usuario, los idiomas detectados o tu cadena de respaldo.",
       "pill": "Multilingüe Listo",
-      "bullet1": "Adaptación de tono consciente de la persona",
+      "bullet1": "Idioma de respuesta por indicación, detección o cadena de respaldo",
       "bullet2": "Enrutamiento de respaldo por configuración regional"
     },
     "storage": {

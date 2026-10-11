@@ -88,9 +88,9 @@
     },
     "language": {
       "title": "Language & Translation",
-      "description": "Auto-detect locale and tone per surface. Personas stay fluent across voice, chat, and docs with translation providers of your choice.",
+      "description": "LanguageService detects a text's language with its detection providers and translates with OpenAI or DeepL. On the AgentOS runtime, each turn's chunks carry the reply language it picked from the user's hint, the detected languages or your fallback chain.",
       "pill": "Multilingual Ready",
-      "bullet1": "Persona-aware tone adaptation",
+      "bullet1": "Reply language from a hint, detection or fallback chain",
       "bullet2": "Fallback routing by locale"
     },
     "storage": {

@@ -88,9 +88,9 @@
     },
     "language": {
       "title": "语言和翻译",
-      "description": "按界面自动检测语言和语调。角色在语音、聊天和文档中保持流畅，可选择您喜欢的翻译提供商。",
+      "description": "LanguageService 通过其检测提供商识别文本语言，并用 OpenAI 或 DeepL 翻译。在 AgentOS 运行时中，每轮的数据块都会带上根据用户提示、检测到的语言或回退链选出的回复语言。",
       "pill": "多语言就绪",
-      "bullet1": "角色感知的语调适应",
+      "bullet1": "按提示、检测或回退链确定回复语言",
       "bullet2": "按语言的回退路由"
     },
     "storage": {

@@ -88,9 +88,9 @@
     },
     "language": {
       "title": "Idioma e tradução",
-      "description": "Detecte automaticamente idioma e tom por superfície. Personas permanecem fluentes em voz, chat e docs com o provedor de tradução que você preferir.",
+      "description": "O LanguageService detecta o idioma de um texto com seus provedores de detecção e traduz com OpenAI ou DeepL. No runtime do AgentOS, os chunks de cada turno trazem o idioma de resposta escolhido a partir da indicação do usuário, dos idiomas detectados ou da sua cadeia de fallback.",
       "pill": "Multilíngue pronto",
-      "bullet1": "Adaptação de tom sensível à persona",
+      "bullet1": "Idioma de resposta por indicação, detecção ou cadeia de fallback",
       "bullet2": "Roteamento de fallback por idioma"
     },
     "storage": {

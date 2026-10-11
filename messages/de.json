@@ -88,9 +88,9 @@
     },
     "language": {
       "title": "Sprache & Übersetzung",
-      "description": "Erkennen Sie automatisch Gebietsschema und Ton pro Oberfläche. Personas bleiben fließend in Sprache, Chat und Dokumenten mit Übersetzungsanbietern Ihrer Wahl.",
+      "description": "LanguageService erkennt die Sprache eines Textes mit seinen Erkennungsanbietern und übersetzt mit OpenAI oder DeepL. In der AgentOS-Runtime tragen die Chunks jedes Turns die Antwortsprache, gewählt aus dem Hinweis des Nutzers, den erkannten Sprachen oder Ihrer Fallback-Kette.",
       "pill": "Mehrsprachig Bereit",
-      "bullet1": "Persona-bewusste Tonanpassung",
+      "bullet1": "Antwortsprache aus Hinweis, Erkennung oder Fallback-Kette",
       "bullet2": "Fallback-Routing nach Gebietsschema"
     },
     "storage": {

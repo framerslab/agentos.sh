@@ -88,9 +88,9 @@
     },
     "language": {
       "title": "Langue et traduction",
-      "description": "Détection automatique de la langue et du ton. Les personas restent fluides sur voix, chat et docs avec le fournisseur de traduction de votre choix.",
+      "description": "LanguageService détecte la langue d’un texte avec ses fournisseurs de détection et traduit avec OpenAI ou DeepL. Sur le runtime AgentOS, les chunks de chaque tour indiquent la langue de réponse choisie à partir de l’indication de l’utilisateur, des langues détectées ou de votre chaîne de secours.",
       "pill": "Multilingue prêt",
-      "bullet1": "Adaptation du ton selon la persona",
+      "bullet1": "Langue de réponse par indication, détection ou chaîne de secours",
       "bullet2": "Routage de secours par langue"
     },
     "storage": {
