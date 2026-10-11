@@ -127,17 +127,17 @@
     "sectionSubtitle": "Infrastructure de production pour créer, déployer et faire évoluer des agents IA",
     "multiAgent": {
       "title": "Coordination multi-agent émergente",
-      "description": "Générez chercheurs, analystes, critiques et exécutants à partir d'un seul objectif. Contexte, budgets et validations partagés gardent chaque branche alignée.",
-      "pill": "🆕 v0.1.3",
+      "description": "Faites travailler des agents chercheur, analyste, critique et exécutant sur un même objectif, et laissez un manager hiérarchique créer des spécialistes quand l’équipe ne suffit pas. Les limites de tokens et de durée et les validations couvrent toute l’équipe.",
+      "pill": "6 stratégies",
       "bullet1": "Routage déterministe ou éventail adaptatif",
-      "bullet2": "Citations et mémoires fusionnées automatiquement"
+      "bullet2": "Fournisseurs et modèles par agent"
     },
     "toolPacks": {
       "title": "Packs d'outils et garde-fous",
-      "description": "Extensions clés en main pour la recherche, la vision, l'exécution de code ou les API custom, avec autorisations et retries intégrés.",
+      "description": "Ajoutez des extensions sélectionnées pour la recherche, la vision, l’exécution de code ou vos propres API. Un gestionnaire de permissions vérifie chaque appel d’outil au regard des capacités de la persona.",
       "pill": "Écosystème d'extensions",
       "bullet1": "Registre d'outils piloté par manifeste",
-      "bullet2": "Préréglages de garde-fous + balises conformité"
+      "bullet2": "Six packs de guardrails optionnels"
     },
     "language": {
       "title": "Langue et traduction",
@@ -148,66 +148,45 @@
     },
     "storage": {
       "title": "Stockage et déploiement",
-      "description": "7 backends de stockage vectoriel avec auto-scaling à 4 niveaux (SQLite → HNSW → Postgres+pgvector → Qdrant). Migration entre tous les backends en une commande. Docker auto-setup pour Qdrant et Postgres.",
+      "description": "7 backends de stockage vectoriel. Memory ajoute un index HNSW au-delà de 1,000 traces quand les embeddings sont actifs, MigrationEngine déplace les données entre SQLite, Postgres, Qdrant et Pinecone, et un helper Docker lance un Qdrant local.",
       "pill": "Déployez partout",
-      "bullet1": "Migration de backend vectoriel en une commande",
-      "bullet2": "Docker auto-setup pour Qdrant + Postgres"
+      "bullet1": "MigrationEngine pour SQLite, Postgres, Qdrant et Pinecone",
+      "bullet2": "Helper Docker pour un Qdrant local"
     },
     "workbench": {
       "title": "Workbench local-first",
-      "description": "Prototyper des agences complètes dans le navigateur avec SQL persistant, scrubbing de timeline et marketplace intégrée.",
-      "pill": "Utilisable hors ligne",
-      "bullet1": "Inspectez raisonnement et traces OpenTelemetry en direct",
-      "bullet2": "Synchronisez les artefacts vers le cloud",
+      "description": "Inspectez les sessions AgentOS dans un tableau de bord local du navigateur, avec une chronologie en streaming, un compositeur de requêtes, des vues d’agences et de planification et un lanceur d’évaluations.",
+      "pill": "Tourne en local",
+      "bullet1": "Chronologie du texte diffusé, des appels d’outils et des erreurs",
+      "bullet2": "Lanceur d’évaluations et points de contrôle de planification",
       "bullet3": "Exportez l'agence en bundles Markdown/JSON"
     },
     "capabilityDiscovery": {
       "title": "Découverte Intelligente des Capacités",
-      "description": "Moteur de découverte sémantique et hiérarchisé qui réduit le contexte des capacités de ~90%. Recherche vectorielle + re-ranking par graphe trouve le bon outil, compétence ou canal au bon moment.",
-      "pill": "~90% Réduction de Tokens",
+      "description": "Un moteur de découverte sémantique à plusieurs niveaux ne met en contexte que les capacités pertinentes, dans des budgets de tokens par niveau (200, 800 et 2,000 par défaut). La recherche vectorielle avec reclassement par graphe trouve le bon outil, skill ou canal.",
+      "pill": "Contexte par niveaux",
       "bullet1": "Assemblage de contexte à trois niveaux avec budget de tokens",
       "bullet2": "Re-ranking basé sur les relations de graphe"
     },
-    "memoryCompression": {
-      "title": "Compression de Mémoire Observationnelle",
-      "description": "Compression de mémoire 3-10x basée sur LLM avec raisonnement temporel. Consolidation auto-améliorante qui fusionne, élague et renforce les souvenirs au fil du temps.",
-      "pill": "Compression 3-10x",
-      "bullet1": "Le raisonnement temporel préserve les chaînes causales",
-      "bullet2": "Cycle de consolidation auto-améliorant"
-    },
-    "documentIngestion": {
-      "title": "Pipeline d'Ingestion de Documents",
-      "description": "10 chargeurs de documents avec extraction multimodale. 3 niveaux de traitement PDF (basique, OCR, vision). 4 stratégies de découpage (fixe, sémantique, récursif, fenêtre glissante).",
-      "pill": "10 Chargeurs",
-      "bullet1": "3 niveaux PDF : basique, OCR, vision",
-      "bullet2": "4 stratégies de découpage dont sémantique"
-    },
-    "memoryPortability": {
-      "title": "Import / Export de Mémoire",
-      "description": "Importez et exportez la mémoire d'agent en 10 formats dont coffre Obsidian, exports ChatGPT, Markdown, JSON et CSV. Migration en une commande entre les 7 backends vectoriels.",
-      "pill": "10 Formats",
-      "bullet1": "Import coffre Obsidian + ChatGPT",
-      "bullet2": "Migration de backend en une commande"
-    },
     "guardrails": {
       "title": "Guardrails et Sécurité",
-      "description": "Modération de contenu, détection de PII et contrôles de conformité intégrés. Disjoncteurs, garde-fous de coût et détection de blocage évitent les boucles infinies et les dépenses excessives.",
+      "description": "Des packs optionnels pour la modération de contenu, le masquage des PII et la vérification des sources. Les budgets de dépense plafonnent le coût d’une exécution, et les disjoncteurs retirent de la rotation un fournisseur défaillant.",
       "pill": "Sécurité Entreprise",
-      "bullet1": "Disjoncteur + garde-fou de coût + détection de blocage",
+      "bullet1": "Disjoncteurs par fournisseur + budgets de dépense",
       "bullet2": "Filtrage de contenu et flux d’approbation"
     },
     "streaming": {
       "title": "Runtime de Streaming",
-      "description": "Streaming de tokens en temps réel. Conçu pour des interactions à faible latence avec prise en charge de SSE, WebSockets et transports personnalisés.",
+      "description": "Streaming au niveau du token avec sortie en temps réel. streamText renvoie les fragments de texte dès leur arrivée, et le runtime complet diffuse des chunks typés pour le texte, les appels d’outils et la progression.",
       "pill": "Temps Réel",
       "bullet1": "Livraison token par token",
       "bullet2": "Support multi-canal"
     },
     "workflow": {
       "title": "Moteur de Workflow",
-      "description": "Définissez des workflows complexes en plusieurs étapes avec branchement conditionnel, exécution parallèle et logique de réessai automatique.",
+      "description": "Définissez des workflows à plusieurs étapes comme des graphes. La stratégie graph exécute les agents indépendants en parallèle, AgentGraph route selon des conditions et les étapes d’outil réessaient avec backoff.",
       "pill": "Orchestration",
-      "bullet1": "Constructeur visuel de workflow",
+      "bullet1": "Politiques de réessai avec backoff exponentiel",
       "bullet2": "Exécution parallèle des tâches"
     }
   },

@@ -127,17 +127,17 @@
     "sectionSubtitle": "Production-grade infrastructure for building, deploying, and scaling AI agents",
     "multiAgent": {
       "title": "Emergent Multi-Agent Coordination",
-      "description": "Spawn researcher, analyst, critic, and executor personas from a single goal. Shared context, budgets, and approvals keep every branch in sync.",
-      "pill": "🆕 v0.1.3",
+      "description": "Run researcher, analyst, critic and executor agents on one goal, and let a hierarchical manager spawn specialists when the roster falls short. Token and time limits and approval gates cover the whole team.",
+      "pill": "6 strategies",
       "bullet1": "Deterministic routing or adaptive fan-out",
-      "bullet2": "Citations + memory stitched automatically"
+      "bullet2": "Per-agent providers and models"
     },
     "toolPacks": {
       "title": "Tool & Guardrail Packs",
-      "description": "Ship opinionated extensions for search, vision, code execution, or custom APIs with built-in permissions and retries.",
+      "description": "Add curated extensions for search, vision, code execution or your own APIs. A permission manager checks each tool call against the persona's capabilities.",
       "pill": "Extension Ecosystem",
       "bullet1": "Manifest-driven tool registry",
-      "bullet2": "Guardrail presets + compliance tags"
+      "bullet2": "Six opt-in guardrail packs"
     },
     "language": {
       "title": "Language & Translation",
@@ -148,67 +148,46 @@
     },
     "storage": {
       "title": "Storage & Deployment",
-      "description": "7 vector store backends with 4-tier auto-scaling (SQLite → HNSW → Postgres+pgvector → Qdrant). One-command migration between all backends. Docker auto-setup for Qdrant and Postgres.",
+      "description": "7 vector store backends. Memory adds an HNSW index past 1,000 traces when embeddings are on, MigrationEngine moves data between SQLite, Postgres, Qdrant and Pinecone, and a Docker helper starts a local Qdrant.",
       "pill": "Deploy Anywhere",
-      "bullet1": "One-command vector backend migration",
-      "bullet2": "Docker auto-setup for Qdrant + Postgres"
+      "bullet1": "MigrationEngine for SQLite, Postgres, Qdrant and Pinecone",
+      "bullet2": "Docker helper for a local Qdrant"
     },
     "workbench": {
       "title": "Local-First Workbench",
-      "description": "Prototype entire agencies in-browser with persisted SQL, timeline scrubbers, and a built-in marketplace of personas.",
-      "pill": "Offline Capable",
-      "bullet1": "Inspect reasoning + OpenTelemetry traces live",
-      "bullet2": "Sync artifacts back to the cloud",
+      "description": "Inspect AgentOS sessions in a local browser dashboard with a streaming timeline, a request composer, agency and planning views, and an evaluation runner.",
+      "pill": "Runs Locally",
+      "bullet1": "Timeline of streamed text, tool calls and errors",
+      "bullet2": "Evaluation runner and planning checkpoints",
       "bullet3": "Export full agencies as Markdown/JSON bundles"
     },
     "guardrails": {
       "title": "Guardrails & Safety",
-      "description": "Built-in content moderation, PII detection, and compliance checks. Circuit breakers, cost guards, and stuck detection prevent runaway loops and excessive spending.",
+      "description": "Opt-in packs for content moderation, PII redaction and grounding checks. Spend budgets cap what a run can cost, and circuit breakers take a failing provider out of rotation.",
       "pill": "Enterprise Safety",
-      "bullet1": "Circuit breaker + cost guard + stuck detection",
+      "bullet1": "Provider circuit breakers + spend budgets",
       "bullet2": "Content filtering & approval workflows"
     },
     "streaming": {
       "title": "Streaming Runtime",
-      "description": "Token-level streaming with real-time output. Built for low-latency interactions with support for SSE, WebSockets, and custom transports.",
+      "description": "Token-level streaming with real-time output. streamText yields text deltas as they arrive, and the full runtime streams typed chunks for text, tool calls and progress.",
       "pill": "Real-time",
       "bullet1": "Token-by-token delivery",
       "bullet2": "Multi-channel support"
     },
     "workflow": {
       "title": "Workflow Engine",
-      "description": "Define complex multi-step workflows with conditional branching, parallel execution, and automatic retry logic.",
+      "description": "Define multi-step workflows as graphs. The graph strategy runs independent agents in parallel, AgentGraph routes on conditions, and tool steps retry with backoff.",
       "pill": "Orchestration",
-      "bullet1": "Visual workflow builder",
+      "bullet1": "Retry policies with exponential backoff",
       "bullet2": "Parallel task execution"
     },
     "capabilityDiscovery": {
       "title": "Smart Capability Discovery",
-      "description": "Semantic, tiered discovery engine that reduces capability context by ~90%. Vector search + graph re-ranking finds the right tool, skill, or channel at the right time.",
-      "pill": "~90% Token Reduction",
+      "description": "A semantic, tiered discovery engine puts only the relevant capabilities in context, within token budgets per tier (200, 800 and 2,000 by default). Vector search plus graph re-ranking finds the right tool, skill or channel.",
+      "pill": "Tiered Context",
       "bullet1": "Three-tier token-budgeted context assembly",
       "bullet2": "Graph-based relationship re-ranking"
-    },
-    "memoryCompression": {
-      "title": "Observational Memory Compression",
-      "description": "LLM-based 3-10x memory compression with temporal reasoning. Self-improving consolidation that merges, prunes, and strengthens memories over time.",
-      "pill": "3-10x Compression",
-      "bullet1": "Temporal reasoning preserves causal chains",
-      "bullet2": "Self-improving consolidation cycle"
-    },
-    "documentIngestion": {
-      "title": "Document Ingestion Pipeline",
-      "description": "10 document loaders with multimodal extraction. 3 PDF processing tiers (basic, OCR, vision). 4 chunking strategies (fixed, semantic, recursive, sliding window).",
-      "pill": "10 Loaders",
-      "bullet1": "3 PDF tiers: basic, OCR, vision",
-      "bullet2": "4 chunking strategies including semantic"
-    },
-    "memoryPortability": {
-      "title": "Memory Import / Export",
-      "description": "Import and export agent memory in 10 formats including Obsidian vault, ChatGPT exports, Markdown, JSON, and CSV. One-command migration between all 7 vector backends.",
-      "pill": "10 Formats",
-      "bullet1": "Obsidian vault + ChatGPT import",
-      "bullet2": "One-command backend migration"
     }
   },
   "marketplace": {

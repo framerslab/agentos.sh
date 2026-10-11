@@ -127,17 +127,17 @@
     "sectionSubtitle": "Produktionsreife Infrastruktur zum Erstellen, Bereitstellen und Skalieren von KI-Agenten",
     "multiAgent": {
       "title": "Emergente Multi-Agenten-Koordination",
-      "description": "Erzeugen Sie Forscher-, Analysten-, Kritiker- und Executor-Personas aus einem einzigen Ziel. Gemeinsamer Kontext, Budgets und Genehmigungen halten jeden Zweig synchron.",
-      "pill": "🆕 v0.1.3",
+      "description": "Rechercheur-, Analyst-, Kritiker- und Ausführer-Agenten arbeiten an einem Ziel, und ein hierarchischer Manager erzeugt Spezialisten, wenn das Team nicht reicht. Token- und Zeitlimits sowie Freigaben gelten für das ganze Team.",
+      "pill": "6 Strategien",
       "bullet1": "Deterministisches Routing oder adaptives Fan-Out",
-      "bullet2": "Zitate + Gedächtnis automatisch verknüpft"
+      "bullet2": "Anbieter und Modelle pro Agent"
     },
     "toolPacks": {
       "title": "Tool- & Leitplanken-Pakete",
-      "description": "Liefern Sie eigenwillige Erweiterungen für Suche, Vision, Code-Ausführung oder benutzerdefinierte APIs mit integrierten Berechtigungen und Wiederholungen.",
+      "description": "Kuratierte Erweiterungen für Suche, Vision, Code-Ausführung oder eigene APIs hinzufügen. Ein Berechtigungsmanager prüft jeden Tool-Aufruf gegen die Fähigkeiten der Persona.",
       "pill": "Erweiterungs-Ökosystem",
       "bullet1": "Manifest-gesteuertes Tool-Registry",
-      "bullet2": "Leitplanken-Voreinstellungen + Compliance-Tags"
+      "bullet2": "Sechs optionale Guardrail-Pakete"
     },
     "language": {
       "title": "Sprache & Übersetzung",
@@ -148,66 +148,45 @@
     },
     "storage": {
       "title": "Speicherung & Bereitstellung",
-      "description": "7 Vector-Store-Backends mit 4-stufiger Auto-Skalierung (SQLite → HNSW → Postgres+pgvector → Qdrant). Ein-Befehl-Migration zwischen allen Backends. Docker-Auto-Setup für Qdrant und Postgres.",
+      "description": "7 Vektor-Store-Backends. Memory legt ab 1,000 Spuren einen HNSW-Index an, wenn Embeddings aktiv sind, MigrationEngine verschiebt Daten zwischen SQLite, Postgres, Qdrant und Pinecone, und ein Docker-Helfer startet ein lokales Qdrant.",
       "pill": "Überall Bereitstellen",
-      "bullet1": "Ein-Befehl-Migration zwischen Vector-Backends",
-      "bullet2": "Docker-Auto-Setup für Qdrant + Postgres"
+      "bullet1": "MigrationEngine für SQLite, Postgres, Qdrant und Pinecone",
+      "bullet2": "Docker-Helfer für ein lokales Qdrant"
     },
     "workbench": {
       "title": "Local-First Workbench",
-      "description": "Prototypen Sie ganze Agenturen im Browser mit persistiertem SQL, Timeline-Scrubbern und einem integrierten Marktplatz von Personas.",
-      "pill": "Offline-Fähig",
-      "bullet1": "Begründung + OpenTelemetry-Traces live inspizieren",
-      "bullet2": "Artefakte zurück in die Cloud synchronisieren",
+      "description": "AgentOS-Sitzungen in einem lokalen Browser-Dashboard untersuchen, mit Streaming-Zeitleiste, Request-Composer, Agency- und Planungsansichten und einem Evaluierungs-Runner.",
+      "pill": "Läuft lokal",
+      "bullet1": "Zeitleiste mit gestreamtem Text, Tool-Aufrufen und Fehlern",
+      "bullet2": "Evaluierungs-Runner und Planungs-Checkpoints",
       "bullet3": "Vollständige Agenturen als Markdown/JSON-Bundles exportieren"
     },
     "capabilityDiscovery": {
       "title": "Intelligente Capability-Erkennung",
-      "description": "Semantische, gestufte Discovery-Engine, die den Capability-Kontext um ~90% reduziert. Vektorsuche + Graph-Re-Ranking findet das richtige Tool, Skill oder Kanal zur richtigen Zeit.",
-      "pill": "~90% Token-Reduktion",
+      "description": "Eine semantische, gestufte Discovery-Engine bringt nur die relevanten Fähigkeiten in den Kontext, innerhalb von Token-Budgets pro Stufe (standardmäßig 200, 800 und 2,000). Vektorsuche plus Graph-Re-Ranking findet das passende Tool, den Skill oder den Kanal.",
+      "pill": "Gestufter Kontext",
       "bullet1": "Dreistufige token-budgetierte Kontextassemblierung",
       "bullet2": "Graph-basiertes Beziehungs-Re-Ranking"
     },
-    "memoryCompression": {
-      "title": "Beobachtungs-Gedächtniskomprimierung",
-      "description": "LLM-basierte 3-10x Gedächtniskomprimierung mit temporalem Reasoning. Selbstverbessernde Konsolidierung, die Erinnerungen zusammenführt, bereinigt und stärkt.",
-      "pill": "3-10x Komprimierung",
-      "bullet1": "Temporales Reasoning bewahrt kausale Ketten",
-      "bullet2": "Selbstverbessernder Konsolidierungszyklus"
-    },
-    "documentIngestion": {
-      "title": "Dokumenten-Ingestion-Pipeline",
-      "description": "10 Dokumenten-Loader mit multimodaler Extraktion. 3 PDF-Verarbeitungsstufen (Basis, OCR, Vision). 4 Chunking-Strategien (fest, semantisch, rekursiv, Sliding Window).",
-      "pill": "10 Loader",
-      "bullet1": "3 PDF-Stufen: Basis, OCR, Vision",
-      "bullet2": "4 Chunking-Strategien einschließlich semantisch"
-    },
-    "memoryPortability": {
-      "title": "Gedächtnis-Import / -Export",
-      "description": "Importieren und exportieren Sie Agentengedächtnis in 10 Formaten einschließlich Obsidian-Vault, ChatGPT-Exporte, Markdown, JSON und CSV. Ein-Befehl-Migration zwischen allen 7 Vector-Backends.",
-      "pill": "10 Formate",
-      "bullet1": "Obsidian-Vault + ChatGPT-Import",
-      "bullet2": "Ein-Befehl-Backend-Migration"
-    },
     "guardrails": {
       "title": "Guardrails & Sicherheit",
-      "description": "Eingebaute Inhaltsmoderation, PII-Erkennung und Compliance-Prüfungen. Schutzschalter, Kostenwächter und Blockade-Erkennung verhindern Endlosschleifen und überhöhte Ausgaben.",
+      "description": "Optionale Pakete für Inhaltsmoderation, PII-Schwärzung und Quellenprüfung. Ausgabenbudgets begrenzen, was ein Lauf kosten darf, und Circuit Breaker nehmen einen ausfallenden Anbieter aus der Rotation.",
       "pill": "Unternehmenssicherheit",
-      "bullet1": "Schutzschalter + Kostenwächter + Blockade-Erkennung",
+      "bullet1": "Circuit Breaker pro Anbieter + Ausgabenbudgets",
       "bullet2": "Inhaltsfilter und Genehmigungs-Workflows"
     },
     "streaming": {
       "title": "Streaming-Runtime",
-      "description": "Token-Streaming in Echtzeit. Konzipiert für latenzarme Interaktionen mit Unterstützung für SSE, WebSockets und benutzerdefinierte Transporte.",
+      "description": "Streaming auf Token-Ebene mit Echtzeitausgabe. streamText liefert Text-Deltas, sobald sie ankommen, und die volle Runtime streamt typisierte Chunks für Text, Tool-Aufrufe und Fortschritt.",
       "pill": "Echtzeit",
       "bullet1": "Token-für-Token-Zustellung",
       "bullet2": "Multi-Kanal-Unterstützung"
     },
     "workflow": {
       "title": "Workflow-Engine",
-      "description": "Definieren Sie komplexe mehrstufige Workflows mit bedingter Verzweigung, paralleler Ausführung und automatischer Wiederholungslogik.",
+      "description": "Mehrstufige Workflows als Graphen definieren. Die Graph-Strategie führt unabhängige Agenten parallel aus, AgentGraph routet nach Bedingungen, und Tool-Schritte wiederholen mit Backoff.",
       "pill": "Orchestrierung",
-      "bullet1": "Visueller Workflow-Builder",
+      "bullet1": "Retry-Richtlinien mit exponentiellem Backoff",
       "bullet2": "Parallele Aufgabenausführung"
     }
   },

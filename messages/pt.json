@@ -127,17 +127,17 @@
     "sectionSubtitle": "Infraestrutura de produção para criar, lançar e escalar agentes IA",
     "multiAgent": {
       "title": "Coordenação multiagente emergente",
-      "description": "Gere pesquisador, analista, crítico e executor a partir de um único objetivo. Contexto, orçamento e aprovações compartilhados mantêm cada ramo sincronizado.",
-      "pill": "🆕 v0.1.3",
+      "description": "Coloque agentes pesquisador, analista, crítico e executor no mesmo objetivo e deixe um gerente hierárquico criar especialistas quando a equipe não der conta. Limites de tokens e de tempo e portões de aprovação valem para a equipe toda.",
+      "pill": "6 estratégias",
       "bullet1": "Roteamento determinístico ou fan-out adaptativo",
-      "bullet2": "Citações + memória costuradas automaticamente"
+      "bullet2": "Provedores e modelos por agente"
     },
     "toolPacks": {
       "title": "Packs de ferramentas e guardrails",
-      "description": "Extensões opinativas para busca, visão, execução de código ou APIs customizadas, com permissões e retries embutidos.",
+      "description": "Adicione extensões curadas para busca, visão, execução de código ou suas próprias APIs. Um gerenciador de permissões verifica cada chamada de ferramenta contra as capacidades da persona.",
       "pill": "Ecossistema de extensões",
       "bullet1": "Registro de ferramentas baseado em manifesto",
-      "bullet2": "Presets de guardrails + etiquetas de conformidade"
+      "bullet2": "Seis pacotes de guardrails opcionais"
     },
     "language": {
       "title": "Idioma e tradução",
@@ -148,66 +148,45 @@
     },
     "storage": {
       "title": "Armazenamento e implantação",
-      "description": "7 backends de armazenamento vetorial com auto-scaling de 4 níveis (SQLite → HNSW → Postgres+pgvector → Qdrant). Migração entre todos os backends com um comando. Docker auto-setup para Qdrant e Postgres.",
+      "description": "7 backends de armazenamento vetorial. A Memory adiciona um índice HNSW acima de 1,000 traços quando há embeddings, o MigrationEngine move dados entre SQLite, Postgres, Qdrant e Pinecone, e um helper de Docker inicia um Qdrant local.",
       "pill": "Implante em qualquer lugar",
-      "bullet1": "Migração de backend vetorial com um comando",
-      "bullet2": "Docker auto-setup para Qdrant + Postgres"
+      "bullet1": "MigrationEngine para SQLite, Postgres, Qdrant e Pinecone",
+      "bullet2": "Helper de Docker para um Qdrant local"
     },
     "workbench": {
       "title": "Workbench local-first",
-      "description": "Prototipe agências completas no navegador com SQL persistente, scrubber de timeline e marketplace embutido.",
-      "pill": "Offline-ready",
-      "bullet1": "Inspecione raciocínio e traces OpenTelemetry ao vivo",
-      "bullet2": "Sincronize artefatos de volta para a nuvem",
+      "description": "Inspecione sessões do AgentOS num painel local no navegador, com linha do tempo em streaming, compositor de requisições, visões de agências e de planejamento e um executor de avaliações.",
+      "pill": "Roda localmente",
+      "bullet1": "Linha do tempo de texto em streaming, chamadas de ferramentas e erros",
+      "bullet2": "Executor de avaliações e checkpoints de planejamento",
       "bullet3": "Exporte agências em bundles Markdown/JSON"
     },
     "capabilityDiscovery": {
       "title": "Descoberta Inteligente de Capacidades",
-      "description": "Motor de descoberta semântico e em camadas que reduz o contexto de capacidades em ~90%. Busca vetorial + re-ranking por grafo encontra a ferramenta, habilidade ou canal certo na hora certa.",
-      "pill": "~90% Redução de Tokens",
+      "description": "Um mecanismo de descoberta semântico e em camadas coloca no contexto só as capacidades relevantes, dentro de orçamentos de tokens por camada (200, 800 e 2,000 por padrão). Busca vetorial com reordenação por grafo encontra a ferramenta, skill ou canal certo.",
+      "pill": "Contexto em camadas",
       "bullet1": "Montagem de contexto em três camadas com orçamento de tokens",
       "bullet2": "Re-ranking baseado em relações de grafo"
     },
-    "memoryCompression": {
-      "title": "Compressão de Memória Observacional",
-      "description": "Compressão de memória 3-10x baseada em LLM com raciocínio temporal. Consolidação auto-aperfeiçoante que mescla, poda e fortalece memórias ao longo do tempo.",
-      "pill": "Compressão 3-10x",
-      "bullet1": "Raciocínio temporal preserva cadeias causais",
-      "bullet2": "Ciclo de consolidação auto-aperfeiçoante"
-    },
-    "documentIngestion": {
-      "title": "Pipeline de Ingestão de Documentos",
-      "description": "10 carregadores de documentos com extração multimodal. 3 níveis de processamento PDF (básico, OCR, visão). 4 estratégias de chunking (fixo, semântico, recursivo, janela deslizante).",
-      "pill": "10 Carregadores",
-      "bullet1": "3 níveis PDF: básico, OCR, visão",
-      "bullet2": "4 estratégias de chunking incluindo semântico"
-    },
-    "memoryPortability": {
-      "title": "Importação / Exportação de Memória",
-      "description": "Importe e exporte memória de agente em 10 formatos incluindo cofre Obsidian, exportações ChatGPT, Markdown, JSON e CSV. Migração com um comando entre os 7 backends vetoriais.",
-      "pill": "10 Formatos",
-      "bullet1": "Importação de cofre Obsidian + ChatGPT",
-      "bullet2": "Migração de backend com um comando"
-    },
     "guardrails": {
       "title": "Guardrails e Segurança",
-      "description": "Moderação de conteúdo, detecção de PII e verificações de conformidade integradas. Disjuntores, controles de custo e detecção de travamento previnem loops descontrolados e gastos excessivos.",
+      "description": "Pacotes opcionais para moderação de conteúdo, ocultação de PII e verificação de fundamentação. Orçamentos de gasto limitam o custo de uma execução, e circuit breakers tiram de rotação um provedor que está falhando.",
       "pill": "Segurança Empresarial",
-      "bullet1": "Disjuntor + controle de custo + detecção de travamento",
+      "bullet1": "Circuit breakers por provedor + orçamentos de gasto",
       "bullet2": "Filtragem de conteúdo e fluxos de aprovação"
     },
     "streaming": {
       "title": "Runtime de Streaming",
-      "description": "Streaming de tokens em tempo real. Construído para interações de baixa latência com suporte a SSE, WebSockets e transportes personalizados.",
+      "description": "Streaming em nível de token com saída em tempo real. streamText entrega os trechos de texto conforme chegam, e o runtime completo transmite chunks tipados para texto, chamadas de ferramentas e progresso.",
       "pill": "Tempo Real",
       "bullet1": "Entrega token a token",
       "bullet2": "Suporte multi-canal"
     },
     "workflow": {
       "title": "Mecanismo de Workflow",
-      "description": "Defina workflows complexos de múltiplas etapas com ramificação condicional, execução paralela e lógica de retry automática.",
+      "description": "Defina workflows de várias etapas como grafos. A estratégia graph roda agentes independentes em paralelo, o AgentGraph roteia por condições e as etapas de ferramenta repetem com backoff.",
       "pill": "Orquestração",
-      "bullet1": "Construtor visual de workflow",
+      "bullet1": "Políticas de retry com backoff exponencial",
       "bullet2": "Execução paralela de tarefas"
     }
   },
