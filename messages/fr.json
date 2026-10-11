@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — Construire des Agents IA Autonomes avec Intelligence Adaptative",
-    "description": "Construisez des agents IA autonomes avec intelligence adaptative et comportements émergents. RAG multimodal, mémoire cognitive, garde-fous en streaming, pipeline vocal et 11 fournisseurs LLM. Runtime TypeScript open source.",
+    "description": "Construisez des agents IA autonomes avec intelligence adaptative et comportements émergents. RAG multimodal, mémoire cognitive, garde-fous en streaming, pipeline vocal et 13 fournisseurs LLM. Runtime TypeScript open source.",
     "ogTitle": "AgentOS — Construire des Agents IA Autonomes avec Intelligence Adaptative",
-    "ogDescription": "Construisez des agents IA autonomes avec intelligence adaptative et comportements émergents. RAG multimodal, mémoire cognitive, garde-fous en streaming, pipeline vocal et 11 fournisseurs LLM. Runtime TypeScript open source.",
+    "ogDescription": "Construisez des agents IA autonomes avec intelligence adaptative et comportements émergents. RAG multimodal, mémoire cognitive, garde-fous en streaming, pipeline vocal et 13 fournisseurs LLM. Runtime TypeScript open source.",
     "twitterTitle": "AgentOS — Construire des Agents IA Autonomes avec Intelligence Adaptative",
-    "twitterDescription": "Construisez des agents IA autonomes avec intelligence adaptative et comportements émergents. Mémoire cognitive, RAG multimodal, garde-fous en streaming et 11 fournisseurs LLM. Runtime TypeScript open source."
+    "twitterDescription": "Construisez des agents IA autonomes avec intelligence adaptative et comportements émergents. Mémoire cognitive, RAG multimodal, garde-fous en streaming et 13 fournisseurs LLM. Runtime TypeScript open source."
   },
   "nav": {
     "features": "Fonctionnalités",
@@ -212,7 +212,7 @@
     "legal": "Légal",
     "terms": "Conditions",
     "privacy": "Confidentialité",
-    "license": "Apache 2.0 (core) + MIT (agents, extensions, garde-fous)",
+    "license": "Apache 2.0 (core, extensions, garde-fous)",
     "copyright": "© {year} Frame.dev. Tous droits réservés."
   },
   "cta": {

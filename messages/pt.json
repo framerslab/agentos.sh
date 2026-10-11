@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — Construa Agentes de IA Autônomos com Inteligência Adaptativa",
-    "description": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. RAG multimodal, memória cognitiva, guardrails em streaming, pipeline de voz e 11 provedores LLM. Runtime TypeScript open source.",
+    "description": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. RAG multimodal, memória cognitiva, guardrails em streaming, pipeline de voz e 13 provedores LLM. Runtime TypeScript open source.",
     "ogTitle": "AgentOS — Construa Agentes de IA Autônomos com Inteligência Adaptativa",
-    "ogDescription": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. RAG multimodal, memória cognitiva, guardrails em streaming, pipeline de voz e 11 provedores LLM. Runtime TypeScript open source.",
+    "ogDescription": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. RAG multimodal, memória cognitiva, guardrails em streaming, pipeline de voz e 13 provedores LLM. Runtime TypeScript open source.",
     "twitterTitle": "AgentOS — Construa Agentes de IA Autônomos com Inteligência Adaptativa",
-    "twitterDescription": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. Memória cognitiva, RAG multimodal, guardrails em streaming e 11 provedores LLM. Runtime TypeScript open source."
+    "twitterDescription": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. Memória cognitiva, RAG multimodal, guardrails em streaming e 13 provedores LLM. Runtime TypeScript open source."
   },
   "nav": {
     "features": "Recursos",
@@ -212,7 +212,7 @@
     "legal": "Jurídico",
     "terms": "Termos",
     "privacy": "Privacidade",
-    "license": "Apache 2.0 (core) + MIT (agentes, extensões, guardrails)",
+    "license": "Apache 2.0 (core, extensões, guardrails)",
     "copyright": "© {year} Frame.dev. Todos os direitos reservados."
   },
   "cta": {

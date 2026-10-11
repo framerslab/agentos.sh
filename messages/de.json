@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — Autonome KI-Agenten mit Adaptiver Intelligenz bauen",
-    "description": "Autonome KI-Agenten mit adaptiver Intelligenz und emergenten Verhaltensweisen bauen. Multimodaler RAG, kognitives Gedächtnis, Streaming-Leitplanken, Sprach-Pipeline und 11 LLM-Anbieter. Open-Source TypeScript-Laufzeit.",
+    "description": "Autonome KI-Agenten mit adaptiver Intelligenz und emergenten Verhaltensweisen bauen. Multimodaler RAG, kognitives Gedächtnis, Streaming-Leitplanken, Sprach-Pipeline und 13 LLM-Anbieter. Open-Source TypeScript-Laufzeit.",
     "ogTitle": "AgentOS — Autonome KI-Agenten mit Adaptiver Intelligenz bauen",
-    "ogDescription": "Autonome KI-Agenten mit adaptiver Intelligenz und emergenten Verhaltensweisen bauen. Multimodaler RAG, kognitives Gedächtnis, Streaming-Leitplanken, Sprach-Pipeline und 11 LLM-Anbieter. Open-Source TypeScript-Laufzeit.",
+    "ogDescription": "Autonome KI-Agenten mit adaptiver Intelligenz und emergenten Verhaltensweisen bauen. Multimodaler RAG, kognitives Gedächtnis, Streaming-Leitplanken, Sprach-Pipeline und 13 LLM-Anbieter. Open-Source TypeScript-Laufzeit.",
     "twitterTitle": "AgentOS — Autonome KI-Agenten mit Adaptiver Intelligenz bauen",
-    "twitterDescription": "Autonome KI-Agenten mit adaptiver Intelligenz und emergenten Verhaltensweisen bauen. Kognitives Gedächtnis, multimodaler RAG, Streaming-Leitplanken und 11 LLM-Anbieter. Open-Source TypeScript-Laufzeit."
+    "twitterDescription": "Autonome KI-Agenten mit adaptiver Intelligenz und emergenten Verhaltensweisen bauen. Kognitives Gedächtnis, multimodaler RAG, Streaming-Leitplanken und 13 LLM-Anbieter. Open-Source TypeScript-Laufzeit."
   },
   "nav": {
     "features": "Funktionen",
@@ -212,7 +212,7 @@
     "legal": "Rechtliches",
     "terms": "Bedingungen",
     "privacy": "Datenschutz",
-    "license": "Apache 2.0 (Kern) + MIT (Agenten, Erweiterungen, Leitplanken)",
+    "license": "Apache 2.0 (Kern, Erweiterungen, Leitplanken)",
     "copyright": "© {year} Frame.dev. Alle Rechte vorbehalten."
   },
   "cta": {

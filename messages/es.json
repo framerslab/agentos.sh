@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — Construye Agentes de IA Autónomos con Inteligencia Adaptativa",
-    "description": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. RAG multimodal, memoria cognitiva, guardrails en streaming, pipeline de voz y 11 proveedores LLM. Runtime TypeScript de código abierto.",
+    "description": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. RAG multimodal, memoria cognitiva, guardrails en streaming, pipeline de voz y 13 proveedores LLM. Runtime TypeScript de código abierto.",
     "ogTitle": "AgentOS — Construye Agentes de IA Autónomos con Inteligencia Adaptativa",
-    "ogDescription": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. RAG multimodal, memoria cognitiva, guardrails en streaming, pipeline de voz y 11 proveedores LLM. Runtime TypeScript de código abierto.",
+    "ogDescription": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. RAG multimodal, memoria cognitiva, guardrails en streaming, pipeline de voz y 13 proveedores LLM. Runtime TypeScript de código abierto.",
     "twitterTitle": "AgentOS — Construye Agentes de IA Autónomos con Inteligencia Adaptativa",
-    "twitterDescription": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. Memoria cognitiva, RAG multimodal, guardrails en streaming y 11 proveedores LLM. Runtime TypeScript de código abierto."
+    "twitterDescription": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. Memoria cognitiva, RAG multimodal, guardrails en streaming y 13 proveedores LLM. Runtime TypeScript de código abierto."
   },
   "nav": {
     "features": "Características",
@@ -212,7 +212,7 @@
     "legal": "Legal",
     "terms": "Términos",
     "privacy": "Privacidad",
-    "license": "Apache 2.0 (núcleo) + MIT (agentes, extensiones, barreras)",
+    "license": "Apache 2.0 (núcleo, extensiones, barreras)",
     "copyright": "© {year} Frame.dev. Todos los derechos reservados."
   },
   "cta": {

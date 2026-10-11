@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — 构建具有自适应智能的自主AI代理",
-    "description": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和11个LLM提供商。开源TypeScript运行时。",
+    "description": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和13个LLM提供商。开源TypeScript运行时。",
     "ogTitle": "AgentOS — 构建具有自适应智能的自主AI代理",
-    "ogDescription": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和11个LLM提供商。开源TypeScript运行时。",
+    "ogDescription": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和13个LLM提供商。开源TypeScript运行时。",
     "twitterTitle": "AgentOS — 构建具有自适应智能的自主AI代理",
-    "twitterDescription": "构建具有自适应智能和涌现行为的自主AI代理。认知记忆、多模态RAG、流式护栏和11个LLM提供商。开源TypeScript运行时。"
+    "twitterDescription": "构建具有自适应智能和涌现行为的自主AI代理。认知记忆、多模态RAG、流式护栏和13个LLM提供商。开源TypeScript运行时。"
   },
   "nav": {
     "features": "功能",
@@ -293,7 +293,7 @@
     "legal": "法律",
     "terms": "条款",
     "privacy": "隐私",
-    "license": "Apache 2.0（核心）+ MIT（代理、扩展、护栏）",
+    "license": "Apache 2.0（核心、扩展、护栏）",
     "copyright": "© {year} Frame.dev. 保留所有权利。"
   },
   "cta": {
