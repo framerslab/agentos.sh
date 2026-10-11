@@ -27,28 +27,28 @@ Adaptive intelligence is behavioral modification driven by explicit signals: fee
 
 ### How It Works in AgentOS
 
-**Personality-driven adaptation.** AgentOS models agent personality using the [HEXACO six-factor model](https://hexaco.org/hexaco-inventory), a psychometric framework validated across [multiple cross-cultural studies](https://doi.org/10.1016/j.jrp.2004.09.010) ([Ashton & Lee, 2004](https://doi.org/10.1207/s15327957pspr0802_1)). Recent research demonstrates that [LLMs can reliably reproduce HEXACO personality structures](https://arxiv.org/abs/2508.00742), with GPT-4 powered agents showing partial alignment to the framework across [310 surveyed agents](https://arxiv.org/html/2508.00742). Each AgentOS agent has [6 trait dimensions](https://docs.agentos.sh/features/cognitive-memory-guide) (Honesty-Humility, Emotionality, eXtraversion, Agreeableness, Conscientiousness, Openness) that modulate communication style, decision-making, and memory behavior. Trait values decay back toward baseline over time using an [Ebbinghaus forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve), preventing permanent personality drift.
+**Personality-driven adaptation.** AgentOS models agent personality using the [HEXACO six-factor model](https://hexaco.org/hexaco-inventory), a psychometric framework validated across [multiple cross-cultural studies](https://doi.org/10.1016/j.jrp.2004.09.010) ([Ashton & Lee, 2004](https://doi.org/10.1207/s15327957pspr0802_1)). Recent research demonstrates that [LLMs can reliably reproduce HEXACO personality structures](https://arxiv.org/abs/2508.00742), with GPT-4 powered agents showing partial alignment to the framework across [310 surveyed agents](https://arxiv.org/html/2508.00742). Each AgentOS agent has [6 trait dimensions](https://docs.agentos.sh/features/cognitive-memory-guide) (Honesty-Humility, Emotionality, eXtraversion, Agreeableness, Conscientiousness, Openness) that modulate communication style, decision-making, and memory behavior. With self-improvement on, an agent can shift its own traits through the `adapt_personality` tool, within a per-session budget for each trait, and every change is recorded with its reasoning. With `persistWithDecay`, the stored records lose strength each time the agent adapts again; the live trait keeps its adjusted value for as long as that agent runs.
 
 **Cognitive memory with neuroscience grounding.** AgentOS implements [8 cognitive mechanisms](https://docs.agentos.sh/features/cognitive-memory) in the [`CognitiveMechanismsEngine`](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine):
 
 | Mechanism | Neuroscience Basis | Effect |
 |-----------|-------------------|--------|
 | Reconsolidation | [Nader et al. (2000)](https://doi.org/10.1038/35021052) | Memories rewrite when recalled, incorporating new context |
-| Retrieval-induced forgetting | [Anderson et al. (1994)](https://doi.org/10.1037/0096-3445.123.2.178) | Retrieving one memory suppresses competing memories |
-| Involuntary recall | [Berntsen (2010)](https://doi.org/10.1177/1745691610370007) | Contextual cues trigger unexpected memory retrieval |
-| Ebbinghaus decay | [Ebbinghaus (1885)](https://psychclassics.yorku.ca/Ebbinghaus/index.htm), [replicated by Murre & Dros (2015)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4492928/) | Exponential memory decay: R = e^(-t/S) where S is memory strength |
+| Retrieval-induced forgetting | [Anderson, Bjork & Bjork (1994)](https://doi.org/10.1037/0278-7393.20.5.1063) | Retrieving one memory suppresses competing memories |
+| Involuntary recall | [Berntsen (2010)](https://doi.org/10.1177/0963721410370301) | Contextual cues trigger unexpected memory retrieval |
 | Feeling-of-knowing | Metacognitive monitoring | Agent estimates retrieval likelihood before search |
-| Temporal gist extraction | Schema theory | Temporal patterns consolidated into abstract schemas |
+| Temporal gist extraction | Fuzzy-trace theory (Reyna & Brainerd, 1995) | Old verbatim traces are compressed to their gist |
 | Schema encoding | Constructive memory | New information assimilated to existing knowledge structures |
 | Source confidence decay | Source monitoring framework | Confidence in memory source degrades faster than content |
+| Emotion regulation | Process model of emotion regulation (Gross, 1998) | High-arousal memories are reappraised to a lower intensity during consolidation, and the ones still over the threshold are suppressed |
 
-Memory follows a [4-tier hierarchy](https://docs.agentos.sh/features/memory-system-overview) (working memory, episodic, semantic, observational) that consolidates upward automatically. This mirrors the [ACT-R cognitive architecture](https://arxiv.org/html/2512.20651) approach used by systems like [Memory Bear](https://arxiv.org/html/2512.20651) and [SuperLocalMemory](https://arxiv.org/html/2604.04514), which also integrate Ebbinghaus decay with activation scheduling.
+Under the mechanisms, every trace decays on an [Ebbinghaus forgetting curve](https://pmc.ncbi.nlm.nih.gov/articles/PMC4492928/), S(t) = S₀ · e^(-Δt / stability), and each successful retrieval raises its stability. Traces are typed episodic, semantic, procedural, prospective or relational, and a slot-based [working memory](https://docs.agentos.sh/features/memory-system-overview) (7 slots, 7±2 with personality) holds the ones in focus. Two optional passes move material between levels: with an LLM configured for them, an observer extracts notes from the conversation and a reflector turns them into long-term traces, and with consolidation, a memory graph and an LLM configured, a background pass clusters related episodic traces and summarizes each cluster into a semantic one. This mirrors the [ACT-R cognitive architecture](https://arxiv.org/html/2512.20651) approach used by systems like [Memory Bear](https://arxiv.org/html/2512.20651) and [SuperLocalMemory](https://arxiv.org/html/2604.04514), which also integrate Ebbinghaus decay with activation scheduling.
 
 **System prompt rewriting.** The `MetapromptExecutor` detects conversational patterns (user frustration, confusion, disengagement) and rewrites the agent's system prompt mid-session. This is bounded adaptation: the rewrite targets specific failure modes, not open-ended self-modification. Architecture details are in the [system architecture docs](https://docs.agentos.sh/architecture/system-architecture).
 
 **Runtime safety constraints.** [Cost guards](https://docs.agentos.sh/features/cost-optimization) cap token spending per session or per turn. [Circuit breakers](https://docs.agentos.sh/features/cost-optimization) halt execution when error rates exceed thresholds. The [adaptive execution runtime](https://docs.agentos.sh/features/capability-discovery) tracks rolling task-outcome KPIs and automatically switches tool selection mode when success rates drop below a configurable threshold.
 
-**Practical example:** An agent approaches a rate limit. The cost guard reduces `maxSteps` from 10 to 3, the personality system's high Conscientiousness score triggers more concise responses, and the MetapromptExecutor adds a "be efficient" directive to the system prompt.
+**Practical example:** An agent runs with `budget: { maxCostUSD: 0.5 }`. Before each provider call the budget checks the call's largest possible cost against what is left, and a call that would pass the cap is refused with a `CostCapExceededError` (with `onLimitReached: 'warn'`, it is logged and let through). The same agent with a Conscientiousness of 0.8 carries "Be thorough and systematic. Structure responses clearly." in its system prompt from the first turn.
 
 ## Emergent Intelligence
 
@@ -65,20 +65,20 @@ Emergent intelligence is complex behavior that arises from the interaction of mu
 | Debate | Agents argue positions, synthesize consensus | Controversial topics, decision-making |
 | Review loop | Author and reviewer iterate until quality threshold | Content creation, code review |
 | Hierarchical | Manager delegates to specialized workers | Complex decomposed tasks |
-| Graph (DAG) | Dependency-based execution with conditional branching | Multi-step workflows with prerequisites |
+| Graph (DAG) | Each agent starts once the agents it `dependsOn` have finished, with their outputs as context | Multi-step workflows with prerequisites |
 
-Agents share memory through the [`AgentCommunicationBus`](https://docs.agentos.sh/api/classes/AgentCommunicationBus) and coordinate via the [`AgencyRegistry`](https://docs.agentos.sh/api/classes/AgencyRegistry). When a Researcher and a Critic operate in a review loop, neither is programmed with a verification protocol. The protocol emerges from their interaction.
+Agents in an agency coordinate through each other's outputs: a sequential chain hands each agent the previous one's answer, a graph hands each agent its predecessors' answers, and a review loop hands the reviewer's feedback back to the producer until the reviewer approves. When a Researcher and a Critic operate in a review loop, neither is programmed with a verification protocol. The protocol emerges from their interaction.
 
 **Runtime tool forging.** When an agent encounters a task that no existing tool handles, it calls `forge_tool` to create one at runtime. [Two creation modes](https://docs.agentos.sh/features/emergent-capabilities) exist:
 
 - **Compose mode**: chains existing tools into a pipeline (safe by construction)
-- **Sandbox mode**: generates and executes new code in a memory-bounded, time-limited isolation environment
+- **Sandbox mode**: generates new JavaScript and runs it under a wall-clock timeout, by default in a `node:vm` context that measures memory without capping it (the optional QuickJS executor isolates the code and caps its memory)
 
 An [`EmergentJudge`](https://docs.agentos.sh/api/classes/EmergentJudge) (LLM-as-judge) reviews safety and correctness before activation. This addresses [runtime security concerns](https://www.ibm.com/think/insights/agentic-ai-runtime-security) that IBM identifies as a distinct risk profile for agentic AI systems.
 
-**Tiered trust promotion.** Forged tools start at `session` scope, promote to `agent` scope after consistent usage, then to `shared` scope for cross-agent reuse. The [`EmergentToolRegistry`](https://docs.agentos.sh/api/classes/EmergentToolRegistry) tracks usage counts, confidence scores, and judge verdicts. Promotion requires dual-judge approval.
+**Tiered trust promotion.** Forged tools start at `session` scope and promote to `agent` scope after consistent usage. Automatic promotion stops there; a host that wants a tool in the `shared` tier promotes it through the registry itself. The [`EmergentToolRegistry`](https://docs.agentos.sh/api/classes/EmergentToolRegistry) tracks usage counts, confidence scores, and judge verdicts. Promotion requires dual-judge approval.
 
-**Practical example:** A research team of [3 agents](https://docs.agentos.sh/features/agency-api) receives the goal "analyze quantum error correction progress." The planner decomposes it into subtasks. The researcher discovers it needs to parse arXiv abstracts but has no tool for it. It forges `parse_arxiv_abstract` in compose mode (chaining `web_search` and `generate_text`). The judge approves it. The critic uses the same tool in a later turn. After 12 successful uses with a 0.87 confidence score, the tool promotes to agent tier.
+**Practical example:** A research team of [3 agents](https://docs.agentos.sh/features/agency-api) receives the goal "analyze quantum error correction progress." The planner decomposes it into subtasks. The researcher discovers it needs to parse arXiv abstracts but has no tool for it. It forges `parse_arxiv_abstract` in compose mode (chaining `web_search` and `generate_text`). The judge approves it. The critic uses the same tool in a later turn. Once the tool has five uses with a success rate of at least 0.8, a two-judge panel reviews it, and on approval it promotes to agent tier.
 
 ## The Design Tradeoff
 
@@ -86,10 +86,10 @@ Most agent frameworks pick one side. Stateless prompt chains give predictability
 
 AgentOS layers both:
 
-- **Adaptive mechanisms constrain individual agents.** [HEXACO personality](https://docs.agentos.sh/features/cognitive-memory-guide) with decay, cost guards, circuit breakers, and [5 security tiers](https://docs.agentos.sh/features/guardrails) from `permissive` to `paranoid` keep each agent operating within defined boundaries.
-- **Emergent mechanisms enable collective capability.** Shared memory, inter-agent messaging, and runtime tool forging let groups of agents produce behaviors that no single agent was programmed to exhibit.
+- **Adaptive mechanisms constrain individual agents.** [HEXACO personality](https://docs.agentos.sh/features/cognitive-memory-guide) with a per-session budget on trait changes, cost guards, and circuit breakers keep each agent operating within defined boundaries.
+- **Emergent mechanisms enable collective capability.** Outputs handed between the agents of an agency, inter-agent messaging, and runtime tool forging let groups of agents produce behaviors that no single agent was programmed to exhibit.
 
-The constraint is the enabler. Agents can forge tools freely because the judge gate, sandbox isolation, and tiered promotion ensure that only safe, correct tools persist. Agents can adapt their personality because Ebbinghaus decay prevents permanent drift from baseline.
+The constraint is the enabler. Agents can forge tools freely because the judge gate, the sandbox's static checks and timeout, and tiered promotion decide which tools persist. Agents can adapt their personality because each trait change is capped per session and recorded with its reasoning.
 
 ## FAQ
 
@@ -99,7 +99,7 @@ No. Fine-tuning rewrites model weights. Adaptive AgentOS behavior runs entirely 
 
 ### How do I know whether a tool was forged or hand-authored?
 
-The `EmergentToolRegistry` tags every tool with `origin: 'forged' | 'authored'` and tracks creation mode (`compose` vs `sandbox`), the judge verdict, and a confidence score. The agent dashboard surfaces the same metadata so you can audit which capabilities the runtime invented.
+Forged tools live in the `EmergentToolRegistry`, apart from the tools you register by hand. Each record carries `createdBy`, `createdAt`, a free-text `source` label (for example "forged by agent gmi-42 during session sess-99"), the implementation mode (`compose` or `sandbox`), every judge verdict, and usage stats with a confidence score, so you can audit which capabilities the runtime invented.
 
 ### Can emergent behavior happen without multiple agents?
 
@@ -107,7 +107,7 @@ Some forms can. Runtime tool forging fires inside a single agent when no existin
 
 ### How do you keep emergent tools from doing something unsafe?
 
-Three layers. Compose-mode forging restricts new tools to chains over already-vetted tools (safe by construction). Sandbox-mode forging runs generated code under memory and time limits with no network or filesystem access by default. An LLM judge reviews every forged tool before it's added to the registry, and promotion to broader scope requires dual-judge approval.
+Three layers. Compose-mode forging restricts new tools to chains over already-vetted tools (safe by construction). Sandbox-mode forging checks the code statically, then runs it under a wall-clock timeout with no network, filesystem, or crypto functions unless the host grants them. The default executor is a `node:vm` context, which Node's documentation says is not a security mechanism, and it measures memory without capping it; the QuickJS executor isolates the code and caps its memory. An LLM judge reviews every forged tool before it's added to the registry, and promotion to broader scope requires dual-judge approval.
 
 ### Is HEXACO required, or can I disable personality entirely?
 
