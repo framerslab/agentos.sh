@@ -269,11 +269,11 @@
       "workflowDsl": "DSL de Workflow",
       "protocols": "Protocolos",
       "guardrailMode": "Modo Guardrail",
-      "connectionStability": "Estabilidad de Conexion",
+      "chunkTypes": "Tipos de chunk",
       "dimensions": "Dimensiones",
-      "presets": "Presets de Agente",
-      "styleAdaptation": "Adaptacion de Estilo",
-      "securityTiers": "Niveles de Seguridad",
+      "tunedMechanisms": "Mecanismos ajustados",
+      "workingMemory": "Memoria de trabajo",
+      "guardrailPacks": "Paquetes de guardrails",
       "piiLayers": "Capas PII",
       "mlClassifiers": "Clasificadores ML",
       "sttProviders": "Proveedores STT",
@@ -301,7 +301,7 @@
       },
       "graphRag": {
         "title": "RAG basado en grafo",
-        "description": "7 backends de almacenamiento vectorial con recuperacion HyDE, deteccion de comunidades GraphRAG y 10 cargadores de documentos",
+        "description": "7 backends de almacenamiento vectorial con recuperación HyDE, detección de comunidades GraphRAG y 8 cargadores de documentos",
         "features": [
           "Embeddings hipoteticos HyDE",
           "Deteccion de comunidades Louvain",
@@ -316,7 +316,7 @@
       },
       "orchestration": {
         "title": "Orquestación Multi-Agente",
-        "description": "6 estrategias desde secuencial hasta basada en grafos con Mission API, planificacion Tree-of-Thought y workflow DSL",
+        "description": "6 estrategias, de secuencial a basada en grafos, con Mission API, planificación ReAct y workflow DSL",
         "features": [
           "Secuencial y paralelo",
           "Debate y review-loop",
@@ -346,22 +346,22 @@
       },
       "hexaco": {
         "title": "Personalidad HEXACO (Opcional)",
-        "description": "Vector de personalidad de 6 dimensiones con opción de inclusión. Cuando está habilitado, sesga la recuperación de la memoria, el estilo de comunicación y la toma de decisiones a nivel del núcleo (no en el prompt). Si se omite, el tiempo de ejecución permanece neutral en cuanto a la personalidad.",
+        "description": "Vector de personalidad opcional de 6 dimensiones. agent() escribe los rasgos por encima de 0.65 o por debajo de 0.35 en el prompt de sistema como directivas de comportamiento, y en la memoria cognitiva los rasgos ajustan siete de los ocho mecanismos. Si se omite, el runtime sigue siendo neutral en personalidad.",
         "features": [
           "Modelado de 6 ejes de rasgos",
           "Modulacion de memoria",
-          "Adaptacion de estilo",
-          "9 presets de agente"
+          "Directivas en el prompt",
+          "Capacidad de la memoria de trabajo"
         ],
         "capabilities": [
           "Trait Engine",
           "Modulacion Cognitiva",
-          "Estilo Adaptativo"
+          "Herramienta adapt_personality"
         ]
       },
       "guardrails": {
         "title": "Seguridad Integrada",
-        "description": "Niveles de seguridad de peligroso a paranoico con redaccion PII, clasificadores ML y deteccion de alucinaciones",
+        "description": "Cinco paquetes de guardrails opcionales detectan inyección de prompts, ocultan datos personales, contrastan las respuestas con sus fuentes, mantienen las conversaciones en el tema y analizan el código generado",
         "features": [
           "Redaccion PII de 4 niveles",
           "Clasificadores ONNX BERT",
@@ -369,16 +369,16 @@
           "Escaneo OWASP Top 10"
         ],
         "capabilities": [
-          "Niveles de Seguridad",
+          "Enmascaramiento de PII",
           "Clasificadores de Contenido",
           "Seguridad de Codigo"
         ]
       },
       "voice": {
         "title": "Pipeline de Voz",
-        "description": "12 proveedores STT y 12 TTS con streaming en tiempo real, VAD, diarizacion de hablantes y soporte de telefonia",
+        "description": "12 proveedores STT y 13 TTS con streaming en tiempo real, VAD, diarización de hablantes y soporte de telefonía",
         "features": [
-          "12 STT + 12 TTS",
+          "12 STT + 13 TTS",
           "VAD + diarizacion",
           "Streaming en tiempo real",
           "Twilio/Telnyx/Plivo"
@@ -390,8 +390,8 @@
         ]
       },
       "providers": {
-        "title": "11 Proveedores de LLM",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq y 6 mas con cadenas de respaldo automaticas y API provider-first",
+        "title": "13 Proveedores de LLM",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq y 8 más con cadenas de respaldo automáticas y API provider-first",
         "features": [
           "Auto fallback (402/429/5xx)",
           "Provider-first API",

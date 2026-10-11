@@ -973,11 +973,11 @@
       "workflowDsl": "工作流 DSL",
       "protocols": "协议",
       "guardrailMode": "护栏模式",
-      "connectionStability": "连接稳定性",
+      "chunkTypes": "数据块类型",
       "dimensions": "维度",
-      "presets": "代理预设",
-      "styleAdaptation": "风格适应",
-      "securityTiers": "安全等级",
+      "tunedMechanisms": "受调节的机制",
+      "workingMemory": "工作记忆",
+      "guardrailPacks": "护栏包",
       "piiLayers": "PII层",
       "mlClassifiers": "ML分类器",
       "sttProviders": "STT提供商",
@@ -1005,7 +1005,7 @@
       },
       "graphRag": {
         "title": "基于图的 RAG",
-        "description": "7个向量存储后端，具有HyDE检索、GraphRAG社区检测和10个文档加载器",
+        "description": "7个向量存储后端，具有HyDE检索、GraphRAG社区检测和8个文档加载器",
         "features": [
           "HyDE假设嵌入",
           "Louvain社区检测",
@@ -1020,7 +1020,7 @@
       },
       "orchestration": {
         "title": "多智能体编排",
-        "description": "从顺序到基于图的6种策略，配合Mission API、思维树规划和工作流DSL",
+        "description": "从顺序到基于图的6种策略，配合Mission API、ReAct规划和工作流DSL",
         "features": [
           "顺序与并行",
           "辩论与审查循环",
@@ -1050,22 +1050,22 @@
       },
       "hexaco": {
         "title": "HEXACO人格（可选）",
-        "description": "选择加入的6维人格向量。启用时，在内核级别（而不是在提示中）偏向记忆检索、沟通风格和决策。省略它，运行时保持人格中立。",
+        "description": "选择加入的6维人格向量。agent() 会把高于 0.65 或低于 0.35 的特质作为行为指令写入系统提示；在认知记忆中，特质还会调节八种机制中的七种。省略它，运行时保持人格中立。",
         "features": [
           "6轴特质建模",
           "记忆调节",
-          "风格适应",
-          "9个代理预设"
+          "提示指令",
+          "工作记忆容量"
         ],
         "capabilities": [
           "Trait Engine",
           "认知调节",
-          "自适应风格"
+          "adapt_personality 工具"
         ]
       },
       "guardrails": {
         "title": "内置安全",
-        "description": "从危险到偏执的安全等级，具有PII编辑、ML分类器和幻觉检测",
+        "description": "五个可选护栏包：检测提示注入、遮蔽个人数据、对照来源核查回答、让对话保持在主题内，并扫描生成的代码",
         "features": [
           "4级PII编辑",
           "ONNX BERT分类器",
@@ -1073,16 +1073,16 @@
           "OWASP Top 10扫描"
         ],
         "capabilities": [
-          "安全等级",
+          "PII 脱敏",
           "内容分类器",
           "代码安全"
         ]
       },
       "voice": {
         "title": "语音管道",
-        "description": "12个STT和12个TTS提供商，具有实时流式传输、VAD、说话人分离和电话支持",
+        "description": "12个STT和13个TTS提供商，具有实时流式传输、VAD、说话人分离和电话支持",
         "features": [
-          "12 STT + 12 TTS",
+          "12 STT + 13 TTS",
           "VAD + 说话人分离",
           "实时流式传输",
           "Twilio/Telnyx/Plivo"
@@ -1094,8 +1094,8 @@
         ]
       },
       "providers": {
-        "title": "11 个 LLM 提供商",
-        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq及16个以上，具有自动回退链和provider-first API",
+        "title": "13 个 LLM 提供商",
+        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq 及另外 8 个，具有自动回退链和 provider-first API",
         "features": [
           "自动回退 (402/429/5xx)",
           "Provider-first API",

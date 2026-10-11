@@ -64,7 +64,7 @@ export default {
   'productCards.cards.hexaco.title': { pt: 'Personalidade HEXACO', es: 'Personalidad HEXACO', fr: 'Personnalité HEXACO', de: 'HEXACO-Persönlichkeit', ja: 'HEXACO パーソナリティ', ko: 'HEXACO 성격', zh: 'HEXACO 人格' },
   'productCards.cards.guardrails.title': { pt: 'Segurança Integrada', es: 'Seguridad Integrada', fr: 'Sécurité Intégrée', de: 'Integrierte Sicherheit', ja: '組み込み安全機能', ko: '내장 안전 기능', zh: '内置安全' },
   'productCards.cards.voice.title': { pt: 'Pipeline de Voz', es: 'Pipeline de Voz', fr: 'Pipeline Vocal', de: 'Sprach-Pipeline', ja: '音声パイプライン', ko: '음성 파이프라인', zh: '语音管道' },
-  'productCards.cards.providers.title': { pt: '11 Provedores de LLM', es: '11 Proveedores de LLM', fr: '11 Fournisseurs LLM', de: '11 LLM-Anbieter', ja: '11 種の LLM プロバイダ', ko: '11개 LLM 프로바이더', zh: '11 个 LLM 提供商' },
+  'productCards.cards.providers.title': { pt: '13 Provedores de LLM', es: '13 Proveedores de LLM', fr: '13 Fournisseurs LLM', de: '13 LLM-Anbieter', ja: '13 種の LLM プロバイダ', ko: '13개 LLM 프로바이더', zh: '13 个 LLM 提供商' },
 
   // ---------- enterprise ----------
   'enterprise.cta.title': { pt: 'AgentOS Enterprise', es: 'AgentOS Enterprise', fr: 'AgentOS Enterprise', de: 'AgentOS Enterprise', ja: 'AgentOS Enterprise', ko: 'AgentOS Enterprise', zh: 'AgentOS Enterprise' },

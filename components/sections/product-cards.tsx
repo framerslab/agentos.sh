@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import {
@@ -28,11 +28,9 @@ interface ProductCard {
   description: string
   icon: React.ElementType
   stats: Array<{
-    id?: string
     label: string
     value: string | number
     trend?: number
-    live?: boolean
   }>
   features: string[]
   bgAnimation: 'neural' | 'flow' | 'pulse' | 'grid'
@@ -69,7 +67,7 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       icon: Database,
       stats: [
         { label: t('stats.vectorBackends'), value: '7' },
-        { label: t('stats.docLoaders'), value: '10' },
+        { label: t('stats.docLoaders'), value: '8' },
         { label: t('stats.chunkStrategies'), value: '4' }
       ],
       features: [t('cards.graphRag.features.0'), t('cards.graphRag.features.1'), t('cards.graphRag.features.2'), t('cards.graphRag.features.3')],
@@ -88,8 +86,8 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       icon: Layers,
       stats: [
         { label: t('stats.strategies'), value: '6' },
-        { label: t('stats.planningEngine'), value: 'ToT' },
-        { label: t('stats.workflowDsl'), value: 'YAML + TS' }
+        { label: t('stats.planningEngine'), value: 'ReAct' },
+        { label: t('stats.workflowDsl'), value: 'TypeScript' }
       ],
       features: [t('cards.orchestration.features.0'), t('cards.orchestration.features.1'), t('cards.orchestration.features.2'), t('cards.orchestration.features.3')],
       bgAnimation: 'flow',
@@ -108,7 +106,7 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       stats: [
         { label: t('stats.protocols'), value: 'SSE + WS' },
         { label: t('stats.guardrailMode'), value: 'In-flight' },
-        { id: 'uptime', label: t('stats.connectionStability'), value: '99.9%', live: true }
+        { label: t('stats.chunkTypes'), value: '11' }
       ],
       features: [t('cards.streaming.features.0'), t('cards.streaming.features.1'), t('cards.streaming.features.2'), t('cards.streaming.features.3')],
       bgAnimation: 'pulse',
@@ -126,8 +124,8 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       icon: Fingerprint,
       stats: [
         { label: t('stats.dimensions'), value: '6' },
-        { label: t('stats.presets'), value: '9' },
-        { label: t('stats.styleAdaptation'), value: 'Auto' }
+        { label: t('stats.tunedMechanisms'), value: '7 of 8' },
+        { label: t('stats.workingMemory'), value: '5-9 slots' }
       ],
       features: [t('cards.hexaco.features.0'), t('cards.hexaco.features.1'), t('cards.hexaco.features.2'), t('cards.hexaco.features.3')],
       bgAnimation: 'neural',
@@ -144,7 +142,7 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       description: t('cards.guardrails.description'),
       icon: Shield,
       stats: [
-        { label: t('stats.securityTiers'), value: '5' },
+        { label: t('stats.guardrailPacks'), value: '5' },
         { label: t('stats.piiLayers'), value: '4-tier' },
         { label: t('stats.mlClassifiers'), value: 'ONNX BERT' }
       ],
@@ -164,7 +162,7 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       icon: Mic,
       stats: [
         { label: t('stats.sttProviders'), value: '12' },
-        { label: t('stats.ttsProviders'), value: '12' },
+        { label: t('stats.ttsProviders'), value: '13' },
         { label: t('stats.telephony'), value: '3 carriers' }
       ],
       features: [t('cards.voice.features.0'), t('cards.voice.features.1'), t('cards.voice.features.2'), t('cards.voice.features.3')],
@@ -182,7 +180,7 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       description: t('cards.providers.description'),
       icon: Server,
       stats: [
-        { label: t('stats.providers'), value: '21' },
+        { label: t('stats.providers'), value: '13' },
         { label: t('stats.fallbackChain'), value: 'Auto' },
         { label: t('stats.cliProviders'), value: '2' }
       ],
@@ -414,56 +412,10 @@ function AnimatedSVGBackground({ type, color }: { type: string; color: string })
 
 export function ProductCards() {
   const t = useTranslations('productCards')
-  const [liveData, setLiveData] = useState<Record<string, string | number>>({})
-  const sectionRef = useRef<HTMLElement>(null)
-
   const productCards = useMemo(() => getProductCards(t), [t])
 
-  // Simulate live data updates — only when section is in viewport
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval> | null = null
-
-    const startInterval = () => {
-      if (interval) return
-      interval = setInterval(() => {
-        setLiveData({
-          'active-models': 12 + Math.floor(Math.random() * 5),
-          'concurrent-tasks': 120 + Math.floor(Math.random() * 20),
-          'uptime': '99.' + (88 + Math.floor(Math.random() * 10)) + '%'
-        })
-      }, 3000)
-    }
-
-    const stopInterval = () => {
-      if (interval) {
-        clearInterval(interval)
-        interval = null
-      }
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          startInterval()
-        } else {
-          stopInterval()
-        }
-      },
-      { threshold: 0 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      stopInterval()
-      observer.disconnect()
-    }
-  }, [])
-
   return (
-    <section id="capabilities" ref={sectionRef} className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 perspective-1000">
+    <section id="capabilities" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 perspective-1000">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -519,23 +471,16 @@ export function ProductCards() {
                       {/* Stats */}
                       <div className="space-y-3 mt-auto">
                         {card.stats.map((stat, i) => {
-                          const liveValue = stat.live && stat.id && liveData[stat.id] ? liveData[stat.id] : null
                           return (
                             <div key={i} className="flex items-center justify-between bg-[var(--color-background-primary)]/50 dark:bg-white/5 p-2 rounded-lg border border-[var(--color-border-subtle)] backdrop-blur-sm hover:bg-[var(--color-background-secondary)] transition-colors">
                               <span className="text-xs font-bold text-[var(--color-text-muted)]">{stat.label}</span>
                               <div className="flex items-center gap-2">
                                 <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)]">
-                                  {liveValue || stat.value}
+                                  {stat.value}
                                 </span>
                                 {stat.trend && (
                                   <span className={`text-xs font-semibold ${stat.trend > 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
                                     {stat.trend > 0 ? '↑' : '↓'} {Math.abs(stat.trend)}%
-                                  </span>
-                                )}
-                                {stat.live && (
-                                  <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                                   </span>
                                 )}
                               </div>

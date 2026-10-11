@@ -1013,11 +1013,11 @@
       "workflowDsl": "ワークフロー DSL",
       "protocols": "プロトコル",
       "guardrailMode": "ガードレールモード",
-      "connectionStability": "接続安定性",
+      "chunkTypes": "チャンク種別",
       "dimensions": "次元",
-      "presets": "エージェントプリセット",
-      "styleAdaptation": "スタイル適応",
-      "securityTiers": "セキュリティ段階",
+      "tunedMechanisms": "調整されるメカニズム",
+      "workingMemory": "ワーキングメモリ",
+      "guardrailPacks": "ガードレールパック",
       "piiLayers": "PII階層",
       "mlClassifiers": "ML分類器",
       "sttProviders": "STTプロバイダー",
@@ -1045,7 +1045,7 @@
       },
       "graphRag": {
         "title": "グラフベース RAG",
-        "description": "HyDE検索、GraphRAGコミュニティ検出、10のドキュメントローダーを備えた7つのベクトルストアバックエンド",
+        "description": "HyDE検索、GraphRAGコミュニティ検出、8つのドキュメントローダーを備えた7つのベクトルストアバックエンド",
         "features": [
           "HyDE仮説的エンベディング",
           "Louvainコミュニティ検出",
@@ -1060,7 +1060,7 @@
       },
       "orchestration": {
         "title": "マルチエージェント・オーケストレーション",
-        "description": "シーケンシャルからグラフベースまで6つの戦略とMission API、Tree-of-Thought計画、ワークフローDSL",
+        "description": "シーケンシャルからグラフベースまで6つの戦略とMission API、ReAct計画、ワークフローDSL",
         "features": [
           "シーケンシャルとパラレル",
           "ディベートとレビューループ",
@@ -1090,22 +1090,22 @@
       },
       "hexaco": {
         "title": "HEXACOパーソナリティ（オプション）",
-        "description": "オプトインの6次元パーソナリティベクター。有効にすると、カーネルレベルでの記憶リトリーバル、コミュニケーションスタイル、意思決定にバイアスをかけます（プロンプトにはありません）。省略すると、ランタイムはパーソナリティニュートラルのままです。",
+        "description": "オプトインの6次元パーソナリティベクター。agent() は 0.65 を超える特性と 0.35 未満の特性を行動指示としてシステムプロンプトに書き込み、認知メモリでは特性が 8 つのメカニズムのうち 7 つを調整します。省略すると、ランタイムはパーソナリティニュートラルのままです。",
         "features": [
           "6軸特性モデリング",
           "記憶調整",
-          "スタイル適応",
-          "9エージェントプリセット"
+          "プロンプト指示",
+          "ワーキングメモリ容量"
         ],
         "capabilities": [
           "Trait Engine",
           "認知調整",
-          "適応スタイル"
+          "adapt_personality ツール"
         ]
       },
       "guardrails": {
         "title": "組み込み安全機能",
-        "description": "危険からパラノイドまでのセキュリティ段階とPII削除、ML分類器、幻覚検出",
+        "description": "5 つのオプトインのガードレールパックが、プロンプトインジェクションの検出、個人データの墨消し、回答と出典の照合、会話の話題維持、生成コードのスキャンを行います",
         "features": [
           "4段階PII削除",
           "ONNX BERT分類器",
@@ -1113,16 +1113,16 @@
           "OWASP Top 10スキャン"
         ],
         "capabilities": [
-          "セキュリティ段階",
+          "PII マスキング",
           "コンテンツ分類器",
           "コードセキュリティ"
         ]
       },
       "voice": {
         "title": "音声パイプライン",
-        "description": "リアルタイムストリーミング、VAD、話者ダイアライゼーション、テレフォニーサポート付きの12 STTと12 TTSプロバイダー",
+        "description": "リアルタイムストリーミング、VAD、話者ダイアライゼーション、テレフォニーサポート付きの12 STTと13 TTSプロバイダー",
         "features": [
-          "12 STT + 12 TTS",
+          "12 STT + 13 TTS",
           "VAD + ダイアライゼーション",
           "リアルタイムストリーミング",
           "Twilio/Telnyx/Plivo"
@@ -1134,8 +1134,8 @@
         ]
       },
       "providers": {
-        "title": "11 種の LLM プロバイダ",
-        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq他16以上、自動フォールバックチェーンとプロバイダーファーストAPI",
+        "title": "13 種の LLM プロバイダ",
+        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq ほか 8 種、自動フォールバックチェーンとプロバイダーファーストAPI",
         "features": [
           "自動フォールバック (402/429/5xx)",
           "Provider-first API",

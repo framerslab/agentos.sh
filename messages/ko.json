@@ -269,11 +269,11 @@
       "workflowDsl": "워크플로 DSL",
       "protocols": "프로토콜",
       "guardrailMode": "가드레일 모드",
-      "connectionStability": "연결 안정성",
+      "chunkTypes": "청크 유형",
       "dimensions": "차원",
-      "presets": "에이전트 프리셋",
-      "styleAdaptation": "스타일 적응",
-      "securityTiers": "보안 단계",
+      "tunedMechanisms": "조정되는 메커니즘",
+      "workingMemory": "작업 기억",
+      "guardrailPacks": "가드레일 팩",
       "piiLayers": "PII 계층",
       "mlClassifiers": "ML 분류기",
       "sttProviders": "STT 제공자",
@@ -301,7 +301,7 @@
       },
       "graphRag": {
         "title": "그래프 기반 RAG",
-        "description": "HyDE 검색, GraphRAG 커뮤니티 탐지 및 10개 문서 로더를 갖춘 7개의 벡터 스토어 백엔드",
+        "description": "HyDE 검색, GraphRAG 커뮤니티 탐지 및 8개 문서 로더를 갖춘 7개의 벡터 스토어 백엔드",
         "features": [
           "HyDE 가설적 임베딩",
           "Louvain 커뮤니티 탐지",
@@ -316,7 +316,7 @@
       },
       "orchestration": {
         "title": "멀티 에이전트 오케스트레이션",
-        "description": "순차에서 그래프 기반까지 6가지 전략과 Mission API, Tree-of-Thought 계획, 워크플로 DSL",
+        "description": "순차에서 그래프 기반까지 6가지 전략과 Mission API, ReAct 계획, 워크플로 DSL",
         "features": [
           "순차 및 병렬",
           "토론 및 리뷰 루프",
@@ -346,22 +346,22 @@
       },
       "hexaco": {
         "title": "HEXACO 성격 (선택 사항)",
-        "description": "옵트인 6차원 성격 벡터. 활성화되면 커널 수준에서 기억 검색, 의사소통 스타일 및 의사 결정에 편향을 줍니다 (프롬프트에는 아님). 생략하면 런타임은 성격 중립적으로 유지됩니다.",
+        "description": "옵트인 6차원 성격 벡터. agent()는 0.65보다 높거나 0.35보다 낮은 특성을 행동 지시문으로 시스템 프롬프트에 쓰고, 인지 메모리에서는 특성이 8개 메커니즘 중 7개를 조정합니다. 생략하면 런타임은 성격 중립적으로 유지됩니다.",
         "features": [
           "6축 특성 모델링",
           "기억 조절",
-          "스타일 적응",
-          "9개 에이전트 프리셋"
+          "프롬프트 지시문",
+          "작업 기억 용량"
         ],
         "capabilities": [
           "Trait Engine",
           "인지 조절",
-          "적응형 스타일"
+          "adapt_personality 도구"
         ]
       },
       "guardrails": {
         "title": "내장 안전 기능",
-        "description": "위험에서 편집증까지의 보안 단계와 PII 삭제, ML 분류기, 환각 탐지",
+        "description": "5개의 옵트인 가드레일 팩이 프롬프트 인젝션을 탐지하고, 개인 데이터를 가리고, 답변을 출처와 대조하고, 대화를 주제에 맞게 유지하고, 생성된 코드를 검사합니다",
         "features": [
           "4단계 PII 삭제",
           "ONNX BERT 분류기",
@@ -369,16 +369,16 @@
           "OWASP Top 10 스캔"
         ],
         "capabilities": [
-          "보안 단계",
+          "PII 마스킹",
           "콘텐츠 분류기",
           "코드 보안"
         ]
       },
       "voice": {
         "title": "음성 파이프라인",
-        "description": "실시간 스트리밍, VAD, 화자 분할 및 전화 지원을 포함한 12개 STT 및 12개 TTS 제공자",
+        "description": "실시간 스트리밍, VAD, 화자 분할 및 전화 지원을 포함한 12개 STT 및 13개 TTS 제공자",
         "features": [
-          "12 STT + 12 TTS",
+          "12 STT + 13 TTS",
           "VAD + 화자 분할",
           "실시간 스트리밍",
           "Twilio/Telnyx/Plivo"
@@ -390,8 +390,8 @@
         ]
       },
       "providers": {
-        "title": "11개 LLM 프로바이더",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq 외 6개 더, 자동 폴백 체인 및 provider-first API",
+        "title": "13개 LLM 프로바이더",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq 외 8개, 자동 폴백 체인 및 provider-first API",
         "features": [
           "자동 폴백 (402/429/5xx)",
           "Provider-first API",

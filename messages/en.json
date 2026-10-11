@@ -269,11 +269,11 @@
       "workflowDsl": "Workflow DSL",
       "protocols": "Protocols",
       "guardrailMode": "Guardrail Mode",
-      "connectionStability": "Connection Stability",
+      "chunkTypes": "Chunk Types",
       "dimensions": "Dimensions",
-      "presets": "Agent Presets",
-      "styleAdaptation": "Style Adaptation",
-      "securityTiers": "Security Tiers",
+      "tunedMechanisms": "Tuned Mechanisms",
+      "workingMemory": "Working Memory",
+      "guardrailPacks": "Guardrail Packs",
       "piiLayers": "PII Layers",
       "mlClassifiers": "ML Classifiers",
       "sttProviders": "STT Providers",
@@ -301,7 +301,7 @@
       },
       "graphRag": {
         "title": "Graph-Based RAG",
-        "description": "7 vector store backends with HyDE retrieval, GraphRAG community detection, and 10 document loaders",
+        "description": "7 vector store backends with HyDE retrieval, GraphRAG community detection, and 8 document loaders",
         "features": [
           "HyDE hypothetical embeddings",
           "Louvain community detection",
@@ -316,7 +316,7 @@
       },
       "orchestration": {
         "title": "Multi-Agent Orchestration",
-        "description": "6 strategies from sequential to graph-based with Mission API, Tree-of-Thought planning, and workflow DSL",
+        "description": "6 strategies from sequential to graph-based with Mission API, ReAct planning, and workflow DSL",
         "features": [
           "Sequential & parallel",
           "Debate & review-loop",
@@ -346,22 +346,22 @@
       },
       "hexaco": {
         "title": "HEXACO Personality (Optional)",
-        "description": "Opt-in 6-dimensional personality vector. When enabled, biases memory retrieval, communication style, and decision-making at the kernel level (not in the prompt). Omit it and the runtime stays personality-neutral.",
+        "description": "Opt-in 6-dimensional personality vector. agent() writes traits above 0.65 or below 0.35 into the system prompt as behavior directives, and in cognitive memory traits tune seven of the eight mechanisms. Omit it and the runtime stays personality-neutral.",
         "features": [
           "6-axis trait modeling",
           "Memory modulation",
-          "Style adaptation",
-          "9 agent presets"
+          "Prompt directives",
+          "Working-memory capacity"
         ],
         "capabilities": [
           "Trait Engine",
           "Cognitive Modulation",
-          "Adaptive Style"
+          "adapt_personality Tool"
         ]
       },
       "guardrails": {
         "title": "Built-in Safety",
-        "description": "Blocks prompt injection, redacts personal data, catches hallucinations, and scans generated code — configurable from permissive to locked-down",
+        "description": "Five opt-in guardrail packs flag prompt injection, redact personal data, check answers against their sources, keep conversations on topic and scan generated code",
         "features": [
           "4-tier PII redaction",
           "ONNX BERT classifiers",
@@ -369,16 +369,16 @@
           "OWASP Top 10 scanning"
         ],
         "capabilities": [
-          "Security Tiers",
+          "PII Redaction",
           "Content Classifiers",
           "Code Safety"
         ]
       },
       "voice": {
         "title": "Voice Pipeline",
-        "description": "12 STT and 12 TTS providers with real-time streaming, VAD, speaker diarization, and telephony support",
+        "description": "12 STT and 13 TTS providers with real-time streaming, VAD, speaker diarization, and telephony support",
         "features": [
-          "12 STT + 12 TTS",
+          "12 STT + 13 TTS",
           "VAD + diarization",
           "Real-time streaming",
           "Twilio/Telnyx/Plivo"
@@ -390,8 +390,8 @@
         ]
       },
       "providers": {
-        "title": "11 LLM Providers",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq, and 6 more with automatic fallback chains and provider-first API",
+        "title": "13 LLM Providers",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq, and 8 more with automatic fallback chains and provider-first API",
         "features": [
           "Auto fallback (402/429/5xx)",
           "Provider-first API",
