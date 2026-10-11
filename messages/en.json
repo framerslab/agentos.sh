@@ -1462,20 +1462,20 @@
   },
   "benchmarks": {
     "badge": "Memory benchmarks · LongMemEval · LOCOMO",
-    "title": "Memory Benchmarks at Matched Reader",
-    "subtitle": "Same gpt-4o reader, same dataset, same judge across every row. Cross-provider configurations are excluded because they cannot be reproduced from the methodology each vendor discloses publicly.",
+    "title": "Memory Benchmarks with the Reader Named",
+    "subtitle": "AgentOS runs share one dataset and one gpt-4o-2024-08-06 judge; vendor numbers are as each vendor publishes them. The 85.6% headline routes four of six question categories to gpt-5-mini, so the table also shows the run with gpt-4o answering every question.",
     "tabS": "LongMemEval-S (115K tokens)",
     "tabM": "LongMemEval-M (1.5M tokens)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "0.4 points behind Emergence.ai SOTA (86%, closed-source SaaS) · +1.4 points above Mastra OM gpt-4o (84.23%) · $0.0090 per correct · 3.6-second median latency",
+    "highlightSCi": "Per-category reader router (gpt-4o + gpt-5-mini) · 84.2% with gpt-4o alone, level with Mastra OM gpt-4o (84.23%) · $0.0090 per correct · 3.6-second median latency",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "First open-source library above 65% on the 1.5M-token M variant · +4.5 points above Wu et al., ICLR 2025 baseline",
-    "matrixIntro": "Each row is a full N=500 run at gpt-4o reader, with the same gpt-4o-2024-08-06 judge and the same rubric. Cross-provider configurations are excluded from this table.",
+    "highlightMCi": "Per-category reader router, top-5 retrieval · $0.0078 per correct · the LongMemEval paper's best GPT-4o setup scores 72.0% at top-10",
+    "matrixIntro": "AgentOS rows and the EmergenceMem Simple Fast rerun come from agentos-bench runs on the 500-question LongMemEval sets, judged by gpt-4o-2024-08-06 with the LongMemEval rubric. Vendor rows are the numbers each vendor publishes.",
     "ctaReadAudit": "Read the Transparency Audit",
-    "ctaSeeRunJsons": "See run JSONs on GitHub",
+    "ctaSeeRunJsons": "See agentos-bench on GitHub",
     "ctaBenchmarksPage": "Full Benchmarks Reference",
-    "footnote": "Mastra OM 94.9%, Mem0 v3 93.4%, Hindsight 91.4%, agentmemory 96.2%, and Supermemory 85.2% all use cross-provider readers (gpt-5-mini, gemini-3-pro) or managed-platform infrastructure where the judge model, rubric, and seed are not published. The cross-vendor comparison above is what is independently reproducible from the methodology each vendor discloses."
+    "footnote": "Other published LongMemEval-S scores include agentmemory 96.2% (GPT-4o reader), Mastra OM 94.9% (gpt-5-mini reader) and Supermemory 85.2% (gemini-3-pro reader). The agentos-bench leaderboard lists every row with its reader and source."
   }
 }

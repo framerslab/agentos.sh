@@ -1462,20 +1462,20 @@
   },
   "benchmarks": {
     "badge": "SOTA · LongMemEval · LOCOMO · Phase B N=500",
-    "title": "동일 리더로 측정한 메모리 벤치마크",
-    "subtitle": "정직한 동등 비교: 동일한 gpt-4o 리더, 동일한 데이터셋, 동일한 Phase B N=500 방법론, 동일한 gpt-4o-2024-08-06 판단자, 동일한 루브릭 2026-04-18.1. 크로스 프로바이더 구성은 공개된 방법론 공시에서 재현할 수 없기 때문에 제외됩니다.",
+    "title": "리더를 밝힌 메모리 벤치마크",
+    "subtitle": "AgentOS 실행은 모두 같은 데이터셋과 같은 gpt-4o-2024-08-06 심판을 사용하고, 벤더 수치는 각 벤더가 공개한 그대로입니다. 85.6% 결과는 6개 질문 범주 중 4개를 gpt-5-mini로 보내므로, 표에는 gpt-4o가 모든 질문에 답한 실행도 함께 싣습니다.",
     "tabS": "LongMemEval-S (115K 토큰)",
     "tabM": "LongMemEval-M (1.5M 토큰)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "[82.4%, 88.6%] · 정답당 $0.0090 · 평균 지연 4초",
+    "highlightSCi": "범주별 리더 라우터(gpt-4o + gpt-5-mini) · gpt-4o만으로 84.2%, Mastra OM gpt-4o(84.23%)와 동률 · 정답당 $0.0090 · 지연 시간 중앙값 3.6초",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "[66.0%, 74.0%] · 1.5M 토큰 변형에서 65%를 넘은 최초의 오픈소스 라이브러리",
-    "matrixIntro": "동일한 gpt-4o 리더, Phase B N=500. 부트스트랩 CI는 seed=42로 10,000회의 Mulberry32 재샘플링을 사용합니다.",
+    "highlightMCi": "범주별 리더 라우터, top-5 검색 · 정답당 $0.0078 · LongMemEval 논문의 최고 GPT-4o 설정은 top-10에서 72.0%",
+    "matrixIntro": "AgentOS 행과 EmergenceMem Simple Fast 재실행은 500문항 LongMemEval 세트에 대한 agentos-bench 실행 결과이며, LongMemEval 채점 기준으로 gpt-4o-2024-08-06이 채점했습니다. 벤더 행은 각 벤더가 공개한 수치입니다.",
     "ctaReadAudit": "투명성 감사 읽기",
-    "ctaSeeRunJsons": "GitHub에서 실행 JSON 보기",
+    "ctaSeeRunJsons": "GitHub에서 agentos-bench 보기",
     "ctaBenchmarksPage": "벤치마크 전체 레퍼런스",
-    "footnote": "Mastra OM 94.9%, Mem0 v3 93.4%, Hindsight 91.4%, agentmemory 96.2%, Supermemory 85.2%는 모두 크로스 프로바이더 리더(gpt-5-mini, gemini-3-pro) 또는 관리형 플랫폼 인프라를 사용하며, 그 아래 판단자 모델, 루브릭, 시드가 공개되지 않습니다. 위의 동일 리더 비교는 각 벤더가 공개한 방법론에서 독립적으로 재현 가능한 부분입니다."
+    "footnote": "LongMemEval-S의 다른 공개 점수로는 agentmemory 96.2%(GPT-4o 리더), Mastra OM 94.9%(gpt-5-mini 리더), Supermemory 85.2%(gemini-3-pro 리더)가 있습니다. agentos-bench 리더보드에는 모든 행이 리더와 출처와 함께 실려 있습니다."
   }
 }

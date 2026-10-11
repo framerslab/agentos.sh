@@ -1462,20 +1462,20 @@
   },
   "benchmarks": {
     "badge": "SOTA · LongMemEval · LOCOMO · Phase B N=500",
-    "title": "Benchmarks de Memória com Reader Equivalente",
-    "subtitle": "Comparação honesta e direta: mesmo reader gpt-4o, mesmo dataset, mesma metodologia Phase B N=500, mesmo juiz gpt-4o-2024-08-06 com rubric 2026-04-18.1. Configurações cross-provider são excluídas porque não podem ser reproduzidas a partir das divulgações de metodologia pública.",
+    "title": "Benchmarks de memória com o leitor identificado",
+    "subtitle": "As execuções do AgentOS usam o mesmo conjunto de dados e o mesmo juiz gpt-4o-2024-08-06; os números dos fornecedores são os que cada um publica. O resultado de 85.6% envia quatro das seis categorias de perguntas ao gpt-5-mini, então a tabela também mostra a execução com o gpt-4o respondendo a todas as perguntas.",
     "tabS": "LongMemEval-S (115K tokens)",
     "tabM": "LongMemEval-M (1.5M tokens)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "[82.4%, 88.6%] · $0,0090/correta · 4 segundos de latência média",
+    "highlightSCi": "Roteador de leitor por categoria (gpt-4o + gpt-5-mini) · 84.2% só com gpt-4o, empatado com Mastra OM gpt-4o (84.23%) · $0.0090 por acerto · latência mediana de 3.6 segundos",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "[66.0%, 74.0%] · Primeira biblioteca open source acima de 65% na variante de 1,5M tokens",
-    "matrixIntro": "Reader gpt-4o equivalente, Phase B N=500. Os CIs de bootstrap usam 10.000 reamostragens Mulberry32 com seed=42.",
+    "highlightMCi": "Roteador de leitor por categoria, recuperação top-5 · $0.0078 por acerto · a melhor configuração com GPT-4o do artigo do LongMemEval marca 72.0% em top-10",
+    "matrixIntro": "As linhas do AgentOS e a reexecução do EmergenceMem Simple Fast vêm de execuções do agentos-bench nos conjuntos de 500 perguntas do LongMemEval, avaliadas pelo gpt-4o-2024-08-06 com a rubrica do LongMemEval. As linhas dos fornecedores são os números que cada um publica.",
     "ctaReadAudit": "Ler a Auditoria de Transparência",
-    "ctaSeeRunJsons": "Ver os JSONs de execução no GitHub",
+    "ctaSeeRunJsons": "Ver o agentos-bench no GitHub",
     "ctaBenchmarksPage": "Referência Completa de Benchmarks",
-    "footnote": "Mastra OM 94,9%, Mem0 v3 93,4%, Hindsight 91,4%, agentmemory 96,2% e Supermemory 85,2% todos usam readers cross-provider (gpt-5-mini, gemini-3-pro) ou infraestrutura de plataforma gerenciada onde o modelo do juiz, rubric e seed subjacentes não são publicados. A comparação com reader equivalente acima é o que pode ser reproduzido independentemente a partir da metodologia que cada vendor divulga."
+    "footnote": "Outros resultados publicados no LongMemEval-S incluem agentmemory 96.2% (leitor GPT-4o), Mastra OM 94.9% (leitor gpt-5-mini) e Supermemory 85.2% (leitor gemini-3-pro). O leaderboard do agentos-bench lista cada linha com seu leitor e sua fonte."
   }
 }

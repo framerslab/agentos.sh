@@ -8,11 +8,10 @@ import { ArrowRight, ExternalLink, Trophy, Github } from 'lucide-react'
 /**
  * Benchmark data is hardcoded (numbers + citations) since accuracy
  * percentages are language-neutral. Translations cover the prose
- * framing only. Cross-provider configurations are intentionally
- * excluded because their results cannot be reproduced from public
- * methodology disclosures (Mastra 94.9% gpt-5-mini + gemini observer,
- * Mem0 93.4% managed-platform, etc.). The footnote names them so
- * readers comparing this page to vendor marketing are not surprised.
+ * framing only. Each row names its reader where the source gives one. The
+ * 85.6% AgentOS headline routes four question categories to gpt-5-mini, so
+ * the all-gpt-4o AgentOS run sits beside it; the footnote names higher
+ * published scores and points to the agentos-bench leaderboard.
  */
 
 interface BenchmarkRow {
@@ -27,7 +26,7 @@ interface BenchmarkRow {
 
 const LONGMEMEVAL_S_ROWS: BenchmarkRow[] = [
   {
-    system: 'EmergenceMem Internal',
+    system: 'EmergenceMem Internal, gpt-4o',
     accuracy: '86.0%',
     ci: 'not published',
     costPerCorrect: 'not published',
@@ -38,13 +37,13 @@ const LONGMEMEVAL_S_ROWS: BenchmarkRow[] = [
     },
   },
   {
-    system: 'AgentOS canonical-hybrid + reader-router',
+    system: 'AgentOS canonical-hybrid + reader router (gpt-4o + gpt-5-mini)',
     accuracy: '85.6%',
     ci: '[82.4%, 88.6%]',
     costPerCorrect: '$0.0090',
     p50Latency: '3,558 ms',
     source: {
-      label: '85.6% Pareto-win post',
+      label: 'LongMemEval post',
       href: '/en/blog/agentos-memory-sota-longmemeval/',
     },
     isAgentos: true,
@@ -61,6 +60,18 @@ const LONGMEMEVAL_S_ROWS: BenchmarkRow[] = [
     },
   },
   {
+    system: 'AgentOS canonical-hybrid, gpt-4o on every question',
+    accuracy: '84.2%',
+    ci: 'not published',
+    costPerCorrect: 'not published',
+    p50Latency: 'not published',
+    source: {
+      label: 'leaderboard',
+      href: 'https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md',
+    },
+    isAgentos: true,
+  },
+  {
     system: 'Supermemory gpt-4o',
     accuracy: '81.6%',
     ci: 'not published',
@@ -72,10 +83,10 @@ const LONGMEMEVAL_S_ROWS: BenchmarkRow[] = [
     },
   },
   {
-    system: 'EmergenceMem Simple Fast (rerun in agentos-bench)',
+    system: 'EmergenceMem Simple Fast, gpt-4o (rerun in agentos-bench)',
     accuracy: '80.6%',
     ci: '[77.0%, 84.0%]',
-    costPerCorrect: '$0.0586',
+    costPerCorrect: '$0.0581',
     p50Latency: '3,703 ms',
     source: {
       label: 'vendor reproduction',
@@ -106,6 +117,16 @@ interface MRow {
 
 const LONGMEMEVAL_M_ROWS: MRow[] = [
   {
+    system: 'LongMemEval paper, best GPT-4o setup (top-10)',
+    accuracy: '72.0%',
+    ci: 'not published',
+    license: 'open repo',
+    source: {
+      label: 'Wu et al., ICLR 2025, Table 3',
+      href: 'https://arxiv.org/abs/2410.10813',
+    },
+  },
+  {
     system: 'AgentBrain (Test 0)',
     accuracy: '71.7%',
     ci: 'not published',
@@ -113,7 +134,7 @@ const LONGMEMEVAL_M_ROWS: MRow[] = [
     source: { label: 'github.com/AgentBrainHQ', href: 'https://github.com/AgentBrainHQ' },
   },
   {
-    system: 'AgentOS (sem-embed + reader-router + top-K=5)',
+    system: 'AgentOS (sem-embed + reader router: gpt-4o + gpt-5-mini, top-K=5)',
     accuracy: '70.2%',
     ci: '[66.0%, 74.0%]',
     license: 'Apache-2.0',
@@ -122,16 +143,6 @@ const LONGMEMEVAL_M_ROWS: MRow[] = [
       href: '/en/blog/agentos-memory-sota-longmemeval/',
     },
     isAgentos: true,
-  },
-  {
-    system: 'LongMemEval paper academic baseline',
-    accuracy: '65.7%',
-    ci: 'not published',
-    license: 'open repo',
-    source: {
-      label: 'Wu et al., ICLR 2025',
-      href: 'https://arxiv.org/abs/2410.10813',
-    },
   },
   {
     system: 'Mem0 v3, Mastra OM, Hindsight, Zep, EmergenceMem, Supermemory, Letta, others',
@@ -400,7 +411,7 @@ export function BenchmarksSection() {
             <ArrowRight className="h-4 w-4" aria-hidden />
           </a>
           <a
-            href="https://agentos.sh/blog/agentos-memory-sota-longmemeval/"
+            href="https://agentos.sh/blog/memory-benchmark-transparency-audit/"
             className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-subtle)] px-6 py-3 text-sm font-medium text-[var(--color-text-primary)] transition-all hover:border-[var(--color-border-primary)] hover:bg-[var(--color-background-secondary)]"
           >
             {t('ctaReadAudit')}

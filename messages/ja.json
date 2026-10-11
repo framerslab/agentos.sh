@@ -1462,20 +1462,20 @@
   },
   "benchmarks": {
     "badge": "SOTA · LongMemEval · LOCOMO · Phase B N=500",
-    "title": "同一リーダーでのメモリベンチマーク",
-    "subtitle": "正直で公正な比較:同じ gpt-4o リーダー、同じデータセット、同じ Phase B N=500 方法論、同じ gpt-4o-2024-08-06 ジャッジ、同じルーブリック 2026-04-18.1。クロスプロバイダ構成は、公開された方法論の開示から再現できないため除外されています。",
+    "title": "リーダーを明記したメモリベンチマーク",
+    "subtitle": "AgentOS の実行はすべて同じデータセットと同じ gpt-4o-2024-08-06 ジャッジを使います。ベンダーの数値は各社が公表したままです。85.6% の結果は 6 つの質問カテゴリのうち 4 つを gpt-5-mini に回すため、表には gpt-4o がすべての質問に答えた実行も載せています。",
     "tabS": "LongMemEval-S (115K トークン)",
     "tabM": "LongMemEval-M (1.5M トークン)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "[82.4%, 88.6%] · $0.0090/正解 · 平均レイテンシ 4 秒",
+    "highlightSCi": "カテゴリ別リーダールーター（gpt-4o + gpt-5-mini）· gpt-4o のみで 84.2%、Mastra OM gpt-4o（84.23%）と同等 · 正解あたり $0.0090 · レイテンシ中央値 3.6 秒",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "[66.0%, 74.0%] · 1.5M トークンバリアントで 65% を超えた最初のオープンソースライブラリ",
-    "matrixIntro": "同一 gpt-4o リーダー、Phase B N=500。Bootstrap CI は seed=42 で 10,000 回の Mulberry32 リサンプリングを使用。",
+    "highlightMCi": "カテゴリ別リーダールーター、top-5 検索 · 正解あたり $0.0078 · LongMemEval 論文の GPT-4o 最良構成は top-10 で 72.0%",
+    "matrixIntro": "AgentOS の行と EmergenceMem Simple Fast の再実行は、500 問の LongMemEval セットに対する agentos-bench の実行結果で、LongMemEval の評価基準に沿って gpt-4o-2024-08-06 が採点しています。ベンダーの行は各社が公表した数値です。",
     "ctaReadAudit": "トランスペアレンシー監査を読む",
-    "ctaSeeRunJsons": "実行 JSON を GitHub で見る",
+    "ctaSeeRunJsons": "GitHub で agentos-bench を見る",
     "ctaBenchmarksPage": "ベンチマーク完全リファレンス",
-    "footnote": "Mastra OM 94.9%、Mem0 v3 93.4%、Hindsight 91.4%、agentmemory 96.2%、Supermemory 85.2% はすべてクロスプロバイダのリーダー(gpt-5-mini、gemini-3-pro)またはマネージドプラットフォームのインフラを使用しており、基礎となるジャッジモデル、ルーブリック、シードが公開されていません。上記の同一リーダーでの比較は、各ベンダが開示する方法論から独立して再現可能なものです。"
+    "footnote": "LongMemEval-S のほかの公表スコアには、agentmemory 96.2%（GPT-4o リーダー）、Mastra OM 94.9%（gpt-5-mini リーダー）、Supermemory 85.2%（gemini-3-pro リーダー）があります。agentos-bench のリーダーボードには、すべての行がリーダーと出典付きで載っています。"
   }
 }
