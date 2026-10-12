@@ -63,7 +63,7 @@ export function WorkbenchCTA() {
                 <GitBranch className="w-5 h-5" />
                 {t('viewGithub')}
               </a>
-              <p className="max-w-xs text-sm text-[var(--color-text-secondary)] text-center lg:text-left">
+              <p className="text-sm text-[var(--color-text-secondary)] text-center lg:text-left lg:max-w-xs">
                 {t('runLocally')}
               </p>
             </div>
