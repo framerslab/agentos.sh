@@ -2,7 +2,7 @@
 
 > Open-source TypeScript runtime for autonomous AI agents with cognitive memory, HEXACO personality, and emergent tool forging.
 
-AgentOS is built by [Framers Lab, Inc.](https://frame.dev). It treats each agent as a Generalized Mind Instance (GMI) — a cognitive entity with its own identity, personality, memory lifecycle, and behavioral adaptation loop.
+AgentOS is built by [Framers Lab, Inc.](https://frame.dev). Its full runtime (`AgentOS.processRequest`) serves each session with a Generalized Mind Instance (GMI) that holds the session's persona, conversation history and mood and can be given cognitive memory; `gmi()` and `agent({ runtime: 'gmi' })` create GMIs too, while a plain `agent()` calls the model directly.
 
 ## Links
 
