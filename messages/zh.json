@@ -21,7 +21,7 @@
   "hero": {
     "badge": "开源 · 自适应 · 涌现",
     "title": "自适应与涌现智能的便携式AI代理运行时",
-    "subtitle": "面向会记忆、会适应、能创造新工具的 AI 智能体的开源 TypeScript 运行时。运行时中的每个会话都是一个 GMI(Generalized Mind Instance),它保留自己的人格、情绪和记忆,并能随时间调整自己的特质。智能体在任务中途编写自己的函数并由裁判批准;当固定名单无法覆盖任务时,管理者会创建专家。基于神经科学的认知记忆。LongMemEval-S 85.6%。Apache 2.0。",
+    "subtitle": "面向会记忆、会适应、能创造新工具的 AI 智能体的开源 TypeScript 运行时。运行时中的每个会话都是一个 GMI(Generalized Mind Instance),它保留自己的人格、情绪和记忆,并能随时间调整自己的特质。智能体在任务中途编写自己的函数并由裁判批准;当固定名单无法覆盖任务时,管理者会创建专家。认知记忆采用艾宾浩斯遗忘曲线和 7 个槽位的工作记忆。LongMemEval-S 85.6%。Apache 2.0。",
     "ctaPrimary": "体验 Voice Chat Assistant",
     "ctaSecondary": "在 GitHub 上点星",
     "codeLabel": "npm install @framers/agentos",
@@ -64,7 +64,7 @@
       "securityScore": "安全评分"
     },
     "compliance": {
-      "gdpr": "GDPR 就绪护栏",
+      "gdpr": "PII 脱敏护栏包",
       "soc2": "在自有基础设施上自托管",
       "enterpriseSupport": "企业支持可用"
     }
@@ -162,7 +162,7 @@
       "compliance": {
         "title": "隐私架构",
         "items": [
-          "GDPR 一致的 PII 脱敏（18 种实体）",
+          "PII 脱敏（18 种实体）",
           "数据来源和血统追踪",
           "采用艾宾浩斯遗忘曲线的认知记忆",
           "旧知识的来源可信度衰减"

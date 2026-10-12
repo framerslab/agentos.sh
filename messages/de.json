@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Open Source · Adaptiv · Emergent",
     "title": "Produktionsfertige KI-Agenten-Laufzeit für Adaptive & Emergente Intelligenz",
-    "subtitle": "Open-Source-TypeScript-Runtime für KI-Agenten, die sich erinnern, anpassen und neue Tools erzeugen. Jede Sitzung auf der Runtime ist ein GMI, eine Generalized Mind Instance, die ihre eigene Persona, Stimmung und ihr Gedächtnis behält und ihre eigenen Merkmale mit der Zeit anpassen kann. Agenten schreiben mitten in der Aufgabe eigene Funktionen, und der Judge genehmigt sie; Manager erzeugen Spezialisten, wenn das feste Roster die Aufgabe nicht abdeckt. Kognitives Gedächtnis auf neurowissenschaftlicher Grundlage. 85.6% auf LongMemEval-S. Apache 2.0.",
+    "subtitle": "Open-Source-TypeScript-Runtime für KI-Agenten, die sich erinnern, anpassen und neue Tools erzeugen. Jede Sitzung auf der Runtime ist ein GMI, eine Generalized Mind Instance, die ihre eigene Persona, Stimmung und ihr Gedächtnis behält und ihre eigenen Merkmale mit der Zeit anpassen kann. Agenten schreiben mitten in der Aufgabe eigene Funktionen, und der Judge genehmigt sie; Manager erzeugen Spezialisten, wenn das feste Roster die Aufgabe nicht abdeckt. Kognitives Gedächtnis mit der Ebbinghaus-Vergessenskurve und einem Arbeitsgedächtnis mit 7 Slots. 85.6% auf LongMemEval-S. Apache 2.0.",
     "cycleWords": [
       "Adaptiv",
       "Emergent"
@@ -45,7 +45,7 @@
       "securityScore": "Sicherheitsbewertung"
     },
     "compliance": {
-      "gdpr": "DSGVO-fähige Guardrails",
+      "gdpr": "Guardrail-Paket für PII-Redaktion",
       "soc2": "Self-hosted auf eigener Infrastruktur",
       "enterpriseSupport": "Enterprise-Support verfügbar"
     },
@@ -349,7 +349,7 @@
       "compliance": {
         "title": "Datenschutz-Architektur",
         "items": [
-          "DSGVO-orientierte PII-Redaktion (18 Entitätstypen)",
+          "PII-Redaktion für 18 Entitätstypen",
           "Datenherkunft und Lineage-Tracking",
           "Kognitives Gedächtnis mit Ebbinghaus-Vergessenskurven",
           "Quellenvertrauens-Zerfall für alterndes Wissen"
