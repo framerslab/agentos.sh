@@ -104,7 +104,7 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       description: t('cards.streaming.description'),
       icon: Zap,
       stats: [
-        { label: t('stats.protocols'), value: 'SSE + WS' },
+        { label: t('stats.streamApi'), value: 'Async iterators' },
         { label: t('stats.guardrailMode'), value: 'In-flight' },
         { label: t('stats.chunkTypes'), value: '11' }
       ],

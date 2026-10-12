@@ -66,7 +66,7 @@ Under all eight, every trace decays on the [Ebbinghaus forgetting curve](https:/
 |----------|-------------|----------|
 | Sequential | Linear pipeline, each agent refines previous output | Editing chains, translation pipelines |
 | Parallel | Fan-out to all agents simultaneously | Research, brainstorming, redundancy |
-| Debate | Agents argue positions, synthesize consensus | Decision-making under uncertainty |
+| Debate | Agents argue positions over several rounds, then a judge call gives a verdict on which side prevailed | Decision-making under uncertainty |
 | Review loop | Author and reviewer iterate until quality threshold | Content QA, code review |
 | Hierarchical | Manager delegates to specialized workers | Task decomposition |
 | Graph (DAG) | Each agent starts once the agents it `dependsOn` have finished, with their outputs as context | Complex multi-step workflows |
@@ -75,9 +75,7 @@ Agents in an agency coordinate through each other's outputs: a sequential chain 
 
 When `strategy: 'hierarchical'` is paired with `emergent: { enabled: true }`, the manager LLM gets a `spawn_specialist` tool alongside its `delegate_to_<name>` tools. Calling it forges a new sub-agent at runtime via [`EmergentAgentForge`](https://docs.agentos.sh/api/classes/EmergentAgentForge), gates it through [`EmergentAgentJudge`](https://docs.agentos.sh/api/classes/EmergentAgentJudge) for safety review, and adds the new specialist to the live roster, so `delegate_to_<spawned-role>` becomes available on the next turn. Bounds via `planner.maxSpecialists`, `planner.maxJudgeCalls`, and an optional HITL `beforeEmergent` gate. See [Hierarchical + emergent agent spawning](https://docs.agentos.sh/architecture/emergent-agency-system) for the worked example.
 
-[![AgentOS spawning a security_audit_specialist agent at runtime, side-by-side with the source code](/img/blog/og/agentos-emergent-demo.png)](/demo/emergent-spawning.html)
-
-The image above is captured from a real `node examples/emergent-hierarchical-spawning.mjs` run. The team starts with researcher + writer; the prompt requires a security audit; the manager calls `spawn_specialist`, EmergentAgentJudge approves the spec, and `security_audit_specialist` joins the live roster. The `[FORGE]` line is the moment that happens. Reproduce from a clone of [framerslab/agentos](https://github.com/framerslab/agentos), since the example imports the built `dist/` and the npm package does not ship `examples/`: `pnpm install && pnpm build`, `export OPENAI_API_KEY=...`, then `node examples/emergent-hierarchical-spawning.mjs`.
+[One captured run](/demo/emergent-spawning.html) shows the loop with a script adapted from `examples/emergent-hierarchical-spawning.mjs`: one specialist allowed and a brief that asks for a security audit. The team starts with researcher + writer, the manager calls `spawn_specialist`, EmergentAgentJudge approves the spec, and `security_auditor` joins the live roster. The `[FORGE]` line is the moment that happens. The committed example asks for a survey of RAG literature and allows up to three specialists. Run it from a clone of [framerslab/agentos](https://github.com/framerslab/agentos), since the example imports the built `dist/` and the npm package does not ship `examples/`: `pnpm install && pnpm build`, `export OPENAI_API_KEY=...`, then `node examples/emergent-hierarchical-spawning.mjs`.
 
 ### Emergent Tool Forging
 
@@ -139,7 +137,7 @@ This is what an honest benchmark looks like. If something on this list is wrong,
 
 ## FAQ
 
-**Why TypeScript?** Most AI infrastructure is Python. Most production application code is JavaScript or TypeScript. The runtime that lives inside an application should match the application's language. AgentOS does. The Python interop story is via the API server (REST/SSE) or via JSON Schema-generated types from the artifact schema.
+**Why TypeScript?** Most AI infrastructure is Python. Most production application code is JavaScript or TypeScript. The runtime that lives inside an application should match the application's language. AgentOS does. It has no Python package, so a Python application reaches it through a service you run on Node.
 
 **Is AgentOS a LangGraph alternative?** It's an alternative if your job is "build an AI agent with memory and personality and tools." It is not an alternative if your job is "compose Python research code into a workflow." Different jobs. We have a [head-to-head comparison post](/blog/agentos-vs-langgraph-vs-crewai) with honest-cost-rule applied.
 

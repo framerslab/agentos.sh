@@ -89,7 +89,7 @@ AgentOS layers both:
 - **Adaptive mechanisms constrain individual agents.** [HEXACO personality](https://docs.agentos.sh/features/cognitive-memory-guide) with a per-session budget on trait changes, cost guards, and circuit breakers keep each agent operating within defined boundaries.
 - **Emergent mechanisms enable collective capability.** Outputs handed between the agents of an agency, inter-agent messaging, and runtime tool forging let groups of agents produce behaviors that no single agent was programmed to exhibit.
 
-The constraint is the enabler. Agents can forge tools freely because the judge gate, the sandbox's static checks and timeout, and tiered promotion decide which tools persist. Agents can adapt their personality because each trait change is capped per session and recorded with its reasoning.
+The constraint is the enabler. Agents can forge tools freely because the judge gate, the sandbox's static checks and timeout, and tiered promotion decide which tools persist. Agents can adapt their personality because each trait change is capped per session, and with a storage adapter each change is recorded with its reasoning.
 
 ## FAQ
 

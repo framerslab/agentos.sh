@@ -188,7 +188,7 @@
       "strategies": "전략",
       "planningEngine": "계획 엔진",
       "workflowDsl": "워크플로 DSL",
-      "protocols": "프로토콜",
+      "streamApi": "스트림 API",
       "guardrailMode": "가드레일 모드",
       "chunkTypes": "청크 유형",
       "dimensions": "차원",
@@ -252,9 +252,9 @@
       },
       "streaming": {
         "title": "실시간 스트리밍",
-        "description": "스트리밍 가드레일, 부분 JSON 출력 및 도구 호출 진행 이벤트가 포함된 SSE 및 WebSocket 지원",
+        "description": "텍스트 델타와 부분 JSON을 비동기 이터레이터로, 도구 호출과 진행 상황을 타입 청크로 제공하며 스트리밍 가드레일은 선택 사항입니다",
         "features": [
-          "SSE + WebSocket",
+          "비동기 이터레이터 스트림",
           "비행 중 가드레일",
           "부분 JSON 스트리밍",
           "도구 진행 이벤트"
