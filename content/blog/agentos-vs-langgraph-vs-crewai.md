@@ -200,7 +200,7 @@ The tradeoff: no personality model and no runtime tool forging.
 
 The [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/) is lightweight and has the fewest abstractions. It's a production-ready upgrade of the Swarm experimental framework. Agent handoffs and tool use are first-class.
 
-The tradeoff: it works with OpenAI models out of the box, and models from other providers need the AI SDK adapter from `@openai/agents-extensions`.
+The tradeoff: it works with OpenAI models out of the box; models from other providers plug in through the AI SDK adapter in `@openai/agents-extensions` or a model provider you write.
 
 **Best for:** teams on OpenAI models, simple agent workflows, fastest time to first agent.
 
