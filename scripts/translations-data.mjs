@@ -71,10 +71,6 @@ export default {
   // ---------- enterprise ----------
   'enterprise.cta.title': { pt: 'AgentOS Enterprise', es: 'AgentOS Enterprise', fr: 'AgentOS Enterprise', de: 'AgentOS Enterprise', ja: 'AgentOS Enterprise', ko: 'AgentOS Enterprise', zh: 'AgentOS Enterprise' },
 
-  // ---------- multiAgent ----------
-  'multiAgent.ui.throughput': { pt: 'Throughput', es: 'Rendimiento', fr: 'Débit', de: 'Durchsatz', ja: 'スループット', ko: '처리량', zh: '吞吐量' },
-  'multiAgent.agents.executor': { pt: 'Executor', es: 'Ejecutor', fr: 'Exécuteur', de: 'Ausführer', ja: 'エグゼキュータ', ko: '실행자', zh: '执行器' },
-
   // ---------- ecosystem ----------
   'ecosystem.title': { pt: 'O Ecossistema AgentOS', es: 'El Ecosistema AgentOS', fr: 'L’Écosystème AgentOS', de: 'Das AgentOS-Ökosystem', ja: 'AgentOS エコシステム', ko: 'AgentOS 에코시스템', zh: 'AgentOS 生态系统' },
   'ecosystem.subtitle': { pt: 'Explore o ecossistema open source do AgentOS: RAG multimodal, orquestração multiagente, 37 adaptadores de canal, 13 provedores de LLM e mais de 100 extensões curadas.', es: 'Explora el ecosistema de código abierto de AgentOS: RAG multimodal, orquestación multiagente, 37 adaptadores de canal, 13 proveedores de LLM y más de 100 extensiones curadas.', fr: 'Explorez l’écosystème open source d’AgentOS : RAG multimodal, orchestration multi-agents, 37 adaptateurs de canaux, 13 fournisseurs de LLM et plus de 100 extensions sélectionnées.', de: 'Erkunde das Open-Source-Ökosystem von AgentOS: multimodales RAG, Multi-Agenten-Orchestrierung, 37 Kanal-Adapter, 13 LLM-Anbieter und über 100 kuratierte Erweiterungen.', ja: 'オープンソースの AgentOS エコシステムを探索しましょう。マルチモーダル RAG、マルチエージェントオーケストレーション、37 のチャネルアダプター、13 の LLM プロバイダー、100 以上の厳選された拡張機能。', ko: '오픈 소스 AgentOS 에코시스템을 탐색하세요. 멀티모달 RAG, 멀티 에이전트 오케스트레이션, 37개 채널 어댑터, 13개 LLM 제공자, 100개 이상의 엄선된 확장 기능.', zh: '探索开源的 AgentOS 生态系统：多模态 RAG、多智能体编排、37 个渠道适配器、13 个 LLM 提供商和 100 多个精选扩展。' },
