@@ -543,18 +543,11 @@
   },
   "socialProof": {
     "badge": "社会证明",
-    "title": "可信赖的部署(即将公布)",
-    "subtitle": "我们正在为金融、运营和支持领域的 AI 代理团队提供入驻。Logo 与案例研究将随其上线一同公布 — 敬请关注。",
-    "reveal": "公布 #{index}",
-    "comingSoon": "即将推出",
+    "title": "基于 AgentOS 构建",
+    "subtitle": "三款已上线的产品运行在 AgentOS 运行时之上：AI 游戏与角色平台 Wilds AI、智能体群体模拟引擎 Paracosm，以及用于构建自主智能体的命令行工具 Wunderland。",
     "latestUpdates": "最新动态",
     "cta": {
       "ask": "想成为案例?"
-    },
-    "placeholders": {
-      "helios": "多市场研究小组(即将推出)",
-      "northwind": "产品本地化 + CRM 同步(即将推出)",
-      "atlas": "自适应支持路由(即将推出)"
     }
   },
   "gmiSection": {

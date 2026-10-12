@@ -801,18 +801,11 @@
   },
   "socialProof": {
     "badge": "Prueba social",
-    "title": "Despliegues de confianza (próxima revelación)",
-    "subtitle": "Estamos incorporando equipos de agencias de IA en finanzas, operaciones y soporte. Los logos y casos de estudio se revelarán con sus lanzamientos — atento a los próximos anuncios.",
-    "reveal": "Revelación #{index}",
-    "comingSoon": "Próximamente",
+    "title": "Construido con AgentOS",
+    "subtitle": "Tres productos en línea funcionan sobre el runtime de AgentOS: Wilds AI, para juegos y personajes de IA; Paracosm, para simular enjambres de agentes; y Wunderland, una CLI para crear agentes autónomos.",
     "latestUpdates": "Últimas actualizaciones",
     "cta": {
       "ask": "¿Quieres aparecer aquí?"
-    },
-    "placeholders": {
-      "helios": "Pods de investigación multi-mercado (próximamente)",
-      "northwind": "Localización de producto + sincronización con CRM (próximamente)",
-      "atlas": "Enrutamiento adaptativo de soporte (próximamente)"
     }
   },
   "videoDemo": {

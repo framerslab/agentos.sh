@@ -735,18 +735,11 @@
   },
   "socialProof": {
     "badge": "Social proof",
-    "title": "Trusted deployments (revealing soon)",
-    "subtitle": "We’re onboarding AI agency teams across finance, operations, and support. Logos and case studies unlock with their launches—stay tuned.",
-    "reveal": "Reveal #{index}",
-    "comingSoon": "Coming soon",
+    "title": "Built on AgentOS",
+    "subtitle": "Three live products run on the AgentOS runtime: Wilds AI for AI games and characters, Paracosm for agent swarm simulation, and Wunderland, a CLI for building autonomous agents.",
     "latestUpdates": "Latest updates",
     "cta": {
       "ask": "Want to be featured?"
-    },
-    "placeholders": {
-      "helios": "Multi-market research pods (coming soon)",
-      "northwind": "Product localization + CRM sync (coming soon)",
-      "atlas": "Adaptive support routing (coming soon)"
     }
   },
   "gmiSection": {

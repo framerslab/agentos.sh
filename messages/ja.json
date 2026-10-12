@@ -543,18 +543,11 @@
   },
   "socialProof": {
     "badge": "ソーシャルプルーフ",
-    "title": "信頼できる導入実績(近日公開)",
-    "subtitle": "ファイナンス、オペレーション、サポート分野の AI エージェンシーチームを順次オンボーディング中です。ロゴと事例は各社のローンチに合わせて公開予定 — 続報をお待ちください。",
-    "reveal": "公開 #{index}",
-    "comingSoon": "近日公開",
+    "title": "AgentOS で構築",
+    "subtitle": "稼働中の 3 つのプロダクトが AgentOS ランタイムの上で動いています。AI ゲームと AI キャラクターの Wilds AI、エージェント群シミュレーションの Paracosm、自律エージェントを作る CLI の Wunderland です。",
     "latestUpdates": "最新情報",
     "cta": {
       "ask": "掲載をご希望ですか?"
-    },
-    "placeholders": {
-      "helios": "マルチマーケット・リサーチポッド(近日公開)",
-      "northwind": "プロダクトローカライゼーション + CRM 同期(近日公開)",
-      "atlas": "アダプティブ・サポートルーティング(近日公開)"
     }
   },
   "gmiSection": {

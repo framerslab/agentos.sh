@@ -695,18 +695,11 @@
   },
   "socialProof": {
     "badge": "사회적 증거",
-    "title": "신뢰할 수 있는 배포 (곧 공개 예정)",
-    "subtitle": "금융, 운영, 지원 분야의 AI 에이전시 팀들을 온보딩하고 있습니다. 로고와 사례 연구는 각 출시에 맞춰 공개됩니다 — 곧 발표 예정.",
-    "reveal": "공개 #{index}",
-    "comingSoon": "곧 공개",
+    "title": "AgentOS로 구축",
+    "subtitle": "운영 중인 세 제품이 AgentOS 런타임 위에서 동작합니다. AI 게임과 캐릭터를 만드는 Wilds AI, 에이전트 군집 시뮬레이션 Paracosm, 자율 에이전트를 만드는 CLI Wunderland입니다.",
     "latestUpdates": "최신 업데이트",
     "cta": {
       "ask": "여기에 소개되고 싶으신가요?"
-    },
-    "placeholders": {
-      "helios": "멀티마켓 리서치 팟 (곧 공개)",
-      "northwind": "제품 현지화 + CRM 동기화 (곧 공개)",
-      "atlas": "적응형 지원 라우팅 (곧 공개)"
     }
   },
   "gmiSection": {

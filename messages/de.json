@@ -695,18 +695,11 @@
   },
   "socialProof": {
     "badge": "Social Proof",
-    "title": "Vertrauenswürdige Implementierungen (Enthüllung in Kürze)",
-    "subtitle": "Wir nehmen KI-Agency-Teams aus Finanzen, Operations und Support an Bord. Logos und Case Studies werden mit den jeweiligen Launches veröffentlicht — bleibt dran.",
-    "reveal": "Enthüllung Nr. {index}",
-    "comingSoon": "Demnächst",
+    "title": "Gebaut mit AgentOS",
+    "subtitle": "Drei laufende Produkte bauen auf der AgentOS-Runtime auf: Wilds AI für KI-Spiele und -Charaktere, Paracosm für Simulationen von Agentenschwärmen und Wunderland, eine CLI für autonome Agenten.",
     "latestUpdates": "Neueste Updates",
     "cta": {
       "ask": "Möchtet ihr hier erscheinen?"
-    },
-    "placeholders": {
-      "helios": "Multi-Markt-Research-Pods (demnächst)",
-      "northwind": "Produktlokalisierung + CRM-Sync (demnächst)",
-      "atlas": "Adaptives Support-Routing (demnächst)"
     }
   },
   "gmiSection": {
