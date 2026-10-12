@@ -157,7 +157,7 @@ console.log(result.text);
 // within maxSteps (5 by default) model calls.
 ```
 
-A tool is a name mapped to a description, a JSON Schema for its arguments and an `execute` function; `agent()` also takes an `ExternalToolRegistry` or prompt-only tool schemas. `WebSearchService` sends each query to every provider you register (Firecrawl, Tavily, Serper and Brave) in parallel and fuses their rankings. The [agentos-extensions](https://github.com/framerslab/agentos-extensions) registry holds 111 curated extension packs, among them news search, image search, browser automation and deep research. Their tools are `ITool` objects, and `agent()` accepts those in the same tool map.
+A tool is a name mapped to a description, a JSON Schema for its arguments and an `execute` function; `agent()` also takes an `ExternalToolRegistry` or prompt-only tool schemas. `WebSearchService` sends each query to every provider you register (Firecrawl, Tavily, Serper and Brave) in parallel and fuses their rankings. The [agentos-extensions](https://github.com/framerslab/agentos-extensions) registry holds more than 100 curated extension packs, among them news search, image search, browser automation and deep research. Their tools are `ITool` objects, and `agent()` accepts those in the same tool map.
 
 ## Step 5: Check Answers Against Sources
 
