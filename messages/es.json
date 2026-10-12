@@ -252,7 +252,7 @@
       },
       "streaming": {
         "title": "Streaming en Tiempo Real",
-        "description": "Deltas de texto y objetos JSON parciales como iteradores asíncronos, chunks tipados para tool calls y progreso en el runtime completo, y guardrails opcionales que revisan el texto mientras se transmite",
+        "description": "Deltas de texto y JSON parcial como iteradores asíncronos, chunks tipados para tool calls y progreso, y guardrails de streaming opcionales",
         "features": [
           "Streams con iteradores asíncronos",
           "Guardrails en vuelo",

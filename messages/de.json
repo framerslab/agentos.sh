@@ -252,7 +252,7 @@
       },
       "streaming": {
         "title": "Echtzeit-Streaming",
-        "description": "Text-Deltas und partielle JSON-Objekte als Async-Iteratoren, typisierte Chunks für Tool-Calls und Fortschritt in der vollständigen Runtime und optionale Guardrails, die Text während des Streamings prüfen",
+        "description": "Text-Deltas und partielles JSON als Async-Iteratoren, typisierte Chunks für Tool-Calls und Fortschritt, optionale Streaming-Guardrails",
         "features": [
           "Async-Iterator-Streams",
           "In-Flight Guardrails",

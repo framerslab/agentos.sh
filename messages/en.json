@@ -252,7 +252,7 @@
       },
       "streaming": {
         "title": "Real-time Streaming",
-        "description": "Text deltas and partial JSON objects as async iterators, typed chunks for tool calls and progress on the full runtime, and opt-in guardrails that check text as it streams",
+        "description": "Text deltas and partial JSON as async iterators, typed chunks for tool calls and progress, and opt-in streaming guardrails",
         "features": [
           "Async-iterator streams",
           "In-flight guardrails",

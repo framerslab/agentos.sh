@@ -1,11 +1,4 @@
-/**
- * ForgeDemoSection. Runtime agent spawning, positioned directly under the
- * hero. Server component, zero client JS: a condensed copy of
- * examples/emergent-hierarchical-spawning.mjs from the agentos repository,
- * with links to the full file and to one captured run of an adapted script
- * (/demo/emergent-spawning.html).
- */
-
+// Condensed from examples/emergent-hierarchical-spawning.mjs in framerslab/agentos.
 const EXAMPLE_CODE = `import { agency } from '@framers/agentos';
 
 const research = agency({
@@ -38,6 +31,13 @@ const result = await research.generate(
 );
 console.log(result.text);`
 
+/**
+ * ForgeDemoSection. Runtime agent spawning, positioned directly under the
+ * hero. Server component, zero client JS: a condensed copy of
+ * examples/emergent-hierarchical-spawning.mjs from the agentos repository,
+ * with links to the full file and to one captured run of an adapted script
+ * (/demo/emergent-spawning.html).
+ */
 export function ForgeDemoSection() {
   return (
     <section
