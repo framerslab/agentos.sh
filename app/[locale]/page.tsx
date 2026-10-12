@@ -67,8 +67,8 @@ const RuntimeIntelligenceSectionLazy = dynamic(
   }
 )
 
-const WhitepaperCTALazy = dynamic(
-  () => import('../../components/sections/whitepaper-cta').then(m => m.WhitepaperCTA),
+const MethodologyCTALazy = dynamic(
+  () => import('../../components/sections/methodology-cta').then(m => m.MethodologyCTA),
   {
     ssr: false,
     loading: () => <SectionSkeleton minHeight={400} contentHeightClass="h-48" />,
@@ -150,14 +150,14 @@ export default function LandingPageRedesigned() {
           </div>
         </div>
 
-        {/* Whitepaper coming-soon CTA — full architecture + benchmark methodology.
+        {/* Benchmark methodology CTA: the agentos-bench leaderboard and the transparency audit.
             Mechanism deep-dives (multi-agent orchestration, emergent capabilities,
             cognitive memory, enterprise infrastructure, features grid, workbench)
             live on /features. Generalized Mind Instances, product showcase, ecosystem,
             and social proof live on /about. */}
         <div className="lazy-section">
           <LazyVisible fallback={<SectionSkeleton minHeight={400} contentHeightClass="h-48" />}>
-            <WhitepaperCTALazy />
+            <MethodologyCTALazy />
           </LazyVisible>
         </div>
 

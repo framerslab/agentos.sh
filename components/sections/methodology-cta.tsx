@@ -4,26 +4,23 @@ import { motion } from 'framer-motion';
 import { FileText, ArrowRight } from 'lucide-react';
 
 /**
- * WhitepaperCTA renders a "coming soon" callout banner for the
- * AgentOS technical whitepaper. The whitepaper covers the full
- * architecture (cognitive memory pipeline, classifier-driven
- * dispatch, runtime tool forging, HEXACO personality model),
- * benchmark methodology, and reproducibility for research-oriented
- * readers who want a citable PDF rather than scrolling docs.
+ * MethodologyCTA points research-minded readers at how the memory
+ * benchmarks were run: the agentos-bench leaderboard, which lists the
+ * runs with their reader model, memory configuration, confidence
+ * interval, latency and cost, and the transparency audit post.
  *
  * Visual identity matches the OG card / BlogPostHero family: deep
  * navy gradient background, hex-grid texture, cyan→purple corner
  * brackets and gradient bar accents.
  *
- * Reused on:
+ * Used on:
  *   - agentos.sh landing page
  *   - agentos.sh docs page
- *   - github.com/framerslab/agentos README (mirrored markdown version)
  */
-export function WhitepaperCTA() {
+export function MethodologyCTA() {
   return (
     <section
-      aria-label="Whitepaper coming soon"
+      aria-label="Benchmark methodology"
       className="relative w-full py-20"
     >
       <div className="mx-auto max-w-5xl px-6">
@@ -64,11 +61,11 @@ export function WhitepaperCTA() {
           ))}
 
           <div className="relative">
-            {/* Coming-soon pill */}
+            {/* Label pill */}
             <div className="mb-5 flex justify-center">
               <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-400/[0.08] px-4 py-1.5 text-[11px] font-bold tracking-[0.2em] text-cyan-300">
                 <FileText className="h-3.5 w-3.5" aria-hidden />
-                WHITEPAPER · COMING SOON
+                BENCHMARK METHODOLOGY
               </span>
             </div>
 
@@ -81,35 +78,33 @@ export function WhitepaperCTA() {
                     'linear-gradient(135deg, hsl(180, 95%, 60%) 0%, hsl(270, 85%, 65%) 100%)',
                 }}
               >
-                The AgentOS Technical Whitepaper
+                How the memory numbers were measured
               </span>
             </h2>
 
             {/* Dek */}
             <p className="mx-auto mb-8 max-w-2xl text-center text-base sm:text-lg text-white/75 leading-relaxed">
-              The full architecture and methodology, written for engineers
-              and researchers who want a citable PDF instead of scrolling
-              docs. Cognitive memory pipeline, classifier-driven dispatch,
-              HEXACO personality modulation, runtime tool forging, full
-              LongMemEval-S/M and LOCOMO benchmark methodology with
-              bootstrap CI math, judge-FPR probes, per-stage retention
-              metrics, and reproducibility recipes.
+              agentos-bench is the Apache-2.0 harness behind the memory
+              benchmarks on this site. Its leaderboard lists the runs behind
+              those numbers with the reader model, memory configuration, 95%
+              confidence interval, latency and cost per correct answer for
+              each. Runs that made a score worse stay on the list.
             </p>
 
-            {/* What it covers — 3-column grid */}
+            {/* What the leaderboard covers: 3-column grid */}
             <div className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
               {[
                 {
-                  title: 'Architecture',
-                  body: 'Generalized Mind Instances, IngestRouter / MemoryRouter / ReadRouter, 8 cognitive mechanisms with primary-source citations',
+                  title: 'Results',
+                  body: '85.6% on LongMemEval-S and 70.2% on LongMemEval-M with a per-category reader router; 84.2% on S with gpt-4o answering every question',
                 },
                 {
-                  title: 'Benchmarks',
-                  body: 'LongMemEval-S 85.6%, LongMemEval-M 70.2%, vendor landscape, bootstrap CI methodology, judge FPR probes, full transparency stack',
+                  title: 'Judge checks',
+                  body: 'The gpt-4o judge accepted 1% of deliberately wrong answers on LongMemEval-S, 2% on M and 0% on LOCOMO',
                 },
                 {
                   title: 'Reproducibility',
-                  body: 'Reproduction from one CLI, bootstrap CIs seeded with --seed, Apache-2.0 bench at github.com/framerslab/agentos-bench',
+                  body: 'One CLI reruns the benchmarks, --seed fixes the bootstrap resampling behind each interval, and the bench is Apache-2.0 at github.com/framerslab/agentos-bench',
                 },
               ].map((card) => (
                 <div
@@ -129,19 +124,19 @@ export function WhitepaperCTA() {
             {/* CTAs */}
             <div className="flex flex-wrap justify-center gap-3">
               <a
-                href="https://wilds.ai/discord"
+                href="https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-all hover:bg-white/90"
               >
-                Join Discord for the announcement
+                Read the leaderboard
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </a>
               <a
-                href="https://github.com/framerslab/agentos-bench/blob/master/results/LEADERBOARD.md"
+                href="https://agentos.sh/blog/memory-benchmark-transparency-audit/"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/40 hover:bg-white/5"
               >
-                Read the benchmarks while you wait
+                Read the transparency audit
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </a>
             </div>
