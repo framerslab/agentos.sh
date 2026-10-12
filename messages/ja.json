@@ -137,10 +137,6 @@
       "bullet2": "タスクの並列実行"
     }
   },
-  "caseStudies": {
-    "comingSoon": "ケーススタディ近日公開",
-    "description": "実世界のAgentOS実装とプロダクションデプロイ"
-  },
   "footer": {
     "backedBy": "Frame は <deepgramLink>Deepgram Startup Program</deepgramLink> および <nvidiaLink>NVIDIA Inception Program</nvidiaLink> のメンバーです",
     "tagline": "Frame.devによる適応型AIエージェントのためのTypeScriptランタイム",
@@ -890,7 +886,6 @@
     "badge": "ライブデモ",
     "title": "AgentOSの動作を確認",
     "subtitle": "エージェント作成、マルチエージェント連携、RAGメモリなどの実際のワークフローをご覧ください。",
-    "comingSoon": "デモ動画は近日公開",
     "watchButton": "デモを見る",
     "duration": "再生時間",
     "videos": {

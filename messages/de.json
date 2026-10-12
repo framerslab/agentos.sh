@@ -137,10 +137,6 @@
       "bullet2": "Parallele Aufgabenausführung"
     }
   },
-  "caseStudies": {
-    "comingSoon": "Fallstudien Demnächst",
-    "description": "Reale AgentOS-Implementierungen und Produktionsbereitstellungen"
-  },
   "footer": {
     "backedBy": "Frame ist Mitglied des <deepgramLink>Deepgram Startup Program</deepgramLink> und des <nvidiaLink>NVIDIA Inception Program</nvidiaLink>",
     "tagline": "TypeScript-Laufzeit für adaptive KI-Agenten von Frame.dev",
@@ -1002,7 +998,6 @@
     "badge": "Live-Demos",
     "title": "AgentOS in Aktion",
     "subtitle": "Echte Workflows, die Agentenerstellung, Multi-Agenten-Zusammenarbeit, RAG-Speicher und mehr demonstrieren.",
-    "comingSoon": "Demo-Video demnächst verfügbar",
     "watchButton": "Demo ansehen",
     "duration": "Dauer",
     "videos": {

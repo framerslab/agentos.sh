@@ -137,10 +137,6 @@
       "bullet2": "병렬 작업 실행"
     }
   },
-  "caseStudies": {
-    "comingSoon": "사례 연구 곧 출시",
-    "description": "실제 AgentOS 구현 및 프로덕션 배포"
-  },
   "footer": {
     "backedBy": "Frame은 <deepgramLink>Deepgram Startup Program</deepgramLink> 및 <nvidiaLink>NVIDIA Inception Program</nvidiaLink>의 회원입니다",
     "tagline": "Frame.dev의 적응형 AI 에이전트를 위한 TypeScript 런타임",
@@ -1002,7 +998,6 @@
     "badge": "라이브 데모",
     "title": "AgentOS를 직접 확인하세요",
     "subtitle": "에이전트 생성, 다중 에이전트 협업, RAG 메모리 등을 보여주는 실제 워크플로를 확인하세요.",
-    "comingSoon": "데모 영상 곧 공개",
     "watchButton": "데모 보기",
     "duration": "재생 시간",
     "videos": {

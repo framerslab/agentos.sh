@@ -218,10 +218,6 @@
     "wipLabel": "WIP",
     "currentlyDevelopment": "目前正在开发中"
   },
-  "caseStudies": {
-    "comingSoon": "案例研究即将推出",
-    "description": "真实世界的AgentOS实施和生产部署"
-  },
   "footer": {
     "backedBy": "Frame 是 <deepgramLink>Deepgram Startup Program</deepgramLink> 和 <nvidiaLink>NVIDIA Inception Program</nvidiaLink> 的成员",
     "tagline": "Frame.dev开发的自适应AI代理TypeScript运行时",
@@ -850,7 +846,6 @@
     "badge": "在线演示",
     "title": "体验 AgentOS 实际效果",
     "subtitle": "观看代理创建、多代理协作、RAG 记忆等真实工作流演示。",
-    "comingSoon": "演示视频即将推出",
     "watchButton": "观看演示",
     "duration": "时长",
     "videos": {

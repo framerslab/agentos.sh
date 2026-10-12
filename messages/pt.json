@@ -137,10 +137,6 @@
       "bullet2": "Execução paralela de tarefas"
     }
   },
-  "caseStudies": {
-    "comingSoon": "Estudos de caso em breve",
-    "description": "Implementações reais e implantações em produção com AgentOS"
-  },
   "footer": {
     "backedBy": "A Frame é membro do <deepgramLink>Deepgram Startup Program</deepgramLink> e do <nvidiaLink>NVIDIA Inception Program</nvidiaLink>",
     "tagline": "Runtime TypeScript para agentes IA adaptativos por Frame.dev",
@@ -890,7 +886,6 @@
     "badge": "Demos ao Vivo",
     "title": "Veja o AgentOS em Ação",
     "subtitle": "Fluxos de trabalho reais demonstrando criação de agentes, colaboração multiagente, memória RAG e mais.",
-    "comingSoon": "Vídeo de demonstração em breve",
     "watchButton": "Ver Demo",
     "duration": "Duração",
     "videos": {
