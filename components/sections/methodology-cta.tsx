@@ -85,10 +85,11 @@ export function MethodologyCTA() {
             {/* Dek */}
             <p className="mx-auto mb-8 max-w-2xl text-center text-base sm:text-lg text-white/75 leading-relaxed">
               agentos-bench is the Apache-2.0 harness behind the memory
-              benchmarks on this site. Its leaderboard lists the runs behind
-              those numbers with the reader model, memory configuration, 95%
-              confidence interval, latency and cost per correct answer for
-              each. Runs that made a score worse stay on the list.
+              benchmarks on this site. Its leaderboard lists the 85.6% and
+              70.2% runs with the reader model, memory configuration, 95%
+              confidence interval, latency and cost per correct answer, and
+              the footnote to the 85.6% row gives the 84.2% gpt-4o-only run.
+              Runs that made a score worse stay on the list.
             </p>
 
             {/* What the leaderboard covers: 3-column grid */}
