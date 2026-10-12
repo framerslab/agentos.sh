@@ -179,7 +179,7 @@ const GUIDE_METADATA: Record<string, { title: string; description: string; categ
   },
   'SAFETY_PRIMITIVES': {
     title: 'Safety Primitives',
-    description: 'Five-tier prompt injection defense, action deduplication, and security tier presets.',
+    description: 'Circuit breaker, provider health, action deduplication, stuck detection, cost guard, spend meter and tool execution guard.',
     category: 'Operations'
   },
   'SKILLS': {

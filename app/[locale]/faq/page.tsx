@@ -14,12 +14,12 @@ import { DiscordCTA } from '@/components/sections/discord-cta';
 const CITATION_URLS: Record<string, string> = {
   '(Ebbinghaus, 1885)': 'https://psychclassics.yorku.ca/Ebbinghaus/index.htm',
   '(Baddeley, 2000)': 'https://doi.org/10.1016/S1364-6613(00)01538-2',
-  '(Ashton & Lee, 2004)': 'https://doi.org/10.1207/s15327957pspr0802_1',
+  '(Ashton & Lee, 2007)': 'https://doi.org/10.1177/1088868306294907',
   '(Blondel et al., 2008)': 'https://doi.org/10.1088/1742-5468/2008/10/P10008',
   '(Malkov & Yashunin, 2018)': 'https://doi.org/10.1109/TPAMI.2018.2889473',
   '(Nader et al., 2000)': 'https://doi.org/10.1038/35021052',
-  '(Anderson et al., 1994)': 'https://doi.org/10.1037/0096-3445.123.2.178',
-  '(Berntsen, 2010)': 'https://doi.org/10.1177/1745691610370007',
+  '(Anderson et al., 1994)': 'https://doi.org/10.1037/0278-7393.20.5.1063',
+  '(Berntsen, 2010)': 'https://doi.org/10.1177/0963721410370301',
 };
 
 /**
@@ -107,23 +107,23 @@ function FAQJsonLd({ locale: _locale }: { locale: string }) {
   const faqs = [
     {
       q: 'What is AgentOS?',
-      a: 'AgentOS is an open-source TypeScript runtime for building production AI agents with multi-agent orchestration, cognitive memory, multimodal RAG, built-in safety guardrails, voice pipelines, 37 channel adapters, and 11 LLM providers.',
+      a: 'AgentOS is an open-source TypeScript runtime for building production AI agents with multi-agent orchestration, cognitive memory, multimodal RAG, opt-in safety guardrails, voice pipelines, 37 channel adapters, and 13 LLM providers.',
     },
     {
       q: 'Is AgentOS free and open source?',
-      a: 'Yes. The core runtime is Apache 2.0 licensed. Agent presets, extensions, and guardrails are MIT licensed.',
+      a: 'Yes. The runtime, the curated extensions, the guardrail packs and the curated skills are all licensed under Apache 2.0.',
     },
     {
       q: 'What LLM providers are supported?',
-      a: 'AgentOS supports 11 LLM providers including OpenAI, Anthropic, Google Gemini, Mistral, Cohere, Ollama, OpenRouter, and more.',
+      a: 'AgentOS supports 13 LLM providers: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI, OpenRouter, Requesty, LiteLLM, Ollama, Claude Code CLI and Gemini CLI.',
     },
     {
       q: 'How does cognitive memory work?',
-      a: 'AgentOS implements 8 neuroscience-backed memory mechanisms with Ebbinghaus forgetting curves and HEXACO personality modulation.',
+      a: 'AgentOS implements 8 memory mechanisms from cognitive science on top of Ebbinghaus forgetting curves, and HEXACO personality traits tune seven of them.',
     },
     {
       q: 'How do I install AgentOS?',
-      a: 'Install via npm: npm install @framers/agentos. Requires Node.js 18 or higher.',
+      a: 'Install via npm: npm install @framers/agentos. Requires Node.js 22 or higher.',
     },
     {
       q: 'Does AgentOS work offline?',
@@ -131,7 +131,7 @@ function FAQJsonLd({ locale: _locale }: { locale: string }) {
     },
     {
       q: 'Is AgentOS production-ready?',
-      a: 'Yes. AgentOS blocks prompt injection, redacts personal data, moderates content in real time, and includes tool call approvals, budget limits, and circuit breakers.',
+      a: 'Yes. AgentOS ships opt-in guardrail packs that redact personal data, moderate content and check answers against sources, plus approval gates for tool calls, spend budgets and provider circuit breakers.',
     },
     {
       q: 'Is there enterprise support?',
@@ -139,11 +139,11 @@ function FAQJsonLd({ locale: _locale }: { locale: string }) {
     },
     {
       q: 'What is adaptive intelligence?',
-      a: 'Adaptive intelligence in AgentOS means agents continuously improve their behavior without retraining — via meta-reflective prompt adaptation, self-evaluating response quality, HEXACO personality-modulated cognition, autonomous memory consolidation, and tiered query routing.',
+      a: 'Adaptive intelligence in AgentOS means agents adjust their behavior without retraining, through per-turn prompt assembly, self-evaluation, HEXACO personality-modulated memory, memory consolidation and tiered query routing.',
     },
     {
       q: 'What are emergent behaviors?',
-      a: 'Emergent behaviors are capabilities agents develop at runtime — including runtime tool forging, self-improving personality traits, dynamic skill management, composable workflow creation, and tiered tool promotion for cross-agent reuse.',
+      a: 'Emergent behaviors are capabilities agents develop at runtime: runtime tool forging, self-adjusting personality traits, dynamic skill management, composable workflow creation, and tiered tool promotion from session to agent.',
     },
     {
       q: 'Can I use an LLM as a judge instead of a human?',
@@ -406,10 +406,9 @@ const myAgent = agent({
     openness: 0.8,
     conscientiousness: 0.9,
   },
-  memory: { enabled: true },
 })
 
-const reply = await myAgent.send('Hello!')
+const reply = await myAgent.generate('Hello!')
 console.log(reply.text)`}
             </pre>
           </FAQItem>

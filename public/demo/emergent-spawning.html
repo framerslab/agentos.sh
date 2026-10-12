@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1600">
-  <title>AgentOS — Real output from real scripts</title>
+  <title>Spawning an agent at runtime | AgentOS demo</title>
   <style>
     :root {
       --bg: #0a0d14;
@@ -218,22 +218,20 @@
       </div>
       <div class="stats">
         <div class="pill win"><strong>85.6%</strong> LongMemEval-S</div>
-        <div class="pill">0.4 below <strong>Emergence.ai</strong> (closed SaaS)</div>
-        <div class="pill">+1.4 above <strong>Mastra</strong> (84.23%)</div>
+        <div class="pill">reader router: gpt-4o + gpt-5-mini</div>
+        <div class="pill"><strong>84.2%</strong> with gpt-4o alone</div>
       </div>
     </header>
 
     <div class="title-block">
-      <h1>Real output from real scripts</h1>
+      <h1>A hierarchical agency spawns a specialist</h1>
       <p class="lede">
-        Three examples, captured from <code>node examples/&hellip;.mjs</code> against the OpenAI API. The full source is committed at <a href="https://github.com/framerslab/agentos/tree/master/examples">framerslab/agentos/examples</a>. Pick one.
+        The script builds a hierarchical agency like <code>examples/emergent-hierarchical-spawning.mjs</code>, with one specialist allowed, and gives it the sandbox-security brief from <code>examples/single-agent-briefing.mjs</code>. The output is from one run against the OpenAI API. Both examples are in <a href="https://github.com/framerslab/agentos/tree/master/examples">framerslab/agentos/examples</a>.
       </p>
     </div>
 
     <div class="tabs">
       <button class="tab active"><span class="num">01</span> Spawn an agent at runtime</button>
-      <button class="tab"><span class="num">02</span> Stream tokens, gate the final</button>
-      <button class="tab"><span class="num">03</span> Verify every claim against sources</button>
     </div>
 
     <div class="panels">
@@ -241,9 +239,9 @@
         <div class="panel-header">
           <div style="display:flex;align-items:center;gap:10px;">
             <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-            <span class="filename">examples/emergent-hierarchical-spawning.mjs</span>
+            <span class="filename">adapted from examples/emergent-hierarchical-spawning.mjs</span>
           </div>
-          <span class="badge lang">TypeScript</span>
+          <span class="badge lang">JavaScript</span>
         </div>
         <pre class="code"><span class="kw">import</span> { agency } <span class="kw">from</span> <span class="str">'@framers/agentos'</span>;
 
@@ -256,24 +254,24 @@
     <span class="str">'capability your roster does not cover, call '</span> +
     <span class="str">'spawn_specialist to mint one.'</span>,
   <span class="prop">agents</span>: {
-    <span class="prop">researcher</span>: { <span class="prop">instructions</span>: <span class="str">'Find sources.'</span> },
+    <span class="prop">researcher</span>: { <span class="prop">instructions</span>: <span class="str">'Find authoritative sources.'</span> },
     <span class="prop">writer</span>:     { <span class="prop">instructions</span>: <span class="str">'Produce concise prose.'</span> },
   },
   <span class="prop">emergent</span>: {
     <span class="prop">enabled</span>: <span class="bool">true</span>,
     <span class="prop">judge</span>:   <span class="bool">true</span>,
-    <span class="prop">planner</span>: { <span class="prop">maxSpecialists</span>: <span class="num">1</span> },
+    <span class="prop">planner</span>: { <span class="prop">maxSpecialists</span>: <span class="num">1</span>, <span class="prop">requireJustification</span>: <span class="bool">true</span>, <span class="prop">maxJudgeCalls</span>: <span class="num">3</span> },
   },
   <span class="prop">on</span>: {
     <span class="prop">emergentForge</span>: (<span class="prop">e</span>) =&gt; <span class="fn">console</span>.<span class="fn">log</span>(
-      <span class="str">`[FORGE] spawned "${e.agentName}"`</span>
+      <span class="str">`[FORGE] spawned "${e.agentName}" approved=${e.approved}`</span>
     ),
   },
 });
 
 <span class="kw">const</span> result = <span class="kw">await</span> team.<span class="fn">generate</span>(
   <span class="str">'Write a 2-paragraph briefing on agentic-AI '</span> +
-  <span class="str">'sandbox security risks. Include a security '</span> +
+  <span class="str">'sandbox security risks. Include a security-'</span> +
   <span class="str">'audit perspective on node:vm vs container '</span> +
   <span class="str">'isolation. The team has no security auditor; '</span> +
   <span class="str">'spawn one if needed.'</span>,
@@ -286,28 +284,27 @@
         <div class="panel-header">
           <div style="display:flex;align-items:center;gap:10px;">
             <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-            <span class="filename">$ node examples/emergent-hierarchical-spawning.mjs</span>
+            <span class="filename">output of one run (OpenAI API)</span>
           </div>
-          <span class="badge live">● Live run</span>
+          <span class="badge live">● Captured run</span>
         </div>
         <div class="output">
           <div class="forge-card">
             <div class="forge-line">
-              <span class="forge-tag">[FORGE]</span> spawned <span style="color:var(--text)">"security_auditor"</span>
+              <span class="forge-tag">[FORGE]</span> spawned <span style="color:var(--text)">"security_auditor"</span> approved=<span class="yes">true</span>
             </div>
-            <div class="forge-meta">approved=<span class="yes">true</span></div>
-            <div class="forge-comment">// EmergentAgentJudge passed; new agent joins the live roster on next turn</div>
+            <div class="forge-comment">// emergentForge fires after EmergentAgentJudge approves the spec; the manager can call delegate_to_security_auditor from its next turn</div>
           </div>
 
           <div class="answer-label">Final answer (gpt-4o)</div>
           <div class="answer-box">Agentic AI systems operating in sandbox environments present unique security challenges, particularly when considering the isolation methods used to contain these systems. Node:vm (Virtual Machines) provide robust isolation as each VM operates with its own OS and resources, offering strong separation from other environments on the same host. This level of isolation helps to contain the potential impact of any security breach within the AI agent itself. However, VMs can be resource-intensive and potentially slower, as they require more overhead to emulate physical hardware, which might influence performance for high-demand AI tasks.
 
-Conversely, container-based isolation, such as Docker, offers a more lightweight and flexible approach as containers share the host kernel while isolating the application at the process level. This can be advantageous for deploying numerous, smaller agentic AI instances. However, from a security-audit perspective, containers can be more vulnerable to kernel-level attacks since they share the same underlying OS. The shared kernel can pose risks if one AI agent exploits a vulnerability to affect others.</div>
+Conversely, container-based isolation, such as Docker, offers a more lightweight and flexible approach as containers share the host kernel while isolating the application at the process level. This can be advantageous for deploying numerous, smaller agentic AI instances. However, from a security-audit perspective, containers can be more vulnerable to kernel-level attacks since they share the same underlying OS. The shared kernel can pose risks if one AI agent exploits a vulnerability to affect others. Therefore, when managing agentic AI in sandbox environments, it is crucial to balance the isolation strength of VMs with the efficiency and scalability of containers, while continuously monitoring and patching both systems to mitigate emerging security risks.</div>
 
           <div class="calls-label">Agent calls (2)</div>
           <div class="calls">
-            <div><span class="arrow">→</span> <span class="agent">researcher:</span> "Research security risks in agentic AI sandbox environments..."</div>
-            <div><span class="arrow">→</span> <span class="agent">writer:</span> "Produce a two-paragraph CTO-audience briefing from the research..."</div>
+            <div><span class="arrow">→</span> <span class="agent">researcher:</span> "Research security risks associated with agentic AI in sandbox environments..."</div>
+            <div><span class="arrow">→</span> <span class="agent">writer:</span> "Based on the research summary, produce a two-paragraph briefing for a CTO..."</div>
           </div>
 
           <div class="usage">
@@ -318,14 +315,14 @@ Conversely, container-based isolation, such as Docker, offers a more lightweight
     </div>
 
     <p class="caption">
-      The team starts with <strong>researcher</strong> + <strong>writer</strong>. The prompt asks for a security audit, which neither covers. The manager calls <code>spawn_specialist</code>, EmergentAgentJudge approves the spec, and <strong>security_auditor</strong> joins the live roster. The final answer above is what GPT-4o produced through that team. Captured from a real run, no edits.
+      The team starts with <strong>researcher</strong> + <strong>writer</strong>. The prompt asks for a security audit, which neither covers. The manager calls <code>spawn_specialist</code>, EmergentAgentJudge approves the spec, and <strong>security_auditor</strong> joins the roster, which gives the manager a <code>delegate_to_security_auditor</code> tool. The agent-call list shows that in this run the manager delegated to researcher and writer only. The final answer above is what GPT-4o returned in that run. Its first paragraph misdescribes <code>node:vm</code>, which runs code in a V8 context inside the Node.js process; Node's documentation says it is not a security mechanism.
     </p>
 
     <footer class="footer">
       <a class="cta primary" href="https://github.com/framerslab/agentos">Source on GitHub</a>
       <a class="cta" href="https://www.npmjs.com/package/@framers/agentos">npm install @framers/agentos</a>
       <a class="cta ghost" href="https://agentos.sh/blog/agentos-memory-sota-longmemeval">85.6% on LongMemEval-S →</a>
-      <a class="cta ghost" href="https://github.com/framerslab/agentos/tree/master/examples">Browse all 14 examples →</a>
+      <a class="cta ghost" href="https://github.com/framerslab/agentos/tree/master/examples">Browse the 21 example scripts →</a>
     </footer>
   </div>
 </body>

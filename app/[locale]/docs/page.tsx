@@ -16,14 +16,14 @@ export async function generateMetadata({ params: { locale } }: Props) {
   const url = canonical(locale, path);
   return {
     title: 'Documentation | AgentOS',
-    description: 'Complete API reference, guides, and examples for building with AgentOS.',
+    description: 'API reference, guides and examples for building with AgentOS.',
     alternates: {
       canonical: url,
       languages: hreflangAlternates(path),
     },
     openGraph: {
       title: 'Documentation | AgentOS',
-      description: 'Complete API reference, guides, and examples for building with AgentOS.',
+      description: 'API reference, guides and examples for building with AgentOS.',
       url,
       siteName: 'AgentOS',
       type: 'website',
@@ -45,7 +45,7 @@ export default function DocsPage({ params }: Props) {
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold gradient-text mb-4">AgentOS Documentation</h1>
           <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            Complete API reference, {guideCount}+ guides, and examples for building with AgentOS
+            API reference, guides and examples for building with AgentOS
           </p>
         </div>
 
@@ -61,13 +61,15 @@ export default function DocsPage({ params }: Props) {
                   <h2 className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-primary)] transition-colors">
                     Guides & Tutorials
                   </h2>
-                  <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[var(--color-accent-primary)] text-white">
-                    {guideCount} guides
-                  </span>
+                  {guideCount > 0 && (
+                    <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[var(--color-accent-primary)] text-white">
+                      {guideCount} guides
+                    </span>
+                  )}
                 </div>
                 <p className="text-[var(--color-text-secondary)] text-sm sm:text-base">
-                  Comprehensive guides covering architecture, planning engine, RAG memory, human-in-the-loop patterns,
-                  multi-agent communication, and more.
+                  Guides to the architecture, the planning engine, RAG and memory, human-in-the-loop approvals,
+                  multi-agent communication and more.
                 </p>
               </div>
               <ChevronRight className="w-6 h-6 text-[var(--color-accent-primary)] group-hover:translate-x-1 transition-transform shrink-0 hidden sm:block" />
@@ -83,8 +85,8 @@ export default function DocsPage({ params }: Props) {
               <h2 className="text-xl sm:text-2xl font-semibold text-[var(--color-text-primary)]">API Reference</h2>
             </div>
             <p className="text-[var(--color-text-secondary)] mb-6 text-sm sm:text-base">
-              Split TypeDoc documentation for @framers/agentos: a stable public API surface for application
-              developers and a deeper module-level reference for internal subsystems.
+              TypeDoc reference for the classes, functions and interfaces that @framers/agentos exports,
+              generated from the TypeScript source.
             </p>
             <div className="flex flex-col gap-3">
               <div className="flex flex-col sm:flex-row gap-3">
@@ -95,21 +97,9 @@ export default function DocsPage({ params }: Props) {
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[var(--color-accent-primary)] to-[var(--color-accent-secondary)] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:shadow-xl hover:brightness-110"
                 >
                   <BookOpen className="h-4 w-4" aria-hidden="true" />
-                  Public API
-                </a>
-                <a
-                  href="https://docs.agentos.sh/api/modules/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[var(--color-border-primary)] bg-[var(--color-background-card)] px-6 py-3 text-sm font-semibold text-[var(--color-text-primary)] shadow-sm transition hover:border-[var(--color-accent-primary)] hover:text-[var(--color-accent-primary)]"
-                >
-                  <Code2 className="h-4 w-4" aria-hidden="true" />
-                  Module API
+                  API Reference
                 </a>
               </div>
-              <p className="text-xs text-[var(--color-text-muted)]">
-                Public API stays concise; Module API exposes the deeper class and subsystem surface
-              </p>
             </div>
           </article>
 
@@ -121,28 +111,28 @@ export default function DocsPage({ params }: Props) {
             </div>
             <ul className="space-y-2 sm:space-y-3 mb-6">
               <li>
-                <Link href={`/${params.locale}/guides/architecture`} className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] transition-colors flex items-center gap-2 text-sm sm:text-base">
+                <a href="https://docs.agentos.sh/architecture/system-architecture" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] transition-colors flex items-center gap-2 text-sm sm:text-base">
                   <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-primary)]" />
                   Architecture Overview
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href={`/${params.locale}/guides/planning_engine`} className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] transition-colors flex items-center gap-2 text-sm sm:text-base">
+                <a href="https://docs.agentos.sh/features/planning-engine" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] transition-colors flex items-center gap-2 text-sm sm:text-base">
                   <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-secondary)]" />
                   Planning Engine
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href={`/${params.locale}/guides/human_in_the_loop`} className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] transition-colors flex items-center gap-2 text-sm sm:text-base">
+                <a href="https://docs.agentos.sh/features/human-in-the-loop" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] transition-colors flex items-center gap-2 text-sm sm:text-base">
                   <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-tertiary)]" />
                   Human-in-the-Loop
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href={`/${params.locale}/guides/rag_memory_configuration`} className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] transition-colors flex items-center gap-2 text-sm sm:text-base">
+                <a href="https://docs.agentos.sh/features/rag-memory" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent-primary)] transition-colors flex items-center gap-2 text-sm sm:text-base">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  RAG & Memory Config
-                </Link>
+                  RAG & Memory
+                </a>
               </li>
             </ul>
             <Link
@@ -199,28 +189,27 @@ const result = await generateText({
 })
 console.log(result.text)`}</code>
               </pre>
-              <Link
-                href={`/${params.locale}/guides/architecture`}
+              <a
+                href="https://docs.agentos.sh/getting-started"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-accent-primary)] hover:text-[var(--color-accent-secondary)] transition-colors"
               >
-                Read the Architecture Guide →
-              </Link>
+                Read the Getting Started guide →
+              </a>
             </div>
           </article>
         </div>
 
-        {/* Note about local development */}
+        {/* Where the reference comes from */}
         <div className="mt-12 holographic-card p-6">
           <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--color-text-muted)] mb-3">
-            Development Note
+            How the reference is built
           </h3>
-          <p className="text-sm text-[var(--color-text-secondary)] mb-4">
-            Documentation is auto-generated from source code. To regenerate locally:
+          <p className="text-sm text-[var(--color-text-secondary)]">
+            The API reference is generated from the TypeScript source of framerslab/agentos with TypeDoc and
+            published on docs.agentos.sh, next to the guides.
           </p>
-          <pre className="code-block text-xs">
-            <code>{`pnpm --filter @framers/agentos run docs   # Generate public/module API docs + search index
-pnpm --dir apps/agentos.sh dev:full         # Watch docs and run the site locally`}</code>
-          </pre>
         </div>
 
         {/* Whitepaper coming-soon CTA — research-oriented PDF with full methodology */}

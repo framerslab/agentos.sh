@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — 적응형 지능을 갖춘 자율 AI 에이전트 구축",
-    "description": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 멀티모달 RAG, 인지 메모리, 스트리밍 가드레일, 음성 파이프라인 및 11개 LLM 제공자. 오픈소스 TypeScript 런타임.",
+    "description": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 멀티모달 RAG, 인지 메모리, 스트리밍 가드레일, 음성 파이프라인 및 13개 LLM 제공자. 오픈소스 TypeScript 런타임.",
     "ogTitle": "AgentOS — 적응형 지능을 갖춘 자율 AI 에이전트 구축",
-    "ogDescription": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 멀티모달 RAG, 인지 메모리, 스트리밍 가드레일, 음성 파이프라인 및 11개 LLM 제공자. 오픈소스 TypeScript 런타임.",
+    "ogDescription": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 멀티모달 RAG, 인지 메모리, 스트리밍 가드레일, 음성 파이프라인 및 13개 LLM 제공자. 오픈소스 TypeScript 런타임.",
     "twitterTitle": "AgentOS — 적응형 지능을 갖춘 자율 AI 에이전트 구축",
-    "twitterDescription": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 인지 메모리, 멀티모달 RAG, 스트리밍 가드레일 및 11개 LLM 제공자. 오픈소스 TypeScript 런타임."
+    "twitterDescription": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 인지 메모리, 멀티모달 RAG, 스트리밍 가드레일 및 13개 LLM 제공자. 오픈소스 TypeScript 런타임."
   },
   "nav": {
     "features": "기능",
@@ -16,8 +16,7 @@
     "openapi": "OpenAPI",
     "faq": "자주 묻는 질문",
     "about": "소개",
-    "github": "GitHub",
-    "marketplace": "마켓플레이스"
+    "github": "GitHub"
   },
   "hero": {
     "badge": "오픈소스 · 적응형 · 창발형",
@@ -31,60 +30,8 @@
       "창발형",
       "적응형"
     ],
-    "headlinePairs": [
-      {
-        "top": "적응형 지능",
-        "bottom": "자율 에이전트를 위해"
-      },
-      {
-        "top": "창발형 지능",
-        "bottom": "엔터프라이즈 오케스트레이션용"
-      },
-      {
-        "top": "적응형 지능",
-        "bottom": "안전 필수 워크플로용"
-      },
-      {
-        "top": "창발형 지능",
-        "bottom": "병렬 AI 팀을 위해"
-      }
-    ],
-    "technicalHighlights": [
-      {
-        "title": "스트리밍 우선 런타임",
-        "detail": "페르소나, 가드레일, 채널 전반에 토큰 단위로 전달합니다."
-      },
-      {
-        "title": "결정론적 오케스트레이션",
-        "detail": "감사 가능한 라우팅·승인·예산을 갖춘 병렬 GMI."
-      },
-      {
-        "title": "제로 복사 메모리 패브릭",
-        "detail": "벡터·에피소드·작업 메모리를 하나의 회상 가능한 흐름으로 엮습니다."
-      },
-      {
-        "title": "휴대용 인텔리전스 캡슐",
-        "detail": "완전한 AgentOS 인스턴스를 Markdown/JSON으로 내보내 어느 스택에서도 사용합니다."
-      }
-    ],
-    "visualStats": [
-      {
-        "label": "가동 중인 에이전시",
-        "value": "128"
-      },
-      {
-        "label": "승인 SLA",
-        "value": "3.2분"
-      },
-      {
-        "label": "가드레일 커버리지",
-        "value": "98%"
-      }
-    ],
     "ctaPrimary": "Voice Chat Assistant 사용해보기",
     "ctaSecondary": "GitHub에서 Star",
-    "marketplaceLead": "선별된 에이전트가 필요하신가요?",
-    "marketplaceCta": "마켓플레이스가 곧 출시됩니다",
     "codeLabel": "npm install @framers/agentos",
     "copyToast": "클립보드에 복사했습니다!",
     "copyAria": "명령어 복사",
@@ -141,9 +88,9 @@
     },
     "language": {
       "title": "언어 및 번역",
-      "description": "표면별로 로케일과 톤을 자동 감지합니다. 페르소나는 음성, 채팅 및 문서에서 선택한 번역 공급자와 함께 유창하게 유지됩니다.",
+      "description": "LanguageService는 감지 공급자로 텍스트의 언어를 판별하고 OpenAI 또는 DeepL로 번역합니다. AgentOS 런타임에서는 각 턴의 청크에 사용자 힌트, 감지된 언어 또는 폴백 체인에서 고른 응답 언어가 담깁니다.",
       "pill": "다국어 준비 완료",
-      "bullet1": "페르소나 인식 톤 적응",
+      "bullet1": "힌트, 감지, 폴백 체인으로 정하는 응답 언어",
       "bullet2": "로케일별 폴백 라우팅"
     },
     "storage": {
@@ -190,10 +137,6 @@
       "bullet2": "병렬 작업 실행"
     }
   },
-  "marketplace": {
-    "comingSoon": "에이전트 마켓플레이스 곧 출시",
-    "description": "AgentOS 에이전시를 공유, 구매 및 판매하세요. CI/CD, 인프라, 지급 및 규정 준수를 처리하므로 적응형, 창발형, 영구 지능에 집중할 수 있습니다."
-  },
   "caseStudies": {
     "comingSoon": "사례 연구 곧 출시",
     "description": "실제 AgentOS 구현 및 프로덕션 배포"
@@ -212,7 +155,7 @@
     "legal": "법률",
     "terms": "약관",
     "privacy": "개인정보",
-    "license": "Apache 2.0(핵심) + MIT(에이전트, 확장, 가드레일)",
+    "license": "Apache 2.0(핵심, 확장, 가드레일)",
     "copyright": "© {year} Frame.dev. 모든 권리 보유."
   },
   "cta": {
@@ -223,8 +166,7 @@
     "badge": "AI 혁명에 동참하세요",
     "exploreLabel": "지금 AgentOS를 살펴보세요:",
     "tryVoiceChat": "음성 채팅 사용해보기",
-    "browseCode": "코드 둘러보기",
-    "marketplace": "마켓플레이스"
+    "browseCode": "코드 둘러보기"
   },
   "LanguageSwitcher": {
     "switchLanguage": "언어 전환",
@@ -340,12 +282,12 @@
       },
       "guardrails": {
         "title": "내장 안전 기능",
-        "description": "6개의 옵트인 가드레일 팩: 인젝션·유해성 분류기, PII 마스킹, 출처 대조 검증, 주제 제어, 콘텐츠 정책 리라이터, 생성 코드 스캐너",
+        "description": "6개의 옵트인 가드레일 팩: 유해성·NSFW 분류기, PII 마스킹, 출처 대조 검증, 주제 제어, 콘텐츠 정책 리라이터, 생성 코드 스캐너",
         "features": [
           "4단계 PII 삭제",
           "ONNX BERT 분류기",
           "그라운딩 가드 (NLI)",
-          "OWASP Top 10 스캔"
+          "OWASP 기반 코드 규칙 25개"
         ],
         "capabilities": [
           "PII 마스킹",
@@ -355,9 +297,9 @@
       },
       "voice": {
         "title": "음성 파이프라인",
-        "description": "실시간 스트리밍, VAD, 화자 분할 및 전화 지원을 포함한 12개 STT 및 13개 TTS 제공자",
+        "description": "실시간 스트리밍, VAD, 화자 분할 및 전화 지원을 포함한 11개 STT 및 10개 TTS 제공자",
         "features": [
-          "12 STT + 13 TTS",
+          "11 STT + 10 TTS",
           "VAD + 화자 분할",
           "실시간 스트리밍",
           "Twilio/Telnyx/Plivo"
@@ -395,7 +337,7 @@
           "CLI, 웹훅, Slack 또는 LLM 심판을 통한 승인 게이트",
           "한도를 넘는 호출을 거부하는 지출 예산",
           "심판이 검토하는 도구 포징(node:vm 샌드박스)",
-          "옵트인 프롬프트 인젝션 분류기(ml-classifiers 팩)"
+          "검토된 문구를 차단하거나 LLM 심판에게 판단을 맡기는 옵트인 문구 목록 가드레일"
         ]
       },
       "guardrails": {
@@ -446,11 +388,11 @@
     "legend": {
       "fullyImplemented": {
         "title": "완전히 구현됨",
-        "description": "PII 마스킹, 인젝션·유해성 분류기, 서명된 출처 원장, 인지 메모리, 100개 이상의 엄선된 확장 기능은 오픈 소스이며 지금 바로 사용할 수 있습니다"
+        "description": "PII 마스킹, 유해성·NSFW 분류기, 서명된 출처 원장, 인지 메모리, 100개 이상의 엄선된 확장 기능은 오픈 소스이며 지금 바로 사용할 수 있습니다"
       },
       "inProgress": {
         "title": "감사 추적",
-        "description": "마스킹 이벤트별 구조화된 로그, 출처 체인, 셀프 호스팅 데이터 레지던시. 공식 SOC 2 및 GDPR 인증은 라이브러리 속성이 아니라 배포 조직의 책임입니다."
+        "description": "스토리지 쓰기에 대한 서명된 출처 체인, 단조된 도구 이벤트의 감사 로그, 셀프 호스팅 데이터 레지던시. 공식 SOC 2 및 GDPR 인증은 라이브러리 속성이 아니라 배포 조직의 책임입니다."
       },
       "enterpriseSupport": {
         "title": "엔터프라이즈 지원",
@@ -779,11 +721,11 @@
     "layers": {
       "channels": {
         "name": "채널 및 I/O",
-        "description": "Telegram, Discord, Slack, WhatsApp, Twitter 외 32개. 음성은 STT 12개, TTS 13개 제공자로 처리합니다. 모든 채널 어댑터는 하나의 인터페이스를 구현하며, 플랫폼이 지원하면 입력 중 표시와 메시지 수정도 지원합니다."
+        "description": "Telegram, Discord, Slack, WhatsApp, Twitter 외 32개. 음성은 STT 11개, TTS 10개 제공자로 처리합니다. 모든 채널 어댑터는 하나의 인터페이스를 구현하며, 플랫폼이 지원하면 입력 중 표시와 메시지 수정도 지원합니다."
       },
       "guardrails": {
         "name": "가드레일 및 안전",
-        "description": "스트리밍을 켠 가드레일은 전송되는 텍스트를, 나머지는 최종 응답을 검사합니다. 6개의 옵트인 팩이 PII 마스킹, 유해성·인젝션 분류기, 출처 대조, 주제 제어, 콘텐츠 정책 기반 재작성, 코드 안전성을 다룹니다."
+        "description": "스트리밍을 켠 가드레일은 전송되는 텍스트를, 나머지는 최종 응답을 검사합니다. 6개의 옵트인 팩이 PII 마스킹, 유해성·NSFW 분류기, 출처 대조, 주제 제어, 콘텐츠 정책 기반 재작성, 코드 안전성을 다룹니다."
       },
       "tools": {
         "name": "도구 및 확장",
@@ -799,7 +741,7 @@
       },
       "personality": {
         "name": "성격 (HEXACO)",
-        "description": "정직-겸손, 정서성, 외향성, 친화성, 성실성, 개방성. 특성은 프롬프트에 의사소통 스타일 지시문을 넣고, 기억 부호화와 작업 기억 용량, 8가지 기억 메커니즘 중 7가지를 조정합니다."
+        "description": "정직성-겸손성, 정서성, 외향성, 친화성, 성실성, 개방성. 특성은 프롬프트에 의사소통 스타일 지시문을 넣고, 기억 부호화와 작업 기억 용량, 8가지 기억 메커니즘 중 7가지를 조정합니다."
       },
       "llmCore": {
         "name": "LLM 코어",
@@ -888,15 +830,15 @@
     "general": {
       "whatIsAgentOS": {
         "question": "AgentOS란 무엇인가요?",
-        "answer": "AgentOS는 프로덕션 AI 에이전트를 구축하기 위한 오픈소스 TypeScript 런타임으로, Frame.dev가 개발했습니다. 멀티 에이전트 오케스트레이션, 인지 메모리, 멀티모달 RAG, 내장 안전 가드레일(PII 편집, 프롬프트 인젝션 방어, 콘텐츠 모더레이션), 음성 파이프라인, 37개 채널 어댑터, 11개 LLM 프로바이더 통합을 제공합니다. AgentOS는 또한 AI 네이티브 게이밍 플랫폼인 Wilds.ai 뒤의 AI 시스템도 구동합니다. 셀프 호스팅 가능하며 무료입니다."
+        "answer": "AgentOS는 프로덕션 AI 에이전트를 구축하기 위한 오픈소스 TypeScript 런타임으로, Frame.dev가 개발했습니다. 멀티 에이전트 오케스트레이션, 인지 메모리, 멀티모달 RAG, 선택형 안전 가드레일(PII 편집, 콘텐츠 모더레이션, 그라운딩 검증), 음성 파이프라인, 37개 채널 어댑터, 13개 LLM 프로바이더 통합을 제공합니다. AgentOS는 또한 AI 네이티브 게이밍 플랫폼인 Wilds.ai 뒤의 AI 시스템도 구동합니다. 셀프 호스팅 가능하며 무료입니다."
       },
       "isOpenSource": {
         "question": "AgentOS는 무료이며 오픈소스인가요?",
-        "answer": "네. 코어 런타임은 Apache 2.0 라이선스입니다. 에이전트 프리셋, 확장, 가드레일은 MIT 라이선스입니다. 이 라이선스 조건에 따라 AgentOS를 상업적으로 사용, 수정, 재배포할 수 있습니다."
+        "answer": "네. 런타임, 큐레이션된 확장, 가드레일 팩, 큐레이션된 스킬은 모두 Apache 2.0 라이선스입니다. 이 라이선스에 따라 AgentOS를 상업적으로 사용하고 수정하고 재배포할 수 있습니다."
       },
       "llmProviders": {
         "question": "어떤 LLM 프로바이더가 지원되나요?",
-        "answer": "AgentOS는 OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Ollama, Claude Code CLI, Gemini CLI 등 11개 LLM 프로바이더를 지원합니다. 프로바이더 폴백 체인으로 자동 페일오버가 가능합니다."
+        "answer": "AgentOS는 13개 LLM 프로바이더를 지원합니다: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Requesty, LiteLLM, Ollama, Claude Code CLI, Gemini CLI. 프로바이더 폴백 체인으로 자동 페일오버가 가능합니다."
       },
       "language": {
         "question": "AgentOS는 어떤 프로그래밍 언어로 만들어졌나요?",
@@ -904,11 +846,11 @@
       },
       "comparison": {
         "question": "AgentOS는 LangChain, CrewAI, AutoGen과 어떻게 다른가요?",
-        "answer": "AgentOS는 TypeScript 네이티브이며(Python이 아닙니다), Ebbinghaus 감쇠 곡선과 HEXACO 성격 모델링을 갖춘 인지 메모리를 포함합니다. 기본적인 프롬프트 필터링 대신 5단계 보안 계층을 제공하고, 37개 내장 채널 어댑터(Discord, Telegram, Slack, 이메일 등)를 제공하며, 그래프 기반 에이전트 DAG를 포함한 6가지 오케스트레이션 전략을 지원합니다. 또한 88개의 큐레이션된 스킬과 토큰 사용량을 약 90% 줄이는 능력 발견 엔진을 함께 제공합니다."
+        "answer": "AgentOS는 TypeScript 네이티브이며(Python이 아닙니다), Ebbinghaus 감쇠 곡선과 HEXACO 성격 모델링을 갖춘 인지 메모리를 포함합니다. PII 편집, 콘텐츠 모더레이션, 그라운딩 검증을 위한 선택형 가드레일 팩을 제공하고, 37개 채널 어댑터(Discord, Telegram, Slack, 이메일 등)를 제공하며, 그래프 기반 에이전트 DAG를 포함한 6가지 오케스트레이션 전략을 지원합니다. 또한 88개의 큐레이션된 스킬과 계층별 토큰 예산 안에서 관련 도구와 스킬만 컨텍스트에 넣는 능력 발견 엔진을 함께 제공합니다."
       },
       "whatIsParacosm": {
         "question": "Paracosm이란 무엇인가요?",
-        "answer": "Paracosm (https://paracosm.agentos.sh)은 AgentOS 위에 구축된 구조화된 월드 모델 시뮬레이션 엔진입니다. JSON ScenarioPackage와 HEXACO 리더 프로파일을 결정론적 턴 루프로 컴파일하며, AgentOS 에이전트들이 이벤트를 제안하고, 강화된 node:vm 샌드박스 안에서 런타임에 새로운 TypeScript 도구를 단조해내며, 분기하고 재생할 수 있는 반사실 산출물을 생성합니다. 세 가지 모드가 하나의 스키마를 공유합니다. 턴 루프 문명 시뮬레이션(Mars Genesis가 대표 예시), 배치 트라젝토리 디지털 트윈, 그리고 배치 포인트 몬테카를로 예측. Apache 2.0 라이선스로 오픈소스, npm install paracosm. 라이브 데모: https://paracosm.agentos.sh/sim. 소스: https://github.com/framerslab/paracosm. 긴 런치 포스트(왜 만들었는지, wilds.ai 볼트 이야기, 엔진 참조): https://agentos.sh/blog/paracosm-launch."
+        "answer": "Paracosm (https://paracosm.agentos.sh)은 AgentOS 위에 구축된 구조화된 월드 모델 시뮬레이션 엔진입니다. JSON ScenarioPackage와 HEXACO 리더 프로파일을 시드 기반 결정론적 커널을 중심으로 한 턴 루프로 컴파일하며, AgentOS 에이전트들이 이벤트를 제안하고, 런타임에 새로운 JavaScript 도구를 단조해내며(AgentOS가 node:vm에서 10초 제한으로 실행합니다), 분기하고 재생할 수 있는 반사실 산출물을 생성합니다. 세 가지 모드가 하나의 스키마를 공유합니다. 턴 루프 문명 시뮬레이션(Mars Genesis가 대표 예시), 배치 트라젝토리 디지털 트윈, 그리고 배치 포인트 몬테카를로 예측. Apache 2.0 라이선스로 오픈소스, npm install paracosm. 라이브 데모: https://paracosm.agentos.sh/sim. 소스: https://github.com/framerslab/paracosm. 긴 런치 포스트(왜 만들었는지, wilds.ai 볼트 이야기, 엔진 참조): https://agentos.sh/blog/paracosm-launch."
       },
       "whatIsWildsAi": {
         "question": "Wilds.ai란 무엇인가요?",
@@ -916,41 +858,41 @@
       },
       "whatIsWunderland": {
         "question": "Wunderland란 무엇인가요?",
-        "answer": "Wunderland (https://wunderland.sh)는 활발히 개발 중인 자매 프로젝트로, AgentOS 확장 및 스킬 레지스트리 위에 batteries-included CLI와 데몬을 패키징합니다. 28개 명령 CLI(setup, chat, rag, agency, workflows, evaluate, provenance, knowledge, marketplace 등), 5단계 보안 모델(dangerous / permissive / balanced / strict / paranoid), 8개 에이전트 프리셋, 단계적 HITL 권한 부여, 그리고 AgentOS 문서에 기재된 것과 동일한 인지 메모리 및 그래프 기반 RAG 아키텍처를 함께 제공합니다. 애플리케이션에 임베드할 TypeScript SDK가 필요하면 @framers/agentos를, pnpm add -g wunderland로 설치하고 마법사로 구성할 수 있는 글로벌 CLI를 원한다면 Wunderland를 사용하세요. 소스는 github.com/jddunn/wunderland(0.71.0부터 Apache 2.0). 프리뷰 릴리스이므로 API와 CLI 표면이 아직 변경될 수 있습니다. 시작 가이드: https://docs.agentos.sh/wunderland."
+        "answer": "Wunderland (https://wunderland.sh)는 활발히 개발 중인 자매 프로젝트로, AgentOS 확장 및 스킬 레지스트리 위에 batteries-included CLI와 데몬을 패키징합니다. 60개 명령 CLI(setup, chat, rag, agency, workflows, evaluate, provenance, knowledge, marketplace 등), 5단계 보안 모델(dangerous / permissive / balanced / strict / paranoid), 9개 에이전트 프리셋, 단계적 HITL 권한 부여, 그리고 AgentOS 문서에 기재된 것과 동일한 인지 메모리 및 그래프 기반 RAG 아키텍처를 함께 제공합니다. 애플리케이션에 임베드할 TypeScript SDK가 필요하면 @framers/agentos를, pnpm add -g wunderland로 설치하고 마법사로 구성할 수 있는 글로벌 CLI를 원한다면 Wunderland를 사용하세요. 소스는 github.com/jddunn/wunderland(0.71.0부터 Apache 2.0). 프리뷰 릴리스이므로 API와 CLI 표면이 아직 변경될 수 있습니다. 시작 가이드: https://docs.agentos.sh/wunderland."
       }
     },
     "technical": {
       "whatIsGMI": {
         "question": "GMI란 무엇인가요?",
-        "answer": "GMI는 Generalized Mind Instance의 약자입니다. AgentOS 런타임이 세션마다 생성하는 에이전트로, 해당 세션의 페르소나(HEXACO 특성), 대화 기록, 무드, 추론 트레이스를 보관하고, 검색, 프롬프트 조립, 모델 호출, 도구 호출을 거쳐 각 턴을 실행하며, 세션 간에 유지되는 인지 메모리를 부여받을 수 있습니다. 경량 헬퍼 agent()는 모델을 직접 호출하며 GMI를 생성하지 않습니다. GMI는 전체 런타임(AgentOS.processRequest)이 생성합니다."
+        "answer": "GMI는 Generalized Mind Instance의 약자입니다. AgentOS 런타임이 세션마다 생성하는 에이전트로, 해당 세션의 페르소나(HEXACO 특성), 대화 기록, 무드, 추론 트레이스를 보관하고, 검색, 프롬프트 조립, 모델 호출, 도구 호출을 거쳐 각 턴을 실행하며, 세션 간에 유지되는 인지 메모리를 부여받을 수 있습니다. 경량 헬퍼 agent()는 모델을 직접 호출하며 runtime: 'gmi'를 전달하지 않으면 GMI를 생성하지 않습니다. gmi()와 전체 런타임(AgentOS.processRequest)은 GMI를 생성합니다."
       },
       "hexaco": {
         "question": "HEXACO 성격이란 무엇인가요?",
-        "answer": "HEXACO는 심리학 연구(Ashton & Lee, 2004)에서 비롯된 6요인 성격 모델입니다. 6가지 차원은 정직-겸손, 정서성, 외향성, 친화성, 성실성, 경험에 대한 개방성입니다. AgentOS에서 HEXACO 특성은 에이전트가 어떻게 소통하고, 기억하고, 결정을 내리는지를 조절합니다. 예를 들어, 높은 개방성은 회상 중 메모리 재공고화를 증가시키고, 높은 성실성은 관련 없는 연상에 대한 검색 유도 망각을 강화합니다."
+        "answer": "HEXACO는 심리학 연구(Ashton & Lee, 2007)에서 비롯된 6요인 성격 모델입니다. 6가지 차원은 정직성-겸손성, 정서성, 외향성, 친화성, 성실성, 경험에 대한 개방성입니다. AgentOS에서 HEXACO 특성은 에이전트가 소통하고 기억하는 방식을 형성합니다. agent()는 0.65를 넘거나 0.35 미만인 특성을 행동 지시문으로 시스템 프롬프트에 씁니다. 인지 메모리에서는 정서성이 높을수록 회상할 때 기억이 다시 쓰이는 정도(재공고화)가 커지고, 성실성이 높을수록 경쟁하는 기억에 대한 검색 유도 망각이 강해집니다."
       },
       "cognitiveMemory": {
         "question": "인지 메모리는 어떻게 작동하나요?",
-        "answer": "AgentOS 인지 메모리는 인지과학 연구의 8가지 메커니즘을 구현합니다: 재공고화, 검색 유도 망각, 비자발적 회상, 앎의 느낌, 시간적 요지 추출, 스키마 부호화, 출처 신뢰도 감쇠, 정서 조절. 기억은 Ebbinghaus 망각 곡선(Ebbinghaus, 1885)을 따라 시간이 지나면서 감쇠하며, 간격 반복과 공고화를 통해 중요한 정보를 보존합니다. 작업 메모리는 Baddeley의 다중 구성 요소 모델(Baddeley, 2000)을 따르며, 현재 턴을 위한 휘발성 스크래치패드가 일화, 의미, 관찰 메모리 계층으로 위로 공고화됩니다."
+        "answer": "AgentOS 인지 메모리는 인지과학 연구의 8가지 메커니즘을 구현합니다: 재공고화, 검색 유도 망각, 비자발적 회상, 앎의 느낌, 시간적 요지 추출, 스키마 부호화, 출처 신뢰도 감쇠, 정서 조절. 기억은 Ebbinghaus 망각 곡선(Ebbinghaus, 1885)을 따라 시간이 지나면서 감쇠하며, 검색에 성공할 때마다 기억이 더 안정됩니다(간격 반복과 같은 효과). 작업 메모리는 Baddeley의 다중 구성 요소 모델(Baddeley, 2000)을 따르며 7개 슬롯을 가집니다(개방성과 성실성에 따라 5~9개). 새 기억은 기본적으로 일화 기억으로 저장되고 작업 메모리 슬롯 하나를 차지합니다. 슬롯이 가득 차면 활성도가 가장 낮은 슬롯이 비워지고, 그 기억은 저장된 채로 남습니다. 이후 공고화가 오래되고 자주 검색된 일화 기억을 의미 기억으로 바꿉니다."
       },
       "guardrails": {
         "question": "어떤 가드레일을 사용할 수 있나요?",
-        "answer": "AgentOS는 5단계 보안 계층(dangerous, permissive, balanced, strict, paranoid)과 6가지 가드레일 확장 유형을 제공합니다: PII 편집(이름, 이메일, 전화번호, SSN), 프롬프트 인젝션 감지를 위한 ML 분류기, 코드 안전 분석, 소스 문서 대비 그라운딩 검증, 에이전트를 과제에 유지하기 위한 토픽성 강제, 유해하거나 부적절한 출력에 대한 콘텐츠 정책 필터링."
+        "answer": "AgentOS에는 선택형 가드레일 팩이 6개 있습니다: PII 편집(이름, 이메일, 전화번호, SSN 등), 유해성·위협·NSFW 콘텐츠를 감지하는 ML 분류기, 생성된 코드의 위험한 패턴을 찾는 정적 분석, 소스 문서 대비 그라운딩 검증, 에이전트를 과제에 유지하는 토픽성 강제, 그리고 정책에 어긋나는 출력을 다시 쓰거나 차단하는 콘텐츠 정책 리라이터입니다. 각 팩은 AgentOS 런타임에서 활성화하는 확장입니다. 분류기 팩은 로컬 모델을 불러올 수 없을 때만 프롬프트 인젝션 점수를 매깁니다. 알려진 인젝션 문구에는 내장된 문구 목록 가드레일을 사용하세요."
       },
       "capabilityDiscovery": {
         "question": "능력 발견 시스템이란 무엇인가요?",
-        "answer": "능력 발견 엔진은 도구와 스킬의 정적 덤프를 3-tier 시맨틱 검색으로 대체하여 토큰 사용량을 약 90% 줄입니다. Tier 0은 카테고리 요약을 약 150 토큰으로 제공합니다(항상 포함). Tier 1은 상위 5개 시맨틱 매치를 약 200 토큰으로 반환합니다. Tier 2는 전체 스키마를 약 1,500 토큰으로 온디맨드 제공합니다. discover_capabilities라는 메타 도구를 통해 에이전트가 런타임에 사용 가능한 도구를 자가 발견할 수 있습니다."
+        "answer": "능력 발견 엔진은 시맨틱 검색으로 도구와 스킬을 찾아, 각각 엄격한 토큰 예산을 가진 3개 계층으로 프롬프트에 넣습니다. Tier 0은 카테고리 요약을 항상 컨텍스트에 둡니다(기본 200 토큰). Tier 1은 해당 턴의 상위 5개 시맨틱 매치를 추가합니다(800 토큰). Tier 2는 상위 2개 매치의 전체 스키마 또는 SKILL.md 텍스트를 추가합니다(2,000 토큰). discover_capabilities라는 메타 도구로 에이전트가 런타임에 사용 가능한 도구를 조회할 수 있습니다."
       },
       "queryRouter": {
         "question": "QueryRouter는 어떻게 작동하나요?",
-        "answer": "QueryRouter는 수신 쿼리를 4단계로 분류합니다: T0(컨텍스트로부터의 직접 응답), T1(단일 도구 호출), T2(플래닝 엔진이 필요한 다단계 계획), T3(오케스트레이션이 필요한 멀티 에이전트 위임). 이 분류가 각 요청의 실행 전략과 리소스 할당을 결정합니다."
+        "answer": "QueryRouter는 각 쿼리를 4단계 중 하나로 분류하고 그에 맞춰 검색합니다: T0은 검색 없이 대화에서 답하고, T1은 한 번의 벡터 검색을 실행하며(임베딩 프로바이더가 설정되지 않았으면 키워드 검색), T2는 여러 소스를 결합하거나 지식 그래프를 탐색하고, T3는 전체 코퍼스에 걸쳐 심층 리서치를 수행합니다. 그런 다음 검색한 내용으로 답하고 출처 인용과 함께 반환합니다."
       },
       "adaptiveIntelligence": {
         "question": "적응형 지능이란 무엇인가요?",
-        "answer": "적응형 지능은 AgentOS 에이전트가 재학습 없이 행동을 지속적으로 개선하는 방식입니다. 5가지 메커니즘이 함께 작동합니다: (1) 메타 반영 프롬프트 적응 — PromptBuilder가 매 턴마다 다른 시스템 프롬프트를 조립하며, 성격 특성, 기분 상태, 대화 이력, 검색된 기억, 사용 가능한 도구를 동적으로 통합합니다. (2) 응답 품질 자가 평가 — self_evaluate 도구가 에이전트 자신의 출력을 점수화하고 온도, 장황함, 성격 표현 같은 매개변수를 실시간으로 조정합니다. (3) 성격으로 조절된 인지 — HEXACO 특성이 에이전트의 정보 처리 방식을 형성합니다. 높은 개방성은 기억 검색 중 창의적 연상을 증가시키고, 높은 성실성은 관련 없는 데이터의 검색 유도 망각을 강화합니다. (4) 자율 메모리 공고화 — ConsolidationLoop는 약한 기억을 가지치기하고, 자주 접근되는 기억을 강화하며, 메모리 클러스터에서 새로운 통찰을 도출하므로 에이전트의 지식은 명시적 학습 없이 시간이 지남에 따라 향상됩니다. (5) QueryRouter 계층 분류 — 시스템은 쿼리 복잡도에 따라 검색 깊이를 적응시킵니다. 단순한 질문은 빠른 키워드 조회를, 복잡한 질문은 심층 연구가 포함된 완전한 하이브리드 RAG를 트리거합니다."
+        "answer": "적응형 지능은 AgentOS 에이전트가 재학습 없이 행동을 조정하는 방식입니다. 다섯 가지 메커니즘이 함께 작동합니다: (1) 턴별 프롬프트 조립: GMI의 PromptEngine이 페르소나, 기분, 대화 기록, 검색된 기억, 사용 가능한 도구로 매 턴 시스템 프롬프트를 만듭니다. (2) 자기 평가: 자기 개선을 켜면 self_evaluate 도구가 에이전트 자신의 답변을 채점하고, 세션의 temperature나 장황함을 바꾸거나 adapt_personality로 특성을 조정할 수 있습니다. (3) 성격으로 조절되는 기억: HEXACO 특성이 기억 메커니즘을 조정합니다. 개방성이 높을수록 비자발적 회상이 일어날 가능성이 커지고, 성실성이 높을수록 경쟁하는 기억에 대한 검색 유도 망각이 강해집니다. (4) 기억 공고화: 공고화 과정은 감쇠한 기억을 정리하고, 중복을 병합하고, 오래되고 자주 검색된 일화 기억을 의미 기억으로 바꾸며, LLM이 설정되어 있으면 클러스터에서 통찰 기억을 도출합니다. (5) QueryRouter 단계: 검색 깊이는 쿼리에 따라 정해지며, 대화에 이미 답이 있으면 검색하지 않고 가장 어려운 쿼리에는 전체 코퍼스에 걸친 심층 리서치를 수행합니다."
       },
       "emergentBehaviors": {
         "question": "창발적 행동이란 무엇인가요?",
-        "answer": "창발적 행동은 명시적으로 프로그래밍되는 대신 에이전트가 런타임에 발전시키는 능력입니다. AgentOS는 다섯 가지 형태를 지원합니다: (1) 런타임 도구 포지 — 에이전트는 forge_tool을 통해 즉석에서 새 도구를 만듭니다. EmergentCapabilityEngine은 샌드박스화된 JavaScript 실행과 LLM-as-judge 평가를 사용해 도구를 안전하게 만들고, 테스트하고, 승격합니다. (2) 자기 개선 성격 — 에이전트는 adapt_personality을 통해 HEXACO 성격 특성을 제한된 범위 내에서 적응시킵니다. 변형은 Ebbinghaus 감쇠와 함께 지속됩니다 — 강하고 반복되는 적응은 유지되고, 약한 것은 자연스럽게 사라집니다. (3) 동적 스킬 관리 — 에이전트는 manage_skills를 통해 런타임에 스킬을 활성화하거나 비활성화하여 행동 레퍼토리를 당면 과제에 맞게 적응시킵니다. (4) 조합 가능한 워크플로 생성 — 에이전트는 create_workflow를 통해 등록된 도구를 다단계 파이프라인으로 조합하여 기존 빌딩 블록에서 새로운 능력을 구축합니다. (5) 계층화된 도구 승격 — 포지된 도구는 세션, 에이전트, 공유 계층을 통과합니다. 신뢰할 수 있다고 입증된 도구(5회 이상 성공, 신뢰 점수 > 0.8)는 에이전트 간 재사용을 위해 자동으로 승격됩니다."
+        "answer": "창발적 행동은 명시적으로 프로그래밍된 것이 아니라 에이전트가 런타임에 갖추게 되는 능력입니다. AgentOS는 다섯 가지 형태를 지원합니다: (1) 런타임 도구 단조: AgentOS 런타임에서 emergent: true로 설정하면 에이전트가 forge_tool로 JavaScript 새 도구를 작성합니다. EmergentCapabilityEngine은 각 도구를 시간 제한과 함께 node:vm에서 실행하고, 도구가 등록되기 전에 LLM 심판이 코드와 테스트 실행을 검토합니다. (2) 스스로 조정하는 성격: adapt_personality는 실행 중인 에이전트의 HEXACO 특성을 정해진 범위 안에서 움직입니다. persistWithDecay와 뮤테이션 스토어를 사용하면 각 변경이 기록되고, 저장된 기록은 에이전트가 적응하는 날에 하루 최대 한 번 강도가 줄어듭니다. (3) 동적 스킬 관리: 에이전트는 manage_skills로 런타임에 스킬을 켜거나 끄며 행동 레퍼토리를 과제에 맞춥니다. (4) 조합 가능한 워크플로 생성: 에이전트는 create_workflow로 등록된 도구를 다단계 파이프라인으로 조합해 기존 구성 요소에서 새로운 능력을 만듭니다. (5) 단계별 도구 승격: 단조된 도구는 session 단계에서 시작합니다. 5회 이상 사용되고 성공률이 0.8 이상이며 두 LLM 검토자가 승인하면 agent 단계로 이동합니다. 호스트는 EmergentToolRegistry.promote()로 도구를 shared 단계로 승격할 수 있습니다."
       },
       "llmJudge": {
         "question": "사람 대신 LLM을 판단자로 사용할 수 있나요?",
@@ -964,33 +906,33 @@
     "gettingStarted": {
       "install": {
         "question": "AgentOS는 어떻게 설치하나요?",
-        "answer": "npm으로 설치: npm install @framers/agentos. AgentOS는 Node.js 18 이상이 필요합니다. CLI 도구는 동반 패키지를 설치하세요: npm install -g wunderland."
+        "answer": "npm으로 설치: npm install @framers/agentos. AgentOS는 Node.js 22 이상이 필요합니다. CLI 도구는 동반 패키지를 설치하세요: npm install -g wunderland."
       },
       "firstAgent": {
         "question": "첫 번째 에이전트는 어떻게 만드나요?",
-        "answer": "agent 함수를 임포트하고 provider, instructions, 그리고 선택적 성격 특성으로 구성하세요. 최소한의 예:\n\nimport { agent } from '@framers/agentos'\n\nconst myAgent = agent({\n  provider: 'openai',\n  instructions: '당신은 도움이 되는 어시스턴트입니다.',\n  personality: { openness: 0.8, conscientiousness: 0.9 },\n  memory: { enabled: true },\n})\n\nconst reply = await myAgent.send('안녕하세요!')\nconsole.log(reply.text)"
+        "answer": "agent 함수를 임포트하고 provider, instructions, 그리고 선택적 성격 특성으로 구성하세요. 최소한의 예:\n\nimport { agent } from '@framers/agentos'\n\nconst myAgent = agent({\n  provider: 'openai',\n  instructions: '당신은 도움이 되는 어시스턴트입니다.',\n  personality: { openness: 0.8, conscientiousness: 0.9 },\n})\n\nconst reply = await myAgent.generate('안녕하세요!')\nconsole.log(reply.text)"
       },
       "voice": {
         "question": "음성 기능은 어떻게 추가하나요?",
-        "answer": "AgentOS는 여러 STT(음성-텍스트 변환) 및 TTS(텍스트-음성 변환) 프로바이더를 지원합니다. 에이전트 구성에서 STT 및 TTS 프로바이더를 지정하여 음성 파이프라인을 구성하세요. 지원되는 STT 프로바이더에는 Whisper(OpenAI), Deepgram, AssemblyAI가 있습니다. TTS 프로바이더에는 ElevenLabs, OpenAI TTS, Google Cloud TTS가 있습니다. 실시간 음성 상호작용을 위한 텔레포니 통합도 사용할 수 있습니다."
+        "answer": "AgentOS는 VoicePipelineOrchestrator로 음성을 처리합니다. 스트리밍 STT 세션, 스트리밍 TTS 세션, 발화 종료 감지기, 끼어들기(barge-in) 핸들러를 전달하면, WebSocket 같은 전송 계층을 통해 이들을 에이전트 세션에 연결합니다. 음성 카탈로그에는 Whisper(OpenAI), Deepgram, AssemblyAI를 포함한 11개 STT 프로바이더와 ElevenLabs, OpenAI TTS, Google Cloud TTS를 포함한 10개 TTS 프로바이더가 있습니다. Twilio, Telnyx, Plivo 프로바이더가 전화를 걸고 종료합니다."
       },
       "deploy": {
         "question": "AgentOS는 어떻게 배포하나요?",
-        "answer": "AgentOS는 셀프 호스팅 가능하며 Node.js가 실행되는 모든 곳에서 작동합니다. Docker로 자체 인프라에 배포하거나, AWS, GCP, Azure 같은 클라우드 프로바이더, 또는 Vercel, Railway, Fly.io 같은 플랫폼을 사용하세요. 런타임은 제로 구성 설정을 위해 기본적으로 SQLite를 사용하며, 프로덕션 규모를 위해 Postgres, pgvector, Qdrant 또는 Neo4j로의 선택적 마이그레이션이 가능합니다."
+        "answer": "AgentOS는 셀프 호스팅 가능하며 Node.js 22 이상이 실행되는 모든 곳에서 작동합니다. Docker로 자체 인프라에 배포하거나, AWS, GCP, Azure 같은 클라우드 프로바이더, 또는 Vercel, Railway, Fly.io 같은 플랫폼을 사용하세요. SQLite는 설정이 필요 없고, 더 큰 규모가 필요하면 MigrationEngine이 저장된 데이터를 Postgres, Qdrant 또는 Pinecone으로 옮깁니다."
       },
       "offline": {
         "question": "AgentOS는 오프라인으로 작동하나요?",
-        "answer": "네. 로컬 LLM 추론을 위한 Ollama와 함께 사용하면 AgentOS는 완전히 오프라인으로 작동합니다. Ollama는 Llama, Mistral, Phi와 같은 오픈 웨이트 모델에 로컬 접근을 제공합니다. SQLite 스토리지 백엔드와 인메모리 벡터 스토어는 외부 서비스가 필요하지 않습니다. CLI는 Ollama를 자동 감지하여 에이전트가 사용하도록 구성합니다."
+        "answer": "네. 로컬 LLM 추론을 위한 Ollama와 함께 사용하면 AgentOS는 완전히 오프라인으로 작동합니다. Ollama는 Llama, Mistral, Phi와 같은 오픈 웨이트 모델에 로컬 접근을 제공합니다. SQLite 스토리지 백엔드와 인메모리 벡터 스토어는 외부 서비스가 필요하지 않습니다. Wunderland CLI의 ollama-setup 명령은 Ollama를 감지하거나 설치하고 에이전트가 사용하도록 구성합니다."
       }
     },
     "enterprise": {
       "productionReady": {
         "question": "AgentOS는 프로덕션 준비가 되어 있나요?",
-        "answer": "네. AgentOS는 에이전트가 가질 자유의 정도를 — 완전 개방에서 완전 잠금까지 — 정확히 제어할 수 있게 합니다. 프롬프트 인젝션 공격을 차단하고, 개인 데이터를 편집하며, 콘텐츠를 실시간으로 모더레이션하고, 민감한 도구 호출에 승인을 요구하며, 예산 한도를 적용하고, 서킷 브레이커와 레이트 리미팅을 포함합니다."
+        "answer": "네. AgentOS에는 개인 데이터 편집, 콘텐츠 모더레이션, 출처 대조 검증을 수행하는 선택형 가드레일 팩, 민감한 도구 호출에 대한 승인 게이트, 한도를 넘는 호출을 거부하는 지출 예산, 장애가 난 프로바이더를 로테이션에서 빼는 서킷 브레이커가 있습니다."
       },
       "compliance": {
         "question": "AgentOS는 GDPR과 SOC 2 워크플로를 어떻게 지원하나요?",
-        "answer": "AgentOS는 LLM 프로바이더에 도달하기 전에 개인 데이터를 제거하는 PII 마스킹 가드레일, 마스킹 이벤트별 구조화된 감사 로그, 데이터를 자체 인프라에 유지하는 셀프 호스팅 배포를 제공합니다. 메모리 시스템은 데이터 주체 접근 요청을 위한 삭제와 내보내기를 지원합니다. GDPR과 SOC 2 준수는 라이브러리 자체의 속성이 아니라 배포 팀의 조직적 책임입니다."
+        "answer": "AgentOS는 LLM 프로바이더에 도달하기 전에 개인 데이터를 제거하는 PII 마스킹 가드레일과 데이터를 자체 인프라에 유지하는 셀프 호스팅 배포를 제공합니다. 메모리는 접근 요청에 대비해 JSON, Markdown, Obsidian, SQLite로 내보낼 수 있습니다. 기억을 잊게 하면 회상 대상에서 빠지지만 그 행은 데이터베이스에 남으므로, 삭제 요청에는 자체 저장소에서의 삭제가 필요합니다. GDPR과 SOC 2 준수는 라이브러리 자체의 속성이 아니라 배포 팀의 조직적 책임입니다."
       },
       "support": {
         "question": "엔터프라이즈 지원이 제공되나요?",
@@ -998,7 +940,7 @@
       },
       "selfHosted": {
         "question": "자체 인프라에서 AgentOS를 사용할 수 있나요?",
-        "answer": "물론입니다. AgentOS는 처음부터 셀프 호스트되도록 설계되었습니다. 셀프 호스트 배포의 경우, 데이터는 SQLite, Postgres, pgvector, Qdrant 또는 Neo4j와 함께 자체 인프라에 유지됩니다. 벤더 호스팅 관리형 벡터 데이터베이스를 선호한다면 Pinecone도 지원됩니다. 셀프 호스트 백엔드용 Docker Compose 구성이 제공됩니다."
+        "answer": "물론입니다. AgentOS는 처음부터 셀프 호스트되도록 설계되었습니다. 셀프 호스트 배포의 경우, 데이터는 SQLite, Postgres, pgvector, Qdrant 또는 Neo4j와 함께 자체 인프라에 유지됩니다. 벤더 호스팅 관리형 벡터 데이터베이스를 선호한다면 Pinecone도 지원됩니다. 설정 헬퍼로 Docker를 사용해 로컬 Qdrant 컨테이너를 시작할 수 있습니다."
       }
     },
     "references": {
@@ -1018,10 +960,10 @@
           "url": "https://doi.org/10.1016/S1364-6613(00)01538-2"
         },
         "hexaco": {
-          "label": "Ashton, M. C., & Lee, K. (2004)",
+          "label": "Ashton, M. C., & Lee, K. (2007)",
           "title": "Empirical, theoretical, and practical advantages of the HEXACO model of personality structure.",
           "detail": "HEXACO 모델은 AgentOS 에이전트 정체성에 사용되는 6요인 성격 차원을 제공합니다.",
-          "url": "https://doi.org/10.1207/s15327957pspr0802_1"
+          "url": "https://doi.org/10.1177/1088868306294907"
         },
         "louvain": {
           "label": "Blondel, V. D., Guillaume, J.-L., Lambiotte, R., & Lefebvre, E. (2008)",
@@ -1339,7 +1281,7 @@
       "details": [
         "Composable 모드: 파이프라인 단계로 기존 도구를 연결, 구조적으로 안전",
         "샌드박스 모드: 에이전트가 작성한 코드는 시간 제한을 두고 node:vm 또는 QuickJS에서 실행",
-        "세 가지 수명 계층(세션, 에이전트, 공유). 승격은 도구를 세션에서 에이전트로 옮깁니다",
+        "세 가지 수명 계층(세션, 에이전트, 공유). 자동 승격은 도구를 세션에서 에이전트로 옮기고, 호스트는 공유로 승격할 수 있습니다",
         "이중 심사 승격 패널: 안전 감사자와 정확성 검토자 모두 승인 필요",
         "신뢰성 임계값 도달 시 자동 등급 승격 포함 사용량 추적"
       ]

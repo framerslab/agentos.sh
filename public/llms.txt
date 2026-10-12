@@ -12,7 +12,7 @@ AgentOS is built by [Framers Lab, Inc.](https://frame.dev). It treats each agent
 - npm: https://www.npmjs.com/package/@framers/agentos
 - GitHub: https://github.com/framerslab/agentos
 - Discord: https://wilds.ai/discord
-- Blog: https://docs.agentos.sh/blog
+- Blog: https://agentos.sh/blog/
 - Sitemap: https://agentos.sh/sitemap.xml
 
 ## Install
@@ -23,14 +23,14 @@ npm install @framers/agentos
 
 ## Core Capabilities
 
-- **11 LLM Providers**: OpenAI, Anthropic, Gemini, Groq, Ollama, OpenRouter, Together, Mistral, xAI, Claude Code CLI, Gemini CLI
-- **Cognitive Memory**: 8 neuroscience-backed mechanisms — reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist extraction, schema encoding, source confidence decay, emotion regulation
+- **13 LLM Providers**: OpenAI, Anthropic, Gemini, Groq, Ollama, OpenRouter, Requesty, LiteLLM, Together, Mistral, xAI, Claude Code CLI, Gemini CLI
+- **Cognitive Memory**: 8 mechanisms from cognitive science, active when `cognitiveMechanisms` is set: reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist extraction, schema encoding, source confidence decay, emotion regulation
 - **HEXACO Personality**: 6 traits (Honesty-Humility, Emotionality, Extraversion, Agreeableness, Conscientiousness, Openness) modulate memory, retrieval, and response style
 - **Multi-Agent Teams**: 6 strategies — sequential, parallel, debate, review-loop, hierarchical, graph (DAG)
 - **RAG Pipeline**: 7 vector backends, 4 retrieval strategies, GraphRAG
-- **Orchestration**: workflow() DAGs, AgentGraph cycles/subgraphs, mission() goal-driven planning
-- **Guardrails**: 5 security tiers, 6 packs (PII, ML classifiers, topicality, code safety, grounding, content policy)
-- **Emergent Capabilities**: Runtime tool forging, dynamic skill management, tiered promotion
+- **Orchestration**: workflow() DAGs, AgentGraph with conditional, personality and discovery edges and checkpoints, mission() with a research, Q&A or creative plan template or a plan you pass in
+- **Guardrails**: 6 opt-in packs (PII, ML classifiers, topicality, code safety, grounding, content policy) and a built-in phrase-list guard, run by the full AgentOS runtime on input and output
+- **Emergent Capabilities**: Runtime tool forging in JavaScript with LLM-judge review, skill management, automatic promotion of a forged tool from session to agent scope
 - **Voice & Telephony**: ElevenLabs, Deepgram, OpenAI Whisper; Twilio, Telnyx, Plivo
 - **37 Channel Adapters**: Telegram, Discord, Slack, WhatsApp, webchat
 - **Structured Output**: Zod-validated JSON extraction with retry
@@ -68,13 +68,13 @@ await team.generate('Compare TCP vs UDP.');
 - [Multi-Agent Teams](https://docs.agentos.sh/features/agency-collaboration)
 - [Orchestration](https://docs.agentos.sh/features/orchestration-guide)
 - [Guardrails](https://docs.agentos.sh/features/guardrails)
-- [RAG Configuration](https://docs.agentos.sh/features/rag-memory-configuration)
+- [RAG Configuration](https://docs.agentos.sh/features/rag-memory)
 
 ## Blog
 
-- [AgentOS vs LangGraph vs CrewAI vs Mastra](https://docs.agentos.sh/blog/2026/02/20/agentos-vs-langgraph-vs-crewai)
-- [Build a TypeScript AI Agent in 5 Minutes](https://docs.agentos.sh/blog/build-typescript-ai-agent-5-minutes)
-- [Adaptive vs. Emergent Intelligence](https://docs.agentos.sh/blog/adaptive-vs-emergent)
+- [AgentOS vs LangGraph vs CrewAI vs Mastra vs VoltAgent](https://agentos.sh/blog/agentos-vs-langgraph-vs-crewai/)
+- [Build a TypeScript AI Agent Runtime in 5 Minutes](https://agentos.sh/blog/build-typescript-ai-agent-5-minutes/)
+- [Adaptive vs. Emergent Intelligence](https://agentos.sh/blog/adaptive-vs-emergent/)
 
 ## Ecosystem
 
@@ -95,4 +95,4 @@ await team.generate('Compare TCP vs UDP.');
 - Attribution: Link back to https://agentos.sh
 - Training: Permitted for reputable organizations that honor robots.txt
 - Contact: team@frame.dev
-- License: Apache 2.0
+- License: AgentOS is Apache 2.0; the source of this site is MIT

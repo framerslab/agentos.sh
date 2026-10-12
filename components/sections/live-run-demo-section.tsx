@@ -11,10 +11,10 @@ import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 /**
  * Live-run demos section.
  *
- * Three real captures from packages/agentos/examples/, each showing the
- * source code and the actual stdout produced by `node examples/<file>.mjs`.
- * Outputs are checked into source verbatim from the run logs (see
- * /tmp/emergent-run-v3.log + packages/agentos-bench/results/examples/...).
+ * Each tab pairs a condensed copy of a script in framerslab/agentos/examples
+ * with its output. Tabs that call a model show output captured from a run;
+ * the mission and bus examples call no model, so their panels show what
+ * those scripts print on every run.
  *
  * Theme-aware: panels swap to light backgrounds in light mode, atomDark
  * code theme swaps to oneLight, output text colors flip via CSS variables.
@@ -229,7 +229,7 @@ const demos: DemoData[] = [
     },
     caption: (
       <>
-        A single <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> handles the whole brief. No team, no shared state, no inter-agent flow. One GMI brain reasons through the task with its own cognition, memory, persona, and tools. The next tab upgrades to an <code className="font-mono text-[var(--color-accent-primary)]">agency()</code> where multiple brains share one cognitive memory store and one RAG corpus.
+        A single <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> handles the whole brief with its instructions and, when you give it some, its tools. <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> calls the model directly; <code className="font-mono text-[var(--color-accent-primary)]">{`agent({ runtime: 'gmi' })`}</code> runs the same agent on a GMI. The next tab passes a task down a chain of three agents with <code className="font-mono text-[var(--color-accent-primary)]">agency()</code>.
       </>
     ),
   },
@@ -267,7 +267,7 @@ const demos: DemoData[] = [
         webpSrc: '/img/blog/og/agentos-forge-demo.webp',
         mp4Src: '/img/blog/og/agentos-forge-demo.mp4',
         poster: '/img/blog/og/agentos-emergent-demo.webp',
-        alt: 'Three AgentOS agents with distinct HEXACO personalities collaborate on a code review, forge a new tool at runtime, the LLM judge approves the spec, and all three invoke it on the next turn.',
+        alt: 'A hierarchical AgentOS agency spawns a security_auditor specialist at runtime after the LLM judge approves its spec.',
         width: 1600,
         height: 920,
       },
@@ -288,7 +288,7 @@ const demos: DemoData[] = [
       <>
         The team starts with <code className="font-mono text-[var(--color-accent-primary)]">researcher</code> + <code className="font-mono text-[var(--color-accent-primary)]">writer</code>. The prompt asks for a security audit, which neither covers. The manager calls{' '}
         <code className="font-mono text-[var(--color-accent-primary)]">spawn_specialist</code>, EmergentAgentJudge approves the spec, and{' '}
-        <code className="font-mono text-[var(--color-accent-primary)]">security_auditor</code> joins the live roster. The final answer below is what GPT-4o produced through that team. Captured from a real run, no edits.
+        <code className="font-mono text-[var(--color-accent-primary)]">security_auditor</code> joins the live roster. The final answer below is what GPT-4o produced through that team, captured from a run without edits. Its first paragraph misdescribes <code className="font-mono text-[var(--color-accent-primary)]">node:vm</code>, which runs code in a V8 context inside the Node.js process; Node&apos;s documentation says it is not a security mechanism.
       </>
     ),
   },
@@ -418,35 +418,46 @@ const result = await team.generate(
     title: 'Plan a mission, run the steps',
     exampleSlug: 'examples/mission-api.mjs',
     language: 'typescript',
-    code: `import { mission } from '@framers/agentos';
+    code: `import { GraphRuntime, InMemoryCheckpointStore, mission, toolNode } from '@framers/agentos';
 import { z } from 'zod';
 
-// mission() builds a goal-driven graph from typed input/output schemas.
-// The planner emits the step DAG; the kernel runs it on the same runtime
-// as workflow() and AgentGraph. Steps are either LLM agents or
-// deterministic tools, wired so artifacts flow typed between them.
-const research = mission('explain-orchestration')
+// mission() turns a goal into a linear graph of steps from a plan
+// template; this goal gets the research template. An anchor splices in
+// a step you write yourself: here a fact-check tool after process-info.
+const deepResearch = mission('deep-research')
   .input(z.object({ topic: z.string() }))
-  .goal('Explain {{topic}}, with citations.')
+  .goal('Research {{topic}} thoroughly and produce a cited summary')
   .returns(z.object({
-    summary: z.string(),
-    citations: z.array(z.string()),
+    summary: z.string().optional(),
+    confidence: z.number().optional(),
+    verified: z.boolean().optional(),
   }))
-  .planner({ strategy: 'linear', maxSteps: 6 })
-  .policy({ guardrails: ['content-safety'] })
+  .planner({ strategy: 'plan_and_execute', maxSteps: 6 })
+  .anchor('fact-check', toolNode('grounding_verifier'), {
+    required: true,
+    phase: 'validate',
+    after: 'process-info',
+  })
   .compile();
 
-const result = await research.invoke({
-  topic: 'unified orchestration in AgentOS',
+// The example runs the graph with a stub executor that returns a fixed
+// output for each step id, so no model is called. An executor that calls
+// your LLM and tools runs the same graph for real.
+const runtime = new GraphRuntime({
+  checkpointStore: new InMemoryCheckpointStore(),
+  nodeExecutor: stubExecutor,  // see the source for the switch on node.id
 });
 
-console.log(result.summary);
-console.log(result.citations);`,
+const { steps } = await deepResearch.explain({ topic: 'unified orchestration' });
+const artifacts = await runtime.invoke(deepResearch.toIR(), {
+  topic: 'unified orchestration',
+});`,
     output: {
       missionSteps: [
         { id: 'gather-info', type: 'gmi', executor: 'gmi' },
         { id: 'process-info', type: 'gmi', executor: 'gmi' },
         { id: 'deliver-result', type: 'gmi', executor: 'gmi' },
+        { id: 'refine-output', type: 'gmi', executor: 'gmi' },
         { id: 'fact-check', type: 'tool', executor: 'tool' },
       ],
       missionArtifacts: {
@@ -455,13 +466,16 @@ console.log(result.citations);`,
         'fact-check': { verified: true },
         summary:
           'unified orchestration is best explained as a graph runtime layered over deterministic and planner-driven entrypoints.',
+        confidence: 0.88,
+        verified: true,
+        'refine-output': 'handled:refine-output',
       },
       missionConfidence: 0.88,
       usage: {},
     },
     caption: (
       <>
-        Same runtime as <code className="font-mono text-[var(--color-accent-primary)]">workflow()</code> and <code className="font-mono text-[var(--color-accent-primary)]">AgentGraph</code>, different authoring surface. <code className="font-mono text-[var(--color-accent-primary)]">mission()</code> takes a goal and lets a planner LLM emit the step DAG; the kernel then runs the steps the same way it runs hand-authored ones. Tools (deterministic) and GMIs (LLM agents) are first-class step types.
+        Same runtime as <code className="font-mono text-[var(--color-accent-primary)]">workflow()</code> and <code className="font-mono text-[var(--color-accent-primary)]">AgentGraph</code>, different authoring surface. <code className="font-mono text-[var(--color-accent-primary)]">mission()</code> builds a linear graph of steps from a plan template (the research template here: gather-info, process-info, deliver-result and refine-output) and splices in anchors such as the fact-check tool. This example&apos;s executor is a stub that returns a fixed output for each step, so the run calls no model; <code className="font-mono text-[var(--color-accent-primary)]">invoke()</code> resolves to each step&apos;s output under its id plus the artifacts deliver-result writes.
       </>
     ),
   },
@@ -472,116 +486,93 @@ console.log(result.citations);`,
     language: 'typescript',
     code: `import { AgentCommunicationBus } from '@framers/agentos';
 
-const bus = new AgentCommunicationBus();
-
-// Register agents into an agency with role IDs the bus can route on.
-bus.registerAgent('researcher-gmi', 'research-team', 'researcher');
-bus.registerAgent('writer-gmi',     'research-team', 'writer');
-
-// Role-routed delivery: the bus picks an agent currently holding the
-// 'researcher' role inside the 'research-team' agency.
-await bus.sendToRole('research-team', 'researcher', {
-  type: 'task_delegation',
-  fromAgentId: 'caller',
-  content: { task: 'Review the orchestration rollout' },
-  priority: 'normal',
+const bus = new AgentCommunicationBus({
+  routingConfig: { enableRoleRouting: true, enableLoadBalancing: true },
 });
 
-// Hand off ownership of a task between agents — the bus issues an
-// internal request_response, awaits acceptance, and notifies the sender.
+// Agents join an agency under a role the bus can route on.
+bus.registerAgent('coordinator-gmi', 'agency-docs', 'coordinator');
+bus.registerAgent('researcher-gmi',  'agency-docs', 'researcher');
+bus.registerAgent('writer-gmi',      'agency-docs', 'writer');
+
+// An agent answers through its subscription; a request that nobody
+// answers waits out its timeout.
+bus.subscribe('researcher-gmi', async (message) => {
+  if (message.type !== 'question') return;
+  await bus.sendToAgent(message.fromAgentId, {
+    type: 'answer',
+    fromAgentId: 'researcher-gmi',
+    content: { findings: ['The graph runtime should stay shared across all three authoring APIs.' /* , ... */] },
+    inReplyTo: message.messageId,
+    priority: 'normal',
+  });
+}, { messageTypes: ['question', 'task_delegation'] });
+
+bus.subscribe('writer-gmi', async (message) => {
+  await bus.sendToAgent(message.fromAgentId, {
+    type: 'answer',
+    fromAgentId: 'writer-gmi',
+    content: { accepted: true },
+    inReplyTo: message.messageId,
+    priority: 'normal',
+  });
+}, { messageTypes: ['task_delegation'] });
+
+// Request/response: resolves with the researcher's answer.
+const response = await bus.requestResponse('researcher-gmi', {
+  type: 'question',
+  fromAgentId: 'coordinator-gmi',
+  content: 'What are the top three rollout risks?',
+  priority: 'high',
+  timeoutMs: 5_000,
+});
+
+// Handoff: a task_delegation request to the writer; an answer within
+// 60 s accepts it and makes the writer the owner.
 const handoff = await bus.handoff('researcher-gmi', 'writer-gmi', {
-  taskId: 'task-42',
-  taskDescription: 'Turn the rollout review into a 4-bullet brief',
-  progress: 0.6,
-  completedWork: ['gathered findings'],
-  remainingWork: ['draft', 'tighten copy'],
-  context: { findings: ['…'] },
-  reason: 'specialization',
+  taskId: 'rollout-note',
+  taskDescription: 'Convert the findings into release-note prose',
+  progress: 0.8,
+  completedWork: ['Collected risks', 'Ranked findings'],
+  remainingWork: ['Write final release note'],
+  context: { audience: 'engineering' },
+  reason: 'completion',
 });
 
-console.log(handoff.accepted, handoff.newOwnerId);`,
+console.log(handoff.accepted, handoff.newOwnerId);  // true writer-gmi`,
     output: {
       busMessages: [
         {
-          from: 'caller',
+          from: 'coordinator-gmi',
           to: 'researcher-gmi',
           status: 'success',
+          preview: 'question: What are the top three rollout risks?',
+        },
+        {
+          from: 'researcher-gmi',
+          to: 'coordinator-gmi',
+          status: 'success',
           preview:
-            'findings: ["graph runtime stays shared", "checkpointing first-class", "examples side-by-side"]',
+            'answer: findings: ["The graph runtime should stay shared across all three authoring APIs.", "Checkpointing needs to be first-class, not bolted onto the planner.", "Examples should show workflow(), AgentGraph, and mission() side by side."]',
         },
         {
           from: 'researcher-gmi',
           to: 'writer-gmi',
           status: 'success',
-          preview: 'handoff accepted; writer-gmi now owns the task',
+          preview: 'task_delegation: rollout-note, Convert the findings into release-note prose',
+        },
+        {
+          from: 'writer-gmi',
+          to: 'researcher-gmi',
+          status: 'success',
+          preview: 'answer: { accepted: true }; handoff accepted, writer-gmi owns rollout-note',
         },
       ],
       usage: {},
     },
     caption: (
       <>
-        Lower-level than <code className="font-mono text-[var(--color-accent-primary)]">agency()</code>: explicit per-agent IDs, role routing, request/response messages with structured content, and ownership handoff. Useful when an external orchestrator (a queue, a workflow engine, a UI) needs to own scheduling and just wants AgentOS to be the message + memory substrate.
-      </>
-    ),
-  },
-  {
-    id: 'router',
-    title: 'One call: question in, grounded answer + sources out',
-    exampleSlug: 'examples/query-router.mjs',
-    language: 'typescript',
-    code: `import { QueryRouter } from '@framers/agentos';
-
-// QueryRouter is the one-call grounded-Q&A pipeline:
-//   classify the question → retrieve the right amount of context →
-//   generate a cited answer. You point it at markdown directories
-//   (and the bundled platform knowledge tags along automatically) and
-//   call route(). Use it instead of hand-rolling chunker + vector store
-//   + retrieval logic + LLM call + citation collection for every Q&A
-//   surface in your app.
-const router = new QueryRouter({
-  knowledgeCorpus: ['./docs', './packages/agentos/docs'],
-  availableTools: ['web_search', 'deep_research'],
-  verifyCitations: true,
-});
-
-await router.init();
-
-const result = await router.route('how do I configure a guardrail?');
-
-console.log(result.answer);
-console.log(result.sources);
-console.log(result.classification.tier);  // 0 / 1 / 2 / 3
-console.log(result.tiersUsed);             // which tiers actually ran
-console.log(result.fallbacksUsed);         // e.g. ['keyword-fallback']`,
-    output: {
-      classification: { tier: 1, strategy: 'simple', confidence: 0.92 },
-      tiersUsed: [1],
-      fallbacksUsed: [],
-      answer:
-        'Pass `guardrails: [...]` to `agent()` or `agency()`. Each guardrail is a function that runs on input or output and can block, mutate, or annotate the message. AgentOS ships built-in guardrails for PII redaction, ML-classifier scoring, content policy, citation grounding, and topicality — register them as input/output hooks on the agent config.',
-      sources: [
-        {
-          title: 'Guardrails Configuration',
-          uri: 'docs/safety/GUARDRAILS.md',
-          snippet: 'Register guardrails on `agent({ guardrails: [...] })`. Each guardrail is invoked …',
-        },
-        {
-          title: 'Built-in Guardrails',
-          uri: 'docs/safety/BUILTIN_GUARDRAILS.md',
-          snippet: 'PII redaction, ML classifiers, content policy, citation grounding, topicality …',
-        },
-      ],
-      corpusStats: {
-        chunks: 1720,
-        topics: 50,
-        sources: 333,
-        platform: { tools: 110, skills: 82, faq: 38, api: 15, troubleshooting: 15 },
-      },
-      usage: {},
-    },
-    caption: (
-      <>
-        One call replaces chunker + vector store + classifier + retrieval + LLM call + citation collection. Returns the answer, the sources it pulled from, the tier path it took (0–3), and any fallback strategies activated. Set <code className="font-mono text-[var(--color-accent-primary)]">verifyCitations: true</code> and the result also carries a per-claim verdict from <code className="font-mono text-[var(--color-accent-primary)]">CitationVerifier</code>. Swap the in-memory vector store for Postgres pgvector or Qdrant in production.
+        Lower-level than <code className="font-mono text-[var(--color-accent-primary)]">agency()</code>: explicit per-agent IDs, role routing, request/response messages with structured content, and ownership handoff. Each agent replies through <code className="font-mono text-[var(--color-accent-primary)]">bus.subscribe()</code>; <code className="font-mono text-[var(--color-accent-primary)]">handoff()</code> sends the new owner a task_delegation request and accepts when an answer arrives within 60 seconds. Useful when an external orchestrator (a queue, a workflow engine, a UI) owns scheduling and wants AgentOS to carry the messages.
       </>
     ),
   },
@@ -639,79 +630,6 @@ const result = await researcher.generate('What problems was QUIC designed to sol
     caption: (
       <>
         Provider-first wrappers around the LLM call. <code className="font-mono text-[var(--color-accent-primary)]">generateText()</code>, <code className="font-mono text-[var(--color-accent-primary)]">streamText()</code>, <code className="font-mono text-[var(--color-accent-primary)]">generateImage()</code>, and <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> all accept the same <code className="font-mono text-[var(--color-accent-primary)]">{`{ provider, model?, prompt, ... }`}</code> shape. Pick a provider and AgentOS picks the default model; override with <code className="font-mono text-[var(--color-accent-primary)]">model:</code> when you need a specific one. Drop-in for ad-hoc calls without spinning up a full agent.
-      </>
-    ),
-  },
-  {
-    id: 'workflow-dsl',
-    title: 'Type-safe workflow DSL with checkpoints + replay',
-    exampleSlug: 'examples/workflow-dsl.mjs',
-    language: 'typescript',
-    code: `import { GraphRuntime, InMemoryCheckpointStore, workflow } from '@framers/agentos';
-import { z } from 'zod';
-
-// workflow() builds a typed step DAG. Inputs and outputs validated by Zod.
-// .branch() routes by a state predicate; .parallel() fans out a stage;
-// .then() can run an LLM call (gmi:) instead of a tool.
-const onboarding = workflow('user-onboarding')
-  .input(z.object({
-    email: z.string().email(),
-    name: z.string(),
-    desiredPlan: z.enum(['free', 'pro']),
-  }))
-  .returns(z.object({
-    userId: z.string().optional(),
-    plan: z.enum(['free', 'pro']).optional(),
-    summary: z.string().optional(),
-  }))
-  .step('validate-email', { tool: 'email_validator' })
-  .branch((state) => state.input.desiredPlan, {
-    pro:  { tool: 'activate_pro_plan' },
-    free: { tool: 'create_free_account' },
-  })
-  .parallel(
-    [{ tool: 'send_welcome_email' }, { tool: 'notify_crm' }],
-    { strategy: 'all', merge: { 'scratch.completedTasks': 'concat' } },
-  )
-  .then('summarize', {
-    gmi: { instructions: 'Summarize the onboarding result for the caller.' },
-  })
-  .compile();
-
-// GraphRuntime executes the compiled DAG, persists checkpoints between
-// steps, and emits a typed event stream you can subscribe to.
-const runtime = new GraphRuntime({
-  checkpointStore: new InMemoryCheckpointStore(),
-  nodeExecutor,  // tool dispatcher; see source for the full switch
-});
-
-const { artifacts } = await runtime.run(onboarding, {
-  email: 'john@example.com',
-  name: 'John',
-  desiredPlan: 'pro',
-});`,
-    output: {
-      missionSteps: [
-        { id: 'validate-email', type: 'tool', executor: 'tool' },
-        { id: 'router-2', type: 'tool', executor: 'branch' },
-        { id: 'branch-pro-4', type: 'tool', executor: 'tool' },
-        { id: 'parallel-0-8', type: 'tool', executor: 'parallel' },
-        { id: 'parallel-1-11', type: 'tool', executor: 'parallel' },
-        { id: 'summarize', type: 'gmi', executor: 'gmi' },
-      ],
-      missionArtifacts: {
-        'validate-email': { valid: true },
-        'router-2': 'pro',
-        userId: 'usr_pro_001',
-        plan: 'pro',
-        summary: 'Created a pro account for John. Completed tasks: validated email, queued welcome email, updated CRM.',
-      },
-      missionConfidence: 1.0,
-      usage: {},
-    },
-    caption: (
-      <>
-        Workflow-as-code in TypeScript. Define steps with <code className="font-mono text-[var(--color-accent-primary)]">.step()</code>, branches with <code className="font-mono text-[var(--color-accent-primary)]">.branch()</code>, parallel stages with <code className="font-mono text-[var(--color-accent-primary)]">.parallel()</code>, LLM steps with <code className="font-mono text-[var(--color-accent-primary)]">.then(name, {`{ gmi: ... }`})</code>; attach Zod schemas for input + output. <code className="font-mono text-[var(--color-accent-primary)]">GraphRuntime</code> compiles to a node DAG, persists a checkpoint between every step, and emits a typed event stream (<code className="font-mono text-[var(--color-accent-primary)]">node_start</code>, <code className="font-mono text-[var(--color-accent-primary)]">edge_transition</code>, <code className="font-mono text-[var(--color-accent-primary)]">checkpoint_saved</code>, <code className="font-mono text-[var(--color-accent-primary)]">run_end</code>). Replay from any checkpoint, fork mid-run, audit every transition.
       </>
     ),
   },
@@ -1083,7 +1001,7 @@ function OutputPanel({ demo }: { demo: DemoData }) {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
           </span>
-          Live run
+          Output
         </span>
       </div>
       <div className="px-5 py-4">
@@ -1195,7 +1113,7 @@ export function LiveRunDemoSection() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
           <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-            Verified runs · Captured stdout
+            Runnable examples
           </span>
         </div>
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-[var(--color-text-primary)]">
@@ -1205,7 +1123,7 @@ export function LiveRunDemoSection() {
           </span>
         </h2>
         <p className="mt-3 text-base text-[var(--color-text-secondary)]">
-          Examples captured from <code className="font-mono text-[var(--color-text-primary)]">node examples/&hellip;.mjs</code> against the OpenAI API. The full source is committed at{' '}
+          Each tab pairs a condensed script from{' '}
           <a
             className="underline underline-offset-4 hover:opacity-80"
             href="https://github.com/framerslab/agentos/tree/master/examples"
@@ -1214,7 +1132,7 @@ export function LiveRunDemoSection() {
           >
             framerslab/agentos/examples
           </a>
-          . Pick one.
+          {' '}with its output. Tabs that call a model ran against the OpenAI API; the mission and bus examples call no model and print the same output on every run. Pick one.
         </p>
       </div>
 
@@ -1360,7 +1278,7 @@ export function LiveRunDemoSection() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--color-text-secondary)] transition-all hover:text-[var(--color-text-primary)] hover:translate-x-0.5"
         >
-          Browse all 18 examples
+          Browse all 21 example scripts
           <span aria-hidden="true">→</span>
         </a>
       </div>

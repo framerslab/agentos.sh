@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { canonical } from '@/lib/seo/canonical';
 import { hreflangAlternates } from '@/lib/seo/hreflang';
 
-const updated = "March 2026";
+const updated = "October 11, 2026";
 
 type MetadataProps = { params: { locale: string } };
 
@@ -34,10 +34,11 @@ const Sections = [
     body: (
       <div className="space-y-3 text-slate-700 dark:text-slate-200">
         <p>
-          AgentOS Core is released under the <strong>Apache License 2.0</strong> with extensions and
-          community agents under the <strong>MIT License</strong>. The entire codebase is publicly available
-          for review, audit, and contribution. This transparency means every line of code that handles tool
-          execution, credential access, and guardrail enforcement can be independently verified.
+          AgentOS is released under the <strong>Apache License 2.0</strong>, as are the extension packs in its
+          registry, its guardrail packs and its skills. Its storage dependency,{" "}
+          <code>@framers/sql-storage-adapter</code>, is under the <strong>MIT License</strong>. The code is public,
+          so the guardrail dispatcher, the tool orchestrator and the sandbox that runs agent-written code can be
+          read and audited.
         </p>
         <p>
           Security improvements are welcomed through pull requests on{" "}
@@ -55,38 +56,28 @@ const Sections = [
     )
   },
   {
-    title: "Configurable agent safety",
+    title: "Guardrails on input and output",
     body: (
       <div className="space-y-3 text-slate-700 dark:text-slate-200">
         <p>
-          AgentOS ships with a configurable security tier system that controls how much autonomy an agent
-          is granted. Operators choose one of five named presets when deploying an agent:
+          The full AgentOS runtime (<code>AgentOS.processRequest</code>) runs the guardrails you register on every
+          request. An input guard reads the request before the model does. An output guard reads the final reply,
+          and the streamed chunks too when it asks for them. Each guard answers allow, flag, sanitize or block. In
+          hold mode (<code>guardrailOutputMode: &apos;hold&apos;</code>) nothing streams to the caller until the
+          output guards have judged the whole reply.
         </p>
-        <ul className="list-disc space-y-2 pl-5">
-          <li>
-            <strong>Dangerous</strong> &mdash; no restrictions; intended only for isolated development
-            sandboxes where the operator accepts full risk.
-          </li>
-          <li>
-            <strong>Permissive</strong> &mdash; most tools enabled with minimal guardrails. Suitable for
-            trusted internal workloads.
-          </li>
-          <li>
-            <strong>Balanced</strong> &mdash; the recommended default. High-risk tools (shell, filesystem)
-            require explicit allowlisting; injection detection is active.
-          </li>
-          <li>
-            <strong>Strict</strong> &mdash; only pre-approved tools may execute; all tool calls are logged
-            and auditable.
-          </li>
-          <li>
-            <strong>Paranoid</strong> &mdash; the most restrictive tier. Every tool invocation requires
-            human-in-the-loop approval before execution. Designed for sensitive or compliance-heavy
-            environments.
-          </li>
-        </ul>
         <p>
-          The active tier can be changed at runtime via agent configuration. See the{" "}
+          A guard with <code>failClosed</code> set blocks when it throws or times out. A deployment can also name
+          required guards (<code>requiredGuardrails</code>): AgentOS then refuses to start without them, refuses a
+          request when one has gone missing, and runs each one fail-closed with a deadline.
+        </p>
+        <p>
+          Guardrails are opt-in. AgentOS exports a phrase-list guard (<code>PhraseListGuardrail</code>) for a
+          reviewed list of words, phrases or regular expressions, matched after look-alike letters and invisible
+          characters are normalised; a match blocks or goes to an LLM judge. Six guardrail packs install from npm:
+          PII redaction, ML classifiers, topicality, code safety, grounding and content-policy rewriting. The{" "}
+          <code>agent()</code>, <code>gmi()</code> and <code>agency()</code> helpers accept guardrail ids but do not
+          run guards. See the{" "}
           <a
             href="https://docs.agentos.sh/features/guardrails"
             className="font-semibold text-brand hover:underline"
@@ -95,41 +86,62 @@ const Sections = [
           >
             Guardrails documentation
           </a>{" "}
-          for full details.
+          for configuration.
         </p>
       </div>
     )
   },
   {
-    title: "PII redaction guardrails",
+    title: "PII redaction",
     body: (
       <div className="space-y-3 text-slate-700 dark:text-slate-200">
         <p>
-          The built-in PII Redaction extension scans inbound and outbound messages for personally
-          identifiable information (email addresses, phone numbers, national ID patterns, credit card
-          numbers, and more). When detected, PII is masked before the data reaches the LLM provider or
-          downstream tool, reducing the risk of accidental data leakage.
+          The PII redaction pack (<code>@framers/agentos-ext-pii-redaction</code>) finds email addresses, phone
+          numbers, card numbers, government IDs, API keys and other identifiers with regular expressions, plus
+          optional NLP, NER-model and LLM-judge tiers for names, places and organisations. On input it replaces
+          what it finds before the request reaches the model, and on output it checks the reply. It fails closed:
+          when detection throws, the text is blocked instead of passed through.
         </p>
         <p>
-          PII redaction runs as an extension and can be enabled or disabled per agent. Custom regex
-          patterns can be added for domain-specific identifiers.
+          You add the pack to the runtime&apos;s extension manifest, and it then covers every request on that
+          runtime. <code>entityTypes</code> picks what it looks for, an allowlist keeps named strings in place,
+          and <code>redactionStyle</code> writes each finding as a placeholder, a mask, a hash or a tag.
         </p>
       </div>
     )
   },
   {
-    title: "Sandboxed tool execution",
+    title: "Tool calls",
     body: (
       <div className="space-y-3 text-slate-700 dark:text-slate-200">
         <p>
-          Tools in AgentOS execute within a permission boundary defined by the active security tier. The
-          tool orchestrator enforces allowlists, denylists, and rate limits before any tool code runs.
-          High-risk tools (filesystem writes, shell commands, network requests) are gated behind explicit
-          operator approval at <em>Balanced</em> tier and above.
+          On the full AgentOS runtime every tool call passes through the tool orchestrator. It refuses a tool named
+          in <code>globalDisabledTools</code>, and it refuses a call when the persona lacks a capability that the
+          tool lists in <code>requiredCapabilities</code>. With <code>hitl.enabled</code> set, a tool marked{" "}
+          <code>hasSideEffects</code> waits for a human approval, and the call is refused when no approval manager
+          is configured.
+        </p>
+      </div>
+    )
+  },
+  {
+    title: "Code an agent writes",
+    body: (
+      <div className="space-y-3 text-slate-700 dark:text-slate-200">
+        <p>
+          With <code>emergent: true</code> on the full AgentOS runtime, an agent can write a JavaScript tool
+          mid-task. The code has to pass a static check, and an LLM judge reviews the tool before it registers.
+          By default the code runs in a <code>node:vm</code> context inside your process with a 5-second limit.
+          Node&apos;s documentation says <code>node:vm</code> is not a security mechanism, and AgentOS measures
+          that code&apos;s memory without capping it. Network, file-read and hashing functions reach the code
+          only when you grant them, with an optional domain allowlist for fetch (checked against the first URL&apos;s
+          host) and read roots for files. Writing or deleting files also needs a capability ceiling
+          (<code>emergentConfig.capabilities</code>) that grants it.
         </p>
         <p>
-          Emergent tools &mdash; tools that agents generate at runtime &mdash; are subject to the same
-          security tier restrictions and cannot bypass the allowlist.
+          For a stronger boundary, the QuickJS executor runs each call in a fresh WebAssembly instance with a
+          memory cap. It needs two optional packages, <code>quickjs-emscripten-core</code> and{" "}
+          <code>@jitl/quickjs-wasmfile-release-sync</code>.
         </p>
       </div>
     )
@@ -138,45 +150,59 @@ const Sections = [
     title: "No data collection by the framework",
     body: (
       <p className="text-slate-700 dark:text-slate-200">
-        The AgentOS runtime does not phone home, collect telemetry, or transmit data to Frame.dev or any
-        third party. All data processed by AgentOS stays on the infrastructure where it is deployed. If you
-        choose to integrate third-party LLM providers, analytics, or storage backends, those services are
-        governed by their own privacy policies and are configured entirely by the operator.
+        The AgentOS runtime does not phone home, collect telemetry, or send data to Frame.dev. It sends prompts and
+        documents to the services you configure, such as LLM, embedding, speech and search providers, under their
+        own policies. Its OpenTelemetry spans are off by default and go only to the exporter your application
+        installs. Packs that run a local model, such as the PII pack&apos;s NER tier, download the model files from
+        Hugging Face the first time they run.
       </p>
     )
   },
   {
-    title: "Prompt injection defenses",
+    title: "Prompt injection",
     body: (
       <div className="space-y-3 text-slate-700 dark:text-slate-200">
         <p>
-          AgentOS treats all tool output and external input as untrusted data. The guardrails pipeline
-          includes injection and jailbreak detection that analyses messages before they reach the LLM. When
-          a potential injection is detected, the request is blocked or flagged for human review, depending
-          on the active security tier.
+          Injection detection is opt-in. The ML classifiers pack (<code>@framers/agentos-ext-ml-classifiers</code>)
+          scores the request and the final reply for toxicity, prompt injection, NSFW content and threats. By
+          default it flags a category above 0.5 and blocks above 0.8, and each category takes its own thresholds.
         </p>
         <p>
-          Operators can tune detection sensitivity and add custom patterns to match domain-specific attack
-          vectors.
+          The pack scores with the first tier that answers: a local ONNX model (toxic-bert), then an LLM judge if
+          you pass one, then keyword patterns. npm installs <code>@huggingface/transformers</code> with the pack as
+          an optional dependency, and the ONNX model has no prompt-injection label, so whenever that model is
+          available the pack scores injection at 0. The LLM judge and the keyword patterns, which do catch
+          injection, run only when the ONNX model cannot load. For a reviewed list of phrases, use the phrase-list
+          guard described above.
         </p>
       </div>
     )
   },
   {
-    title: "Dependency security",
+    title: "Signed audit trail",
+    body: (
+      <p className="text-slate-700 dark:text-slate-200">
+        The opt-in provenance pack keeps an append-only event log. Each event is hashed into a chain and signed
+        with an Ed25519 key, and <code>ChainVerifier</code> reports a sequence gap, a broken link, a changed payload
+        or a bad signature.
+      </p>
+    )
+  },
+  {
+    title: "Dependencies and releases",
     body: (
       <ul className="list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-200">
         <li>
-          <strong>npm audit</strong> is run as part of CI to catch known vulnerabilities in transitive
-          dependencies.
+          GitHub&apos;s <strong>Dependabot alerts</strong> are on for the <code>framerslab/agentos</code>{" "}
+          repository.
         </li>
         <li>
-          <strong>Dependabot</strong> is enabled on the repository for automated dependency update pull
-          requests.
+          A weekly workflow opens a pull request that moves the <code>@framers/*</code> dependencies to their latest
+          published versions.
         </li>
         <li>
-          Security-critical patches are prioritised and released as point versions outside the normal
-          release cadence when necessary.
+          Security fixes ship in a new release of the latest published version of <code>@framers/agentos</code>.
+          Older versions are not patched.
         </li>
       </ul>
     )
@@ -191,22 +217,33 @@ const Sections = [
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            Report vulnerabilities to{" "}
+            Report a vulnerability privately through the{" "}
+            <a
+              href="https://github.com/framerslab/agentos/security/advisories/new"
+              className="font-semibold text-brand hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              security advisory form
+            </a>{" "}
+            on GitHub or by email to{" "}
             <a href="mailto:team@frame.dev" className="font-semibold text-brand hover:underline">
               team@frame.dev
             </a>
-            .
+            . Do not open a public issue about it.
           </li>
           <li>
-            We commit to acknowledging reports within <strong>48 hours</strong> and will work with you to
-            understand and resolve the issue.
+            A maintainer acknowledges a report within <strong>5 business days</strong> and sends an assessment and
+            a plan within <strong>14 days</strong>.
+          </li>
+          <li>
+            A fix ships before details are published, and the reporter is credited unless they decline. At 90 days
+            from the report an advisory is published with the fix, or with mitigations when no fix exists, unless
+            the reporter and a maintainer agree on a later date.
           </li>
           <li>
             We will <strong>not take legal action</strong> against researchers who discover and report
             vulnerabilities in good faith.
-          </li>
-          <li>
-            Please allow us reasonable time to investigate and remediate before any public disclosure.
           </li>
         </ul>
       </div>
@@ -225,8 +262,8 @@ export default function SecurityPage() {
           AgentOS Security
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-300">
-          How the open-source AgentOS runtime approaches security, from tiered guardrails to sandboxed
-          tool execution.
+          The controls the open-source AgentOS runtime has, what each one covers, and how to report a
+          vulnerability.
         </p>
         <p className="text-sm text-slate-500 dark:text-slate-400">Last updated: {updated}</p>
       </header>

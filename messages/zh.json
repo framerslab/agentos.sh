@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — 构建具有自适应智能的自主AI代理",
-    "description": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和11个LLM提供商。开源TypeScript运行时。",
+    "description": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和13个LLM提供商。开源TypeScript运行时。",
     "ogTitle": "AgentOS — 构建具有自适应智能的自主AI代理",
-    "ogDescription": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和11个LLM提供商。开源TypeScript运行时。",
+    "ogDescription": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和13个LLM提供商。开源TypeScript运行时。",
     "twitterTitle": "AgentOS — 构建具有自适应智能的自主AI代理",
-    "twitterDescription": "构建具有自适应智能和涌现行为的自主AI代理。认知记忆、多模态RAG、流式护栏和11个LLM提供商。开源TypeScript运行时。"
+    "twitterDescription": "构建具有自适应智能和涌现行为的自主AI代理。认知记忆、多模态RAG、流式护栏和13个LLM提供商。开源TypeScript运行时。"
   },
   "nav": {
     "features": "功能",
@@ -16,67 +16,14 @@
     "openapi": "OpenAPI",
     "faq": "常见问题",
     "about": "关于",
-    "github": "GitHub",
-    "marketplace": "市场"
+    "github": "GitHub"
   },
   "hero": {
     "badge": "开源 · 自适应 · 涌现",
     "title": "自适应与涌现智能的便携式AI代理运行时",
     "subtitle": "面向会记忆、会适应、能创造新工具的 AI 智能体的开源 TypeScript 运行时。运行时中的每个会话都是一个 GMI(Generalized Mind Instance),它保留自己的人格、情绪和记忆,并能随时间调整自己的特质。智能体在任务中途编写自己的函数并由裁判批准;当固定名单无法覆盖任务时,管理者会创建专家。基于神经科学的认知记忆。LongMemEval-S 85.6%。Apache 2.0。",
-    "headlinePairs": [
-      {
-        "top": "自适应智能",
-        "bottom": "面向自主代理"
-      },
-      {
-        "top": "涌现智能",
-        "bottom": "服务于企业级编排"
-      },
-      {
-        "top": "自适应智能",
-        "bottom": "守护安全关键工作流"
-      },
-      {
-        "top": "涌现智能",
-        "bottom": "赋能并行 AI 团队"
-      }
-    ],
-    "technicalHighlights": [
-      {
-        "title": "流式优先运行时",
-        "detail": "在角色、护栏与多通道之间实现逐 token 级别的流式传输。"
-      },
-      {
-        "title": "确定性编排",
-        "detail": "并行GMI，支持可审计的路由、审批与预算。"
-      },
-      {
-        "title": "零拷贝记忆织体",
-        "detail": "将向量、情节与工作记忆编织到同一条可回放的语义流。"
-      },
-      {
-        "title": "可移植智能胶囊",
-        "detail": "导出完整AgentOS实例为Markdown/JSON，并在任何技术栈中复用。"
-      }
-    ],
-    "visualStats": [
-      {
-        "label": "运行中的代理机构",
-        "value": "128"
-      },
-      {
-        "label": "审批SLA",
-        "value": "3.2 分钟"
-      },
-      {
-        "label": "护栏覆盖率",
-        "value": "98%"
-      }
-    ],
     "ctaPrimary": "体验 Voice Chat Assistant",
     "ctaSecondary": "在 GitHub 上点星",
-    "marketplaceLead": "想要精选代理？",
-    "marketplaceCta": "代理市场即将上线",
     "codeLabel": "npm install @framers/agentos",
     "copyToast": "已复制到剪贴板！",
     "copyAria": "复制命令",
@@ -141,9 +88,9 @@
     },
     "language": {
       "title": "语言和翻译",
-      "description": "按界面自动检测语言和语调。角色在语音、聊天和文档中保持流畅，可选择您喜欢的翻译提供商。",
+      "description": "LanguageService 通过其检测提供商识别文本语言，并用 OpenAI 或 DeepL 翻译。在 AgentOS 运行时中，每轮的数据块都会带上根据用户提示、检测到的语言或回退链选出的回复语言。",
       "pill": "多语言就绪",
-      "bullet1": "角色感知的语调适应",
+      "bullet1": "按提示、检测或回退链确定回复语言",
       "bullet2": "按语言的回退路由"
     },
     "storage": {
@@ -200,7 +147,7 @@
           "通过 CLI、Webhook、Slack 或 LLM 裁判进行审批把关",
           "超出上限即拒绝调用的支出预算",
           "经裁判审查的工具锻造，运行于 node:vm 沙箱",
-          "可选的提示注入分类器（ml-classifiers 包）"
+          "可选的短语列表护栏，拦截经审核的短语或交由 LLM 裁判判断"
         ]
       },
       "guardrails": {
@@ -251,11 +198,11 @@
     "legend": {
       "fullyImplemented": {
         "title": "完全实现",
-        "description": "PII 脱敏、注入与有害内容分类器、签名溯源账本、认知记忆以及 100 多个精选扩展均已开源，现已可用"
+        "description": "PII 脱敏、有害内容与 NSFW 分类器、签名溯源账本、认知记忆以及 100 多个精选扩展均已开源，现已可用"
       },
       "inProgress": {
         "title": "审计追踪",
-        "description": "按脱敏事件的结构化日志、溯源链以及自托管数据驻留。正式的 SOC 2 与 GDPR 认证由部署团队组织层面承担，而非库本身的属性。"
+        "description": "针对存储写入的签名溯源链、锻造工具事件的审计日志以及自托管数据驻留。正式的 SOC 2 与 GDPR 认证由部署团队组织层面承担，而非库本身的属性。"
       },
       "enterpriseSupport": {
         "title": "企业支持",
@@ -270,10 +217,6 @@
     "trustBadge": "受到行业领导者的信赖",
     "wipLabel": "WIP",
     "currentlyDevelopment": "目前正在开发中"
-  },
-  "marketplace": {
-    "comingSoon": "代理市场即将推出",
-    "description": "分享、购买和出售您的AgentOS代理机构。我们将处理CI/CD、基础设施、支付和合规，让您专注于自适应、涌现和永久智能。"
   },
   "caseStudies": {
     "comingSoon": "案例研究即将推出",
@@ -293,7 +236,7 @@
     "legal": "法律",
     "terms": "条款",
     "privacy": "隐私",
-    "license": "Apache 2.0（核心）+ MIT（代理、扩展、护栏）",
+    "license": "Apache 2.0（核心、扩展、护栏）",
     "copyright": "© {year} Frame.dev. 保留所有权利。"
   },
   "cta": {
@@ -304,8 +247,7 @@
     "badge": "加入AI革命",
     "exploreLabel": "或立即探索AgentOS：",
     "tryVoiceChat": "试用语音聊天",
-    "browseCode": "浏览代码",
-    "marketplace": "市场"
+    "browseCode": "浏览代码"
   },
   "LanguageSwitcher": {
     "switchLanguage": "切换语言",
@@ -627,11 +569,11 @@
     "layers": {
       "channels": {
         "name": "通道与 I/O",
-        "description": "Telegram、Discord、Slack、WhatsApp、Twitter 以及另外 32 个渠道。语音通过 12 个 STT 和 13 个 TTS 提供商实现。每个渠道适配器都实现同一个接口，平台支持时还提供输入状态提示和消息编辑。"
+        "description": "Telegram、Discord、Slack、WhatsApp、Twitter 以及另外 32 个渠道。语音通过 11 个 STT 和 10 个 TTS 提供商实现。每个渠道适配器都实现同一个接口，平台支持时还提供输入状态提示和消息编辑。"
       },
       "guardrails": {
         "name": "护栏与安全",
-        "description": "启用流式检查的护栏会在文本流出时检查，其余护栏检查最终回复。六个可选护栏包涵盖 PII 脱敏、有害内容与注入分类器、对照来源核查、话题控制、按内容政策改写以及代码安全。"
+        "description": "启用流式检查的护栏会在文本流出时检查，其余护栏检查最终回复。六个可选护栏包涵盖 PII 脱敏、有害内容与 NSFW 分类器、对照来源核查、话题控制、按内容政策改写以及代码安全。"
       },
       "tools": {
         "name": "工具与扩展",
@@ -736,15 +678,15 @@
     "general": {
       "whatIsAgentOS": {
         "question": "AgentOS 是什么?",
-        "answer": "AgentOS 是一个用于构建生产级 AI 智能体的开源 TypeScript 运行时,由 Frame.dev 开发。它提供多智能体编排、认知记忆、多模态 RAG、内置安全护栏(PII 编辑、提示注入防御、内容审核)、语音管道、37 个通道适配器和 11 个 LLM 提供商集成。AgentOS 还为 AI 原生游戏平台 Wilds.ai 提供 AI 系统支持。可自托管且免费。"
+        "answer": "AgentOS 是一个用于构建生产级 AI 智能体的开源 TypeScript 运行时,由 Frame.dev 开发。它提供多智能体编排、认知记忆、多模态 RAG、可选的安全护栏(PII 编辑、内容审核、事实依据校验)、语音管道、37 个通道适配器和 13 个 LLM 提供商集成。AgentOS 还为 AI 原生游戏平台 Wilds.ai 提供 AI 系统支持。可自托管且免费。"
       },
       "isOpenSource": {
         "question": "AgentOS 是免费且开源的吗?",
-        "answer": "是的。核心运行时采用 Apache 2.0 许可证。智能体预设、扩展和护栏采用 MIT 许可证。你可以根据这些许可条款商用、修改和再分发 AgentOS。"
+        "answer": "是的。运行时、精选扩展、护栏包和精选技能均采用 Apache 2.0 许可。你可以在该许可下商用、修改和再分发 AgentOS。"
       },
       "llmProviders": {
         "question": "支持哪些 LLM 提供商?",
-        "answer": "AgentOS 支持 11 个 LLM 提供商,包括 OpenAI、Anthropic、Google Gemini、Groq、Together AI、Mistral、xAI (Grok)、OpenRouter、Ollama、Claude Code CLI、Gemini CLI。提供商回退链支持自动故障转移。"
+        "answer": "AgentOS 支持 13 个 LLM 提供商:OpenAI、Anthropic、Google Gemini、Groq、Together AI、Mistral、xAI (Grok)、OpenRouter、Requesty、LiteLLM、Ollama、Claude Code CLI、Gemini CLI。提供商回退链支持自动故障转移。"
       },
       "language": {
         "question": "AgentOS 是用什么编程语言构建的?",
@@ -752,11 +694,11 @@
       },
       "comparison": {
         "question": "AgentOS 与 LangChain、CrewAI 或 AutoGen 有何不同?",
-        "answer": "AgentOS 是 TypeScript 原生(而非 Python),内置具有 Ebbinghaus 遗忘曲线和 HEXACO 人格建模的认知记忆,提供 5 层安全等级而非简单的提示词过滤,提供 37 个内置通道适配器(Discord、Telegram、Slack、电子邮件等),支持 6 种编排策略,包括基于图的智能体 DAG。还附带 88 个精选技能和可将 token 使用量减少约 90% 的能力发现引擎。"
+        "answer": "AgentOS 是 TypeScript 原生(而非 Python),内置具有 Ebbinghaus 遗忘曲线和 HEXACO 人格建模的认知记忆,提供用于 PII 编辑、内容审核和事实依据校验的可选护栏包,提供 37 个通道适配器(Discord、Telegram、Slack、电子邮件等),支持 6 种编排策略,包括基于图的智能体 DAG。还附带 88 个精选技能和在每层 token 预算内只把相关工具和技能放入上下文的能力发现引擎。"
       },
       "whatIsParacosm": {
         "question": "Paracosm 是什么?",
-        "answer": "Paracosm (https://paracosm.agentos.sh) 是构建在 AgentOS 之上的结构化世界模型仿真引擎。它将 JSON ScenarioPackage 加上 HEXACO 领导者画像编译为确定性的回合循环,其中 AgentOS 智能体提出事件,在加固的 node:vm 沙箱中运行时锻造新的 TypeScript 工具,并产生可以分叉与回放的反事实产物。三种模式共享一套 schema:回合循环式文明仿真 (Mars Genesis 是典型示例)、批量轨迹数字孪生,以及批量点蒙特卡洛预测。Apache 2.0 开源,npm install paracosm。在线 Demo: https://paracosm.agentos.sh/sim。源码: https://github.com/framerslab/paracosm。长文发布博客 (我们为什么构建它、wilds.ai 金库故事、引擎参考): https://agentos.sh/blog/paracosm-launch。"
+        "answer": "Paracosm (https://paracosm.agentos.sh) 是构建在 AgentOS 之上的结构化世界模型仿真引擎。它将 JSON ScenarioPackage 加上 HEXACO 领导者画像编译为围绕带种子的确定性内核的回合循环,其中 AgentOS 智能体提出事件,在运行时锻造新的 JavaScript 工具 (由 AgentOS 在 node:vm 中以 10 秒时限运行),并产生可以分叉与回放的反事实产物。三种模式共享一套 schema:回合循环式文明仿真 (Mars Genesis 是典型示例)、批量轨迹数字孪生,以及批量点蒙特卡洛预测。Apache 2.0 开源,npm install paracosm。在线 Demo: https://paracosm.agentos.sh/sim。源码: https://github.com/framerslab/paracosm。长文发布博客 (我们为什么构建它、wilds.ai 金库故事、引擎参考): https://agentos.sh/blog/paracosm-launch。"
       },
       "whatIsWildsAi": {
         "question": "Wilds.ai 是什么?",
@@ -764,41 +706,41 @@
       },
       "whatIsWunderland": {
         "question": "Wunderland 是什么?",
-        "answer": "Wunderland (https://wunderland.sh) 是一个积极开发中的姊妹项目,它在 AgentOS 扩展与技能注册表之上打包了开箱即用的 CLI 与守护进程。它提供 28 个命令的 CLI (setup、chat、rag、agency、workflows、evaluate、provenance、knowledge、marketplace 等)、5 级安全模型 (dangerous / permissive / balanced / strict / paranoid)、8 个智能体预设、步进式 HITL 授权,以及与 AgentOS 文档中记载的相同的认知记忆和基于图的 RAG 架构。当你需要嵌入应用的 TypeScript SDK 时使用 @framers/agentos;当你需要可以通过 pnpm add -g wunderland 安装并通过向导配置的全局 CLI 时使用 Wunderland。源码位于 github.com/jddunn/wunderland (从 0.71.0 起 Apache 2.0)。预览发布,API 和 CLI 表面仍可能变化。入门指南: https://docs.agentos.sh/wunderland。"
+        "answer": "Wunderland (https://wunderland.sh) 是一个积极开发中的姊妹项目,它在 AgentOS 扩展与技能注册表之上打包了开箱即用的 CLI 与守护进程。它提供 60 个命令的 CLI (setup、chat、rag、agency、workflows、evaluate、provenance、knowledge、marketplace 等)、5 级安全模型 (dangerous / permissive / balanced / strict / paranoid)、9 个智能体预设、步进式 HITL 授权,以及与 AgentOS 文档中记载的相同的认知记忆和基于图的 RAG 架构。当你需要嵌入应用的 TypeScript SDK 时使用 @framers/agentos;当你需要可以通过 pnpm add -g wunderland 安装并通过向导配置的全局 CLI 时使用 Wunderland。源码位于 github.com/jddunn/wunderland (从 0.71.0 起 Apache 2.0)。预览发布,API 和 CLI 表面仍可能变化。入门指南: https://docs.agentos.sh/wunderland。"
       }
     },
     "technical": {
       "whatIsGMI": {
         "question": "GMI 是什么?",
-        "answer": "GMI 代表 Generalized Mind Instance。它是 AgentOS 运行时为每个会话创建的智能体:保存该会话的人格(HEXACO 特质)、对话历史、情绪和推理轨迹,通过检索、提示词组装、模型调用和工具调用执行每一轮,并且可以被赋予跨会话持久的认知记忆。轻量级辅助函数 agent() 直接调用模型,不会创建 GMI;创建 GMI 的是完整运行时(AgentOS.processRequest)。"
+        "answer": "GMI 代表 Generalized Mind Instance。它是 AgentOS 运行时为每个会话创建的智能体:保存该会话的人格(HEXACO 特质)、对话历史、情绪和推理轨迹,通过检索、提示词组装、模型调用和工具调用执行每一轮,并且可以被赋予跨会话持久的认知记忆。轻量级辅助函数 agent() 直接调用模型,除非传入 runtime: 'gmi',否则不会创建 GMI;gmi() 和完整运行时(AgentOS.processRequest)会创建 GMI。"
       },
       "hexaco": {
         "question": "HEXACO 人格是什么?",
-        "answer": "HEXACO 是源自心理学研究(Ashton & Lee, 2004)的 6 因素人格模型。这六个维度是诚实-谦逊、情绪性、外向性、宜人性、尽责性和经验开放性。在 AgentOS 中,HEXACO 特质调节智能体如何沟通、记忆和决策。例如,高开放性增加回忆时的记忆再巩固,而高尽责性强化对无关联想的检索诱发遗忘。"
+        "answer": "HEXACO 是源自心理学研究(Ashton & Lee, 2007)的 6 因素人格模型。这六个维度是诚实-谦逊、情绪性、外向性、宜人性、尽责性和经验开放性。在 AgentOS 中,HEXACO 特质决定智能体如何沟通和记忆。agent() 会把高于 0.65 或低于 0.35 的特质作为行为指令写入系统提示。在认知记忆中,情绪性越高,记忆在被回忆时改写得越多(再巩固);尽责性越高,对竞争记忆的检索诱发遗忘越强。"
       },
       "cognitiveMemory": {
         "question": "认知记忆是如何工作的?",
-        "answer": "AgentOS 认知记忆实现了认知科学研究中的 8 种机制:再巩固、检索诱发遗忘、非自主回忆、知晓感、时间要旨提取、模式编码、来源置信度衰减和情绪调节。记忆随时间按 Ebbinghaus 遗忘曲线(Ebbinghaus, 1885)衰减,通过间隔重复与巩固保留重要信息。工作记忆遵循 Baddeley 多组件模型(Baddeley, 2000),具备用于当前对话轮次的易失暂存区,该暂存区会向上巩固至情景、语义和观察记忆层。"
+        "answer": "AgentOS 认知记忆实现了认知科学研究中的 8 种机制:再巩固、检索诱发遗忘、非自主回忆、知晓感、时间要旨提取、模式编码、来源置信度衰减和情绪调节。记忆随时间按 Ebbinghaus 遗忘曲线(Ebbinghaus, 1885)衰减,每次成功检索都会让记忆更稳定,与间隔重复的效果相同。工作记忆遵循 Baddeley 多组件模型(Baddeley, 2000),有 7 个槽位(根据开放性和尽责性在 5 到 9 之间)。新记忆默认存为情景记忆,并占用一个工作记忆槽位。槽位满时,活跃度最低的槽位会被腾出,其记忆仍保留在存储中。之后的巩固会把久远且常被检索的情景记忆转为语义记忆。"
       },
       "guardrails": {
         "question": "有哪些可用的护栏?",
-        "answer": "AgentOS 提供 5 层安全等级(dangerous、permissive、balanced、strict、paranoid)和 6 种护栏扩展类型:PII 编辑(姓名、电子邮件、电话号码、SSN)、用于提示词注入检测的 ML 分类器、代码安全分析、对源文档的接地验证、保持智能体专注任务的话题性强制以及针对有害或不当输出的内容策略过滤。"
+        "answer": "AgentOS 有六个可选的护栏包:PII 编辑(姓名、电子邮件、电话号码、SSN 等)、检测有害内容、威胁和 NSFW 内容的 ML 分类器、检查生成代码中危险模式的静态分析、对源文档的接地验证、让智能体专注任务的话题性强制,以及改写或拦截违反你的策略的输出的内容策略改写器。每个包都是你在 AgentOS 运行时中启用的扩展。分类器包只有在本地模型无法加载时才会给提示词注入打分,对于已知的注入短语,请使用内置的短语列表护栏。"
       },
       "capabilityDiscovery": {
         "question": "能力发现系统是什么?",
-        "answer": "能力发现引擎用 3 层语义搜索替代了工具与技能的静态转储,将 token 使用量减少约 90%。Tier 0 在约 150 个 token 内提供类别摘要(始终包含)。Tier 1 在约 200 个 token 内返回前 5 个语义匹配。Tier 2 按需在约 1,500 个 token 内交付完整模式。一个名为 discover_capabilities 的元工具让智能体能在运行时自行发现可用工具。"
+        "answer": "能力发现引擎通过语义搜索找到工具和技能,并分三层放入提示,每层都有严格的 token 预算。Tier 0 始终在上下文中保留类别摘要(默认 200 个 token)。Tier 1 加入本轮前 5 个语义匹配(800 个 token)。Tier 2 加入前 2 个匹配的完整模式或 SKILL.md 文本(2,000 个 token)。一个名为 discover_capabilities 的元工具让智能体能在运行时查询可用工具。"
       },
       "queryRouter": {
         "question": "QueryRouter 是如何工作的?",
-        "answer": "QueryRouter 将传入查询分为 4 层:T0(从上下文直接回答)、T1(单工具调用)、T2(需要规划引擎的多步计划)和 T3(需要编排的多智能体委派)。该分类决定每个请求的执行策略和资源分配。"
+        "answer": "QueryRouter 将每个查询分为 4 层之一并据此检索:T0 不检索,直接从对话中回答;T1 执行一次向量搜索(未配置嵌入提供商时改为关键词搜索);T2 组合多个来源或遍历知识图谱;T3 在整个语料库中进行深度研究。随后它根据检索到的内容作答,并附上来源引用一并返回。"
       },
       "adaptiveIntelligence": {
         "question": "什么是自适应智能?",
-        "answer": "自适应智能是 AgentOS 智能体在无需再训练的情况下持续改进行为的方式。五种机制协同工作:(1) 元反思式提示适应 — PromptBuilder 在每一轮组装不同的系统提示,动态融入人格特质、情绪状态、对话历史、检索到的记忆和可用工具。(2) 响应质量自评估 — self_evaluate 工具对智能体自身输出打分,并实时调整温度、冗长度和人格表达等参数。(3) 人格调节认知 — HEXACO 特质塑造智能体的信息处理方式。高开放性增加记忆检索中的创造性联想;高尽责性强化对无关数据的检索诱发遗忘。(4) 自主记忆巩固 — ConsolidationLoop 修剪弱记忆,加强频繁访问的记忆,并从记忆簇中导出新见解,因此智能体的知识会随时间在无显式训练下不断提升。(5) QueryRouter 分层分类 — 系统根据查询复杂度调整检索深度。简单问题进行快速关键词查找;复杂问题触发包含深度研究的完整混合 RAG。"
+        "answer": "自适应智能是指 AgentOS 智能体无需重新训练即可调整自身行为的方式。五种机制协同工作:(1) 每轮组装提示:GMI 的 PromptEngine 每轮根据人设、情绪、对话历史、检索到的记忆和可用工具构建系统提示。(2) 自我评估:启用自我改进后,self_evaluate 工具为智能体自己的回答打分,并可以更改会话的 temperature 或详略程度,或通过 adapt_personality 调整特质。(3) 受人格调节的记忆:HEXACO 特质调节记忆机制;开放性越高,非自主回忆越可能发生;尽责性越高,对竞争记忆的检索诱发遗忘越强。(4) 记忆巩固:巩固过程会修剪已衰减的记忆、合并重复项、把久远且常被检索的情景记忆转为语义记忆,并在配置了 LLM 时从记忆簇中提炼洞察记忆。(5) QueryRouter 分层:检索深度随查询而定,对话中已有答案时不检索,最难的查询则在整个语料库中进行深度研究。"
       },
       "emergentBehaviors": {
         "question": "什么是涌现行为?",
-        "answer": "涌现行为是智能体在运行时发展出的能力,而非被显式编程的能力。AgentOS 支持五种形式:(1) 运行时工具铸造 — 智能体通过 forge_tool 即时创建新工具。EmergentCapabilityEngine 使用沙盒 JavaScript 执行和 LLM-as-judge 评估来安全地创建、测试和推广工具。(2) 自我改进人格 — 智能体通过 adapt_personality 在有界限的范围内适应其 HEXACO 人格特质。变异随 Ebbinghaus 遗忘曲线持续 — 强烈且重复的适应得以保留,弱的则自然消退。(3) 动态技能管理 — 智能体通过 manage_skills 在运行时启用或禁用技能,使其行为库适应当前任务。(4) 可组合工作流创建 — 智能体通过 create_workflow 将已注册工具组合为多步管道,基于现有构建块构建新能力。(5) 分层工具推广 — 铸造的工具按会话、智能体和共享层级推进。证明可靠的工具(5 次以上成功使用、置信度 > 0.8)会自动推广以供跨智能体重用。"
+        "answer": "涌现行为是智能体在运行时获得的能力,而不是被显式编程的能力。AgentOS 支持五种形式:(1) 运行时工具锻造:在 AgentOS 运行时上设置 emergent: true 后,智能体通过 forge_tool 用 JavaScript 编写新工具。EmergentCapabilityEngine 在 node:vm 中以时间限制运行每个工具,并在工具注册前由 LLM 评审检查代码及其测试运行。(2) 自我调整的人格:adapt_personality 在设定范围内调整正在运行的智能体的 HEXACO 特质。配合 persistWithDecay 和变更存储时,每次变更都会被记录,已存储的记录在智能体发生适应的日子里每天最多衰减一次。(3) 动态技能管理:智能体通过 manage_skills 在运行时启用或停用技能,使行为方式适应当前任务。(4) 可组合的工作流创建:智能体通过 create_workflow 把已注册的工具组合成多步流水线,用现有构件搭建新能力。(5) 分层工具晋升:锻造出的工具从 session 层开始。在至少使用 5 次、成功率达到 0.8 或以上并获得两名 LLM 评审批准后,它会进入 agent 层。宿主可以用 EmergentToolRegistry.promote() 把工具晋升到 shared 层。"
       },
       "llmJudge": {
         "question": "我可以用 LLM 代替人类作为裁判吗?",
@@ -812,33 +754,33 @@
     "gettingStarted": {
       "install": {
         "question": "如何安装 AgentOS?",
-        "answer": "通过 npm 安装:npm install @framers/agentos。AgentOS 需要 Node.js 18 或更高版本。对于 CLI 工具,安装伴随包:npm install -g wunderland。"
+        "answer": "通过 npm 安装:npm install @framers/agentos。AgentOS 需要 Node.js 22 或更高版本。对于 CLI 工具,安装伴随包:npm install -g wunderland。"
       },
       "firstAgent": {
         "question": "如何创建我的第一个智能体?",
-        "answer": "导入 agent 函数,使用 provider、instructions 和可选的人格特质对其进行配置。这是一个最小示例:\n\nimport { agent } from '@framers/agentos'\n\nconst myAgent = agent({\n  provider: 'openai',\n  instructions: '你是一个乐于助人的助手。',\n  personality: { openness: 0.8, conscientiousness: 0.9 },\n  memory: { enabled: true },\n})\n\nconst reply = await myAgent.send('你好!')\nconsole.log(reply.text)"
+        "answer": "导入 agent 函数,使用 provider、instructions 和可选的人格特质对其进行配置。这是一个最小示例:\n\nimport { agent } from '@framers/agentos'\n\nconst myAgent = agent({\n  provider: 'openai',\n  instructions: '你是一个乐于助人的助手。',\n  personality: { openness: 0.8, conscientiousness: 0.9 },\n})\n\nconst reply = await myAgent.generate('你好!')\nconsole.log(reply.text)"
       },
       "voice": {
         "question": "如何添加语音功能?",
-        "answer": "AgentOS 支持多个 STT(语音转文本)和 TTS(文本转语音)提供商。在智能体配置中指定 STT 和 TTS 提供商来配置语音管道。支持的 STT 提供商包括 Whisper (OpenAI)、Deepgram 和 AssemblyAI。TTS 提供商包括 ElevenLabs、OpenAI TTS 和 Google Cloud TTS。可用电话集成实现实时语音交互。"
+        "answer": "AgentOS 通过 VoicePipelineOrchestrator 处理语音。你提供流式 STT 会话、流式 TTS 会话、语音端点检测器和打断(barge-in)处理器,它会通过 WebSocket 等传输把它们连接到智能体会话。语音目录列出 11 个 STT 提供商,包括 Whisper (OpenAI)、Deepgram 和 AssemblyAI,以及 10 个 TTS 提供商,包括 ElevenLabs、OpenAI TTS 和 Google Cloud TTS。Twilio、Telnyx 和 Plivo 提供商负责拨打和结束电话。"
       },
       "deploy": {
         "question": "如何部署 AgentOS?",
-        "answer": "AgentOS 可自托管,可在任何运行 Node.js 的地方运行。使用 Docker 部署到自己的基础设施、AWS、GCP 或 Azure 等云提供商,或使用 Vercel、Railway 或 Fly.io 等平台。运行时默认使用 SQLite 实现零配置设置,可选迁移到 Postgres、pgvector、Qdrant 或 Neo4j 以满足生产规模。"
+        "answer": "AgentOS 可自托管,可在任何运行 Node.js 22 或更高版本的地方运行。使用 Docker 部署到自己的基础设施、AWS、GCP 或 Azure 等云提供商,或使用 Vercel、Railway 或 Fly.io 等平台。SQLite 无需任何设置,需要更大规模时,MigrationEngine 会把已存储的数据迁移到 Postgres、Qdrant 或 Pinecone。"
       },
       "offline": {
         "question": "AgentOS 可以离线工作吗?",
-        "answer": "可以。AgentOS 与用于本地 LLM 推理的 Ollama 配合时可完全离线工作。Ollama 提供对 Llama、Mistral 和 Phi 等开放权重模型的本地访问。SQLite 存储后端和内存向量存储无需外部服务。CLI 会自动检测 Ollama 并配置智能体使用它。"
+        "answer": "可以。AgentOS 与用于本地 LLM 推理的 Ollama 配合时可完全离线工作。Ollama 提供对 Llama、Mistral 和 Phi 等开放权重模型的本地访问。SQLite 存储后端和内存向量存储无需外部服务。Wunderland CLI 的 ollama-setup 命令会检测或安装 Ollama,并配置智能体使用它。"
       }
     },
     "enterprise": {
       "productionReady": {
         "question": "AgentOS 是否生产就绪?",
-        "answer": "是的。AgentOS 让你精确控制智能体拥有的自由度 — 从完全开放到完全锁定。它阻止提示注入攻击,编辑个人数据,实时审核内容,对敏感工具调用要求批准,强制执行预算限制,并包含熔断器和速率限制。"
+        "answer": "是的。AgentOS 提供可编辑个人数据、审核内容并对照来源核查回答的可选护栏包,以及敏感工具调用的审批关卡、拒绝超出上限调用的支出预算,和把故障提供商移出轮换的熔断器。"
       },
       "compliance": {
         "question": "AgentOS 如何支持 GDPR 与 SOC 2 工作流?",
-        "answer": "AgentOS 提供在数据到达 LLM 提供商之前剥离个人数据的 PII 脱敏护栏、按脱敏事件的结构化审计日志，以及让数据保留在你的基础设施上的自托管部署。内存系统支持数据主体访问请求的删除与导出。GDPR 与 SOC 2 合规是部署团队的组织责任，而非库本身的属性。"
+        "answer": "AgentOS 提供在数据到达 LLM 提供商之前剥离个人数据的 PII 脱敏护栏，以及让数据保留在你的基础设施上的自托管部署。记忆可导出为 JSON、Markdown、Obsidian 或 SQLite，用于访问请求。遗忘一条记忆会让它不再被召回，但它的行仍留在数据库中，因此删除请求需要在你自己的存储中执行删除。GDPR 与 SOC 2 合规是部署团队的组织责任，而非库本身的属性。"
       },
       "support": {
         "question": "是否提供企业支持?",
@@ -846,7 +788,7 @@
       },
       "selfHosted": {
         "question": "我能使用 AgentOS 配合自己的基础设施吗?",
-        "answer": "当然可以。AgentOS 从一开始就设计为可自托管。对于自托管部署,你的数据使用 SQLite、Postgres、pgvector、Qdrant 或 Neo4j 保留在你的基础设施上。如果你更喜欢供应商托管的托管向量数据库,也支持 Pinecone。为自托管后端提供了 Docker Compose 配置。"
+        "answer": "当然可以。AgentOS 从一开始就设计为可自托管。对于自托管部署,你的数据使用 SQLite、Postgres、pgvector、Qdrant 或 Neo4j 保留在你的基础设施上。如果你更喜欢供应商托管的托管向量数据库,也支持 Pinecone。一个设置辅助工具可以用 Docker 启动本地 Qdrant 容器。"
       }
     },
     "references": {
@@ -866,10 +808,10 @@
           "url": "https://doi.org/10.1016/S1364-6613(00)01538-2"
         },
         "hexaco": {
-          "label": "Ashton, M. C., & Lee, K. (2004)",
+          "label": "Ashton, M. C., & Lee, K. (2007)",
           "title": "Empirical, theoretical, and practical advantages of the HEXACO model of personality structure.",
           "detail": "HEXACO 模型提供了 AgentOS 智能体身份中使用的 6 因素人格维度。",
-          "url": "https://doi.org/10.1207/s15327957pspr0802_1"
+          "url": "https://doi.org/10.1177/1088868306294907"
         },
         "louvain": {
           "label": "Blondel, V. D., Guillaume, J.-L., Lambiotte, R., & Lefebvre, E. (2008)",
@@ -1044,12 +986,12 @@
       },
       "guardrails": {
         "title": "内置安全",
-        "description": "六个可选护栏包：注入与有害内容分类器、PII 脱敏、对照来源的事实核查、话题控制、内容政策改写器，以及生成代码扫描器",
+        "description": "六个可选护栏包：有害内容与 NSFW 分类器、PII 脱敏、对照来源的事实核查、话题控制、内容政策改写器，以及生成代码扫描器",
         "features": [
           "4级PII编辑",
           "ONNX BERT分类器",
           "接地护栏 (NLI)",
-          "OWASP Top 10扫描"
+          "25 条对齐 OWASP 的代码规则"
         ],
         "capabilities": [
           "PII 脱敏",
@@ -1059,9 +1001,9 @@
       },
       "voice": {
         "title": "语音管道",
-        "description": "12个STT和13个TTS提供商，具有实时流式传输、VAD、说话人分离和电话支持",
+        "description": "11个STT和10个TTS提供商，具有实时流式传输、VAD、说话人分离和电话支持",
         "features": [
-          "12 STT + 13 TTS",
+          "11 STT + 10 TTS",
           "VAD + 说话人分离",
           "实时流式传输",
           "Twilio/Telnyx/Plivo"
@@ -1339,7 +1281,7 @@
       "details": [
         "Composable 模式: 通过流水线步骤串联现有工具,构造上即安全",
         "Sandbox 模式: 智能体编写的代码在时间限制下运行于 node:vm 或 QuickJS",
-        "三个生命周期层级（会话、智能体、共享）；晋升把工具从会话级移到智能体级",
+        "三个生命周期层级（会话、智能体、共享）；自动晋升把工具从会话级移到智能体级，宿主可以再把它晋升到共享级",
         "双裁判晋升面板: 安全审计员与正确性审阅者必须同时通过",
         "使用追踪;当达到可靠性阈值时自动晋升层级"
       ]
