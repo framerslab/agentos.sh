@@ -938,7 +938,7 @@
       },
       "cognitiveMemory": {
         "question": "¿Cómo funciona la memoria cognitiva?",
-        "answer": "La memoria cognitiva de AgentOS implementa 8 mecanismos de la investigación en ciencia cognitiva: reconsolidación, olvido inducido por recuperación, recuerdo involuntario, sensación de saber, extracción de gist temporal, codificación de esquemas, decaimiento de confianza de la fuente y regulación emocional. Las memorias decaen con el tiempo siguiendo las curvas del olvido de Ebbinghaus (Ebbinghaus, 1885), y cada recuperación exitosa vuelve una memoria más estable, como en la repetición espaciada. La memoria de trabajo sigue el modelo multicomponente de Baddeley (Baddeley, 2000) con 7 slots, de 5 a 9 según la Apertura y la Conciencia. Una memoria nueva se guarda como memoria episódica por defecto y ocupa un slot de la memoria de trabajo. Cuando los slots están llenos, se libera el slot menos activo y su memoria sigue guardada. La consolidación convierte después las memorias episódicas antiguas y muy recuperadas en memorias semánticas."
+        "answer": "La memoria cognitiva de AgentOS implementa 8 mecanismos de la investigación en ciencia cognitiva: reconsolidación, olvido inducido por recuperación, recuerdo involuntario, sensación de saber, extracción de gist temporal, codificación de esquemas, decaimiento de confianza de la fuente y regulación emocional. Las memorias decaen con el tiempo siguiendo las curvas del olvido de Ebbinghaus (Ebbinghaus, 1885), y cada recuperación exitosa vuelve una memoria más estable, como en la repetición espaciada. La memoria de trabajo sigue el modelo multicomponente de Baddeley (Baddeley, 2000) con 7 slots por defecto: una Apertura alta añade uno, una Conciencia alta quita uno, y el total queda entre 5 y 9. Una memoria nueva se guarda como memoria episódica por defecto y ocupa un slot de la memoria de trabajo. Cuando los slots están llenos, se libera el slot menos activo y su memoria sigue guardada. La consolidación convierte después las memorias episódicas antiguas y muy recuperadas en memorias semánticas."
       },
       "guardrails": {
         "question": "¿Qué guardrails están disponibles?",
@@ -1137,7 +1137,7 @@
       "sourceConfidence": "Johnson, Hashtroudi & Lindsay (1993). Psychological Bulletin, 114, 3-28.",
       "emotionRegulation": "Gross (1998). Review of General Psychology, 2, 271-299."
     },
-    "ebbinghausAnnotation": "Sin repaso, el 80% de la información se pierde en 24 horas. La memoria cognitiva de AgentOS aplica repetición espaciada y consolidación para aplanar la curva.",
+    "ebbinghausAnnotation": "Ebbinghaus observó que, un día después de aprender, se recordaba aproximadamente un tercio. La memoria cognitiva de AgentOS aplica repetición espaciada y consolidación para aplanar la curva.",
     "ctaLearnMore": "Explorar Memoria Cognitiva",
     "ctaSoulWiki": "Wiki de memoria en Markdown",
     "memoryTypes": {
@@ -1146,7 +1146,7 @@
       "working": {
         "name": "Memoria de Trabajo",
         "description": "Espacios de corto plazo para la sesión actual, que se vacían al empezar una nueva sesión.",
-        "detail": "7 espacios, de 5 a 9 según los rasgos"
+        "detail": "7 espacios; una Apertura alta añade uno, una Conciencia alta quita uno"
       },
       "episodic": {
         "name": "Memoria Episodica",

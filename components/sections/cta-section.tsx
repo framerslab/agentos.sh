@@ -24,7 +24,7 @@ export function CTASection() {
 
         {/* Main CTA Links */}
         <div className="max-w-xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <a
               href="https://wilds.ai/discord"
               target="_blank"
@@ -61,14 +61,6 @@ export function CTASection() {
             >
               <Sparkles className="w-5 h-5 text-[var(--color-accent-primary)]" />
               <span className="text-xs font-medium">Wilds.ai</span>
-            </a>
-
-            <a
-              href="https://vca.chat"
-              className="group flex flex-col items-center gap-2 p-4 bg-[var(--color-background-card)] backdrop-blur-xl rounded-xl border border-[var(--color-border-subtle)] text-[var(--color-text-primary)] hover:border-[var(--color-accent-primary)] hover:bg-[var(--color-accent-primary)]/5 transition-all duration-300"
-            >
-              <MessageCircle className="w-5 h-5 text-[var(--color-accent-primary)]" />
-              <span className="text-xs font-medium">{t('tryVoiceChat')}</span>
             </a>
           </div>
         </div>

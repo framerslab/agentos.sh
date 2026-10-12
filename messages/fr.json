@@ -912,7 +912,7 @@
       },
       "cognitiveMemory": {
         "question": "Comment fonctionne la mémoire cognitive ?",
-        "answer": "La mémoire cognitive d’AgentOS implémente 8 mécanismes issus de la recherche en sciences cognitives : reconsolidation, oubli induit par la récupération, rappel involontaire, sentiment de savoir, extraction de gist temporel, encodage de schémas, décroissance de la confiance de la source et régulation émotionnelle. Les souvenirs s’estompent avec le temps en suivant les courbes d’oubli d’Ebbinghaus (Ebbinghaus, 1885), et chaque récupération réussie rend un souvenir plus stable, comme dans la répétition espacée. La mémoire de travail suit le modèle multicomposant de Baddeley (Baddeley, 2000) avec 7 emplacements, de 5 à 9 selon l’Ouverture et la Conscience. Un nouveau souvenir est stocké par défaut comme souvenir épisodique et occupe un emplacement de la mémoire de travail. Quand les emplacements sont pleins, le moins actif est libéré et son souvenir reste stocké. La consolidation transforme ensuite les souvenirs épisodiques anciens et souvent récupérés en souvenirs sémantiques."
+        "answer": "La mémoire cognitive d’AgentOS implémente 8 mécanismes issus de la recherche en sciences cognitives : reconsolidation, oubli induit par la récupération, rappel involontaire, sentiment de savoir, extraction de gist temporel, encodage de schémas, décroissance de la confiance de la source et régulation émotionnelle. Les souvenirs s’estompent avec le temps en suivant les courbes d’oubli d’Ebbinghaus (Ebbinghaus, 1885), et chaque récupération réussie rend un souvenir plus stable, comme dans la répétition espacée. La mémoire de travail suit le modèle multicomposant de Baddeley (Baddeley, 2000) avec 7 emplacements par défaut : une Ouverture élevée en ajoute un, une Conscience élevée en retire un, et le total reste entre 5 et 9. Un nouveau souvenir est stocké par défaut comme souvenir épisodique et occupe un emplacement de la mémoire de travail. Quand les emplacements sont pleins, le moins actif est libéré et son souvenir reste stocké. La consolidation transforme ensuite les souvenirs épisodiques anciens et souvent récupérés en souvenirs sémantiques."
       },
       "guardrails": {
         "question": "Quels guardrails sont disponibles ?",
@@ -1137,7 +1137,7 @@
       "sourceConfidence": "Johnson, Hashtroudi & Lindsay (1993). Psychological Bulletin, 114, 3-28.",
       "emotionRegulation": "Gross (1998). Review of General Psychology, 2, 271-299."
     },
-    "ebbinghausAnnotation": "Sans révision, 80% des informations sont perdues en 24 heures. La mémoire cognitive d'AgentOS applique la répétition espacée et la consolidation pour aplatir la courbe.",
+    "ebbinghausAnnotation": "Ebbinghaus a constaté qu'un jour après l'apprentissage, il en restait environ un tiers en mémoire. La mémoire cognitive d'AgentOS applique la répétition espacée et la consolidation pour aplatir la courbe.",
     "ctaLearnMore": "Explorer la Mémoire Cognitive",
     "ctaSoulWiki": "Wiki mémoire en Markdown",
     "memoryTypes": {
@@ -1146,7 +1146,7 @@
       "working": {
         "name": "Memoire de Travail",
         "description": "Emplacements à court terme pour la session en cours, vidés au début d’une nouvelle session.",
-        "detail": "7 emplacements, de 5 à 9 selon les traits"
+        "detail": "7 emplacements ; une Ouverture élevée en ajoute un, une Conscience élevée en retire un"
       },
       "episodic": {
         "name": "Memoire Episodique",

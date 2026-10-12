@@ -11,10 +11,11 @@ import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 /**
  * Live-run demos section.
  *
- * Each tab pairs a condensed copy of a script in framerslab/agentos/examples
- * with its output. Tabs that call a model show output captured from a run;
- * the mission and bus examples call no model, so their panels show what
- * those scripts print on every run.
+ * Each tab pairs code based on a script in framerslab/agentos/examples
+ * with output from a run of that code; the spawning and citation captions
+ * say how their code differs from the script. Tabs that call a model show
+ * output captured from one run against the OpenAI API; the mission and bus
+ * examples call no model, so every run takes the same steps.
  *
  * Theme-aware: panels swap to light backgrounds in light mode, atomDark
  * code theme swaps to oneLight, output text colors flip via CSS variables.
@@ -57,33 +58,6 @@ interface DemoData {
   output: DemoOutput
   caption: React.ReactNode
 }
-
-const AGENCY_SHARED_CODE = `import { agency } from '@framers/agentos';
-
-// Three agents, one hand-off chain.
-//   strategy: 'sequential' runs the roster in order and gives each agent
-//   the previous agent's output as its input. Nothing else is shared:
-//   agency() has no shared memory store and no shared retrieval corpus,
-//   so what flows between agents is the text each one returns.
-const team = agency({
-  provider: 'openai',
-  model: 'gpt-4o',
-  strategy: 'sequential',
-  agents: {
-    researcher: { instructions: 'List the factual claims that matter for the comparison, one per line.' },
-    writer:     { instructions: "Compose a two-paragraph briefing from the researcher's notes." },
-    reviewer:   { instructions: 'Review the briefing you receive: flag any claim that needs a source and any sentence a reader could misread.' },
-  },
-});
-
-// Same .generate() surface as a single agent. The agency routes each
-// agent's output into the next agent's prompt; result.agentCalls lists
-// who ran, in what order, with what input.
-const result = await team.generate(
-  'Compare QUIC and TCP for low-latency game networking.',
-);
-console.log(result.text);
-console.log(result.agentCalls);             // who ran, in what order`
 
 const SINGLE_AGENT_CODE = `import { agent } from '@framers/agentos';
 
@@ -222,36 +196,11 @@ const demos: DemoData[] = [
     output: {
       finalAnswer:
         "Agentic AI sandbox environments expose a recurring trade-off between isolation strength and operational cost. Node:vm runs untrusted code inside a fresh V8 context: light to spin up, ergonomic for short LLM-generated snippets, and adequate when the threat model is bugs rather than adversaries. The weakness is that node:vm shares the host Node.js process. Prototype-pollution paths, async-hook escapes, and richly documented context-break primitives mean an attacker with code-execution inside the sandbox can usually reach the host runtime. For a security audit, node:vm is acceptable only when the code's author is trusted and the data inside the sandbox is non-sensitive.\n\nContainer isolation (Docker, gVisor, Firecracker microVMs) adds kernel-level boundaries: namespaces, cgroups, seccomp, and in the gVisor/Firecracker case a separate user-space kernel or hypervisor. The audit win is that even a fully compromised agent inside the container cannot directly read host memory, mount host filesystems, or pivot to other tenants without a kernel-level exploit. The cost is orchestration overhead, image-supply-chain hygiene, and slower cold-start. For production agentic workloads where the runtime executes prompts, tool calls, or forge-generated code from untrusted prompts, container isolation should be the default; node:vm is reserved for trusted-author paths where the threat model permits the weaker boundary.",
-      agentCalls: [
-        { agent: 'researcher', input: 'Write a 2-paragraph briefing on agentic-AI sandbox security risks...' },
-      ],
       usage: { tokens: 1840 },
     },
     caption: (
       <>
-        A single <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> handles the whole brief with its instructions and, when you give it some, its tools. <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> calls the model directly; <code className="font-mono text-[var(--color-accent-primary)]">{`agent({ runtime: 'gmi' })`}</code> runs the same agent on a GMI. The next tab passes a task down a chain of three agents with <code className="font-mono text-[var(--color-accent-primary)]">agency()</code>.
-      </>
-    ),
-  },
-  {
-    id: 'agency-shared',
-    title: 'Agency: sequential hand-off',
-    exampleSlug: 'examples/agency-sequential-handoff.mjs',
-    language: 'typescript',
-    code: AGENCY_SHARED_CODE,
-    output: {
-      finalAnswer:
-        "QUIC and TCP target different points on the latency-versus-reliability curve, and for real-time game networking the differences are decisive. QUIC runs over UDP and bundles encryption (TLS 1.3) directly into the transport handshake, collapsing what was three round trips in TCP+TLS into a single 1-RTT (or 0-RTT on resume) connection setup. Head-of-line blocking, the headline tax of TCP for any application that multiplexes multiple logical streams over one connection, is eliminated at the transport layer: a lost packet in one QUIC stream does not stall the others. For a game pushing positional updates plus chat plus voice over one socket, that property alone shifts the worst-case latency curve materially.\n\nThe trade-offs are real. QUIC's UDP base means middleboxes and legacy NATs sometimes drop or throttle it, so a production game still needs a TCP fallback path. CPU overhead is higher per-packet today because the kernel does less of the work; this gap is closing as Linux kQUIC and BSD-side acceleration land, but on resource-constrained server fleets it matters. For game traffic that is loss-tolerant (positional snapshots, voice frames), use QUIC unreliable datagrams. For reliable in-game RPC and chat, use QUIC reliable streams. Keep TCP only for the fallback case where UDP is filtered.",
-      agentCalls: [
-        { agent: 'researcher', input: 'Compare QUIC and TCP for low-latency game networking.' },
-        { agent: 'writer',     input: '- QUIC runs over UDP with TLS 1.3 in the handshake: 1-RTT setup, 0-RTT on resume\n- No head-of-line blocking across streams\n- UDP is throttled by some middleboxes; keep a TCP fallback\n- Higher per-packet CPU today ...' },
-        { agent: 'reviewer',   input: 'QUIC and TCP target different points on the latency-versus-reliability curve ... (the writer\'s two-paragraph briefing)' },
-      ],
-      usage: { tokens: 3120 },
-    },
-    caption: (
-      <>
-        Three agents in sequence. The <code className="font-mono text-[var(--color-accent-primary)]">researcher</code> lists the claims; the <code className="font-mono text-[var(--color-accent-primary)]">writer</code> receives those notes as its input; the <code className="font-mono text-[var(--color-accent-primary)]">reviewer</code> receives the briefing and flags what needs a source. Same <code className="font-mono text-[var(--color-accent-primary)]">.generate()</code> surface as a single agent; <code className="font-mono text-[var(--color-accent-primary)]">result.agentCalls</code> shows who ran, in what order. Nothing is shared between the agents beyond the text each one returns. The next tab adds runtime synthesis on top: the team can spawn a new specialist mid-run.
+        A single <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> handles the whole brief with its instructions and, when you give it some, its tools. <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> calls the model directly; <code className="font-mono text-[var(--color-accent-primary)]">{`agent({ runtime: 'gmi' })`}</code> runs the same agent on a GMI. The next tab hands the same briefing task to a hierarchical team built with <code className="font-mono text-[var(--color-accent-primary)]">agency()</code>.
       </>
     ),
   },
@@ -277,7 +226,7 @@ const demos: DemoData[] = [
     },
     caption: (
       <>
-        The team starts with <code className="font-mono text-[var(--color-accent-primary)]">researcher</code> + <code className="font-mono text-[var(--color-accent-primary)]">writer</code>. The prompt asks for a security audit, which neither covers. The manager calls{' '}
+        The code adapts <code className="font-mono text-[var(--color-accent-primary)]">examples/emergent-hierarchical-spawning.mjs</code>: it allows one specialist and gives the team the first tab&apos;s briefing. The team starts with <code className="font-mono text-[var(--color-accent-primary)]">researcher</code> + <code className="font-mono text-[var(--color-accent-primary)]">writer</code>. The prompt asks for a security audit, which neither covers. The manager calls{' '}
         <code className="font-mono text-[var(--color-accent-primary)]">spawn_specialist</code>, EmergentAgentJudge approves the spec, and{' '}
         <code className="font-mono text-[var(--color-accent-primary)]">security_auditor</code> joins the live roster. The final answer below is what GPT-4o produced through that team, captured from a run without edits. Its first paragraph misdescribes <code className="font-mono text-[var(--color-accent-primary)]">node:vm</code>, which runs code in a V8 context inside the Node.js process; Node&apos;s documentation says it is not a security mechanism.
       </>
@@ -342,7 +291,7 @@ const demos: DemoData[] = [
     },
     caption: (
       <>
-        Decompose any LLM-generated text into atomic claims, score each against your retrieved sources via NLI/cosine, and return per-claim verdicts with confidence. Wire the same primitive as a guardrail to block ungrounded outputs in production.
+        Decompose any LLM-generated text into atomic claims, score each against your retrieved sources via NLI/cosine, and return per-claim verdicts with confidence. Wire the same primitive as a guardrail to block ungrounded outputs in production. The example in the repository embeds with a mock function so it runs without an API key; the scores here come from a run with OpenAI embeddings.
       </>
     ),
   },
@@ -964,7 +913,7 @@ function UsageBlock({ usage }: { usage: DemoOutput['usage'] }) {
 }
 
 function OutputPanel({ demo }: { demo: DemoData }) {
-  const { output, exampleSlug } = demo
+  const { output } = demo
   return (
     <div className="group/panel relative overflow-hidden rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-background-elevated)]/70 backdrop-blur-xl shadow-[0_8px_30px_-12px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)] ring-1 ring-[var(--color-accent-primary)]/5 transition-all duration-300 hover:ring-[var(--color-accent-primary)]/15 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)]">
       {/* Top accent gradient line — subtle but signals "this is the live
@@ -984,7 +933,7 @@ function OutputPanel({ demo }: { demo: DemoData }) {
             <div className="h-2.5 w-2.5 rounded-full bg-[#28c840] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.15)]" />
           </div>
           <span className="font-mono text-xs text-[var(--color-text-secondary)]">
-            $ node {exampleSlug}
+            output of one run
           </span>
         </div>
         <span className="inline-flex items-center gap-1.5 rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
@@ -1114,7 +1063,7 @@ export function LiveRunDemoSection() {
           </span>
         </h2>
         <p className="mt-3 text-base text-[var(--color-text-secondary)]">
-          Each tab pairs a condensed script from{' '}
+          Each tab pairs code based on a script in{' '}
           <a
             className="underline underline-offset-4 hover:opacity-80"
             href="https://github.com/framerslab/agentos/tree/master/examples"
@@ -1123,7 +1072,7 @@ export function LiveRunDemoSection() {
           >
             framerslab/agentos/examples
           </a>
-          {' '}with its output. Tabs that call a model ran against the OpenAI API; the mission and bus examples call no model and print the same output on every run. Pick one.
+          {' '}with output from a run of that code. Tabs that call a model ran against the OpenAI API; the mission and bus examples call no model, so every run takes the same steps. Pick one.
         </p>
       </div>
 
@@ -1189,12 +1138,12 @@ export function LiveRunDemoSection() {
                 <div className="h-2.5 w-2.5 rounded-full bg-[#28c840] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.15)]" />
               </div>
               <span className="font-mono text-xs text-[var(--color-text-secondary)] truncate">
-                {active.exampleSlug}
+                based on {active.exampleSlug}
               </span>
             </div>
             <div className="flex items-center gap-3 shrink-0">
               <span className="rounded-full border border-[var(--color-border-subtle)] bg-[var(--color-background-secondary)]/60 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-muted)]">
-                TypeScript
+                JavaScript
               </span>
               <CopyCodeButton code={active.code} />
             </div>

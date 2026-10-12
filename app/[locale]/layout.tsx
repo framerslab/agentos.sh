@@ -277,7 +277,6 @@ export default async function LocaleLayout({
                 'https://twitter.com/framerslab',
                 'https://www.linkedin.com/company/framerslab',
                 'https://agentos.sh',
-                'https://vca.chat',
               ],
             }),
           }}
