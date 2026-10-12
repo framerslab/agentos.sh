@@ -137,10 +137,6 @@
       "bullet2": "병렬 작업 실행"
     }
   },
-  "caseStudies": {
-    "comingSoon": "사례 연구 곧 출시",
-    "description": "실제 AgentOS 구현 및 프로덕션 배포"
-  },
   "footer": {
     "backedBy": "Frame은 <deepgramLink>Deepgram Startup Program</deepgramLink> 및 <nvidiaLink>NVIDIA Inception Program</nvidiaLink>의 회원입니다",
     "tagline": "Frame.dev의 적응형 AI 에이전트를 위한 TypeScript 런타임",
@@ -404,7 +400,6 @@
       "description": "셀프 호스팅, 고급 PII 제어, OpenTelemetry 텔레메트리, 로컬 모델 호스팅, CI/CD 파이프라인, GPU 오케스트레이션, SSO 및 프로덕션 배포를 위한 전담 지원.",
       "contact": "team@frame.dev 문의하기"
     },
-    "trustBadge": "업계 리더들의 신뢰",
     "wipLabel": "WIP",
     "currentlyDevelopment": "현재 개발 중"
   },
@@ -695,18 +690,11 @@
   },
   "socialProof": {
     "badge": "사회적 증거",
-    "title": "신뢰할 수 있는 배포 (곧 공개 예정)",
-    "subtitle": "금융, 운영, 지원 분야의 AI 에이전시 팀들을 온보딩하고 있습니다. 로고와 사례 연구는 각 출시에 맞춰 공개됩니다 — 곧 발표 예정.",
-    "reveal": "공개 #{index}",
-    "comingSoon": "곧 공개",
+    "title": "AgentOS로 구축",
+    "subtitle": "운영 중인 세 제품이 AgentOS 런타임 위에서 동작합니다. AI 게임과 캐릭터를 만드는 Wilds AI, 에이전트 군집 시뮬레이션 Paracosm, 자율 에이전트를 만드는 CLI Wunderland입니다.",
     "latestUpdates": "최신 업데이트",
     "cta": {
       "ask": "여기에 소개되고 싶으신가요?"
-    },
-    "placeholders": {
-      "helios": "멀티마켓 리서치 팟 (곧 공개)",
-      "northwind": "제품 현지화 + CRM 동기화 (곧 공개)",
-      "atlas": "적응형 지원 라우팅 (곧 공개)"
     }
   },
   "gmiSection": {
@@ -1009,7 +997,6 @@
     "badge": "라이브 데모",
     "title": "AgentOS를 직접 확인하세요",
     "subtitle": "에이전트 생성, 다중 에이전트 협업, RAG 메모리 등을 보여주는 실제 워크플로를 확인하세요.",
-    "comingSoon": "데모 영상 곧 공개",
     "watchButton": "데모 보기",
     "duration": "재생 시간",
     "videos": {
@@ -1080,8 +1067,7 @@
     "feature2": "실시간 테스트 및 디버깅 도구",
     "feature3": "에이전시 전략, 플랜 체크포인트, RAG 검색 뷰",
     "viewGithub": "GitHub에서 보기",
-    "downloadLatest": "최신 버전 다운로드",
-    "downloadComingSoon": "다운로드 (곧 제공)"
+    "runLocally": "저장소를 클론하고 README의 빠른 시작을 따르면 localhost:5175에서 열립니다."
   },
   "cognitive": {
     "badge": "신경과학 기반",

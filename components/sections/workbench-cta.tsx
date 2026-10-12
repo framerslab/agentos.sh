@@ -1,11 +1,11 @@
-import { Cpu, Check, GitBranch, Download } from 'lucide-react'
+import { Cpu, Check, GitBranch } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 /**
  * AgentOS Workbench CTA. Sits right under the "See AgentOS in action"
  * demo player on the homepage so visitors know the demos are recorded
- * inside Workbench and can grab it themselves. MIT-licensed companion
- * to the Apache 2.0 AgentOS runtime.
+ * inside Workbench and can run it themselves from a clone (the repo has
+ * no releases). MIT-licensed companion to the Apache 2.0 AgentOS runtime.
  */
 export function WorkbenchCTA() {
   const t = useTranslations('workbench')
@@ -63,15 +63,9 @@ export function WorkbenchCTA() {
                 <GitBranch className="w-5 h-5" />
                 {t('viewGithub')}
               </a>
-              <button
-                type="button"
-                disabled
-                aria-disabled="true"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold border-2 border-[var(--color-border-subtle)] text-[var(--color-text-tertiary)] bg-transparent cursor-not-allowed opacity-70"
-              >
-                <Download className="w-5 h-5" />
-                {t('downloadComingSoon')}
-              </button>
+              <p className="text-sm text-[var(--color-text-secondary)] text-center lg:text-left lg:max-w-xs">
+                {t('runLocally')}
+              </p>
             </div>
           </div>
         </div>

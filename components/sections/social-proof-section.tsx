@@ -3,8 +3,6 @@
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 
-const placeholderSlots = [0] as const
-
 export function SocialProofSection() {
   const t = useTranslations('socialProof')
   const tNav = useTranslations('nav')
@@ -39,9 +37,9 @@ export function SocialProofSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 gap-4"
+            className="grid sm:grid-cols-3 gap-4"
           >
-            {/* Wilds AI — revealed deployment */}
+            {/* Wilds AI */}
             <a
               href="https://wilds.ai"
               target="_blank"
@@ -62,7 +60,7 @@ export function SocialProofSection() {
               <span className="text-sm font-semibold text-text-primary">Wilds AI</span>
             </a>
 
-            {/* Paracosm — revealed deployment */}
+            {/* Paracosm */}
             <a
               href="https://paracosm.agentos.sh"
               target="_blank"
@@ -89,7 +87,7 @@ export function SocialProofSection() {
               <span className="text-sm font-semibold text-text-primary">Paracosm</span>
             </a>
 
-            {/* Wunderland — revealed deployment */}
+            {/* Wunderland */}
             <a
               href="https://wunderland.sh"
               target="_blank"
@@ -123,33 +121,6 @@ export function SocialProofSection() {
               </svg>
               <span className="text-sm font-semibold text-text-primary">Wunderland</span>
             </a>
-
-            {placeholderSlots.map((slot) => (
-              <div key={slot} className="relative overflow-hidden rounded-3xl border border-border-subtle/60 bg-white/80 dark:bg-white/5 dark:border-white/10 p-5 backdrop-blur">
-                <div className="absolute inset-0 bg-black/50 blur-lg opacity-0 pointer-events-none" aria-hidden="true" />
-                {/* Abstract logo silhouette – no text label */}
-                <div className="flex items-center justify-center mb-3">
-                  <div className="h-14 w-28 rounded-3xl overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent-primary to-[color:var(--color-accent-warm)] opacity-60" />
-                    <svg viewBox="0 0 100 40" className="relative w-full h-full">
-                      <path
-                        d="M5 30 C 20 10, 40 5, 55 20 S 85 35, 95 15"
-                        fill="none"
-                        stroke="rgba(255,255,255,0.85)"
-                        strokeWidth="4"
-                        strokeLinecap="round"
-                      />
-                      <circle cx="25" cy="18" r="3" fill="rgba(255,255,255,0.8)" />
-                      <circle cx="55" cy="24" r="3" fill="rgba(255,255,255,0.7)" />
-                      <circle cx="80" cy="14" r="3" fill="rgba(255,255,255,0.75)" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-black/70 backdrop-blur-lg text-center">
-                  <span className="text-sm font-semibold text-text-primary">{t('comingSoon')}</span>
-                </div>
-              </div>
-            ))}
           </motion.div>
 
           <motion.div

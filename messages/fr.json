@@ -137,10 +137,6 @@
       "bullet2": "Exécution parallèle des tâches"
     }
   },
-  "caseStudies": {
-    "comingSoon": "Études de cas à venir",
-    "description": "Déploiements AgentOS réels et applications en production"
-  },
   "footer": {
     "backedBy": "Frame est membre du <deepgramLink>Deepgram Startup Program</deepgramLink> et du <nvidiaLink>NVIDIA Inception Program</nvidiaLink>",
     "tagline": "Runtime TypeScript pour agents IA adaptatifs par Frame.dev",
@@ -404,7 +400,6 @@
       "description": "Self-hosting, contrôles PII avancés, télémétrie OpenTelemetry, hébergement de modèles locaux, pipelines CI/CD, orchestration GPU, SSO et support dédié pour les déploiements en production.",
       "contact": "Contacter team@frame.dev"
     },
-    "trustBadge": "Approuvé par les leaders de l'industrie",
     "wipLabel": "WIP",
     "currentlyDevelopment": "Actuellement en développement"
   },
@@ -695,18 +690,11 @@
   },
   "socialProof": {
     "badge": "Preuve sociale",
-    "title": "Déploiements de confiance (révélation prochaine)",
-    "subtitle": "Nous intégrons des équipes d’agences IA dans la finance, les opérations et le support. Les logos et études de cas seront dévoilés au moment de leurs lancements — restez à l’écoute.",
-    "reveal": "Révélation n°{index}",
-    "comingSoon": "Bientôt disponible",
+    "title": "Construit avec AgentOS",
+    "subtitle": "Trois produits en ligne tournent sur le runtime AgentOS : Wilds AI pour les jeux et personnages IA, Paracosm pour la simulation d’essaims d’agents, et Wunderland, une CLI pour créer des agents autonomes.",
     "latestUpdates": "Dernières mises à jour",
     "cta": {
       "ask": "Vous voulez être mis en avant ?"
-    },
-    "placeholders": {
-      "helios": "Pods de recherche multi-marchés (bientôt disponible)",
-      "northwind": "Localisation produit + synchronisation CRM (bientôt disponible)",
-      "atlas": "Routage de support adaptatif (bientôt disponible)"
     }
   },
   "gmiSection": {
@@ -1049,7 +1037,6 @@
     "badge": "Démos en direct",
     "title": "AgentOS en action",
     "subtitle": "Des workflows réels illustrant la création d'agents, la collaboration multi-agents, la mémoire RAG et plus encore.",
-    "comingSoon": "Vidéo de démonstration bientôt disponible",
     "watchButton": "Voir la démo",
     "duration": "Durée",
     "videos": {
@@ -1080,8 +1067,7 @@
     "feature2": "Outils de test et débogage en temps réel",
     "feature3": "Vues des stratégies d'agence, des points de contrôle de plan et de la récupération RAG",
     "viewGithub": "Voir sur GitHub",
-    "downloadLatest": "Télécharger la dernière version",
-    "downloadComingSoon": "Téléchargement (bientôt disponible)"
+    "runLocally": "Clonez le dépôt et suivez le démarrage rapide du README ; il s’ouvre sur localhost:5175."
   },
   "cognitive": {
     "badge": "Fondé sur les neurosciences",

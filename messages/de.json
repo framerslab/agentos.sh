@@ -137,10 +137,6 @@
       "bullet2": "Parallele Aufgabenausführung"
     }
   },
-  "caseStudies": {
-    "comingSoon": "Fallstudien Demnächst",
-    "description": "Reale AgentOS-Implementierungen und Produktionsbereitstellungen"
-  },
   "footer": {
     "backedBy": "Frame ist Mitglied des <deepgramLink>Deepgram Startup Program</deepgramLink> und des <nvidiaLink>NVIDIA Inception Program</nvidiaLink>",
     "tagline": "TypeScript-Laufzeit für adaptive KI-Agenten von Frame.dev",
@@ -404,7 +400,6 @@
       "description": "Self-Hosting, erweiterte PII-Kontrollen, OpenTelemetry-Telemetrie, lokales Modell-Hosting, CI/CD-Pipelines, GPU-Orchestrierung, SSO und dedizierter Support für Produktionsbereitstellungen.",
       "contact": "Kontakt: team@frame.dev"
     },
-    "trustBadge": "Vertraut von Branchenführern",
     "wipLabel": "WIP",
     "currentlyDevelopment": "Derzeit in Entwicklung"
   },
@@ -695,18 +690,11 @@
   },
   "socialProof": {
     "badge": "Social Proof",
-    "title": "Vertrauenswürdige Implementierungen (Enthüllung in Kürze)",
-    "subtitle": "Wir nehmen KI-Agency-Teams aus Finanzen, Operations und Support an Bord. Logos und Case Studies werden mit den jeweiligen Launches veröffentlicht — bleibt dran.",
-    "reveal": "Enthüllung Nr. {index}",
-    "comingSoon": "Demnächst",
+    "title": "Gebaut mit AgentOS",
+    "subtitle": "Drei laufende Produkte bauen auf der AgentOS-Runtime auf: Wilds AI für KI-Spiele und -Charaktere, Paracosm für Simulationen von Agentenschwärmen und Wunderland, eine CLI für autonome Agenten.",
     "latestUpdates": "Neueste Updates",
     "cta": {
       "ask": "Möchtet ihr hier erscheinen?"
-    },
-    "placeholders": {
-      "helios": "Multi-Markt-Research-Pods (demnächst)",
-      "northwind": "Produktlokalisierung + CRM-Sync (demnächst)",
-      "atlas": "Adaptives Support-Routing (demnächst)"
     }
   },
   "gmiSection": {
@@ -1009,7 +997,6 @@
     "badge": "Live-Demos",
     "title": "AgentOS in Aktion",
     "subtitle": "Echte Workflows, die Agentenerstellung, Multi-Agenten-Zusammenarbeit, RAG-Speicher und mehr demonstrieren.",
-    "comingSoon": "Demo-Video demnächst verfügbar",
     "watchButton": "Demo ansehen",
     "duration": "Dauer",
     "videos": {
@@ -1080,8 +1067,7 @@
     "feature2": "Echtzeit-Test- und Debug-Tools",
     "feature3": "Ansichten für Agency-Strategien, Plan-Checkpoints und RAG-Retrieval",
     "viewGithub": "Auf GitHub ansehen",
-    "downloadLatest": "Neueste Version herunterladen",
-    "downloadComingSoon": "Download (bald verfügbar)"
+    "runLocally": "Klont das Repository und folgt dem Quick Start im README; die Workbench öffnet sich unter localhost:5175."
   },
   "cognitive": {
     "badge": "Neurowissenschaftlich fundiert",

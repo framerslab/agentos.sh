@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BookOpen, Code2, FileCode, Github, Layers, Sparkles, ChevronRight } from "lucide-react";
 import { getAllGuides } from "../../../lib/guides";
-import { WhitepaperCTA } from "../../../components/sections/whitepaper-cta";
+import { MethodologyCTA } from "../../../components/sections/methodology-cta";
 import { canonical } from '@/lib/seo/canonical';
 import { hreflangAlternates } from '@/lib/seo/hreflang';
 
@@ -212,8 +212,8 @@ console.log(result.text)`}</code>
           </p>
         </div>
 
-        {/* Whitepaper coming-soon CTA — research-oriented PDF with full methodology */}
-        <WhitepaperCTA />
+        {/* Benchmark methodology CTA: the agentos-bench leaderboard and the transparency audit */}
+        <MethodologyCTA />
       </div>
     </div>
   );

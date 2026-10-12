@@ -157,7 +157,7 @@ console.log(result.text);
 // within maxSteps (5 by default) model calls.
 ```
 
-A tool is a name mapped to a description, a JSON Schema for its arguments and an `execute` function; `agent()` also takes an `ExternalToolRegistry` or prompt-only tool schemas. `WebSearchService` sends each query to every provider you register (Firecrawl, Tavily, Serper and Brave) in parallel and fuses their rankings. The [agentos-extensions](https://github.com/framerslab/agentos-extensions) registry holds 111 curated extension packs, among them news search, image search, browser automation and deep research. Their tools are `ITool` objects, and `agent()` accepts those in the same tool map.
+A tool is a name mapped to a description, a JSON Schema for its arguments and an `execute` function; `agent()` also takes an `ExternalToolRegistry` or prompt-only tool schemas. `WebSearchService` sends each query to every provider you register (Firecrawl, Tavily, Serper and Brave) in parallel and fuses their rankings. The [agentos-extensions](https://github.com/framerslab/agentos-extensions) registry holds more than 100 curated extension packs, among them news search, image search, browser automation and deep research. Their tools are `ITool` objects, and `agent()` accepts those in the same tool map.
 
 ## Step 5: Check Answers Against Sources
 
@@ -199,7 +199,7 @@ With [`verifyCitations`](https://docs.agentos.sh/features/citation-verification)
 | Guardrail | Detection Method | What It Catches |
 |-----------|-----------------|-----------------|
 | **[PII Redaction](https://docs.agentos.sh/features/safety-primitives)** | Regex patterns, an NLP prefilter and a local NER model; an LLM judge is optional and off by default | Names, emails, SSNs, credit cards, addresses |
-| **[ML Classifiers](https://docs.agentos.sh/features/guardrails-architecture)** | ONNX models, with LLM and keyword fallbacks | Toxicity, prompt injection, NSFW content, threats |
+| **[ML Classifiers](https://docs.agentos.sh/features/guardrails-architecture)** | A local ONNX model (`Xenova/toxic-bert`); when it can't load, an LLM judge (if you pass one) and then keyword patterns | Toxicity, NSFW content, threats; prompt injection only on the fallbacks, since the ONNX model has no injection label |
 | **[Topicality](https://docs.agentos.sh/features/guardrails)** | Embedding-based topic matching on user input, with LLM and keyword fallbacks | Off-topic messages, scope violations |
 | **[Code Safety](https://docs.agentos.sh/features/guardrails)** | OWASP pattern scanning | Command injection, XSS, SQL injection in generated code |
 | **[Grounding Guard](https://docs.agentos.sh/features/citation-verification)** | NLI-based claim verification | Hallucinated facts not supported by RAG sources |
@@ -282,7 +282,7 @@ await myAgent.close();
 ## What's Next
 
 - **[Deploy to messaging channels](https://docs.agentos.sh/features/channels)**: [37 adapters](https://docs.agentos.sh/features/channels) including Telegram, WhatsApp, Discord, Slack
-- **[Add voice](https://docs.agentos.sh/features/voice-pipeline)**: [12 STT providers](https://docs.agentos.sh/features/voice-pipeline), [13 TTS providers](https://docs.agentos.sh/features/voice-pipeline), VAD, and [telephony](https://docs.agentos.sh/features/telephony-providers) via Twilio, Telnyx, Plivo
+- **[Add voice](https://docs.agentos.sh/features/voice-pipeline)**: [11 STT providers](https://docs.agentos.sh/features/voice-pipeline), [10 TTS providers](https://docs.agentos.sh/features/voice-pipeline), VAD, and [telephony](https://docs.agentos.sh/features/telephony-providers) via Twilio, Telnyx, Plivo
 - **[Build multi-agent teams](https://docs.agentos.sh/features/agency-api)**: [6 coordination strategies](https://docs.agentos.sh/features/agency-collaboration) with [emergent tool forging](https://docs.agentos.sh/features/emergent-capabilities)
 - **[Graph-based orchestration](https://docs.agentos.sh/features/workflow-dsl)**: `workflow()`, `AgentGraph`, and `mission()` for complex pipelines
 - **[Full documentation](https://docs.agentos.sh)**: guides, [API reference](https://docs.agentos.sh/api), and architecture

@@ -137,10 +137,6 @@
       "bullet2": "Execução paralela de tarefas"
     }
   },
-  "caseStudies": {
-    "comingSoon": "Estudos de caso em breve",
-    "description": "Implementações reais e implantações em produção com AgentOS"
-  },
   "footer": {
     "backedBy": "A Frame é membro do <deepgramLink>Deepgram Startup Program</deepgramLink> e do <nvidiaLink>NVIDIA Inception Program</nvidiaLink>",
     "tagline": "Runtime TypeScript para agentes IA adaptativos por Frame.dev",
@@ -252,7 +248,6 @@
       "description": "Self-hosting, controles avançados de PII, telemetria OpenTelemetry, hospedagem de modelos locais, pipelines CI/CD, orquestração GPU, SSO e suporte dedicado para implantações em produção.",
       "contact": "Contatar team@frame.dev"
     },
-    "trustBadge": "Confiado por líderes da indústria",
     "wipLabel": "WIP",
     "currentlyDevelopment": "Atualmente em desenvolvimento"
   },
@@ -543,18 +538,11 @@
   },
   "socialProof": {
     "badge": "Prova social",
-    "title": "Implantações confiáveis (revelação em breve)",
-    "subtitle": "Estamos integrando equipes de agências de IA em finanças, operações e suporte. Logos e estudos de caso serão revelados com seus lançamentos — fique atento.",
-    "reveal": "Revelação #{index}",
-    "comingSoon": "Em breve",
+    "title": "Construído com AgentOS",
+    "subtitle": "Três produtos no ar rodam sobre o runtime AgentOS: Wilds AI, para jogos e personagens de IA; Paracosm, para simulação de enxames de agentes; e Wunderland, uma CLI para criar agentes autônomos.",
     "latestUpdates": "Últimas atualizações",
     "cta": {
       "ask": "Quer ser destaque?"
-    },
-    "placeholders": {
-      "helios": "Pods de pesquisa multi-mercado (em breve)",
-      "northwind": "Localização de produto + sincronização com CRM (em breve)",
-      "atlas": "Roteamento adaptativo de suporte (em breve)"
     }
   },
   "gmiSection": {
@@ -897,7 +885,6 @@
     "badge": "Demos ao Vivo",
     "title": "Veja o AgentOS em Ação",
     "subtitle": "Fluxos de trabalho reais demonstrando criação de agentes, colaboração multiagente, memória RAG e mais.",
-    "comingSoon": "Vídeo de demonstração em breve",
     "watchButton": "Ver Demo",
     "duration": "Duração",
     "videos": {
@@ -1080,8 +1067,7 @@
     "feature2": "Ferramentas de teste e depuração em tempo real",
     "feature3": "Visualizações de estratégias de agência, checkpoints de planos e recuperação RAG",
     "viewGithub": "Ver no GitHub",
-    "downloadLatest": "Baixar Última Versão",
-    "downloadComingSoon": "Download (em breve)"
+    "runLocally": "Clone o repositório e siga o início rápido do README; ele abre em localhost:5175."
   },
   "cognitive": {
     "badge": "Baseado em Neurociência",

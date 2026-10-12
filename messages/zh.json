@@ -214,13 +214,8 @@
       "description": "自托管、高级PII控制、OpenTelemetry遥测、本地模型托管、CI/CD管道、GPU编排、SSO和面向生产部署的专属支持。",
       "contact": "联系 team@frame.dev"
     },
-    "trustBadge": "受到行业领导者的信赖",
     "wipLabel": "WIP",
     "currentlyDevelopment": "目前正在开发中"
-  },
-  "caseStudies": {
-    "comingSoon": "案例研究即将推出",
-    "description": "真实世界的AgentOS实施和生产部署"
   },
   "footer": {
     "backedBy": "Frame 是 <deepgramLink>Deepgram Startup Program</deepgramLink> 和 <nvidiaLink>NVIDIA Inception Program</nvidiaLink> 的成员",
@@ -543,18 +538,11 @@
   },
   "socialProof": {
     "badge": "社会证明",
-    "title": "可信赖的部署(即将公布)",
-    "subtitle": "我们正在为金融、运营和支持领域的 AI 代理团队提供入驻。Logo 与案例研究将随其上线一同公布 — 敬请关注。",
-    "reveal": "公布 #{index}",
-    "comingSoon": "即将推出",
+    "title": "基于 AgentOS 构建",
+    "subtitle": "三款已上线的产品运行在 AgentOS 运行时之上：AI 游戏与角色平台 Wilds AI、智能体群体模拟引擎 Paracosm，以及用于构建自主智能体的命令行工具 Wunderland。",
     "latestUpdates": "最新动态",
     "cta": {
       "ask": "想成为案例?"
-    },
-    "placeholders": {
-      "helios": "多市场研究小组(即将推出)",
-      "northwind": "产品本地化 + CRM 同步(即将推出)",
-      "atlas": "自适应支持路由(即将推出)"
     }
   },
   "gmiSection": {
@@ -857,7 +845,6 @@
     "badge": "在线演示",
     "title": "体验 AgentOS 实际效果",
     "subtitle": "观看代理创建、多代理协作、RAG 记忆等真实工作流演示。",
-    "comingSoon": "演示视频即将推出",
     "watchButton": "观看演示",
     "duration": "时长",
     "videos": {
@@ -1080,8 +1067,7 @@
     "feature2": "实时测试和调试工具",
     "feature3": "查看代理协作策略、计划检查点和 RAG 检索的视图",
     "viewGithub": "在 GitHub 上查看",
-    "downloadLatest": "下载最新版本",
-    "downloadComingSoon": "下载 (即将推出)"
+    "runLocally": "克隆仓库并按 README 的快速开始操作，即可在 localhost:5175 打开。"
   },
   "cognitive": {
     "badge": "神经科学支撑",

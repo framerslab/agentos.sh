@@ -137,10 +137,6 @@
       "bullet2": "Graph-based relationship re-ranking"
     }
   },
-  "caseStudies": {
-    "comingSoon": "Case Studies Coming Soon",
-    "description": "Real-world AgentOS implementations and production deployments"
-  },
   "footer": {
     "backedBy": "Frame is a member of the <deepgramLink>Deepgram Startup Program</deepgramLink> and the <nvidiaLink>NVIDIA Inception Program</nvidiaLink>",
     "tagline": "Open-source TypeScript AI agent runtime by Frame.dev",
@@ -404,7 +400,6 @@
       "description": "Self-hosting, advanced PII controls, OpenTelemetry telemetry, local model hosting, CI/CD pipelines, GPU orchestration, SSO, and dedicated support for production deployments.",
       "contact": "Contact team@frame.dev"
     },
-    "trustBadge": "Trusted by industry leaders",
     "wipLabel": "WIP",
     "currentlyDevelopment": "Currently in development"
   },
@@ -735,18 +730,11 @@
   },
   "socialProof": {
     "badge": "Social proof",
-    "title": "Trusted deployments (revealing soon)",
-    "subtitle": "We’re onboarding AI agency teams across finance, operations, and support. Logos and case studies unlock with their launches—stay tuned.",
-    "reveal": "Reveal #{index}",
-    "comingSoon": "Coming soon",
+    "title": "Built on AgentOS",
+    "subtitle": "Three live products run on the AgentOS runtime: Wilds AI for AI games and characters, Paracosm for agent swarm simulation, and Wunderland, a CLI for building autonomous agents.",
     "latestUpdates": "Latest updates",
     "cta": {
       "ask": "Want to be featured?"
-    },
-    "placeholders": {
-      "helios": "Multi-market research pods (coming soon)",
-      "northwind": "Product localization + CRM sync (coming soon)",
-      "atlas": "Adaptive support routing (coming soon)"
     }
   },
   "gmiSection": {
@@ -1049,7 +1037,6 @@
     "badge": "Live Demos",
     "title": "See AgentOS in Action",
     "subtitle": "Watch real workflows demonstrating agent creation, multi-agent collaboration, RAG memory, and more.",
-    "comingSoon": "Demo video coming soon",
     "watchButton": "Watch Demo",
     "duration": "Duration",
     "videos": {
@@ -1080,8 +1067,7 @@
     "feature2": "Real-time testing and debugging tools",
     "feature3": "Views for agency strategies, plan checkpoints and RAG retrieval",
     "viewGithub": "View on GitHub",
-    "downloadLatest": "Download Latest",
-    "downloadComingSoon": "Download (coming soon)"
+    "runLocally": "Clone the repo and follow the README's quick start; it opens at localhost:5175."
   },
   "cognitive": {
     "badge": "Neuroscience-Backed",

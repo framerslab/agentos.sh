@@ -137,10 +137,6 @@
       "bullet2": "Ejecución paralela de tareas"
     }
   },
-  "caseStudies": {
-    "comingSoon": "Estudios de Caso Próximamente",
-    "description": "Implementaciones y despliegues de producción reales de AgentOS"
-  },
   "footer": {
     "backedBy": "Frame es miembro del <deepgramLink>Deepgram Startup Program</deepgramLink> y del <nvidiaLink>NVIDIA Inception Program</nvidiaLink>",
     "tagline": "Runtime TypeScript para agentes de IA adaptativos por Frame.dev",
@@ -404,7 +400,6 @@
       "description": "Self-hosting, controles avanzados de PII, telemetría OpenTelemetry, hosting de modelos locales, pipelines CI/CD, orquestación GPU, SSO y soporte dedicado para despliegues en producción.",
       "contact": "Contactar team@frame.dev"
     },
-    "trustBadge": "Confiado por líderes de la industria",
     "wipLabel": "WIP",
     "currentlyDevelopment": "Actualmente en desarrollo"
   },
@@ -801,25 +796,17 @@
   },
   "socialProof": {
     "badge": "Prueba social",
-    "title": "Despliegues de confianza (próxima revelación)",
-    "subtitle": "Estamos incorporando equipos de agencias de IA en finanzas, operaciones y soporte. Los logos y casos de estudio se revelarán con sus lanzamientos — atento a los próximos anuncios.",
-    "reveal": "Revelación #{index}",
-    "comingSoon": "Próximamente",
+    "title": "Construido con AgentOS",
+    "subtitle": "Tres productos en línea funcionan sobre el runtime de AgentOS: Wilds AI, para juegos y personajes de IA; Paracosm, para simular enjambres de agentes; y Wunderland, una CLI para crear agentes autónomos.",
     "latestUpdates": "Últimas actualizaciones",
     "cta": {
       "ask": "¿Quieres aparecer aquí?"
-    },
-    "placeholders": {
-      "helios": "Pods de investigación multi-mercado (próximamente)",
-      "northwind": "Localización de producto + sincronización con CRM (próximamente)",
-      "atlas": "Enrutamiento adaptativo de soporte (próximamente)"
     }
   },
   "videoDemo": {
     "badge": "Demos en Vivo",
     "title": "Ver AgentOS en Acción",
     "subtitle": "Flujos de trabajo reales demostrando creación de agentes, colaboración multi-agente, memoria RAG y más.",
-    "comingSoon": "Video de demostración próximamente",
     "watchButton": "Ver Demo",
     "duration": "Duración",
     "videos": {
@@ -1080,8 +1067,7 @@
     "feature2": "Herramientas de prueba y depuración en tiempo real",
     "feature3": "Vistas de estrategias de agencia, checkpoints de planes y recuperación RAG",
     "viewGithub": "Ver en GitHub",
-    "downloadLatest": "Descargar Última Versión",
-    "downloadComingSoon": "Descargar (próximamente)"
+    "runLocally": "Clona el repositorio y sigue el inicio rápido del README; se abre en localhost:5175."
   },
   "cognitive": {
     "badge": "Respaldado por neurociencia",
