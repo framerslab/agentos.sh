@@ -515,16 +515,6 @@ console.log(reply.text)`}
             </li>
             <li>
               <a
-                href="https://vca.chat/faq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[var(--color-accent-primary)] hover:underline font-semibold"
-              >
-                {t('links.vcaFaq')} <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            </li>
-            <li>
-              <a
                 href="https://frame.dev"
                 target="_blank"
                 rel="noopener noreferrer"
