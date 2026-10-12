@@ -93,11 +93,9 @@ export default function LandingPageRedesigned() {
         {/* Hero Section - SSR enabled for faster LCP */}
         <HeroSection />
 
-        {/* Forge demo. Animated WebP + GIF fallback. Lazy-loaded so it
-            sits below the LCP element. This is the launch-day visual peak
-            that the Reddit/HN posts point at; it lands directly under the
-            hero so visitors see proof of the spawn_specialist+judge loop
-            before they scroll to anything else. */}
+        {/* Forge demo: a condensed copy of the hierarchical spawning
+            example, directly under the hero, with links to the full file
+            and to one captured run of the spawn_specialist + judge loop. */}
         <ForgeDemoSection />
 
         {/* Discord CTA — official Wilds AI community for AgentOS + Paracosm support */}

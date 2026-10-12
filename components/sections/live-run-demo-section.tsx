@@ -262,15 +262,6 @@ const demos: DemoData[] = [
     language: 'typescript',
     code: EMERGENT_CODE,
     output: {
-      demoGif: {
-        src: '/img/blog/og/agentos-forge-demo.gif',
-        webpSrc: '/img/blog/og/agentos-forge-demo.webp',
-        mp4Src: '/img/blog/og/agentos-forge-demo.mp4',
-        poster: '/img/blog/og/agentos-emergent-demo.webp',
-        alt: 'A hierarchical AgentOS agency spawns a security_auditor specialist at runtime after the LLM judge approves its spec.',
-        width: 1600,
-        height: 920,
-      },
       forge: {
         agent: 'security_auditor',
         approved: true,
