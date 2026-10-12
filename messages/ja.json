@@ -790,7 +790,7 @@
       },
       "voice": {
         "question": "音声機能の追加方法は?",
-        "answer": "AgentOS は VoicePipelineOrchestrator で音声を処理します。ストリーミング STT セッション、ストリーミング TTS セッション、発話終了の検出器、割り込み(バージイン)ハンドラを渡すと、WebSocket などのトランスポート上でそれらをエージェントのセッションにつなぎます。音声カタログには、Whisper(OpenAI)、Deepgram、AssemblyAI を含む 11 の STT プロバイダと、ElevenLabs、OpenAI TTS、Google Cloud TTS を含む 10 の TTS プロバイダがあります。Twilio、Telnyx、Plivo のプロバイダが電話の発信と終了を行います。"
+        "answer": "AgentOS は VoicePipelineOrchestrator で音声を処理します。ストリーミング STT セッション、ストリーミング TTS セッション、発話終了の検出器、割り込み(バージイン)ハンドラを渡すと、WebSocket などのトランスポート上でそれらをエージェントのセッションにつなぎます。音声カタログには 12 の STT プロバイダと 13 の TTS プロバイダがあります。そのうち利用できるのは、Whisper(OpenAI)、Deepgram、AssemblyAI を含む 11 の STT プロバイダと、ElevenLabs、OpenAI TTS、Google Cloud TTS を含む 10 の TTS プロバイダです。残りの 4 件(NVIDIA NeMo、Coqui XTTS、Bark、StyleTTS2)は利用不可とされており、プロバイダのリゾルバはそれらをスキップします。Twilio、Telnyx、Plivo のプロバイダが電話の発信と終了を行います。"
       },
       "deploy": {
         "question": "AgentOS のデプロイ方法は?",
