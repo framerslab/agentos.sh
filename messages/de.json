@@ -1073,8 +1073,7 @@
     "feature2": "Echtzeit-Test- und Debug-Tools",
     "feature3": "Ansichten für Agency-Strategien, Plan-Checkpoints und RAG-Retrieval",
     "viewGithub": "Auf GitHub ansehen",
-    "downloadLatest": "Neueste Version herunterladen",
-    "downloadComingSoon": "Download (bald verfügbar)"
+    "runLocally": "Klont das Repository und folgt dem Quick Start im README; die Workbench öffnet sich unter localhost:5175."
   },
   "cognitive": {
     "badge": "Neurowissenschaftlich fundiert",

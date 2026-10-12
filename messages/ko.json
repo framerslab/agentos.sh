@@ -1073,8 +1073,7 @@
     "feature2": "실시간 테스트 및 디버깅 도구",
     "feature3": "에이전시 전략, 플랜 체크포인트, RAG 검색 뷰",
     "viewGithub": "GitHub에서 보기",
-    "downloadLatest": "최신 버전 다운로드",
-    "downloadComingSoon": "다운로드 (곧 제공)"
+    "runLocally": "저장소를 클론하고 README의 빠른 시작을 따르면 localhost:5175에서 열립니다."
   },
   "cognitive": {
     "badge": "신경과학 기반",

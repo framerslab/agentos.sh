@@ -1073,8 +1073,7 @@
     "feature2": "リアルタイムテスト＆デバッグツール",
     "feature3": "エージェンシー戦略、プランのチェックポイント、RAG 検索のビュー",
     "viewGithub": "GitHubで表示",
-    "downloadLatest": "最新版をダウンロード",
-    "downloadComingSoon": "ダウンロード (近日公開)"
+    "runLocally": "リポジトリをクローンし、README のクイックスタートに従うと localhost:5175 で開きます。"
   },
   "cognitive": {
     "badge": "神経科学に基づく",

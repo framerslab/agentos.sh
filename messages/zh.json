@@ -1073,8 +1073,7 @@
     "feature2": "实时测试和调试工具",
     "feature3": "查看代理协作策略、计划检查点和 RAG 检索的视图",
     "viewGithub": "在 GitHub 上查看",
-    "downloadLatest": "下载最新版本",
-    "downloadComingSoon": "下载 (即将推出)"
+    "runLocally": "克隆仓库并按 README 的快速开始操作，即可在 localhost:5175 打开。"
   },
   "cognitive": {
     "badge": "神经科学支撑",

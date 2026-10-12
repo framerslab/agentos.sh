@@ -1073,8 +1073,7 @@
     "feature2": "Real-time testing and debugging tools",
     "feature3": "Views for agency strategies, plan checkpoints and RAG retrieval",
     "viewGithub": "View on GitHub",
-    "downloadLatest": "Download Latest",
-    "downloadComingSoon": "Download (coming soon)"
+    "runLocally": "Clone the repo and follow the README's quick start; it opens at localhost:5175."
   },
   "cognitive": {
     "badge": "Neuroscience-Backed",

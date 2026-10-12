@@ -1073,8 +1073,7 @@
     "feature2": "Ferramentas de teste e depuração em tempo real",
     "feature3": "Visualizações de estratégias de agência, checkpoints de planos e recuperação RAG",
     "viewGithub": "Ver no GitHub",
-    "downloadLatest": "Baixar Última Versão",
-    "downloadComingSoon": "Download (em breve)"
+    "runLocally": "Clone o repositório e siga o início rápido do README; ele abre em localhost:5175."
   },
   "cognitive": {
     "badge": "Baseado em Neurociência",

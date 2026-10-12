@@ -117,8 +117,8 @@ export default function LandingPageRedesigned() {
         </section>
 
         {/* Workbench CTA — the demos above are recorded inside Workbench.
-            MIT-licensed companion to the Apache 2.0 runtime; visitors can
-            grab it from GitHub or the latest release. */}
+            MIT-licensed companion to the Apache 2.0 runtime; visitors run
+            it from a clone of the GitHub repo, which has no releases. */}
         <WorkbenchCTA />
 
         {/* Memory Benchmarks SOTA — matched gpt-4o reader on LongMemEval-S/M */}

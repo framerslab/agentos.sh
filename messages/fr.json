@@ -1073,8 +1073,7 @@
     "feature2": "Outils de test et débogage en temps réel",
     "feature3": "Vues des stratégies d'agence, des points de contrôle de plan et de la récupération RAG",
     "viewGithub": "Voir sur GitHub",
-    "downloadLatest": "Télécharger la dernière version",
-    "downloadComingSoon": "Téléchargement (bientôt disponible)"
+    "runLocally": "Clonez le dépôt et suivez le démarrage rapide du README ; il s’ouvre sur localhost:5175."
   },
   "cognitive": {
     "badge": "Fondé sur les neurosciences",
