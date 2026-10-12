@@ -188,7 +188,7 @@
       "strategies": "Strategies",
       "planningEngine": "Planning Engine",
       "workflowDsl": "Workflow DSL",
-      "protocols": "Protocols",
+      "streamApi": "Stream API",
       "guardrailMode": "Guardrail Mode",
       "chunkTypes": "Chunk Types",
       "dimensions": "Dimensions",
@@ -252,9 +252,9 @@
       },
       "streaming": {
         "title": "Real-time Streaming",
-        "description": "SSE and WebSocket support with in-flight content filtering, partial JSON output, and tool call progress events",
+        "description": "Text deltas and partial JSON objects as async iterators, typed chunks for tool calls and progress on the full runtime, and opt-in guardrails that check text as it streams",
         "features": [
-          "SSE + WebSocket",
+          "Async-iterator streams",
           "In-flight guardrails",
           "Partial JSON streaming",
           "Tool progress events"

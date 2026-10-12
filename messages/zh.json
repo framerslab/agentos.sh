@@ -892,7 +892,7 @@
       "strategies": "策略",
       "planningEngine": "规划引擎",
       "workflowDsl": "工作流 DSL",
-      "protocols": "协议",
+      "streamApi": "流式 API",
       "guardrailMode": "护栏模式",
       "chunkTypes": "数据块类型",
       "dimensions": "维度",
@@ -956,9 +956,9 @@
       },
       "streaming": {
         "title": "实时流式输出",
-        "description": "SSE和WebSocket支持，具有流式护栏、部分JSON输出和工具调用进度事件",
+        "description": "以异步迭代器提供文本增量和部分 JSON 对象，完整运行时为工具调用和进度提供类型化数据块，可选护栏在流式传输时检查文本",
         "features": [
-          "SSE + WebSocket",
+          "异步迭代器流",
           "飞行中护栏",
           "部分JSON流式传输",
           "工具进度事件"

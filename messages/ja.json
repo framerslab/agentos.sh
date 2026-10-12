@@ -932,7 +932,7 @@
       "strategies": "戦略",
       "planningEngine": "計画エンジン",
       "workflowDsl": "ワークフロー DSL",
-      "protocols": "プロトコル",
+      "streamApi": "ストリームAPI",
       "guardrailMode": "ガードレールモード",
       "chunkTypes": "チャンク種別",
       "dimensions": "次元",
@@ -996,9 +996,9 @@
       },
       "streaming": {
         "title": "リアルタイム・ストリーミング",
-        "description": "ストリーミングガードレール、部分的JSON出力、ツールコール進行イベント付きのSSEとWebSocketサポート",
+        "description": "テキスト差分と部分JSONオブジェクトを非同期イテレーターで返し、フルランタイムではツールコールと進行状況を型付きチャンクで返します。オプションのガードレールはストリーミング中のテキストを検査します",
         "features": [
-          "SSE + WebSocket",
+          "非同期イテレーターのストリーム",
           "飛行中ガードレール",
           "部分JSONストリーミング",
           "ツール進行イベント"
