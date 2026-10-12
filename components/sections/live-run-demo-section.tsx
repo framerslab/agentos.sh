@@ -12,9 +12,10 @@ import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
  * Live-run demos section.
  *
  * Each tab pairs code based on a script in framerslab/agentos/examples
- * with output from a run of that code; the spawning and citation captions
- * say how their code differs from the script. Tabs that call a model show
- * output captured from one run against the OpenAI API; the mission and bus
+ * with output from a run of that code. The spawning and citation tabs run
+ * code adapted from their script: their code panels read "adapted from"
+ * and their captions say what differs. Tabs that call a model show output
+ * captured from one run against the OpenAI API; the mission and bus
  * examples call no model, so every run takes the same steps.
  *
  * Theme-aware: panels swap to light backgrounds in light mode, atomDark
@@ -53,6 +54,8 @@ interface DemoData {
   id: string
   title: string
   exampleSlug: string
+  /** The tab's code changes what the script does, not only its length. */
+  adapted?: boolean
   language: string
   code: string
   output: DemoOutput
@@ -208,6 +211,7 @@ const demos: DemoData[] = [
     id: 'emergent',
     title: 'Spawn an agent at runtime',
     exampleSlug: 'examples/emergent-hierarchical-spawning.mjs',
+    adapted: true,
     language: 'typescript',
     code: EMERGENT_CODE,
     output: {
@@ -243,10 +247,6 @@ const demos: DemoData[] = [
         "The rollout of HTTP/3, the latest major version of the Hypertext Transfer Protocol, comes with several risks and challenges. Here are the main ones:\n\n1. Compatibility and Adoption: As a new standard, HTTP/3 may not be immediately supported by all browsers, web servers, and networking equipment...\n\n2. Network Infrastructure: HTTP/3 is built on QUIC, a protocol that runs over UDP. This shift from the traditional TCP protocol may lead to issues with middleboxes like firewalls and routers...\n\n3. Performance Variability: Real-world results can vary based on specific network conditions...\n\n4. Security Concerns: The transition to a new protocol opens up potential new security vulnerabilities, both in the QUIC protocol itself and in its implementations...\n\n[continues streaming through 7 risks total]",
       finalOverride:
         'Approved for delivery:\n- Rollout risk 1\n- Rollout risk 2\n- Rollout risk 3\n- Rollout risk 4',
-      agentCalls: [
-        { agent: 'researcher', input: 'Gather HTTP/3 rollout facts and risks...' },
-        { agent: 'writer', input: 'Compress to four crisp bullets...' },
-      ],
       usage: { tokens: 923 },
     },
     caption: (
@@ -259,14 +259,15 @@ const demos: DemoData[] = [
     id: 'citation',
     title: 'Verify every claim against sources',
     exampleSlug: 'examples/citation-verification.mjs',
+    adapted: true,
     language: 'typescript',
     code: CITATION_CODE,
     output: {
-      // Captured from a real run with text-embedding-3-small:
-      //   $ OPENAI_API_KEY=... node examples/citation-verification.mjs
-      // 2/3 supported, 1/3 weak (the 1457 Olympics claim shares the Tokyo
-      // token with the source but the date contradicts factually — the
-      // verifier scores partial overlap as weak rather than supported).
+      // Captured from one run of this tab's code with OpenAI embeddings.
+      // The committed example embeds with a mock function, so its scores
+      // differ. 2 of 3 claims are supported; the 1457 Olympics claim scores
+      // 0.45 against its closest source, between the 0.3 and 0.6
+      // thresholds, so it is weak: cosine similarity does not check the date.
       claims: [
         {
           verdict: 'supported',
@@ -291,7 +292,7 @@ const demos: DemoData[] = [
     },
     caption: (
       <>
-        Decompose any LLM-generated text into atomic claims, score each against your retrieved sources via NLI/cosine, and return per-claim verdicts with confidence. Wire the same primitive as a guardrail to block ungrounded outputs in production. The example in the repository embeds with a mock function so it runs without an API key; the scores here come from a run with OpenAI embeddings.
+        <code className="font-mono text-[var(--color-accent-primary)]">CitationVerifier</code> splits text into claims (with its sentence splitter or your <code className="font-mono text-[var(--color-accent-primary)]">extractClaims</code> callback), scores each claim by cosine similarity against your sources and returns a verdict per claim: supported at 0.6 or above, unverifiable below 0.3, weak in between. An optional NLI function turns a supported verdict into contradicted when the source contradicts the claim. <code className="font-mono text-[var(--color-accent-primary)]">{`agent({ verifyCitations })`}</code> runs the same check after each <code className="font-mono text-[var(--color-accent-primary)]">generate()</code> and attaches the verdicts to <code className="font-mono text-[var(--color-accent-primary)]">result.grounding</code>; it reports them and does not block the answer. The example in the repository embeds with a mock function so it runs without an API key; the scores here come from a run with OpenAI embeddings.
       </>
     ),
   },
@@ -328,7 +329,7 @@ const team = agency({
 // Tier 1: writer + illustrator (concurrent)
 // Tier 2: reviewer
 const result = await team.generate(
-  'Topic: the James Webb Space Telescope',
+  'Explain the significance of the James Webb Space Telescope.',
 );`,
     output: {
       dagTiers: [
@@ -349,7 +350,7 @@ const result = await team.generate(
     },
     caption: (
       <>
-        The graph strategy topologically sorts agents into tiers from <code className="font-mono text-[var(--color-accent-primary)]">dependsOn</code> and runs each tier concurrently. Tier 0 runs alone; tier 1 runs both agents in parallel; tier 2 waits for both. Every agent receives the original prompt plus the plain-text outputs of its dependencies, so the reviewer in this run sees the writer&apos;s article and the illustrator&apos;s descriptions before issuing its verdict.
+        The graph strategy topologically sorts agents into tiers from <code className="font-mono text-[var(--color-accent-primary)]">dependsOn</code>. <code className="font-mono text-[var(--color-accent-primary)]">generate()</code> runs the agents of a tier concurrently (<code className="font-mono text-[var(--color-accent-primary)]">stream()</code> runs them one after another). Tier 0 runs alone; tier 1 runs both agents in parallel; tier 2 waits for both. Every agent receives the original prompt plus the plain-text outputs of its dependencies, so the reviewer in this run sees the writer&apos;s article and the illustrator&apos;s descriptions before issuing its verdict.
       </>
     ),
   },
@@ -415,7 +416,7 @@ const artifacts = await runtime.invoke(deepResearch.toIR(), {
     },
     caption: (
       <>
-        Same runtime as <code className="font-mono text-[var(--color-accent-primary)]">workflow()</code> and <code className="font-mono text-[var(--color-accent-primary)]">AgentGraph</code>, different authoring surface. <code className="font-mono text-[var(--color-accent-primary)]">mission()</code> builds a linear graph of steps from a plan template (the research template here: gather-info, process-info, deliver-result and refine-output) and splices in anchors such as the fact-check tool. This example&apos;s executor is a stub that returns a fixed output for each step, so the run calls no model; <code className="font-mono text-[var(--color-accent-primary)]">invoke()</code> resolves to each step&apos;s output under its id plus the artifacts deliver-result writes.
+        Same runtime as <code className="font-mono text-[var(--color-accent-primary)]">workflow()</code> and <code className="font-mono text-[var(--color-accent-primary)]">AgentGraph</code>, different authoring surface. <code className="font-mono text-[var(--color-accent-primary)]">mission()</code> builds a linear graph of steps from a plan template (the research template here: gather-info, process-info, deliver-result and refine-output) and splices in anchors such as the fact-check tool. This example&apos;s executor is a stub that returns a fixed output for each step, so the run calls no model. <code className="font-mono text-[var(--color-accent-primary)]">invoke()</code> resolves to the run&apos;s artifacts: the runtime stores each step&apos;s output under the step&apos;s id, except for a step that writes artifacts itself, as deliver-result does here with summary, confidence and verified.
       </>
     ),
   },
@@ -518,7 +519,7 @@ console.log(handoff.accepted, handoff.newOwnerId);  // true writer-gmi`,
   },
   {
     id: 'high-level-api',
-    title: 'Provider-first primitives — one shape, four wrappers',
+    title: 'Pick a provider, get its default model',
     exampleSlug: 'examples/high-level-api.mjs',
     language: 'typescript',
     code: `import { generateText, streamText, generateImage, agent } from '@framers/agentos';
@@ -538,8 +539,9 @@ const pinned = await generateText({
   prompt: 'What is TCP in one sentence?',
 });
 
-// Same shape for streaming.
-const stream = await streamText({
+// Same options for streaming. streamText() returns its result
+// synchronously, so it takes no await.
+const stream = streamText({
   provider: 'openai',
   prompt: 'Compare QUIC vs TCP.',
 });
@@ -551,7 +553,8 @@ const img = await generateImage({
   prompt: 'Diagram of QUIC vs TCP, infographic style',
 });
 
-// Same shape for agents.
+// agent() takes the provider and model with its instructions;
+// generate() takes the prompt.
 const researcher = agent({
   provider: 'openai',
   model: 'gpt-4o',
@@ -569,7 +572,7 @@ const result = await researcher.generate('What problems was QUIC designed to sol
     },
     caption: (
       <>
-        Provider-first wrappers around the LLM call. <code className="font-mono text-[var(--color-accent-primary)]">generateText()</code>, <code className="font-mono text-[var(--color-accent-primary)]">streamText()</code>, <code className="font-mono text-[var(--color-accent-primary)]">generateImage()</code>, and <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> all accept the same <code className="font-mono text-[var(--color-accent-primary)]">{`{ provider, model?, prompt, ... }`}</code> shape. Pick a provider and AgentOS picks the default model; override with <code className="font-mono text-[var(--color-accent-primary)]">model:</code> when you need a specific one. Drop-in for ad-hoc calls without spinning up a full agent.
+        Provider-first wrappers around the LLM call. <code className="font-mono text-[var(--color-accent-primary)]">generateText()</code>, <code className="font-mono text-[var(--color-accent-primary)]">streamText()</code> and <code className="font-mono text-[var(--color-accent-primary)]">generateImage()</code> take the same <code className="font-mono text-[var(--color-accent-primary)]">{`{ provider, model?, prompt }`}</code> options. <code className="font-mono text-[var(--color-accent-primary)]">agent()</code> takes the provider and model with its instructions, and its <code className="font-mono text-[var(--color-accent-primary)]">generate()</code> takes the prompt. Give a provider and AgentOS uses that provider&apos;s default model; set <code className="font-mono text-[var(--color-accent-primary)]">model:</code> when you need a specific one. The first three need no agent.
       </>
     ),
   },
@@ -834,12 +837,19 @@ function StreamingBlock({ preface, finalText }: { preface: string; finalText: st
   )
 }
 
+/** The mark shown beside a claim, by the verifier's verdict. */
+const VERDICT_MARKS: Record<NonNullable<DemoOutput['claims']>[number]['verdict'], { mark: string; className: string }> = {
+  supported: { mark: '✓', className: 'text-emerald-600 dark:text-emerald-400' },
+  weak: { mark: '~', className: 'text-amber-600 dark:text-amber-400' },
+  unverifiable: { mark: '?', className: 'text-[var(--color-text-muted)]' },
+}
+
 function ClaimsBlock({ claims }: { claims: NonNullable<DemoOutput['claims']> }) {
   const supportedCount = claims.filter((c) => c.verdict === 'supported').length
   return (
     <div className="mb-4">
       <div className="mb-2 font-mono text-[12px] font-semibold uppercase tracking-wider text-[var(--color-accent-primary)]">
-        Verification result · {supportedCount}/{claims.length} grounded
+        Verification result · {supportedCount}/{claims.length} supported
       </div>
       <div className="space-y-2">
         {claims.map((c, i) => (
@@ -848,7 +858,7 @@ function ClaimsBlock({ claims }: { claims: NonNullable<DemoOutput['claims']> }) 
             className="rounded-md border border-[var(--color-border-subtle)] bg-[var(--color-background-secondary)] p-3"
           >
             <div className="flex items-start gap-2 font-mono text-[13px]">
-              <span className="font-semibold text-emerald-600 dark:text-emerald-400">✓</span>
+              <span className={`font-semibold ${VERDICT_MARKS[c.verdict].className}`}>{VERDICT_MARKS[c.verdict].mark}</span>
               <span className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)] mt-1">
                 {c.verdict}
               </span>
@@ -1138,7 +1148,7 @@ export function LiveRunDemoSection() {
                 <div className="h-2.5 w-2.5 rounded-full bg-[#28c840] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.15)]" />
               </div>
               <span className="font-mono text-xs text-[var(--color-text-secondary)] truncate">
-                based on {active.exampleSlug}
+                {active.adapted ? 'adapted from' : 'based on'} {active.exampleSlug}
               </span>
             </div>
             <div className="flex items-center gap-3 shrink-0">
@@ -1218,7 +1228,7 @@ export function LiveRunDemoSection() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--color-text-secondary)] transition-all hover:text-[var(--color-text-primary)] hover:translate-x-0.5"
         >
-          Browse all 21 example scripts
+          Browse the example scripts
           <span aria-hidden="true">→</span>
         </a>
       </div>
