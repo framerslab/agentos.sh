@@ -920,7 +920,8 @@
       "planningEngine": "計画エンジン",
       "workflowDsl": "ワークフロー DSL",
       "streamApi": "ストリームAPI",
-      "guardrailMode": "ガードレールモード",
+      "streamingGuardrails": "ストリーミングガードレール",
+      "optIn": "オプトイン",
       "chunkTypes": "チャンク種別",
       "dimensions": "次元",
       "tunedMechanisms": "調整されるメカニズム",
@@ -986,7 +987,7 @@
         "description": "テキスト差分と部分JSONを非同期イテレーターで、ツールコールと進行状況を型付きチャンクで返します。ストリーミングガードレールはオプションです",
         "features": [
           "非同期イテレーターのストリーム",
-          "飛行中ガードレール",
+          "チャンクごとのガードレール(オプトイン)",
           "部分JSONストリーミング",
           "ツール進行イベント"
         ],

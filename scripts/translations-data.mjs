@@ -57,6 +57,8 @@ export default {
 
   // ---------- productCards ----------
   'productCards.stats.workflowDsl': { pt: 'DSL de Workflow', es: 'DSL de Workflow', fr: 'DSL de Workflow', de: 'Workflow-DSL', ja: 'ワークフロー DSL', ko: '워크플로 DSL', zh: '工作流 DSL' },
+  'productCards.stats.streamingGuardrails': { pt: 'Guardrails de streaming', es: 'Guardrails de streaming', fr: 'Guardrails de streaming', de: 'Streaming-Guardrails', ja: 'ストリーミングガードレール', ko: '스트리밍 가드레일', zh: '流式护栏' },
+  'productCards.stats.optIn': { pt: 'Ativação opcional', es: 'Activación opcional', fr: 'Sur activation', de: 'Opt-in', ja: 'オプトイン', ko: '선택적 활성화', zh: '需显式启用' },
   'productCards.cards.cognitiveMemory.title': { pt: 'Memória Cognitiva', es: 'Memoria Cognitiva', fr: 'Mémoire Cognitive', de: 'Kognitives Gedächtnis', ja: '認知メモリ', ko: '인지 메모리', zh: '认知记忆' },
   'productCards.cards.graphRag.title': { pt: 'RAG Baseado em Grafo', es: 'RAG basado en grafo', fr: 'RAG basé sur graphe', de: 'Graph-basiertes RAG', ja: 'グラフベース RAG', ko: '그래프 기반 RAG', zh: '基于图的 RAG' },
   'productCards.cards.orchestration.title': { pt: 'Orquestração Multi-Agente', es: 'Orquestación Multi-Agente', fr: 'Orchestration Multi-Agents', de: 'Multi-Agenten-Orchestrierung', ja: 'マルチエージェント・オーケストレーション', ko: '멀티 에이전트 오케스트레이션', zh: '多智能体编排' },

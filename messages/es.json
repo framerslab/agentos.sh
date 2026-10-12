@@ -185,7 +185,8 @@
       "planningEngine": "Motor de Planificacion",
       "workflowDsl": "DSL de Workflow",
       "streamApi": "API de streaming",
-      "guardrailMode": "Modo Guardrail",
+      "streamingGuardrails": "Guardrails de streaming",
+      "optIn": "Activación opcional",
       "chunkTypes": "Tipos de chunk",
       "dimensions": "Dimensiones",
       "tunedMechanisms": "Mecanismos ajustados",
@@ -251,7 +252,7 @@
         "description": "Deltas de texto y JSON parcial como iteradores asíncronos, chunks tipados para tool calls y progreso, y guardrails de streaming opcionales",
         "features": [
           "Streams con iteradores asíncronos",
-          "Guardrails en vuelo",
+          "Guardrails por chunk (activación opcional)",
           "Streaming JSON parcial",
           "Eventos de progreso de tools"
         ],
