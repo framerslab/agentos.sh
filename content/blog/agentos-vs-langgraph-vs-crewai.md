@@ -37,7 +37,7 @@ This comparison covers the six production-ready frameworks a TypeScript develope
 | **Architecture** | GMI (cognitive entities) | State graphs | Role-based crews | Agents + workflows | Supervisor agents | Lightweight agents |
 | **Memory** | Cognitive ([Ebbinghaus decay](https://en.wikipedia.org/wiki/Forgetting_curve), [8 mechanisms](https://docs.agentos.sh/features/cognitive-memory)) | Conversation + checkpoints | Short/long-term + entity | Conversation + semantic | Conversation + RAG | Conversation |
 | **LLM Providers** | [13](https://github.com/framerslab/agentos/blob/master/src/core/llm/providers/AIModelProviderManager.ts) (OpenAI, Anthropic, Gemini, Ollama, etc.) | Via LangChain | OpenAI, Anthropic, Mistral + more | 40+ via [AI SDK](https://sdk.vercel.ai/) | Multi-provider | OpenAI only |
-| **Guardrails** | [6 packs](https://docs.agentos.sh/features/guardrails) (PII, injection, code safety, grounding, content policy, topicality) | Content moderation middleware | Basic output validation | None built-in | Guardrails module | None built-in |
+| **Guardrails** | [6 packs](https://docs.agentos.sh/features/guardrails) (PII, toxicity and NSFW classifiers, code safety, grounding, content policy, topicality) | Content moderation middleware | Basic output validation | None built-in | Guardrails module | None built-in |
 | **Multi-Agent** | [6 strategies](https://docs.agentos.sh/features/agency-api) + emergent teams | State graph orchestration | Role-based crew orchestration | Workflow engine | [Supervisor orchestration](https://voltagent.dev/) | Handoffs |
 | **Channels** | [37 adapters](https://docs.agentos.sh/features/channels) (Telegram, WhatsApp, Discord, Slack, etc.) | None built-in | None built-in | None built-in | None built-in | None built-in |
 | **Voice** | Full pipeline ([STT, TTS, VAD](https://docs.agentos.sh/features/voice-pipeline)) | None built-in | None built-in | None built-in | None built-in | None built-in |
@@ -162,8 +162,8 @@ Unique capabilities no other framework offers:
 
 - **[Runtime tool forging](https://docs.agentos.sh/features/emergent-capabilities)**: agents create new tools at runtime, reviewed by an [LLM-as-judge](https://docs.agentos.sh/api/classes/EmergentJudge) before activation
 - **[37 channel adapters](https://docs.agentos.sh/features/channels)**: Telegram, WhatsApp, Discord, Slack, email, and 32 more
-- **[Voice pipeline](https://docs.agentos.sh/features/voice-pipeline)**: 12 STT + 13 TTS providers, VAD, speaker diarization, [telephony](https://docs.agentos.sh/features/telephony-providers)
-- **[6 guardrail packs](https://docs.agentos.sh/features/guardrails)**: PII redaction, prompt injection defense, code safety, grounding verification, content policy, topicality enforcement
+- **[Voice pipeline](https://docs.agentos.sh/features/voice-pipeline)**: 11 STT + 10 TTS providers, VAD, speaker diarization, [telephony](https://docs.agentos.sh/features/telephony-providers)
+- **[6 guardrail packs](https://docs.agentos.sh/features/guardrails)**: PII redaction, toxicity and NSFW classification, code safety, grounding verification, content policy, topicality enforcement
 - **[6 multi-agent strategies](https://docs.agentos.sh/features/agency-api)**: sequential, parallel, debate, review loop, hierarchical, graph DAG
 
 **Best for:** long-running agents with personality, multi-channel chatbots, production safety, voice applications, agent simulation.
@@ -216,7 +216,7 @@ The tradeoff: OpenAI models only. No multi-provider support.
 - Your agent needs a **consistent personality** across thousands of conversations
 - **Memory matters**: the agent should remember, forget, and reconsolidate like a human
 - You deploy to **messaging channels**: Telegram, WhatsApp, Discord, Slack out of the box
-- **Safety is non-negotiable**: 6 guardrail packs, prompt injection defense
+- **Safety is non-negotiable**: 6 guardrail packs covering PII, toxicity, generated code, grounding, content policy and topicality
 - You're building in **TypeScript** and want a cognitive runtime, not just an orchestration layer
 - **Voice is part of the product**: built-in STT, TTS, VAD, telephony
 - You want **one framework** for tools, memory, channels, guardrails, and orchestration
