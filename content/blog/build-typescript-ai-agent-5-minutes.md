@@ -199,7 +199,7 @@ With [`verifyCitations`](https://docs.agentos.sh/features/citation-verification)
 | Guardrail | Detection Method | What It Catches |
 |-----------|-----------------|-----------------|
 | **[PII Redaction](https://docs.agentos.sh/features/safety-primitives)** | Regex patterns, an NLP prefilter and a local NER model; an LLM judge is optional and off by default | Names, emails, SSNs, credit cards, addresses |
-| **[ML Classifiers](https://docs.agentos.sh/features/guardrails-architecture)** | A local ONNX model (`Xenova/toxic-bert`), with an LLM judge and keyword patterns as fallbacks when it can't load | Toxicity, NSFW content, threats; prompt injection only on the fallbacks, since the ONNX model has no injection label |
+| **[ML Classifiers](https://docs.agentos.sh/features/guardrails-architecture)** | A local ONNX model (`Xenova/toxic-bert`); when it can't load, an LLM judge (if you pass one) and then keyword patterns | Toxicity, NSFW content, threats; prompt injection only on the fallbacks, since the ONNX model has no injection label |
 | **[Topicality](https://docs.agentos.sh/features/guardrails)** | Embedding-based topic matching on user input, with LLM and keyword fallbacks | Off-topic messages, scope violations |
 | **[Code Safety](https://docs.agentos.sh/features/guardrails)** | OWASP pattern scanning | Command injection, XSS, SQL injection in generated code |
 | **[Grounding Guard](https://docs.agentos.sh/features/citation-verification)** | NLI-based claim verification | Hallucinated facts not supported by RAG sources |
