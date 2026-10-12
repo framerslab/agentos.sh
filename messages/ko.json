@@ -1137,7 +1137,7 @@
       "sourceConfidence": "Johnson, Hashtroudi & Lindsay (1993). Psychological Bulletin, 114, 3-28.",
       "emotionRegulation": "Gross (1998). Review of General Psychology, 2, 271-299."
     },
-    "ebbinghausAnnotation": "복습 없이는 24시간 이내에 정보의 80%가 손실됩니다. AgentOS의 인지 기억은 간격 반복과 고정화를 적용하여 곡선을 평탄화합니다.",
+    "ebbinghausAnnotation": "Ebbinghaus는 학습 하루 뒤에 기억에 남은 것이 약 3분의 1이었다고 보고했습니다. AgentOS의 인지 기억은 간격 반복과 고정화를 적용하여 곡선을 평탄화합니다.",
     "ctaLearnMore": "인지 기억 탐색",
     "ctaSoulWiki": "Markdown 기억 위키",
     "memoryTypes": {
@@ -1146,7 +1146,7 @@
       "working": {
         "name": "작업 메모리",
         "description": "현재 세션을 위한 단기 슬롯으로, 새 세션이 시작되면 비워집니다.",
-        "detail": "7개 슬롯, 특성에 따라 5~9개"
+        "detail": "7개 슬롯, 개방성이 높으면 1개 늘고 성실성이 높으면 1개 줄어듦"
       },
       "episodic": {
         "name": "에피소드 기억",

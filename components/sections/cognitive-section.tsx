@@ -334,7 +334,7 @@ function EbbinghausCurve({ annotation }: { annotation: string }) {
         {[
           { x: 80, label: '1h' },
           { x: 180, label: '1d' },
-          { x: 320, label: '1w' },
+          { x: 320, label: '6d' },
           { x: 450, label: '1mo' },
         ].map(({ x, label }) => (
           <text
@@ -352,7 +352,7 @@ function EbbinghausCurve({ annotation }: { annotation: string }) {
 
         {/* Filled area under curve */}
         <path
-          d="M80,38 C100,70 130,130 180,150 C230,162 280,170 320,175 C380,180 430,183 450,184 L450,190 L80,190 Z"
+          d="M60,30 C65,75 70,102 80,110 C110,122 150,133 180,137 C230,143 280,148 320,150 C380,153 430,156 450,158 L450,190 L60,190 Z"
           fill="url(#curve-fill)"
           opacity={isInView ? 1 : 0}
           style={{ transition: 'opacity 1s ease-out 0.5s' }}
@@ -360,7 +360,7 @@ function EbbinghausCurve({ annotation }: { annotation: string }) {
 
         {/* Main forgetting curve */}
         <path
-          d="M80,38 C100,70 130,130 180,150 C230,162 280,170 320,175 C380,180 430,183 450,184"
+          d="M60,30 C65,75 70,102 80,110 C110,122 150,133 180,137 C230,143 280,148 320,150 C380,153 430,156 450,158"
           fill="none"
           stroke="url(#curve-gradient)"
           strokeWidth="2.5"
@@ -372,10 +372,11 @@ function EbbinghausCurve({ annotation }: { annotation: string }) {
 
         {/* Key data points */}
         {[
-          { x: 80, y: 38, label: '100%' },
-          { x: 180, y: 150, label: '20%' },
-          { x: 320, y: 175, label: '~12%' },
-          { x: 450, y: 184, label: '~8%' },
+          { x: 60, y: 30, label: '100%' },
+          { x: 80, y: 110, label: '~50%' },
+          { x: 180, y: 137, label: '~33%' },
+          { x: 320, y: 150, label: '~25%' },
+          { x: 450, y: 158, label: '~20%' },
         ].map(({ x, y, label }, i) => (
           <g key={`pt-${i}`} opacity={isInView ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${0.8 + i * 0.3}s` }}>
             <circle cx={x} cy={y} r="4" fill="var(--color-accent-primary)" />

@@ -1137,7 +1137,7 @@
       "sourceConfidence": "Johnson, Hashtroudi & Lindsay (1993). Source monitoring. Psychological Bulletin, 114, 3-28.",
       "emotionRegulation": "Gross (1998). The emerging field of emotion regulation: An integrative review. Review of General Psychology, 2, 271-299."
     },
-    "ebbinghausAnnotation": "Without rehearsal, 80% of information is lost within 24 hours. AgentOS cognitive memory applies spaced repetition and consolidation to flatten the curve.",
+    "ebbinghausAnnotation": "Ebbinghaus found that a day after learning, about a third was still remembered. AgentOS cognitive memory applies spaced repetition and consolidation to flatten the curve.",
     "ctaLearnMore": "Explore Cognitive Memory",
     "ctaSoulWiki": "Markdown Memory Wiki",
     "memoryTypes": {
@@ -1146,7 +1146,7 @@
       "working": {
         "name": "Working Memory",
         "description": "Short-term slots for the current session, cleared when a new session starts.",
-        "detail": "7 slots, 5 to 9 by traits"
+        "detail": "7 slots; high Openness adds one, high Conscientiousness removes one"
       },
       "episodic": {
         "name": "Episodic Memory",
