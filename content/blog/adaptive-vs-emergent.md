@@ -62,7 +62,7 @@ Emergent intelligence is complex behavior that arises from the interaction of mu
 |----------|-------------|-------------|
 | Sequential | Linear pipeline, each agent refines previous output | Editing, translation, summarization chains |
 | Parallel | Fan-out to all agents simultaneously | Research, brainstorming, redundancy |
-| Debate | Agents argue positions over rounds, then a judge names the side that prevailed or calls a split | Controversial topics, decision-making |
+| Debate | Agents argue positions over several rounds, then a judge call gives a verdict on which side prevailed | Controversial topics, decision-making |
 | Review loop | Author and reviewer iterate until quality threshold | Content creation, code review |
 | Hierarchical | Manager delegates to specialized workers | Complex decomposed tasks |
 | Graph (DAG) | Each agent starts once the agents it `dependsOn` have finished, with their outputs as context | Multi-step workflows with prerequisites |

@@ -66,7 +66,7 @@ Under all eight, every trace decays on the [Ebbinghaus forgetting curve](https:/
 |----------|-------------|----------|
 | Sequential | Linear pipeline, each agent refines previous output | Editing chains, translation pipelines |
 | Parallel | Fan-out to all agents simultaneously | Research, brainstorming, redundancy |
-| Debate | Agents argue positions over rounds, then a judge names the side that prevailed or calls a split | Decision-making under uncertainty |
+| Debate | Agents argue positions over several rounds, then a judge call gives a verdict on which side prevailed | Decision-making under uncertainty |
 | Review loop | Author and reviewer iterate until quality threshold | Content QA, code review |
 | Hierarchical | Manager delegates to specialized workers | Task decomposition |
 | Graph (DAG) | Each agent starts once the agents it `dependsOn` have finished, with their outputs as context | Complex multi-step workflows |
