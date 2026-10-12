@@ -400,7 +400,6 @@
       "description": "셀프 호스팅, 고급 PII 제어, OpenTelemetry 텔레메트리, 로컬 모델 호스팅, CI/CD 파이프라인, GPU 오케스트레이션, SSO 및 프로덕션 배포를 위한 전담 지원.",
       "contact": "team@frame.dev 문의하기"
     },
-    "trustBadge": "업계 리더들의 신뢰",
     "wipLabel": "WIP",
     "currentlyDevelopment": "현재 개발 중"
   },

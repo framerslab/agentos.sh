@@ -214,7 +214,6 @@
       "description": "自托管、高级PII控制、OpenTelemetry遥测、本地模型托管、CI/CD管道、GPU编排、SSO和面向生产部署的专属支持。",
       "contact": "联系 team@frame.dev"
     },
-    "trustBadge": "受到行业领导者的信赖",
     "wipLabel": "WIP",
     "currentlyDevelopment": "目前正在开发中"
   },

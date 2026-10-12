@@ -400,7 +400,6 @@
       "description": "Self-hosting, controles avanzados de PII, telemetría OpenTelemetry, hosting de modelos locales, pipelines CI/CD, orquestación GPU, SSO y soporte dedicado para despliegues en producción.",
       "contact": "Contactar team@frame.dev"
     },
-    "trustBadge": "Confiado por líderes de la industria",
     "wipLabel": "WIP",
     "currentlyDevelopment": "Actualmente en desarrollo"
   },

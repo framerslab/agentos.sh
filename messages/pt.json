@@ -248,7 +248,6 @@
       "description": "Self-hosting, controles avançados de PII, telemetria OpenTelemetry, hospedagem de modelos locais, pipelines CI/CD, orquestração GPU, SSO e suporte dedicado para implantações em produção.",
       "contact": "Contatar team@frame.dev"
     },
-    "trustBadge": "Confiado por líderes da indústria",
     "wipLabel": "WIP",
     "currentlyDevelopment": "Atualmente em desenvolvimento"
   },

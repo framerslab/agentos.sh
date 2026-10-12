@@ -248,7 +248,6 @@
       "description": "セルフホスティング、高度なPII制御、OpenTelemetryテレメトリ、ローカルモデルホスティング、CI/CDパイプライン、GPUオーケストレーション、SSO、本番デプロイメント向け専任サポート。",
       "contact": "team@frame.dev にお問い合わせ"
     },
-    "trustBadge": "業界リーダーに信頼されています",
     "wipLabel": "WIP",
     "currentlyDevelopment": "現在開発中"
   },
