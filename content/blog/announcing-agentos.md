@@ -107,11 +107,11 @@ Full type safety with [Zod-validated structured output](https://docs.agentos.sh/
 | Capability | AgentOS | [LangGraph](https://www.langchain.com/langgraph) | [CrewAI](https://crewai.com) | [Mastra](https://mastra.ai) | [VoltAgent](https://voltagent.dev/) |
 |------------|---------|-----------|--------|--------|-----------|
 | Language | TypeScript | Python + JS | Python | TypeScript | TypeScript |
-| Cognitive memory | [8 mechanisms](https://docs.agentos.sh/features/cognitive-memory) + Ebbinghaus decay | Checkpoints | Short/long-term | Semantic | Conversation + RAG |
+| Cognitive memory | [8 mechanisms](https://docs.agentos.sh/features/cognitive-memory) + Ebbinghaus decay | Checkpoints | Short/long-term | Working memory, semantic recall, observational memory | Conversation + RAG |
 | Personality | [HEXACO 6-factor](https://docs.agentos.sh/features/cognitive-memory-guide) | None | Role descriptions | None | None |
-| Channel adapters | [37](https://docs.agentos.sh/features/channels) | None | None | None | None |
-| Voice pipeline | [11 STT + 10 TTS](https://docs.agentos.sh/features/voice-pipeline) | None | None | None | None |
-| Guardrails | [6 packs](https://docs.agentos.sh/features/guardrails) | Middleware | Basic | None | Module |
+| Channel adapters | [37](https://docs.agentos.sh/features/channels) | None | None | [Slack, Discord, Telegram, WhatsApp and more](https://mastra.ai/docs/channels) | None |
+| Voice pipeline | [11 STT + 10 TTS](https://docs.agentos.sh/features/voice-pipeline) | None | None | [TTS, STT, speech-to-speech](https://mastra.ai/reference/voice/overview) | [TTS, STT](https://voltagent.dev/docs/agents/voice/) |
+| Guardrails | [6 packs](https://docs.agentos.sh/features/guardrails) | Middleware | Basic | [Processors](https://mastra.ai/docs/agents/guardrails) | Module |
 | Tool forging | [Runtime creation](https://docs.agentos.sh/features/emergent-capabilities) | None | None | None | None |
 
 See [AgentOS vs LangGraph vs CrewAI vs Mastra vs VoltAgent](/blog/agentos-vs-langgraph-vs-crewai) for the full comparison.

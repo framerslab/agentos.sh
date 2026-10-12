@@ -35,12 +35,12 @@ This comparison covers the six production-ready frameworks a TypeScript develope
 |---------|---------|-----------|--------|--------|-----------|------------|
 | **Language** | TypeScript | Python + JS | Python | TypeScript | TypeScript | TypeScript |
 | **Architecture** | GMI (cognitive entities) | State graphs | Role-based crews | Agents + workflows | Supervisor agents | Lightweight agents |
-| **Memory** | Cognitive ([Ebbinghaus decay](https://en.wikipedia.org/wiki/Forgetting_curve), [8 mechanisms](https://docs.agentos.sh/features/cognitive-memory)) | Conversation + checkpoints | Short/long-term + entity | Conversation + semantic | Conversation + RAG | Conversation |
-| **LLM Providers** | [13](https://github.com/framerslab/agentos/blob/master/src/core/llm/providers/AIModelProviderManager.ts) (OpenAI, Anthropic, Gemini, Ollama, etc.) | Via LangChain | OpenAI, Anthropic, Mistral + more | 40+ via [AI SDK](https://sdk.vercel.ai/) | Multi-provider | OpenAI only |
-| **Guardrails** | [6 packs](https://docs.agentos.sh/features/guardrails) (PII, toxicity and NSFW classifiers, code safety, grounding, content policy, topicality) | Content moderation middleware | Basic output validation | None built-in | Guardrails module | None built-in |
+| **Memory** | Cognitive ([Ebbinghaus decay](https://en.wikipedia.org/wiki/Forgetting_curve), [8 mechanisms](https://docs.agentos.sh/features/cognitive-memory)) | Conversation + checkpoints | Short/long-term + entity | History, working memory, semantic recall, observational memory | Conversation + RAG | Conversation |
+| **LLM Providers** | [13](https://github.com/framerslab/agentos/blob/master/src/core/llm/providers/AIModelProviderManager.ts) (OpenAI, Anthropic, Gemini, Ollama, etc.) | Via LangChain | OpenAI, Anthropic, Mistral + more | 40+ via [AI SDK](https://sdk.vercel.ai/) | Multi-provider | OpenAI; others through an [AI SDK adapter](https://openai.github.io/openai-agents-js/extensions/ai-sdk/) |
+| **Guardrails** | [6 packs](https://docs.agentos.sh/features/guardrails) (PII, toxicity and NSFW classifiers, code safety, grounding, content policy, topicality) | Content moderation middleware | Basic output validation | [Guardrail processors](https://mastra.ai/docs/agents/guardrails) | Guardrails module | [Input, output and tool guardrails](https://openai.github.io/openai-agents-js/guides/guardrails/) |
 | **Multi-Agent** | [6 strategies](https://docs.agentos.sh/features/agency-api) + emergent teams | State graph orchestration | Role-based crew orchestration | Workflow engine | [Supervisor orchestration](https://voltagent.dev/) | Handoffs |
-| **Channels** | [37 adapters](https://docs.agentos.sh/features/channels) (Telegram, WhatsApp, Discord, Slack, etc.) | None built-in | None built-in | None built-in | None built-in | None built-in |
-| **Voice** | Full pipeline ([STT, TTS, VAD](https://docs.agentos.sh/features/voice-pipeline)) | None built-in | None built-in | None built-in | None built-in | None built-in |
+| **Channels** | [37 adapters](https://docs.agentos.sh/features/channels) (Telegram, WhatsApp, Discord, Slack, etc.) | None built-in | None built-in | [Slack, Discord, Telegram, WhatsApp and more](https://mastra.ai/docs/channels) | None built-in | None built-in |
+| **Voice** | Full pipeline ([STT, TTS, VAD](https://docs.agentos.sh/features/voice-pipeline)) | None built-in | None built-in | [TTS, STT, speech-to-speech](https://mastra.ai/reference/voice/overview) | [TTS, STT](https://voltagent.dev/docs/agents/voice/) | [Realtime voice agents](https://openai.github.io/openai-agents-js/guides/voice-agents/) |
 | **Personality** | [HEXACO trait system](https://docs.agentos.sh/features/cognitive-memory-guide) | None | Role descriptions | None | None | None |
 | **Tool Forging** | [Runtime tool creation](https://docs.agentos.sh/features/emergent-capabilities) | None | None | None | None | None |
 | **Self-Hosted** | Yes (`npm install`) | Yes | Yes | Yes | Yes | Yes |
@@ -158,7 +158,7 @@ const volt = new VoltAgent({ agents: { researcher } });
 
 AgentOS treats each agent as a persistent cognitive entity. The [HEXACO personality system](https://docs.agentos.sh/features/cognitive-memory-guide), based on the [six-factor model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) validated across [psycholexical studies in seven languages](https://doi.org/10.1037/0022-3514.86.2.356), shapes communication style and decision-making. [Cognitive memory](https://docs.agentos.sh/features/cognitive-memory) uses [Ebbinghaus decay curves](https://en.wikipedia.org/wiki/Forgetting_curve) and [8 neuroscience-backed mechanisms](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine) including [reconsolidation](https://doi.org/10.1038/35021052) and [retrieval-induced forgetting](https://doi.org/10.1037/0278-7393.20.5.1063).
 
-Unique capabilities no other framework offers:
+What AgentOS ships:
 
 - **[Runtime tool forging](https://docs.agentos.sh/features/emergent-capabilities)**: agents create new tools at runtime, reviewed by an [LLM-as-judge](https://docs.agentos.sh/api/classes/EmergentJudge) before activation
 - **[37 channel adapters](https://docs.agentos.sh/features/channels)**: Telegram, WhatsApp, Discord, Slack, email, and 32 more
@@ -186,7 +186,7 @@ LangGraph's [MCP integration is the deepest](https://medium.com/data-science-col
 
 [Mastra](https://mastra.ai) is the closest TypeScript competitor to AgentOS. Built by the [team behind Gatsby](https://github.com/mastra-ai/mastra), it connects to [40+ LLM providers](https://mastra.ai/docs/frameworks/ai-sdk) via the [Vercel AI SDK](https://sdk.vercel.ai/), has a workflow engine, and supports [MCP servers](https://mastra.ai/docs/agents/mcp-guide). With [~22,900 stars](https://github.com/mastra-ai/mastra) and [$13M in Y Combinator-backed funding](https://mastra.ai), it has strong momentum.
 
-The tradeoff: no cognitive memory (conversation + semantic only), no personality system, no guardrails, no channel adapters, no voice pipeline.
+The tradeoff: no personality model and no runtime tool forging.
 
 **Best for:** TypeScript teams wanting clean LLM orchestration, Next.js integration, workflow automation.
 
@@ -200,9 +200,9 @@ The tradeoff: no cognitive memory (conversation + semantic only), no personality
 
 The [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/) is lightweight and has the fewest abstractions. It's a production-ready upgrade of the Swarm experimental framework. Agent handoffs and tool use are first-class.
 
-The tradeoff: OpenAI models only. No multi-provider support.
+The tradeoff: it works with OpenAI models out of the box, and models from other providers need the AI SDK adapter from `@openai/agents-extensions`.
 
-**Best for:** OpenAI-only teams, simple agent workflows, fastest time to first agent.
+**Best for:** teams on OpenAI models, simple agent workflows, fastest time to first agent.
 
 ## When NOT to Use AgentOS
 
@@ -271,4 +271,4 @@ If you need a battle-tested Python ecosystem with mature LangChain integrations,
 
 **AgentOS** is built by [Frame](https://frame.dev). See [Wilds.ai](https://wilds.ai) for AI game worlds powered by AgentOS.
 
-*Last updated: April 2026. Star counts verified via GitHub API. Framework features change rapidly. Check each project's documentation for the latest.*
+*Last updated: October 2026. Star counts are from the GitHub API in April 2026. Framework features change rapidly. Check each project's documentation for the latest.*
