@@ -115,7 +115,9 @@ print(json.dumps({
             "action": "redirect",
             "description": "/docs-generated/* to api docs",
             "expression": '(starts_with(http.request.uri.path, "/docs-generated/"))',
-            "action_parameters": redirect("https://docs.agentos.sh/api/"),
+            # No trailing slash: docs.agentos.sh/api answers 200 and
+            # docs.agentos.sh/api/ answers 404.
+            "action_parameters": redirect("https://docs.agentos.sh/api"),
         },
         # /en/... → /... so the default-locale prefix collapses into the
         # canonical bare path. lib/seo/canonical.ts emits English URLs
