@@ -475,7 +475,7 @@
       },
       "queryRouter": {
         "question": "Como o QueryRouter funciona?",
-        "answer": "O QueryRouter classifica cada consulta em uma de 4 camadas e busca de acordo: T0 responde a partir da conversa sem recuperação, T1 faz uma única busca vetorial (uma busca por palavras-chave quando não há provedor de embeddings configurado), T2 combina várias fontes ou percorre o grafo de conhecimento e T3 faz uma pesquisa profunda em todo o corpus. Depois responde com base no que recuperou e devolve a resposta com as citações das fontes."
+        "answer": "O QueryRouter classifica cada consulta em uma de 4 camadas e busca de acordo: T0 responde a partir da conversa sem recuperação, T1 faz uma única busca vetorial (uma busca por palavras-chave quando não há provedor de embeddings configurado), T2 recupera 15 trechos, acrescenta trechos relacionados pela expansão do grafo e reordena o conjunto para ficar com os 5 melhores, e T3 faz essa recuperação e depois, quando a pesquisa profunda está ativada (por padrão, quando SERPER_API_KEY está definida), uma etapa de pesquisa profunda cujos resultados ele mescla. Depois responde com base no que recuperou e devolve a resposta com as citações das fontes."
       },
       "adaptiveIntelligence": {
         "question": "O que é inteligência adaptativa?",
