@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { canonical } from '@/lib/seo/canonical';
 import { hreflangAlternates } from '@/lib/seo/hreflang';
 
-const updated = "October 11, 2026";
+const updated = "October 12, 2026";
 
 type MetadataProps = { params: { locale: string } };
 
@@ -77,7 +77,13 @@ const Sections = [
           characters are normalised; a match blocks or goes to an LLM judge. Six guardrail packs install from npm:
           PII redaction, ML classifiers, topicality, code safety, grounding and content-policy rewriting. The{" "}
           <code>agent()</code>, <code>gmi()</code> and <code>agency()</code> helpers accept guardrail ids but do not
-          run guards. See the{" "}
+          run guards. <code>agency()</code> runs two fixed pattern checks of its own after its{" "}
+          <code>hitl</code> handler approves a tool call, an agent&apos;s input or the final reply:{" "}
+          <code>code-safety</code> looks for destructive commands such as <code>rm -rf /</code> and{" "}
+          <code>DROP TABLE</code>, and{" "}
+          <code>pii-redaction</code> looks for unredacted Social Security and card numbers. A match overrides the
+          approval. <code>hitl.postApprovalGuardrails</code> picks the checks (both by default), and{" "}
+          <code>hitl.guardrailOverride: false</code> turns them off. They are not the guardrail packs. See the{" "}
           <a
             href="https://docs.agentos.sh/features/guardrails"
             className="font-semibold text-brand hover:underline"
@@ -230,7 +236,7 @@ const Sections = [
             <a href="mailto:team@frame.dev" className="font-semibold text-brand hover:underline">
               team@frame.dev
             </a>
-            . Do not open a public issue about it.
+            . Do not open a public issue, pull request or chat message about it.
           </li>
           <li>
             A maintainer acknowledges a report within <strong>5 business days</strong> and sends an assessment and
@@ -242,8 +248,9 @@ const Sections = [
             the reporter and a maintainer agree on a later date.
           </li>
           <li>
-            We will <strong>not take legal action</strong> against researchers who discover and report
-            vulnerabilities in good faith.
+            In scope: defects in the repository&apos;s code, including how it handles credentials, files, provider
+            responses and tool results. Out of scope: a flaw that exists only in a third-party provider&apos;s
+            service, or only in a deployment&apos;s own configuration.
           </li>
         </ul>
       </div>
