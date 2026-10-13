@@ -1030,7 +1030,7 @@
       },
       "debate": {
         "name": "Debate",
-        "description": "Agentes argumentam e refinam uma resposta compartilhada ao longo de múltiplas rodadas. Um juiz avalia os argumentos e seleciona a posição mais forte."
+        "description": "Cada agente defende um lado e rebate os outros ao longo de várias rodadas. Depois, um juiz lê a transcrição e dá um veredito sobre qual lado prevaleceu."
       },
       "reviewLoop": {
         "name": "Loop de Revisão",

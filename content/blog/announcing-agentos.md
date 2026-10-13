@@ -48,7 +48,7 @@ console.log(reply.text);
 
 ### Cognitive Memory
 
-[8 neuroscience-grounded memory mechanisms](https://docs.agentos.sh/features/cognitive-memory), seven of them modulated by the agent's [HEXACO personality](https://docs.agentos.sh/features/cognitive-memory-guide):
+[8 memory mechanisms modeled on published memory research](https://docs.agentos.sh/features/cognitive-memory), seven of them modulated by the agent's [HEXACO personality](https://docs.agentos.sh/features/cognitive-memory-guide):
 
 - **[Reconsolidation](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine)**: memories rewrite each time they are recalled, incorporating new context. Based on [Nader et al. (2000)](https://doi.org/10.1038/35021052) on memory reconsolidation in fear conditioning.
 - **[Retrieval-induced forgetting](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine)**: retrieving one memory suppresses related competing memories. Based on [Anderson, Bjork & Bjork (1994)](https://doi.org/10.1037/0278-7393.20.5.1063).
@@ -67,7 +67,7 @@ Under all eight, every trace decays on the [Ebbinghaus forgetting curve](https:/
 | Sequential | Linear pipeline, each agent refines previous output | Editing chains, translation pipelines |
 | Parallel | Fan-out to all agents simultaneously | Research, brainstorming, redundancy |
 | Debate | Agents argue positions over several rounds, then a judge call gives a verdict on which side prevailed | Decision-making under uncertainty |
-| Review loop | Author and reviewer iterate until quality threshold | Content QA, code review |
+| Review loop | A producer and a reviewer iterate until the reviewer approves or `maxRounds` (default 3) runs out | Content QA, code review |
 | Hierarchical | Manager delegates to specialized workers | Task decomposition |
 | Graph (DAG) | Each agent starts once the agents it `dependsOn` have finished, with their outputs as context | Complex multi-step workflows |
 
@@ -98,7 +98,7 @@ An [`EmergentJudge`](https://docs.agentos.sh/api/classes/EmergentJudge) reviews 
 
 ### TypeScript Native
 
-Full type safety with [Zod-validated structured output](https://docs.agentos.sh/features/structured-output). ESM-first architecture. The [TypeDoc API reference](https://docs.agentos.sh/api) documents every public class, interface, and function.
+Full type safety with [Zod-validated structured output](https://docs.agentos.sh/features/structured-output). ESM-first architecture. The [TypeDoc API reference](https://docs.agentos.sh/api) documents what the package root (`@framers/agentos`, built from `src/index.ts`) exports. Modules that ship only under a subpath are not in it: `WebSearchService`, from `@framers/agentos/cognition/web-search`, has no page there.
 
 ## How AgentOS Compares
 
@@ -141,7 +141,7 @@ This is what an honest benchmark looks like. If something on this list is wrong,
 
 **Is AgentOS a LangGraph alternative?** It's an alternative if your job is "build an AI agent with memory and personality and tools." It is not an alternative if your job is "compose Python research code into a workflow." Different jobs. We have a [head-to-head comparison post](/blog/agentos-vs-langgraph-vs-crewai) with honest-cost-rule applied.
 
-**Does AgentOS lock me into a specific LLM?** No. 13 provider adapters ship; you can add yours in ~50 lines if it's not in the list. The provider abstraction is decoupled from the agent abstraction.
+**Does AgentOS lock me into a specific LLM?** No. 13 provider adapters ship, and an endpoint that speaks the OpenAI API works through the `openai` provider with a `baseUrl` of its own. A provider with its own API needs an adapter class that implements [`IProvider`](https://github.com/framerslab/agentos/blob/master/src/core/llm/providers/IProvider.ts) and a case in `AIModelProviderManager`; the smallest adapters, xAI's and Groq's, delegate to the OpenAI adapter in about 100 lines of code. The provider abstraction is decoupled from the agent abstraction.
 
 **What's the deal with HEXACO personality?** It's optional. Pass `personality` and each trait above 0.65 or below 0.35 adds a directive to the system prompt, and a cognitive memory manager given the same traits tunes seven of its eight mechanisms by them. An `AgentGraph` can also route on a trait value with `addPersonalityEdge`. Don't pass it and the runtime acts personality-neutral. We don't make HEXACO the centerpiece because not every agent needs it; we just make it work cleanly when you want it.
 

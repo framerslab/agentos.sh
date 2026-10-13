@@ -1030,7 +1030,7 @@
       },
       "debate": {
         "name": "Debate",
-        "description": "Los agentes argumentan y refinan una respuesta compartida en múltiples rondas. Un juez evalúa los argumentos y selecciona la posición más fuerte."
+        "description": "Cada agente defiende una postura y rebate a los demás durante varias rondas. Después, un juez lee la transcripción y da un veredicto sobre qué postura prevaleció."
       },
       "reviewLoop": {
         "name": "Bucle de Revisión",

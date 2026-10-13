@@ -1030,7 +1030,7 @@
       },
       "debate": {
         "name": "Débat",
-        "description": "Les agents argumentent et affinent une réponse partagée sur plusieurs tours. Un juge évalue les arguments et sélectionne la position la plus forte."
+        "description": "Chaque agent défend une position et réfute les autres sur plusieurs tours. Un juge lit ensuite la transcription et rend un verdict sur la position qui l’a emporté."
       },
       "reviewLoop": {
         "name": "Boucle de Révision",

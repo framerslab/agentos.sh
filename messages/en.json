@@ -1030,7 +1030,7 @@
       },
       "debate": {
         "name": "Debate",
-        "description": "Agents argue and refine a shared answer over multiple rounds. A judge evaluates arguments and selects the strongest position."
+        "description": "Each agent takes a side and rebuts the others over several rounds. A judge then reads the transcript and gives a verdict on which side prevailed."
       },
       "reviewLoop": {
         "name": "Review Loop",

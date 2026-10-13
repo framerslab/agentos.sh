@@ -1030,7 +1030,7 @@
       },
       "debate": {
         "name": "Debate",
-        "description": "Agenten argumentieren und verfeinern eine gemeinsame Antwort über mehrere Runden. Ein Richter bewertet die Argumente und wählt die stärkste Position aus."
+        "description": "Jeder Agent bezieht eine Position und widerlegt die anderen über mehrere Runden. Danach liest ein Richter das Protokoll und urteilt, welche Seite sich durchgesetzt hat."
       },
       "reviewLoop": {
         "name": "Review-Loop",
