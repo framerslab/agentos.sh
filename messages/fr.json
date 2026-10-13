@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Open Source · Adaptatif · Émergent",
     "title": "Runtime production-ready pour agents IA adaptatifs et émergents",
-    "subtitle": "Runtime TypeScript open source pour des agents IA qui se souviennent, s’adaptent et créent de nouveaux outils. Chaque session sur le runtime est un GMI, une Generalized Mind Instance qui conserve sa propre persona, son humeur et sa mémoire et peut ajuster ses propres traits au fil du temps. Les agents écrivent leurs propres fonctions en cours de tâche et le juge les approuve ; les managers créent des spécialistes quand l’effectif fixe ne couvre pas la tâche. Mémoire cognitive fondée sur les neurosciences. 85.6% sur LongMemEval-S. Apache 2.0.",
+    "subtitle": "Runtime TypeScript open source pour des agents IA qui se souviennent, s’adaptent et créent de nouveaux outils. Chaque session sur le runtime est un GMI, une Generalized Mind Instance qui conserve sa propre persona, son humeur et sa mémoire et peut ajuster ses propres traits au fil du temps. Les agents écrivent leurs propres fonctions en cours de tâche et le juge les approuve ; les managers créent des spécialistes quand l’effectif fixe ne couvre pas la tâche. Mémoire cognitive avec la courbe de l’oubli d’Ebbinghaus et une mémoire de travail à 7 emplacements. 85.6% sur LongMemEval-S. Apache 2.0.",
     "ctaPrimary": "Essayer Voice Chat Assistant",
     "ctaSecondary": "Étoiler sur GitHub",
     "codeLabel": "npm install @framers/agentos",
@@ -64,7 +64,7 @@
       "securityScore": "Score de sécurité"
     },
     "compliance": {
-      "gdpr": "Guardrails prêts pour le RGPD",
+      "gdpr": "Pack de guardrail de rédaction de PII",
       "soc2": "Auto-hébergé sur votre infrastructure",
       "enterpriseSupport": "Support d'entreprise disponible"
     }
@@ -185,7 +185,8 @@
       "planningEngine": "Moteur de planification",
       "workflowDsl": "DSL de Workflow",
       "streamApi": "API de streaming",
-      "guardrailMode": "Mode Guardrail",
+      "streamingGuardrails": "Guardrails de streaming",
+      "optIn": "Sur activation",
       "chunkTypes": "Types de chunk",
       "dimensions": "Dimensions",
       "tunedMechanisms": "Mécanismes ajustés",
@@ -203,7 +204,7 @@
     "cards": {
       "cognitiveMemory": {
         "title": "Mémoire Cognitive",
-        "description": "8 mécanismes soutenus par les neurosciences avec la décroissance de la courbe d'oubli d'Ebbinghaus. Biais de récupération du vecteur de personnalité HEXACO optionnels ; fonctionne de manière neutre par défaut.",
+        "description": "8 mécanismes fondés sur des recherches publiées sur la mémoire, avec une décroissance selon la courbe de l'oubli d'Ebbinghaus. Un vecteur de personnalité HEXACO optionnel oriente la récupération ; par défaut, la mémoire fonctionne avec une personnalité neutre.",
         "features": [
           "Reconsolidation et RIF",
           "Rappel involontaire et FOK",
@@ -251,7 +252,7 @@
         "description": "Deltas de texte et JSON partiel en itérateurs asynchrones, chunks typés pour les tool calls et la progression, guardrails de streaming optionnels",
         "features": [
           "Flux en itérateurs asynchrones",
-          "Guardrails en vol",
+          "Guardrails par chunk (sur activation)",
           "Streaming JSON partiel",
           "Evenements de progression tools"
         ],
@@ -348,7 +349,7 @@
       "compliance": {
         "title": "Architecture de Confidentialité",
         "items": [
-          "Rédaction de PII alignée RGPD (18 types d'entités)",
+          "Rédaction de PII sur 18 types d'entités",
           "Suivi de provenance et lignage des données",
           "Mémoire cognitive avec courbes de déclin d'Ebbinghaus",
           "Déclin de confiance des sources pour les connaissances anciennes"
@@ -402,291 +403,6 @@
     },
     "wipLabel": "WIP",
     "currentlyDevelopment": "Actuellement en développement"
-  },
-  "multiAgent": {
-    "title": "Réseau de collaboration multi-agents",
-    "subtitle": "Chercheur, Analyste, Créateur, Critique, Exécutant diffusent leurs insights en parallèle",
-    "description": "L’orchestrateur route, la mémoire persiste – choisissez le bon schéma pour votre cas d’usage",
-    "patterns": {
-      "consensus": {
-        "title": "Collaboration basée sur le consensus",
-        "description": "Plusieurs agents votent sur les décisions avec des scores de confiance pondérés",
-        "workflow": {
-          "steps": [
-            "Tous les agents analysent l’entrée simultanément",
-            "Chaque agent propose une solution avec score de confiance",
-            "Vote pondéré selon l’expertise",
-            "Validation du seuil de consensus",
-            "Exécution de l’action approuvée"
-          ],
-          "duration": "200-500 ms",
-          "throughput": "1000 décisions/min"
-        },
-        "useCases": [
-          {
-            "title": "Décisions de trading financier",
-            "description": "Plusieurs analystes IA votent sur les recommandations de trade",
-            "metrics": [
-              {
-                "label": "Précision",
-                "value": "94%"
-              },
-              {
-                "label": "Temps de consensus",
-                "value": "< 200 ms"
-              },
-              {
-                "label": "Réduction du risque",
-                "value": "67%"
-              }
-            ]
-          },
-          {
-            "title": "Modération de contenu",
-            "description": "Plusieurs agents évaluent le contenu pour détecter les violations",
-            "metrics": [
-              {
-                "label": "Faux positifs",
-                "value": "-82%"
-              },
-              {
-                "label": "Couverture",
-                "value": "99,9%"
-              },
-              {
-                "label": "Vitesse d’examen",
-                "value": "10k/heure"
-              }
-            ]
-          },
-          {
-            "title": "Aide au diagnostic médical",
-            "description": "Des agents spécialistes collaborent sur le diagnostic patient",
-            "metrics": [
-              {
-                "label": "Précision du diagnostic",
-                "value": "97%"
-              },
-              {
-                "label": "Taux de seconde opinion",
-                "value": "100%"
-              },
-              {
-                "label": "Temps jusqu’au diagnostic",
-                "value": "-45%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "Grande précision via l’intelligence collective",
-            "Validation intégrée et contrôle d’erreurs",
-            "Réduit le biais de chaque agent",
-            "Traçabilité transparente des décisions"
-          ],
-          "cons": [
-            "Latence plus élevée qu’un agent unique",
-            "Demande plus de ressources de calcul",
-            "Risque de situations de blocage",
-            "Résolution des conflits plus complexe"
-          ]
-        }
-      },
-      "sequential": {
-        "title": "Pipeline séquentiel",
-        "description": "Les agents traitent les tâches dans un ordre défini, chacun bâtissant sur le précédent",
-        "workflow": {
-          "steps": [
-            "Le chercheur collecte les données initiales",
-            "L’analyste structure et prépare les informations",
-            "Le créateur génère la solution",
-            "Le critique valide et affine",
-            "L’exécutant met en œuvre le résultat final"
-          ],
-          "duration": "500-2000 ms",
-          "throughput": "500 tâches/min"
-        },
-        "useCases": [
-          {
-            "title": "Pipeline de traitement documentaire",
-            "description": "Extraction → Analyse → Résumé → Mise en forme → Livraison",
-            "metrics": [
-              {
-                "label": "Précision",
-                "value": "96%"
-              },
-              {
-                "label": "Temps de traitement",
-                "value": "1,2 s/doc"
-              },
-              {
-                "label": "Taux d’erreur",
-                "value": "< 0,1%"
-              }
-            ]
-          },
-          {
-            "title": "Escalade du support client",
-            "description": "Triage → Recherche → Solution → Relecture → Réponse",
-            "metrics": [
-              {
-                "label": "Taux de résolution",
-                "value": "89%"
-              },
-              {
-                "label": "Temps moyen de traitement",
-                "value": "45 s"
-              },
-              {
-                "label": "Satisfaction client",
-                "value": "4,7/5"
-              }
-            ]
-          },
-          {
-            "title": "Code review et refactorisation",
-            "description": "Analyse → Détection d’anomalies → Propositions → Tests → Déploiement",
-            "metrics": [
-              {
-                "label": "Détection de bugs",
-                "value": "92%"
-              },
-              {
-                "label": "Qualité du code",
-                "value": "+35%"
-              },
-              {
-                "label": "Temps de review",
-                "value": "-60%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "Workflow clair et responsabilités définies",
-            "Facile à debugger et monitorer",
-            "Usage des ressources prévisible",
-            "Récupération d’erreur simple"
-          ],
-          "cons": [
-            "Risque de point de défaillance unique",
-            "Peu de parallélisation possible",
-            "Latence totale plus élevée",
-            "Potentiel de goulots d’étranglement"
-          ]
-        }
-      },
-      "parallel": {
-        "title": "Exécution parallèle",
-        "description": "Les agents travaillent simultanément sur différentes facettes d’une même tâche",
-        "workflow": {
-          "steps": [
-            "Décomposition par l’orchestrateur",
-            "Affectation parallèle à tous les agents",
-            "Traitement concurrent",
-            "Agrégation des résultats",
-            "Fusion finale par l’orchestrateur"
-          ],
-          "duration": "100-300 ms",
-          "throughput": "5000 tâches/min"
-        },
-        "useCases": [
-          {
-            "title": "Analyse de marché en temps réel",
-            "description": "Analyse simultanée actions, obligations, forex, crypto",
-            "metrics": [
-              {
-                "label": "Couverture",
-                "value": "10k actifs"
-              },
-              {
-                "label": "Fréquence de mise à jour",
-                "value": "100 ms"
-              },
-              {
-                "label": "Flux parallèles",
-                "value": "128"
-              }
-            ]
-          },
-          {
-            "title": "Traduction multilingue",
-            "description": "Traduire du contenu dans plusieurs langues en même temps",
-            "metrics": [
-              {
-                "label": "Langues",
-                "value": "50+"
-              },
-              {
-                "label": "Vitesse",
-                "value": "< 500 ms"
-              },
-              {
-                "label": "Cohérence",
-                "value": "98%"
-              }
-            ]
-          },
-          {
-            "title": "Tests A/B et optimisation",
-            "description": "Tester plusieurs variantes simultanément",
-            "metrics": [
-              {
-                "label": "Variantes",
-                "value": "100+"
-              },
-              {
-                "label": "Temps de décision",
-                "value": "< 1 s"
-              },
-              {
-                "label": "Confiance",
-                "value": "95%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "Débit et vitesse maximaux",
-            "Excellente scalabilité",
-            "Isolation des pannes entre agents",
-            "Traitement en temps réel"
-          ],
-          "cons": [
-            "Consommation accrue de ressources",
-            "Synchronisation plus complexe",
-            "Risque de conditions de course",
-            "Debugging plus exigeant"
-          ]
-        }
-      }
-    },
-    "ui": {
-      "workflowSteps": "Étapes du workflow :",
-      "latency": "Latence",
-      "throughput": "Débit",
-      "pros": "Avantages",
-      "cons": "Inconvénients",
-      "useCases": "Cas d’usage",
-      "case": "Cas",
-      "implementation": "Implémentation",
-      "showCode": "Afficher le code",
-      "hideCode": "Masquer le code",
-      "setupTime": "Temps d’installation : ~5 min",
-      "performance": "Performance : prête pour la production",
-      "codePrompt": "Cliquez sur \"Afficher le code\" pour voir comment implémenter {pattern} dans votre application."
-    },
-    "agents": {
-      "researcher": "Chercheur",
-      "analyst": "Analyste",
-      "creator": "Créateur",
-      "critic": "Critique",
-      "executor": "Exécuteur",
-      "orchestrator": "Orchestrateur"
-    }
   },
   "socialProof": {
     "badge": "Preuve sociale",
@@ -912,7 +628,7 @@
       },
       "queryRouter": {
         "question": "Comment fonctionne le QueryRouter ?",
-        "answer": "Le QueryRouter classe chaque requête dans l’un de 4 niveaux et récupère en conséquence : T0 répond depuis la conversation sans récupération, T1 lance une seule recherche vectorielle (une recherche par mots-clés quand aucun fournisseur d’embeddings n’est configuré), T2 combine plusieurs sources ou parcourt le graphe de connaissances et T3 mène une recherche approfondie sur tout le corpus. Il répond ensuite à partir de ce qu’il a récupéré et renvoie la réponse avec les citations de ses sources."
+        "answer": "Le QueryRouter classe chaque requête dans l’un de 4 niveaux et récupère en conséquence : T0 répond depuis la conversation sans récupération, T1 lance une seule recherche vectorielle (une recherche par mots-clés quand aucun fournisseur d’embeddings n’est configuré), T2 récupère 15 extraits, ajoute des extraits liés par l’expansion du graphe et reclasse l’ensemble pour garder les 5 meilleurs, et T3 fait cette récupération puis, quand la recherche approfondie est activée (par défaut, quand SERPER_API_KEY est définie), une passe de recherche approfondie dont il fusionne les résultats. Il répond ensuite à partir de ce qu’il a récupéré et renvoie la réponse avec les citations de ses sources."
       },
       "adaptiveIntelligence": {
         "question": "Qu’est-ce que l’intelligence adaptative ?",
@@ -942,7 +658,7 @@
       },
       "voice": {
         "question": "Comment ajouter des capacités vocales ?",
-        "answer": "AgentOS gère la voix avec VoicePipelineOrchestrator. Vous lui fournissez une session STT en streaming, une session TTS en streaming, un détecteur de fin de tour et un gestionnaire d’interruption (barge-in), et il les relie à une session d’agent via un transport tel qu’un WebSocket. Le catalogue vocal liste 11 fournisseurs STT, dont Whisper (OpenAI), Deepgram et AssemblyAI, et 10 fournisseurs TTS, dont ElevenLabs, OpenAI TTS et Google Cloud TTS. Les fournisseurs Twilio, Telnyx et Plivo passent et terminent des appels téléphoniques."
+        "answer": "AgentOS gère la voix avec VoicePipelineOrchestrator. Vous lui fournissez une session STT en streaming, une session TTS en streaming, un détecteur de fin de tour et un gestionnaire d’interruption (barge-in), et il les relie à une session d’agent via un transport tel qu’un WebSocket. Le catalogue vocal liste 12 fournisseurs STT et 13 fournisseurs TTS. Parmi eux, 11 fournisseurs STT, dont Whisper (OpenAI), Deepgram et AssemblyAI, et 10 fournisseurs TTS, dont ElevenLabs, OpenAI TTS et Google Cloud TTS, sont disponibles. Les quatre autres entrées (NVIDIA NeMo, Coqui XTTS, Bark et StyleTTS2) sont marquées comme indisponibles, et le résolveur de fournisseurs les ignore. Les fournisseurs Twilio, Telnyx et Plivo passent et terminent des appels téléphoniques."
       },
       "deploy": {
         "question": "Comment déployer AgentOS ?",
@@ -1314,7 +1030,7 @@
       },
       "debate": {
         "name": "Débat",
-        "description": "Les agents argumentent et affinent une réponse partagée sur plusieurs tours. Un juge évalue les arguments et sélectionne la position la plus forte."
+        "description": "Chaque agent défend une position et réfute les autres sur plusieurs tours. Un juge lit ensuite la transcription et rend un verdict sur la position qui l’a emporté."
       },
       "reviewLoop": {
         "name": "Boucle de Révision",

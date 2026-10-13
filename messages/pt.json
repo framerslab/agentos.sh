@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Open Source · Adaptativo · Emergente",
     "title": "Runtime portátil para agentes IA adaptativos e emergentes",
-    "subtitle": "Runtime TypeScript open source para agentes de IA que lembram, se adaptam e criam novas ferramentas. Cada sessão no runtime é uma GMI, uma Generalized Mind Instance que mantém sua própria persona, humor e memória e pode ajustar seus próprios traços ao longo do tempo. Os agentes escrevem suas próprias funções no meio da tarefa e o juiz as aprova; gerentes criam especialistas quando o elenco fixo não cobre a tarefa. Memória cognitiva fundamentada em neurociência. 85.6% no LongMemEval-S. Apache 2.0.",
+    "subtitle": "Runtime TypeScript open source para agentes de IA que lembram, se adaptam e criam novas ferramentas. Cada sessão no runtime é uma GMI, uma Generalized Mind Instance que mantém sua própria persona, humor e memória e pode ajustar seus próprios traços ao longo do tempo. Os agentes escrevem suas próprias funções no meio da tarefa e o juiz as aprova; gerentes criam especialistas quando o elenco fixo não cobre a tarefa. Memória cognitiva com a curva de esquecimento de Ebbinghaus e uma memória de trabalho de 7 espaços. 85.6% no LongMemEval-S. Apache 2.0.",
     "ctaPrimary": "Testar Voice Chat Assistant",
     "ctaSecondary": "Dar estrela no GitHub",
     "codeLabel": "npm install @framers/agentos",
@@ -64,7 +64,7 @@
       "securityScore": "Pontuação de segurança"
     },
     "compliance": {
-      "gdpr": "Guardrails preparados para GDPR",
+      "gdpr": "Pacote de guardrail de redação de PII",
       "soc2": "Auto-hospedado em sua infraestrutura",
       "enterpriseSupport": "Suporte Empresarial Disponível"
     }
@@ -196,7 +196,7 @@
       "compliance": {
         "title": "Arquitetura de Privacidade",
         "items": [
-          "Redação de PII alinhada ao GDPR (18 tipos de entidades)",
+          "Redação de PII em 18 tipos de entidades",
           "Rastreamento de procedência e linhagem de dados",
           "Memória cognitiva com curvas de decaimento de Ebbinghaus",
           "Decaimento de confiança de fonte para conhecimento antigo"
@@ -250,291 +250,6 @@
     },
     "wipLabel": "WIP",
     "currentlyDevelopment": "Atualmente em desenvolvimento"
-  },
-  "multiAgent": {
-    "title": "Rede de Colaboração Multiagente",
-    "subtitle": "Pesquisador, Analista, Criador, Crítico e Executor transmitem insights em paralelo",
-    "description": "O orquestrador roteia, a memória persiste — escolha o padrão certo para o seu caso de uso",
-    "patterns": {
-      "consensus": {
-        "title": "Colaboração baseada em consenso",
-        "description": "Vários agentes votam decisões com pontuações de confiança ponderadas",
-        "workflow": {
-          "steps": [
-            "Todos os agentes analisam a entrada simultaneamente",
-            "Cada agente propõe solução com score de confiança",
-            "Votação ponderada conforme especialidade",
-            "Validação do limite de consenso",
-            "Executar a ação acordada"
-          ],
-          "duration": "200-500 ms",
-          "throughput": "1000 decisões/min"
-        },
-        "useCases": [
-          {
-            "title": "Decisões de trading financeiro",
-            "description": "Múltiplos analistas IA votam recomendações de trade",
-            "metrics": [
-              {
-                "label": "Precisão",
-                "value": "94%"
-              },
-              {
-                "label": "Tempo de consenso",
-                "value": "< 200 ms"
-              },
-              {
-                "label": "Redução de risco",
-                "value": "67%"
-              }
-            ]
-          },
-          {
-            "title": "Moderação de conteúdo",
-            "description": "Agentes avaliam conteúdo para violações de políticas",
-            "metrics": [
-              {
-                "label": "Falsos positivos",
-                "value": "-82%"
-              },
-              {
-                "label": "Cobertura",
-                "value": "99,9%"
-              },
-              {
-                "label": "Velocidade de revisão",
-                "value": "10k/hora"
-              }
-            ]
-          },
-          {
-            "title": "Suporte a diagnóstico médico",
-            "description": "Agentes especialistas colaboram no diagnóstico de pacientes",
-            "metrics": [
-              {
-                "label": "Precisão diagnóstica",
-                "value": "97%"
-              },
-              {
-                "label": "Taxa de segunda opinião",
-                "value": "100%"
-              },
-              {
-                "label": "Tempo até diagnóstico",
-                "value": "-45%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "Alta precisão via inteligência coletiva",
-            "Validação e checagem de erros embutidas",
-            "Reduz viés de agentes individuais",
-            "Trilha de decisão transparente"
-          ],
-          "cons": [
-            "Maior latência que um único agente",
-            "Demanda computacional superior",
-            "Possibilidade de deadlock",
-            "Resolução de conflito complexa"
-          ]
-        }
-      },
-      "sequential": {
-        "title": "Pipeline sequencial",
-        "description": "Agentes executam tarefas em ordem definida, cada etapa depende da anterior",
-        "workflow": {
-          "steps": [
-            "Pesquisador reúne dados iniciais",
-            "Analista processa e estrutura informações",
-            "Criador gera a solução",
-            "Crítico valida e refina",
-            "Executor implementa o resultado final"
-          ],
-          "duration": "500-2000 ms",
-          "throughput": "500 tarefas/min"
-        },
-        "useCases": [
-          {
-            "title": "Pipeline de processamento documental",
-            "description": "Extrair → Analisar → Resumir → Formatar → Entregar",
-            "metrics": [
-              {
-                "label": "Precisão",
-                "value": "96%"
-              },
-              {
-                "label": "Tempo de processamento",
-                "value": "1,2 s/doc"
-              },
-              {
-                "label": "Taxa de erro",
-                "value": "< 0,1%"
-              }
-            ]
-          },
-          {
-            "title": "Escalonamento de suporte ao cliente",
-            "description": "Triagem → Pesquisa → Solução → Revisão → Resposta",
-            "metrics": [
-              {
-                "label": "Taxa de resolução",
-                "value": "89%"
-              },
-              {
-                "label": "Tempo médio de atendimento",
-                "value": "45 s"
-              },
-              {
-                "label": "Satisfação do cliente",
-                "value": "4,7/5"
-              }
-            ]
-          },
-          {
-            "title": "Code review e refatoração",
-            "description": "Analisar → Encontrar problemas → Sugerir correções → Testar → Deploy",
-            "metrics": [
-              {
-                "label": "Detecção de bugs",
-                "value": "92%"
-              },
-              {
-                "label": "Qualidade de código",
-                "value": "+35%"
-              },
-              {
-                "label": "Tempo de revisão",
-                "value": "-60%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "Fluxo claro e responsabilidades definidas",
-            "Fácil de depurar e monitorar",
-            "Uso de recursos previsível",
-            "Recuperação de erro simples"
-          ],
-          "cons": [
-            "Risco de ponto único de falha",
-            "Pouca paralelização",
-            "Latência total maior",
-            "Potencial de gargalos"
-          ]
-        }
-      },
-      "parallel": {
-        "title": "Execução paralela",
-        "description": "Agentes trabalham simultaneamente em diferentes partes da mesma tarefa",
-        "workflow": {
-          "steps": [
-            "Orquestrador decompõe a tarefa",
-            "Atribuição paralela a todos os agentes",
-            "Processamento concorrente",
-            "Agregação dos resultados",
-            "Orquestrador funde as saídas"
-          ],
-          "duration": "100-300 ms",
-          "throughput": "5000 tarefas/min"
-        },
-        "useCases": [
-          {
-            "title": "Análise de mercado em tempo real",
-            "description": "Monitoramento simultâneo de ações, títulos, forex e cripto",
-            "metrics": [
-              {
-                "label": "Cobertura",
-                "value": "10k ativos"
-              },
-              {
-                "label": "Frequência de atualização",
-                "value": "100 ms"
-              },
-              {
-                "label": "Streams paralelos",
-                "value": "128"
-              }
-            ]
-          },
-          {
-            "title": "Tradução multilíngue",
-            "description": "Traduza conteúdo para diversos idiomas ao mesmo tempo",
-            "metrics": [
-              {
-                "label": "Idiomas",
-                "value": "50+"
-              },
-              {
-                "label": "Velocidade",
-                "value": "< 500 ms"
-              },
-              {
-                "label": "Consistência",
-                "value": "98%"
-              }
-            ]
-          },
-          {
-            "title": "Testes A/B e otimização",
-            "description": "Teste muitas variações simultaneamente",
-            "metrics": [
-              {
-                "label": "Variações",
-                "value": "100+"
-              },
-              {
-                "label": "Tempo de decisão",
-                "value": "< 1 s"
-              },
-              {
-                "label": "Confiança",
-                "value": "95%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "Máximo throughput e velocidade",
-            "Escalabilidade excelente",
-            "Isolamento de falhas entre agentes",
-            "Capacidade de tempo real"
-          ],
-          "cons": [
-            "Maior consumo de recursos",
-            "Sincronização mais complexa",
-            "Risco de race conditions",
-            "Depuração mais difícil"
-          ]
-        }
-      }
-    },
-    "ui": {
-      "workflowSteps": "Etapas do fluxo de trabalho:",
-      "latency": "Latência",
-      "throughput": "Throughput",
-      "pros": "Prós",
-      "cons": "Contras",
-      "useCases": "Casos de uso",
-      "case": "Caso",
-      "implementation": "Implementação",
-      "showCode": "Mostrar código",
-      "hideCode": "Ocultar código",
-      "setupTime": "Tempo de setup: ~5 min",
-      "performance": "Performance: pronta para produção",
-      "codePrompt": "Clique em \"Mostrar código\" para ver como implementar {pattern} no seu app."
-    },
-    "agents": {
-      "researcher": "Pesquisador",
-      "analyst": "Analista",
-      "creator": "Criador",
-      "critic": "Crítico",
-      "executor": "Executor",
-      "orchestrator": "Orquestrador"
-    }
   },
   "socialProof": {
     "badge": "Prova social",
@@ -760,7 +475,7 @@
       },
       "queryRouter": {
         "question": "Como o QueryRouter funciona?",
-        "answer": "O QueryRouter classifica cada consulta em uma de 4 camadas e busca de acordo: T0 responde a partir da conversa sem recuperação, T1 faz uma única busca vetorial (uma busca por palavras-chave quando não há provedor de embeddings configurado), T2 combina várias fontes ou percorre o grafo de conhecimento e T3 faz uma pesquisa profunda em todo o corpus. Depois responde com base no que recuperou e devolve a resposta com as citações das fontes."
+        "answer": "O QueryRouter classifica cada consulta em uma de 4 camadas e busca de acordo: T0 responde a partir da conversa sem recuperação, T1 faz uma única busca vetorial (uma busca por palavras-chave quando não há provedor de embeddings configurado), T2 recupera 15 trechos, acrescenta trechos relacionados pela expansão do grafo e reordena o conjunto para ficar com os 5 melhores, e T3 faz essa recuperação e depois, quando a pesquisa profunda está ativada (por padrão, quando SERPER_API_KEY está definida), uma etapa de pesquisa profunda cujos resultados ele mescla. Depois responde com base no que recuperou e devolve a resposta com as citações das fontes."
       },
       "adaptiveIntelligence": {
         "question": "O que é inteligência adaptativa?",
@@ -790,7 +505,7 @@
       },
       "voice": {
         "question": "Como adiciono capacidades de voz?",
-        "answer": "AgentOS executa voz pelo VoicePipelineOrchestrator. Você fornece uma sessão de STT em streaming, uma sessão de TTS em streaming, um detector de fim de fala e um handler de interrupção (barge-in), e ele os conecta a uma sessão de agente por um transporte como um WebSocket. O catálogo de fala lista 11 provedores de STT, incluindo Whisper (OpenAI), Deepgram e AssemblyAI, e 10 provedores de TTS, incluindo ElevenLabs, OpenAI TTS e Google Cloud TTS. Os provedores Twilio, Telnyx e Plivo fazem e encerram chamadas telefônicas."
+        "answer": "AgentOS executa voz pelo VoicePipelineOrchestrator. Você fornece uma sessão de STT em streaming, uma sessão de TTS em streaming, um detector de fim de fala e um handler de interrupção (barge-in), e ele os conecta a uma sessão de agente por um transporte como um WebSocket. O catálogo de fala lista 12 provedores de STT e 13 provedores de TTS. Desses, estão disponíveis 11 provedores de STT, incluindo Whisper (OpenAI), Deepgram e AssemblyAI, e 10 provedores de TTS, incluindo ElevenLabs, OpenAI TTS e Google Cloud TTS. As outras quatro entradas (NVIDIA NeMo, Coqui XTTS, Bark e StyleTTS2) estão marcadas como indisponíveis, e o resolvedor de provedores as ignora. Os provedores Twilio, Telnyx e Plivo fazem e encerram chamadas telefônicas."
       },
       "deploy": {
         "question": "Como faço deploy do AgentOS?",
@@ -920,7 +635,8 @@
       "planningEngine": "Motor de Planejamento",
       "workflowDsl": "DSL de Workflow",
       "streamApi": "API de streaming",
-      "guardrailMode": "Modo Guardrail",
+      "streamingGuardrails": "Guardrails de streaming",
+      "optIn": "Ativação opcional",
       "chunkTypes": "Tipos de chunk",
       "dimensions": "Dimensoes",
       "tunedMechanisms": "Mecanismos ajustados",
@@ -938,7 +654,7 @@
     "cards": {
       "cognitiveMemory": {
         "title": "Memória Cognitiva",
-        "description": "8 mecanismos apoiados por neurociência com decaimento da curva de esquecimento de Ebbinghaus. Viés de recuperação do vetor de personalidade HEXACO opcional; executa de forma neutra por padrão.",
+        "description": "8 mecanismos baseados em pesquisas publicadas sobre a memória, com decaimento pela curva de esquecimento de Ebbinghaus. Um vetor de personalidade HEXACO opcional enviesa a recuperação; por padrão, a memória funciona com personalidade neutra.",
         "features": [
           "Reconsolidacao e RIF",
           "Recordacao involuntaria e FOK",
@@ -986,7 +702,7 @@
         "description": "Deltas de texto e JSON parcial como iteradores assíncronos, chunks tipados para tool calls e progresso, e guardrails de streaming opcionais",
         "features": [
           "Streams com iteradores assíncronos",
-          "Guardrails em voo",
+          "Guardrails por chunk (ativação opcional)",
           "Streaming JSON parcial",
           "Eventos de progresso de tools"
         ],
@@ -1314,7 +1030,7 @@
       },
       "debate": {
         "name": "Debate",
-        "description": "Agentes argumentam e refinam uma resposta compartilhada ao longo de múltiplas rodadas. Um juiz avalia os argumentos e seleciona a posição mais forte."
+        "description": "Cada agente defende um lado e rebate os outros ao longo de várias rodadas. Depois, um juiz lê a transcrição e dá um veredito sobre qual lado prevaleceu."
       },
       "reviewLoop": {
         "name": "Loop de Revisão",

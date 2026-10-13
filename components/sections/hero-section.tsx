@@ -96,7 +96,7 @@ const HeroSectionInner = memo(function HeroSectionInner() {
   const highlights = [
     { title: 'Agents that write their own tools', detail: 'Mid-task JavaScript functions, judge-approved, sandboxed' },
     { title: 'Specialist spawning', detail: 'spawn_specialist mints new agents at runtime' },
-    { title: 'Cognitive memory', detail: 'Ebbinghaus decay, reconsolidation, neuroscience-grounded' },
+    { title: 'Cognitive memory', detail: 'Ebbinghaus decay, reconsolidation, retrieval-induced forgetting' },
     { title: '85.6% LongMemEval-S', detail: 'Reader router (gpt-4o + gpt-5-mini); 84.2% on gpt-4o alone' }
   ];
 

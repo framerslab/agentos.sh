@@ -113,7 +113,7 @@ Every session keeps its own message history, on either runtime. Monday's fact re
 
 ### How Memory Works
 
-[Cognitive memory](https://docs.agentos.sh/features/cognitive-memory) goes beyond chat history. [8 neuroscience-grounded mechanisms](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine) model how human memory actually works, on top of a decay model every trace follows:
+[Cognitive memory](https://docs.agentos.sh/features/cognitive-memory) goes beyond chat history. [8 mechanisms modeled on published memory research](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine) run on top of a decay model that every trace follows:
 
 - **[Ebbinghaus decay](https://en.wikipedia.org/wiki/Forgetting_curve)**: the decay model under all eight. Memories fade exponentially over time (R = e^(-t/S)), [replicated and validated by Murre & Dros (2015)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4492928/). Emotionally intense events resist decay: above an intensity of 0.8 a memory encodes as a flashbulb memory, with five times the stability.
 - **[Reconsolidation](https://doi.org/10.1038/35021052)**: retrieved memories drift toward the agent's current emotional context ([Nader et al., 2000](https://doi.org/10.1038/35021052)).
@@ -190,7 +190,7 @@ for (const claim of answer.grounding?.claims ?? []) {
 }
 ```
 
-With [`verifyCitations`](https://docs.agentos.sh/features/citation-verification), `generate()` sends the prompt to `retrieve` for sources, splits the answer into sentence-sized claims, and scores each claim by the cosine similarity of its embedding to the closest source: [`CitationVerifier`](https://docs.agentos.sh/api/classes/CitationVerifier) marks it `supported` at 0.6 or above, `unverifiable` below 0.3, and `weak` in between. Pass an `nliFn` as well and a supported claim that the NLI model reads as contradicted is marked `contradicted`. The check runs after the answer is written and never holds it back; when retrieval fails, `grounding` stays unset. It runs on `generate()`, and session sends skip it.
+With [`verifyCitations`](https://docs.agentos.sh/features/citation-verification), `generate()` sends the prompt to `retrieve` for sources, splits the answer into sentence-sized claims, and scores each claim by the cosine similarity of its embedding to the closest source: [`CitationVerifier`](https://docs.agentos.sh/api/classes/CitationVerifier) marks it `supported` at 0.6 or above, `unverifiable` below 0.3, and `weak` in between. Pass an `nliFn` as well and a supported claim that the NLI model reads as contradicted is marked `contradicted`. The check runs after the answer is written and never holds it back; when retrieval fails, `grounding` stays unset. It runs on `generate()`. On the default runtime `session.send()` runs it too, and `session.stream()` sets `grounding` to a promise that settles once the text completes; `stream()` and sessions on the GMI runtime skip it.
 
 ## Where Guardrails Run
 

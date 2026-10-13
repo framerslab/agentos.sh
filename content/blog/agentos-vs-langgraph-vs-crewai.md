@@ -1,7 +1,7 @@
 ---
 title: "AgentOS vs LangGraph vs CrewAI vs Mastra vs VoltAgent: AI Agent Frameworks Compared (2026)"
 date: "2026-04-12"
-excerpt: "A side-by-side comparison of the six leading AI agent frameworks in 2026: features, architecture, code examples, and when to use each. Updated with VoltAgent, OpenAI Agents SDK, and Google ADK."
+excerpt: "A side-by-side comparison of six AI agent frameworks in 2026 (AgentOS, LangGraph, CrewAI, Mastra, VoltAgent and the OpenAI Agents SDK): features, architecture, code examples, and when to use each."
 author: "AgentOS Team"
 category: "Comparison"
 audience: "evaluator"
@@ -27,7 +27,7 @@ A few rules we tried to follow:
 
 The TypeScript AI agent ecosystem expanded significantly in 2025-2026. [Mastra](https://mastra.ai) hit 1.0 with Y Combinator backing and [1.77 million monthly npm downloads](https://www.npmjs.com/package/@mastra/core). [VoltAgent](https://voltagent.dev/) emerged as an open-source TypeScript platform with memory, RAG, and guardrails. [OpenAI released an Agents SDK](https://openai.github.io/openai-agents-js/) for TypeScript. [Google launched the Agent Development Kit (ADK)](https://developers.googleblog.com/introducing-agent-development-kit-for-typescript-build-ai-agents-with-the-power-of-a-code-first-approach/) for TypeScript. And [Strands Agents](https://strandsagents.com/) brought model-driven agent design to Node.js.
 
-This comparison covers the six production-ready frameworks a TypeScript developer should evaluate in 2026. We built [AgentOS](https://agentos.sh), so we'll be direct about where it excels and where alternatives fit better.
+This comparison covers six frameworks a TypeScript developer should evaluate in 2026. We built [AgentOS](https://agentos.sh), so we'll be direct about where it excels and where alternatives fit better.
 
 ## Quick Comparison Table
 
@@ -156,7 +156,7 @@ const volt = new VoltAgent({ agents: { researcher } });
 
 ### AgentOS: Cognitive Agents with Personality, Memory, and Safety
 
-AgentOS treats each agent as a persistent cognitive entity. The [HEXACO personality system](https://docs.agentos.sh/features/cognitive-memory-guide), based on the [six-factor model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) validated across [psycholexical studies in seven languages](https://doi.org/10.1037/0022-3514.86.2.356), shapes communication style and decision-making. [Cognitive memory](https://docs.agentos.sh/features/cognitive-memory) uses [Ebbinghaus decay curves](https://en.wikipedia.org/wiki/Forgetting_curve) and [8 neuroscience-backed mechanisms](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine) including [reconsolidation](https://doi.org/10.1038/35021052) and [retrieval-induced forgetting](https://doi.org/10.1037/0278-7393.20.5.1063).
+AgentOS treats each agent as a persistent cognitive entity. The [HEXACO personality system](https://docs.agentos.sh/features/cognitive-memory-guide), based on the [six-factor model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) validated across [psycholexical studies in seven languages](https://doi.org/10.1037/0022-3514.86.2.356), shapes communication style and decision-making. [Cognitive memory](https://docs.agentos.sh/features/cognitive-memory) uses [Ebbinghaus decay curves](https://en.wikipedia.org/wiki/Forgetting_curve) and [8 mechanisms modeled on published memory research](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine) including [reconsolidation](https://doi.org/10.1038/35021052) and [retrieval-induced forgetting](https://doi.org/10.1037/0278-7393.20.5.1063).
 
 What AgentOS ships:
 
@@ -198,7 +198,7 @@ The tradeoff: no personality model and no runtime tool forging.
 
 ### OpenAI Agents SDK: Simplest Path to Working Agent
 
-The [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/) is lightweight and has the fewest abstractions. It's a production-ready upgrade of the Swarm experimental framework. Agent handoffs and tool use are first-class.
+The [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/) is lightweight and has the fewest abstractions. OpenAI presents it as the upgrade of Swarm, its earlier agent experiment. Agent handoffs and tool use are first-class.
 
 The tradeoff: it works with OpenAI models out of the box; models from other providers plug in through the AI SDK adapter in `@openai/agents-extensions` or a model provider you write.
 
@@ -261,7 +261,7 @@ Partially. AgentOS has a `workflow()` API and an `AgentGraph` primitive that han
 
 ### How does AgentOS handle LLM providers?
 
-Every provider is a thin adapter over the same `generateText` shape, which keeps each integration cheap to maintain. AgentOS ships 13 and adds providers when users ask; Mastra reaches more, 40+ through the AI SDK. Framework competitors that lock to one or two providers tend to do it because their orchestration layer makes assumptions about token-stream shape that aren't portable.
+Each provider is an adapter class behind one interface, [`IProvider`](https://github.com/framerslab/agentos/blob/master/src/core/llm/providers/IProvider.ts) (completion, streaming, embeddings, model listing), and `generateText`, `agent()` and `agency()` reach every provider through it. AgentOS ships 13; Mastra reaches more, 40+ through the AI SDK. An endpoint that speaks the OpenAI API works through the `openai` provider with a `baseUrl` of its own.
 
 ### Where does AgentOS lose to a competitor?
 

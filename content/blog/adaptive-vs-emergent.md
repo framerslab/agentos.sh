@@ -1,7 +1,7 @@
 ---
 title: "Adaptive vs. Emergent Intelligence: Two Types of AI Agent Behavior"
 date: "2026-04-12"
-excerpt: "Adaptive intelligence modifies behavior from feedback. Emergent intelligence produces complex behavior from multi-agent interaction. AgentOS implements both with distinct runtime primitives and neuroscience-grounded memory."
+excerpt: "Adaptive intelligence modifies behavior from feedback. Emergent intelligence produces complex behavior from multi-agent interaction. AgentOS implements both with distinct runtime primitives and a cognitive memory model."
 author: "AgentOS Team"
 category: "Engineering"
 audience: "evaluator"
@@ -29,9 +29,9 @@ Adaptive intelligence is behavioral modification driven by explicit signals: fee
 
 **Personality-driven adaptation.** AgentOS models agent personality using the [HEXACO six-factor model](https://hexaco.org/hexaco-inventory), a psychometric framework validated across [psycholexical studies in seven languages](https://doi.org/10.1037/0022-3514.86.2.356) ([Ashton & Lee, 2007](https://doi.org/10.1177/1088868306294907)). A 2025 study [surveyed 310 GPT-4-powered agents](https://arxiv.org/abs/2508.00742) and recovered a coherent personality structure from their answers, in [partial alignment with the HEXACO framework](https://arxiv.org/html/2508.00742); the same survey on other models gave different profiles. Each AgentOS agent has [6 trait dimensions](https://docs.agentos.sh/features/cognitive-memory-guide) (Honesty-Humility, Emotionality, eXtraversion, Agreeableness, Conscientiousness, Openness) that modulate communication style, decision-making, and memory behavior. With self-improvement on, an agent can shift its own traits through the `adapt_personality` tool, within a per-session budget for each trait, and every change is recorded with its reasoning. With `persistWithDecay`, the agent's first adaptation of each UTC day lowers the strength of its stored records by the decay rate (0.05 by default) and deletes the ones that fall to 0.1 or below; later adaptations that day leave the records alone, and the live trait keeps its adjusted value for as long as that agent runs.
 
-**Cognitive memory with neuroscience grounding.** AgentOS implements [8 cognitive mechanisms](https://docs.agentos.sh/features/cognitive-memory) in the [`CognitiveMechanismsEngine`](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine):
+**Cognitive memory modeled on memory research.** AgentOS implements [8 cognitive mechanisms](https://docs.agentos.sh/features/cognitive-memory) in the [`CognitiveMechanismsEngine`](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine):
 
-| Mechanism | Neuroscience Basis | Effect |
+| Mechanism | Research basis | Effect |
 |-----------|-------------------|--------|
 | Reconsolidation | [Nader et al. (2000)](https://doi.org/10.1038/35021052) | Memories rewrite when recalled, incorporating new context |
 | Retrieval-induced forgetting | [Anderson, Bjork & Bjork (1994)](https://doi.org/10.1037/0278-7393.20.5.1063) | Retrieving one memory suppresses competing memories |
@@ -48,7 +48,7 @@ Under the mechanisms, every trace decays on an [Ebbinghaus forgetting curve](htt
 
 **Runtime safety constraints.** [Cost guards](https://docs.agentos.sh/features/cost-optimization) cap token spending per session or per turn. [Circuit breakers](https://docs.agentos.sh/features/cost-optimization) halt execution when error rates exceed thresholds. The [adaptive execution runtime](https://docs.agentos.sh/features/capability-discovery) tracks rolling task-outcome KPIs and automatically switches tool selection mode when success rates drop below a configurable threshold.
 
-**Practical example:** An agent runs with `budget: { maxCostUSD: 0.5 }`. Before each provider call the budget checks the call's largest possible cost against what is left, and a call that would pass the cap is refused with a `CostCapExceededError` (with `onLimitReached: 'warn'`, it is logged and let through). The same agent with a Conscientiousness of 0.8 carries "Be thorough and systematic. Structure responses clearly." in its system prompt from the first turn.
+**Practical example:** An agent runs with `budget: { maxCostUSD: 0.5 }`. Before each provider call the budget checks the call's largest possible cost against what is left, and a call that would pass the cap is refused with a `CostCapExceededError` (with `onLimitReached: 'warn'`, it is logged and let through). The same agent with a Conscientiousness of 0.8 carries "Be thorough and systematic. Structure responses clearly. Follow through on details. Prefer precision over speed." in its system prompt from the first turn.
 
 ## Emergent Intelligence
 
@@ -63,7 +63,7 @@ Emergent intelligence is complex behavior that arises from the interaction of mu
 | Sequential | Linear pipeline, each agent refines previous output | Editing, translation, summarization chains |
 | Parallel | Fan-out to all agents simultaneously | Research, brainstorming, redundancy |
 | Debate | Agents argue positions over several rounds, then a judge call gives a verdict on which side prevailed | Controversial topics, decision-making |
-| Review loop | Author and reviewer iterate until quality threshold | Content creation, code review |
+| Review loop | A producer and a reviewer iterate until the reviewer approves or `maxRounds` (default 3) runs out | Content creation, code review |
 | Hierarchical | Manager delegates to specialized workers | Complex decomposed tasks |
 | Graph (DAG) | Each agent starts once the agents it `dependsOn` have finished, with their outputs as context | Multi-step workflows with prerequisites |
 

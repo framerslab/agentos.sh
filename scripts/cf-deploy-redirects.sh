@@ -115,7 +115,9 @@ print(json.dumps({
             "action": "redirect",
             "description": "/docs-generated/* to api docs",
             "expression": '(starts_with(http.request.uri.path, "/docs-generated/"))',
-            "action_parameters": redirect("https://docs.agentos.sh/api/"),
+            # No trailing slash: docs.agentos.sh/api answers 200 and
+            # docs.agentos.sh/api/ answers 404.
+            "action_parameters": redirect("https://docs.agentos.sh/api"),
         },
         # /en/... → /... so the default-locale prefix collapses into the
         # canonical bare path. lib/seo/canonical.ts emits English URLs
@@ -178,15 +180,24 @@ sleep 5
 
 echo "→ Verifying"
 fails=0
+# verify <url> <expected location> [exact]
+# Passes when <url> answers 301 and its Location header contains the
+# expected text, or, with "exact", equals it.
 verify() {
-  local url="$1" expect="$2"
+  local url="$1" expect="$2" mode="${3:-contains}"
   local r=$(curl -sI "$url")
   local s=$(echo "$r" | head -1 | awk '{print $2}')
   local loc=$(echo "$r" | grep -i '^location:' | head -1 | tr -d '\r' | awk '{print $2}')
-  if [[ "$s" == "301" && "$loc" == *"$expect"* ]]; then
+  local matched=false
+  if [[ "$mode" == "exact" && "$loc" == "$expect" ]]; then
+    matched=true
+  elif [[ "$mode" != "exact" && "$loc" == *"$expect"* ]]; then
+    matched=true
+  fi
+  if [[ "$s" == "301" && "$matched" == true ]]; then
     printf "  ✓ %s → %s\n" "$url" "$loc"
   else
-    printf "  ✗ %s  status=%s loc=%s\n" "$url" "$s" "$loc"
+    printf "  ✗ %s  status=%s loc=%s (expected %s: %s)\n" "$url" "$s" "$loc" "$mode" "$expect"
     fails=$((fails + 1))
   fi
 }
@@ -197,7 +208,8 @@ verify "https://agentos.sh/blog/longmemeval-s-85-pareto-win/"                   
 verify "https://agentos.sh/blog/mars-genesis-vs-mirofish-multi-agent-simulation"   "docs.agentos.sh"
 verify "https://agentos.sh/docs/getting-started"                                   "docs.agentos.sh"
 verify "https://agentos.sh/en/docs/install"                                        "docs.agentos.sh"
-verify "https://agentos.sh/docs-generated/library/index.html"                      "docs.agentos.sh/api"
+# Exact: docs.agentos.sh/api/ (with the slash) answers 404.
+verify "https://agentos.sh/docs-generated/library/index.html"                      "https://docs.agentos.sh/api" exact
 verify "https://agentos.sh/en/about"                                               "agentos.sh/about"
 verify "https://agentos.sh/en/features/"                                           "agentos.sh/features/"
 verify "https://agentos.sh/en/"                                                    "agentos.sh/"

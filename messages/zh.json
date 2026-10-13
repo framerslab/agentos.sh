@@ -21,7 +21,7 @@
   "hero": {
     "badge": "开源 · 自适应 · 涌现",
     "title": "自适应与涌现智能的便携式AI代理运行时",
-    "subtitle": "面向会记忆、会适应、能创造新工具的 AI 智能体的开源 TypeScript 运行时。运行时中的每个会话都是一个 GMI(Generalized Mind Instance),它保留自己的人格、情绪和记忆,并能随时间调整自己的特质。智能体在任务中途编写自己的函数并由裁判批准;当固定名单无法覆盖任务时,管理者会创建专家。基于神经科学的认知记忆。LongMemEval-S 85.6%。Apache 2.0。",
+    "subtitle": "面向会记忆、会适应、能创造新工具的 AI 智能体的开源 TypeScript 运行时。运行时中的每个会话都是一个 GMI(Generalized Mind Instance),它保留自己的人格、情绪和记忆,并能随时间调整自己的特质。智能体在任务中途编写自己的函数并由裁判批准;当固定名单无法覆盖任务时,管理者会创建专家。认知记忆采用艾宾浩斯遗忘曲线和 7 个槽位的工作记忆。LongMemEval-S 85.6%。Apache 2.0。",
     "ctaPrimary": "体验 Voice Chat Assistant",
     "ctaSecondary": "在 GitHub 上点星",
     "codeLabel": "npm install @framers/agentos",
@@ -64,7 +64,7 @@
       "securityScore": "安全评分"
     },
     "compliance": {
-      "gdpr": "GDPR 就绪护栏",
+      "gdpr": "PII 脱敏护栏包",
       "soc2": "在自有基础设施上自托管",
       "enterpriseSupport": "企业支持可用"
     }
@@ -162,7 +162,7 @@
       "compliance": {
         "title": "隐私架构",
         "items": [
-          "GDPR 一致的 PII 脱敏（18 种实体）",
+          "PII 脱敏（18 种实体）",
           "数据来源和血统追踪",
           "采用艾宾浩斯遗忘曲线的认知记忆",
           "旧知识的来源可信度衰减"
@@ -251,291 +251,6 @@
   },
   "skipToContent": "跳转到内容",
   "skipToMain": "跳转到主要内容",
-  "multiAgent": {
-    "title": "多代理协作网络",
-    "subtitle": "研究员、分析师、创作者、评论员、执行者并行共享洞察",
-    "description": "编排器负责路由，记忆持久存在——为你的场景选择合适的协作模式",
-    "patterns": {
-      "consensus": {
-        "title": "共识协作",
-        "description": "多个代理用加权信任分数对决策进行投票",
-        "workflow": {
-          "steps": [
-            "所有代理同时分析输入",
-            "每个代理附带置信度提交方案",
-            "依据专长进行加权投票",
-            "验证共识阈值",
-            "执行已达成的一致行动"
-          ],
-          "duration": "200-500ms",
-          "throughput": "1000次决策/分钟"
-        },
-        "useCases": [
-          {
-            "title": "金融交易决策",
-            "description": "多名AI分析师对交易建议投票",
-            "metrics": [
-              {
-                "label": "准确率",
-                "value": "94%"
-              },
-              {
-                "label": "共识时间",
-                "value": "< 200ms"
-              },
-              {
-                "label": "风险降低",
-                "value": "67%"
-              }
-            ]
-          },
-          {
-            "title": "内容审核",
-            "description": "多个代理协同审查政策违规",
-            "metrics": [
-              {
-                "label": "误报率",
-                "value": "-82%"
-              },
-              {
-                "label": "覆盖率",
-                "value": "99.9%"
-              },
-              {
-                "label": "审核速度",
-                "value": "10k/小时"
-              }
-            ]
-          },
-          {
-            "title": "医疗诊断支持",
-            "description": "专科代理协作完成患者诊断",
-            "metrics": [
-              {
-                "label": "诊断准确率",
-                "value": "97%"
-              },
-              {
-                "label": "二次意见率",
-                "value": "100%"
-              },
-              {
-                "label": "诊断时间",
-                "value": "-45%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "依托群体智能获得高准确度",
-            "内置校验与错误防护",
-            "降低单个代理的偏差",
-            "决策链路透明可追溯"
-          ],
-          "cons": [
-            "延迟高于单代理模式",
-            "计算资源消耗更大",
-            "可能出现僵持/死锁",
-            "冲突解决更加复杂"
-          ]
-        }
-      },
-      "sequential": {
-        "title": "顺序流水线",
-        "description": "代理按既定顺序处理任务，每一步都承接上一阶段输出",
-        "workflow": {
-          "steps": [
-            "研究员收集初始数据",
-            "分析师处理并结构化信息",
-            "创作者生成方案",
-            "评论员验证并打磨",
-            "执行者完成最终交付"
-          ],
-          "duration": "500-2000ms",
-          "throughput": "500项任务/分钟"
-        },
-        "useCases": [
-          {
-            "title": "文档处理流水线",
-            "description": "抽取 → 分析 → 摘要 → 排版 → 交付",
-            "metrics": [
-              {
-                "label": "准确率",
-                "value": "96%"
-              },
-              {
-                "label": "处理时间",
-                "value": "1.2秒/文档"
-              },
-              {
-                "label": "错误率",
-                "value": "< 0.1%"
-              }
-            ]
-          },
-          {
-            "title": "客服升级流程",
-            "description": "分诊 → 调研 → 方案 → 审核 → 回复",
-            "metrics": [
-              {
-                "label": "解决率",
-                "value": "89%"
-              },
-              {
-                "label": "平均处理时长",
-                "value": "45秒"
-              },
-              {
-                "label": "客户满意度",
-                "value": "4.7/5"
-              }
-            ]
-          },
-          {
-            "title": "代码审查与重构",
-            "description": "分析 → 问题定位 → 修复建议 → 测试 → 部署",
-            "metrics": [
-              {
-                "label": "缺陷发现率",
-                "value": "92%"
-              },
-              {
-                "label": "代码质量",
-                "value": "+35%"
-              },
-              {
-                "label": "审查时间",
-                "value": "-60%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "流程与责任分工清晰",
-            "易于调试与监控",
-            "资源消耗可预测",
-            "错误恢复简单"
-          ],
-          "cons": [
-            "存在单点故障风险",
-            "并行度受限",
-            "整体延迟更高",
-            "易出现瓶颈"
-          ]
-        }
-      },
-      "parallel": {
-        "title": "并行执行",
-        "description": "代理同时处理同一任务的不同维度",
-        "workflow": {
-          "steps": [
-            "编排器拆解任务",
-            "并行分配到所有代理",
-            "并发处理",
-            "聚合结果",
-            "编排器合并输出"
-          ],
-          "duration": "100-300ms",
-          "throughput": "5000项任务/分钟"
-        },
-        "useCases": [
-          {
-            "title": "实时市场分析",
-            "description": "同步分析股票、债券、外汇、加密资产",
-            "metrics": [
-              {
-                "label": "覆盖资产",
-                "value": "10k"
-              },
-              {
-                "label": "更新频率",
-                "value": "100ms"
-              },
-              {
-                "label": "并行流",
-                "value": "128"
-              }
-            ]
-          },
-          {
-            "title": "多语言翻译",
-            "description": "一次性翻译成多种语言",
-            "metrics": [
-              {
-                "label": "语言数量",
-                "value": "50+"
-              },
-              {
-                "label": "速度",
-                "value": "< 500ms"
-              },
-              {
-                "label": "一致性",
-                "value": "98%"
-              }
-            ]
-          },
-          {
-            "title": "A/B测试与优化",
-            "description": "并行验证大量变体",
-            "metrics": [
-              {
-                "label": "变体数",
-                "value": "100+"
-              },
-              {
-                "label": "决策时间",
-                "value": "< 1秒"
-              },
-              {
-                "label": "置信度",
-                "value": "95%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "吞吐与速度最大化",
-            "可扩展性极佳",
-            "代理间故障隔离",
-            "具备实时处理能力"
-          ],
-          "cons": [
-            "资源消耗更高",
-            "同步与协调复杂",
-            "易出现竞争条件",
-            "调试难度大"
-          ]
-        }
-      }
-    },
-    "ui": {
-      "workflowSteps": "工作流步骤：",
-      "latency": "延迟",
-      "throughput": "吞吐量",
-      "pros": "优势",
-      "cons": "劣势",
-      "useCases": "用例",
-      "case": "案例",
-      "implementation": "实现",
-      "showCode": "显示代码",
-      "hideCode": "隐藏代码",
-      "setupTime": "部署耗时：约5分钟",
-      "performance": "性能：可直接投入生产",
-      "codePrompt": "点击“显示代码”即可查看 {pattern} 的实现方式。"
-    },
-    "agents": {
-      "researcher": "研究员",
-      "analyst": "分析师",
-      "creator": "创作者",
-      "critic": "评论员",
-      "executor": "执行器",
-      "orchestrator": "编排器"
-    }
-  },
   "socialProof": {
     "badge": "社会证明",
     "title": "基于 AgentOS 构建",
@@ -720,7 +435,7 @@
       },
       "queryRouter": {
         "question": "QueryRouter 是如何工作的?",
-        "answer": "QueryRouter 将每个查询分为 4 层之一并据此检索:T0 不检索,直接从对话中回答;T1 执行一次向量搜索(未配置嵌入提供商时改为关键词搜索);T2 组合多个来源或遍历知识图谱;T3 在整个语料库中进行深度研究。随后它根据检索到的内容作答,并附上来源引用一并返回。"
+        "answer": "QueryRouter 将每个查询分为 4 层之一并据此检索:T0 不检索,直接从对话中回答;T1 执行一次向量搜索(未配置嵌入提供商时改为关键词搜索);T2 检索 15 个片段,通过图扩展加入相关片段,并把合并后的结果重排为前 5 个;T3 先执行这一检索,在启用深度研究时(默认在设置了 SERPER_API_KEY 时)再进行一轮深度研究,并合并其结果。随后它根据检索到的内容作答,并附上来源引用一并返回。"
       },
       "adaptiveIntelligence": {
         "question": "什么是自适应智能?",
@@ -750,7 +465,7 @@
       },
       "voice": {
         "question": "如何添加语音功能?",
-        "answer": "AgentOS 通过 VoicePipelineOrchestrator 处理语音。你提供流式 STT 会话、流式 TTS 会话、语音端点检测器和打断(barge-in)处理器,它会通过 WebSocket 等传输把它们连接到智能体会话。语音目录列出 11 个 STT 提供商,包括 Whisper (OpenAI)、Deepgram 和 AssemblyAI,以及 10 个 TTS 提供商,包括 ElevenLabs、OpenAI TTS 和 Google Cloud TTS。Twilio、Telnyx 和 Plivo 提供商负责拨打和结束电话。"
+        "answer": "AgentOS 通过 VoicePipelineOrchestrator 处理语音。你提供流式 STT 会话、流式 TTS 会话、语音端点检测器和打断(barge-in)处理器,它会通过 WebSocket 等传输把它们连接到智能体会话。语音目录列出 12 个 STT 提供商和 13 个 TTS 提供商。其中可用的是 11 个 STT 提供商,包括 Whisper (OpenAI)、Deepgram 和 AssemblyAI,以及 10 个 TTS 提供商,包括 ElevenLabs、OpenAI TTS 和 Google Cloud TTS。其余 4 个条目(NVIDIA NeMo、Coqui XTTS、Bark 和 StyleTTS2)被标记为不可用,提供商解析器会跳过它们。Twilio、Telnyx 和 Plivo 提供商负责拨打和结束电话。"
       },
       "deploy": {
         "question": "如何部署 AgentOS?",
@@ -880,7 +595,8 @@
       "planningEngine": "规划引擎",
       "workflowDsl": "工作流 DSL",
       "streamApi": "流式 API",
-      "guardrailMode": "护栏模式",
+      "streamingGuardrails": "流式护栏",
+      "optIn": "需显式启用",
       "chunkTypes": "数据块类型",
       "dimensions": "维度",
       "tunedMechanisms": "受调节的机制",
@@ -898,7 +614,7 @@
     "cards": {
       "cognitiveMemory": {
         "title": "认知记忆",
-        "description": "8种基于神经科学的机制，伴随艾宾浩斯遗忘曲线衰减。可选的HEXACO人格向量偏差检索；默认情况下运行人格中立。",
+        "description": "8种参照已发表记忆研究建模的机制，配合艾宾浩斯遗忘曲线衰减。可选的HEXACO人格向量会使检索产生偏向；默认以人格中立方式运行。",
         "features": [
           "再巩固与RIF",
           "非自愿回忆与FOK",
@@ -946,7 +662,7 @@
         "description": "以异步迭代器提供文本增量和部分 JSON，以类型化数据块提供工具调用和进度，流式护栏可选",
         "features": [
           "异步迭代器流",
-          "飞行中护栏",
+          "逐块护栏(需显式启用)",
           "部分JSON流式传输",
           "工具进度事件"
         ],
@@ -1314,7 +1030,7 @@
       },
       "debate": {
         "name": "辩论",
-        "description": "智能体在多轮中辩论并完善共享答案。一位裁判评估论点并选出最强立场。"
+        "description": "每个智能体选定一方立场，在多轮中相互反驳。随后裁判阅读辩论记录，裁定哪一方胜出。"
       },
       "reviewLoop": {
         "name": "审查循环",

@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Open Source · TypeScript · Production-Ready",
     "title": "Open-Source TypeScript AI Agent Runtime",
-    "subtitle": "Open-source TypeScript runtime for AI agents that remember, adapt, and spawn new tools. Every session on the runtime is a GMI, a Generalized Mind Instance that keeps its own persona, mood and memory and can adjust its own traits over time. Agents write their own functions mid-task and the judge approves them; managers create specialists when the static roster does not cover the task. Cognitive memory grounded in neuroscience. 85.6% on LongMemEval-S. Apache 2.0.",
+    "subtitle": "Open-source TypeScript runtime for AI agents that remember, adapt, and spawn new tools. Every session on the runtime is a GMI, a Generalized Mind Instance that keeps its own persona, mood and memory and can adjust its own traits over time. Agents write their own functions mid-task and the judge approves them; managers create specialists when the static roster does not cover the task. Cognitive memory with an Ebbinghaus forgetting curve and a 7-slot working memory. 85.6% on LongMemEval-S. Apache 2.0.",
     "cycleWords": [
       "Adaptive",
       "Emergent"
@@ -45,7 +45,7 @@
       "securityScore": "Security Score"
     },
     "compliance": {
-      "gdpr": "GDPR-ready guardrails",
+      "gdpr": "PII redaction guardrail pack",
       "soc2": "Self-hosted on your infra",
       "enterpriseSupport": "Enterprise Support Available"
     },
@@ -185,7 +185,8 @@
       "planningEngine": "Planning Engine",
       "workflowDsl": "Workflow DSL",
       "streamApi": "Stream API",
-      "guardrailMode": "Guardrail Mode",
+      "streamingGuardrails": "Streaming Guardrails",
+      "optIn": "Opt-in",
       "chunkTypes": "Chunk Types",
       "dimensions": "Dimensions",
       "tunedMechanisms": "Tuned Mechanisms",
@@ -203,7 +204,7 @@
     "cards": {
       "cognitiveMemory": {
         "title": "Cognitive Memory",
-        "description": "8 neuroscience-backed mechanisms with Ebbinghaus forgetting curve decay. Optional HEXACO personality vector biases retrieval; runs personality-neutral by default.",
+        "description": "8 mechanisms modeled on published memory research, with Ebbinghaus forgetting curve decay. Optional HEXACO personality vector biases retrieval; runs personality-neutral by default.",
         "features": [
           "Reconsolidation & RIF",
           "Involuntary recall & FOK",
@@ -251,7 +252,7 @@
         "description": "Text deltas and partial JSON as async iterators, typed chunks for tool calls and progress, and opt-in streaming guardrails",
         "features": [
           "Async-iterator streams",
-          "In-flight guardrails",
+          "Per-chunk guardrails (opt-in)",
           "Partial JSON streaming",
           "Tool progress events"
         ],
@@ -348,7 +349,7 @@
       "compliance": {
         "title": "Privacy Architecture",
         "items": [
-          "GDPR-aligned PII redaction (18 entity types)",
+          "PII redaction across 18 entity types",
           "Data provenance and lineage tracking",
           "Cognitive memory with Ebbinghaus decay curves",
           "Source confidence decay for aging knowledge"
@@ -402,291 +403,6 @@
     },
     "wipLabel": "WIP",
     "currentlyDevelopment": "Currently in development"
-  },
-  "multiAgent": {
-    "title": "Multi-Agent Collaboration Network",
-    "subtitle": "Researcher, Analyst, Creator, Critic, Executor stream insights in parallel",
-    "description": "Orchestrator routes, memory persists - choose the right pattern for your use case",
-    "patterns": {
-      "consensus": {
-        "title": "Consensus-Based Collaboration",
-        "description": "Multiple agents vote on decisions with weighted confidence scores",
-        "workflow": {
-          "steps": [
-            "All agents analyze input simultaneously",
-            "Each agent proposes solution with confidence score",
-            "Weighted voting based on expertise",
-            "Consensus threshold validation",
-            "Execute agreed-upon action"
-          ],
-          "duration": "200-500ms",
-          "throughput": "1000 decisions/min"
-        },
-        "useCases": [
-          {
-            "title": "Financial Trading Decisions",
-            "description": "Multiple AI analysts vote on trade recommendations",
-            "metrics": [
-              {
-                "label": "Accuracy",
-                "value": "94%"
-              },
-              {
-                "label": "Consensus Time",
-                "value": "< 200ms"
-              },
-              {
-                "label": "Risk Reduction",
-                "value": "67%"
-              }
-            ]
-          },
-          {
-            "title": "Content Moderation",
-            "description": "Multiple agents evaluate content for policy violations",
-            "metrics": [
-              {
-                "label": "False Positives",
-                "value": "-82%"
-              },
-              {
-                "label": "Coverage",
-                "value": "99.9%"
-              },
-              {
-                "label": "Review Speed",
-                "value": "10k/hour"
-              }
-            ]
-          },
-          {
-            "title": "Medical Diagnosis Support",
-            "description": "Specialist agents collaborate on patient diagnosis",
-            "metrics": [
-              {
-                "label": "Diagnostic Accuracy",
-                "value": "97%"
-              },
-              {
-                "label": "Second Opinion Rate",
-                "value": "100%"
-              },
-              {
-                "label": "Time to Diagnosis",
-                "value": "-45%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "High accuracy through collective intelligence",
-            "Built-in validation and error checking",
-            "Reduces individual agent bias",
-            "Transparent decision trail"
-          ],
-          "cons": [
-            "Higher latency than single agent",
-            "Requires more compute resources",
-            "Potential for deadlock scenarios",
-            "Complex conflict resolution"
-          ]
-        }
-      },
-      "sequential": {
-        "title": "Sequential Pipeline",
-        "description": "Agents process tasks in a defined order, each building on the previous",
-        "workflow": {
-          "steps": [
-            "Researcher gathers initial data",
-            "Analyst processes and structures information",
-            "Creator generates solution",
-            "Critic validates and refines",
-            "Executor implements final output"
-          ],
-          "duration": "500-2000ms",
-          "throughput": "500 tasks/min"
-        },
-        "useCases": [
-          {
-            "title": "Document Processing Pipeline",
-            "description": "Extract → Analyze → Summarize → Format → Deliver",
-            "metrics": [
-              {
-                "label": "Accuracy",
-                "value": "96%"
-              },
-              {
-                "label": "Processing Time",
-                "value": "1.2s/doc"
-              },
-              {
-                "label": "Error Rate",
-                "value": "< 0.1%"
-              }
-            ]
-          },
-          {
-            "title": "Customer Support Escalation",
-            "description": "Triage → Research → Solution → Review → Response",
-            "metrics": [
-              {
-                "label": "Resolution Rate",
-                "value": "89%"
-              },
-              {
-                "label": "Avg Handle Time",
-                "value": "45s"
-              },
-              {
-                "label": "Customer Satisfaction",
-                "value": "4.7/5"
-              }
-            ]
-          },
-          {
-            "title": "Code Review & Refactoring",
-            "description": "Analyze → Identify Issues → Suggest Fixes → Test → Deploy",
-            "metrics": [
-              {
-                "label": "Bug Detection",
-                "value": "92%"
-              },
-              {
-                "label": "Code Quality",
-                "value": "+35%"
-              },
-              {
-                "label": "Review Time",
-                "value": "-60%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "Clear workflow and accountability",
-            "Easy to debug and monitor",
-            "Predictable resource usage",
-            "Simple error recovery"
-          ],
-          "cons": [
-            "Single point of failure risks",
-            "Limited parallelization",
-            "Higher total latency",
-            "Bottleneck potential"
-          ]
-        }
-      },
-      "parallel": {
-        "title": "Parallel Execution",
-        "description": "Agents work simultaneously on different aspects of the same task",
-        "workflow": {
-          "steps": [
-            "Task decomposition by orchestrator",
-            "Parallel assignment to all agents",
-            "Concurrent processing",
-            "Result aggregation",
-            "Orchestrator merges outputs"
-          ],
-          "duration": "100-300ms",
-          "throughput": "5000 tasks/min"
-        },
-        "useCases": [
-          {
-            "title": "Real-time Market Analysis",
-            "description": "Analyze stocks, bonds, forex, crypto simultaneously",
-            "metrics": [
-              {
-                "label": "Coverage",
-                "value": "10k assets"
-              },
-              {
-                "label": "Update Frequency",
-                "value": "100ms"
-              },
-              {
-                "label": "Parallel Streams",
-                "value": "128"
-              }
-            ]
-          },
-          {
-            "title": "Multi-language Translation",
-            "description": "Translate content into multiple languages at once",
-            "metrics": [
-              {
-                "label": "Languages",
-                "value": "50+"
-              },
-              {
-                "label": "Speed",
-                "value": "< 500ms"
-              },
-              {
-                "label": "Consistency",
-                "value": "98%"
-              }
-            ]
-          },
-          {
-            "title": "A/B Testing & Optimization",
-            "description": "Test multiple variations simultaneously",
-            "metrics": [
-              {
-                "label": "Variants",
-                "value": "100+"
-              },
-              {
-                "label": "Decision Time",
-                "value": "< 1s"
-              },
-              {
-                "label": "Confidence",
-                "value": "95%"
-              }
-            ]
-          }
-        ],
-        "proscons": {
-          "pros": [
-            "Maximum throughput and speed",
-            "Excellent scalability",
-            "Fault isolation between agents",
-            "Real-time processing capability"
-          ],
-          "cons": [
-            "Higher resource consumption",
-            "Complex synchronization",
-            "Potential race conditions",
-            "Challenging debugging"
-          ]
-        }
-      }
-    },
-    "ui": {
-      "workflowSteps": "Workflow Steps:",
-      "latency": "Latency",
-      "throughput": "Throughput",
-      "pros": "Pros",
-      "cons": "Cons",
-      "useCases": "Use Cases",
-      "case": "Case",
-      "implementation": "Implementation",
-      "showCode": "Show Code",
-      "hideCode": "Hide Code",
-      "setupTime": "Setup time: ~5 minutes",
-      "performance": "Performance: Production-ready",
-      "codePrompt": "Click \"Show Code\" to see how to implement {pattern} in your application."
-    },
-    "agents": {
-      "researcher": "Researcher",
-      "analyst": "Analyst",
-      "creator": "Creator",
-      "critic": "Critic",
-      "executor": "Executor",
-      "orchestrator": "Orchestrator"
-    }
   },
   "ecosystem": {
     "title": "The AgentOS Ecosystem",
@@ -870,7 +586,7 @@
       },
       "queryRouter": {
         "question": "How does the QueryRouter work?",
-        "answer": "The QueryRouter classifies each query into one of 4 tiers and retrieves to match: T0 answers from the conversation with no retrieval, T1 runs a single vector search (a keyword search when no embedding provider is configured), T2 combines several sources or walks the knowledge graph, and T3 runs deep research across the whole corpus. It then answers from what it retrieved and returns the answer with its source citations."
+        "answer": "The QueryRouter classifies each query into one of 4 tiers and retrieves to match: T0 answers from the conversation with no retrieval, T1 runs a single vector search (a keyword search when no embedding provider is configured), T2 retrieves 15 chunks, adds related chunks through graph expansion and reranks the merged set to the top 5, and T3 runs that retrieval and then, when deep research is enabled (by default when SERPER_API_KEY is set), a deep-research pass whose findings it merges in. It then answers from what it retrieved and returns the answer with its source citations."
       },
       "adaptiveIntelligence": {
         "question": "What is adaptive intelligence?",
@@ -900,7 +616,7 @@
       },
       "voice": {
         "question": "How do I add voice capabilities?",
-        "answer": "AgentOS runs voice through VoicePipelineOrchestrator. You give it a streaming STT session, a streaming TTS session, an endpoint detector and a barge-in handler, and it connects them to an agent session over a transport such as a WebSocket. The speech catalog lists 11 STT providers, including Whisper (OpenAI), Deepgram and AssemblyAI, and 10 TTS providers, including ElevenLabs, OpenAI TTS and Google Cloud TTS. Twilio, Telnyx and Plivo providers place and end phone calls."
+        "answer": "AgentOS runs voice through VoicePipelineOrchestrator. You give it a streaming STT session, a streaming TTS session, an endpoint detector and a barge-in handler, and it connects them to an agent session over a transport such as a WebSocket. The speech catalog lists 12 STT providers and 13 TTS providers. Of these, 11 STT providers, including Whisper (OpenAI), Deepgram and AssemblyAI, and 10 TTS providers, including ElevenLabs, OpenAI TTS and Google Cloud TTS, are available. The other four entries (NVIDIA NeMo, Coqui XTTS, Bark and StyleTTS2) are marked unavailable, and the provider resolver skips them. Twilio, Telnyx and Plivo providers place and end phone calls."
       },
       "deploy": {
         "question": "How do I deploy AgentOS?",
@@ -1314,7 +1030,7 @@
       },
       "debate": {
         "name": "Debate",
-        "description": "Agents argue and refine a shared answer over multiple rounds. A judge evaluates arguments and selects the strongest position."
+        "description": "Each agent takes a side and rebuts the others over several rounds. A judge then reads the transcript and gives a verdict on which side prevailed."
       },
       "reviewLoop": {
         "name": "Review Loop",

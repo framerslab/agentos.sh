@@ -105,7 +105,7 @@ function getProductCards(t: ReturnType<typeof useTranslations>): ProductCard[] {
       icon: Zap,
       stats: [
         { label: t('stats.streamApi'), value: 'Async iterators' },
-        { label: t('stats.guardrailMode'), value: 'In-flight' },
+        { label: t('stats.streamingGuardrails'), value: t('stats.optIn') },
         { label: t('stats.chunkTypes'), value: '11' }
       ],
       features: [t('cards.streaming.features.0'), t('cards.streaming.features.1'), t('cards.streaming.features.2'), t('cards.streaming.features.3')],
