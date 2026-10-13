@@ -156,7 +156,7 @@ const volt = new VoltAgent({ agents: { researcher } });
 
 ### AgentOS: Cognitive Agents with Personality, Memory, and Safety
 
-AgentOS treats each agent as a persistent cognitive entity. The [HEXACO personality system](https://docs.agentos.sh/features/cognitive-memory-guide), based on the [six-factor model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) validated across [psycholexical studies in seven languages](https://doi.org/10.1037/0022-3514.86.2.356), shapes communication style and decision-making. [Cognitive memory](https://docs.agentos.sh/features/cognitive-memory) uses [Ebbinghaus decay curves](https://en.wikipedia.org/wiki/Forgetting_curve) and [8 neuroscience-backed mechanisms](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine) including [reconsolidation](https://doi.org/10.1038/35021052) and [retrieval-induced forgetting](https://doi.org/10.1037/0278-7393.20.5.1063).
+AgentOS treats each agent as a persistent cognitive entity. The [HEXACO personality system](https://docs.agentos.sh/features/cognitive-memory-guide), based on the [six-factor model](https://en.wikipedia.org/wiki/HEXACO_model_of_personality_structure) validated across [psycholexical studies in seven languages](https://doi.org/10.1037/0022-3514.86.2.356), shapes communication style and decision-making. [Cognitive memory](https://docs.agentos.sh/features/cognitive-memory) uses [Ebbinghaus decay curves](https://en.wikipedia.org/wiki/Forgetting_curve) and [8 mechanisms modeled on published memory research](https://docs.agentos.sh/api/classes/CognitiveMechanismsEngine) including [reconsolidation](https://doi.org/10.1038/35021052) and [retrieval-induced forgetting](https://doi.org/10.1037/0278-7393.20.5.1063).
 
 What AgentOS ships:
 

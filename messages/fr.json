@@ -204,7 +204,7 @@
     "cards": {
       "cognitiveMemory": {
         "title": "Mémoire Cognitive",
-        "description": "8 mécanismes soutenus par les neurosciences avec la décroissance de la courbe d'oubli d'Ebbinghaus. Biais de récupération du vecteur de personnalité HEXACO optionnels ; fonctionne de manière neutre par défaut.",
+        "description": "8 mécanismes fondés sur des recherches publiées sur la mémoire, avec une décroissance selon la courbe de l'oubli d'Ebbinghaus. Un vecteur de personnalité HEXACO optionnel oriente la récupération ; par défaut, la mémoire fonctionne avec une personnalité neutre.",
         "features": [
           "Reconsolidation et RIF",
           "Rappel involontaire et FOK",

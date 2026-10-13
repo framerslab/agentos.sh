@@ -204,7 +204,7 @@
     "cards": {
       "cognitiveMemory": {
         "title": "Cognitive Memory",
-        "description": "8 neuroscience-backed mechanisms with Ebbinghaus forgetting curve decay. Optional HEXACO personality vector biases retrieval; runs personality-neutral by default.",
+        "description": "8 mechanisms modeled on published memory research, with Ebbinghaus forgetting curve decay. Optional HEXACO personality vector biases retrieval; runs personality-neutral by default.",
         "features": [
           "Reconsolidation & RIF",
           "Involuntary recall & FOK",

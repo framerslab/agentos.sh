@@ -204,7 +204,7 @@
     "cards": {
       "cognitiveMemory": {
         "title": "Kognitives Gedächtnis",
-        "description": "8 neurowissenschaftlich gestützte Mechanismen mit Ebbinghaus-Vergessenskurvenzerfall. Optionale HEXACO-Persönlichkeitsvektor-Biases Abruf; läuft standardmäßig persönlichkeitsneutral.",
+        "description": "8 Mechanismen nach veröffentlichter Gedächtnisforschung, mit Zerfall nach der Ebbinghaus-Vergessenskurve. Ein optionaler HEXACO-Persönlichkeitsvektor gewichtet den Abruf; standardmäßig läuft das Gedächtnis persönlichkeitsneutral.",
         "features": [
           "Rekonsolidierung & RIF",
           "Unwillkürlicher Abruf & FOK",

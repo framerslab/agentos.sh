@@ -654,7 +654,7 @@
     "cards": {
       "cognitiveMemory": {
         "title": "Memória Cognitiva",
-        "description": "8 mecanismos apoiados por neurociência com decaimento da curva de esquecimento de Ebbinghaus. Viés de recuperação do vetor de personalidade HEXACO opcional; executa de forma neutra por padrão.",
+        "description": "8 mecanismos baseados em pesquisas publicadas sobre a memória, com decaimento pela curva de esquecimento de Ebbinghaus. Um vetor de personalidade HEXACO opcional enviesa a recuperação; por padrão, a memória funciona com personalidade neutra.",
         "features": [
           "Reconsolidacao e RIF",
           "Recordacao involuntaria e FOK",
