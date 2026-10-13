@@ -248,8 +248,8 @@ const Sections = [
             the reporter and a maintainer agree on a later date.
           </li>
           <li>
-            In scope: defects in the repository&apos;s code, including how it handles credentials, files, provider
-            responses and tool results. Out of scope: a flaw that exists only in a third-party provider&apos;s
+            In scope: defects in the <code>framerslab/agentos</code> code, including how it handles credentials, files,
+            provider responses and tool results. Out of scope: a flaw that exists only in a third-party provider&apos;s
             service, or only in a deployment&apos;s own configuration.
           </li>
         </ul>
