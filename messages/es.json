@@ -29,7 +29,7 @@
     ],
     "badge": "Código Abierto · Adaptativo · Emergente",
     "title": "Runtime Portátil de Agentes de IA para Inteligencia Adaptativa y Emergente",
-    "subtitle": "Runtime TypeScript de código abierto para agentes de IA que recuerdan, se adaptan y generan nuevas herramientas. Cada sesión en el runtime es una GMI, una Generalized Mind Instance que conserva su propia persona, estado de ánimo y memoria y puede ajustar sus propios rasgos con el tiempo. Los agentes escriben sus propias funciones a mitad de tarea y el juez las aprueba; los gestores crean especialistas cuando el roster fijo no cubre la tarea. Memoria cognitiva con la curva del olvido de Ebbinghaus y una memoria de trabajo de 7 espacios. 85.6% en LongMemEval-S. Apache 2.0.",
+    "subtitle": "Runtime TypeScript de código abierto para agentes de IA que recuerdan, se adaptan y generan nuevas herramientas. Cada sesión en el runtime completo es una GMI, una Generalized Mind Instance que conserva su propia persona, estado de ánimo y memoria y puede ajustar sus propios rasgos con el tiempo. Los agentes escriben sus propias funciones a mitad de tarea y el juez las aprueba; los gestores crean especialistas cuando el roster fijo no cubre la tarea. Memoria cognitiva con la curva del olvido de Ebbinghaus y una memoria de trabajo de 7 espacios. 85.6% en LongMemEval-S. Apache 2.0.",
     "ctaPrimary": "Probar Voice Chat Assistant",
     "ctaSecondary": "Dar una estrella en GitHub",
     "codeLabel": "npm install @framers/agentos",

@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Open Source · Adaptatif · Émergent",
     "title": "Runtime production-ready pour agents IA adaptatifs et émergents",
-    "subtitle": "Runtime TypeScript open source pour des agents IA qui se souviennent, s’adaptent et créent de nouveaux outils. Chaque session sur le runtime est un GMI, une Generalized Mind Instance qui conserve sa propre persona, son humeur et sa mémoire et peut ajuster ses propres traits au fil du temps. Les agents écrivent leurs propres fonctions en cours de tâche et le juge les approuve ; les managers créent des spécialistes quand l’effectif fixe ne couvre pas la tâche. Mémoire cognitive avec la courbe de l’oubli d’Ebbinghaus et une mémoire de travail à 7 emplacements. 85.6% sur LongMemEval-S. Apache 2.0.",
+    "subtitle": "Runtime TypeScript open source pour des agents IA qui se souviennent, s’adaptent et créent de nouveaux outils. Chaque session sur le runtime complet est un GMI, une Generalized Mind Instance qui conserve sa propre persona, son humeur et sa mémoire et peut ajuster ses propres traits au fil du temps. Les agents écrivent leurs propres fonctions en cours de tâche et le juge les approuve ; les managers créent des spécialistes quand l’effectif fixe ne couvre pas la tâche. Mémoire cognitive avec la courbe de l’oubli d’Ebbinghaus et une mémoire de travail à 7 emplacements. 85.6% sur LongMemEval-S. Apache 2.0.",
     "ctaPrimary": "Essayer Voice Chat Assistant",
     "ctaSecondary": "Étoiler sur GitHub",
     "codeLabel": "npm install @framers/agentos",

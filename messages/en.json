@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Open Source · TypeScript · Production-Ready",
     "title": "Open-Source TypeScript AI Agent Runtime",
-    "subtitle": "Open-source TypeScript runtime for AI agents that remember, adapt, and spawn new tools. Every session on the runtime is a GMI, a Generalized Mind Instance that keeps its own persona, mood and memory and can adjust its own traits over time. Agents write their own functions mid-task and the judge approves them; managers create specialists when the static roster does not cover the task. Cognitive memory with an Ebbinghaus forgetting curve and a 7-slot working memory. 85.6% on LongMemEval-S. Apache 2.0.",
+    "subtitle": "Open-source TypeScript runtime for AI agents that remember, adapt, and spawn new tools. Every session on the full runtime is a GMI, a Generalized Mind Instance that keeps its own persona, mood and memory and can adjust its own traits over time. Agents write their own functions mid-task and the judge approves them; managers create specialists when the static roster does not cover the task. Cognitive memory with an Ebbinghaus forgetting curve and a 7-slot working memory. 85.6% on LongMemEval-S. Apache 2.0.",
     "cycleWords": [
       "Adaptive",
       "Emergent"
