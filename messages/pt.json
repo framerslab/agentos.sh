@@ -505,7 +505,7 @@
       },
       "voice": {
         "question": "Como adiciono capacidades de voz?",
-        "answer": "AgentOS executa voz pelo VoicePipelineOrchestrator. Você fornece uma sessão de STT em streaming, uma sessão de TTS em streaming, um detector de fim de fala e um handler de interrupção (barge-in), e ele os conecta a uma sessão de agente por um transporte como um WebSocket. O catálogo de fala lista 12 provedores de STT e 13 provedores de TTS. Desses, estão disponíveis 11 provedores de STT, incluindo Whisper (OpenAI), Deepgram e AssemblyAI, e 10 provedores de TTS, incluindo ElevenLabs, OpenAI TTS e Google Cloud TTS. As outras quatro entradas (NVIDIA NeMo, Coqui XTTS, Bark e StyleTTS2) estão marcadas como indisponíveis, e o resolvedor de provedores as ignora. Os provedores Twilio, Telnyx e Plivo fazem e encerram chamadas telefônicas."
+        "answer": "AgentOS executa voz pelo VoicePipelineOrchestrator. Você fornece uma sessão de STT em streaming, uma sessão de TTS em streaming, um detector de fim de fala e um handler de interrupção (barge-in), e ele os conecta a uma sessão de agente por um transporte como um WebSocket. O catálogo de fala lista 13 provedores de STT e 13 provedores de TTS. Desses, estão disponíveis 11 provedores de STT, incluindo Whisper (OpenAI), Deepgram e AssemblyAI, e 10 provedores de TTS, incluindo ElevenLabs, OpenAI TTS e Google Cloud TTS. As outras cinco entradas (Whisper.cpp, NVIDIA NeMo, Coqui XTTS, Bark e StyleTTS2) estão marcadas como indisponíveis, e o resolvedor de provedores as ignora. Os provedores Twilio, Telnyx e Plivo fazem e encerram chamadas telefônicas."
       },
       "deploy": {
         "question": "Como faço deploy do AgentOS?",

@@ -618,7 +618,7 @@
       },
       "voice": {
         "question": "음성 기능은 어떻게 추가하나요?",
-        "answer": "AgentOS는 VoicePipelineOrchestrator로 음성을 처리합니다. 스트리밍 STT 세션, 스트리밍 TTS 세션, 발화 종료 감지기, 끼어들기(barge-in) 핸들러를 전달하면, WebSocket 같은 전송 계층을 통해 이들을 에이전트 세션에 연결합니다. 음성 카탈로그에는 12개 STT 프로바이더와 13개 TTS 프로바이더가 있습니다. 그중 사용할 수 있는 것은 Whisper(OpenAI), Deepgram, AssemblyAI를 포함한 11개 STT 프로바이더와 ElevenLabs, OpenAI TTS, Google Cloud TTS를 포함한 10개 TTS 프로바이더입니다. 나머지 4개 항목(NVIDIA NeMo, Coqui XTTS, Bark, StyleTTS2)은 사용 불가로 표시되어 있으며, 프로바이더 리졸버는 이들을 건너뜁니다. Twilio, Telnyx, Plivo 프로바이더가 전화를 걸고 종료합니다."
+        "answer": "AgentOS는 VoicePipelineOrchestrator로 음성을 처리합니다. 스트리밍 STT 세션, 스트리밍 TTS 세션, 발화 종료 감지기, 끼어들기(barge-in) 핸들러를 전달하면, WebSocket 같은 전송 계층을 통해 이들을 에이전트 세션에 연결합니다. 음성 카탈로그에는 13개 STT 프로바이더와 13개 TTS 프로바이더가 있습니다. 그중 사용할 수 있는 것은 Whisper(OpenAI), Deepgram, AssemblyAI를 포함한 11개 STT 프로바이더와 ElevenLabs, OpenAI TTS, Google Cloud TTS를 포함한 10개 TTS 프로바이더입니다. 나머지 5개 항목(Whisper.cpp, NVIDIA NeMo, Coqui XTTS, Bark, StyleTTS2)은 사용 불가로 표시되어 있으며, 프로바이더 리졸버는 이들을 건너뜁니다. Twilio, Telnyx, Plivo 프로바이더가 전화를 걸고 종료합니다."
       },
       "deploy": {
         "question": "AgentOS는 어떻게 배포하나요?",

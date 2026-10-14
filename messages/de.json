@@ -618,7 +618,7 @@
       },
       "voice": {
         "question": "Wie füge ich Sprachfunktionen hinzu?",
-        "answer": "AgentOS verarbeitet Sprache mit dem VoicePipelineOrchestrator. Du gibst ihm eine Streaming-STT-Sitzung, eine Streaming-TTS-Sitzung, einen Endpunkt-Detektor und einen Barge-in-Handler, und er verbindet sie über einen Transport wie einen WebSocket mit einer Agenten-Sitzung. Der Sprachkatalog listet 12 STT-Anbieter und 13 TTS-Anbieter. Davon sind 11 STT-Anbieter, darunter Whisper (OpenAI), Deepgram und AssemblyAI, und 10 TTS-Anbieter, darunter ElevenLabs, OpenAI TTS und Google Cloud TTS, verfügbar. Die übrigen vier Einträge (NVIDIA NeMo, Coqui XTTS, Bark und StyleTTS2) sind als nicht verfügbar markiert, und der Provider-Resolver überspringt sie. Die Anbieter Twilio, Telnyx und Plivo starten und beenden Telefonanrufe."
+        "answer": "AgentOS verarbeitet Sprache mit dem VoicePipelineOrchestrator. Du gibst ihm eine Streaming-STT-Sitzung, eine Streaming-TTS-Sitzung, einen Endpunkt-Detektor und einen Barge-in-Handler, und er verbindet sie über einen Transport wie einen WebSocket mit einer Agenten-Sitzung. Der Sprachkatalog listet 13 STT-Anbieter und 13 TTS-Anbieter. Davon sind 11 STT-Anbieter, darunter Whisper (OpenAI), Deepgram und AssemblyAI, und 10 TTS-Anbieter, darunter ElevenLabs, OpenAI TTS und Google Cloud TTS, verfügbar. Die übrigen fünf Einträge (Whisper.cpp, NVIDIA NeMo, Coqui XTTS, Bark und StyleTTS2) sind als nicht verfügbar markiert, und der Provider-Resolver überspringt sie. Die Anbieter Twilio, Telnyx und Plivo starten und beenden Telefonanrufe."
       },
       "deploy": {
         "question": "Wie stelle ich AgentOS bereit?",

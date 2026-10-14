@@ -465,7 +465,7 @@
       },
       "voice": {
         "question": "如何添加语音功能?",
-        "answer": "AgentOS 通过 VoicePipelineOrchestrator 处理语音。你提供流式 STT 会话、流式 TTS 会话、语音端点检测器和打断(barge-in)处理器,它会通过 WebSocket 等传输把它们连接到智能体会话。语音目录列出 12 个 STT 提供商和 13 个 TTS 提供商。其中可用的是 11 个 STT 提供商,包括 Whisper (OpenAI)、Deepgram 和 AssemblyAI,以及 10 个 TTS 提供商,包括 ElevenLabs、OpenAI TTS 和 Google Cloud TTS。其余 4 个条目(NVIDIA NeMo、Coqui XTTS、Bark 和 StyleTTS2)被标记为不可用,提供商解析器会跳过它们。Twilio、Telnyx 和 Plivo 提供商负责拨打和结束电话。"
+        "answer": "AgentOS 通过 VoicePipelineOrchestrator 处理语音。你提供流式 STT 会话、流式 TTS 会话、语音端点检测器和打断(barge-in)处理器,它会通过 WebSocket 等传输把它们连接到智能体会话。语音目录列出 13 个 STT 提供商和 13 个 TTS 提供商。其中可用的是 11 个 STT 提供商,包括 Whisper (OpenAI)、Deepgram 和 AssemblyAI,以及 10 个 TTS 提供商,包括 ElevenLabs、OpenAI TTS 和 Google Cloud TTS。其余 5 个条目(Whisper.cpp、NVIDIA NeMo、Coqui XTTS、Bark 和 StyleTTS2)被标记为不可用,提供商解析器会跳过它们。Twilio、Telnyx 和 Plivo 提供商负责拨打和结束电话。"
       },
       "deploy": {
         "question": "如何部署 AgentOS?",

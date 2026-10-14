@@ -616,7 +616,7 @@
       },
       "voice": {
         "question": "How do I add voice capabilities?",
-        "answer": "AgentOS runs voice through VoicePipelineOrchestrator. You give it a streaming STT session, a streaming TTS session, an endpoint detector and a barge-in handler, and it connects them to an agent session over a transport such as a WebSocket. The speech catalog lists 12 STT providers and 13 TTS providers. Of these, 11 STT providers, including Whisper (OpenAI), Deepgram and AssemblyAI, and 10 TTS providers, including ElevenLabs, OpenAI TTS and Google Cloud TTS, are available. The other four entries (NVIDIA NeMo, Coqui XTTS, Bark and StyleTTS2) are marked unavailable, and the provider resolver skips them. Twilio, Telnyx and Plivo providers place and end phone calls."
+        "answer": "AgentOS runs voice through VoicePipelineOrchestrator. You give it a streaming STT session, a streaming TTS session, an endpoint detector and a barge-in handler, and it connects them to an agent session over a transport such as a WebSocket. The speech catalog lists 13 STT providers and 13 TTS providers. Of these, 11 STT providers, including Whisper (OpenAI), Deepgram and AssemblyAI, and 10 TTS providers, including ElevenLabs, OpenAI TTS and Google Cloud TTS, are available. The other five entries (Whisper.cpp, NVIDIA NeMo, Coqui XTTS, Bark and StyleTTS2) are marked unavailable, and the provider resolver skips them. Twilio, Telnyx and Plivo providers place and end phone calls."
       },
       "deploy": {
         "question": "How do I deploy AgentOS?",
