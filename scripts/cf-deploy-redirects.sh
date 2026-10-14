@@ -9,10 +9,11 @@
 #
 # This zone is on the Free plan, which prohibits the `matches` regex operator and
 # `regex_replace()` function in filter expressions / target URLs. The rules below
-# therefore use only Free-plan-compatible operators (`ends_with`, `starts_with`,
-# `in {}`) and static target URLs. /docs/* deep links redirect to docs.agentos.sh/
-# without path preservation; on Business plan we could preserve the path via
-# regex_replace, but the tradeoff isn't worth $250/mo for ~10 dead URLs.
+# therefore match with `ends_with`, `starts_with` and `eq`. Rules 1-5 redirect to
+# static target URLs; rule 6 builds its target with `concat()` and `substring()`.
+# /docs/* deep links redirect to docs.agentos.sh/ without path preservation; on
+# Business plan we could preserve the path via regex_replace, but the tradeoff
+# isn't worth $250/mo for ~10 dead URLs.
 #
 # Re-running is safe: looks up the existing http_request_dynamic_redirect ruleset
 # by phase, PUTs the updated rule list if found, POSTs a new ruleset if not.
