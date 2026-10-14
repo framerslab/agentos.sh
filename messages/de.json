@@ -588,7 +588,7 @@
       },
       "queryRouter": {
         "question": "Wie funktioniert der QueryRouter?",
-        "answer": "Der QueryRouter ordnet jede Anfrage einer von 4 Stufen zu und ruft entsprechend ab: T0 antwortet aus der Unterhaltung ohne Abruf, T1 führt eine einzelne Vektorsuche aus (eine Stichwortsuche, wenn kein Embedding-Anbieter konfiguriert ist), T2 ruft 15 Abschnitte ab, ergänzt verwandte Abschnitte per Graph-Expansion und ordnet die zusammengeführte Menge neu, bis die besten 5 bleiben, und T3 führt diesen Abruf aus und danach, wenn Deep Research aktiviert ist (standardmäßig, wenn SERPER_API_KEY gesetzt ist), einen Deep-Research-Durchlauf, dessen Ergebnisse er zusammenführt. Danach antwortet er auf Basis des Abgerufenen und liefert die Antwort mit Quellenangaben."
+        "answer": "Der QueryRouter ordnet jede Anfrage einer von 4 Stufen zu und ruft entsprechend ab: T0 antwortet aus der Unterhaltung ohne Abruf, T1 führt eine einzelne Vektorsuche aus (eine Stichwortsuche, wenn kein Embedding-Anbieter konfiguriert ist), T2 ruft 15 Abschnitte ab, ergänzt verwandte Abschnitte per Graph-Expansion und ordnet die zusammengeführte Menge neu, bis die besten 5 bleiben, und T3 teilt die Anfrage an Satzgrenzen in bis zu 5 Teilanfragen, ruft für jede 10 Abschnitte ab, ergänzt verwandte Abschnitte per Graph-Expansion, ordnet die zusammengeführte Menge neu, bis die besten 10 bleiben, und führt danach, wenn Deep Research aktiviert ist (standardmäßig, wenn SERPER_API_KEY gesetzt ist), einen Deep-Research-Durchlauf aus, dessen Ergebnisse er zusammenführt. Danach antwortet er auf Basis des Abgerufenen und liefert die Antwort mit Quellenangaben."
       },
       "adaptiveIntelligence": {
         "question": "Was ist adaptive Intelligenz?",

@@ -586,7 +586,7 @@
       },
       "queryRouter": {
         "question": "How does the QueryRouter work?",
-        "answer": "The QueryRouter classifies each query into one of 4 tiers and retrieves to match: T0 answers from the conversation with no retrieval, T1 runs a single vector search (a keyword search when no embedding provider is configured), T2 retrieves 15 chunks, adds related chunks through graph expansion and reranks the merged set to the top 5, and T3 runs that retrieval and then, when deep research is enabled (by default when SERPER_API_KEY is set), a deep-research pass whose findings it merges in. It then answers from what it retrieved and returns the answer with its source citations."
+        "answer": "The QueryRouter classifies each query into one of 4 tiers and retrieves to match: T0 answers from the conversation with no retrieval, T1 runs a single vector search (a keyword search when no embedding provider is configured), T2 retrieves 15 chunks, adds related chunks through graph expansion and reranks the merged set to the top 5, and T3 splits the query at sentence breaks into up to 5 sub-queries, retrieves 10 chunks for each, adds related chunks through graph expansion, reranks the merged set to the top 10 and then, when deep research is enabled (by default when SERPER_API_KEY is set), runs a deep-research pass whose findings it merges in. It then answers from what it retrieved and returns the answer with its source citations."
       },
       "adaptiveIntelligence": {
         "question": "What is adaptive intelligence?",
