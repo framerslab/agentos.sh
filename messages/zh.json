@@ -21,7 +21,7 @@
   "hero": {
     "badge": "开源 · 自适应 · 涌现",
     "title": "自适应与涌现智能的便携式AI代理运行时",
-    "subtitle": "面向会记忆、会适应、能创造新工具的 AI 智能体的开源 TypeScript 运行时。运行时中的每个会话都是一个 GMI(Generalized Mind Instance),它保留自己的人格、情绪和记忆,并能随时间调整自己的特质。智能体在任务中途编写自己的函数并由裁判批准;当固定名单无法覆盖任务时,管理者会创建专家。认知记忆采用艾宾浩斯遗忘曲线和 7 个槽位的工作记忆。LongMemEval-S 85.6%。Apache 2.0。",
+    "subtitle": "面向会记忆、会适应、能创造新工具的 AI 智能体的开源 TypeScript 运行时。完整运行时中的每个会话都是一个 GMI(Generalized Mind Instance),它保留自己的人格、情绪和记忆,并能随时间调整自己的特质。智能体在任务中途编写自己的函数并由裁判批准;当固定名单无法覆盖任务时,管理者会创建专家。认知记忆采用艾宾浩斯遗忘曲线和 7 个槽位的工作记忆。LongMemEval-S 85.6%。Apache 2.0。",
     "ctaPrimary": "体验 Voice Chat Assistant",
     "ctaSecondary": "在 GitHub 上点星",
     "codeLabel": "npm install @framers/agentos",
@@ -435,7 +435,7 @@
       },
       "queryRouter": {
         "question": "QueryRouter 是如何工作的?",
-        "answer": "QueryRouter 将每个查询分为 4 层之一并据此检索:T0 不检索,直接从对话中回答;T1 执行一次向量搜索(未配置嵌入提供商时改为关键词搜索);T2 检索 15 个片段,通过图扩展加入相关片段,并把合并后的结果重排为前 5 个;T3 先执行这一检索,在启用深度研究时(默认在设置了 SERPER_API_KEY 时)再进行一轮深度研究,并合并其结果。随后它根据检索到的内容作答,并附上来源引用一并返回。"
+        "answer": "QueryRouter 将每个查询分为 4 层之一并据此检索:T0 不检索,直接从对话中回答;T1 执行一次向量搜索(未配置嵌入提供商时改为关键词搜索);T2 检索 15 个片段,通过图扩展加入相关片段,并把合并后的结果重排为前 5 个;T3 按句子边界把查询拆成最多 5 个子查询,为每个子查询检索 10 个片段,通过图扩展加入相关片段,并把合并后的结果重排为前 10 个,然后在启用深度研究时(默认在设置了 SERPER_API_KEY 时)再进行一轮深度研究,并合并其结果。随后它根据检索到的内容作答,并附上来源引用一并返回。"
       },
       "adaptiveIntelligence": {
         "question": "什么是自适应智能?",
@@ -465,7 +465,7 @@
       },
       "voice": {
         "question": "如何添加语音功能?",
-        "answer": "AgentOS 通过 VoicePipelineOrchestrator 处理语音。你提供流式 STT 会话、流式 TTS 会话、语音端点检测器和打断(barge-in)处理器,它会通过 WebSocket 等传输把它们连接到智能体会话。语音目录列出 12 个 STT 提供商和 13 个 TTS 提供商。其中可用的是 11 个 STT 提供商,包括 Whisper (OpenAI)、Deepgram 和 AssemblyAI,以及 10 个 TTS 提供商,包括 ElevenLabs、OpenAI TTS 和 Google Cloud TTS。其余 4 个条目(NVIDIA NeMo、Coqui XTTS、Bark 和 StyleTTS2)被标记为不可用,提供商解析器会跳过它们。Twilio、Telnyx 和 Plivo 提供商负责拨打和结束电话。"
+        "answer": "AgentOS 通过 VoicePipelineOrchestrator 处理语音。你提供流式 STT 会话、流式 TTS 会话、语音端点检测器和打断(barge-in)处理器,它会通过 WebSocket 等传输把它们连接到智能体会话。语音目录列出 13 个 STT 提供商和 13 个 TTS 提供商。其中可用的是 11 个 STT 提供商,包括 Whisper (OpenAI)、Deepgram 和 AssemblyAI,以及 10 个 TTS 提供商,包括 ElevenLabs、OpenAI TTS 和 Google Cloud TTS。其余 5 个条目(Whisper.cpp、NVIDIA NeMo、Coqui XTTS、Bark 和 StyleTTS2)被标记为不可用,提供商解析器会跳过它们。Twilio、Telnyx 和 Plivo 提供商负责拨打和结束电话。"
       },
       "deploy": {
         "question": "如何部署 AgentOS?",

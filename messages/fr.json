@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Open Source · Adaptatif · Émergent",
     "title": "Runtime production-ready pour agents IA adaptatifs et émergents",
-    "subtitle": "Runtime TypeScript open source pour des agents IA qui se souviennent, s’adaptent et créent de nouveaux outils. Chaque session sur le runtime est un GMI, une Generalized Mind Instance qui conserve sa propre persona, son humeur et sa mémoire et peut ajuster ses propres traits au fil du temps. Les agents écrivent leurs propres fonctions en cours de tâche et le juge les approuve ; les managers créent des spécialistes quand l’effectif fixe ne couvre pas la tâche. Mémoire cognitive avec la courbe de l’oubli d’Ebbinghaus et une mémoire de travail à 7 emplacements. 85.6% sur LongMemEval-S. Apache 2.0.",
+    "subtitle": "Runtime TypeScript open source pour des agents IA qui se souviennent, s’adaptent et créent de nouveaux outils. Chaque session sur le runtime complet est un GMI, une Generalized Mind Instance qui conserve sa propre persona, son humeur et sa mémoire et peut ajuster ses propres traits au fil du temps. Les agents écrivent leurs propres fonctions en cours de tâche et le juge les approuve ; les managers créent des spécialistes quand l’effectif fixe ne couvre pas la tâche. Mémoire cognitive avec la courbe de l’oubli d’Ebbinghaus et une mémoire de travail à 7 emplacements. 85.6% sur LongMemEval-S. Apache 2.0.",
     "ctaPrimary": "Essayer Voice Chat Assistant",
     "ctaSecondary": "Étoiler sur GitHub",
     "codeLabel": "npm install @framers/agentos",
@@ -628,7 +628,7 @@
       },
       "queryRouter": {
         "question": "Comment fonctionne le QueryRouter ?",
-        "answer": "Le QueryRouter classe chaque requête dans l’un de 4 niveaux et récupère en conséquence : T0 répond depuis la conversation sans récupération, T1 lance une seule recherche vectorielle (une recherche par mots-clés quand aucun fournisseur d’embeddings n’est configuré), T2 récupère 15 extraits, ajoute des extraits liés par l’expansion du graphe et reclasse l’ensemble pour garder les 5 meilleurs, et T3 fait cette récupération puis, quand la recherche approfondie est activée (par défaut, quand SERPER_API_KEY est définie), une passe de recherche approfondie dont il fusionne les résultats. Il répond ensuite à partir de ce qu’il a récupéré et renvoie la réponse avec les citations de ses sources."
+        "answer": "Le QueryRouter classe chaque requête dans l’un de 4 niveaux et récupère en conséquence : T0 répond depuis la conversation sans récupération, T1 lance une seule recherche vectorielle (une recherche par mots-clés quand aucun fournisseur d’embeddings n’est configuré), T2 récupère 15 extraits, ajoute des extraits liés par l’expansion du graphe et reclasse l’ensemble pour garder les 5 meilleurs, et T3 découpe la requête en phrases, en 5 sous-requêtes au plus, récupère 10 extraits pour chacune, ajoute des extraits liés par l’expansion du graphe, reclasse l’ensemble pour garder les 10 meilleurs puis, quand la recherche approfondie est activée (par défaut, quand SERPER_API_KEY est définie), lance une passe de recherche approfondie dont il fusionne les résultats. Il répond ensuite à partir de ce qu’il a récupéré et renvoie la réponse avec les citations de ses sources."
       },
       "adaptiveIntelligence": {
         "question": "Qu’est-ce que l’intelligence adaptative ?",
@@ -658,7 +658,7 @@
       },
       "voice": {
         "question": "Comment ajouter des capacités vocales ?",
-        "answer": "AgentOS gère la voix avec VoicePipelineOrchestrator. Vous lui fournissez une session STT en streaming, une session TTS en streaming, un détecteur de fin de tour et un gestionnaire d’interruption (barge-in), et il les relie à une session d’agent via un transport tel qu’un WebSocket. Le catalogue vocal liste 12 fournisseurs STT et 13 fournisseurs TTS. Parmi eux, 11 fournisseurs STT, dont Whisper (OpenAI), Deepgram et AssemblyAI, et 10 fournisseurs TTS, dont ElevenLabs, OpenAI TTS et Google Cloud TTS, sont disponibles. Les quatre autres entrées (NVIDIA NeMo, Coqui XTTS, Bark et StyleTTS2) sont marquées comme indisponibles, et le résolveur de fournisseurs les ignore. Les fournisseurs Twilio, Telnyx et Plivo passent et terminent des appels téléphoniques."
+        "answer": "AgentOS gère la voix avec VoicePipelineOrchestrator. Vous lui fournissez une session STT en streaming, une session TTS en streaming, un détecteur de fin de tour et un gestionnaire d’interruption (barge-in), et il les relie à une session d’agent via un transport tel qu’un WebSocket. Le catalogue vocal liste 13 fournisseurs STT et 13 fournisseurs TTS. Parmi eux, 11 fournisseurs STT, dont Whisper (OpenAI), Deepgram et AssemblyAI, et 10 fournisseurs TTS, dont ElevenLabs, OpenAI TTS et Google Cloud TTS, sont disponibles. Les cinq autres entrées (Whisper.cpp, NVIDIA NeMo, Coqui XTTS, Bark et StyleTTS2) sont marquées comme indisponibles, et le résolveur de fournisseurs les ignore. Les fournisseurs Twilio, Telnyx et Plivo passent et terminent des appels téléphoniques."
       },
       "deploy": {
         "question": "Comment déployer AgentOS ?",

@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Open Source · TypeScript · Production-Ready",
     "title": "Open-Source TypeScript AI Agent Runtime",
-    "subtitle": "Open-source TypeScript runtime for AI agents that remember, adapt, and spawn new tools. Every session on the runtime is a GMI, a Generalized Mind Instance that keeps its own persona, mood and memory and can adjust its own traits over time. Agents write their own functions mid-task and the judge approves them; managers create specialists when the static roster does not cover the task. Cognitive memory with an Ebbinghaus forgetting curve and a 7-slot working memory. 85.6% on LongMemEval-S. Apache 2.0.",
+    "subtitle": "Open-source TypeScript runtime for AI agents that remember, adapt, and spawn new tools. Every session on the full runtime is a GMI, a Generalized Mind Instance that keeps its own persona, mood and memory and can adjust its own traits over time. Agents write their own functions mid-task and the judge approves them; managers create specialists when the static roster does not cover the task. Cognitive memory with an Ebbinghaus forgetting curve and a 7-slot working memory. 85.6% on LongMemEval-S. Apache 2.0.",
     "cycleWords": [
       "Adaptive",
       "Emergent"
@@ -586,7 +586,7 @@
       },
       "queryRouter": {
         "question": "How does the QueryRouter work?",
-        "answer": "The QueryRouter classifies each query into one of 4 tiers and retrieves to match: T0 answers from the conversation with no retrieval, T1 runs a single vector search (a keyword search when no embedding provider is configured), T2 retrieves 15 chunks, adds related chunks through graph expansion and reranks the merged set to the top 5, and T3 runs that retrieval and then, when deep research is enabled (by default when SERPER_API_KEY is set), a deep-research pass whose findings it merges in. It then answers from what it retrieved and returns the answer with its source citations."
+        "answer": "The QueryRouter classifies each query into one of 4 tiers and retrieves to match: T0 answers from the conversation with no retrieval, T1 runs a single vector search (a keyword search when no embedding provider is configured), T2 retrieves 15 chunks, adds related chunks through graph expansion and reranks the merged set to the top 5, and T3 splits the query at sentence breaks into up to 5 sub-queries, retrieves 10 chunks for each, adds related chunks through graph expansion, reranks the merged set to the top 10 and then, when deep research is enabled (by default when SERPER_API_KEY is set), runs a deep-research pass whose findings it merges in. It then answers from what it retrieved and returns the answer with its source citations."
       },
       "adaptiveIntelligence": {
         "question": "What is adaptive intelligence?",
@@ -616,7 +616,7 @@
       },
       "voice": {
         "question": "How do I add voice capabilities?",
-        "answer": "AgentOS runs voice through VoicePipelineOrchestrator. You give it a streaming STT session, a streaming TTS session, an endpoint detector and a barge-in handler, and it connects them to an agent session over a transport such as a WebSocket. The speech catalog lists 12 STT providers and 13 TTS providers. Of these, 11 STT providers, including Whisper (OpenAI), Deepgram and AssemblyAI, and 10 TTS providers, including ElevenLabs, OpenAI TTS and Google Cloud TTS, are available. The other four entries (NVIDIA NeMo, Coqui XTTS, Bark and StyleTTS2) are marked unavailable, and the provider resolver skips them. Twilio, Telnyx and Plivo providers place and end phone calls."
+        "answer": "AgentOS runs voice through VoicePipelineOrchestrator. You give it a streaming STT session, a streaming TTS session, an endpoint detector and a barge-in handler, and it connects them to an agent session over a transport such as a WebSocket. The speech catalog lists 13 STT providers and 13 TTS providers. Of these, 11 STT providers, including Whisper (OpenAI), Deepgram and AssemblyAI, and 10 TTS providers, including ElevenLabs, OpenAI TTS and Google Cloud TTS, are available. The other five entries (Whisper.cpp, NVIDIA NeMo, Coqui XTTS, Bark and StyleTTS2) are marked unavailable, and the provider resolver skips them. Twilio, Telnyx and Plivo providers place and end phone calls."
       },
       "deploy": {
         "question": "How do I deploy AgentOS?",

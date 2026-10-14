@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Open Source · Adaptiv · Emergent",
     "title": "Produktionsfertige KI-Agenten-Laufzeit für Adaptive & Emergente Intelligenz",
-    "subtitle": "Open-Source-TypeScript-Runtime für KI-Agenten, die sich erinnern, anpassen und neue Tools erzeugen. Jede Sitzung auf der Runtime ist ein GMI, eine Generalized Mind Instance, die ihre eigene Persona, Stimmung und ihr Gedächtnis behält und ihre eigenen Merkmale mit der Zeit anpassen kann. Agenten schreiben mitten in der Aufgabe eigene Funktionen, und der Judge genehmigt sie; Manager erzeugen Spezialisten, wenn das feste Roster die Aufgabe nicht abdeckt. Kognitives Gedächtnis mit der Ebbinghaus-Vergessenskurve und einem Arbeitsgedächtnis mit 7 Slots. 85.6% auf LongMemEval-S. Apache 2.0.",
+    "subtitle": "Open-Source-TypeScript-Runtime für KI-Agenten, die sich erinnern, anpassen und neue Tools erzeugen. Jede Sitzung auf der vollständigen Runtime ist ein GMI, eine Generalized Mind Instance, die ihre eigene Persona, Stimmung und ihr Gedächtnis behält und ihre eigenen Merkmale mit der Zeit anpassen kann. Agenten schreiben mitten in der Aufgabe eigene Funktionen, und der Judge genehmigt sie; Manager erzeugen Spezialisten, wenn das feste Roster die Aufgabe nicht abdeckt. Kognitives Gedächtnis mit der Ebbinghaus-Vergessenskurve und einem Arbeitsgedächtnis mit 7 Slots. 85.6% auf LongMemEval-S. Apache 2.0.",
     "cycleWords": [
       "Adaptiv",
       "Emergent"
@@ -588,7 +588,7 @@
       },
       "queryRouter": {
         "question": "Wie funktioniert der QueryRouter?",
-        "answer": "Der QueryRouter ordnet jede Anfrage einer von 4 Stufen zu und ruft entsprechend ab: T0 antwortet aus der Unterhaltung ohne Abruf, T1 führt eine einzelne Vektorsuche aus (eine Stichwortsuche, wenn kein Embedding-Anbieter konfiguriert ist), T2 ruft 15 Abschnitte ab, ergänzt verwandte Abschnitte per Graph-Expansion und ordnet die zusammengeführte Menge neu, bis die besten 5 bleiben, und T3 führt diesen Abruf aus und danach, wenn Deep Research aktiviert ist (standardmäßig, wenn SERPER_API_KEY gesetzt ist), einen Deep-Research-Durchlauf, dessen Ergebnisse er zusammenführt. Danach antwortet er auf Basis des Abgerufenen und liefert die Antwort mit Quellenangaben."
+        "answer": "Der QueryRouter ordnet jede Anfrage einer von 4 Stufen zu und ruft entsprechend ab: T0 antwortet aus der Unterhaltung ohne Abruf, T1 führt eine einzelne Vektorsuche aus (eine Stichwortsuche, wenn kein Embedding-Anbieter konfiguriert ist), T2 ruft 15 Abschnitte ab, ergänzt verwandte Abschnitte per Graph-Expansion und ordnet die zusammengeführte Menge neu, bis die besten 5 bleiben, und T3 teilt die Anfrage an Satzgrenzen in bis zu 5 Teilanfragen, ruft für jede 10 Abschnitte ab, ergänzt verwandte Abschnitte per Graph-Expansion, ordnet die zusammengeführte Menge neu, bis die besten 10 bleiben, und führt danach, wenn Deep Research aktiviert ist (standardmäßig, wenn SERPER_API_KEY gesetzt ist), einen Deep-Research-Durchlauf aus, dessen Ergebnisse er zusammenführt. Danach antwortet er auf Basis des Abgerufenen und liefert die Antwort mit Quellenangaben."
       },
       "adaptiveIntelligence": {
         "question": "Was ist adaptive Intelligenz?",
@@ -618,7 +618,7 @@
       },
       "voice": {
         "question": "Wie füge ich Sprachfunktionen hinzu?",
-        "answer": "AgentOS verarbeitet Sprache mit dem VoicePipelineOrchestrator. Du gibst ihm eine Streaming-STT-Sitzung, eine Streaming-TTS-Sitzung, einen Endpunkt-Detektor und einen Barge-in-Handler, und er verbindet sie über einen Transport wie einen WebSocket mit einer Agenten-Sitzung. Der Sprachkatalog listet 12 STT-Anbieter und 13 TTS-Anbieter. Davon sind 11 STT-Anbieter, darunter Whisper (OpenAI), Deepgram und AssemblyAI, und 10 TTS-Anbieter, darunter ElevenLabs, OpenAI TTS und Google Cloud TTS, verfügbar. Die übrigen vier Einträge (NVIDIA NeMo, Coqui XTTS, Bark und StyleTTS2) sind als nicht verfügbar markiert, und der Provider-Resolver überspringt sie. Die Anbieter Twilio, Telnyx und Plivo starten und beenden Telefonanrufe."
+        "answer": "AgentOS verarbeitet Sprache mit dem VoicePipelineOrchestrator. Du gibst ihm eine Streaming-STT-Sitzung, eine Streaming-TTS-Sitzung, einen Endpunkt-Detektor und einen Barge-in-Handler, und er verbindet sie über einen Transport wie einen WebSocket mit einer Agenten-Sitzung. Der Sprachkatalog listet 13 STT-Anbieter und 13 TTS-Anbieter. Davon sind 11 STT-Anbieter, darunter Whisper (OpenAI), Deepgram und AssemblyAI, und 10 TTS-Anbieter, darunter ElevenLabs, OpenAI TTS und Google Cloud TTS, verfügbar. Die übrigen fünf Einträge (Whisper.cpp, NVIDIA NeMo, Coqui XTTS, Bark und StyleTTS2) sind als nicht verfügbar markiert, und der Provider-Resolver überspringt sie. Die Anbieter Twilio, Telnyx und Plivo starten und beenden Telefonanrufe."
       },
       "deploy": {
         "question": "Wie stelle ich AgentOS bereit?",
