@@ -363,6 +363,8 @@ export default async function LocaleLayout({
                 <ul className="space-y-2 text-sm">
                   <li><a href="https://docs.agentos.sh" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent-primary transition-colors">{tFooter('docsGuides')}</a></li>
                   <li><a href="https://docs.agentos.sh/api" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent-primary transition-colors">{tFooter('apiReferenceTSDoc')}</a></li>
+                  <li><a href="https://docs.agentos.sh/architecture/gmi" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent-primary transition-colors">{tNav('gmis')}</a></li>
+                  <li><a href="https://docs.agentos.sh/benchmarks/gmi-vs-agent" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent-primary transition-colors">{tFooter('gmiVsAgentStudy')}</a></li>
                   <li><a href={`/${locale}/guides`} className="text-text-secondary hover:text-accent-primary transition-colors">{tNav('guides') || 'Guides'}</a></li>
                   <li><a href={`/${locale}/#code`} className="text-text-secondary hover:text-accent-primary transition-colors">{tFooter('examples')}</a></li>
                   <li><a href="https://github.com/framerslab/agentos/releases" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent-primary transition-colors">{tFooter('releaseNotes')}</a></li>

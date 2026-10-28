@@ -23,6 +23,7 @@ export function SiteHeader() {
   const localePrefix = `/${locale}`;
   const NAV_LINKS = useMemo(() => [
     { href: `${localePrefix}/features`, label: t('features') },
+    { href: 'https://docs.agentos.sh/architecture/gmi', label: t('gmis') },
     { href: `${localePrefix}/about`, label: t('about') },
     { href: 'https://paracosm.agentos.sh', label: 'Paracosm' },
     { href: 'https://docs.agentos.sh/', label: 'Docs' },

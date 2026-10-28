@@ -9,6 +9,7 @@
   },
   "nav": {
     "features": "기능",
+    "gmis": "GMIs",
     "docs": "문서",
     "guides": "가이드",
     "apiReference": "API 참조",
@@ -143,6 +144,7 @@
     "resources": "리소스",
     "docsGuides": "문서(가이드)",
     "apiReferenceTSDoc": "API 참조(TypeDoc/TSDoc)",
+    "gmiVsAgentStudy": "GMI와 agent 비교 연구",
     "examples": "예제",
     "releaseNotes": "릴리스 노트",
     "discord": "Discord",
