@@ -163,7 +163,7 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-5 lg:gap-7 text-sm font-medium lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-5 lg:gap-7 text-sm font-medium xl:flex" aria-label="Main navigation">
           {NAV_LINKS.map((link) => {
             const localizedHref = localizeHref(link.href);
             const isExternal = localizedHref.startsWith('http');
@@ -241,7 +241,7 @@ export function SiteHeader() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen((open) => !open)}
-            className="inline-flex items-center justify-center p-2 rounded-xl glass-morphism hover:bg-accent-primary/10 transition-all lg:hidden min-h-[44px] min-w-[44px]"
+            className="inline-flex items-center justify-center p-2 rounded-xl glass-morphism hover:bg-accent-primary/10 transition-all xl:hidden min-h-[44px] min-w-[44px]"
           >
             {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -252,7 +252,7 @@ export function SiteHeader() {
       {/* Mobile menu */}
       <div
         ref={menuRef}
-        className={`lg:hidden transition-all duration-200 ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
+        className={`xl:hidden transition-all duration-200 ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
         id="mobile-menu"
         style={{ display: menuOpen ? 'block' : 'none' }}
       >
