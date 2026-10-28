@@ -74,6 +74,19 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (!menuOpen) return;
+    // The menu is for widths below Tailwind's xl, where the inline links take
+    // over. Close it when the window grows past that, so it does not stay open
+    // beside them with the page scroll still locked.
+    const desktop = window.matchMedia('(min-width: 1280px)');
+    const closeOnDesktop = () => {
+      if (desktop.matches) setMenuOpen(false);
+    };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
     const container = menuRef.current;
     const focusable = container?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [];
     focusable[0]?.focus();
