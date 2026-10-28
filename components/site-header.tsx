@@ -262,14 +262,16 @@ export function SiteHeader() {
       </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu. It fits the screen below the 4.25rem (68px) bar: on a
+          short screen the link card scrolls, and the theme and language
+          controls stay in view under it. */}
       <div
         ref={menuRef}
-        className={`xl:hidden transition-all duration-200 ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
+        className={`xl:hidden flex-col max-h-[calc(100dvh-4.25rem)] transition-all duration-200 ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
         id="mobile-menu"
-        style={{ display: menuOpen ? 'block' : 'none' }}
+        style={{ display: menuOpen ? 'flex' : 'none' }}
       >
-        <div className="mx-4 mt-2 rounded-2xl glass-morphism shadow-modern overflow-hidden">
+        <div className="mx-4 mt-2 min-h-0 overflow-y-auto overscroll-contain rounded-2xl glass-morphism shadow-modern">
           <nav className="flex flex-col" aria-label="Mobile navigation">
             {NAV_LINKS.map((link) => {
               const localizedHref = localizeHref(link.href);
@@ -311,10 +313,10 @@ export function SiteHeader() {
           </nav>
         </div>
         {/* Theme & language controls — mobile only.
-            Rendered OUTSIDE the overflow-hidden nav card so the
-            ThemeSelector and LanguageSwitcher dropdowns can extend
-            below their triggers without being clipped. */}
-        <div className="mx-4 mb-4 mt-2 flex items-center justify-center gap-3 rounded-2xl glass-morphism shadow-modern px-6 py-3 sm:hidden">
+            Rendered OUTSIDE the scrolling nav card, and kept from
+            shrinking, so they stay on screen and the card does not
+            clip the ThemeSelector and LanguageSwitcher dropdowns. */}
+        <div className="mx-4 mb-4 mt-2 flex shrink-0 items-center justify-center gap-3 rounded-2xl glass-morphism shadow-modern px-6 py-3 sm:hidden">
           <ModeToggle />
           <ThemeSelector />
           <LanguageSwitcher />
