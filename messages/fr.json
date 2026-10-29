@@ -9,6 +9,7 @@
   },
   "nav": {
     "features": "Fonctionnalités",
+    "gmis": "GMIs",
     "docs": "Documentation",
     "guides": "Guides",
     "apiReference": "Référence API",
@@ -143,6 +144,7 @@
     "resources": "Ressources",
     "docsGuides": "Docs (Guides)",
     "apiReferenceTSDoc": "Référence API (TypeDoc/TSDoc)",
+    "gmiVsAgentStudy": "Étude GMI vs agent",
     "examples": "Exemples",
     "releaseNotes": "Notes de version",
     "discord": "Discord",

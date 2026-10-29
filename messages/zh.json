@@ -9,6 +9,7 @@
   },
   "nav": {
     "features": "功能",
+    "gmis": "GMIs",
     "docs": "文档",
     "guides": "指南",
     "apiReference": "API参考",
@@ -223,6 +224,7 @@
     "resources": "资源",
     "docsGuides": "文档（指南）",
     "apiReferenceTSDoc": "API参考（TypeDoc/TSDoc）",
+    "gmiVsAgentStudy": "GMI 与 agent 对比研究",
     "examples": "示例",
     "releaseNotes": "发布说明",
     "discord": "Discord",

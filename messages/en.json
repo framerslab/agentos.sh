@@ -9,6 +9,7 @@
   },
   "nav": {
     "features": "Features",
+    "gmis": "GMIs",
     "docs": "Docs",
     "guides": "Guides",
     "apiReference": "API Reference",
@@ -143,6 +144,7 @@
     "resources": "Resources",
     "docsGuides": "Docs (Guides)",
     "apiReferenceTSDoc": "API Reference (TypeDoc/TSDoc)",
+    "gmiVsAgentStudy": "GMI vs agent study",
     "examples": "Examples",
     "releaseNotes": "Release Notes",
     "discord": "Discord",

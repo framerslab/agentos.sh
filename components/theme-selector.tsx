@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Monitor } from 'lucide-react';
 import { themes, ThemeName, applyTheme, getDefaultTheme } from '@/lib/themes';
+import { revealInScrollingAncestor } from '@/lib/ui/reveal-in-scroller';
 import { useTheme } from 'next-themes';
 
 /* ── Per-theme SVG icons ─────────────────────────────────────────────── */
@@ -88,6 +89,7 @@ export function ThemeSelector() {
   const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -98,14 +100,23 @@ export function ThemeSelector() {
   // Flip the dropdown UP when there isn't enough room below the trigger.
   // Same pattern as LanguageSwitcher: estimate the menu height (~5 rows
   // × ~80px each + padding for the descriptive theme cards) and compare
-  // against the available space.
+  // against the available space, on the click that opens the dropdown.
+  const toggle = () => {
+    if (!isOpen && triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      const estimatedHeight = Object.keys(themes).length * 80 + 24;
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      setFlipUp(spaceBelow < estimatedHeight && spaceAbove > spaceBelow);
+    }
+    setIsOpen(!isOpen);
+  };
+
+  // Inside a container that scrolls (the header menu on a screen 20rem tall
+  // or less) the dropdown can open past the container's edge: scroll it into
+  // view.
   useEffect(() => {
-    if (!isOpen || !triggerRef.current) return;
-    const rect = triggerRef.current.getBoundingClientRect();
-    const estimatedHeight = Object.keys(themes).length * 80 + 24;
-    const spaceBelow = window.innerHeight - rect.bottom;
-    const spaceAbove = rect.top;
-    setFlipUp(spaceBelow < estimatedHeight && spaceAbove > spaceBelow);
+    if (isOpen && popupRef.current) revealInScrollingAncestor(popupRef.current);
   }, [isOpen]);
 
   useEffect(() => {
@@ -142,7 +153,7 @@ export function ThemeSelector() {
     <div className="relative" ref={dropdownRef}>
       <button
         ref={triggerRef}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggle}
         className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white/80 p-2 text-sm text-slate-700 shadow-sm transition hover:bg-white hover:shadow-md dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-800"
         aria-label="Select theme"
         aria-expanded={isOpen}
@@ -152,6 +163,7 @@ export function ThemeSelector() {
 
       {isOpen && (
         <div
+          ref={popupRef}
           className={`absolute right-0 z-[60] w-72 max-w-[calc(100vw-2rem)] max-h-[min(80vh,calc(100vh-6rem))] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900 ${
             flipUp ? 'bottom-full mb-2' : 'top-full mt-2'
           }`}

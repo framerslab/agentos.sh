@@ -10,6 +10,7 @@ import { ModeToggle } from './mode-toggle';
 import { ThemeSelector } from './theme-selector';
 import { LanguageSwitcher } from './language-switcher';
 import { DocSearch } from './docs/DocSearch';
+import { keepRendered, tabWrapTarget } from '@/lib/ui/focus-trap';
 
 /**
  * Enhanced SiteHeader with modern design and marketplace link
@@ -23,6 +24,7 @@ export function SiteHeader() {
   const localePrefix = `/${locale}`;
   const NAV_LINKS = useMemo(() => [
     { href: `${localePrefix}/features`, label: t('features') },
+    { href: 'https://docs.agentos.sh/architecture/gmi', label: t('gmis') },
     { href: `${localePrefix}/about`, label: t('about') },
     { href: 'https://paracosm.agentos.sh', label: 'Paracosm' },
     { href: 'https://docs.agentos.sh/', label: 'Docs' },
@@ -73,25 +75,37 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (!menuOpen) return;
+    // The menu is for widths below Tailwind's xl, where the inline links take
+    // over. Close it when the window grows past that, so it does not stay open
+    // beside them with the page scroll still locked.
+    const desktop = window.matchMedia('(min-width: 1280px)');
+    const closeOnDesktop = () => {
+      if (desktop.matches) setMenuOpen(false);
+    };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
     const container = menuRef.current;
-    const focusable = container?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [];
-    focusable[0]?.focus();
+    // Only rendered elements can take focus. From Tailwind's sm up the theme
+    // and language row is display: none, and a dropdown's items exist only
+    // while it is open, so the list is read again on every Tab.
+    const getFocusable = (): HTMLElement[] =>
+      container ? keepRendered(container.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')) : [];
+    getFocusable()[0]?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setMenuOpen(false);
         return;
       }
-      if (event.key === 'Tab' && focusable.length > 0) {
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
+      if (event.key !== 'Tab') return;
+      const target = tabWrapTarget(getFocusable(), document.activeElement, event.shiftKey);
+      if (target) {
+        event.preventDefault();
+        target.focus();
       }
     };
 
@@ -162,7 +176,7 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-5 lg:gap-7 text-sm font-medium lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-5 lg:gap-7 text-sm font-medium xl:flex" aria-label="Main navigation">
           {NAV_LINKS.map((link) => {
             const localizedHref = localizeHref(link.href);
             const isExternal = localizedHref.startsWith('http');
@@ -240,7 +254,7 @@ export function SiteHeader() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen((open) => !open)}
-            className="inline-flex items-center justify-center p-2 rounded-xl glass-morphism hover:bg-accent-primary/10 transition-all lg:hidden min-h-[44px] min-w-[44px]"
+            className="inline-flex items-center justify-center p-2 rounded-xl glass-morphism hover:bg-accent-primary/10 transition-all xl:hidden min-h-[44px] min-w-[44px]"
           >
             {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -248,14 +262,18 @@ export function SiteHeader() {
       </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu. It fits the screen below the 4.25rem (68px) bar: on a
+          short screen the link card scrolls, and the theme and language
+          controls stay in view under it. A screen 20rem (320px) tall or less
+          has no room for both, so there the card keeps its full height and
+          the whole menu scrolls as one list, from a swipe anywhere on it. */}
       <div
         ref={menuRef}
-        className={`lg:hidden transition-all duration-200 ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
+        className={`xl:hidden flex-col max-h-[calc(100dvh-4.25rem)] [@media(max-height:20rem)]:overflow-y-auto [@media(max-height:20rem)]:overscroll-contain transition-all duration-200 ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
         id="mobile-menu"
-        style={{ display: menuOpen ? 'block' : 'none' }}
+        style={{ display: menuOpen ? 'flex' : 'none' }}
       >
-        <div className="mx-4 mt-2 rounded-2xl glass-morphism shadow-modern overflow-hidden">
+        <div className="mx-4 mt-2 min-h-0 overflow-y-auto overscroll-contain rounded-2xl glass-morphism shadow-modern [@media(max-height:20rem)]:shrink-0 [@media(max-height:20rem)]:overscroll-auto">
           <nav className="flex flex-col" aria-label="Mobile navigation">
             {NAV_LINKS.map((link) => {
               const localizedHref = localizeHref(link.href);
@@ -297,10 +315,10 @@ export function SiteHeader() {
           </nav>
         </div>
         {/* Theme & language controls — mobile only.
-            Rendered OUTSIDE the overflow-hidden nav card so the
-            ThemeSelector and LanguageSwitcher dropdowns can extend
-            below their triggers without being clipped. */}
-        <div className="mx-4 mb-4 mt-2 flex items-center justify-center gap-3 rounded-2xl glass-morphism shadow-modern px-6 py-3 sm:hidden">
+            Rendered OUTSIDE the scrolling nav card, and kept from
+            shrinking, so they stay on screen and the card does not
+            clip the ThemeSelector and LanguageSwitcher dropdowns. */}
+        <div className="mx-4 mb-4 mt-2 flex shrink-0 items-center justify-center gap-3 rounded-2xl glass-morphism shadow-modern px-6 py-3 sm:hidden">
           <ModeToggle />
           <ThemeSelector />
           <LanguageSwitcher />
