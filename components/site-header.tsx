@@ -10,6 +10,7 @@ import { ModeToggle } from './mode-toggle';
 import { ThemeSelector } from './theme-selector';
 import { LanguageSwitcher } from './language-switcher';
 import { DocSearch } from './docs/DocSearch';
+import { keepRendered, tabWrapTarget } from '@/lib/ui/focus-trap';
 
 /**
  * Enhanced SiteHeader with modern design and marketplace link
@@ -88,24 +89,23 @@ export function SiteHeader() {
   useEffect(() => {
     if (!menuOpen) return;
     const container = menuRef.current;
-    const focusable = container?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [];
-    focusable[0]?.focus();
+    // Only rendered elements can take focus. From Tailwind's sm up the theme
+    // and language row is display: none, and a dropdown's items exist only
+    // while it is open, so the list is read again on every Tab.
+    const getFocusable = (): HTMLElement[] =>
+      container ? keepRendered(container.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')) : [];
+    getFocusable()[0]?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setMenuOpen(false);
         return;
       }
-      if (event.key === 'Tab' && focusable.length > 0) {
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
+      if (event.key !== 'Tab') return;
+      const target = tabWrapTarget(getFocusable(), document.activeElement, event.shiftKey);
+      if (target) {
+        event.preventDefault();
+        target.focus();
       }
     };
 
