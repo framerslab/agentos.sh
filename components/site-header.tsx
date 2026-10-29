@@ -264,14 +264,16 @@ export function SiteHeader() {
 
       {/* Mobile menu. It fits the screen below the 4.25rem (68px) bar: on a
           short screen the link card scrolls, and the theme and language
-          controls stay in view under it. */}
+          controls stay in view under it. A screen 20rem (320px) tall or less
+          has no room for both, so there the card keeps its full height and
+          the whole menu scrolls as one list. */}
       <div
         ref={menuRef}
-        className={`xl:hidden flex-col max-h-[calc(100dvh-4.25rem)] transition-all duration-200 ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
+        className={`xl:hidden flex-col max-h-[calc(100dvh-4.25rem)] [@media(max-height:20rem)]:overflow-y-auto [@media(max-height:20rem)]:overscroll-contain transition-all duration-200 ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
         id="mobile-menu"
         style={{ display: menuOpen ? 'flex' : 'none' }}
       >
-        <div className="mx-4 mt-2 min-h-0 overflow-y-auto overscroll-contain rounded-2xl glass-morphism shadow-modern">
+        <div className="mx-4 mt-2 min-h-0 overflow-y-auto overscroll-contain rounded-2xl glass-morphism shadow-modern [@media(max-height:20rem)]:shrink-0">
           <nav className="flex flex-col" aria-label="Mobile navigation">
             {NAV_LINKS.map((link) => {
               const localizedHref = localizeHref(link.href);
