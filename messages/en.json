@@ -1096,7 +1096,7 @@
     "highlightSCi": "Per-category reader router (gpt-4o + gpt-5-mini) · 84.2% with gpt-4o alone, level with Mastra OM gpt-4o (84.23%) · $0.0090 per correct (reader and judge tokens) · 3.6-second median latency · router calibrated on the same 500 questions, no hold-out set",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "Per-category reader router, top-5 retrieval · $0.0078 per correct · the LongMemEval paper's best GPT-4o setup scores 72.0% at top-10",
+    "highlightMCi": "Per-category reader router, top-5 retrieval · $0.0078 per correct (reader and judge tokens) · the LongMemEval paper's best GPT-4o setup scores 72.0% at top-10 · router calibrated on the S questions, which M shares; no hold-out set",
     "matrixIntro": "AgentOS rows and the EmergenceMem Simple Fast rerun come from agentos-bench runs on the 500-question LongMemEval sets, judged by gpt-4o-2024-08-06 with the LongMemEval rubric. Vendor rows are the numbers each vendor publishes.",
     "ctaReadAudit": "Read the Transparency Audit",
     "ctaSeeRunJsons": "See agentos-bench on GitHub",

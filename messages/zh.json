@@ -1096,7 +1096,7 @@
     "highlightSCi": "按类别的读取模型路由（gpt-4o + gpt-5-mini）· 仅用 gpt-4o 为 84.2%，与 Mastra OM gpt-4o（84.23%）持平 · 每个正确答案 $0.0090（仅读取模型和裁判的 token） · 中位延迟 3.6 秒 · 路由在同样的 500 道题上校准（无留出集）",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "按类别的读取模型路由，top-5 检索 · 每个正确答案 $0.0078 · LongMemEval 论文中最佳 GPT-4o 配置在 top-10 下为 72.0%",
+    "highlightMCi": "按类别的读取模型路由，top-5 检索 · 每个正确答案 $0.0078（仅读取模型和裁判的 token） · LongMemEval 论文中最佳 GPT-4o 配置在 top-10 下为 72.0% · 路由在 M 与 S 共用的问题上校准（无留出集）",
     "matrixIntro": "AgentOS 各行以及 EmergenceMem Simple Fast 的复现结果来自 agentos-bench 在 500 题 LongMemEval 数据集上的运行，由 gpt-4o-2024-08-06 按 LongMemEval 评分标准判分。厂商行是各厂商公布的数字。",
     "ctaReadAudit": "阅读透明度审计",
     "ctaSeeRunJsons": "在 GitHub 上查看 agentos-bench",

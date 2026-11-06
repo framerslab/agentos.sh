@@ -1096,7 +1096,7 @@
     "highlightSCi": "Roteador de leitor por categoria (gpt-4o + gpt-5-mini) · 84.2% só com gpt-4o, empatado com Mastra OM gpt-4o (84.23%) · $0.0090 por acerto (tokens do leitor e do juiz) · latência mediana de 3.6 segundos · roteador calibrado nas mesmas 500 perguntas, sem conjunto de validação separado",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "Roteador de leitor por categoria, recuperação top-5 · $0.0078 por acerto · a melhor configuração com GPT-4o do artigo do LongMemEval marca 72.0% em top-10",
+    "highlightMCi": "Roteador de leitor por categoria, recuperação top-5 · $0.0078 por acerto (tokens do leitor e do juiz) · a melhor configuração com GPT-4o do artigo do LongMemEval marca 72.0% em top-10 · roteador calibrado nas perguntas do S, que o M compartilha; sem conjunto de validação separado",
     "matrixIntro": "As linhas do AgentOS e a reexecução do EmergenceMem Simple Fast vêm de execuções do agentos-bench nos conjuntos de 500 perguntas do LongMemEval, avaliadas pelo gpt-4o-2024-08-06 com a rubrica do LongMemEval. As linhas dos fornecedores são os números que cada um publica.",
     "ctaReadAudit": "Ler a Auditoria de Transparência",
     "ctaSeeRunJsons": "Ver o agentos-bench no GitHub",

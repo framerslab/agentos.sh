@@ -1096,7 +1096,7 @@
     "highlightSCi": "범주별 리더 라우터(gpt-4o + gpt-5-mini) · gpt-4o만으로 84.2%, Mastra OM gpt-4o(84.23%)와 동률 · 정답당 $0.0090(리더와 심판 토큰만) · 지연 시간 중앙값 3.6초 · 라우터는 같은 500개 질문으로 보정(홀드아웃 없음)",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "범주별 리더 라우터, top-5 검색 · 정답당 $0.0078 · LongMemEval 논문의 최고 GPT-4o 설정은 top-10에서 72.0%",
+    "highlightMCi": "범주별 리더 라우터, top-5 검색 · 정답당 $0.0078(리더와 심판 토큰만) · LongMemEval 논문의 최고 GPT-4o 설정은 top-10에서 72.0% · 라우터는 M과 같은 S 질문으로 보정(홀드아웃 없음)",
     "matrixIntro": "AgentOS 행과 EmergenceMem Simple Fast 재실행은 500문항 LongMemEval 세트에 대한 agentos-bench 실행 결과이며, LongMemEval 채점 기준으로 gpt-4o-2024-08-06이 채점했습니다. 벤더 행은 각 벤더가 공개한 수치입니다.",
     "ctaReadAudit": "투명성 감사 읽기",
     "ctaSeeRunJsons": "GitHub에서 agentos-bench 보기",
