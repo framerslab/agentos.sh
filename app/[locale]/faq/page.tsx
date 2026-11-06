@@ -107,7 +107,7 @@ function FAQJsonLd({ locale: _locale }: { locale: string }) {
   const faqs = [
     {
       q: 'What is AgentOS?',
-      a: 'AgentOS is an open-source TypeScript runtime for building production AI agents with multi-agent orchestration, cognitive memory, multimodal RAG, opt-in safety guardrails, voice pipelines, 37 channel adapters, and 13 LLM providers.',
+      a: 'AgentOS is an open-source TypeScript runtime for building production AI agents with multi-agent orchestration, cognitive memory, multimodal RAG, opt-in safety guardrails, voice pipelines, 37 channel adapters, and 14 LLM providers.',
     },
     {
       q: 'Is AgentOS free and open source?',
@@ -115,7 +115,7 @@ function FAQJsonLd({ locale: _locale }: { locale: string }) {
     },
     {
       q: 'What LLM providers are supported?',
-      a: 'AgentOS supports 13 LLM providers: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI, OpenRouter, Requesty, LiteLLM, Ollama, Claude Code CLI and Gemini CLI.',
+      a: 'AgentOS supports 14 LLM providers: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI, OpenRouter, Requesty, LiteLLM, Ollama, MiniMax, Claude Code CLI and Gemini CLI.',
     },
     {
       q: 'How does cognitive memory work?',
