@@ -25,7 +25,7 @@
 
 AgentOS is [Frame.dev](https://frame.dev)'s open-source TypeScript runtime for AI agents. [Wilds.ai](https://wilds.ai) and [Paracosm](https://paracosm.agentos.sh) run their agents on it. Highlights:
 
-- **85.6%** on LongMemEval-S at $0.0090 per correct answer with a per-category reader router (gpt-4o and gpt-5-mini); **84.2%** with gpt-4o answering every question
+- **85.6%** on LongMemEval-S at $0.0090 per correct answer (LLM reader and judge tokens) with a per-category reader router (gpt-4o and gpt-5-mini) calibrated on the same 500 questions, with no hold-out set; **84.2%** with gpt-4o answering every question
 - **70.2%** on LongMemEval-M (about 1.5M tokens of history per question) with the same reader router
 - **8 memory mechanisms** from cognitive science, on top of Ebbinghaus decay and active when `cognitiveMechanisms` is set: reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist extraction, schema encoding, source-confidence decay, emotion regulation
 - **6 multi-agent orchestration strategies**: sequential, parallel, debate, review-loop, hierarchical, graph DAG

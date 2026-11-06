@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS (agentos.sh): Open Source TypeScript AI Agent Framework",
-    "description": "AgentOS at agentos.sh is an open-source TypeScript AI agent framework. Build autonomous agents with cognitive memory, runtime tool generation, multi-agent orchestration, and 13 LLM providers. 85.6% on LongMemEval-S. Apache 2.0. By Frame.dev.",
+    "description": "AgentOS at agentos.sh is an open-source TypeScript AI agent framework. Build autonomous agents with cognitive memory, runtime tool generation, multi-agent orchestration, and 14 LLM providers. 85.6% on LongMemEval-S. Apache 2.0. By Frame.dev.",
     "ogTitle": "AgentOS (agentos.sh): Open Source TypeScript AI Agent Framework",
-    "ogDescription": "AgentOS at agentos.sh: open-source TypeScript AI agent framework. Cognitive memory, runtime tool generation, multi-agent orchestration, voice pipelines, and 13 LLM providers. 85.6% on LongMemEval-S. Apache 2.0.",
+    "ogDescription": "AgentOS at agentos.sh: open-source TypeScript AI agent framework. Cognitive memory, runtime tool generation, multi-agent orchestration, voice pipelines, and 14 LLM providers. 85.6% on LongMemEval-S. Apache 2.0.",
     "twitterTitle": "AgentOS (agentos.sh): Open Source TypeScript AI Agent Framework",
-    "twitterDescription": "AgentOS at agentos.sh: open-source TypeScript AI agent framework. Cognitive memory, runtime tool generation, multi-agent orchestration, and 13 LLM providers. 85.6% LongMemEval-S. Apache 2.0."
+    "twitterDescription": "AgentOS at agentos.sh: open-source TypeScript AI agent framework. Cognitive memory, runtime tool generation, multi-agent orchestration, and 14 LLM providers. 85.6% LongMemEval-S. Apache 2.0."
   },
   "nav": {
     "features": "Features",
@@ -310,8 +310,8 @@
         ]
       },
       "providers": {
-        "title": "13 LLM Providers",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq, and 8 more with automatic fallback chains and provider-first API",
+        "title": "14 LLM Providers",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq, and 9 more with automatic fallback chains and provider-first API",
         "features": [
           "Auto fallback (402/429/5xx)",
           "Provider-first API",
@@ -328,7 +328,7 @@
   },
   "enterprise": {
     "title": "Enterprise-Ready Infrastructure",
-    "subtitle": "Safety guardrails, 13 LLM providers, 37 channel adapters and cognitive memory in one open-source runtime",
+    "subtitle": "Safety guardrails, 14 LLM providers, 37 channel adapters and cognitive memory in one open-source runtime",
     "features": {
       "security": {
         "title": "Agent Safety",
@@ -378,7 +378,7 @@
         "title": "Production Scale",
         "items": [
           "100+ curated extensions, 88 curated skills",
-          "13 LLM providers, 37 channel adapters",
+          "14 LLM providers, 37 channel adapters",
           "Video, audio, and image generation",
           "Self-improving agents with tool forging"
         ]
@@ -408,7 +408,7 @@
   },
   "ecosystem": {
     "title": "The AgentOS Ecosystem",
-    "subtitle": "Explore the open-source AgentOS ecosystem: multimodal RAG, multi-agent orchestration, 37 channel adapters, 13 LLM providers and 100+ curated extensions.",
+    "subtitle": "Explore the open-source AgentOS ecosystem: multimodal RAG, multi-agent orchestration, 37 channel adapters, 14 LLM providers and 100+ curated extensions.",
     "stats": {
       "repositories": "Repositories",
       "weeklyDownloads": "Weekly Downloads",
@@ -491,7 +491,7 @@
       },
       "llmCore": {
         "name": "LLM Core",
-        "description": "13 LLM providers with automatic fallback chains. Provider-first API design. The thinking engine at the heart of every GMI."
+        "description": "14 LLM providers with automatic fallback chains. Provider-first API design. The thinking engine at the heart of every GMI."
       }
     },
     "comparison": {
@@ -534,7 +534,7 @@
     "general": {
       "whatIsAgentOS": {
         "question": "What is AgentOS?",
-        "answer": "AgentOS is an open-source TypeScript runtime for building production AI agents, developed by Frame.dev. It provides multi-agent orchestration, cognitive memory, multimodal RAG, opt-in safety guardrails (PII redaction, content moderation, grounding checks), voice pipelines, 37 channel adapters, and 13 LLM provider integrations. AgentOS also powers the AI systems behind Wilds.ai, an AI-native gaming platform. Self-hostable and free."
+        "answer": "AgentOS is an open-source TypeScript runtime for building production AI agents, developed by Frame.dev. It provides multi-agent orchestration, cognitive memory, multimodal RAG, opt-in safety guardrails (PII redaction, content moderation, grounding checks), voice pipelines, 37 channel adapters, and 14 LLM provider integrations. AgentOS also powers the AI systems behind Wilds.ai, an AI-native gaming platform. Self-hostable and free."
       },
       "isOpenSource": {
         "question": "Is AgentOS free and open source?",
@@ -542,7 +542,7 @@
       },
       "llmProviders": {
         "question": "What LLM providers are supported?",
-        "answer": "AgentOS supports 13 LLM providers: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Requesty, LiteLLM, Ollama, Claude Code CLI and Gemini CLI. Provider fallback chains allow automatic failover."
+        "answer": "AgentOS supports 14 LLM providers: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Requesty, LiteLLM, Ollama, MiniMax, Claude Code CLI and Gemini CLI. Provider fallback chains allow automatic failover."
       },
       "language": {
         "question": "What programming language is AgentOS built in?",
@@ -1093,7 +1093,7 @@
     "tabM": "LongMemEval-M (1.5M tokens)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "Per-category reader router (gpt-4o + gpt-5-mini) · 84.2% with gpt-4o alone, level with Mastra OM gpt-4o (84.23%) · $0.0090 per correct · 3.6-second median latency",
+    "highlightSCi": "Per-category reader router (gpt-4o + gpt-5-mini) · 84.2% with gpt-4o alone, level with Mastra OM gpt-4o (84.23%) · $0.0090 per correct (reader and judge tokens) · 3.6-second median latency · router calibrated on the same 500 questions, no hold-out set",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
     "highlightMCi": "Per-category reader router, top-5 retrieval · $0.0078 per correct · the LongMemEval paper's best GPT-4o setup scores 72.0% at top-10",

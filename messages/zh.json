@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — 构建具有自适应智能的自主AI代理",
-    "description": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和13个LLM提供商。开源TypeScript运行时。",
+    "description": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和14个LLM提供商。开源TypeScript运行时。",
     "ogTitle": "AgentOS — 构建具有自适应智能的自主AI代理",
-    "ogDescription": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和13个LLM提供商。开源TypeScript运行时。",
+    "ogDescription": "构建具有自适应智能和涌现行为的自主AI代理。多模态RAG、认知记忆、流式护栏、语音管道和14个LLM提供商。开源TypeScript运行时。",
     "twitterTitle": "AgentOS — 构建具有自适应智能的自主AI代理",
-    "twitterDescription": "构建具有自适应智能和涌现行为的自主AI代理。认知记忆、多模态RAG、流式护栏和13个LLM提供商。开源TypeScript运行时。"
+    "twitterDescription": "构建具有自适应智能和涌现行为的自主AI代理。认知记忆、多模态RAG、流式护栏和14个LLM提供商。开源TypeScript运行时。"
   },
   "nav": {
     "features": "功能",
@@ -140,7 +140,7 @@
   },
   "enterprise": {
     "title": "企业级基础设施",
-    "subtitle": "安全护栏、13 个 LLM 提供商、37 个渠道适配器和认知记忆，集成于一个开源运行时",
+    "subtitle": "安全护栏、14 个 LLM 提供商、37 个渠道适配器和认知记忆，集成于一个开源运行时",
     "features": {
       "security": {
         "title": "5级安全体系",
@@ -190,7 +190,7 @@
         "title": "生产规模",
         "items": [
           "100 多个精选扩展，88 个精选技能",
-          "13 个 LLM 提供商，37 个渠道适配器",
+          "14 个 LLM 提供商，37 个渠道适配器",
           "视频、音频和图像生成",
           "通过工具锻造实现自我改进的代理"
         ]
@@ -298,7 +298,7 @@
       },
       "llmCore": {
         "name": "LLM 核心",
-        "description": "13 个 LLM 提供商，支持自动回退链。provider-first 的 API 设计。每个 GMI 核心的思考引擎。"
+        "description": "14 个 LLM 提供商，支持自动回退链。provider-first 的 API 设计。每个 GMI 核心的思考引擎。"
       }
     },
     "comparison": {
@@ -383,7 +383,7 @@
     "general": {
       "whatIsAgentOS": {
         "question": "AgentOS 是什么?",
-        "answer": "AgentOS 是一个用于构建生产级 AI 智能体的开源 TypeScript 运行时,由 Frame.dev 开发。它提供多智能体编排、认知记忆、多模态 RAG、可选的安全护栏(PII 编辑、内容审核、事实依据校验)、语音管道、37 个通道适配器和 13 个 LLM 提供商集成。AgentOS 还为 AI 原生游戏平台 Wilds.ai 提供 AI 系统支持。可自托管且免费。"
+        "answer": "AgentOS 是一个用于构建生产级 AI 智能体的开源 TypeScript 运行时,由 Frame.dev 开发。它提供多智能体编排、认知记忆、多模态 RAG、可选的安全护栏(PII 编辑、内容审核、事实依据校验)、语音管道、37 个通道适配器和 14 个 LLM 提供商集成。AgentOS 还为 AI 原生游戏平台 Wilds.ai 提供 AI 系统支持。可自托管且免费。"
       },
       "isOpenSource": {
         "question": "AgentOS 是免费且开源的吗?",
@@ -391,7 +391,7 @@
       },
       "llmProviders": {
         "question": "支持哪些 LLM 提供商?",
-        "answer": "AgentOS 支持 13 个 LLM 提供商:OpenAI、Anthropic、Google Gemini、Groq、Together AI、Mistral、xAI (Grok)、OpenRouter、Requesty、LiteLLM、Ollama、Claude Code CLI、Gemini CLI。提供商回退链支持自动故障转移。"
+        "answer": "AgentOS 支持 14 个 LLM 提供商:OpenAI、Anthropic、Google Gemini、Groq、Together AI、Mistral、xAI (Grok)、OpenRouter、Requesty、LiteLLM、Ollama、MiniMax、Claude Code CLI、Gemini CLI。提供商回退链支持自动故障转移。"
       },
       "language": {
         "question": "AgentOS 是用什么编程语言构建的?",
@@ -720,8 +720,8 @@
         ]
       },
       "providers": {
-        "title": "13 个 LLM 提供商",
-        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq 及另外 8 个，具有自动回退链和 provider-first API",
+        "title": "14 个 LLM 提供商",
+        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq 及另外 9 个，具有自动回退链和 provider-first API",
         "features": [
           "自动回退 (402/429/5xx)",
           "Provider-first API",
@@ -738,7 +738,7 @@
   },
   "ecosystem": {
     "title": "AgentOS 生态系统",
-    "subtitle": "探索开源的 AgentOS 生态系统：多模态 RAG、多智能体编排、37 个渠道适配器、13 个 LLM 提供商和 100 多个精选扩展。",
+    "subtitle": "探索开源的 AgentOS 生态系统：多模态 RAG、多智能体编排、37 个渠道适配器、14 个 LLM 提供商和 100 多个精选扩展。",
     "stats": {
       "repositories": "仓库",
       "weeklyDownloads": "每周下载量",
@@ -1093,7 +1093,7 @@
     "tabM": "LongMemEval-M (1.5M 个 token)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "按类别的读取模型路由（gpt-4o + gpt-5-mini）· 仅用 gpt-4o 为 84.2%，与 Mastra OM gpt-4o（84.23%）持平 · 每个正确答案 $0.0090 · 中位延迟 3.6 秒",
+    "highlightSCi": "按类别的读取模型路由（gpt-4o + gpt-5-mini）· 仅用 gpt-4o 为 84.2%，与 Mastra OM gpt-4o（84.23%）持平 · 每个正确答案 $0.0090（仅读取模型和裁判的 token） · 中位延迟 3.6 秒 · 路由在同样的 500 道题上校准（无留出集）",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
     "highlightMCi": "按类别的读取模型路由，top-5 检索 · 每个正确答案 $0.0078 · LongMemEval 论文中最佳 GPT-4o 配置在 top-10 下为 72.0%",

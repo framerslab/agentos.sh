@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — 適応型インテリジェンスを備えた自律AIエージェントの構築",
-    "description": "適応型インテリジェンスと創発的行動を備えた自律AIエージェントを構築。マルチモーダルRAG、認知メモリ、ストリーミングガードレール、音声パイプライン、13のLLMプロバイダー。オープンソースTypeScriptランタイム。",
+    "description": "適応型インテリジェンスと創発的行動を備えた自律AIエージェントを構築。マルチモーダルRAG、認知メモリ、ストリーミングガードレール、音声パイプライン、14のLLMプロバイダー。オープンソースTypeScriptランタイム。",
     "ogTitle": "AgentOS — 適応型インテリジェンスを備えた自律AIエージェントの構築",
-    "ogDescription": "適応型インテリジェンスと創発的行動を備えた自律AIエージェントを構築。マルチモーダルRAG、認知メモリ、ストリーミングガードレール、音声パイプライン、13のLLMプロバイダー。オープンソースTypeScriptランタイム。",
+    "ogDescription": "適応型インテリジェンスと創発的行動を備えた自律AIエージェントを構築。マルチモーダルRAG、認知メモリ、ストリーミングガードレール、音声パイプライン、14のLLMプロバイダー。オープンソースTypeScriptランタイム。",
     "twitterTitle": "AgentOS — 適応型インテリジェンスを備えた自律AIエージェントの構築",
-    "twitterDescription": "適応型インテリジェンスと創発的行動を備えた自律AIエージェントを構築。認知メモリ、マルチモーダルRAG、ストリーミングガードレール、13のLLMプロバイダー。オープンソースTypeScriptランタイム。"
+    "twitterDescription": "適応型インテリジェンスと創発的行動を備えた自律AIエージェントを構築。認知メモリ、マルチモーダルRAG、ストリーミングガードレール、14のLLMプロバイダー。オープンソースTypeScriptランタイム。"
   },
   "nav": {
     "features": "機能",
@@ -175,7 +175,7 @@
   "skipToMain": "メインコンテンツにスキップ",
   "enterprise": {
     "title": "エンタープライズ対応インフラストラクチャ",
-    "subtitle": "安全ガードレール、13 の LLM プロバイダー、37 のチャネルアダプター、認知メモリを 1 つのオープンソースランタイムに",
+    "subtitle": "安全ガードレール、14 の LLM プロバイダー、37 のチャネルアダプター、認知メモリを 1 つのオープンソースランタイムに",
     "features": {
       "security": {
         "title": "5段階セキュリティ",
@@ -225,7 +225,7 @@
         "title": "本番スケール",
         "items": [
           "100 以上の厳選された拡張機能、88 の厳選されたスキル",
-          "13 の LLM プロバイダー、37 のチャネルアダプター",
+          "14 の LLM プロバイダー、37 のチャネルアダプター",
           "動画、音声、画像生成",
           "ツールフォージングによる自己改善エージェント"
         ]
@@ -298,7 +298,7 @@
       },
       "llmCore": {
         "name": "LLM コア",
-        "description": "自動フォールバックチェーンを備えた 13 種の LLM プロバイダ。プロバイダーファーストの API 設計。各 GMI の中核をなす思考エンジン。"
+        "description": "自動フォールバックチェーンを備えた 14 種の LLM プロバイダ。プロバイダーファーストの API 設計。各 GMI の中核をなす思考エンジン。"
       }
     },
     "comparison": {
@@ -330,7 +330,7 @@
   },
   "ecosystem": {
     "title": "AgentOS エコシステム",
-    "subtitle": "オープンソースの AgentOS エコシステムを探索しましょう。マルチモーダル RAG、マルチエージェントオーケストレーション、37 のチャネルアダプター、13 の LLM プロバイダー、100 以上の厳選された拡張機能。",
+    "subtitle": "オープンソースの AgentOS エコシステムを探索しましょう。マルチモーダル RAG、マルチエージェントオーケストレーション、37 のチャネルアダプター、14 の LLM プロバイダー、100 以上の厳選された拡張機能。",
     "stats": {
       "repositories": "リポジトリ",
       "weeklyDownloads": "週間ダウンロード数",
@@ -423,7 +423,7 @@
     "general": {
       "whatIsAgentOS": {
         "question": "AgentOS とは?",
-        "answer": "AgentOS は本番運用 AI エージェントを構築するためのオープンソースの TypeScript ランタイムで、Frame.dev によって開発されています。マルチエージェント・オーケストレーション、認知メモリ、マルチモーダル RAG、オプトインの安全ガードレール(PII 編集、コンテンツモデレーション、グラウンディング検証)、音声パイプライン、37 のチャネルアダプタ、13 の LLM プロバイダ統合を提供します。AgentOS は AI ネイティブのゲーミングプラットフォーム Wilds.ai の AI システムも支えています。セルフホスト可能で無料です。"
+        "answer": "AgentOS は本番運用 AI エージェントを構築するためのオープンソースの TypeScript ランタイムで、Frame.dev によって開発されています。マルチエージェント・オーケストレーション、認知メモリ、マルチモーダル RAG、オプトインの安全ガードレール(PII 編集、コンテンツモデレーション、グラウンディング検証)、音声パイプライン、37 のチャネルアダプタ、14 の LLM プロバイダ統合を提供します。AgentOS は AI ネイティブのゲーミングプラットフォーム Wilds.ai の AI システムも支えています。セルフホスト可能で無料です。"
       },
       "isOpenSource": {
         "question": "AgentOS は無料でオープンソースですか?",
@@ -431,7 +431,7 @@
       },
       "llmProviders": {
         "question": "どの LLM プロバイダーがサポートされていますか?",
-        "answer": "AgentOS は 13 種の LLM プロバイダをサポートしています:OpenAI、Anthropic、Google Gemini、Groq、Together AI、Mistral、xAI(Grok)、OpenRouter、Requesty、LiteLLM、Ollama、Claude Code CLI、Gemini CLI。プロバイダのフォールバックチェーンにより自動フェイルオーバーが可能です。"
+        "answer": "AgentOS は 14 種の LLM プロバイダをサポートしています:OpenAI、Anthropic、Google Gemini、Groq、Together AI、Mistral、xAI(Grok)、OpenRouter、Requesty、LiteLLM、Ollama、MiniMax、Claude Code CLI、Gemini CLI。プロバイダのフォールバックチェーンにより自動フェイルオーバーが可能です。"
       },
       "language": {
         "question": "AgentOS はどのプログラミング言語で構築されていますか?",
@@ -760,8 +760,8 @@
         ]
       },
       "providers": {
-        "title": "13 種の LLM プロバイダ",
-        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq ほか 8 種、自動フォールバックチェーンとプロバイダーファーストAPI",
+        "title": "14 種の LLM プロバイダ",
+        "description": "OpenAI、Anthropic、Gemini、Ollama、Groq ほか 9 種、自動フォールバックチェーンとプロバイダーファーストAPI",
         "features": [
           "自動フォールバック (402/429/5xx)",
           "Provider-first API",
@@ -1093,7 +1093,7 @@
     "tabM": "LongMemEval-M (1.5M トークン)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "カテゴリ別リーダールーター（gpt-4o + gpt-5-mini）· gpt-4o のみで 84.2%、Mastra OM gpt-4o（84.23%）と同等 · 正解あたり $0.0090 · レイテンシ中央値 3.6 秒",
+    "highlightSCi": "カテゴリ別リーダールーター（gpt-4o + gpt-5-mini）· gpt-4o のみで 84.2%、Mastra OM gpt-4o（84.23%）と同等 · 正解あたり $0.0090（リーダーとジャッジのトークンのみ） · レイテンシ中央値 3.6 秒 · ルーターは同じ 500 問で調整（ホールドアウトなし）",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
     "highlightMCi": "カテゴリ別リーダールーター、top-5 検索 · 正解あたり $0.0078 · LongMemEval 論文の GPT-4o 最良構成は top-10 で 72.0%",

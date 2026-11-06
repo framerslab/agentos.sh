@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — Construa Agentes de IA Autônomos com Inteligência Adaptativa",
-    "description": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. RAG multimodal, memória cognitiva, guardrails em streaming, pipeline de voz e 13 provedores LLM. Runtime TypeScript open source.",
+    "description": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. RAG multimodal, memória cognitiva, guardrails em streaming, pipeline de voz e 14 provedores LLM. Runtime TypeScript open source.",
     "ogTitle": "AgentOS — Construa Agentes de IA Autônomos com Inteligência Adaptativa",
-    "ogDescription": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. RAG multimodal, memória cognitiva, guardrails em streaming, pipeline de voz e 13 provedores LLM. Runtime TypeScript open source.",
+    "ogDescription": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. RAG multimodal, memória cognitiva, guardrails em streaming, pipeline de voz e 14 provedores LLM. Runtime TypeScript open source.",
     "twitterTitle": "AgentOS — Construa Agentes de IA Autônomos com Inteligência Adaptativa",
-    "twitterDescription": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. Memória cognitiva, RAG multimodal, guardrails em streaming e 13 provedores LLM. Runtime TypeScript open source."
+    "twitterDescription": "Construa agentes de IA autônomos com inteligência adaptativa e comportamentos emergentes. Memória cognitiva, RAG multimodal, guardrails em streaming e 14 provedores LLM. Runtime TypeScript open source."
   },
   "nav": {
     "features": "Recursos",
@@ -175,7 +175,7 @@
   "skipToMain": "Ir para o conteúdo principal",
   "enterprise": {
     "title": "Infraestrutura Pronta para Empresas",
-    "subtitle": "Guardrails de segurança, 13 provedores de LLM, 37 adaptadores de canal e memória cognitiva em um único runtime open source",
+    "subtitle": "Guardrails de segurança, 14 provedores de LLM, 37 adaptadores de canal e memória cognitiva em um único runtime open source",
     "features": {
       "security": {
         "title": "Segurança de 5 Níveis",
@@ -225,7 +225,7 @@
         "title": "Escala de Produção",
         "items": [
           "Mais de 100 extensões curadas, 88 skills curadas",
-          "13 provedores de LLM, 37 adaptadores de canal",
+          "14 provedores de LLM, 37 adaptadores de canal",
           "Geração de vídeo, áudio e imagem",
           "Agentes auto-aperfeiçoantes com forja de ferramentas"
         ]
@@ -298,7 +298,7 @@
       },
       "llmCore": {
         "name": "Núcleo LLM",
-        "description": "13 provedores de LLM com cadeias de fallback automáticas. Design de API provider-first. O motor de raciocínio no centro de cada GMI."
+        "description": "14 provedores de LLM com cadeias de fallback automáticas. Design de API provider-first. O motor de raciocínio no centro de cada GMI."
       }
     },
     "comparison": {
@@ -330,7 +330,7 @@
   },
   "ecosystem": {
     "title": "O Ecossistema AgentOS",
-    "subtitle": "Explore o ecossistema open source do AgentOS: RAG multimodal, orquestração multiagente, 37 adaptadores de canal, 13 provedores de LLM e mais de 100 extensões curadas.",
+    "subtitle": "Explore o ecossistema open source do AgentOS: RAG multimodal, orquestração multiagente, 37 adaptadores de canal, 14 provedores de LLM e mais de 100 extensões curadas.",
     "stats": {
       "repositories": "Repositórios",
       "weeklyDownloads": "Downloads Semanais",
@@ -423,7 +423,7 @@
     "general": {
       "whatIsAgentOS": {
         "question": "O que é AgentOS?",
-        "answer": "AgentOS é um runtime TypeScript open-source para construir agentes de IA em produção, desenvolvido pela Frame.dev. Oferece orquestração multi-agente, memória cognitiva, RAG multimodal, guardrails de segurança opcionais (redação de PII, moderação de conteúdo, verificação de grounding), pipelines de voz, 37 adaptadores de canal e 13 integrações de provedores de LLM. AgentOS também alimenta os sistemas de IA por trás do Wilds.ai, uma plataforma de jogos AI-native. Self-hostable e gratuito."
+        "answer": "AgentOS é um runtime TypeScript open-source para construir agentes de IA em produção, desenvolvido pela Frame.dev. Oferece orquestração multi-agente, memória cognitiva, RAG multimodal, guardrails de segurança opcionais (redação de PII, moderação de conteúdo, verificação de grounding), pipelines de voz, 37 adaptadores de canal e 14 integrações de provedores de LLM. AgentOS também alimenta os sistemas de IA por trás do Wilds.ai, uma plataforma de jogos AI-native. Self-hostable e gratuito."
       },
       "isOpenSource": {
         "question": "AgentOS é gratuito e open source?",
@@ -431,7 +431,7 @@
       },
       "llmProviders": {
         "question": "Quais provedores de LLM são suportados?",
-        "answer": "AgentOS suporta 13 provedores de LLM: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Requesty, LiteLLM, Ollama, Claude Code CLI e Gemini CLI. Cadeias de fallback de provedor permitem failover automático."
+        "answer": "AgentOS suporta 14 provedores de LLM: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Requesty, LiteLLM, Ollama, MiniMax, Claude Code CLI e Gemini CLI. Cadeias de fallback de provedor permitem failover automático."
       },
       "language": {
         "question": "Em que linguagem de programação AgentOS é construído?",
@@ -760,8 +760,8 @@
         ]
       },
       "providers": {
-        "title": "13 Provedores de LLM",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq e mais 8 com cadeias de fallback automáticas e API provider-first",
+        "title": "14 Provedores de LLM",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq e mais 9 com cadeias de fallback automáticas e API provider-first",
         "features": [
           "Auto fallback (402/429/5xx)",
           "Provider-first API",
@@ -1093,7 +1093,7 @@
     "tabM": "LongMemEval-M (1.5M tokens)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "Roteador de leitor por categoria (gpt-4o + gpt-5-mini) · 84.2% só com gpt-4o, empatado com Mastra OM gpt-4o (84.23%) · $0.0090 por acerto · latência mediana de 3.6 segundos",
+    "highlightSCi": "Roteador de leitor por categoria (gpt-4o + gpt-5-mini) · 84.2% só com gpt-4o, empatado com Mastra OM gpt-4o (84.23%) · $0.0090 por acerto (tokens do leitor e do juiz) · latência mediana de 3.6 segundos · roteador calibrado nas mesmas 500 perguntas, sem conjunto de validação separado",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
     "highlightMCi": "Roteador de leitor por categoria, recuperação top-5 · $0.0078 por acerto · a melhor configuração com GPT-4o do artigo do LongMemEval marca 72.0% em top-10",
