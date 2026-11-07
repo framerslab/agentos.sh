@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — Construye Agentes de IA Autónomos con Inteligencia Adaptativa",
-    "description": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. RAG multimodal, memoria cognitiva, guardrails en streaming, pipeline de voz y 13 proveedores LLM. Runtime TypeScript de código abierto.",
+    "description": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. RAG multimodal, memoria cognitiva, guardrails en streaming, pipeline de voz y 14 proveedores LLM. Runtime TypeScript de código abierto.",
     "ogTitle": "AgentOS — Construye Agentes de IA Autónomos con Inteligencia Adaptativa",
-    "ogDescription": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. RAG multimodal, memoria cognitiva, guardrails en streaming, pipeline de voz y 13 proveedores LLM. Runtime TypeScript de código abierto.",
+    "ogDescription": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. RAG multimodal, memoria cognitiva, guardrails en streaming, pipeline de voz y 14 proveedores LLM. Runtime TypeScript de código abierto.",
     "twitterTitle": "AgentOS — Construye Agentes de IA Autónomos con Inteligencia Adaptativa",
-    "twitterDescription": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. Memoria cognitiva, RAG multimodal, guardrails en streaming y 13 proveedores LLM. Runtime TypeScript de código abierto."
+    "twitterDescription": "Construye agentes de IA autónomos con inteligencia adaptativa y comportamientos emergentes. Memoria cognitiva, RAG multimodal, guardrails en streaming y 14 proveedores LLM. Runtime TypeScript de código abierto."
   },
   "nav": {
     "features": "Características",
@@ -310,8 +310,8 @@
         ]
       },
       "providers": {
-        "title": "13 Proveedores de LLM",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq y 8 más con cadenas de respaldo automáticas y API provider-first",
+        "title": "14 Proveedores de LLM",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq y 9 más con cadenas de respaldo automáticas y API provider-first",
         "features": [
           "Auto fallback (402/429/5xx)",
           "Provider-first API",
@@ -328,7 +328,7 @@
   },
   "enterprise": {
     "title": "Infraestructura Lista para Empresas",
-    "subtitle": "Guardrails de seguridad, 13 proveedores de LLM, 37 adaptadores de canal y memoria cognitiva en un único runtime de código abierto",
+    "subtitle": "Guardrails de seguridad, 14 proveedores de LLM, 37 adaptadores de canal y memoria cognitiva en un único runtime de código abierto",
     "features": {
       "security": {
         "title": "Seguridad de 5 Niveles",
@@ -378,7 +378,7 @@
         "title": "Escala de Producción",
         "items": [
           "Más de 100 extensiones curadas, 88 skills curadas",
-          "13 proveedores de LLM, 37 adaptadores de canal",
+          "14 proveedores de LLM, 37 adaptadores de canal",
           "Generación de video, audio e imagen",
           "Agentes auto-mejorantes con forja de herramientas"
         ]
@@ -442,7 +442,7 @@
       },
       "llmCore": {
         "name": "Núcleo LLM",
-        "description": "13 proveedores de LLM con cadenas de respaldo automáticas. Diseño de API provider-first. El motor de razonamiento en el núcleo de cada GMI."
+        "description": "14 proveedores de LLM con cadenas de respaldo automáticas. Diseño de API provider-first. El motor de razonamiento en el núcleo de cada GMI."
       }
     },
     "comparison": {
@@ -474,7 +474,7 @@
   },
   "ecosystem": {
     "title": "El Ecosistema AgentOS",
-    "subtitle": "Explora el ecosistema de código abierto de AgentOS: RAG multimodal, orquestación multiagente, 37 adaptadores de canal, 13 proveedores de LLM y más de 100 extensiones curadas.",
+    "subtitle": "Explora el ecosistema de código abierto de AgentOS: RAG multimodal, orquestación multiagente, 37 adaptadores de canal, 14 proveedores de LLM y más de 100 extensiones curadas.",
     "stats": {
       "repositories": "Repositorios",
       "weeklyDownloads": "Descargas Semanales",
@@ -601,7 +601,7 @@
     "general": {
       "whatIsAgentOS": {
         "question": "¿Qué es AgentOS?",
-        "answer": "AgentOS es un runtime TypeScript open source para construir agentes de IA en producción, desarrollado por Frame.dev. Proporciona orquestación multi-agente, memoria cognitiva, RAG multimodal, guardrails de seguridad opcionales (redacción de PII, moderación de contenido, verificación de grounding), pipelines de voz, 37 adaptadores de canal y 13 integraciones de proveedores de LLM. AgentOS también potencia los sistemas de IA detrás de Wilds.ai, una plataforma de juegos AI-native. Self-hosted y gratuito."
+        "answer": "AgentOS es un runtime TypeScript open source para construir agentes de IA en producción, desarrollado por Frame.dev. Proporciona orquestación multi-agente, memoria cognitiva, RAG multimodal, guardrails de seguridad opcionales (redacción de PII, moderación de contenido, verificación de grounding), pipelines de voz, 37 adaptadores de canal y 14 integraciones de proveedores de LLM. AgentOS también potencia los sistemas de IA detrás de Wilds.ai, una plataforma de juegos AI-native. Self-hosted y gratuito."
       },
       "isOpenSource": {
         "question": "¿AgentOS es gratuito y de código abierto?",
@@ -609,7 +609,7 @@
       },
       "llmProviders": {
         "question": "¿Qué proveedores de LLM son compatibles?",
-        "answer": "AgentOS soporta 13 proveedores de LLM: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Requesty, LiteLLM, Ollama, Claude Code CLI y Gemini CLI. Las cadenas de fallback de proveedor permiten un failover automático."
+        "answer": "AgentOS soporta 14 proveedores de LLM: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Requesty, LiteLLM, Ollama, MiniMax, Claude Code CLI y Gemini CLI. Las cadenas de fallback de proveedor permiten un failover automático."
       },
       "language": {
         "question": "¿En qué lenguaje de programación está construido AgentOS?",
@@ -1093,10 +1093,10 @@
     "tabM": "LongMemEval-M (1.5M tokens)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "Router de lector por categoría (gpt-4o + gpt-5-mini) · 84.2% solo con gpt-4o, a la par de Mastra OM gpt-4o (84.23%) · $0.0090 por acierto · latencia mediana de 3.6 segundos",
+    "highlightSCi": "Router de lector por categoría (gpt-4o + gpt-5-mini) · 84.2% solo con gpt-4o, a la par de Mastra OM gpt-4o (84.23%) · $0.0090 por acierto (tokens del lector y del juez) · latencia mediana de 3.6 segundos · router calibrado con las mismas 500 preguntas, sin conjunto de reserva",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "Router de lector por categoría, recuperación top-5 · $0.0078 por acierto · la mejor configuración con GPT-4o del artículo de LongMemEval obtiene 72.0% en top-10",
+    "highlightMCi": "Router de lector por categoría, recuperación top-5 · $0.0078 por acierto (tokens del lector y del juez) · la mejor configuración con GPT-4o del artículo de LongMemEval obtiene 72.0% en top-10 · router calibrado con las preguntas de S, que M comparte; sin conjunto de reserva",
     "matrixIntro": "Las filas de AgentOS y la repetición de EmergenceMem Simple Fast provienen de ejecuciones de agentos-bench sobre los conjuntos de 500 preguntas de LongMemEval, evaluadas por gpt-4o-2024-08-06 con la rúbrica de LongMemEval. Las filas de proveedores son las cifras que cada uno publica.",
     "ctaReadAudit": "Leer la Auditoría de Transparencia",
     "ctaSeeRunJsons": "Ver agentos-bench en GitHub",

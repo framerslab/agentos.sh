@@ -171,7 +171,7 @@ const HeroSectionInner = memo(function HeroSectionInner() {
           </p>
 
           <p className="sr-only">
-            AgentOS is an open-source TypeScript AI agent framework for building production-ready autonomous agents with multi-agent orchestration, cognitive memory, multimodal RAG, AI guardrails, voice pipelines, and 13 LLM providers. A type-safe alternative to LangGraph, CrewAI, Mastra, and AutoGen.
+            AgentOS is an open-source TypeScript AI agent framework for building production-ready autonomous agents with multi-agent orchestration, cognitive memory, multimodal RAG, AI guardrails, voice pipelines, and 14 LLM providers. A type-safe alternative to LangGraph, CrewAI, Mastra, and AutoGen.
           </p>
 
           <p className="text-sm sm:text-base text-[var(--color-text-secondary)] mb-4 max-w-lg" itemProp="abstract">

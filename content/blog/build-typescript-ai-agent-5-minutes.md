@@ -32,7 +32,7 @@ export OPENAI_API_KEY=sk-your-key
 # or ANTHROPIC_API_KEY, GEMINI_API_KEY, GROQ_API_KEY, etc.
 ```
 
-AgentOS auto-detects which provider you have configured. It ships [13 LLM providers](https://github.com/framerslab/agentos/blob/master/src/core/llm/providers/AIModelProviderManager.ts), each with the model it uses when you name none:
+AgentOS auto-detects which provider you have configured. It ships [14 LLM providers](https://github.com/framerslab/agentos/blob/master/src/core/llm/providers/AIModelProviderManager.ts), each with the model it uses when you name none:
 
 | Provider | API Key Variable | Default model |
 |----------|-----------------|---------------|
@@ -47,6 +47,7 @@ AgentOS auto-detects which provider you have configured. It ships [13 LLM provid
 | [Mistral](https://mistral.ai/) | `MISTRAL_API_KEY` | `mistral-large-latest` |
 | [xAI](https://x.ai/) | `XAI_API_KEY` | `grok-2` |
 | [LiteLLM](https://www.litellm.ai/) | `apiKey` and `baseUrl` options (your proxy) | None; set `model` to one your proxy serves |
+| [MiniMax](https://www.minimax.io/) | `MINIMAX_API_KEY` | `MiniMax-M3.1-Flash` |
 | [Claude Code CLI](https://docs.agentos.sh/features/cli-providers) | PATH detection | `claude-sonnet-4-6` via subscription |
 | [Gemini CLI](https://docs.agentos.sh/features/cli-providers) | PATH detection | `gemini-3.5-flash` via subscription |
 

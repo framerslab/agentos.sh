@@ -7,7 +7,7 @@
 
 <p align="center">
   <strong><a href="https://agentos.sh">agentos.sh</a></strong> is
-  the marketing site for <strong>AgentOS</strong>, an open-source TypeScript AI agent framework with cognitive memory, runtime tool generation, multi-agent orchestration, multimodal RAG, voice pipelines, and 13 LLM providers.
+  the marketing site for <strong>AgentOS</strong>, an open-source TypeScript AI agent framework with cognitive memory, runtime tool generation, multi-agent orchestration, multimodal RAG, voice pipelines, and 14 LLM providers.
 </p>
 
 <p align="center">
@@ -25,14 +25,14 @@
 
 AgentOS is [Frame.dev](https://frame.dev)'s open-source TypeScript runtime for AI agents. [Wilds.ai](https://wilds.ai) and [Paracosm](https://paracosm.agentos.sh) run their agents on it. Highlights:
 
-- **85.6%** on LongMemEval-S at $0.0090 per correct answer with a per-category reader router (gpt-4o and gpt-5-mini); **84.2%** with gpt-4o answering every question
+- **85.6%** on LongMemEval-S at $0.0090 per correct answer (LLM reader and judge tokens) with a per-category reader router (gpt-4o and gpt-5-mini) calibrated on the same 500 questions, with no hold-out set; **84.2%** with gpt-4o answering every question
 - **70.2%** on LongMemEval-M (about 1.5M tokens of history per question) with the same reader router
 - **8 memory mechanisms** from cognitive science, on top of Ebbinghaus decay and active when `cognitiveMechanisms` is set: reconsolidation, retrieval-induced forgetting, involuntary recall, feeling-of-knowing, temporal gist extraction, schema encoding, source-confidence decay, emotion regulation
 - **6 multi-agent orchestration strategies**: sequential, parallel, debate, review-loop, hierarchical, graph DAG
 - **HEXACO personality**: traits add style directives to the prompt and, with cognitive memory, tune encoding, working-memory capacity and seven of the eight memory mechanisms
 - **6 opt-in guardrail packs**, run by the full AgentOS runtime on input and output: PII redaction, ML classifiers, topicality, code safety, grounding, content policy
 - **Runtime tool forging**: with `emergent: true` on the full AgentOS runtime, an agent writes JavaScript tools mid-task; an LLM judge reviews each one before it registers, and a tool with 5 uses at 0.8 confidence can be promoted from the session to the agent
-- **13 LLM providers** including Ollama for local models; **37 channel adapters** (Telegram, Discord, Slack, WhatsApp, webchat and 32 more)
+- **14 LLM providers** including Ollama for local models; **37 channel adapters** (Telegram, Discord, Slack, WhatsApp, webchat and 32 more)
 - **Apache-2.0** and self-hostable
 
 Get started:

@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "AgentOS — 적응형 지능을 갖춘 자율 AI 에이전트 구축",
-    "description": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 멀티모달 RAG, 인지 메모리, 스트리밍 가드레일, 음성 파이프라인 및 13개 LLM 제공자. 오픈소스 TypeScript 런타임.",
+    "description": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 멀티모달 RAG, 인지 메모리, 스트리밍 가드레일, 음성 파이프라인 및 14개 LLM 제공자. 오픈소스 TypeScript 런타임.",
     "ogTitle": "AgentOS — 적응형 지능을 갖춘 자율 AI 에이전트 구축",
-    "ogDescription": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 멀티모달 RAG, 인지 메모리, 스트리밍 가드레일, 음성 파이프라인 및 13개 LLM 제공자. 오픈소스 TypeScript 런타임.",
+    "ogDescription": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 멀티모달 RAG, 인지 메모리, 스트리밍 가드레일, 음성 파이프라인 및 14개 LLM 제공자. 오픈소스 TypeScript 런타임.",
     "twitterTitle": "AgentOS — 적응형 지능을 갖춘 자율 AI 에이전트 구축",
-    "twitterDescription": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 인지 메모리, 멀티모달 RAG, 스트리밍 가드레일 및 13개 LLM 제공자. 오픈소스 TypeScript 런타임."
+    "twitterDescription": "적응형 지능과 창발적 행동을 갖춘 자율 AI 에이전트를 구축하세요. 인지 메모리, 멀티모달 RAG, 스트리밍 가드레일 및 14개 LLM 제공자. 오픈소스 TypeScript 런타임."
   },
   "nav": {
     "features": "기능",
@@ -310,8 +310,8 @@
         ]
       },
       "providers": {
-        "title": "13개 LLM 프로바이더",
-        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq 외 8개, 자동 폴백 체인 및 provider-first API",
+        "title": "14개 LLM 프로바이더",
+        "description": "OpenAI, Anthropic, Gemini, Ollama, Groq 외 9개, 자동 폴백 체인 및 provider-first API",
         "features": [
           "자동 폴백 (402/429/5xx)",
           "Provider-first API",
@@ -328,7 +328,7 @@
   },
   "enterprise": {
     "title": "엔터프라이즈 대응 인프라",
-    "subtitle": "안전 가드레일, 13개 LLM 제공자, 37개 채널 어댑터, 인지 메모리를 하나의 오픈 소스 런타임에",
+    "subtitle": "안전 가드레일, 14개 LLM 제공자, 37개 채널 어댑터, 인지 메모리를 하나의 오픈 소스 런타임에",
     "features": {
       "security": {
         "title": "5단계 보안",
@@ -378,7 +378,7 @@
         "title": "프로덕션 규모",
         "items": [
           "100개 이상의 엄선된 확장 기능, 88개의 엄선된 스킬",
-          "13개 LLM 제공자, 37개 채널 어댑터",
+          "14개 LLM 제공자, 37개 채널 어댑터",
           "비디오, 오디오, 이미지 생성",
           "도구 포징을 통한 자기 개선 에이전트"
         ]
@@ -451,7 +451,7 @@
       },
       "llmCore": {
         "name": "LLM 코어",
-        "description": "자동 폴백 체인을 갖춘 13개 LLM 제공자. provider-first API 설계. 모든 GMI의 중심에 있는 사고 엔진."
+        "description": "자동 폴백 체인을 갖춘 14개 LLM 제공자. provider-first API 설계. 모든 GMI의 중심에 있는 사고 엔진."
       }
     },
     "comparison": {
@@ -536,7 +536,7 @@
     "general": {
       "whatIsAgentOS": {
         "question": "AgentOS란 무엇인가요?",
-        "answer": "AgentOS는 프로덕션 AI 에이전트를 구축하기 위한 오픈소스 TypeScript 런타임으로, Frame.dev가 개발했습니다. 멀티 에이전트 오케스트레이션, 인지 메모리, 멀티모달 RAG, 선택형 안전 가드레일(PII 편집, 콘텐츠 모더레이션, 그라운딩 검증), 음성 파이프라인, 37개 채널 어댑터, 13개 LLM 프로바이더 통합을 제공합니다. AgentOS는 또한 AI 네이티브 게이밍 플랫폼인 Wilds.ai 뒤의 AI 시스템도 구동합니다. 셀프 호스팅 가능하며 무료입니다."
+        "answer": "AgentOS는 프로덕션 AI 에이전트를 구축하기 위한 오픈소스 TypeScript 런타임으로, Frame.dev가 개발했습니다. 멀티 에이전트 오케스트레이션, 인지 메모리, 멀티모달 RAG, 선택형 안전 가드레일(PII 편집, 콘텐츠 모더레이션, 그라운딩 검증), 음성 파이프라인, 37개 채널 어댑터, 14개 LLM 프로바이더 통합을 제공합니다. AgentOS는 또한 AI 네이티브 게이밍 플랫폼인 Wilds.ai 뒤의 AI 시스템도 구동합니다. 셀프 호스팅 가능하며 무료입니다."
       },
       "isOpenSource": {
         "question": "AgentOS는 무료이며 오픈소스인가요?",
@@ -544,7 +544,7 @@
       },
       "llmProviders": {
         "question": "어떤 LLM 프로바이더가 지원되나요?",
-        "answer": "AgentOS는 13개 LLM 프로바이더를 지원합니다: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Requesty, LiteLLM, Ollama, Claude Code CLI, Gemini CLI. 프로바이더 폴백 체인으로 자동 페일오버가 가능합니다."
+        "answer": "AgentOS는 14개 LLM 프로바이더를 지원합니다: OpenAI, Anthropic, Google Gemini, Groq, Together AI, Mistral, xAI (Grok), OpenRouter, Requesty, LiteLLM, Ollama, MiniMax, Claude Code CLI, Gemini CLI. 프로바이더 폴백 체인으로 자동 페일오버가 가능합니다."
       },
       "language": {
         "question": "AgentOS는 어떤 프로그래밍 언어로 만들어졌나요?",
@@ -738,7 +738,7 @@
   },
   "ecosystem": {
     "title": "AgentOS 에코시스템",
-    "subtitle": "오픈 소스 AgentOS 에코시스템을 탐색하세요. 멀티모달 RAG, 멀티 에이전트 오케스트레이션, 37개 채널 어댑터, 13개 LLM 제공자, 100개 이상의 엄선된 확장 기능.",
+    "subtitle": "오픈 소스 AgentOS 에코시스템을 탐색하세요. 멀티모달 RAG, 멀티 에이전트 오케스트레이션, 37개 채널 어댑터, 14개 LLM 제공자, 100개 이상의 엄선된 확장 기능.",
     "stats": {
       "repositories": "리포지토리",
       "weeklyDownloads": "주간 다운로드",
@@ -1093,10 +1093,10 @@
     "tabM": "LongMemEval-M (1.5M 토큰)",
     "highlightSAccuracy": "AgentOS LongMemEval-S",
     "highlightSValue": "85.6%",
-    "highlightSCi": "범주별 리더 라우터(gpt-4o + gpt-5-mini) · gpt-4o만으로 84.2%, Mastra OM gpt-4o(84.23%)와 동률 · 정답당 $0.0090 · 지연 시간 중앙값 3.6초",
+    "highlightSCi": "범주별 리더 라우터(gpt-4o + gpt-5-mini) · gpt-4o만으로 84.2%, Mastra OM gpt-4o(84.23%)와 동률 · 정답당 $0.0090(리더와 심판 토큰만) · 지연 시간 중앙값 3.6초 · 라우터는 같은 500개 질문으로 보정(홀드아웃 없음)",
     "highlightMAccuracy": "AgentOS LongMemEval-M",
     "highlightMValue": "70.2%",
-    "highlightMCi": "범주별 리더 라우터, top-5 검색 · 정답당 $0.0078 · LongMemEval 논문의 최고 GPT-4o 설정은 top-10에서 72.0%",
+    "highlightMCi": "범주별 리더 라우터, top-5 검색 · 정답당 $0.0078(리더와 심판 토큰만) · LongMemEval 논문의 최고 GPT-4o 설정은 top-10에서 72.0% · 라우터는 M과 같은 S 질문으로 보정(홀드아웃 없음)",
     "matrixIntro": "AgentOS 행과 EmergenceMem Simple Fast 재실행은 500문항 LongMemEval 세트에 대한 agentos-bench 실행 결과이며, LongMemEval 채점 기준으로 gpt-4o-2024-08-06이 채점했습니다. 벤더 행은 각 벤더가 공개한 수치입니다.",
     "ctaReadAudit": "투명성 감사 읽기",
     "ctaSeeRunJsons": "GitHub에서 agentos-bench 보기",
