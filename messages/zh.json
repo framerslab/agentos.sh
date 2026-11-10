@@ -895,7 +895,7 @@
         },
         "rerank": {
           "name": "重排序",
-          "description": "交叉编码器重排序提高精度"
+          "description": "Cohere API、本地交叉编码器或 LLM 评判"
         },
         "context": {
           "name": "上下文",

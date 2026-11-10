@@ -895,7 +895,7 @@
         },
         "rerank": {
           "name": "Rerank",
-          "description": "Cross-encoder reranking for precision"
+          "description": "Cohere API, a local cross-encoder or an LLM judge"
         },
         "context": {
           "name": "Context",

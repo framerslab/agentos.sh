@@ -895,7 +895,7 @@
         },
         "rerank": {
           "name": "리랭킹",
-          "description": "정밀도를 위한 크로스 인코더 리랭킹"
+          "description": "Cohere API, 로컬 크로스 인코더 또는 LLM 판정"
         },
         "context": {
           "name": "컨텍스트",
