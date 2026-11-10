@@ -895,7 +895,7 @@
         },
         "rerank": {
           "name": "Reordenar",
-          "description": "Reordenamiento con cross-encoder para precision"
+          "description": "API de Cohere, un cross-encoder local o un LLM como juez"
         },
         "context": {
           "name": "Contexto",

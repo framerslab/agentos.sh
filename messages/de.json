@@ -895,7 +895,7 @@
         },
         "rerank": {
           "name": "Neuordnen",
-          "description": "Cross-Encoder-Neuordnung fuer Praezision"
+          "description": "Cohere-API, lokaler Cross-Encoder oder LLM als Bewerter"
         },
         "context": {
           "name": "Kontext",

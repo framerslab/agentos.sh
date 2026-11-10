@@ -895,7 +895,7 @@
         },
         "rerank": {
           "name": "リランク",
-          "description": "精度のためのクロスエンコーダーリランキング"
+          "description": "Cohere API、ローカルのクロスエンコーダー、またはLLMによる判定"
         },
         "context": {
           "name": "コンテキスト",
