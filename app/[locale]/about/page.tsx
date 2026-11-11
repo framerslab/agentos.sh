@@ -220,7 +220,7 @@ export default async function AboutPage({ params: { locale } }: Props) {
           <div className="text-center space-y-4">
             <p className="text-sm text-[var(--color-text-secondary)] max-w-2xl mx-auto">
               Current partner:{' '}
-              <a href="https://deepgram.com/startups" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline font-semibold">Deepgram</a>{' '}
+              <a href="https://deepgram.com/startup-program" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline font-semibold">Deepgram</a>{' '}
               (Startup Program), speech-to-text and text-to-speech credits powering the voice pipeline. Every partner placement is labeled as such.
             </p>
             <a href="mailto:team@frame.dev" className="inline-flex items-center gap-2 text-lg font-semibold text-accent-primary hover:underline">
