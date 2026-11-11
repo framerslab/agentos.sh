@@ -2,7 +2,7 @@
 import { canonical } from '@/lib/seo/canonical';
 import { hreflangAlternates } from '@/lib/seo/hreflang';
 
-const updated = "October 11, 2026";
+const updated = "November 11, 2026";
 
 type MetadataProps = { params: { locale: string } };
 
@@ -51,6 +51,32 @@ const Sections = [
         on top of AgentOS you must define how conversation history, workflow telemetry, or marketplace records
         are stored, how long they are retained, and which third parties (if any) have access.
       </p>
+    )
+  },
+  {
+    title: "Analytics on this website",
+    body: (
+      <div className="space-y-3 text-slate-700 dark:text-slate-200">
+        <p>
+          The agentos.sh and docs.agentos.sh websites ask before any analytics run. Each purpose stays off until
+          you turn it on in the bar or under <strong>Analytics choices</strong> in the footer of every page:
+        </p>
+        <ul className="list-disc space-y-2 pl-5">
+          <li>
+            <strong>Measurement</strong> &mdash; Google Analytics counts visits, the pages read and where visitors
+            came from. Google processes this data for us as a processor.
+          </li>
+          <li>
+            <strong>Session recordings</strong> &mdash; Microsoft Clarity records clicks and scrolling with all page
+            text masked. Microsoft acts as an independent controller of this data under the Clarity terms.
+          </li>
+        </ul>
+        <p>
+          If your browser sends Global Privacy Control or Do Not Track, both stay off. The{" "}
+          <a href="/en/legal/cookies/" className="font-semibold text-brand hover:underline">cookie policy</a> lists every
+          cookie and how long it lasts.
+        </p>
+      </div>
     )
   },
   {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { canonical } from '@/lib/seo/canonical';
 import { hreflangAlternates } from '@/lib/seo/hreflang';
 
-const updated = "March 2026";
+const updated = "November 11, 2026";
 
 type MetadataProps = { params: { locale: string } };
 
@@ -64,34 +64,34 @@ const Sections = [
                 <td className="py-2">Persistent (localStorage)</td>
               </tr>
               <tr>
-                <td className="py-2 pr-4"><code>agentos-cookie-consent</code></td>
-                <td className="py-2 pr-4">Strictly Necessary</td>
+                <td className="py-2 pr-4"><code>analytics_consent_purposes</code></td>
+                <td className="py-2 pr-4">Strictly necessary</td>
                 <td className="py-2 pr-4">
-                  Records which cookie categories you have accepted or rejected.
+                  Records which analytics purposes you turned on or off, and when.
                 </td>
                 <td className="py-2">Persistent (localStorage)</td>
               </tr>
               <tr>
                 <td className="py-2 pr-4"><code>_ga</code>, <code>_ga_*</code></td>
-                <td className="py-2 pr-4">Analytics</td>
+                <td className="py-2 pr-4">Measurement</td>
                 <td className="py-2 pr-4">
-                  Google Analytics 4 &mdash; used to distinguish unique visitors and sessions.
-                  IP addresses are anonymised.
+                  Google Analytics 4 &mdash; tells visits and sessions apart. Set only after you turn
+                  Measurement on.
                 </td>
                 <td className="py-2">Up to 2 years</td>
               </tr>
               <tr>
                 <td className="py-2 pr-4"><code>_clck</code>, <code>_clsk</code>, <code>CLID</code></td>
-                <td className="py-2 pr-4">Analytics</td>
+                <td className="py-2 pr-4">Session recordings</td>
                 <td className="py-2 pr-4">
-                  Microsoft Clarity &mdash; session recording and heatmaps for UX research. Sensitive
-                  input fields are masked by default.
+                  Microsoft Clarity &mdash; session recordings and heatmaps, with all page text masked.
+                  Set only after you turn Session recordings on.
                 </td>
                 <td className="py-2">Session to 1 year</td>
               </tr>
               <tr>
                 <td className="py-2 pr-4"><code>ANONCHK</code>, <code>MR</code>, <code>SM</code></td>
-                <td className="py-2 pr-4">Analytics</td>
+                <td className="py-2 pr-4">Session recordings</td>
                 <td className="py-2 pr-4">
                   Additional Microsoft Clarity cookies for deduplication, referral tracking, and
                   session management.
@@ -105,32 +105,34 @@ const Sections = [
     )
   },
   {
-    title: "Consent categories",
+    title: "Your choices",
     body: (
       <div className="space-y-3 text-slate-700 dark:text-slate-200">
         <p>
-          When you first visit agentos.sh, a consent banner lets you choose which categories to enable.
-          Your choices are saved in the <code>agentos-cookie-consent</code> local storage key.
+          On your first visit a bar offers three keys of equal weight: <strong>Reject all</strong>,{" "}
+          <strong>Choose</strong> and <strong>Accept all</strong>. Choose shows one switch per purpose, each
+          off until you turn it on, and <strong>Save choices</strong>. Nothing from Google or Microsoft
+          loads before you answer. Your answer is kept in the <code>analytics_consent_purposes</code> local
+          storage key on this device.
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong>Essential</strong> &mdash; always on. Stores your consent preferences. Cannot be
-            disabled.
+            <strong>Strictly necessary</strong> &mdash; always on. Keeps your choice and your light or dark
+            theme on this device.
           </li>
           <li>
-            <strong>Functional</strong> &mdash; enabled by default. Stores UI preferences such as
-            light/dark theme. You can disable these, but the site will fall back to system defaults on each
-            visit.
+            <strong>Measurement</strong> &mdash; off until you turn it on. Loads Google Analytics, which
+            counts visits, the pages read and where visitors came from.
           </li>
           <li>
-            <strong>Analytics</strong> &mdash; off by default; requires explicit opt-in. Powers Google
-            Analytics and Microsoft Clarity. Both services are loaded only after you grant consent.
-          </li>
-          <li>
-            <strong>Marketing</strong> &mdash; reserved for future use. No marketing cookies are set
-            today. No advertising trackers are present on the site.
+            <strong>Session recordings</strong> &mdash; off until you turn it on. Loads Microsoft Clarity,
+            which records clicks and scrolling with all page text masked.
           </li>
         </ul>
+        <p>
+          If your browser sends Global Privacy Control or Do Not Track, both purposes stay off and the bar
+          does not show.
+        </p>
       </div>
     )
   },
@@ -139,17 +141,9 @@ const Sections = [
     body: (
       <div className="space-y-3 text-slate-700 dark:text-slate-200">
         <p>
-          We use Google Analytics 4 with{" "}
-          <a
-            href="https://support.google.com/analytics/answer/2763052"
-            className="font-semibold text-brand hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Consent Mode v2
-          </a>
-          . Analytics storage defaults to <em>denied</em> until you opt in. IP addresses are anonymised.
-          We do not enable advertising features, remarketing, or cross-site tracking.
+          Google Analytics 4 loads only after you turn Measurement on. Before that, the site sends nothing
+          to Google. We keep Google signals and ad personalisation off, and set every advertising consent
+          type to denied. Google processes this data for us as a processor.
         </p>
         <p>
           For more information, see the{" "}
@@ -171,9 +165,9 @@ const Sections = [
     body: (
       <div className="space-y-3 text-slate-700 dark:text-slate-200">
         <p>
-          We use Microsoft Clarity for anonymised session replays and heatmaps. Clarity helps us understand
-          how visitors navigate the site so we can improve layout and usability. Sensitive text inputs are
-          masked by default. Clarity is loaded only after you grant analytics consent.
+          Microsoft Clarity loads only after you turn Session recordings on. It records clicks and scrolling
+          so we can see where the layout gets in the way, and the page marks all of its text as masked before
+          Clarity starts. Microsoft acts as an independent controller of this data under the Clarity terms.
         </p>
         <p>
           Session data is processed by Microsoft and is subject to the{" "}
@@ -206,10 +200,9 @@ const Sections = [
         <p>You can manage your cookie preferences in several ways:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong>Consent banner</strong> &mdash; revisit your choices by clearing the{" "}
-            <code>agentos-cookie-consent</code> key from your browser&apos;s localStorage (via
-            DevTools &rarr; Application &rarr; Local Storage), then reload the page to see the banner
-            again.
+            <strong>Analytics choices</strong> &mdash; the <strong>Analytics choices</strong> link in the
+            footer of every page reopens the switches. Turning a purpose off there removes its cookies from
+            this site and stops it on the next page.
           </li>
           <li>
             <strong>Browser settings</strong> &mdash; most browsers let you block or delete cookies via
