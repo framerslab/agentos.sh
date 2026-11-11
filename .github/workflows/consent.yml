@@ -1,0 +1,71 @@
+name: Analytics choices
+
+# Builds the static export with made-up Google Analytics and Clarity ids, serves out/ and checks in
+# Chromium that nothing reaches Google or Microsoft before a visitor's yes (e2e/consent.spec.mjs).
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - 'public/consent/**'
+      - 'e2e/**'
+      - 'app/**/layout.tsx'
+      - 'app/**/legal/**'
+      - 'package.json'
+      - 'next.config.mjs'
+      - '.github/workflows/consent.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: consent-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  consent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          package-manager-cache: false
+      - name: Install
+        run: pnpm install --no-frozen-lockfile
+      - name: Build the static export with made-up vendor ids
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: G-TEST000000
+          NEXT_PUBLIC_CLARITY_PROJECT_ID: testclarity1
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm run build
+      - name: No vendor script in the served HTML
+        run: |
+          if grep -rlE 'googletagmanager\.com/gtag|clarity\.ms/tag' out --include='*.html'; then
+            echo "::error::A page loads Google Analytics or Clarity from its HTML, before any choice."
+            exit 1
+          fi
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Check the choices in a browser
+        env:
+          CONSENT_BASE: http://127.0.0.1:4173
+          CONSENT_PAGES: /en/,/en/legal/cookies/
+          CONSENT_PICTURES: e2e/pictures
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory out > /tmp/http.log 2>&1 &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4173/en/ > /dev/null && break; sleep 1; done
+          pnpm run test:consent
+      - name: Keep the pictures and the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: consent-${{ github.run_id }}
+          path: |
+            e2e/pictures
+            e2e/playwright-report
+            e2e/test-results
+          if-no-files-found: ignore

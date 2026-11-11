@@ -1,0 +1,15 @@
+// Runs e2e/consent.spec.mjs against the static export served from out/ (see .github/workflows/consent.yml).
+import { defineConfig, devices } from '@playwright/test';
+
+export default defineConfig({
+  testDir: '.',
+  testMatch: /consent\.spec\.mjs$/,
+  timeout: 90_000,
+  retries: 1,
+  workers: 1,
+  reporter: [['list'], ['html', { open: 'never', outputFolder: 'playwright-report' }]],
+  use: {
+    ...devices['Desktop Chrome'],
+    trace: 'retain-on-failure',
+  },
+});

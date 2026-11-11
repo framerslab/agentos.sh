@@ -6,6 +6,7 @@ import type { Viewport } from 'next';
 import { ThemeProvider } from '../../components/theme-provider';
 import ScrollToTopButton from '../../components/ScrollToTopButton';
 import dynamic from 'next/dynamic';
+import Script from 'next/script';
 import { locales, type Locale } from '../../i18n';
 import { canonical } from '@/lib/seo/canonical';
 import { hreflangAlternates } from '@/lib/seo/hreflang';
@@ -35,21 +36,6 @@ const SiteHeaderDynamic = dynamic(
       </header>
     )
   }
-);
-
-const CookieConsentDynamic = dynamic(
-  () => import('../../components/ui/cookie-consent').then(mod => mod.CookieConsent),
-  { ssr: false }
-);
-
-const GoogleAnalyticsDynamic = dynamic(
-  () => import('../../components/analytics/GoogleAnalytics').then(mod => mod.GoogleAnalytics),
-  { ssr: false }
-);
-
-const MicrosoftClarityDynamic = dynamic(
-  () => import('../../components/analytics/MicrosoftClarity').then(mod => mod.MicrosoftClarity),
-  { ssr: false }
 );
 
 type Props = {
@@ -203,8 +189,6 @@ export default async function LocaleLayout({
         <link rel="preconnect" href="https://img.shields.io" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://api.npmjs.org" />
         <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         
         {/* JSON-LD Structured Data for SEO */}
         <script
@@ -298,10 +282,18 @@ export default async function LocaleLayout({
           }}
         />
 
-        {/* Analytics with consent integration */}
-        <GoogleAnalyticsDynamic />
-        <MicrosoftClarityDynamic />
-        <CookieConsentDynamic />
+        {/* Analytics choices. public/consent/consent.js shows the choices and loads Google Analytics
+            or Microsoft Clarity only after the visitor turns that purpose on. It runs after the page
+            has loaded, so the elements it adds never meet React's hydration. */}
+        <Script
+          id="analytics-choices"
+          src="/consent/consent.js"
+          strategy="lazyOnload"
+          data-ga={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || undefined}
+          data-clarity={process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || undefined}
+          data-policy={`/${locale}/legal/cookies/`}
+          data-site="agentos.sh"
+        />
         <a href="#main-content" className="skip-to-content">Skip to content</a>
         <SiteHeaderDynamic />
         {/* Duplicate JSON-LD removed — consolidated in head above */}
@@ -391,6 +383,7 @@ export default async function LocaleLayout({
                   <li><a href={`/${locale}/legal/privacy`} className="text-text-secondary hover:text-accent-primary transition-colors">{tFooter('privacy')}</a></li>
                   <li><a href={`/${locale}/legal/security`} className="text-text-secondary hover:text-accent-primary transition-colors">Security</a></li>
                   <li><a href={`/${locale}/legal/cookies`} className="text-text-secondary hover:text-accent-primary transition-colors">Cookies</a></li>
+                  <li><button type="button" data-analytics-choices className="text-text-secondary hover:text-accent-primary transition-colors">Analytics choices</button></li>
                   <li><span className="text-text-secondary">{tFooter('license')}</span></li>
                 </ul>
               </div>
