@@ -103,30 +103,41 @@ Per-category at the 85.6% headline:
 | temporal-reasoning | 84.2% | 133 |
 | multi-session | 74.4% | 133 |
 
-### Twelve adjacent configurations, all regressed
+### Fourteen adjacent configurations, all regressed
 
-Each of the following single-variable variants was tested as a change to the 85.6% configuration. Phase A rows ran on a 54-question stratified sample, so their deltas compare against a Phase A baseline of 85.2%; Phase B rows ran all 500 questions against 85.6%. None lifted the aggregate score.
+Each variant below changes one setting, and none lifted the aggregate score. They were measured on two different configurations, so each table names its own baseline. Phase A runs a stratified sample of 54 questions, 9 from each of the six categories; Phase B runs all 500.
+
+**On the 85.6% configuration** (canonical-hybrid retrieval over `text-embedding-3-small`, Cohere `rerank-v3.5`, the reader router, no policy router). Its Phase A baseline is 85.2% (46 of 54) and its Phase B baseline is the 85.6% headline (428 of 500):
 
 | Probe | Result | Δ vs baseline |
 |---|---:|---:|
-| `--reader-top-k 30` | 81.5% Phase A | -3.7 points |
-| `--hyde` | 83.3% Phase A | -1.9 points |
-| `--rerank-candidate-multiplier 5` | 75.9% Phase A | -9.3 points |
-| `--retrieval-config-router minimize-cost-augmented` | 77.8% Phase A | -7.4 points |
-| `--policy-router-preset balanced` | 74.1% Phase A | -11.1 points |
-| `--policy-router-preset maximize-accuracy` | 83.3% Phase A | -1.9 points |
-| `text-embedding-3-large` | 83.4% Phase B | -2.2 points at **20× slower latency** |
-| `--om-classifier-model gpt-4o` | 84.0% Phase B | -1.6 points at +44% cost |
-| `--rerank-model rerank-v4.0-pro` | 84.6% Phase B | -1.0 points; 5/6 categories regress |
-| `--reader-router min-cost-best-cat-gpt5-tr-2026-04-29` | 83.2% Phase B | -2.4 points; TR drops 84.2% → 80.5% |
+| `--hyde` | 79.6% Phase A (43 of 54) | -5.6 points vs 85.2% Phase A |
+| `text-embedding-3-large` | 83.4% Phase B | -2.2 points vs 85.6%, at **20× slower latency** |
+| `--om-classifier-model gpt-4o` | 84.0% Phase B | -1.6 points vs 85.6%, at +44% cost |
+| `--rerank-model rerank-v4.0-pro` | 84.6% Phase B | -1.0 points vs 85.6%; 5/6 categories regress |
+| `--reader-router min-cost-best-cat-gpt5-tr-2026-04-29` | 83.2% Phase B | -2.4 points vs 85.6%; TR drops 84.2% → 80.5% |
 
-The leaderboard records twelve single-variable variants against this configuration: the ten above, plus two S-tuned retrieval routers that each scored 77.8% at Phase A. All twelve regressed. The 85.6% configuration is a local optimum in the tested parameter space.
+Two S-tuned retrieval routers on this configuration each scored 77.8% at Phase A, with multi-session at 22.2% and 33.3% against 74.4% in the 85.6% run, and were dropped before Phase B.
+
+**On the earlier policy-router configuration** (the same reader router plus the Tier 3 `minimize-cost` policy router, which scored 84.8% at Phase B). Every row is Phase A, against that configuration's own Phase A baseline of 85.2% (46 of 54):
+
+| Probe | Result | Δ vs 85.2% Phase A |
+|---|---:|---:|
+| `--reader-top-k 30` | 81.5% | -3.7 points |
+| `--hyde` | 83.3% | -1.9 points |
+| `--rerank-candidate-multiplier 5` | 75.9% | -9.3 points |
+| `--retrieval-config-router minimize-cost-augmented` | 77.8% | -7.4 points |
+| `--policy-router-preset balanced` | 74.1% | -11.1 points |
+| `--policy-router-preset maximize-accuracy` | 83.3% | -1.9 points |
+| `text-embedding-3-large` | 83.3% | -1.9 points |
+
+Dropping the policy router from that configuration is what produced the 85.6% headline. Seven variants of the 85.6% configuration and seven of the policy-router configuration, fourteen in all, regressed. The 85.6% configuration is a local optimum in the tested parameter space. The [transparency notes](https://github.com/framerslab/agentos-bench/blob/b764eb0b0a83762793e3ddddc5415fd2bdcdbde9/results/eval-matrix-v1/transparency-notes.md) give the run file behind each row.
 
 #### A note on HyDE at S scale
 
 The [Gao et al. (2022) HyDE paper](https://arxiv.org/abs/2212.10496) introduced hypothetical document embedding as a recall-improver: ask the LLM to draft a plausible answer, embed *that* instead of the question, and let the answer-form embedding land closer to the answer-form documents in the index. It's a real effect at the right scale. The [Lei et al. (2025) Adaptive HyDE paper](https://arxiv.org/abs/2507.16754) shows the same on a 3M-post Stack Overflow corpus where the haystack is large and the question/answer registers are far apart.
 
-LongMemEval-S is not that setting. The haystack is 50 sessions, the canonical pipeline already saturates retrieval, and BM25 + dense + Cohere `rerank-v3.5` is precise enough that the right chunk is in the top-K most of the time. HyDE adds an extra LLM call to produce a hallucinated answer-shaped embedding, and at this scale that embedding is often *less* precise than the original question embedding for the categories that matter (single-session-user, knowledge-update, single-session-preference). The hypothetical chunks compete with the real ones in the rerank pool and displace correct hits. Net: -1.9 points and added latency. We turn it off.
+LongMemEval-S is not that setting. The haystack is 50 sessions, the canonical pipeline already saturates retrieval, and BM25 + dense + Cohere `rerank-v3.5` is precise enough that the right chunk is in the top-K most of the time. HyDE adds an extra LLM call to produce a hallucinated answer-shaped embedding, and at this scale that embedding is often *less* precise than the original question embedding. The hypothetical chunks compete with the real ones in the rerank pool and displace correct hits. On the 85.6% configuration at Phase A (54 questions, 9 per category), HyDE drops the score from [85.2%](https://github.com/framerslab/agentos-bench/blob/b764eb0b0a83762793e3ddddc5415fd2bdcdbde9/results/runs/2026-04-28T18-33-10-377--longmemeval-s--gpt-4o--full-cognitive--ingest.json) to [79.6%](https://github.com/framerslab/agentos-bench/blob/b764eb0b0a83762793e3ddddc5415fd2bdcdbde9/results/runs/2026-04-28T18-33-07-663--longmemeval-s--gpt-4o--full-cognitive--ingest.json), -5.6 points: multi-session falls from 7 of 9 to 5 of 9, single-session-user from 9 of 9 to 8 of 9, and the other four categories tie. On the earlier policy-router configuration the same flag costs 1.9 points. HyDE also adds an LLM call per query. We turn it off: the 85.6% headline runs with HyDE off.
 
 The lesson isn't "HyDE is bad" — it's "HyDE earns its keep when the haystack outgrows the precision of the surface retrieval, and pays cost the rest of the time." Save it for M.
 
