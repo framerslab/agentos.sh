@@ -18,8 +18,7 @@
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "docs:watch": "pnpm --filter @framers/agentos run docs:watch",
-    "export": "next build",
-    "test:consent": "playwright test --config e2e/playwright.config.mjs"
+    "export": "next build"
   },
   "dependencies": {
     "@types/react-syntax-highlighter": "^15.5.13",
@@ -41,7 +40,6 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
-    "@playwright/test": "1.49.1",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.12",

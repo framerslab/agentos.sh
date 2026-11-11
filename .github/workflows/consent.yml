@@ -48,24 +48,30 @@ jobs:
             echo "::error::A page loads Google Analytics or Clarity from its HTML, before any choice."
             exit 1
           fi
-      - name: Install Chromium
-        run: pnpm exec playwright install --with-deps chromium
+      # Playwright is installed outside the site's dependencies, so package-lock.json (which the tag
+      # release installs with npm ci) stays as it is.
       - name: Check the choices in a browser
         env:
           CONSENT_BASE: http://127.0.0.1:4173
           CONSENT_PAGES: /en/,/en/legal/cookies/
-          CONSENT_PICTURES: e2e/pictures
+          CONSENT_PICTURES: ${{ github.workspace }}/e2e/pictures/run
         run: |
-          python3 -m http.server 4173 --bind 127.0.0.1 --directory out > /tmp/http.log 2>&1 &
+          pw="$RUNNER_TEMP/pw"
+          mkdir -p "$pw/e2e"
+          npm install --no-save --no-audit --no-fund --prefix "$pw" @playwright/test@1.49.1
+          "$pw/node_modules/.bin/playwright" install --with-deps chromium
+          cp e2e/consent.spec.mjs e2e/playwright.config.mjs "$pw/e2e/"
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory out > "$RUNNER_TEMP/http.log" 2>&1 &
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:4173/en/ > /dev/null && break; sleep 1; done
-          pnpm run test:consent
+          "$pw/node_modules/.bin/playwright" test --config "$pw/e2e/playwright.config.mjs" --output "$pw/test-results"
+
       - name: Keep the pictures and the report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: consent-${{ github.run_id }}
           path: |
-            e2e/pictures
-            e2e/playwright-report
-            e2e/test-results
+            e2e/pictures/run
+            ${{ runner.temp }}/pw/e2e/playwright-report
+            ${{ runner.temp }}/pw/test-results
           if-no-files-found: ignore

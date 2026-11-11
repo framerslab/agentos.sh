@@ -1,4 +1,4 @@
-// Runs e2e/consent.spec.mjs against the static export served from out/ (see .github/workflows/consent.yml).
+// Runs e2e/consent.spec.mjs against the built site (see .github/workflows/consent.yml).
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({

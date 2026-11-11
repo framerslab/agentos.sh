@@ -73,7 +73,7 @@ const Sections = [
         </ul>
         <p>
           If your browser sends Global Privacy Control or Do Not Track, both stay off. The{" "}
-          <a href="../cookies/" className="font-semibold text-brand hover:underline">cookie policy</a> lists every
+          <a href="/en/legal/cookies/" className="font-semibold text-brand hover:underline">cookie policy</a> lists every
           cookie and how long it lasts.
         </p>
       </div>
