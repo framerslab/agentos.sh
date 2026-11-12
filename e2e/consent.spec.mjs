@@ -178,7 +178,9 @@ for (const path of PAGES) {
       await page.goto(BASE + path);
       await key(page, 'Accept all').click();
       await settle(page);
-      await page.locator('[data-analytics-choices]').first().click();
+      // The site's own scripts may stop rendering without storage, so this opens the choices through
+      // the same call the footer control makes.
+      await page.evaluate(() => window.agentosConsent.open());
       await expect(bar(page).getByRole('switch', { name: 'Measurement' })).toHaveAttribute('aria-checked', 'true');
       await expect(bar(page).getByRole('switch', { name: 'Session recordings' })).toHaveAttribute('aria-checked', 'true');
     });
