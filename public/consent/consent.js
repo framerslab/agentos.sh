@@ -58,7 +58,17 @@
     return n.globalPrivacyControl === true || n.doNotTrack === '1' || n.doNotTrack === 'yes' || window.doNotTrack === '1';
   }
 
+  // The choice made on this page, kept in memory too. When storage refused to keep it, the page's own
+  // choice wins over anything older that storage still holds.
+  var remembered = null;
+  var writeFailed = false;
+
+  function copy(purposes) {
+    return purposes ? { measure: purposes.measure === true, record: purposes.record === true } : null;
+  }
+
   function readStored() {
+    if (writeFailed && remembered) return copy(remembered);
     try {
       var raw = localStorage.getItem(KEY);
       if (!raw) return null;
@@ -66,7 +76,7 @@
       if (!value || typeof value.purposes !== 'object' || value.purposes === null) return null;
       return { measure: value.purposes.measure === true, record: value.purposes.record === true };
     } catch (e) {
-      return null;
+      return copy(remembered);
     }
   }
 
@@ -76,6 +86,7 @@
   }
 
   function store(purposes) {
+    remembered = copy(purposes);
     try {
       localStorage.setItem(
         KEY,
@@ -86,7 +97,9 @@
         }),
       );
       localStorage.removeItem(LEGACY_KEY);
+      writeFailed = false;
     } catch (e) {
+      writeFailed = true;
       /* Storage blocked: the choice holds for this page only. */
     }
   }
@@ -118,6 +131,7 @@
   }
 
   var loaded = { measure: false, record: false };
+  var clarityStopped = false;
 
   function startGoogle(id) {
     window['ga-disable-' + id] = false;
@@ -166,7 +180,11 @@
       tag.async = true;
       tag.src = 'https://www.clarity.ms/tag/' + encodeURIComponent(id);
       document.head.appendChild(tag);
+    } else if (clarityStopped) {
+      // Turned off and on again on the same page: stop ended the recording, so start resumes it.
+      window.clarity('start');
     }
+    clarityStopped = false;
     window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
   }
 
@@ -175,7 +193,10 @@
   function stopClarity() {
     if (typeof window.clarity === 'function') {
       window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' });
-      if (loaded.record) window.clarity('stop');
+      if (loaded.record && !clarityStopped) {
+        window.clarity('stop');
+        clarityStopped = true;
+      }
     }
     clearCookies(CLARITY_COOKIES);
   }
@@ -386,6 +407,9 @@
   // A choice saved in another tab applies here too, so withdrawing in one tab stops the vendors in all.
   window.addEventListener('storage', function (event) {
     if (event.key !== KEY) return;
+    // Another tab wrote or removed the choice, so storage works and holds the newest answer.
+    remembered = null;
+    writeFailed = false;
     apply(effective());
     if (root && readStored() !== null) close();
   });
