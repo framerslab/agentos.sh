@@ -47,6 +47,16 @@ jobs:
           else
             npm run lint --if-present
           fi
+      - name: Typecheck
+        # next build type-checks the site, but it runs only in the Pages
+        # deploy on master. Checking here stops a dependency release that
+        # breaks the types from reaching master unseen.
+        run: |
+          if [ "${{ steps.pm.outputs.pm }}" = "pnpm" ]; then
+            pnpm run --if-present typecheck
+          else
+            npm run typecheck --if-present
+          fi
       - name: Test
         run: |
           if [ "${{ steps.pm.outputs.pm }}" = "pnpm" ]; then
