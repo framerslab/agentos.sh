@@ -71,6 +71,11 @@
     "not dead"
   ],
   "packageManager": "pnpm@10.15.1",
+  "pnpm": {
+    "overrides": {
+      "csstype": "3.2.3"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/framerslab/agentos.sh"
