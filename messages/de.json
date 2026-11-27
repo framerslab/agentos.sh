@@ -556,7 +556,7 @@
       },
       "whatIsParacosm": {
         "question": "Was ist Paracosm?",
-        "answer": "Paracosm (https://paracosm.agentos.sh) ist eine strukturierte Welt-Modell-Simulations-Engine auf Basis von AgentOS. Sie führt ein Szenario als Zeitlinien mit demselben Seed auf einem deterministischen Kernel aus und ändert zwischen ihnen genau eine Sache: das HEXACO-Persönlichkeitsprofil eines Leaders, eine Intervention oder ein Ereignis in einem früheren Zug. In jeder Zeitlinie schreibt ein KI-Ereignisdirektor die Krisen aus dem, was bisher geschehen ist; AgentOS-Agenten entscheiden und schmieden zur Laufzeit neue JavaScript-Tools, und jeder Lauf erzeugt ein kontrafaktisches Artefakt, das du forken und erneut abspielen kannst. Drei Modi teilen sich ein Schema: zugbasierte Zivilisationssimulationen (Mars Genesis ist das kanonische Beispiel), Batch-Trajektorie-Digital-Twins und Batch-Punkt-Monte-Carlo-Prognosen. Open-Source unter Apache 2.0, npm install paracosm. Live-Demo: https://paracosm.agentos.sh/sim. Quellcode: https://github.com/framerslab/paracosm. Ausführlicher Launch-Post (warum wir es gebaut haben, die wilds.ai-Vault-Geschichte, die Engine-Referenz): https://agentos.sh/blog/paracosm-launch."
+        "answer": "Paracosm (https://paracosm.agentos.sh) ist eine strukturierte Welt-Modell-Simulations-Engine auf Basis von AgentOS. Sie führt ein Szenario als Zeitlinien mit demselben Seed auf einem deterministischen Kernel aus und ändert zwischen ihnen genau eine Sache: das HEXACO-Persönlichkeitsprofil eines Leaders oder ein Ereignis in einem früheren Zug. In jeder Zeitlinie schreibt ein KI-Ereignisdirektor die nicht geskripteten Krisen aus dem, was bisher geschehen ist; AgentOS-Agenten entscheiden und schmieden zur Laufzeit neue JavaScript-Tools, und jeder Lauf erzeugt ein kontrafaktisches Artefakt, das du forken und erneut abspielen kannst. Drei Modi teilen sich ein Schema: zugbasierte Zivilisationssimulationen (Mars Genesis ist das kanonische Beispiel), Batch-Trajektorie-Digital-Twins und Batch-Punkt-Monte-Carlo-Prognosen. Open-Source unter Apache 2.0, npm install paracosm. Live-Demo: https://paracosm.agentos.sh/sim. Quellcode: https://github.com/framerslab/paracosm. Ausführlicher Launch-Post (warum wir es gebaut haben, die wilds.ai-Vault-Geschichte, die Engine-Referenz): https://agentos.sh/blog/paracosm-launch."
       },
       "whatIsWildsAi": {
         "question": "Was ist Wilds.ai?",
@@ -1106,7 +1106,7 @@
   "paracosmBanner": {
     "ariaVisit": "Paracosm: paracosm.agentos.sh besuchen",
     "subtitle": "Simulations-Engine für KI-Agentenschwärme",
-    "description": "Definiere ein Szenario. Führe es als Zeitlinien vom selben Start aus und ändere zwischen ihnen genau eine Sache: die Persönlichkeit eines Leaders, eine Intervention oder ein Ereignis in einem früheren Zug. Sieh zu, wie diese eine Änderung zu unterschiedlichen Zivilisationen führt. Gebaut auf AgentOS.",
+    "description": "Definiere ein Szenario. Führe es als Zeitlinien vom selben Start aus und ändere zwischen ihnen genau eine Sache: die Persönlichkeit eines Leaders oder ein Ereignis in einem früheren Zug. Sieh zu, wie diese eine Änderung zu unterschiedlichen Zivilisationen führt. Gebaut auf AgentOS.",
     "launch": "Simulation starten",
     "learnMore": "Mehr über Paracosm",
     "learnMoreAria": "Mehr über Paracosm: den Launch-Beitrag lesen"

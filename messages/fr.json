@@ -596,7 +596,7 @@
       },
       "whatIsParacosm": {
         "question": "Qu’est-ce que Paracosm ?",
-        "answer": "Paracosm (https://paracosm.agentos.sh) est un moteur de simulation de modèles de monde structurés construit sur AgentOS. Il exécute un scénario sous forme de lignes temporelles avec la même graine sur un noyau déterministe et change une seule chose entre elles : la personnalité HEXACO d’un leader, une intervention ou un événement à un tour passé. Dans chaque ligne temporelle, un directeur d’événements IA écrit les crises à partir de ce qui s’est passé jusque-là ; les agents AgentOS décident et forgent de nouveaux outils JavaScript à l’exécution, et chaque exécution produit un artefact contrefactuel que vous pouvez bifurquer et rejouer. Trois modes partagent un même schéma : simulations de civilisation par tours (Mars Genesis en est l’exemple canonique), jumeaux numériques par trajectoires en lot, et prévisions Monte-Carlo par point en lot. Open-source sous Apache 2.0, npm install paracosm. Démo en direct : https://paracosm.agentos.sh/sim. Sources : https://github.com/framerslab/paracosm. Article de lancement détaillé (pourquoi nous l’avons construit, l’histoire du vault wilds.ai, la référence du moteur) : https://agentos.sh/blog/paracosm-launch."
+        "answer": "Paracosm (https://paracosm.agentos.sh) est un moteur de simulation de modèles de monde structurés construit sur AgentOS. Il exécute un scénario sous forme de lignes temporelles avec la même graine sur un noyau déterministe et change une seule chose entre elles : la personnalité HEXACO d’un leader ou un événement à un tour passé. Dans chaque ligne temporelle, un directeur d’événements IA écrit les crises non scénarisées à partir de ce qui s’est passé jusque-là ; les agents AgentOS décident et forgent de nouveaux outils JavaScript à l’exécution, et chaque exécution produit un artefact contrefactuel que vous pouvez bifurquer et rejouer. Trois modes partagent un même schéma : simulations de civilisation par tours (Mars Genesis en est l’exemple canonique), jumeaux numériques par trajectoires en lot, et prévisions Monte-Carlo par point en lot. Open-source sous Apache 2.0, npm install paracosm. Démo en direct : https://paracosm.agentos.sh/sim. Sources : https://github.com/framerslab/paracosm. Article de lancement détaillé (pourquoi nous l’avons construit, l’histoire du vault wilds.ai, la référence du moteur) : https://agentos.sh/blog/paracosm-launch."
       },
       "whatIsWildsAi": {
         "question": "Qu’est-ce que Wilds.ai ?",
@@ -1106,7 +1106,7 @@
   "paracosmBanner": {
     "ariaVisit": "Paracosm : visiter paracosm.agentos.sh",
     "subtitle": "Moteur de simulation d’essaims d’agents IA",
-    "description": "Définissez un scénario. Exécutez-le sous forme de lignes temporelles depuis le même départ et changez une seule chose entre elles : la personnalité d’un leader, une intervention ou un événement à un tour passé. Regardez ce seul changement s’amplifier jusqu’à des civilisations divergentes. Construit sur AgentOS.",
+    "description": "Définissez un scénario. Exécutez-le sous forme de lignes temporelles depuis le même départ et changez une seule chose entre elles : la personnalité d’un leader ou un événement à un tour passé. Regardez ce seul changement s’amplifier jusqu’à des civilisations divergentes. Construit sur AgentOS.",
     "launch": "Lancer la simulation",
     "learnMore": "En savoir plus sur Paracosm",
     "learnMoreAria": "En savoir plus sur Paracosm : lire l’article de lancement"

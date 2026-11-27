@@ -554,7 +554,7 @@
       },
       "whatIsParacosm": {
         "question": "What is Paracosm?",
-        "answer": "Paracosm (https://paracosm.agentos.sh) is a structured world-model simulation engine built on AgentOS. It runs one scenario as timelines from the same seed on a deterministic kernel and changes one thing between them: a leader's HEXACO personality, an intervention or an event at a past turn. In each timeline an AI event director writes the crises from what has happened so far, AgentOS agents decide and forge new JavaScript tools at runtime, and each run produces a counterfactual artifact you can fork and replay. Three modes share one schema: turn-loop civilization sims (Mars Genesis is the canonical example), batch-trajectory digital twins, and batch-point Monte-Carlo forecasts. Open-source under Apache 2.0, npm install paracosm. Live demo: https://paracosm.agentos.sh/sim. Source: https://github.com/framerslab/paracosm. Long-form launch post (why we built it, the wilds.ai vault story, the engine reference): https://agentos.sh/blog/paracosm-launch."
+        "answer": "Paracosm (https://paracosm.agentos.sh) is a structured world-model simulation engine built on AgentOS. It runs one scenario as timelines from the same seed on a deterministic kernel and changes one thing between them: a leader's HEXACO personality or an event at a past turn. In each timeline an AI event director writes the unscripted crises from what has happened so far, AgentOS agents decide and forge new JavaScript tools at runtime, and each run produces a counterfactual artifact you can fork and replay. Three modes share one schema: turn-loop civilization sims (Mars Genesis is the canonical example), batch-trajectory digital twins, and batch-point Monte-Carlo forecasts. Open-source under Apache 2.0, npm install paracosm. Live demo: https://paracosm.agentos.sh/sim. Source: https://github.com/framerslab/paracosm. Long-form launch post (why we built it, the wilds.ai vault story, the engine reference): https://agentos.sh/blog/paracosm-launch."
       },
       "whatIsWildsAi": {
         "question": "What is Wilds.ai?",
@@ -1106,7 +1106,7 @@
   "paracosmBanner": {
     "ariaVisit": "Paracosm: visit paracosm.agentos.sh",
     "subtitle": "AI Agent Swarm Simulation Engine",
-    "description": "Define a scenario. Run it as timelines from the same start and change one thing between them: a leader’s personality, an intervention or an event at a past turn. Watch that one change compound into divergent civilizations. Built on AgentOS.",
+    "description": "Define a scenario. Run it as timelines from the same start and change one thing between them: a leader’s personality or an event at a past turn. Watch that one change compound into divergent civilizations. Built on AgentOS.",
     "launch": "Launch Simulation",
     "learnMore": "Learn more about Paracosm",
     "learnMoreAria": "Learn more about Paracosm: read the launch post"

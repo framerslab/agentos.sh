@@ -2,7 +2,7 @@
 title: "Paracosm: A structured world-model engine for LLM agent swarms"
 date: "2026-05-05"
 featured: true
-excerpt: "Paracosm is an open-source TypeScript engine that compiles a natural-language scenario into a typed deterministic world and runs it as timelines from the same seed, changing one thing between them: a leader's HEXACO personality, an intervention or an event at a past turn. Same world, same kernel, same seed, divergent events and futures. This is what it does, how it works, and how I was inspired by interactive fiction, immersive sims, and game design mechanics to build it."
+excerpt: "Paracosm is an open-source TypeScript engine that compiles a natural-language scenario into a typed deterministic world and runs HEXACO-typed AI agents through it. Same world, same kernel, same seed, divergent events and futures. This is what it does, how it works, and how I was inspired by interactive fiction, immersive sims, and game design mechanics to build it."
 author: "Johnny Dunn"
 category: "Engineering"
 audience: "general"
