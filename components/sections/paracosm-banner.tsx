@@ -96,8 +96,8 @@ export function ParacosmBanner() {
                 className="mb-5 max-w-lg text-sm leading-relaxed sm:text-[15px]"
                 style={{ color: 'var(--color-text-secondary)' }}
               >
-                Define a scenario as JSON. Run it with AI commanders that have different personalities.
-                Watch their decisions compound into divergent civilizations from identical starting conditions.
+                Define a scenario. Run it as timelines from the same start and change one thing between them: a leader’s personality, an intervention or an event at a past turn.
+                Watch that one change compound into divergent civilizations.
                 Built on AgentOS.
               </p>
 
