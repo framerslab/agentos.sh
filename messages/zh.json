@@ -403,7 +403,7 @@
       },
       "whatIsParacosm": {
         "question": "Paracosm 是什么?",
-        "answer": "Paracosm (https://paracosm.agentos.sh) 是构建在 AgentOS 之上的结构化世界模型仿真引擎。它在确定性内核上以同一种子把一个场景运行为多条时间线,并在时间线之间只改变一件事:某位领导者的 HEXACO 人格、一次干预,或过去某个回合的事件。在每条时间线中,AI 事件导演根据目前为止发生的事情编写危机,AgentOS 智能体做出决策,并在运行时锻造新的 JavaScript 工具 (每次调用都在独立的 QuickJS WebAssembly 实例中运行,时限 10 秒),每次运行都会产生可以分叉与回放的反事实产物。三种模式共享一套 schema:回合循环式文明仿真 (Mars Genesis 是典型示例)、批量轨迹数字孪生,以及批量点蒙特卡洛预测。Apache 2.0 开源,npm install paracosm。在线 Demo: https://paracosm.agentos.sh/sim。源码: https://github.com/framerslab/paracosm。长文发布博客 (我们为什么构建它、wilds.ai 金库故事、引擎参考): https://agentos.sh/blog/paracosm-launch。"
+        "answer": "Paracosm (https://paracosm.agentos.sh) 是构建在 AgentOS 之上的结构化世界模型仿真引擎。它在确定性内核上以同一种子把一个场景运行为多条时间线,并在时间线之间只改变一件事:某位领导者的 HEXACO 人格、一次干预,或过去某个回合的事件。在每条时间线中,AI 事件导演根据目前为止发生的事情编写危机,AgentOS 智能体做出决策,并在运行时锻造新的 JavaScript 工具,每次运行都会产生可以分叉与回放的反事实产物。三种模式共享一套 schema:回合循环式文明仿真 (Mars Genesis 是典型示例)、批量轨迹数字孪生,以及批量点蒙特卡洛预测。Apache 2.0 开源,npm install paracosm。在线 Demo: https://paracosm.agentos.sh/sim。源码: https://github.com/framerslab/paracosm。长文发布博客 (我们为什么构建它、wilds.ai 金库故事、引擎参考): https://agentos.sh/blog/paracosm-launch。"
       },
       "whatIsWildsAi": {
         "question": "Wilds.ai 是什么?",
@@ -1102,5 +1102,13 @@
     "ctaSeeRunJsons": "在 GitHub 上查看 agentos-bench",
     "ctaBenchmarksPage": "完整基准参考",
     "footnote": "其他已公布的 LongMemEval-S 分数包括 agentmemory 96.2%（GPT-4o 读取模型）、Mastra OM 94.9%（gpt-5-mini 读取模型）和 Supermemory 85.2%（gemini-3-pro 读取模型）。agentos-bench 排行榜列出了每一行及其读取模型和来源。"
+  },
+  "paracosmBanner": {
+    "ariaVisit": "Paracosm:访问 paracosm.agentos.sh",
+    "subtitle": "AI 智能体群体仿真引擎",
+    "description": "定义一个场景。从同一起点把它运行为多条时间线,并在时间线之间只改变一件事:某位领导者的人格、一次干预,或过去某个回合的事件。看着这一个改变累积成截然不同的文明。基于 AgentOS 构建。",
+    "launch": "启动仿真",
+    "learnMore": "进一步了解 Paracosm",
+    "learnMoreAria": "进一步了解 Paracosm:阅读发布文章"
   }
 }
