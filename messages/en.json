@@ -554,7 +554,7 @@
       },
       "whatIsParacosm": {
         "question": "What is Paracosm?",
-        "answer": "Paracosm (https://paracosm.agentos.sh) is a structured world-model simulation engine built on AgentOS. It compiles a JSON ScenarioPackage plus a HEXACO leader profile into a turn loop on a seeded, deterministic kernel, where AgentOS agents propose events, forge new JavaScript tools at runtime that AgentOS runs in node:vm with a 10-second time limit, and produce a counterfactual artifact you can fork and replay. Three modes share one schema: turn-loop civilization sims (Mars Genesis is the canonical example), batch-trajectory digital twins, and batch-point Monte-Carlo forecasts. Open-source under Apache 2.0, npm install paracosm. Live demo: https://paracosm.agentos.sh/sim. Source: https://github.com/framerslab/paracosm. Long-form launch post (why we built it, the wilds.ai vault story, the engine reference): https://agentos.sh/blog/paracosm-launch."
+        "answer": "Paracosm (https://paracosm.agentos.sh) is a structured world-model simulation engine built on AgentOS. It runs one scenario as timelines from the same seed on a deterministic kernel and changes one thing between them: a leader's HEXACO personality or an event at a past turn. In each timeline an AI event director writes the unscripted crises from what has happened so far, AgentOS agents decide and forge new JavaScript tools at runtime, and each run produces a counterfactual artifact you can fork and replay. Three modes share one schema: turn-loop civilization sims (Mars Genesis is the canonical example), batch-trajectory digital twins, and batch-point Monte-Carlo forecasts. Open-source under Apache 2.0, npm install paracosm. Live demo: https://paracosm.agentos.sh/sim. Source: https://github.com/framerslab/paracosm. Long-form launch post (why we built it, the wilds.ai vault story, the engine reference): https://agentos.sh/blog/paracosm-launch."
       },
       "whatIsWildsAi": {
         "question": "What is Wilds.ai?",
@@ -1102,5 +1102,13 @@
     "ctaSeeRunJsons": "See agentos-bench on GitHub",
     "ctaBenchmarksPage": "Full Benchmarks Reference",
     "footnote": "Other published LongMemEval-S scores include agentmemory 96.2% (GPT-4o reader), Mastra OM 94.9% (gpt-5-mini reader) and Supermemory 85.2% (gemini-3-pro reader). The agentos-bench leaderboard lists every row with its reader and source."
+  },
+  "paracosmBanner": {
+    "ariaVisit": "Paracosm: visit paracosm.agentos.sh",
+    "subtitle": "AI Agent Swarm Simulation Engine",
+    "description": "Define a scenario. Run it as timelines from the same start and change one thing between them: a leader’s personality or an event at a past turn. Watch that one change compound into divergent civilizations. Built on AgentOS.",
+    "launch": "Launch Simulation",
+    "learnMore": "Learn more about Paracosm",
+    "learnMoreAria": "Learn more about Paracosm: read the launch post"
   }
 }

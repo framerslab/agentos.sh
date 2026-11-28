@@ -1,10 +1,15 @@
+'use client'
+
 import { ExternalLink } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 /**
- * Paracosm promotional banner. Server component; the swarm-logo
- * rotation is CSS-only so no framer-motion lands in the client bundle.
+ * Paracosm promotional banner. A client component so its words come from
+ * the locale message files (paracosmBanner); the swarm-logo rotation stays
+ * CSS-only, so no framer-motion lands in the client bundle.
  */
 export function ParacosmBanner() {
+  const t = useTranslations('paracosmBanner')
   return (
     <section className="relative overflow-hidden py-12 sm:py-16">
       {/* Background gradient */}
@@ -78,7 +83,7 @@ export function ParacosmBanner() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-opacity hover:opacity-80"
-                    aria-label="Paracosm: visit paracosm.agentos.sh"
+                    aria-label={t('ariaVisit')}
                   >
                     PARA<span style={{ color: '#e8b44a' }}>COSM</span>
                   </a>
@@ -89,16 +94,14 @@ export function ParacosmBanner() {
                 className="mb-1 font-mono text-xs font-semibold uppercase tracking-[3px]"
                 style={{ color: 'var(--color-text-tertiary)' }}
               >
-                AI Agent Swarm Simulation Engine
+                {t('subtitle')}
               </p>
 
               <p
                 className="mb-5 max-w-lg text-sm leading-relaxed sm:text-[15px]"
                 style={{ color: 'var(--color-text-secondary)' }}
               >
-                Define a scenario as JSON. Run it with AI commanders that have different personalities.
-                Watch their decisions compound into divergent civilizations from identical starting conditions.
-                Built on AgentOS.
+                {t('description')}
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
@@ -113,7 +116,7 @@ export function ParacosmBanner() {
                     fontSize: '13px',
                   }}
                 >
-                  Launch Simulation
+                  {t('launch')}
                   <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </a>
                 <a
@@ -126,9 +129,9 @@ export function ParacosmBanner() {
                     color: 'var(--color-text-secondary)',
                     fontSize: '13px',
                   }}
-                  aria-label="Learn more about Paracosm — read the 2026 overview blog post"
+                  aria-label={t('learnMoreAria')}
                 >
-                  Learn more about Paracosm
+                  {t('learnMore')}
                 </a>
                 <a
                   href="https://www.npmjs.com/package/paracosm"

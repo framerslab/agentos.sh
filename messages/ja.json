@@ -443,7 +443,7 @@
       },
       "whatIsParacosm": {
         "question": "Paracosm とは何ですか?",
-        "answer": "Paracosm (https://paracosm.agentos.sh) は AgentOS の上に構築された構造化ワールドモデル・シミュレーションエンジンです。JSON の ScenarioPackage と HEXACO のリーダープロファイルをシード付きの決定論的カーネルを中心としたターンループにコンパイルし、AgentOS エージェントがイベントを提案し、新しい JavaScript ツールを実行時にフォージし (AgentOS が node:vm で 10 秒の制限時間付きで実行します)、フォークしてリプレイ可能な反実仮想のアーティファクトを生成します。3 つのモードが 1 つのスキーマを共有します。ターンループ型の文明シム (Mars Genesis が代表例)、バッチ軌道のデジタルツイン、バッチポイントのモンテカルロ予測です。Apache 2.0 のもとオープンソース、npm install paracosm。ライブデモ: https://paracosm.agentos.sh/sim。ソース: https://github.com/framerslab/paracosm。長文のローンチ記事 (なぜ作ったか、wilds.ai のヴォルトの話、エンジンリファレンス): https://agentos.sh/blog/paracosm-launch。"
+        "answer": "Paracosm (https://paracosm.agentos.sh) は AgentOS の上に構築された構造化ワールドモデル・シミュレーションエンジンです。1 つのシナリオを同じシードから決定論的カーネル上で複数のタイムラインとして実行し、タイムラインの間で変えるのは 1 つだけです。リーダーの HEXACO パーソナリティ、または過去のターンのイベントのいずれかです。各タイムラインでは AI のイベントディレクターがそれまでの展開から台本にないクライシスを書き、AgentOS エージェントが判断し、新しい JavaScript ツールを実行時にフォージします。各実行は、フォークしてリプレイ可能な反実仮想のアーティファクトを生成します。3 つのモードが 1 つのスキーマを共有します。ターンループ型の文明シム (Mars Genesis が代表例)、バッチ軌道のデジタルツイン、バッチポイントのモンテカルロ予測です。Apache 2.0 のもとオープンソース、npm install paracosm。ライブデモ: https://paracosm.agentos.sh/sim。ソース: https://github.com/framerslab/paracosm。長文のローンチ記事 (なぜ作ったか、wilds.ai のヴォルトの話、エンジンリファレンス): https://agentos.sh/blog/paracosm-launch。"
       },
       "whatIsWildsAi": {
         "question": "Wilds.ai とは何ですか?",
@@ -1102,5 +1102,13 @@
     "ctaSeeRunJsons": "GitHub で agentos-bench を見る",
     "ctaBenchmarksPage": "ベンチマーク完全リファレンス",
     "footnote": "LongMemEval-S のほかの公表スコアには、agentmemory 96.2%（GPT-4o リーダー）、Mastra OM 94.9%（gpt-5-mini リーダー）、Supermemory 85.2%（gemini-3-pro リーダー）があります。agentos-bench のリーダーボードには、すべての行がリーダーと出典付きで載っています。"
+  },
+  "paracosmBanner": {
+    "ariaVisit": "Paracosm: paracosm.agentos.sh を開く",
+    "subtitle": "AI エージェント・スウォーム・シミュレーションエンジン",
+    "description": "シナリオを定義し、同じスタートから複数のタイムラインとして実行し、タイムラインの間で 1 つだけを変えます。変えるのは、リーダーのパーソナリティ、または過去のターンのイベントです。その 1 つの変化が異なる文明へと積み重なっていく様子を見られます。AgentOS 上に構築。",
+    "launch": "シミュレーションを開始",
+    "learnMore": "Paracosm について詳しく",
+    "learnMoreAria": "Paracosm について詳しく: ローンチ記事を読む"
   }
 }
